@@ -45,7 +45,13 @@
 					</th>
 					<th class="c-table-responsive__cell" scope="col">Products</th>
 					<th class="c-table-responsive__cell" scope="col">Quantity</th>
-					<th class="c-table-responsive__cell" scope="col">Status</th>
+					<th class="c-table-responsive__cell" scope="col">
+						<mvt:if expr="g.SortBy EQ 'StusAsc' OR ISNULL g.SortBy">
+							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=StusDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Status</a>
+						<mvt:else>
+							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=StusAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Status</a>
+						</mvt:if>
+					</th>
 					<th class="c-table-responsive__cell" scope="col">Shipments</th>
 					<th class="c-table-responsive__cell u-text-right--m" scope="col">
 						<mvt:if expr="g.SortBy EQ 'OrdTotAsc' OR ISNULL g.SortBy">

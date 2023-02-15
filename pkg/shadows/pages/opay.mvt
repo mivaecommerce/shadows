@@ -72,7 +72,10 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
-			<mvt:item name="customfields" param="Write_Basket('order_instructions', g.order_instructions)" />
+			<mvt:if expr="NOT ISNULL g.order_instructions">
+				<mvt:item name="customfields" param="Write_Basket('order_instructions', g.order_instructions)"/>
+			</mvt:if>
+			<mvt:item name="customfields" param="Read_Basket('order_instructions', g.order_instructions)"/>
 		</div>
 	</section>
 

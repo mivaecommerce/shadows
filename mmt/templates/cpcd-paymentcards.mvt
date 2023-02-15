@@ -41,7 +41,7 @@
 		<div class="o-layout__item">
 			<p class="c-control-group">
 				<a class="c-button c-button--full c-control-group__button u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CPCE:auto_sep;PaymentMethod=paymentcard:&mvta:paymentcard:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
-				<a class="c-button c-button--full c-button--hollow c-control-group__button u-color-red u-font-small u-text-bold u-text-uppercase" href="&#" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\\x0A\\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvtj:urls:CPCD:secure;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvtj:paymentcard:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); } return false;">Delete</a>
+				<a class="c-button c-button--full c-button--hollow c-control-group__button u-color-red u-font-small u-text-bold u-text-uppercase" href="#" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\x0A\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvtj:urls:CPCD:secure;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvtj:paymentcard:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); } return false;">Delete</a>
 			</p>
 		</div>
 	</div>

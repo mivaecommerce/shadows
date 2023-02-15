@@ -593,6 +593,15 @@ textarea {
 	letter-spacing: 0.05em;
 }
 
+/**
+ * Ensure that, when focused, the iOS Input Zoom doesn't happen.
+ */
+input:not([type="checkbox"]):not([type="radio"]):focus,
+select:focus,
+textarea:focus {
+	font-size: 16px;
+}
+
 /* ==========================================================================
    ELEMENTS / LINKS
    ========================================================================== */
@@ -1918,6 +1927,19 @@ small {
 .c-dialog[aria-hidden="true"] .c-dialog__container {
 	-webkit-animation: dialogSlideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
 	        animation: dialogSlideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+@media screen and (prefers-reduced-motion: reduce) {
+	.c-dialog[aria-hidden="false"] .c-dialog__overlay {
+		opacity: 1;
+		-webkit-animation: none;
+		        animation: none;
+	}
+	.c-dialog[aria-hidden="true"] .c-dialog__overlay {
+		opacity: 0;
+		-webkit-animation: none;
+		        animation: none;
+	}
 }
 
 /* ==========================================================================

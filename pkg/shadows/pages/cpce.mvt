@@ -23,7 +23,7 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<form data-hook="cpca-form" method="post" action="&mvte:urls:CPCD:auto;">
+			<form data-hook="cpce-form" method="post" action="&mvte:urls:CPCD:auto;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="UCPC" />
@@ -40,7 +40,7 @@
 										MivaPay.Submit(function() {
 											var form;
 		
-											form = document.querySelector('[data-hook="cpca-form"]');
+											form = document.querySelector('[data-hook="cpce-form"]');
 											form.submit();
 										});
 									}

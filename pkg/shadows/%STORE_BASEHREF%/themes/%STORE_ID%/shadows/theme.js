@@ -60,7 +60,7 @@ const themeFunctionality = {
 		mvtSelectWraps.forEach(function (element) {
 			styleMVT(element, 'select');
 		});
-		
+
 	},
 	init: function () {
 		/**
@@ -83,6 +83,147 @@ const themeFunctionality = {
 		 */
 		$.hook('has-drop-down').transfigureNavigation();
 		
+	},
+	stateDatalist: function () {
+		'use strict';
+
+		/**
+		 * [1] This function is an enhancement to the `datalist` State/Province and Country replacement.
+		 * Since a customer can type a value in the input, this will check if the entered value
+		 * matches one of the output values or text entries. If so, it passes the value back to
+		 * ensure proper functionality with shipping modules, i.e. 2 letter abbreviations for
+		 * US and Canada. Otherwise, it the entry is used as typed.
+		 *
+		 * [2] This function will toggle the HTML "required" attribute on the state field depending on
+		 * which country the customer has selected. If you want to change the countries that require a
+		 * state or province, you can modify the `countriesRequiringSP` entry below. If you are using
+		 * the billing address as the primary, modify the `primaryAddress` variable below.
+		 *
+		 * @type {string[]}
+		 */
+
+		const countriesRequiringSP = ['AR', 'AU', 'BR', 'CA', 'CN', 'IN', 'ID', 'IT', 'JP', 'MX', 'TH', 'US'];
+		const datalist = document.querySelectorAll('[data-datalist]');
+		const primaryAddress = 'shipping';
+
+		// [1]
+		function checkOption(entry, list) {
+			let datalist = document.querySelector('#' + list);
+			let datalistOptions = datalist.querySelectorAll('option');
+			let value = '';
+
+			for (let i = 0; i < datalistOptions.length; i++) {
+				let option = datalistOptions[i];
+
+				if (entry.toLowerCase() === option.value.toLowerCase() || entry.toLowerCase() === option.text.toLowerCase()) {
+					value = option.value;
+				}
+			}
+
+			return value;
+		}
+
+		// [2]
+		function updateRequiredStateAttributes(countrySelector, stateInput) {
+			countrySelector.addEventListener('change', function () {
+				let selectedCountry = countrySelector.options[countrySelector.selectedIndex].value;
+
+				if (countriesRequiringSP.indexOf(selectedCountry) !== -1) {
+					stateInput.setAttribute('required', '');
+					stateInput.setAttribute('aria-required', 'true');
+				}
+				else {
+					stateInput.removeAttribute('required');
+					stateInput.removeAttribute('aria-required');
+				}
+			});
+		}
+
+		if (datalist.length > 0) {
+			for (let i = 0; i < datalist.length; i++) {
+				let list = datalist[i];
+
+				list.addEventListener('blur', function () {
+					let thisDatalist = list.getAttribute('list');
+					let checkValue = checkOption(list.value, thisDatalist);
+
+					if (checkValue) {
+						list.value = checkValue;
+						list.previousElementSibling.value = checkValue;
+					}
+					else {
+						list.previousElementSibling.value = list.value;
+					}
+				});
+			}
+
+			const formElement = document.querySelector('[data-validate-address]');
+			const updateShippingState = document.querySelector('#shipping_selector');
+			const updateBillingState = document.querySelector('#billing_selector');
+			let billPrefix;
+			let shipPrefix;
+
+			if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ORDR')) {
+				billPrefix = 'Bill';
+				shipPrefix = 'Ship';
+			}
+			else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICST' || formElement.elements.Action.value === 'UCST')) {
+				billPrefix = 'Customer_Bill';
+				shipPrefix = 'Customer_Ship';
+			}
+			else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICSA' || formElement.elements.Action.value === 'UCSA')) {
+				billPrefix = 'Address_';
+				shipPrefix = 'Address_';
+			}
+
+			const shippingState = document.querySelector('input[name="' + shipPrefix + 'State"]');
+			const billingState = document.querySelector('input[name="' + billPrefix + 'State"]');
+
+			function updateState(stateEntry) {
+				stateEntry.nextElementSibling.value = stateEntry.value;
+				stateEntry.nextElementSibling.blur();
+			}
+
+			if (shippingState.value !== '') {
+				shippingState.nextElementSibling.value = shippingState.value;
+			}
+			shippingState.nextElementSibling.blur();
+
+			if (billingState.value !== '') {
+				billingState.nextElementSibling.value = billingState.value;
+			}
+			billingState.nextElementSibling.blur();
+
+			if (updateShippingState !== null) {
+				updateShippingState.addEventListener('change', function () {
+					updateState(shippingState);
+				});
+			}
+
+			if (updateBillingState !== null) {
+				updateBillingState.addEventListener('change', function () {
+					updateState(billingState);
+				});
+			}
+
+			if (primaryAddress === 'shipping') {
+				const shippingCountrySelector = document.querySelector('#' + shipPrefix + 'Country');
+				const shippingStateInput = document.querySelector('#' + shipPrefix + 'StateSelect');
+
+				updateRequiredStateAttributes(shippingCountrySelector, shippingStateInput);
+			}
+			else {
+				const billingCountrySelector = document.querySelector('#' + billPrefix + 'Country');
+				const billingStateInput = document.querySelector('#' + billPrefix + 'StateSelect');
+
+				updateRequiredStateAttributes(billingCountrySelector, billingStateInput);
+			}
+
+			(function () {
+				document.querySelector('#' + shipPrefix + 'Country').dispatchEvent(new Event('change', {'bubbles': true}));
+				document.querySelector('#' + billPrefix + 'Country').dispatchEvent(new Event('change', {'bubbles': true}));
+			}());
+		}
 	},
 	jsSFNT: function () {
 	},
@@ -157,6 +298,8 @@ const themeFunctionality = {
 	jsORDL: function () {
 	},
 	jsOCST: function () {
+		themeFunctionality.stateDatalist();
+
 		/**
 		 * Use AJAX for coupon form to prevent page refresh.
 		 * https://github.com/mivaecommerce/readytheme-shadows/issues/54
@@ -255,10 +398,6 @@ const themeFunctionality = {
 			if (dataHook) {
 				$(this).find('input').attr('data-hook', dataHook);
 			}
-
-			Array.prototype.forEach.call($(this), function (el) {
-				el.innerHTML = el.innerHTML.replace(/&nbsp;/gi, '');
-			});
 		});
 
 		$.hook('mvt-select').find('select').each(function () {
@@ -311,18 +450,23 @@ const themeFunctionality = {
 	jsLOGN: function () {
 	},
 	jsACAD: function () {
+		themeFunctionality.stateDatalist();
 	},
 	jsACED: function () {
+		themeFunctionality.stateDatalist();
 	},
 	jsCABK: function () {
 	},
 	jsCADA: function () {
+		themeFunctionality.stateDatalist();
 	},
 	jsCADE: function () {
+		themeFunctionality.stateDatalist();
 	},
 	jsAFCL: function () {
 	},
 	jsAFAD: function () {
+		themeFunctionality.stateDatalist();
 	},
 	jsAFED: function () {
 	},
