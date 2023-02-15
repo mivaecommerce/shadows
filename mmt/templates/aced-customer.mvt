@@ -35,7 +35,7 @@
 				<div class="c-form-select">
 					<select id="shipping_selector" class="c-form-select__dropdown c-form-input--large" name="ShipID" aria-describedby="ShippingInformation shipping_selector_label">
 						<mvt:foreach iterator="address" array="customer:addresses">
-							<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.ShipFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.ShipLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.ShipEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.ShipCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.ShipPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.ShipFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.ShipAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.ShipAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.ShipCity ) AND ( ( ( NOT ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipStateSelect ) ) ) OR ( ( ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.ShipZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.ShipCountry )">
+							<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.Customer_ShipFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.Customer_ShipLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.Customer_ShipEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.Customer_ShipCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.Customer_ShipPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.Customer_ShipFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.Customer_ShipAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.Customer_ShipAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.Customer_ShipCity ) AND ( ( ( NOT ISNULL g.Customer_ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.Customer_ShipStateSelect ) ) ) OR ( ( ISNULL g.Customer_ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.Customer_ShipState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.Customer_ShipZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.Customer_ShipCountry )">
 								<option value="&mvte:address:id;" selected>&mvte:address:descrip;</option>
 							<mvt:else>
 								<option value="&mvte:address:id;">&mvte:address:descrip;</option>
@@ -155,7 +155,7 @@
 					<div class="c-form-select">
 						<select id="billing_selector" class="c-form-select__dropdown c-form-input--large" name="BillID" aria-describedby="BillingInformation billing_selector_label">
 							<mvt:foreach iterator="address" array="customer:addresses">
-								<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.BillFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.BillLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.BillEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.BillCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.BillPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.BillFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.BillAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.BillAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.BillCity ) AND ( ( ( NOT ISNULL g.BillStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.BillStateSelect ) ) ) OR ( ( ISNULL g.BillStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.BillState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.BillZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.BillCountry )">
+								<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.Customer_BillFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.Customer_BillLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.Customer_BillEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.Customer_BillCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.Customer_BillPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.Customer_BillFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.Customer_BillAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.Customer_BillAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.Customer_BillCity ) AND ( ( ( NOT ISNULL g.Customer_BillStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.Customer_BillStateSelect ) ) ) OR ( ( ISNULL g.Customer_BillStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.Customer_BillState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.Customer_BillZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.Customer_BillCountry )">
 									<option value="&mvte:address:id;" selected>&mvte:address:descrip;</option>
 								<mvt:else>
 									<option value="&mvte:address:id;">&mvte:address:descrip;</option>
@@ -284,54 +284,3 @@
 	</div>
 </form>
 <script src="&mvte:global:clientside_url;Store_Code=&mvta:store:code;&amp;Filename=ToggleDetails.js&amp;Primaddr=shipping&amp;Shipping=D&amp;Billing=O"></script>
-<script>
-	(function () {
-		'use strict';
-
-		/**
-		 * This function is an enhancement to the `datalist` State/Province and Country replacement.
-		 * Since a customer can type a value in the input, this will check if the entered value
-		 * matches one of the output values or text entries. If so, it passes the value back to
-		 * ensure proper functionality with shipping modules, i.e. 2 letter abbreviations for
-		 * US and Canada. Otherwise, it the entry is used as typed.
-		 * @type {NodeListOf<Element>}
-		 */
-
-		let datalist = document.querySelectorAll('[data-datalist]');
-
-		function checkOption(entry, list) {
-			let datalist = document.querySelector('#' + list);
-			let datalistOptions = datalist.querySelectorAll('option');
-			let value = '';
-
-			for (let i = 0; i < datalistOptions.length; i++) {
-				let option = datalistOptions[i];
-
-				if (entry.toLowerCase() === option.value.toLowerCase() || entry.toLowerCase() === option.text.toLowerCase()) {
-					value = option.value;
-				}
-			}
-
-			return value;
-		}
-
-		if (datalist.length > 0) {
-			for (let i = 0; i < datalist.length; i++) {
-				let list = datalist[i];
-
-				list.addEventListener('blur', function () {
-					let thisDatalist = list.getAttribute('list');
-					let checkValue = checkOption(list.value, thisDatalist);
-
-					if (checkValue) {
-						list.value = checkValue;
-						list.previousElementSibling.value = checkValue;
-					}
-					else {
-						list.previousElementSibling.value = list.value;
-					}
-				});
-			}
-		}
-	}());
-</script>

@@ -66,10 +66,10 @@
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA"
                 }
             ],
-            "link": "Payments Options",
+            "link": "Payment Options",
             "link_targ": "_self",
             "link_type": "N",
-            "name": "Payments Options"
+            "name": "Payment Options"
         },
         {
             "active": 1,

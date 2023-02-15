@@ -18,7 +18,7 @@
 					<a href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:addressbook:address_ship:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
 				</li>
 				<li class="o-list-inline__item">
-					<a href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\\x0A\\x0AContinue?' ) )  MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:addressbook:address_ship:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete</a>
+					<a href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\x0A\x0AContinue?' ) )  MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:addressbook:address_ship:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete</a>
 				</li>
 				<mvt:if expr="l.settings:addressbook:address_ship:id NE g.Customer:ship_id">
 					<li class="o-list-inline__item">
