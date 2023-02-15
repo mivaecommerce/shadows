@@ -3,9 +3,9 @@
 ## Steps
 
 - `$ rm -r mmt/ && mkdir mmt`
-- `$ rm -r pkg/ && mkdir pkg`
+- `$ rm -r pkg/shadows && mkdir pkg/shadows`
 - Copy files to `mmt/`
-- Copy files to `pkg/`
+- Copy files to `pkg/shadows`
 - Copy pkg to `package/shadows.pkg`
 - Format `control.xml`
 - `$ sh replace.sh`
