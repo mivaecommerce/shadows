@@ -1,7 +1,10 @@
 <Page_Update code="INVC"><Item code="order_contents"><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>128</Width><Height>128</Height></ImageDimensions><LineItemDiscounts>Grouped</LineItemDiscounts><DisplayLineItemDiscountDetails>Yes</DisplayLineItemDiscountDetails><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayCouponLineItems>Yes</DisplayCouponLineItems><DisplayPayments>Yes</DisplayPayments><Template><![CDATA[<br>
 <table class="c-table-responsive">
 	<caption class="u-text-left">
-		<h1 class="c-heading-echo u-text-bold u-text-uppercase">Order Summary</h1>
+		<h1 class="c-heading-echo o-layout--justify-between u-flex u-text-bold u-text-uppercase">
+			Order Summary
+			<button class="c-button c-button--clear c-button--flush u-bg-transparent u-color-black u-font-small" data-hook="print-invoice"><span class="u-icon-print" aria-hidden="true"></span> Print Receipt</button>
+		</h1>
 	</caption>
 	<thead class="u-text-left u-hide-visually">
 		<tr class="c-table-simple__row">

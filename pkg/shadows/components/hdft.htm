@@ -90,16 +90,40 @@
 	<mvt:if expr="l.settings:page:code NE 'SFNT' AND l.settings:page:code NE 'BASK'">
 		<mvt:if expr="l.settings:page:code EQ 'ORDL' OR l.settings:page:code EQ 'OCST' OR l.settings:page:code EQ 'OUS1' OR l.settings:page:code EQ 'OUSM' OR l.settings:page:code EQ 'UATM' OR l.settings:page:code EQ 'UATR' OR l.settings:page:code EQ 'OSEL' OR l.settings:page:code EQ 'OPAY' OR ('AMAZONPAY' CIN l.settings:page:code)">
 		<mvt:elseif expr="l.settings:page:code EQ 'ORDS' OR l.settings:page:code EQ 'INVC'">
-			<section class="o-layout u-bg-gray-50">
+			<section class="o-layout o-layout--wide u-bg-gray-10 t-order-complete-heading">
 				<div class="o-layout__item">
-					<br>
-					<br>
-					<div class="o-layout__item u-bg-gray-50 u-color-white">Thank you for your order, &mvte:order:ship_fname;!</div>
-					<p class="o-layout__item c-heading-delta u-bg-gray-50 u-color-white u-text-uppercase u-text-bold">Confirmation #&mvt:order:id;</p>
-					<p class="o-layout__item u-font-small u-bg-gray-50 u-color-white">
-						<button class="c-button c-button--clear c-button--flush u-bg-transparent u-color-white u-text-uppercase" data-hook="print-invoice"><span class="u-icon-print u-color-white" aria-hidden="true"></span> Print Receipt</button>
+					<p class="o-layout__item c-heading-charlie u-text-bold u-text-center u-text-left--m">
+						Thank You For Your Order, &mvte:order:ship_fname;!<br>
+						<span class="c-heading--subheading u-text-center u-text-left--m">Confirmation #&mvt:order:id;</span>
 					</p>
-					<br>
+					<mvt:if expr="l.settings:page:code EQ 'INVC' AND g.Basket:cust_id EQ 0">
+						<form class="o-layout__item" method="post" action="&mvte:urls:ACLN:secure;">
+							<p class="u-text-bold u-text-center u-text-left--m">Create An Account To Checkout Faster Next Time</p>
+							<fieldset>
+								<legend>Create An Account</legend>
+								<input type="hidden" name="Action" value="ICSQ" />
+								<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
+								<div class="o-layout o-layout--narrow c-form-list">
+									<div class="o-layout__item c-form-list__item">
+										<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Customer_LoginEmail">Email Address</label>
+										<mvt:if expr="NOT g.Data_Entry_Error">
+										    <mvt:assign name="g.Customer_LoginEmail" value="g.Order:ship_email" />
+										</mvt:if>
+										<input id="Customer_LoginEmail" class="c-form-input c-form-input--large" type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
+									</div>
+								</div>
+								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Customer_Password">Password</label>
+								<div class="o-layout o-layout--narrow c-form-list">
+									<div class="o-layout__item c-form-list__item">
+										<input id="Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="new-password" required>
+									</div>
+									<div class="o-layout__item c-form-list__item">
+										<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-color-white u-font-small u-text-bold u-text-uppercase" type="submit" value="Create My Account">
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</mvt:if>
 				</div>
 			</section>
 		<mvt:elseif expr="l.settings:page:code EQ 'ACLN'">

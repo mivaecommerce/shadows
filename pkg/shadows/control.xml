@@ -3,14 +3,14 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework/>
 	<Title>Shadows ReadyTheme</Title>
-	<Version>2.00.04</Version>
+	<Version>2.00.05</Version>
 	<MinimumMerchantVersion>10.00.04</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v2.00.04</Description>
+	<Description>Shadows ReadyTheme v2.00.05</Description>
 	<Preview_URL/>
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.00.04</Title>
+	<Title>Shadows v2.00.05</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -543,18 +543,6 @@
 				<Item>searchfield</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
-				<Item>urls</Item>
-			</ItemList>
-		</Page>
-		<Page>
-			<Code>CACT</Code>
-			<Name>Create Customer Account</Name>
-			<Title/>
-			<UI>Yes</UI>
-			<Secure>Yes</Secure>
-			<Source>cact.mvt</Source>
-			<ItemList>
-				<Item>cssui_links</Item>
 				<Item>urls</Item>
 			</ItemList>
 		</Page>
@@ -2710,7 +2698,7 @@
 
 (function (mivaJS) {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '2.00.04';
+	mivaJS.ReadyThemeVersion = '2.00.05';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

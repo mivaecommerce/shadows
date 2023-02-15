@@ -60,37 +60,43 @@
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
 			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">New Customers</p>
-			<form class="o-layout" method="post" action="&mvte:urls:CACT:secure;">
+			<mvt:if expr="g.Order">
+				<mvt:assign name="l.settings:return_url" value="l.settings:urls:OINF:secure" />
+			<mvt:elseif expr="g.Redeem">
+				<mvt:assign name="l.settings:return_url" value="l.settings:urls:RGFT:secure" />
+			<mvt:elseif expr="g.WishList">
+				<mvt:assign name="l.settings:return_url" value="l.settings:urls:WISH:secure" />
+			<mvt:else>
+				<mvt:assign name="l.settings:return_url" value="l.settings:urls:ACLN:secure" />
+			</mvt:if>
+			<form class="o-layout" method="post" action="&mvte:return_url;">
 				<fieldset class="o-layout__item">
 					<legend>Customer Log In</legend>
+					<input type="hidden" name="Action" value="ICSQ" />
 					<mvt:if expr="g.Order">
-						<input type="hidden" name="current_location" value="&mvte:urls:OINF:secure_sep;">
 						<input type="hidden" name="Order" value="&mvte:global:Order;">
 					<mvt:elseif expr="g.Redeem">
-						<input type="hidden" name="current_location" value="&mvte:urls:RGFT:secure_sep;">
 						<input type="hidden" name="Redeem" value="&mvte:global:Redeem;">
 					<mvt:elseif expr="g.WishList">
-						<input type="hidden" name="current_location" value="&mvte:urls:WISH:secure_sep;">
 						<input type="hidden" name="WishList" value="&mvte:global:WishList;">
-					<mvt:else>
-						<input type="hidden" name="current_location" value="&mvte:urls:ACLN:secure_sep;">
 					</mvt:if>
+					<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 					<div class="c-form-list">
 						<div class="c-form-list__item">
 							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_fname">First Name</label>
-							<input id="register_fname" class="c-form-input c-form-input--large" type="text" name="register_fname" value="" autocomplete="given-name" required aria-required="true">
+							<input id="register_fname" class="c-form-input c-form-input--large" type="text" name="Customer_ShipFirstName" value="&mvte:global:Customer_ShipFirstName;" autocomplete="given-name" required aria-required="true">
 						</div>
 						<div class="c-form-list__item">
 							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_lname">Last Name</label>
-							<input id="register_lname" class="c-form-input c-form-input--large" type="text" name="register_lname" autocomplete="family-name" required aria-required="true">
+							<input id="register_lname" class="c-form-input c-form-input--large" type="text" name="Customer_ShipLastName" value="&mvte:global:Customer_ShipLastName;" autocomplete="family-name" required aria-required="true">
 						</div>
 						<div class="c-form-list__item">
 							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_email">Email Address</label>
-							<input id="register_email" class="c-form-input c-form-input--large" type="email" inputmode="email" name="register_email" value="&mvte:global:register_email;" autocomplete="email" required aria-required="true">
+							<input id="register_email" class="c-form-input c-form-input--large" type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
 						</div>
 						<div class="c-form-list__item">
 							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_password">Password</label>
-							<input id="register_password" class="c-form-input c-form-input--large" type="password" name="register_password" autocomplete="new-password" required aria-required="true">
+							<input id="register_password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
 						<div class="c-form-list__item u-text-right">
 							<input class="c-button c-button--full c-button--hollow c-button--huge u-bg-white u-color-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Create My Account">
