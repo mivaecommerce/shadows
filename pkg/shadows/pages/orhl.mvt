@@ -31,11 +31,11 @@
 					<input type="hidden" name="Action" value="LOGN" />
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
 							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
 							<mvt:if expr="g.Customer_Temporary_Password">
 								<input type="hidden" name="Customer_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;">
 								<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" value="&mvte:global:Customer_Temporary_Password;" required>
@@ -59,11 +59,11 @@
 					<legend>&mvt:page:name; By Email and Zip Code</legend>
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Order_BillEmail">Billing Email</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Order_BillEmail">Billing Email</label>
 							<input id="l-Order_BillEmail" class="c-form-input c-form-input--large" type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Order_BillZip">Billing Zip/Postal Code</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Order_BillZip">Billing Zip/Postal Code</label>
 							<input id="l-Order_BillZip" class="c-form-input c-form-input--large" type="text" name="Order_BillZip" required>
 						</div>
 						<div class="c-form-list__item u-text-right">

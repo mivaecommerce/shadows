@@ -34,7 +34,7 @@
 					<input type="hidden" name="Action" value="AFPW">
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Affiliate_Code">Affiliate Login</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Affiliate_Code">Affiliate Login</label>
 							<div class="c-control-group">
 								<input id="l-Affiliate_Code" class="c-form-input c-form-input--large c-control-group__field" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required>
 								<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Submit">

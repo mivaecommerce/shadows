@@ -40,11 +40,11 @@
 					<input type="hidden" name="QuoteCode" value="&mvte:global:QuoteCode;" />
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="Customer_LoginEmail_LOGN">Account Email Address</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="Customer_LoginEmail_LOGN">Account Email Address</label>
 							<input id="Customer_LoginEmail_LOGN" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
 						</div>
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="Customer_Password">Password:</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="Customer_Password">Password:</label>
 							<mvt:if expr="g.Customer_Temporary_Password">
 								<input type="hidden" name="Customer_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
 								<input type="hidden" name="Customer_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
