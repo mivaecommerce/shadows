@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
 
-<mvt:comment>Release: v2.01.00</mvt:comment>
+<mvt:comment>Release: v2.01.02</mvt:comment>
 
 <mvt:comment>Set your theme file path here.</mvt:comment>
 <mvt:assign name="g.theme_path" value="'themes/00000001/shadows'" />
