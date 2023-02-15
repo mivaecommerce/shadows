@@ -1,12 +1,10 @@
 <mvt:if expr="g.Basket:cust_id EQ 0">
 	<div id="global-account" class="u-over-everything x-collapsible-content__item t-global-account">
-		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off">
 			<fieldset>
 				<legend>Global Account Log In</legend>
 				<input type="hidden" name="Action" value="LOGN" />
-				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
-				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
-				<input type="hidden" name="Search" value="&mvte:global:Search;" />
+				<mvt:item name="urls" param="hidden_params:_self:auto" />
 				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
 				<div class="c-form-list">

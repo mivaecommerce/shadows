@@ -64,7 +64,7 @@ const themeFunctionality = {
 	},
 	init: function () {
 		/**
-		 * Initialize the A11y-Toggle extension
+		 * Initialize A11y-Toggle extension
 		 */
 		a11yToggle();
 		if (_hook('global-account') && _hook('global-account').length !== 0) {
@@ -73,16 +73,22 @@ const themeFunctionality = {
 		
 		
 		/**
-		 * Initialize the Mini-Basket extension
+		 * Initialize Mini-Basket extension
 		 */
 		miniBasket.init();
 		
 		
 		/**
-		 * Initialize the Transfigure Navigation extension
+		 * Initialize Transfigure Navigation extension
 		 */
 		$.hook('has-drop-down').transfigureNavigation();
-		
+
+
+		/**
+		 * Initialize Quantify extension
+		 */
+		quantify.init(document);
+
 	},
 	stateDatalist: function () {
 		'use strict';
@@ -425,12 +431,14 @@ const themeFunctionality = {
 						}
 						
 						paymentMethod.detect(this, function (paymentDetected) {
-							if (paymentDetected) {
+							if (paymentDetected && supportedPaymentMethods.findPaymentMethod(paymentDetected.name)) {
 								cardInput.classList.remove('has-error');
 								document.querySelector('[data-hook="payment-method-display"]').textContent = paymentDetected.display;
 								document.querySelector('[data-hook="payment-method"]').value = supportedPaymentMethods.findPaymentMethod(paymentDetected.name);
 							}
-							
+							else {
+								cardInput.classList.add('has-error');
+							}
 						})
 						
 					})

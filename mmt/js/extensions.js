@@ -881,62 +881,13 @@ const miniBasket = (function (document) {
  * the decrease button becomes a remove button if the quantity is 1.
  */
 
-(function () {
+const quantify = (function () {
 	'use strict';
 
-	const adjusters = document.querySelectorAll('[data-hook="quantify"]');
+	const quantifyAPI = {};
 
-	for (let id = 0; id < adjusters.length; id++) {
-		/**
-		 * This listener prevents the `enter` key from adjusting the `input` value.
-		 */
-		adjusters[id].addEventListener('keydown', function (keyEvent) {
-			if (keyEvent.target.closest('input')) {
-				if (keyEvent.key === 'Enter') {
-					keyEvent.preventDefault();
-				}
-			}
-		});
-
-		adjusters[id].addEventListener('click', function (event) {
-			if (event.target.closest('button')) {
-				let button = event.target;
-				let inputs = [].filter.call(this.children, function (sibling) {
-					return sibling !== button && sibling.closest('input');
-				});
-				let input = inputs[0];
-				let value = parseInt(input.value);
-				let action = button.getAttribute('data-action');
-				let changed = document.createEvent('HTMLEvents');
-
-				changed.initEvent('change', true, false);
-				event.stopPropagation();
-				event.preventDefault();
-
-				if (action === 'decrement') {
-					/**
-					 * THIS CAN BE USED TO SET A MINIMUM QUANTITY
-					 * value > 5 ? value - 1 : 5;
-					 */
-					input.value = value > 1 ? value - 1 : 1;
-					input.dispatchEvent(changed);
-					allowRemoveUpdate();
-				}
-				else if (action === 'increment') {
-					/**
-					 * THIS CAN BE USED TO SET A MAXIMUM QUANTITY
-					 * value < 100 ? value + 1 : 100;
-					 */
-					input.value = value + 1;
-					input.dispatchEvent(changed);
-					allowRemoveUpdate();
-				}
-			}
-		});
-	}
-
-	function allowRemoveUpdate() {
-		let quantities = document.querySelectorAll('[data-hook="group-quantity"]');
+	const allowRemoveUpdate = function (section) {
+		let quantities = section.querySelectorAll('[data-hook="group-quantity"]');
 
 		function toggleRemove(input, quantity) {
 			if (parseInt(quantity) > 1) {
@@ -960,7 +911,7 @@ const miniBasket = (function (document) {
 					clearTimeout(updateTimeout);
 					updateTimeout = setTimeout(function () {
 						toggleRemove(input, input.value);
-						groupSubmit(event, input);
+						groupSubmit(event, input, section);
 					}, 250);
 				});
 
@@ -970,20 +921,99 @@ const miniBasket = (function (document) {
 					clearTimeout(updateTimeout);
 					updateTimeout = setTimeout(function () {
 						toggleRemove(input, input.value);
-						groupSubmit(event, input);
+						groupSubmit(event, input, section);
 					}, 250);
 				});
 			}
 		}
 	}
 
-	allowRemoveUpdate();
+	allowRemoveUpdate(document);
 
-	function groupSubmit(event, quantity) {
+	const groupSubmit = function (event, quantity, section) {
 		if (event.key !== 8 && event.key !== 37 && event.key !== 38 && event.key !== 39 && event.key !== 40 && event.key !== 46 && quantity.value !== '') {
-			document.querySelector('[data-hook="' + event.target.getAttribute('data-group') + '"]').submit();
+			section.querySelector('[data-hook="' + event.target.getAttribute('data-group') + '"]').submit();
 		}
 	}
+
+	quantifyAPI.init = function (section) {
+		const adjusters = section.querySelectorAll('[data-hook="quantify"]');
+
+		if (adjusters) {
+			for (let id = 0; id < adjusters.length; id++) {
+				/**
+				 * This listener prevents the `enter` key from adjusting the `input` value.
+				 */
+				adjusters[id].addEventListener('keydown', function (keyEvent) {
+					if (keyEvent.target.closest('input')) {
+						if (keyEvent.key === 'Enter') {
+							keyEvent.preventDefault();
+						}
+					}
+				});
+
+				adjusters[id].addEventListener('click', function (event) {
+					if (event.target.closest('button')) {
+						let button = event.target;
+						let inputs = [].filter.call(this.children, function (sibling) {
+							return sibling !== button && sibling.closest('input');
+						});
+						let input = inputs[0];
+						let max = input.hasAttribute('data-max') ? parseInt(input.getAttribute('data-max')) : undefined;
+						let min = input.hasAttribute('data-min') ? parseInt(input.getAttribute('data-min')) : 1;
+						let step = input.hasAttribute('data-step') ? parseInt(input.getAttribute('data-step')) : 1;
+						let value = parseInt(input.value);
+						let action = button.getAttribute('data-action');
+						let changed = new Event('change');
+
+						if (isNaN(step)) {
+							step = 1;
+						}
+						event.stopPropagation();
+						event.preventDefault();
+
+						if (action === 'decrement') {
+							if (!isNaN(min)) {
+								if (min < value) {
+									input.value = value - step;
+								}
+								else {
+									input.value = min;
+								}
+							}
+							else {
+								input.value = value > step ? value - step : step;
+							}
+							input.dispatchEvent(changed);
+							allowRemoveUpdate(section);
+						}
+						else if (action === 'increment') {
+							if (max !== undefined && !isNaN(max)) {
+								if (max > value) {
+									input.value = value + step;
+								}
+								else {
+									input.value = max;
+								}
+							}
+							else {
+								input.value = value + step;
+							}
+							input.dispatchEvent(changed);
+							allowRemoveUpdate(section);
+						}
+					}
+				});
+			}
+		}
+	};
+
+	quantifyAPI.restore = function (section) {
+		allowRemoveUpdate(section);
+		quantifyAPI.init(section);
+	};
+
+	return quantifyAPI;
 })();
 
 /**
@@ -1197,35 +1227,57 @@ const addToCart = (function (document) {
 
 			purchaseForm.setAttribute('data-status', 'idle');
 
-			for (let field of requiredFields) {
+			for (let i = 0; i < requiredFields.length; i++) {
+				let field = requiredFields[i];
+
 				field.setCustomValidity('');
 
 				if (!field.validity.valid) {
 					if (field.type === 'checkbox') {
 						field.focus();
-						field.setCustomValidity('Please check this box if you want to proceed.');
-						field.reportValidity();
+						if (HTMLInputElement.prototype.reportValidity) {
+							field.setCustomValidity('Please check this box if you want to proceed.');
+							field.reportValidity();
+						}
+						else {
+							alert(field.validationMessage);
+						}
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
 					else if (field.type === 'radio') {
 						field.focus();
-						field.setCustomValidity('Please select one of these options.');
-						field.reportValidity();
+						if (HTMLInputElement.prototype.reportValidity) {
+							field.setCustomValidity('Please select one of these options.');
+							field.reportValidity();
+						}
+						else {
+							alert(field.validationMessage);
+						}
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
 					else if (field.type.indexOf('select') !== -1) {
 						field.focus();
-						field.setCustomValidity('Please select an item in the list.');
-						field.reportValidity();
+						if (HTMLInputElement.prototype.reportValidity) {
+							field.setCustomValidity('Please select an item in the list.');
+							field.reportValidity();
+						}
+						else {
+							alert(field.validationMessage);
+						}
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
 					else if (field.type === 'text' || field.type === 'textarea') {
 						field.focus();
-						field.setCustomValidity('Please fill out this field.');
-						field.reportValidity();
+						if (HTMLInputElement.prototype.reportValidity) {
+							field.setCustomValidity('Please fill out this field.');
+							field.reportValidity();
+						}
+						else {
+							alert(field.validationMessage);
+						}
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}

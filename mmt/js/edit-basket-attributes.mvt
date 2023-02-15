@@ -1,0 +1,215 @@
+(() => {
+	'use strict';
+
+	const dialog = 'edit-basket-attributes';
+	const dialogElement = document.querySelector('[data-dialog="' + dialog + '"]');
+	const product_data_generic = {
+		'dependency_resolution': 'first',
+		'price_element_id': 'price-value',
+		'additional_price_element_id': 'price-value-additional',
+		'price': 'sale',
+		'additionalprice': 'base',
+		'displaydiscounts': false,
+		'predictdiscounts': false,
+		'swatch_element_id': 'swatches',
+	};
+
+	if (dialogElement) {
+		let dialogContent = dialogElement.querySelector('[data-dialog-content]');
+		let editItemButtons = document.querySelectorAll('[data-edit-basket-item]');
+
+		for (const button of editItemButtons) {
+			button.addEventListener('click', function () {
+				let product_attribute_content = dialogContent.querySelector('[data-product-attributes]');
+				let product_attribute_template = this.nextElementSibling;
+				let product_data = Object.assign({}, product_data_generic, {
+					product_code: this.getAttribute('data-product-code')
+				});
+				let selectedAttributes = JSON.parse(this.getAttribute('data-selected-attributes'));
+				let subscriptionTerm = this.getAttribute('data-selected-subscription');
+
+				dialogContent.querySelector('input[name="Basket_Group"]').value = this.getAttribute('data-basket-group');
+				dialogContent.querySelector('input[name="Product_Code"]').value = product_data.product_code;
+				dialogContent.querySelector('[data-product-code]').textContent = product_data.product_code;
+				dialogContent.querySelector('[data-product-image]').src = this.getAttribute('data-product-image');
+				dialogContent.querySelector('[data-product-name]').textContent = this.getAttribute('data-product-name');
+				dialogContent.querySelector('input[name="Quantity"]').value = this.getAttribute('data-product-quantity');
+				product_attribute_content.innerHTML = '';
+				product_attribute_content.appendChild(product_attribute_template.content.cloneNode(true));
+
+				for (const key in selectedAttributes) {
+					if (selectedAttributes.hasOwnProperty(key)) {
+						let attributes = product_attribute_content.querySelectorAll('[data-attribute="' + key.toLowerCase() + '"]');
+
+						attributes.forEach(attribute => {
+							if (attribute.type !== 'checkbox' && attribute.type !== 'radio') {
+								attribute.value = selectedAttributes[key];
+							}
+							else if (attribute.type === 'checkbox' && attribute.value === 'on') {
+								attribute.checked = true;
+							}
+							else if (attribute.type === 'radio' && attribute.value === selectedAttributes[key]) {
+								attribute.checked = true;
+							}
+						});
+					}
+				}
+
+				if (subscriptionTerm !== '') {
+					const subscription = product_attribute_content.querySelector('[data-attribute="subscription"]');
+					const subscriptionOptions = Array.from(subscription.options);
+					const termToSelect = subscriptionOptions.find(item => item.text === subscriptionTerm);
+
+					termToSelect.selected = true;
+				}
+
+				let basketItemAttributeMachine = new AttributeMachine(product_data);
+
+				basketItemAttributeMachine.Generate_Swatch = function (product_code, attribute, option) {
+					let swatch_container = document.querySelector('#swatches');
+					let swatch = document.createElement('li');
+					let swatchButton = document.createElement('button');
+					let img = document.createElement('img');
+
+					img.src = option.image;
+					img.setAttribute('alt', option.prompt);
+					swatchButton.setAttribute('type', 'button');
+					swatchButton.setAttribute('aria-label', option.prompt);
+					swatchButton.appendChild(img);
+					swatch.classList.add('o-list-inline__item');
+					swatch.setAttribute('data-code', option.code);
+					swatch.setAttribute('data-color', option.prompt);
+					swatch.appendChild(swatchButton);
+
+					img.onload = function () {
+						if (window.matchMedia('(pointer: fine)').matches) {
+							img.height = this.height / 2;
+							img.width = this.width / 2;
+						}
+						else {
+							img.height = this.height;
+							img.width = this.width;
+						}
+						swatch_container.style.minHeight = `${this.height * 1.25}px`;
+					};
+
+					setTimeout(function () {
+						if (swatch_container) {
+							let swatch_element = swatch_container.querySelector('ul');
+							let swatch_select = document.querySelector('[data-hook="attribute-swatch-select"]');
+							let swatch_selected = swatch_select.options[swatch_select.selectedIndex].text;
+							let swatch_name_element = document.querySelector('[data-hook="attribute-swatch-name"]');
+							let swatchElements = swatch_element.querySelectorAll('li');
+
+							swatch_element.removeAttribute('style');
+							swatch_element.classList.add('o-list-inline');
+							swatch_name_element.textContent = swatch_selected;
+							swatchElements.forEach(function (swatchElement) {
+								let swatchColor = swatchElement.getAttribute('data-code');
+								let swatchImage = swatchElement.querySelector('button');
+
+								if (swatchColor === swatch_select.options[swatch_select.selectedIndex].value) {
+									swatchImage.classList.add('x-product-layout-purchase__swatches--active');
+								}
+							});
+						}
+					}, 0);
+
+					return swatch;
+				};
+
+				basketItemAttributeMachine.Swatch_Click = function (input, attribute, option) {
+					let i;
+					let swatchElements = input.machine.swatches.childNodes[0].childNodes;
+					let swatch_name_element = document.querySelector('[data-hook="attribute-swatch-name"]');
+
+					for (i = 0; i < input.select.options.length; i++) {
+						if (input.select.options[i].value === option.code) {
+							input.select.selectedIndex = i;
+						}
+					}
+
+					this.Attribute_Changed(input);
+					swatch_name_element.innerHTML = option.prompt;
+					swatchElements.forEach(function (swatchElement) {
+						let swatchColor = swatchElement.getAttribute('data-code');
+						let swatchImage = swatchElement.querySelector('button');
+
+						if (swatchColor === input.select.options[input.select.selectedIndex].value) {
+							swatchImage.focus();
+						}
+					});
+				};
+
+				basketItemAttributeMachine.Disable_Purchase_Buttons = function () {
+					let submitButton = this.buttons.filter(button => button.tagName === 'INPUT')[0];
+
+					if (this.Purchase_FormElement_CanEnableDisable(submitButton)) {
+						submitButton.disabled = true;
+					}
+				};
+
+				basketItemAttributeMachine.Initialize(null, null);
+				window.openDialog(dialog);
+
+				const updateForm = document.querySelector('[data-basket-update]');
+
+				updateForm.addEventListener('submit', function (event) {
+					event.preventDefault();
+					let attributes = [];
+					let form_data = new FormData(updateForm);
+					let index;
+					let lookup = {};
+					let match;
+					let param_name;
+					let regex = new RegExp('^product_attributes\\[\\s*(\\d+)\\s*]:(.*?)$', 'i');
+
+					for (let [key, value] of form_data.entries()) {
+						if ((match = key.match(regex)) === null) {
+							continue;
+						}
+
+						index = parseInt(match[1], 10);
+						param_name = match[2];
+
+						if (!lookup.hasOwnProperty(index)) {
+							lookup[index] = {};
+						}
+
+						lookup[index][param_name] = value;
+					}
+
+					for (index in lookup) {
+						attributes.push(lookup[index]);
+					}
+
+					const message_element = dialogContent.querySelector('[data-hook="response-messages"]');
+					let groupID = this.querySelector('input[name="Basket_Group"]').value;
+					let quantityInput = parseInt(this.querySelector('input[name="Quantity"]').value);
+					let subscription = this.querySelector('[data-attribute="subscription"]');
+					let updateData = {
+						attributes,
+						quantity: quantityInput,
+						subterm_id: (subscription) ? subscription.value : undefined
+					};
+
+					if (quantityInput === 0) {
+						Runtime_BasketGroup_Delete (groupID, () => {
+							document.location = document.location.href;
+						});
+					}
+					else {
+						Runtime_BasketGroup_Update(groupID, updateData, ({success, error_message}) => {
+							if (success === 1) {
+								document.location = document.location.href;
+							}
+							else {
+								message_element.textContent = error_message;
+							}
+						});
+					}
+				});
+			});
+		}
+	}
+})();

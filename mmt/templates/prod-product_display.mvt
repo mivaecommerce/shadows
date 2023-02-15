@@ -123,6 +123,7 @@
 									</span>
 								</span>
 								<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+								<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
 							</div>
 						</mvt:if>
 					</div>

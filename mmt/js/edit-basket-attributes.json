@@ -1,0 +1,10 @@
+{
+    "code": "edit-basket-attributes",
+    "type": "I",
+    "is_global": false,
+    "active": true,
+    "attributes": [],
+    "linked_pages": [
+        "BASK"
+    ]
+}

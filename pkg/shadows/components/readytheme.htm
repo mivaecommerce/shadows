@@ -226,12 +226,17 @@
 									</mvt:if>
 								</mvt:foreach>
 								<mvt:foreach iterator="option" array="group:options">
+									<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+									<mvt:else>
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+									</mvt:if>
 									<mvt:if expr="l.settings:option:option_id">
 										<span>&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span><br>
 									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 										<span>&mvt:option:attr_prompt;: &mvt:option:data;</span><br>
-									<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
-										<span>&mvt:option:attr_prompt;: &mvt:option:data_logn;</span><br>
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										<span>&mvt:option:attr_prompt;: &mvt:option:data_long;</span><br>
 									<mvt:else>
 										<span>&mvt:option:attr_prompt;</span><br>
 									</mvt:if>
@@ -924,13 +929,11 @@
 </form>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="global_account"/><ContentSection_Add><Active>true</Active><Code>global_account</Code><Name>Global Site Account Log In</Name><Description/><Template><![CDATA[<mvt:if expr="g.Basket:cust_id EQ 0">
 	<div id="global-account" class="u-over-everything x-collapsible-content__item t-global-account">
-		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off">
 			<fieldset>
 				<legend>Global Account Log In</legend>
 				<input type="hidden" name="Action" value="LOGN" />
-				<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
-				<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
-				<input type="hidden" name="Search" value="&mvte:global:Search;" />
+				<mvt:item name="urls" param="hidden_params:_self:auto" />
 				<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 				<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
 				<div class="c-form-list">
@@ -1165,6 +1168,7 @@
 					<span class="x-product-list__price">&mvt:product:formatted_price;</span>
 				</mvt:if>
 			</a>
+			<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
 		</div>
 	</mvt:foreach>
 	<p class="o-layout__item u-width-12 u-text-center x-product-list__action">
