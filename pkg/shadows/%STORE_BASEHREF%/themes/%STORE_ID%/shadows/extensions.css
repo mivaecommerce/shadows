@@ -1060,10 +1060,14 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  */
 .x-quantify .c-control-group__button {
 	border-color: #c0c0c0;
-	-ms-user-select: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
+	    -ms-user-select: none;
 	        user-select: none;
+}
+
+.x-quantify .c-control-group__button > * {
+	pointer-events: none;
 }
 
 .x-quantify .c-control-group__field {
