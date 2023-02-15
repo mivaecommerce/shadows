@@ -6,11 +6,11 @@
 	<Version>2.0</Version>
 	<MinimumMerchantVersion>10.00.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v2.0.0</Description>
+	<Description>Shadows ReadyTheme v2.0.0.1</Description>
 	<Preview_URL/>
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.0.0</Title>
+	<Title>Shadows v2.0.0.1</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -1344,15 +1344,6 @@
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
 			</ItemList>
-		</Page>
-		<Page>
-			<Code>PPRS</Code>
-			<Name>PayPal Express Checkout Return Screen</Name>
-			<Title/>
-			<UI>Yes</UI>
-			<Secure>No</Secure>
-			<Source>pprs.mvt</Source>
-			<ItemList/>
 		</Page>
 		<Page>
 			<Code>PRPO</Code>
