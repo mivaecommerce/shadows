@@ -42,12 +42,17 @@
 									</mvt:if>
 								</mvt:foreach>
 								<mvt:foreach iterator="option" array="group:options">
+									<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+									<mvt:else>
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+									</mvt:if>
 									<mvt:if expr="l.settings:option:option_id">
 										<span>&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span><br>
 									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 										<span>&mvt:option:attr_prompt;: &mvt:option:data;</span><br>
-									<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
-										<span>&mvt:option:attr_prompt;: &mvt:option:data_logn;</span><br>
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										<span>&mvt:option:attr_prompt;: &mvt:option:data_long;</span><br>
 									<mvt:else>
 										<span>&mvt:option:attr_prompt;</span><br>
 									</mvt:if>

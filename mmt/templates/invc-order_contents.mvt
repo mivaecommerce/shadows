@@ -51,6 +51,11 @@
 									<mvt:else>
 										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
 									</mvt:if>
+									<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+									<mvt:else>
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+									</mvt:if>
 									<span class="u-font-small u-flex">
 										<mvt:if expr="l.settings:option:option_id">
 											<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>

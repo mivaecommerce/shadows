@@ -5,7 +5,7 @@
 		}
 	}
 </script>
-<mvt:if expr="g.Action EQ 'RGRP'">
+<mvt:if expr="g.Action EQ 'RGRP' AND g.quote_item NE '1'">
 	<mvt:assign name="g.Quantity" value="miva_variable_value('Quantity' $ g.Restore_Counter)" />
 	<mvt:assign name="g.Restore_Name" value="miva_variable_value('Restore_Name' $ g.Restore_Counter)" />
 	<mvt:assign name="g.Restore_Link" value="miva_variable_value('Restore_Link' $ g.Restore_Counter)" />
@@ -31,7 +31,7 @@
 
 <section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvt:global_minibasket:basket_count;" data-subtotal="&mvt:global_minibasket:formatted_total;">
 	<div class="o-layout__item u-width-12 u-width-8--l">
-		<table class="c-table-responsive t-basket__product-summary">
+		<table class="c-table-responsive t-basket__product-summary" data-basket-table>
 			<caption class="u-text-left">
 				<h1 class="c-heading-delta u-text-bold u-text-uppercase">
 					<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
@@ -53,6 +53,7 @@
 				<mvt:assign name="g.basket_subtotal" value="0" />
 				<mvt:foreach iterator="group" array="basket:groups">
 					<mvt:assign name="l.settings:group:restore:link" value="l.settings:urls:BASK:auto_sep $ 'Action=ADPR&Product_Code=' $ l.settings:group:product:code $ '&Quantity=' $ l.settings:group:quantity" />
+					<mvt:do file="g.Module_Library_DB" name="l.success" value="AttributeList_Load_Product(l.settings:group:product:id, l.settings:has_attributes)"/>
 					<tr class="c-table-responsive__row">
 						<td class="c-table-responsive__cell" data-label="">
 							<div class="o-layout">
@@ -80,9 +81,12 @@
 											</mvt:if>
 										</mvt:foreach>
 										<mvt:assign name="l.settings:attr_ref" value="''" />
+										<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
+										<mvt:assign name="g.quote_item" value="'0'" />
 										<mvt:foreach iterator="option" array="group:options">
 											<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
 												<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+												<mvt:assign name="g.quote_item" value="'1'" />
 											<mvt:else>
 												<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
 											</mvt:if>
@@ -100,24 +104,28 @@
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:opt_code $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:data $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
 													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data_long" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:data_long $ asciichar(34) $ ', '" />
 												<mvt:else>
 													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:attr_prompt" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:attr_prompt $ asciichar(34) $ ', '" />
 												</mvt:if>
 											</span>
 											<mvt:foreach iterator="discount" array="option:discounts">
@@ -127,6 +135,16 @@
 												</mvt:if>
 											</mvt:foreach>
 										</mvt:foreach>
+										<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(125)" />
+										<mvt:assign name="l.settings:group:selectedAttributes" value="glosub(l.settings:group:selectedAttributes, ', ' $ asciichar(125), asciichar(125))" />
+										
+										<mvt:if expr="l.settings:group:product:productsubscriptionsettings:enabled OR miva_array_elements(l.settings:has_attributes) GT 0">
+											<button class="x-edit-basket-item" data-edit-basket-item data-basket-group="&mvtj:group:group_id;" data-product-code="&mvtj:group:code;" data-product-image="&mvtj:group:imagetypes:main;" data-product-name="&mvtj:group:name;" data-product-quantity="&mvtj:group:quantity;" data-selected-attributes="&mvte:group:selectedAttributes;" data-selected-subscription="&mvtj:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
+											<template>
+												<mvt:item name="product_attributes" param="group:product_id" />
+											</template>
+										</mvt:if>
+										
 									</p>
 									<mvt:if expr="l.settings:group:subterm_id">
 										<p>Subscription: &mvte:group:productsubscriptionterm:descrip;</p>
@@ -153,6 +171,7 @@
 										<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
 										<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
 										<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+										<input type="hidden" name="quote_item" value="&mvt:global:quote_item;">
 										<input type="hidden" name="Restore_Name" value="&mvt:group:name;">
 										<input type="hidden" name="Restore_Link" value="&mvte:group:restore:link;">
 										<div class="c-form-list">
@@ -191,7 +210,7 @@
 						
 						<td class="c-table-responsive__cell u-font-small u-text-right">
 							<p>
-								<a class="c-button c-button--hollow c-button--small u-bg-white u-color-gray-30 t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Link=&mvta:group:restore:link;">
+								<a class="c-button c-button--hollow c-button--small u-bg-white u-color-gray-30 t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Link=&mvta:group:restore:link;&quote_item=&mvta:global:quote_item;">
 									<span class="u-icon-cross" aria-hidden="true"></span>
 									<span class="u-hide-visually">Remove &mvt:group:name;</span>
 								</a>
@@ -318,6 +337,7 @@
 						<hr class="c-keyline">
 						<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
 						<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
+						<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
 					</td>
 				</tr>
 			
@@ -332,4 +352,5 @@
 		<mvt:item name="shipestimate" />
 	</aside>
 </section>
+<mvt:item name="content" />
 ]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OCST"><Item code="basket"><Editable>No</Editable><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><DisplaySplitPayments>No</DisplaySplitPayments><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>96</Width><Height>96</Height></ImageDimensions><LineItemDiscounts>Grouped</LineItemDiscounts><DisplayLineItemDiscountDetails>Yes</DisplayLineItemDiscountDetails><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayCouponLineItems>Yes</DisplayCouponLineItems><AllowCouponApplication>Yes</AllowCouponApplication><AllowGiftCertificateRedemption>No</AllowGiftCertificateRedemption><Buttons/><Template><![CDATA[<mvt:item name="readytheme" param="contentsection( 'checkout_basket_summary' )" />]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OSEL"><Item code="basket"><Editable>No</Editable><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><DisplaySplitPayments>Yes</DisplaySplitPayments><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>80</Width><Height>80</Height></ImageDimensions><LineItemDiscounts>Grouped</LineItemDiscounts><DisplayLineItemDiscountDetails>Yes</DisplayLineItemDiscountDetails><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayCouponLineItems>No</DisplayCouponLineItems><AllowCouponApplication>No</AllowCouponApplication><AllowGiftCertificateRedemption>Yes</AllowGiftCertificateRedemption><Buttons/><Template><![CDATA[<mvt:item name="readytheme" param="contentsection( 'checkout_basket_summary' )" />]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OPAY"><Item code="basket"><Editable>No</Editable><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><DisplaySplitPayments>Yes</DisplaySplitPayments><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>80</Width><Height>80</Height></ImageDimensions><LineItemDiscounts>Grouped</LineItemDiscounts><DisplayLineItemDiscountDetails>Yes</DisplayLineItemDiscountDetails><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayCouponLineItems>No</DisplayCouponLineItems><AllowCouponApplication>No</AllowCouponApplication><AllowGiftCertificateRedemption>No</AllowGiftCertificateRedemption><Buttons/><Template><![CDATA[<mvt:item name="readytheme" param="contentsection( 'checkout_basket_summary' )" />]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

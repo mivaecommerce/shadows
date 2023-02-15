@@ -22,6 +22,7 @@
 					<span class="x-product-list__price">&mvt:product:formatted_price;</span>
 				</mvt:if>
 			</a>
+			<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
 		</div>
 	</mvt:foreach>
 	<p class="o-layout__item u-width-12 u-text-center x-product-list__action">

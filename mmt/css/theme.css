@@ -546,6 +546,7 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 @media (max-width: 59.9em) {
+	.t-page-ordl .t-site-header__logo,
 	.t-page-ocst .t-site-header__logo,
 	.t-page-osel .t-site-header__logo,
 	.t-page-opay .t-site-header__logo {

@@ -36,43 +36,51 @@
 						</p>
 						<mvt:if expr="l.settings:subscriptionfields:status NE 'C'">
 							<p class="o-layout__item">
-								<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_qty">
+								<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_qty AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
 									<label class="c-form-label u-font-tiny u-text-uppercase" for="l-quantity-&mvte:group:group_id;">Quantity</label>
 									<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-form-input--large u-text-center" data-hook="Quantity" type="text" inputmode="decimal" name="Quantity" value="&mvte:global:Quantity;" min="0" pattern="[0-9]*" required>
 								<mvt:else>
 									<label class="c-form-label u-font-tiny u-text-uppercase" for="l-quantity-&mvte:group:group_id;">Quantity</label>
-									<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-form-input--large u-text-center" value="&mvt:subscriptionfields:quantity;" readonly>
+									<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-form-input--large u-text-center" value="&mvt:subscriptionfields:quantity;" disabled>
 								</mvt:if>
 							</p>
 							<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_date">
 								<div class="o-layout__item">
 									<label class="c-form-label u-font-tiny u-text-uppercase" for="nextOrderDateDisplay" title="Next Order Date">Next Order Date</label>
-									<input data-hook="nextOrderDate" type="hidden" name="NextOrderDate" value="&mvte:global:NextOrderDate;" />
+									<input data-hook="nextOrderDate_Year" type="hidden" name="NextOrderDate_Year" value="&mvte:global:NextOrderDate_Year;" />
+									<input data-hook="nextOrderDate_Month" type="hidden" name="NextOrderDate_Month" value="&mvte:global:NextOrderDate_Month;" />
+									<input data-hook="nextOrderDate_Day" type="hidden" name="NextOrderDate_Day" value="&mvte:global:NextOrderDate_Day;" />
 									<button class="c-form-input c-form-input--large u-text-left" data-hook="nextOrderDateWrap">
 										<span class="u-icon-calendar" aria-hidden="true">&nbsp;&nbsp;</span>
 										<span id="nextOrderDateDisplay" data-hook="nextOrderDateDisplay">&mvte:global:Formatted_NextOrderDate;</span>
 									</button>
 									<mvt:item name="datepicker" />
 									<script>
-										let miva_datepicker;
-										const nextOrderDate = document.querySelector('[data-hook="nextOrderDate"]');
-										const nextOrderDateDisplay = document.querySelector('[data-hook="nextOrderDateDisplay"]');
 										const nextOrderDateWrap = document.querySelector('[data-hook="nextOrderDateWrap"]');
-		
-										miva_datepicker = new MivaDatePicker('&mvtj:subscriptionfields:nextdate;');
-										miva_datepicker.SetDateLimit_Past(new Date());
-										
-										miva_datepicker.oncomplete = function (date) {
-											const day = date.getDate();
-											const month = date.getMonth() + 1;
-		
-											nextOrderDate.value = date.getTime() / 1000;
-											nextOrderDateDisplay.innerHTML = ( month < 10 ? '0' : '' ) + month + '/' + ( day < 10 ? '0' : '' ) + day + '/' + date.getFullYear();
-										};
-										
+								
 										nextOrderDateWrap.addEventListener('click', function (clickEvent) {
-											clickEvent.preventDefault();
+											let miva_datepicker;
+											let nextdate;
+											const nextOrderDate_Year = document.querySelector('[data-hook="nextOrderDate_Year"]');
+											const nextOrderDate_Month = document.querySelector('[data-hook="nextOrderDate_Month"]');
+											const nextOrderDate_Day = document.querySelector('[data-hook="nextOrderDate_Day"]');
+								
+											nextdate = new Date(nextOrderDate_Year.value, parseInt(nextOrderDate_Month.value) - 1, nextOrderDate_Day.value, 0, 0, 0, 0);
+											miva_datepicker = new MivaDatePicker(nextdate.getTime() / 1000);
+											miva_datepicker.SetDateLimit_Past(new Date());
+											miva_datepicker.oncomplete = function (date) {
+												const nextOrderDateDisplay = document.querySelector('[data-hook="nextOrderDateDisplay"]');
+												const day = date.getDate();
+												const month = date.getMonth() + 1;
+												const year = date.getFullYear();
+								
+												nextOrderDate_Year.value = year;
+												nextOrderDate_Month.value = month;
+												nextOrderDate_Day.value = day;
+												nextOrderDateDisplay.innerHTML = (month < 10 ? '0' : '') + month + '/' + (day < 10 ? '0' : '') + day + '/' + year;
+											};
 											miva_datepicker.Show();
+											clickEvent.preventDefault();
 										}, false);
 									</script>
 								</div>
@@ -265,12 +273,12 @@
 					</script>
 					<br>
 					<div class="o-layout u-grids-2">
-						<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:enabled AND l.settings:subscriptionfields:productsubscriptionsettings:can_qty AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
+						<mvt:if expr="l.settings:subscriptionfields:status NE 'C' AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
 							<p class="o-layout__item">
 								<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-uppercase" type="submit" value="Save Changes">
 							</p>
 						</mvt:if>
-						<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_cancel">
+						<mvt:if expr="(l.settings:subscriptionfields:status NE 'C') AND l.settings:subscriptionfields:productsubscriptionsettings:can_cancel AND ((l.settings:subscriptionfields:productsubscriptionsettings:cncl_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:cncl_min))">
 							<p class="o-layout__item" onclick="if ( !confirm( 'Are you sure you want to cancel your subscription? This action cannot be undone.\x0A\x0AContinue?' ) ) { return false; } else { document.forms.csbe_form.elements.Action.value = 'DCSB'; }">
 								<input class="c-button c-button--clear c-button--full c-button--huge u-bg-transparent u-color-gray-50 u-font-small" type="submit" value="Cancel Subscription">
 							</p>

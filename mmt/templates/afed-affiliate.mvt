@@ -168,16 +168,16 @@
 					</div>
 					<div class="c-form-list__item o-layout__item u-width-12">
 						<strong>Link URL:</strong><br>
-						<div>&mvte:urls:SFNT:auto;Affiliate=&mvte:global:Affiliate:code;</div>
+						<div>&mvte:urls:SFNT:auto_sep;Affiliate=&mvte:global:Affiliate:code;</div>
 					</div>
 					<div class="c-form-list__item o-layout__item u-width-12">
 						<mvt:if expr="g.AffiliateOptions:link_image">
 							<strong>Image Link HTML:</strong><br>
-							<pre class="bg--silver white-space--pre-wrap">&lt;a href=&quot;&mvte:urls:SFNT:auto;Affiliate=&mvte:global:Affiliate:code;&quot;&gt;&lt;img src=&quot;&mvt:global:Affiliate_Full_Image_Path;&quot; alt=&quot;&mvt:global:AffiliateOptions:link_text;&quot; title=&quot;&mvt:global:AffiliateOptions:link_text;&quot;&gt;&lt;/a&gt;</pre>
+							<pre class="bg--silver white-space--pre-wrap">&lt;a href=&quot;&mvte:urls:SFNT:auto_sep;Affiliate=&mvte:global:Affiliate:code;&quot;&gt;&lt;img src=&quot;&mvt:global:Affiliate_Full_Image_Path;&quot; alt=&quot;&mvt:global:AffiliateOptions:link_text;&quot;&gt;&lt;/a&gt;</pre>
 							<img src="&mvte:global:AffiliateOptions:link_image;" alt="&mvte:global:AffiliateOptions:link_text;" loading="lazy">
 						<mvt:elseif expr="g.AffiliateOptions:link_text">
 							<strong>Link Text:</strong><br>
-							<pre class="bg--silver white-space--pre-wrap">&lt;a href=&quot;&mvte:urls:SFNT:auto;Affiliate=&mvte:global:Affiliate:code;&quot;&gt;&mvt:global:AffiliateOptions:link_text;&lt;/a&gt;</pre>
+							<pre class="bg--silver white-space--pre-wrap">&lt;a href=&quot;&mvte:urls:SFNT:auto_sep;Affiliate=&mvte:global:Affiliate:code;&quot;&gt;&mvt:global:AffiliateOptions:link_text;&lt;/a&gt;</pre>
 						</mvt:if>
 					</div>
 				</div>
