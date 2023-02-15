@@ -1,0 +1,10 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "pprs-footer.mvc"
+        },
+        "header": {
+            "template_filename": "pprs-header.mvc"
+        }
+    }
+}

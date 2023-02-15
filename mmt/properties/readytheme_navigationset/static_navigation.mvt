@@ -1,0 +1,19 @@
+<nav class="x-category-tree x-collapsible-content">
+	<button class="c-heading-charlie x-category-tree__label x-collapsible-content__toggle u-text-bold u-text-uppercase" data-a11y-toggle="&mvte:readytheme:code;" type="button">Support <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<div class="x-category-tree__title">
+		<h3 class="x-category-tree__heading c-heading-charlie u-text-bold u-text-uppercase">Support</h3>
+		<hr class="c-keyline">
+	</div>
+	<ul id="&mvte:readytheme:code;" class="x-category-tree__row x-collapsible-content__item">
+		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
+			<li class="x-category-tree__list x-category-tree__list--level-1">
+				<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
+					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+				<mvt:else>
+					<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+				</mvt:if>
+			</li>
+		</mvt:foreach>
+	</ul>
+</nav>
+<!-- end .x-category-tree -->

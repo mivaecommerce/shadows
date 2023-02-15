@@ -1,0 +1,50 @@
+<mvt:if expr="l.settings:page:code CIN 'INVC'">
+	<mvt:item name="customfields" param="Write_Order(l.settings:order:id, 'order_ip', s.remote_addr)" />
+	<mvt:item name="customfields" param="Write_Order(l.settings:order:id, 'order_ua', s.http_user_agent)" />
+</mvt:if>
+
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<div class="u-printable">
+		<mvt:item name="hdft" param="global_header" />
+	
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<mvt:item name="hdft" param="header" />
+				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+			</div>
+		</section>
+		<br>
+	
+		<section class="o-layout o-layout--wide">
+			<div class="o-layout__item u-width-12 u-width-8--l">
+				<mvt:item name="order_contents" />
+			</div>
+			<aside class="o-layout__item u-width-12 u-width-4--l">
+				<mvt:item name="order_customer" />
+			</aside>
+		</section>
+		
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<mvt:item name="hdft" param="footer" />
+			</div>
+		</section>
+	
+		<mvt:item name="hdft" param="global_footer" />
+	</div>
+	<mvt:item name="printer_friendly_content" />
+</body>
+</html>

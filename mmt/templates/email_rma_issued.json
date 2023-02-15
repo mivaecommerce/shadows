@@ -1,0 +1,11 @@
+{
+    "return": {
+        "b_height": 63,
+        "b_width": 63,
+        "constrain": "B",
+        "image": "main",
+        "imagetypes": [
+            "main"
+        ]
+    }
+}

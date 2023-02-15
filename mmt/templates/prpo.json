@@ -1,0 +1,51 @@
+{
+    "flex": {
+        "content": {
+            "component_code": "mmx-text-editor",
+            "item_code": "content",
+            "settings": {
+                "content": {
+                    "value": "<p>We respect your privacy. Therefore we never share or sell your personal information with any third parties. Any information collected through this site is intended to be used for this transaction only. Your personal information is secured via SSL (Secure Socket Layer) Technology.</p>"
+                }
+            }
+        }
+    },
+    "hdft": {
+        "footer": {
+            "template_filename": "prpo-footer.mvc"
+        },
+        "header": {
+            "template_filename": "prpo-header.mvc"
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://local.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Content",
+                "param": "content"
+            }
+        ],
+        "title": "Sequence"
+    }
+}

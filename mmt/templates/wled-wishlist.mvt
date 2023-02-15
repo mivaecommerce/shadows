@@ -1,0 +1,30 @@
+<form class="o-layout o-layout--justify-center" action="&mvte:urls:WISH:secure;" method="post">
+	<fieldset class="o-layout__item u-width-12 u-width-6--m">
+		<legend>&mvt:page:name;</legend>
+		<input type="hidden" name="Action" value="UWSH" />
+		<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
+		<div class="c-form-list">
+			<div class="c-form-list__item c-form-list__item--full &mvte:global:WishList_Title_Row;">
+				<label class="c-form-label u-text-bold is-required" for="l-WishList_Title">Title</label>
+				<input id="l-WishList_Title" class="c-form-input" type="text" name="WishList_Title" value="&mvte:global:WishList_Title;" required>
+			</div>
+			<div class="c-form-list__item c-form-list__item--full &mvte:global:WishList_Notes_Row;">
+				<label class="c-form-label" for="l-WishList_Notes">Notes</label>
+				<textarea id="l-WishList_Notes" class="c-form-input c-form-input--long" name="WishList_Notes">&mvte:global:WishList_Notes;</textarea>
+			</div>
+			<div class="c-form-list__item c-form-list__item--full &mvte:global:WishList_Shared_Row;">
+				<label class="c-form-checkbox c-form-checkbox--inline">
+					<mvt:if expr="g.WishList_Shared">
+						<input id="l-WishList_Shared" class="c-form-checkbox__input" type="checkbox" name="WishList_Shared" value="Yes" checked>
+					<mvt:else>
+						<input id="l-WishList_Shared" class="c-form-checkbox__input" type="checkbox" name="WishList_Shared" value="Yes">
+					</mvt:if>
+					<span class="c-form-checkbox__caption">Public</span>
+				</label>
+			</div>
+			<div class="c-form-list__item c-form-list__item--full">
+				<mvt:item name="buttons" param="Save" />
+			</div>
+		</div>
+	</fieldset>
+</form>

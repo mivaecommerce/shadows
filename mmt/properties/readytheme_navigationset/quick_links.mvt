@@ -1,0 +1,14 @@
+<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
+	<nav class="c-menu x-collapsible-content" aria-labelledby="&mvte:readytheme:code;-label">
+		<h5 id="&mvte:readytheme:code;-label" class="c-menu__title u-text-uppercase">Quick Links</h5>
+		<button class="x-collapsible-content__toggle u-text-uppercase" data-a11y-toggle="&mvte:readytheme:code;" type="button">Quick Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<ul id="&mvte:readytheme:code;" class="c-menu__list x-collapsible-content__item u-text-uppercase">
+			<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
+				<li>
+					<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+				</li>
+			</mvt:foreach>
+			<mvt:item name="affiliatelink" />
+		</ul>
+	</nav>
+</mvt:if>

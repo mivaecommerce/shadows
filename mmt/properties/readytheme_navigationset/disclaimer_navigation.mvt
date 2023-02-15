@@ -1,0 +1,11 @@
+<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
+	<section class="o-layout u-grids-1 u-grids-2--m u-grids-3--l u-text-center--m u-text-uppercase t-site-footer__disclaimer">
+		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
+			<p class="o-layout__item">
+				<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+			</p>
+		</mvt:foreach>
+		<p class="o-layout__item">&copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company; All Rights Reserved</p>
+	</section>
+	<!-- end .site-footer__disclaimer -->
+</mvt:if>

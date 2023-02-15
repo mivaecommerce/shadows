@@ -1,0 +1,25 @@
+<mvt:if expr="l.settings:paymentcards:paymentcard_count EQ 0">
+	<div class="x-messages x-messages--info">No payment cards found.</div>
+	<mvt:exit />
+</mvt:if>
+<table class="o-table c-table-simple u-text-bold">
+	<thead class="u-font-tiny">
+		<tr>
+			<th class="c-table-simple__cell"></th>
+			<th class="c-table-simple__cell u-color-gray-30 u-text-right u-text-uppercase">Expires</th>
+		</tr>
+	</thead>
+	<tbody class="u-font-small">
+		<mvt:assign name="l.settings:card_count" value="0" />
+		<mvt:foreach iterator="paymentcard" array="paymentcards:paymentcards">
+			<mvt:assign name="l.settings:card_count" value="l.settings:card_count + 1" />
+			<mvt:if expr="l.settings:card_count GT 4">
+				<mvt:foreachstop />
+			</mvt:if>
+			<tr>
+				<td class="c-table-simple__cell">&mvte:paymentcard:type; ending in &mvte:paymentcard:lastfour;</td>
+				<td class="c-table-simple__cell u-text-right">&mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;</td>
+			</tr>
+		</mvt:foreach>
+	</tbody>
+</table>

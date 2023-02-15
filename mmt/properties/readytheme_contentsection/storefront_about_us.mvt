@@ -1,0 +1,14 @@
+<section class="o-layout t-storefront-about">
+	<div class="o-layout__item u-text-center">
+		<br>
+		<h3 class="c-heading-charlie c-heading--keyline u-text-bold u-text-uppercase">
+			<span class="c-heading--subheading u-color-gray-30">About</span><br>
+			Shadows
+		</h3>
+		<p>
+			<span class="u-inline-block u-text-constrain t-storefront-about__brief">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris fringilla augue eget turpis dapibus venenatis.</span>
+		</p>
+		<br>
+	</div>
+</section>
+<br>

@@ -1,0 +1,53 @@
+<mvt:if expr="l.settings:should_show_dialog">
+	<div class="c-dialog x-edit-basket-attributes" data-dialog="edit-basket-attributes" aria-hidden="true">
+		<div class="c-dialog__overlay" tabindex="-1">
+			<div class="c-dialog__container" aria-labelledby="edit-basket-attributes__title" aria-modal="true" role="dialog">
+				<header class="c-dialog__header">
+					<p id="edit-basket-attributes__title" class="c-dialog__title c-heading-echo">Update Item</p>
+					<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
+				</header>
+				<div class="c-dialog__content" data-dialog-content>
+					<form class="x-edit-basket-attributes__form" autocomplete="off" data-basket-update method="post" name="add">
+						<picture>
+							<img data-product-image alt="" src=""/>
+						</picture>
+						<div class="x-edit-basket-attributes__product-info">
+							<p class="c-heading-foxtrot">
+								<span class="u-font-tiny u-text-regular" data-product-code></span><br>
+								<span data-product-name></span>
+							</p>
+							<p class="c-heading-echo">
+								<strong id="price-value" class="x-edit-basket-attributes__product-price"></strong> <span class="c-heading--subheading">ea.</span>&nbsp;&nbsp;<span class="c-heading--subheading--small u-text-regular u-text-strike" id="price-value-additional"></span>
+							</p>
+						</div>
+						<fieldset>
+							<input name="Action" type="hidden" value="ADPR"/>
+							<input name="Basket_Group" type="hidden" value=""/>
+							<input name="Product_Code" type="hidden" value=""/>
+							<hr class="c-keyline"/>
+							<legend>Update Item Attributes</legend>
+							<div class="c-form-list">
+								<div class="c-form-list__item c-form-list__item--full" data-product-attributes></div>
+								<div class="c-form-list__item">
+									<label class="u-hide-visually" for="l-quantity">Quantity</label>
+									<div class="x-quantify" data-hook="quantify">
+										<button class="c-button c-button--secondary u-icon-subtract" type="button" data-action="decrement" aria-label="Decrease Quantity"></button>
+										<input id="l-quantity" class="c-form-input u-text-center u-color-gray-40" data-max="" data-min="1" data-step="1" type="text" inputmode="decimal" name="Quantity" value="1">
+										<button class="c-button c-button--secondary u-icon-add" type="button" data-action="increment" aria-label="Increase Quantity"></button>
+									</div>
+								</div>
+								<div class="c-form-list__item c-form-list__item--full">
+									<div class="x-messages x-messages--info x-product-layout-purchase__inventory-message" data-hook="response-messages"></div>
+								</div>
+								<div class="c-form-list__item c-form-list__item--full">
+									<br>
+									<input class="c-button c-button--full" type="submit" value="Update Item">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</mvt:if>

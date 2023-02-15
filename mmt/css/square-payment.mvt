@@ -1,0 +1,36 @@
+<mvt:if expr="'square' CIN g.PaymentMethod">
+	<!--
+	/**
+	 * These styles help make the Square payment fields look more like the other input fields associated with the ReadyTheme.
+	 */
+	 -->
+	.t-square-payment-form label {
+		display: block;
+		margin-bottom: 0.25em;
+		font-size: 0.75rem;
+	}
+	
+	
+	.t-square-payment-form .sq-input {
+		display: block;
+		margin-bottom: 0.5em;
+		width: 100%;
+		font-size: 1rem;
+		background-color: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 0.125em;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		outline: 0;
+		transition: box-shadow 0.25s ease, border-color 0.25s ease;
+	}
+	
+		/* Define how SqPaymentForm iframes should look when they have focus */
+		.t-square-payment-form .sq-input--focus {
+			border-color: #003b6f;
+		}
+		
+		/* Define how SqPaymentForm iframes should look when they contain invalid values */
+		.t-square-payment-form .sq-input--error {
+			border-color: #f02;
+		}
+</mvt:if>

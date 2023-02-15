@@ -1,0 +1,99 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<br>
+			<h2 class="c-heading-bravo u-text-center">
+				Special Offers<br>
+				<span class="c-heading--subheading">Offer valid for this order only</span>
+			</h2>
+			<mvt:if expr="g.Upsold_Product_Count LE g.Upsell_Options:prod_sell OR g.Upsell_Options:prod_sell EQ 0">
+				<p>You may select <strong>one or more</strong> of the following:</p>
+			<mvt:elseif expr="g.Upsell_Options:prod_sell EQ 1">
+				<p>You may select <strong>one</strong> of the following:</p>
+			<mvt:else>
+				<p>You may select up to <strong>&mvte:global:Upsell_Options:prod_sell;</strong> of the following:</p>
+			</mvt:if>
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+		</div>
+	</section>
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<form method="post" action="&mvte:urls:OSEL:secure;">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<input type="hidden" name="Action" value="AUPM">
+					<input type="hidden" name="Attributes" value="Yes">
+					<input type="hidden" name="Upsell_Product_Count" value="&mvte:global:Upsold_Product_Count;">
+					<mvt:item name="tax" />
+		
+					<table class="c-table-responsive">
+						<thead class="c-table-responsive_thead u-text-left">
+							<tr class="c-table-responsive__row u-text-uppercase u-font-tiny u-color-gray-30">
+								<th class="c-table-responsive__cell" scope="col">&nbsp;</th>
+								<th class="c-table-responsive__cell" scope="col">Code</th>
+								<th class="c-table-responsive__cell" scope="col">Product</th>
+								<th class="c-table-responsive__cell" scope="col">Regularly</th>
+								<th class="c-table-responsive__cell" scope="col">Special</th>
+								<th class="c-table-responsive__cell" scope="col">Save</th>
+							</tr>
+						</thead>
+						<tbody>
+							<mvt:foreach array="upsale" iterator="upsold_product">
+								<tr class="c-table-responsive__row">
+									<td class="c-table-responsive__cell" data-label="">
+										<label class="c-form-checkbox" aria-describedby="description-&mvt:upsold_product:index;">
+											<span id="description-&mvt:upsold_product:index;" class="u-hide-visually">Check here to add &mvt:upsold_product:name; to your order.</span>
+											<mvt:if expr="l.settings:upsold_product:selected">
+												<input class="c-form-checkbox__input" type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes" checked>
+												<span class="c-form-checkbox__caption">Buy</span>
+											<mvt:else>
+												<input class="c-form-checkbox__input" type="checkbox" name="Upsell_Selected[&mvt:upsold_product:index;]" value="Yes">
+												<span class="c-form-checkbox__caption">Buy</span>
+											</mvt:if>
+										</label>
+										<input type="hidden" name="Product[&mvt:upsold_product:index;]:code" value="&mvte:upsold_product:code;">
+									</td>
+									<td class="c-table-responsive__cell" data-label="Code">&mvt:upsold_product:code;</td>
+									<td class="c-table-responsive__cell" data-label="Product">&mvt:upsold_product:name;</td>
+									<td class="c-table-responsive__cell" data-label="Regularly">&mvt:upsold_product:formatted_price;</td>
+									<td class="c-table-responsive__cell" data-label="Special">&mvt:upsold_product:formatted_upsell_price;</td>
+									<td class="c-table-responsive__cell" data-label="Save">&mvt:upsold_product:formatted_upsell_savings;</td>
+								</tr>
+							</mvt:foreach>
+						</tbody>
+					</table>
+		
+					<p class="u-text-right">
+						<mvt:item name="buttons" param="Continue" />
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

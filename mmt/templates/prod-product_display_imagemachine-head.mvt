@@ -1,0 +1,591 @@
+const productName = '&mvtj:product:name;';
+let generate_thumbnail_event = new CustomEvent('ImageMachine_Generate_Thumbnail');
+let images = [];
+let thumbnailIndex = 0;
+let zoomImageLink = document.querySelector('[data-photograph]');
+
+ImageMachine.prototype.oninitialize = function (data) {
+	images = [];
+	thumbnailIndex = 0;
+	zoomImageLink.href = data[0].image_data[this.closeup_index];
+	this.Initialize(data);
+	MovingPictures();
+};
+
+ImageMachine.prototype.ImageMachine_Generate_Thumbnail = function (thumbnail_image, main_image, closeup_image, type_code) {
+	let thumbnailImg;
+	let thumbnailItem;
+	let thumbnailLink;
+	let thumbnailPicture;
+
+	thumbnailItem = document.createElement('li');
+	thumbnailItem.classList.add('x-filmstrip__list-item');
+
+	if (typeof( thumbnail_image ) === 'string' && thumbnail_image.length > 0) {
+		thumbnailLink = document.createElement('a');
+		thumbnailLink.href = closeup_image;
+		thumbnailLink.classList.add('x-filmstrip__link');
+		thumbnailLink.setAttribute('aria-label', ' Product Image ' + Number(thumbnailIndex + 1) + ' of ' + Number(this.data.length));
+		thumbnailLink.setAttribute('data-hook', 'a11yThumbnailLink');
+		thumbnailLink.setAttribute('data-title', productName);
+		thumbnailLink.setAttribute('role', 'button');
+		thumbnailLink.setAttribute('target', '_blank');
+
+		thumbnailPicture = document.createElement('picture');
+		thumbnailPicture.classList.add('x-filmstrip__picture');
+
+		thumbnailImg = document.createElement('img');
+		thumbnailImg.classList.add('x-filmstrip__image');
+		thumbnailImg.setAttribute('alt', productName);
+		thumbnailImg.setAttribute('data-zoom', closeup_image);
+		thumbnailImg.setAttribute('loading', 'lazy');
+		thumbnailImg.setAttribute('width', this.thumb_width);
+		thumbnailImg.setAttribute('height', this.thumb_height);
+		thumbnailImg.src = thumbnail_image;
+
+		thumbnailPicture.appendChild(thumbnailImg);
+		thumbnailLink.appendChild(thumbnailPicture);
+		thumbnailItem.appendChild(thumbnailLink);
+
+		let image = {
+			imageIndex: thumbnailIndex,
+			imageSrc: closeup_image,
+			imageTitle: productName
+		};
+		images.push(image);
+
+		thumbnailIndex++
+	}
+
+	document.dispatchEvent(generate_thumbnail_event);
+
+	return thumbnailItem;
+};
+
+ImageMachine.prototype.onthumbnailimageclick = function (data) {
+	event.preventDefault();
+	this.Thumbnail_Click(data);
+
+	if (event.target.hasAttribute('data-zoom')) {
+		zoomImageLink.href = event.target.getAttribute('data-zoom');
+	}
+	else if (event.target.parentElement.hasAttribute('href')) {
+		zoomImageLink.href = event.target.parentElement.href;
+	}
+	else {
+		zoomImageLink.href = event.target.href;
+	}
+};
+
+
+/**
+ * Filmstrip
+ * Version 1.0
+ *
+ * Pure JavaScript thumbnail filmstrip with accessibility baked in.
+ */
+let MovingPictures = function MovingPictures() {
+	'use strict';
+
+	let filmstripResizeTimeout;
+	let filmstripWrapper = document.querySelector('[data-filmstrip-wrapper]');
+	let filmstrip;
+	let filmstripSlides;
+
+	if (filmstripWrapper) {
+		filmstrip = filmstripWrapper.querySelector('[data-filmstrip]');
+		filmstripSlides = filmstrip.querySelectorAll('li');
+	}
+
+	/**
+	 * Lazy-load controls for thumbnails.
+	 */
+	if ('loading' in HTMLImageElement.prototype) {
+		const images = filmstrip.querySelectorAll('img[loading="lazy"]');
+
+		images.forEach(function (img) {
+			if (img.dataset.src) {
+				img.src = img.dataset.src;
+				img.removeAttribute('data-src');
+			}
+			img.classList.add('is-visible');
+		});
+	}
+	else {
+		Array.prototype.forEach.call(filmstripSlides, function (slide) {
+			const img = slide.querySelector('img');
+
+			if (img.dataset.src) {
+				img.src = img.dataset.src;
+				img.removeAttribute('data-src');
+			}
+			img.classList.add('is-visible');
+		});
+	}
+
+	/**
+	 * Take the index of the slide to show and calculate the scrollLeft value needed.
+	 * @param slideToShow
+	 * @param currentVisibleWidth
+	 */
+	let scrollIt = function scrollIt(slideToShow, currentVisibleWidth) {
+		let gallery = filmstrip;
+
+		if (filmstrip.hasAttribute('data-vertical')) {
+			gallery.scrollTop = gallery.scrollTop + currentVisibleWidth;
+		}
+		else {
+			gallery.scrollLeft = gallery.scrollLeft + currentVisibleWidth;
+		}
+	};
+
+	/**
+	 * Find the visible element and run the scrollIt() function based on the direction set.
+	 * @param dir
+	 */
+	let showSlide = function showSlide(dir) {
+		let visible = filmstrip.querySelectorAll('.is-visible');
+		let i = dir === 'previous' ? 0 : 1;
+		let currentVisibleWidth = i === 0 ? -visible[0].closest('li').scrollWidth : visible[0].closest('li').scrollWidth;
+
+		if (filmstrip.hasAttribute('data-vertical')) {
+			currentVisibleWidth = i === 0 ? -visible[0].closest('li').scrollHeight : visible[0].closest('li').scrollHeight;
+		}
+
+		if (visible.length > 1) {
+			scrollIt(visible[i], currentVisibleWidth);
+		}
+		else {
+			let newSlide = i === 0 ? visible[0].previousElementSibling : visible[0].nextElementSibling;
+
+			if (newSlide) {
+				scrollIt(newSlide, currentVisibleWidth);
+			}
+		}
+	};
+
+
+	/**
+	 * Build the controls and add them to the gallery wrapper.
+	 */
+	let buildControls = function buildControls(wreckIt) {
+		let findControls = document.querySelector('[data-filmstrip-controls]');
+		let filmstripList = filmstrip.querySelector('ul');
+
+		if (wreckIt === true) {
+			if (findControls !== null) {
+				filmstripWrapper.removeAttribute('style');
+				filmstripList.classList.remove('has-controls');
+				findControls.remove();
+			}
+			return;
+		}
+
+		if (findControls === null) {
+			let controls = document.createElement('ul');
+			let controlTemplate = [
+				'<li><button class="x-filmstrip-controls__previous" aria-label="Previous" data-dir="previous" type="button"><span class="u-icon-arrow-left" aria-hidden="true"></span></button></li>',
+				'<li><button class="x-filmstrip-controls__next" aria-label="Next" data-dir="next" type="button"><span class="u-icon-arrow-right" aria-hidden="true"></span></button></li>'
+			].join('');
+
+			controls.classList.add('x-filmstrip-controls');
+			controls.setAttribute('data-filmstrip-controls', '');
+			controls.innerHTML = controlTemplate;
+
+			filmstripWrapper.appendChild(controls);
+			filmstripList.classList.add('has-controls');
+
+			if (filmstrip.hasAttribute('data-vertical')) {
+				filmstripWrapper.style.padding = controls.querySelector('button').offsetHeight + 'px 0';
+			}
+			else {
+				filmstripWrapper.style.padding = '0 ' + controls.querySelector('button').offsetWidth + 'px';
+			}
+
+			controls.addEventListener('click', function (e) {
+				let targetButton = e.target;
+
+				showSlide(targetButton.dataset.dir);
+			});
+
+			/**
+			 * Bind the arrow keys to scroll through the images and fire the same functions as the buttons.
+			 */
+			filmstrip.addEventListener('keypress', function (keyEvent) {
+				if (keyEvent.key === 'ArrowRight') {
+					showSlide('next');
+				}
+				if (keyEvent.key === 'ArrowLeft') {
+					showSlide('previous');
+				}
+			});
+		}
+	};
+
+	let calculateDimensions = function calcualteDimensions() {
+		let dimensions = {
+			width: 0,
+			height: 0
+		};
+
+		Array.prototype.forEach.call(filmstripSlides, function (slide) {
+			let img = slide.querySelector('img');
+			let imageHeight = img.getAttribute('height') ? parseInt(img.getAttribute('height'), 10) : img.clientHeight;
+			let imageWidth = img.getAttribute('width') ? parseInt(img.getAttribute('width'), 10) : img.clientWidth;
+			let offsetX = parseInt(getComputedStyle(slide).paddingRight, 10);
+			let offsetY = parseInt(getComputedStyle(slide).paddingBottom, 10);
+
+			dimensions.width = dimensions.width + imageWidth + offsetX;
+			dimensions.height = dimensions.height + imageHeight + offsetY;
+		});
+		return dimensions;
+	};
+
+	document.addEventListener('ImageMachine_Thumbnails_Initialized', function (event) {
+		console.log(event);
+	});
+
+	if ((calculateDimensions().width > filmstrip.clientWidth) || (filmstrip.hasAttribute('data-vertical') && calculateDimensions().height > filmstrip.clientHeight)) {
+		buildControls();
+	}
+	else {
+		buildControls(true);
+	}
+
+	window.addEventListener('resize', function (event) {
+		if (filmstripResizeTimeout) {
+			window.cancelAnimationFrame(filmstripResizeTimeout);
+		}
+
+		filmstripResizeTimeout = window.requestAnimationFrame(function () {
+			if ((calculateDimensions().width > filmstrip.clientWidth) || (filmstrip.hasAttribute('data-vertical') && calculateDimensions().height > filmstrip.clientHeight)) {
+				buildControls();
+			}
+			else {
+				buildControls(true);
+			}
+		});
+	}, false);
+};
+
+
+/**
+ * Picture Book
+ * Version 1.0
+ *
+ * Pure JavaScript photo gallery with accessibility baked in.
+ *
+ * Inspired by the PhotoViewerJS code by Curtis Campbell:
+ * https://github.com/curtisc123/PhotoViewerJS
+ */
+(function (document) {
+	'use strict';
+
+	/**
+	 * Public Properties
+	 * @type {{init}}
+	 */
+	let PictureBook = {};
+	let defaults = {
+		AnimationTime: 150
+	};
+
+	/**
+	 * Private Members
+	 * @type {string}
+	 */
+	const PHOTO_VIEWER_ACTIVE = 'has-photo-viewer';
+	const PHOTO_VIEWER_VISIBLE = 'x-photo-viewer__visible';
+	const PHOTO_VIEWER_LOADED_CLASS = 'is-loaded';
+	const PhotoGallery = document.querySelector('[data-PhotoGallery]');
+	let currentLoadedImage;
+	let Photographs;
+	let PhotographSources;
+	let PhotoViewer;
+	let PhotoViewerTitle;
+	let PhotoViewerClose;
+	let PhotoViewerCurrentImageContainer;
+	let PhotoViewerCurrentImage;
+	let PhotoViewerControls;
+	let PhotoViewerPreviousImage;
+	let PhotoViewerNextImage;
+	let PhotoViewerCount;
+	let openTrigger;
+
+	/**
+	 * Public Methods
+	 */
+	PictureBook.init = function () {
+		BuildPhotoViewer();
+		Setup();
+		SetImageLinkListeners();
+
+		PhotoViewerClose.addEventListener('click', ClosePhotoViewer);
+		PhotoViewerNextImage.addEventListener('click', LoadNextImage);
+		PhotoViewerPreviousImage.addEventListener('click', LoadPreviousImage);
+		window.addEventListener('keydown', function (event) {
+			let escKey = (event.key === 'Escape' || event.keyCode === 27);
+
+			if (event.defaultPrevented) {
+				return; // Do nothing if the event was already processed
+			}
+
+			if (!escKey) {
+				return;
+			}
+
+			if (escKey) {
+				if (PhotoViewer.classList.contains('x-photo-viewer__visible')) {
+					ClosePhotoViewer(event);
+				}
+			}
+		}, true);
+		swipe.init(PhotoViewerCurrentImageContainer);
+	};
+
+	/**
+	 * Private Methods
+	 * @constructor
+	 */
+	let Setup = function () {
+		Photographs = document.querySelectorAll('[data-photograph]');
+		PhotographSources = document.querySelectorAll('[data-zoom]');
+		PhotoViewer = document.querySelector('[data-PhotoViewer]');
+		PhotoViewerTitle = document.querySelector('[data-PhotoViewerTitle]');
+		PhotoViewerClose = document.querySelector('[data-PhotoViewerClose]');
+		PhotoViewerCurrentImageContainer = document.querySelector('[data-PhotoViewerCurrentImageContainer]');
+		PhotoViewerCurrentImage = document.querySelector('[data-PhotoViewerCurrentImage]');
+		PhotoViewerControls = document.querySelector('[data-PhotoViewerControls]');
+		PhotoViewerPreviousImage = document.querySelector('[data-PhotoViewerPreviousImage]');
+		PhotoViewerNextImage = document.querySelector('[data-PhotoViewerNextImage]');
+		PhotoViewerCount = document.querySelector('[data-PhotoViewerCount]');
+	};
+
+	let BuildPhotoViewer = function () {
+		let PhotoViewerElement = document.createElement('div');
+
+		PhotoViewerElement.classList.add('x-photo-viewer');
+		PhotoViewerElement.setAttribute('data-PhotoViewer', '');
+		PhotoViewerElement.setAttribute('aria-hidden', 'true');
+		PhotoViewerElement.setAttribute('aria-label', 'Gallery of ' + productName + ' Images');
+		PhotoViewerElement.setAttribute('role', 'dialog');
+		PhotoViewerElement.innerHTML = [
+			'<header class="x-photo-viewer__header">',
+			'<h2 class="x-photo-viewer__title" data-PhotoViewerTitle aria-live="polite" aria-atomic="true"></h2>',
+			'<div class="x-photo-viewer__close" data-PhotoViewerClose><button disabled>X<span class="u-hide-visually">Close dialog</span></button></div>',
+			'</header>',
+			'<div class="x-photo-viewer__container">',
+			'<picture class="x-photo-viewer__current-image" data-PhotoViewerCurrentImageContainer>',
+			'<img data-PhotoViewerCurrentImage src="" alt="" loading="lazy">',
+			'</picture>',
+			'</div>',
+			'<div class="x-photo-viewer__controls" data-PhotoViewerControls>',
+			'<div class="x-photo-viewer__previous-image" data-PhotoViewerPreviousImage><button aria-label="Previous" disabled>&laquo; Previous</button></div>',
+			'<div class="x-photo-viewer__count" data-PhotoViewerCount aria-live="polite" aria-atomic="true"></div>',
+			'<div class="x-photo-viewer__next-image" data-PhotoViewerNextImage><button aria-label="Next" disabled>Next &raquo;</button></div>',
+			'</div>'
+		].join('');
+
+		document.body.append(PhotoViewerElement);
+	};
+
+	let SetImageLinkListeners = function () {
+		for (let i = 0; i < Photographs.length; i++) {
+			Photographs[i].addEventListener('click', ImageOpen);
+		}
+	};
+
+	let ImageOpen = function (e) {
+		e.preventDefault();
+		InitializePhotoViewer(this.href);
+	};
+
+	let InitializePhotoViewer = function (clickedImage) {
+		if (images.length === 1) {
+			PhotoViewerControls.classList.add('u-invisible');
+		}
+		for (let i = 0; i < images.length; i++) {
+			if (images[i].hasOwnProperty('imageSrc')) {
+				if (clickedImage.includes(images[i].imageSrc)) {
+					OpenPhotoViewer(images[i]);
+				}
+			}
+		}
+	};
+
+	let SetPhotoViewerPhoto = function (currentImage) {
+		PhotoViewerCurrentImage.alt = currentImage.imageTitle;
+		PhotoViewerCurrentImage.src = currentImage.imageSrc;
+		PhotoViewerTitle.innerHTML = currentImage.imageTitle;
+		PhotoViewerCount.innerHTML = currentImage.imageIndex + 1 + '/' + images.length;
+		currentLoadedImage = currentImage.imageIndex;
+		setTimeout(function () {
+			PhotoViewerCurrentImageContainer.classList.add(PHOTO_VIEWER_LOADED_CLASS);
+		}, defaults.AnimationTime);
+	};
+
+	let OpenPhotoViewer = function (clickedImage) {
+		document.documentElement.classList.add(PHOTO_VIEWER_ACTIVE);
+		PhotoViewer.classList.add(PHOTO_VIEWER_VISIBLE);
+		PhotoViewer.setAttribute('aria-hidden', 'false');
+		Array.from(PhotoViewer.querySelectorAll('button')).forEach(function (button) {
+			button.removeAttribute('disabled');
+		});
+		SetPhotoViewerPhoto(clickedImage);
+		a11yHelper();
+	};
+
+	let ClosePhotoViewer = function (e) {
+		e.preventDefault();
+		PhotoViewer.setAttribute('aria-hidden', 'true');
+		Array.from(PhotoViewer.querySelectorAll('button')).forEach(function (button) {
+			button.setAttribute('disabled', '');
+		});
+		PhotoViewer.classList.remove(PHOTO_VIEWER_VISIBLE);
+		document.documentElement.classList.remove(PHOTO_VIEWER_ACTIVE);
+		a11yHelper();
+		PhotoViewerControls.classList.remove('u-invisible');
+	};
+
+	let LoadNextImage = function (e) {
+		e.preventDefault();
+		if (currentLoadedImage >= images.length - 1) {
+			return;
+		}
+		PhotoViewerCurrentImageContainer.classList.remove(PHOTO_VIEWER_LOADED_CLASS);
+		SetPhotoViewerPhoto(images[currentLoadedImage + 1]);
+	};
+
+	let LoadPreviousImage = function (e) {
+		e.preventDefault();
+		if (currentLoadedImage <= 0) {
+			return;
+		}
+		PhotoViewerCurrentImageContainer.classList.remove(PHOTO_VIEWER_LOADED_CLASS);
+		SetPhotoViewerPhoto(images[currentLoadedImage - 1]);
+	};
+
+	let swipe = {
+		touchStartX: 0,
+		touchEndX: 0,
+		minSwipePixels: 100,
+		detectionZone: undefined,
+		init: function (detectionZone) {
+			detectionZone.addEventListener('touchstart', function (event) {
+				swipe.touchStartX = event.changedTouches[0].screenX;
+			}, false);
+			detectionZone.addEventListener('touchend', function (event) {
+				swipe.touchEndX = event.changedTouches[0].screenX;
+				swipe.handleSwipeGesture(event);
+			}, false);
+		},
+
+		handleSwipeGesture: function (event) {
+			let direction;
+			let moved;
+
+			if (swipe.touchEndX <= swipe.touchStartX) {
+				moved = swipe.touchStartX - swipe.touchEndX;
+				direction = 'left'
+			}
+			if (swipe.touchEndX >= swipe.touchStartX) {
+				moved = swipe.touchEndX - swipe.touchStartX;
+				direction = 'right'
+			}
+			if (moved > swipe.minSwipePixels && direction !== 'undefined') {
+				swipe.scroll(direction, event)
+			}
+		},
+
+		scroll: function (direction, event) {
+			if (direction === 'left') {
+				LoadNextImage(event);
+			}
+			if (direction === 'right') {
+				LoadPreviousImage(event);
+			}
+		}
+	};
+
+	let a11yHelper = function () {
+		let focusableElements = PhotoViewer.querySelectorAll('a[href], button:not([disabled]):not([aria-hidden])');
+		let firstFocus = focusableElements[0];
+		let lastFocus = focusableElements[focusableElements.length - 1];
+
+		function handleKeyboard(keyEvent) {
+			let tabKey = (keyEvent.key === 'Tab' || keyEvent.keyCode === 9);
+
+			function handleBackwardTab() {
+				if (document.activeElement === firstFocus) {
+					keyEvent.preventDefault();
+					lastFocus.focus();
+				}
+			}
+
+			function handleForwardTab() {
+				if (document.activeElement === lastFocus) {
+					keyEvent.preventDefault();
+					firstFocus.focus();
+				}
+			}
+
+			if (!tabKey) {
+				return;
+			}
+
+			if (keyEvent.shiftKey) {
+				handleBackwardTab();
+			}
+			else {
+				handleForwardTab();
+			}
+		}
+
+		/**
+		 * Toggles an 'inert' attribute on all direct children of the <body> that are not the element you passed in. The
+		 * element you pass in needs to be a direct child of the <body>.
+		 *
+		 * Most useful when displaying a dialog/modal/overlay and you need to prevent screen-reader users from escaping the
+		 * modal to content that is hidden behind the modal.
+		 *
+		 * This is a basic version of the `inert` concept from WICG. It is based on an alternate idea which is presented here:
+		 * https://github.com/WICG/inert/blob/master/explainer.md#wouldnt-this-be-better-as
+		 * Also see https://github.com/WICG/inert for more information about the inert attribute.
+		 */
+		let setInert = function () {
+			Array.from(document.body.children).forEach(function (child) {
+				if (child !== PhotoViewer && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+					child.classList.add('is-inert');
+					child.setAttribute('inert', '');
+					child.setAttribute('aria-hidden', 'true');
+				}
+			});
+		};
+
+		let removeInert = function () {
+			Array.from(document.body.children).forEach(function (child) {
+				if (child !== PhotoViewer && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+					child.classList.remove('is-inert');
+					child.removeAttribute('inert');
+					child.removeAttribute('aria-hidden');
+				}
+			});
+		};
+
+		if (PhotoViewer.classList.contains('x-photo-viewer__visible')) {
+			openTrigger = document.activeElement;
+			setInert();
+			firstFocus.focus();
+			PhotoViewer.addEventListener('keydown', function (keyEvent) {
+				handleKeyboard(keyEvent);
+			});
+		}
+		else {
+			removeInert();
+			openTrigger.focus();
+			PhotoViewer.removeEventListener('keydown', handleKeyboard);
+		}
+	};
+
+	return PictureBook.init();
+}(document));

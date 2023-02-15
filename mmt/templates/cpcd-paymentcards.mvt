@@ -1,0 +1,49 @@
+<mvt:if expr="l.settings:paymentcards:paymentcard_count EQ 0">
+	<div class="x-messages x-messages--info">No payment cards found.</div>
+	<mvt:exit />
+</mvt:if>
+<mvt:foreach iterator="paymentcard" array="paymentcards:paymentcards">
+	<mvt:if expr="'AMERICAN EXPRESS' EQ toupper(l.settings:paymentcard:type)">
+		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_amex.png'" />
+	<mvt:elseif expr="'VISA' EQ toupper(l.settings:paymentcard:type)">
+		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_visa.png'" />
+	<mvt:elseif expr="'MASTERCARD' EQ toupper(l.settings:paymentcard:type)">
+		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_mastercard.png'" />
+	<mvt:elseif expr="'DISCOVER' EQ toupper(l.settings:paymentcard:type)">
+		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_discover.png'" />
+	<mvt:else>
+		<mvt:assign name="l.settings:paymentcard:image" value="''" />
+	</mvt:if>
+	<div class="o-layout u-grids-1 u-grids-2--s u-grids-4--m">
+		<div class="o-layout__item">
+			<mvt:if expr="l.settings:paymentcard:image">
+				<p class="c-heading-delta">
+					<img src="&mvte:paymentcard:image;" alt="&mvte:paymentcard:type;" loading="lazy"> <span class="c-heading--subheading u-text-uppercase">ending in &mvte:paymentcard:lastfour;</span>
+				</p>
+			<mvt:else>
+				<p class="c-heading-delta u-text-bold">
+					&mvte:paymentcard:type; <span class="c-heading--subheading">ending in &mvte:paymentcard:lastfour;</span>
+				</p>
+			</mvt:if>
+		</div>
+		<div class="o-layout__item">
+			<p>
+				<mvt:if expr="mktime_t( l.settings:paymentcard:exp_year, l.settings:paymentcard:exp_month, s.tm_mday, s.tm_hour, s.tm_min, s.tm_sec, 'local') LT s.time_t">
+					<span class="u-color-red">(expired)</span> &mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;
+				<mvt:else>
+					Expires: &mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;
+				</mvt:if>
+			</p>
+		</div>
+		<div class="o-layout__item">
+			<p class="u-text-bold">&mvte:paymentcard:fname; &mvte:paymentcard:lname;</p>
+		</div>
+		<div class="o-layout__item">
+			<p class="c-control-group">
+				<a class="c-button c-button--full c-control-group__button u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CPCE:auto_sep;PaymentMethod=paymentcard:&mvta:paymentcard:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
+				<a class="c-button c-button--full c-button--hollow c-control-group__button u-color-red u-font-small u-text-bold u-text-uppercase" href="&#" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\\x0A\\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvtj:urls:CPCD:secure;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvtj:paymentcard:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); } return false;">Delete</a>
+			</p>
+		</div>
+	</div>
+	<hr class="c-keyline">
+</mvt:foreach>

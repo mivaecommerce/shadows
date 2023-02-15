@@ -1,0 +1,26 @@
+{
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Statement</a>",
+            "link_dest": "PRPO",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Privacy Statement",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping and Return Policies</a>",
+            "link_dest": "SARP",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Shipping and Return Policies",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
+        }
+    ],
+    "layout": "S",
+    "name": "Global Footer Disclaimer Navigation"
+}

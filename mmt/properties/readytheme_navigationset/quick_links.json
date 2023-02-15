@@ -1,0 +1,66 @@
+{
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
+            "link_dest": "ABUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "About Us",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
+            "link_dest": "CTUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Contact Us",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">FAQS</a>",
+            "link_dest": "FAQS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "FAQS",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order Status</a>",
+            "link_dest": "ORDH",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Order Status",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
+            "link_dest": "WLST",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Wish Lists",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP\" target=\"_self\">Site Map</a>",
+            "link_dest": "SMAP",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Site Map",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP"
+        }
+    ],
+    "layout": "S",
+    "name": "Global Footer Quick Links"
+}

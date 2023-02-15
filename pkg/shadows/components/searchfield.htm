@@ -1,0 +1,109 @@
+<Module code="cmp-cssui-searchfield" feature="component" version="9.1300"><Search_Page>SRCH</Search_Page><DeferJavaScript>Yes</DeferJavaScript><JavaScript><Template><![CDATA[/**
+ * This function allows you to prepend or append code to an existing function.
+ * https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
+ */
+function functionExtender(container, funcName, prepend, append) {
+	(function () {
+		'use strict';
+		let cachedFunction = container[funcName];
+
+		container[funcName] = function () {
+			if (prepend) {
+				prepend.apply(this);
+			}
+
+			let result = cachedFunction.apply(this, arguments);
+
+			if (append) {
+				append.apply(this);
+			}
+
+			return result;
+		};
+	})();
+}
+
+/**
+ * This controls what happens when you click TAB on a selected search item.
+ */
+functionExtender(
+	MMSearchField.prototype,
+	'Event_Keydown',
+	function () {},
+	function () {
+		let tabTarget = this.selected_item;
+
+		if (tabTarget !== null) {
+			if (event.keyCode === 9 && tabTarget !== this.menu_item_storesearch) {
+				this.element_search.value = tabTarget.childNodes[0].getAttribute('data-search');
+			}
+		}
+	}
+);
+
+
+MMSearchField.prototype.onMenuAppendHeader = function () {
+	return null;
+};
+
+MMSearchField.prototype.onMenuAppendItem = function (data) {
+	let searchResult;
+
+	searchResult = newElement('li', {'class': 'x-search-preview__entry'}, null, null);
+	searchResult.innerHTML = data;
+	searchResult.setAttribute('aria-selected', 'false');
+	searchResult.setAttribute('role', 'option');
+
+	return searchResult;
+};
+
+MMSearchField.prototype.Menu_Item_Select = function (item) {
+	this.selected_item = item;
+	this.menu_items.forEach(function (menuItem) {
+		menuItem.setAttribute('aria-selected', 'false');
+	});
+
+	if (item !== null) {
+		this.selected_item.className = classNameAdd( this.selected_item, 'mm_searchfield_menuitem_selected' );
+		this.selected_item.setAttribute('aria-selected', 'true');
+	}
+};
+
+MMSearchField.prototype.onMenuAppendStoreSearch = function (search_value) {
+	let searchAll;
+
+	searchAll = newElement('li', {'class': 'x-search-preview__search-all'}, null, null);
+	searchAll.element_text = newTextNode('Search store for product "' + search_value + '"', searchAll);
+	searchAll.setAttribute('aria-selected', 'false');
+	searchAll.setAttribute('role', 'option');
+
+	return searchAll;
+};
+
+MMSearchField.prototype.onFocus = function () {
+	this.element_menu.classList.toggle('x-search-preview--open');
+};
+
+MMSearchField.prototype.onBlur = function () {
+	this.element_menu.classList.toggle('x-search-preview--open');
+};
+]]></Template><Notes>#Set_Current_Time#</Notes></JavaScript><MenuItem><PriceDisplay>Sale</PriceDisplay><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>Yes</PredictDiscounts><Fields><Code/><Name/><Price/></Fields><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>64</Width><Height>64</Height></ImageDimensions><SortBy>code_asc</SortBy><Template><![CDATA[<div class="x-search-preview__list" data-search="&mvte:product:name;">
+	<div class="x-search-preview__line">
+		<figure class="x-search-preview__image">
+			<mvt:if expr="NOT ISNULL l.settings:product:imagetypes:main">
+				<img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:searchfield:b_width;" height="&mvte:searchfield:b_height;">
+			</mvt:if>
+		</figure>
+		<div class="x-search-preview__item">
+			<span class="x-search-preview__item-name">&mvte:product:name;</span>
+			<hr class="c-keyline">
+			<span class="x-search-preview__item-price u-text-right">
+				<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+					<span class="u-font-small">Was: <s>&mvt:product:formatted_base_price;</s><br></span>
+				</mvt:if>
+				<strong>&mvt:product:formatted_price;</strong>
+			</span>
+		</div>
+	</div>
+</div>
+]]></Template><Notes>#Set_Current_Time#</Notes></MenuItem></Module>

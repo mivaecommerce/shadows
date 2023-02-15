@@ -1,0 +1,50 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--justify-center">
+		<div class="o-layout__item u-width-12 u-width-6--m">
+			<form method="post" action="&mvte:urls:AFCL:secure;">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<input type="hidden" name="Affiliate_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
+					<input type="hidden" name="Affiliate_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
+					<p class="x-messages x-messages--borderless x-messages--with-icon">
+						<span class="x-messages__icon u-icon-info u-color-gray-30" aria-hidden="true">&nbsp;</span>
+						<span>Your password has been reset.<br><br>Your temporary password is &mvte:global:Affiliate_Temporary_Password;</span>
+					</p>
+					<p>
+						<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Click Here to Log In">
+					</p>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

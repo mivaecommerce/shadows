@@ -1,0 +1,334 @@
+<script>
+	function continueShopping(link) {
+		if (sessionStorage.getItem('continue_url')) {
+			link.href = sessionStorage.getItem('continue_url');
+		}
+	}
+</script>
+<mvt:if expr="g.Action EQ 'RGRP'">
+	<mvt:assign name="g.Quantity" value="miva_variable_value('Quantity' $ g.Restore_Counter)" />
+	<mvt:assign name="g.Restore_Name" value="miva_variable_value('Restore_Name' $ g.Restore_Counter)" />
+	<mvt:assign name="g.Restore_Link" value="miva_variable_value('Restore_Link' $ g.Restore_Counter)" />
+	<script>
+		function clickAndDisable(link) {
+			// disable subsequent clicks
+			link.onclick = function (event) {
+				event.preventDefault();
+			}
+		}
+	</script>
+	<div class="x-messages x-messages--info">
+		<strong>&mvte:global:Restore_Name;</strong> has been removed from your cart. <a href="&mvte:global:Restore_Link;" onclick="clickAndDisable(this);">Undo?</a>
+	</div>
+	<mvt:assign name="g.Restore_Counter" value="g.Restore_Counter + 1" />
+</mvt:if>
+<mvt:if expr="l.settings:basket:empty">
+	<div class="x-messages x-messages--info">
+		<strong>Your shopping cart is currently empty.</strong> <a href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
+	</div>
+	<mvt:exit />
+</mvt:if>
+
+<section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvt:global_minibasket:basket_count;" data-subtotal="&mvt:global_minibasket:formatted_total;">
+	<div class="o-layout__item u-width-12 u-width-8--l">
+		<table class="c-table-responsive t-basket__product-summary">
+			<caption class="u-text-left">
+				<h1 class="c-heading-delta u-text-bold u-text-uppercase">
+					<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
+						Your Cart: &mvte:global_minibasket:basket_count; Items
+					<mvt:else>
+						Your Cart: &mvte:global_minibasket:basket_count; Item
+					</mvt:if>
+				</h1>
+			</caption>
+			<thead class="c-table-responsive_thead u-text-left">
+				<tr class="c-table-responsive__row u-text-uppercase u-font-tiny u-color-gray-30">
+					<th class="c-table-responsive__cell" scope="col">Product</th>
+					<th class="c-table-responsive__cell" scope="col">Quantity</th>
+					<th class="c-table-responsive__cell u-text-right" scope="col">Subtotal</th>
+					<th class="c-table-responsive__cell u-text-right" scope="col">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<mvt:assign name="g.basket_subtotal" value="0" />
+				<mvt:foreach iterator="group" array="basket:groups">
+					<mvt:assign name="l.settings:group:restore:link" value="l.settings:urls:BASK:auto_sep $ 'Action=ADPR&Product_Code=' $ l.settings:group:product:code $ '&Quantity=' $ l.settings:group:quantity" />
+					<tr class="c-table-responsive__row">
+						<td class="c-table-responsive__cell" data-label="">
+							<div class="o-layout">
+								<div class="o-layout__item u-width-12 u-width-4--m u-width-3--l u-text-center">
+									<p><img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;"></p>
+								</div>
+								<div class="o-layout__item u-width-12 u-width-8--m u-width-9--l t-basket__product-details">
+									<a class="u-text-bold u-color-black" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a><br>
+									<mvt:if expr="l.settings:group:upsold">
+										<br><span class="c-heading--subheading">(Special Offer)</span><br>
+									</mvt:if>
+									<p class="u-color-gray-30">
+										<span class="u-font-small">SKU: &mvt:group:code;</span><br>
+										<mvt:foreach iterator="discount" array="group:discounts">
+											<mvt:if expr="l.settings:discount:display">
+												<mvt:if expr="'sale' CIN l.settings:discount:descrip">
+													<mvt:assign name="l.settings:discount:descrip" value="'Savings'"/>
+												<mvt:else>
+													<mvt:assign name="l.settings:discount:descrip" value="l.settings:discount:descrip"/>
+												</mvt:if>
+												<span class="u-font-small u-flex u-color-red">
+													<span class="o-layout--grow">&mvt:discount:descrip;</span>
+													<span>&mvt:discount:formatted_discount;</span>
+												</span>
+											</mvt:if>
+										</mvt:foreach>
+										<mvt:assign name="l.settings:attr_ref" value="''" />
+										<mvt:foreach iterator="option" array="group:options">
+											<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
+												<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+											<mvt:else>
+												<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+											</mvt:if>
+											<mvt:assign name="l.settings:group:option_counter" value="l.settings:group:option_counter + 1" />
+											<span class="u-font-small u-flex">
+												<mvt:if expr="l.settings:option:attmpat_id">
+													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:template_code=' $ l.settings:option:attr_code" />
+													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_prompt" />
+												<mvt:else>
+													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_code" />
+												</mvt:if>
+												<mvt:if expr="l.settings:option:option_id">
+													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:opt_code" />
+													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
+													<mvt:if expr="l.settings:option:subtotal GT 0">
+														<span>&mvt:option:formatted_subtotal;</span>
+													</mvt:if>
+												<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data" />
+													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
+													<mvt:if expr="l.settings:option:subtotal GT 0">
+														<span>&mvt:option:formatted_subtotal;</span>
+													</mvt:if>
+												<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data_long" />
+													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
+													<mvt:if expr="l.settings:option:subtotal GT 0">
+														<span>&mvt:option:formatted_subtotal;</span>
+													</mvt:if>
+												<mvt:else>
+													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:attr_prompt" />
+													<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
+													<mvt:if expr="l.settings:option:subtotal GT 0">
+														<span>&mvt:option:formatted_subtotal;</span>
+													</mvt:if>
+												</mvt:if>
+											</span>
+											<mvt:foreach iterator="discount" array="option:discounts">
+												<mvt:if expr="l.settings:discount:display">
+													<span class="u-color-red o-layout--grow">&mvt:discount:descrip;</span>
+													<span class="u-color-red">&mvt:discount:formatted_discount;</span>
+												</mvt:if>
+											</mvt:foreach>
+										</mvt:foreach>
+									</p>
+									<mvt:if expr="l.settings:group:subterm_id">
+										<p>Subscription: &mvte:group:productsubscriptionterm:descrip;</p>
+									</mvt:if>
+									<mvt:if expr="l.settings:group:product:id AND (NOT l.settings:group:product:productsubscriptionsettings:enabled OR NOT l.settings:group:product:productsubscriptionsettings:mandatory)">
+										<p><a class="u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:WISH:secure_sep;Action=MPWL&Group_ID=&mvta:group:group_id;">&#8942; Save to Wish List</a></p>
+									</mvt:if>
+								</div>
+							</div>
+						</td>
+						
+						<td class="c-table-responsive__cell" data-label="Quantity">
+							<mvt:if expr="l.settings:group:upsold">
+								<p>&mvt:group:quantity;</p>
+							<mvt:else>
+								<form class="t-basket-update" method="post" action="&mvte:urls:BASK:auto;" data-hook="group-&mvte:group:group_id;">
+									<fieldset>
+										<legend>&mvt:group:name; Quantity</legend>
+										<input type="hidden" name="Action" value="QTYG" />
+										<input type="hidden" name="Basket_Group" value="&mvte:group:group_id;" />
+										<input type="hidden" name="Old_Screen" value="BASK" />
+										<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+										<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+										<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+										<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+										<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+										<input type="hidden" name="Restore_Name" value="&mvt:group:name;">
+										<input type="hidden" name="Restore_Link" value="&mvte:group:restore:link;">
+										<div class="c-form-list">
+											<div class="c-form-list__item">
+												<label class="u-hide-visually" for="l-quantity-&mvte:group:group_id;">Quantity</label>
+												<div class="x-quantify c-control-group" data-hook="quantify">
+													<button class="c-button c-control-group__button u-bg-white u-color-gray-30" data-action="decrement">
+														<span class="u-icon-subtract" aria-hidden="true"></span>
+														<span class="u-hide-visually">Decrease Quantity/Remove</span>
+													</button>
+													<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-control-group__field u-text-bold u-text-center" data-group="group-&mvte:group:group_id;" data-hook="group-quantity" type="text" inputmode="decimal" name="Quantity" value="&mvt:group:quantity;" required>
+													<button class="c-button c-control-group__button u-bg-white u-color-gray-30" data-action="increment">
+														<span class="u-icon-add" aria-hidden="true"></span>
+														<span class="u-hide-visually">Increase Quantity</span>
+													</button>
+												</div>
+											</div>
+										</div>
+									</fieldset>
+								</form>
+							</mvt:if>
+						</td>
+						
+						<td class="c-table-responsive__cell u-text-right" data-label="Subtotal">
+							<p class="c-heading-echo">
+								<span class="u-text-bold u-block">&mvt:group:formatted_subtotal_comprehensive;</span>
+								<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:group:subtotal_comprehensive" />
+								<mvt:if expr="l.settings:group:subtotal_base_price GT l.settings:group:subtotal">
+									<s class="c-heading--subheading u-block">&mvt:group:formatted_subtotal_base_price;</s>
+								</mvt:if>
+								<mvt:if expr="l.settings:group:upsold">
+									<span class="c-heading--subheading u-block">&nbsp;</span>
+								</mvt:if>
+							</p>
+						</td>
+						
+						<td class="c-table-responsive__cell u-font-small u-text-right">
+							<p>
+								<a class="c-button c-button--hollow c-button--small u-bg-white u-color-gray-30 t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Link=&mvta:group:restore:link;">
+									<span class="u-icon-cross" aria-hidden="true"></span>
+									<span class="u-hide-visually">Remove &mvt:group:name;</span>
+								</a>
+							</p>
+						</td>
+					</tr>
+				</mvt:foreach>
+			</tbody>
+		</table>
+		
+		<p class="o-list-inline u-text-bold u-text-uppercase">
+			<a class="u-color-gray-30" href="&mvte:urls:WISH:secure_sep;Action=MAWL" title="Save Cart for Later"><span class="u-font-small u-icon-history" aria-hidden="true"></span>&nbsp;<span class="u-font-tiny">Save Cart for Later</span></a>
+		</p>
+		<br>
+
+		<p class="u-text-bold u-font-small u-text-uppercase">
+			<a class="u-color-black" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);" title="Continue Shopping"><span class="u-icon-arrow-left" aria-hidden="true"></span>&nbsp;Continue Shopping</a>
+		</p>
+		
+		<hr class="c-keyline">
+	</div>
+	
+	<aside class="o-layout__item u-width-12 u-width-4--l">
+		<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, g.basket_subtotal)" />
+		<table class="c-table-simple t-basket__order-summary">
+			<thead>
+				<tr class="c-table-simple__row">
+					<td class="c-table-simple__cell">
+						<span class="c-heading-echo u-text-bold u-text-uppercase">Order Summary</span>
+					</td>
+				</tr>
+			</thead>
+			<tbody class="u-font-small u-text-uppercase u-text-bold">
+				<tr class="c-table-simple__row">
+					<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+						<span>
+							<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
+								<span class="u-color-gray-30">Subtotal:</span> &mvte:global_minibasket:basket_count; Items
+							<mvt:else>
+								<span class="u-color-gray-30">Subtotal:</span> &mvte:global_minibasket:basket_count; Item
+							</mvt:if>
+						</span>
+						<span>&mvt:basket:formatted_subtotal;</span>
+					</td>
+				</tr>
+				
+				<mvt:foreach iterator="charge" array="basket:charges">
+					<tr class="c-table-simple__row u-color-gray-30">
+						<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+							<span>&mvt:charge:descrip;</span>
+							<span>&mvt:charge:formatted_disp_amt;</span>
+						</td>
+					</tr>
+				</mvt:foreach>
+
+				<tr class="c-table-simple__row u-color-gray-30">
+					<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+						<span>Shipping</span>
+						<span>
+							<button class="c-button c-button--clear u-color-gray-50 u-text-uppercase" data-dialog-trigger="shipping-estimator">Estimate</button>
+						</span>
+					</td>
+				</tr>
+				
+				<mvt:foreach iterator="coupon" array="basket:coupons">
+					<tr class="c-table-simple__row">
+						<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+							<form method="post" action="&mvte:urls:BASK:auto;">
+								<fieldset>
+									<legend>Remove Promo Code &mvt:coupon:code;</legend>
+									<div class="c-form-list">
+										<div class="c-form-list__item c-form-list__item--full">
+											<input type="hidden" name="Action" value="RCPN"/>
+											<input type="hidden" name="Coupon_Code" value="&mvte:coupon:code;"/>
+											<button class="c-button c-button--clear u-bg-transparent u-color-red" type="submit">&mvt:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
+										</div>
+									</div>
+								</fieldset>
+							</form>
+							<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
+								<span>&mvt:coupon:descrip;</span>
+							</mvt:if>
+						</td>
+					</tr>
+				</mvt:foreach>
+				
+				<tr class="c-table-simple__row">
+					<td class="c-table-simple__cell c-table-simple__cell--standard x-collapsible-content">
+						<button class="u-flex o-layout--justify-between o-layout--align-center u-text-bold u-text-uppercase x-collapsible-content__toggle" data-a11y-toggle="basket-coupon-form-toggle" type="button">
+							<span>Add Promo Code</span>
+							<span class="u-icon-add u-font-tiny" data-toggle="<" aria-hidden="true"></span>
+						</button>
+						<form id="basket-coupon-form-toggle" class="t-basket_coupon-form x-collapsible-content__item" method="post" action="&mvte:urls:_self:auto;">
+							<fieldset>
+								<legend>Add Promo Code</legend>
+								<input type="hidden" name="Action" value="ACPN" />
+								<div class="c-form-list">
+									<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
+										<label class="u-hide-visually" for="Coupon_Code">Add Promo Code</label>
+										<input id="Coupon_Code" class="c-form-input c-control-group__field u-text-regular" type="text" name="Coupon_Code" placeholder="Enter Promo Code" required>
+										<input class="c-button c-control-group__button c-button--large u-bg-gray-40 u-border-none u-text-uppercase" type="submit" value="Apply">
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</td>
+				</tr>
+				
+				<tr>
+					<td class="c-table-simple__cell">
+						<br>
+						<div class="u-flex o-layout--align-center o-layout--justify-between c-heading-delta u-text-bold u-text-uppercase">
+							<span class="u-font-tiny">Current Total</span>
+							<span>&mvt:basket:formatted_total;</span>
+						</div>
+					</td>
+				</tr>
+			
+				<tr>
+					<td>
+						<br>
+						<a class="c-button c-button--full c-button--huge u-bg-black u-color-white u-text-bold" href="&mvte:urls:OINF:auto;">Secure Checkout</a>
+						<br>
+						<hr class="c-keyline">
+						<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+						<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
+					</td>
+				</tr>
+			
+				<tr>
+					<td>
+						<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<mvt:item name="shipestimate" />
+	</aside>
+</section>

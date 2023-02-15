@@ -1,0 +1,36 @@
+{
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
+            "link_dest": "ABUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "About Us",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
+            "link_dest": "CTUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Contact Us",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequent Questions</a>",
+            "link_dest": "FAQS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Frequent Questions",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
+        }
+    ],
+    "layout": "S",
+    "name": "Support Pages Navigation"
+}

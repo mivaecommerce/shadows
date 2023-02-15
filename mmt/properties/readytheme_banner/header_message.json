@@ -1,0 +1,7 @@
+{
+    "active": 1,
+    "descrip": "Global Site Header Message",
+    "link_targ": "_self",
+    "link_type": "N",
+    "message": "<span class=\"u-text-uppercase t-site-header__message\"><strong>Free Ground Shipping</strong> On All Orders</span>"
+}

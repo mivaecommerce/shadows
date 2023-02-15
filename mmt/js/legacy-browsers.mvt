@@ -1,0 +1,13 @@
+<mvt:do name="l.success" file="g.Module_Feature_TUI_DB" value="Runtime_JavaScriptResource_Load_Code('polyfills', l.settings:scriptresource)" />
+<mvt:if expr="l.settings:scriptresource:active EQ 1">
+	if (!!window.MSInputMethodContext && !!document.documentMode) {
+		(function () {
+			var polyfill = document.createElement('script');
+			
+			polyfill.type = 'text/javascript';
+			polyfill.async = true;
+			polyfill.src = '&mvte:scriptresource:file;';
+			document.head.appendChild(polyfill);
+		})();
+	}
+</mvt:if>
