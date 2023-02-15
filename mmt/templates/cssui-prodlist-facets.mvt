@@ -1,0 +1,247 @@
+<mvt:if expr="l.settings:facets:facet_count GT 0 OR l.settings:category_listing:products_on_page_count GT 1 OR l.settings:all_products:products_on_page_count GT 1 OR l.settings:search_results:products_on_page_count GT 1">
+	<nav class="x-category-tree x-collapsible-content t-faceting" aria-labelledby="searchFacets-label">
+		<div class="x-category-tree__title">
+			<h3 id="searchFacets-label" class="x-category-tree__heading c-heading-echo u-text-bold u-text-uppercase">Filters</h3>
+			<hr class="c-keyline">
+		</div>
+		<button class="x-category-tree__label x-collapsible-content__toggle u-text-uppercase" data-a11y-toggle="searchFacets" type="button">Filters <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+
+		<div id="searchFacets" class="x-category-tree__row x-collapsible-content__item">
+			<mvt:assign name="g.facet_listings" value="''"/>
+			<mvt:foreach iterator="facet" array="facets:facets">
+				<mvt:foreach iterator="facet_value" array="facet:values">
+					<mvt:if expr="l.settings:facet_value:selected">
+						<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;"/>
+						<mvt:assign name="g.facet_listings" value="'&' $ l.settings::facet:code $ '=' $ l.settings::facet_value:value"/>
+					</mvt:if>
+				</mvt:foreach>
+			</mvt:foreach>
+			<section class="u-hidden--l">
+				<div class="x-display-list-filtering t-display-list-filtering">
+					<form class="x-display-list-filtering__per-page" method="get" action="&mvte:urls:_self:auto_noparams;">
+						<fieldset>
+							<legend>Number of Products to Show</legend>
+							<mvt:if expr="tolower( l.settings:category_listing:mode ) EQ 'ctgy' AND toupper( g.Screen ) NE 'CTGY'">
+								<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+							<mvt:elseif expr="tolower( l.settings:category_listing:mode ) EQ 'relp' AND toupper( g.Screen ) NE 'PROD'">
+								<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+							</mvt:if>
+							<mvt:item name="urls" param="hidden_params:_self:auto" />
+							<input type="hidden" name="Search" value="&mvte:global:Search;" />
+							<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+							<mvt:foreach iterator="facet" array="facets:facets">
+								<mvt:foreach iterator="facet_value" array="facet:values">
+									<mvt:if expr="l.settings:facet_value:selected">
+										<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;" />
+									</mvt:if>
+								</mvt:foreach>
+							</mvt:foreach>
+							<div class="c-form-list">
+								<div class="c-form-list__item">
+									<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-per_page_filter">View</label>
+									<div class="c-form-select">
+										<select id="l-per_page_filter" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Per_Page" onchange="MMProdList_UpdateQuery( this ); return true;">
+											<mvt:if expr="g.Per_Page EQ 12">
+												<option value="12" selected="selected">12 Items/Page</option>
+											<mvt:else>
+												<option value="12">12 Items/Page</option>
+											</mvt:if>
+											<mvt:if expr="g.Per_Page EQ 24">
+												<option value="24" selected="selected">24 Items/Page</option>
+											<mvt:else>
+												<option value="24">24 Items/Page</option>
+											</mvt:if>
+											<mvt:if expr="g.Per_Page EQ 48">
+												<option value="48" selected="selected">48 Items/Page</option>
+											<mvt:else>
+												<option value="48">48 Items/Page</option>
+											</mvt:if>
+											<mvt:if expr="g.Per_Page EQ -1">
+												<option value="-1" selected="selected">All Items</option>
+											<mvt:else>
+												<option value="-1">All Items</option>
+											</mvt:if>
+										</select>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+					<!-- end .x-display-list-filtering__per-page -->
+					<form class="x-display-list-filtering__sort-by" method="get" action="&mvte:urls:_self:auto_noparams;">
+						<fieldset>
+							<legend>Sort Products By</legend>
+							<mvt:if expr="tolower( l.settings:category_listing:mode ) EQ 'ctgy' AND toupper( g.Screen ) NE 'CTGY'">
+								<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;">
+							<mvt:elseif expr="tolower( l.settings:category_listing:mode ) EQ 'relp' AND toupper( g.Screen ) NE 'PROD'">
+								<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;">
+							</mvt:if>
+							<mvt:item name="urls" param="hidden_params:_self:auto"/>
+							<input type="hidden" name="Search" value="&mvte:global:Search;"/>
+							<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;"/>
+							<mvt:foreach iterator="facet" array="facets:facets">
+								<mvt:foreach iterator="facet_value" array="facet:values">
+									<mvt:if expr="l.settings:facet_value:selected">
+										<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;">
+									</mvt:if>
+								</mvt:foreach>
+							</mvt:foreach>
+							<div class="c-form-list">
+								<div class="c-form-list__item">
+									<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-sort_by_filter">Sort</label>
+									<div class="c-form-select">
+										<select id="l-sort_by_filter" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Sort_By" onchange="MMProdList_UpdateQuery( this ); return true;">
+											<mvt:if expr="ISNULL g.Sort_By">
+												<option value="disp_order" selected>Featured</option>
+											<mvt:else>
+												<option value="disp_order">Featured</option>
+											</mvt:if>
+											<mvt:if expr="g.Sort_By EQ 'bestsellers'">
+												<option value="bestsellers" selected>Best Selling</option>
+											<mvt:else>
+												<option value="bestsellers">Best Selling</option>
+											</mvt:if>
+											<mvt:if expr="g.Sort_By EQ 'price_asc'">
+												<option value="price_asc" selected>Price (Low to High)</option>
+											<mvt:else>
+												<option value="price_asc">Price (Low to High)</option>
+											</mvt:if>
+											<mvt:if expr="g.Sort_By EQ 'price_desc'">
+												<option value="price_desc" selected>Price (High to Low)</option>
+											<mvt:else>
+												<option value="price_desc">Price (High to Low)</option>
+											</mvt:if>
+											<mvt:if expr="g.Sort_By EQ 'newest'">
+												<option value="newest" selected>Newest Items</option>
+											<mvt:else>
+												<option value="newest">Newest Items</option>
+											</mvt:if>
+										</select>
+									</div>
+								</div>
+							</div>
+						</fieldset>
+					</form>
+					<!-- end .x-display-list-filtering__sort-by -->
+				</div>
+				<!-- end .x-display-list-filtering -->
+				<hr class="c-keyline">
+			</section>
+	
+			<form method="get" action="&mvte:urls:_self:auto_noparams;">
+				<fieldset>
+					<legend>Search Facets</legend>
+					<mvt:if expr="NOT ISNULL g.Category_Code AND toupper( g.Screen ) NE 'CTGY'">
+						<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+						<mvt:assign name="l.settings:clear_facets:category" value="'&Category_Code=' $ g.Category_Code"/>
+					<mvt:elseif expr="NOT ISNULL g.Product_Code AND toupper( g.Screen ) NE 'PROD'">
+						<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+						<mvt:assign name="l.settings:clear_facets:product" value="'&Product_Code=' $ g.Product_Code"/>
+					</mvt:if>
+					<mvt:item name="urls" param="hidden_params:_self:auto" />
+					<input type="hidden" name="Search" value="&mvte:global:Search;" />
+					<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+					<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+					<mvt:assign name="l.settings:clear_facets" value="l.settings:urls:_self:auto_sep $ 'Search=' $ g.Search $ l.settings:clear_facets:category $ l.settings:clear_facets:product"/>
+					<div class="c-form-list x-facets">
+						<mvt:if expr="l.settings:facets:applied_facet_count GT 0">
+							<div class="c-form-list__item">
+								<a class="u-color-red" href="&mvt:clear_facets;"><span class="u-icon-cross"></span> Clear Facets</a>
+							</div>
+						</mvt:if>
+						<mvt:foreach iterator="facet" array="facets:facets">
+							<div class="c-form-list__item x-facet-set">
+								<button class="x-collapsible-content__toggle x-facet-set__label" data-a11y-toggle="facet-set__&mvte:facet:code;" type="button">&mvt:facet:name; <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+								<div id="facet-set__&mvte:facet:code;" class="c-form-list__item x-facet-set__list x-collapsible-content__item" data-a11y-toggle-open>
+									<mvt:if expr="l.settings:facet:type EQ 'radio'">
+										<mvt:foreach iterator="facet_value" array="facet:values">
+											<mvt:if expr="l.settings:facet_value:selected">
+												<label class="c-form-checkbox c-form-checkbox--radio">
+													<input class="c-form-checkbox__input" type="radio" name="&mvte:facet:code;" onclick="MMProdList_UpdateQuery( this ); return true;" checked value="&mvte:facet_value:value;">
+													<span class="c-form-checkbox__caption">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</span>
+												</label>
+											<mvt:else>
+												<label class="c-form-checkbox c-form-checkbox--radio">
+													<input class="c-form-checkbox__input" type="radio" name="&mvte:facet:code;" onclick="MMProdList_UpdateQuery( this ); return true;" value="&mvte:facet_value:value;">
+													<span class="c-form-checkbox__caption">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</span>
+												</label>
+											</mvt:if>
+										</mvt:foreach>
+									<mvt:elseif expr="l.settings:facet:type EQ 'checkbox'">
+										<mvt:foreach iterator="facet_value" array="facet:values">
+											<mvt:if expr="l.settings:facet_value:selected">
+												<label class="c-form-checkbox">
+													<input class="c-form-checkbox__input" type="checkbox" name="&mvte:facet:code;" onclick="MMProdList_UpdateQuery( this ); return true;" checked value="&mvte:facet_value:value;">
+													<span class="c-form-checkbox__caption">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</span>
+												</label>
+											<mvt:else>
+												<label class="c-form-checkbox">
+													<input class="c-form-checkbox__input" type="checkbox" name="&mvte:facet:code;" onclick="MMProdList_UpdateQuery( this ); return true;" value="&mvte:facet_value:value;">
+													<span class="c-form-checkbox__caption">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</span>
+												</label>
+											</mvt:if>
+										</mvt:foreach>
+									<mvt:elseif expr="l.settings:facet:type EQ 'select'">
+										<label class="c-form-select">
+											<select class="c-form-select__dropdown" name="&mvte:facet:code;" onchange="MMProdList_UpdateQuery( this ); return true;">
+												<option value="">Select One</option>
+												<mvt:foreach iterator="facet_value" array="facet:values">
+													<mvt:if expr="l.settings:facet_value:selected">
+														<option value="&mvte:facet_value:value;" selected>&mvt:facet_value:prompt; (&mvte:facet_value:count;)</option>
+													<mvt:else>
+														<option value="&mvte:facet_value:value;">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</option>
+													</mvt:if>
+												</mvt:foreach>
+											</select>
+										</label>
+									<mvt:elseif expr="l.settings:facet:type EQ 'rangeslider'">
+										<mvt:assign name="l.settings:mm_facet_rangeslider_present" value="1" />
+										<span class="mm_facet_rangeslider mm_facet_rangeslider_mini" data-mm-facet-code="&mvte:facet:code;" data-mm-facet-module-code="&mvte:facet:module:code;" data-mm-facet-rangeslider-name="&mvte:facet:code;" data-mm-facet-rangeslider-range-low="&mvte:facet:value_low;" data-mm-facet-rangeslider-range-high="&mvte:facet:value_high;" data-mm-facet-rangeslider-selected-range-low="&mvte:facet:selected_value_low;"	data-mm-facet-rangeslider-selected-range-high="&mvte:facet:selected_value_high;"></span>
+									
+										<script>
+											/**
+											 * This function will reinitialize the Range Sliders when the page resizes.
+											 */
+											var animationTimeout;
+											var rangeSliders = document.querySelectorAll('[data-mm-facet-rangeslider-name]');
+											
+											window.addEventListener('resize', function () {
+												'use strict';
+										
+												if (animationTimeout) {
+													window.cancelAnimationFrame(animationTimeout);
+												}
+										
+												animationTimeout = window.requestAnimationFrame(function () {
+													if (rangeSliders.length > 0) {
+														MMFacet_RangeSlider_Initialize();
+													}
+												});
+											}, false);
+										</script>
+										
+									<mvt:elseif expr="l.settings:facet:type EQ 'nested'">
+										<mvt:assign name="l.settings:nested_facet:level" value="1" />
+										<mvt:foreach iterator="applied_value" array="facet:applied_values">
+											<input type="hidden" name="&mvte:facet:code;" value="&mvte:applied_value:value;">
+											<div class="x-category-tree__list x-category-tree__list--level-&mvte:nested_facet:level;">
+												<a class="x-category-tree__link" href="#" onclick="MMProdList_RemoveNestedFacetValue( this, '&mvtj:facet:code;', '&mvtj:applied_value:value;', 0 ); return false;">&mvt:applied_value:prompt</a>
+											</div>
+											<mvt:assign name="l.settings:nested_facet:level" value="l.settings:nested_facet:level + 1" />
+										</mvt:foreach>
+										<mvt:foreach iterator="facet_value" array="facet:values">
+											<div class="x-category-tree__list x-category-tree__list--level-&mvte:nested_facet:level;">
+												<a class="x-category-tree__link" href="#" onclick="MMProdList_AddNestedFacetValue( this, '&mvtj:facet:code;', '&mvtj:facet_value:value;', 0 ); return false;">&mvt:facet_value:prompt; (&mvte:facet_value:count;)</a>
+											</div>
+										</mvt:foreach>
+									</mvt:if>
+								</div>
+								<hr class="c-keyline">
+							</div>
+						</mvt:foreach>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</nav>
+</mvt:if>

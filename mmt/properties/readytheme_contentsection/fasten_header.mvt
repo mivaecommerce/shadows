@@ -1,0 +1,52 @@
+<mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
+<section class="o-layout o-layout--align-center x-fasten-header &mvte:global:checkout_hidden;" data-hook="fasten-header" aria-hidden="true">
+	<div class="o-layout__item u-width-2 u-width-1--w u-text-left t-site-header__logo">
+		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
+			<mvt:if expr="l.settings:readytheme:fasten_header_logo:active">
+				<img class="x-fasten-header__logo-image" src="&mvte:readytheme:fasten_header_logo:image;" alt="&mvte:readytheme:fasten_header_logo:image_alt;" loading="lazy" width="&mvte:readytheme:fasten_header_logo:image_wdth;" height="&mvte:readytheme:fasten_header_logo:image_hght;">
+			<mvt:else>
+				<mvt:if expr="l.settings:readytheme:logo_type EQ 'text'">
+					<div class="t-site-header__store-name">&mvt:readytheme:logo_name;</div>
+					<small class="t-site-header__store-tagline">&mvt:readytheme:logo_tagline;</small>
+				<mvt:elseif expr="l.settings:readytheme:logo_type EQ 'image'">
+					<img class="x-fasten-header__logo-image" src="&mvte:readytheme:logo_image;" alt="&mvte:readytheme:logo_alt;" loading="lazy" width="&mvte:readytheme:logo_image_width;" height="&mvte:readytheme:logo_image_height;">
+				</mvt:if>
+			</mvt:if>
+		</a>
+	</div>
+	
+	<div class="o-layout__item u-width-2 u-width-4--w">
+		<a class="c-button c-button--clear c-button--flush u-bg-transparent u-color-gray-50 u-text-medium u-text-uppercase" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop Our Catalog <span class="u-font-tiny u-icon-chevron-right" aria-hidden="true"></span></a>
+	</div>
+	
+	<div class="o-layout__item u-width-4">
+		<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;">
+			<fieldset>
+				<legend>Product Search</legend>
+				<div class="c-form-list">
+					<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
+						<input class="c-form-input c-control-group__field u-bg-transparent u-border-none" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview--fasten" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required aria-label="Secondary Product Search" tabindex="-1">
+						<button class="c-button c-button--large c-control-group__button u-bg-transparent u-color-gray-50 u-icon-search u-border-none" type="submit" aria-label="Perform Secondary Product Search" tabindex="-1"></button>
+					</div>
+				</div>
+			</fieldset>
+			<span class="x-search-preview u-color-gray-50" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview--fasten"></span>
+		</form>
+	</div>
+
+	<div class="o-layout__item u-flex u-width-4 u-width-3--w t-site-header__masthead-links">
+		<mvt:if expr="g.Basket:cust_id EQ 0">
+			<a class="u-color-gray-50 u-text-uppercase t-global-account-toggle" href="&mvte:urls:LOGN:secure;" tabindex="-1">
+				<span class="u-icon-user" aria-hidden="true"></span> Sign In
+			</a>
+		<mvt:else>
+			<a class="u-color-gray-50 u-text-uppercase t-global-account-toggle" href="&mvte:urls:ACLN:secure;" tabindex="-1">
+				<span class="u-icon-user" aria-hidden="true"></span> My Account
+			</a>
+		</mvt:if>
+		<a class="u-color-gray-50 u-text-uppercase t-site-header__basket-link" data-hook="open-mini-basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
+			<span class="u-icon-cart-empty" data-hook="open-mini-basket" aria-hidden="true"></span> Cart
+			<span class="u-bg-gray-50 u-color-white t-site-header__basket-link-quantity" data-hook="open-mini-basket mini-basket-count">&mvte:global_minibasket:basket_count;</span>
+		</a>
+	</div>
+</section>

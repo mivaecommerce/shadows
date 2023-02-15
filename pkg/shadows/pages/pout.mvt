@@ -1,0 +1,57 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--justify-center">
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
+			<mvt:assign name="l.settings:url" value="miva_variable_value( 'l.settings:urls:' $ g.Old_Screen $ ':rr' )" />
+			<form method="post" action="&mvte:url;">
+				<fieldset>
+					<legend>&mvt:page:name; for &mvt:product:name;</legend>
+					<input type="hidden" name="Search" value="&mvte:global:Old_Search;" />
+					<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+					<input type="hidden" name="Current_Product_Code" value="&mvte:global:Current_Product_Code;" />
+					<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
+					<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+					<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+					<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+					<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+					<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+					<div class="c-form-list">
+						<div class="c-form-list__item u-text-right">
+							<mvt:item name="buttons" param="Back" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

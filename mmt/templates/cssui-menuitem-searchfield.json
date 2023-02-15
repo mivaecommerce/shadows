@@ -1,0 +1,21 @@
+{
+    "additionalprice": "base",
+    "advanced": 1,
+    "b_height": 64,
+    "b_width": 64,
+    "constrain": "B",
+    "displaydiscounts": 0,
+    "image": "type:main",
+    "imagetypes": [
+        "main"
+    ],
+    "predictdiscounts": 1,
+    "price": "sale",
+    "prod_code": 1,
+    "prod_desc": 0,
+    "prod_name": 1,
+    "prod_price": 1,
+    "prod_sku": 0,
+    "prod_wt": 0,
+    "sort_by": "code_asc"
+}

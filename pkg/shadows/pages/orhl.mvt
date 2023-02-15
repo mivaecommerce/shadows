@@ -1,0 +1,87 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--justify-around">
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l u-offset-1--l">
+			<p class="c-heading-charlie u-text-bold u-text-uppercase">Current Customer?</p>
+			<p class="u-color-gray-40 u-font-small">Please sign in to view your order history.</p>
+			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off">
+				<fieldset>
+					<legend>&mvt:page:name; Account Log In</legend>
+					<input type="hidden" name="Action" value="LOGN" />
+					<div class="c-form-list">
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<mvt:if expr="g.Customer_Temporary_Password">
+								<input type="hidden" name="Customer_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;">
+								<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" value="&mvte:global:Customer_Temporary_Password;" required>
+							<mvt:else>
+								<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required>
+							</mvt:if>
+						</div>
+						<div class="c-form-list__item u-text-right">
+							<mvt:item name="buttons" param="Login" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<p class="u-font-small"><a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot your password?</a></p>
+		</div>
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-5--l">
+			<p class="c-heading-charlie u-text-bold u-text-uppercase">No Account? No Problem&hellip;</p>
+			<p class="u-color-gray-40 u-font-small">Find your order by the billing email and zip/postal code.</p>
+			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off">
+				<fieldset>
+					<legend>&mvt:page:name; By Email and Zip Code</legend>
+					<div class="c-form-list">
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Order_BillEmail">Billing Email</label>
+							<input id="l-Order_BillEmail" class="c-form-input c-form-input--large" type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" autocomplete="email" required>
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Order_BillZip">Billing Zip/Postal Code</label>
+							<input id="l-Order_BillZip" class="c-form-input c-form-input--large" type="text" name="Order_BillZip" required>
+						</div>
+						<div class="c-form-list__item u-text-right">
+							<input class="c-button c-button--large u-bg-gray-30 u-font-small u-text-bold u-text-uppercase" type="submit" value="Find Orders">
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+			<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

@@ -1,0 +1,49 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "ordh-footer.mvc"
+        },
+        "header": {
+            "template_filename": "ordh-header.mvc"
+        }
+    },
+    "orderhistory_list": {
+        "advanced": 1,
+        "default_sort": "OrdDtDesc",
+        "invoice": 1,
+        "items_per_page_filter": 1,
+        "order_date": 1,
+        "order_total": 1,
+        "page_disp_count": 3,
+        "paginate": 1,
+        "per_page": 12,
+        "products_bought": 1,
+        "quantity_bought": 1,
+        "sort_by": {
+            "invoice": 1,
+            "order_date": 1,
+            "order_total": 1,
+            "status": 1,
+            "switch": 1
+        },
+        "status": 1,
+        "template_filename": "ordh-orderhistory_list.mvc",
+        "tracking": 1
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://local.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://local.coolcommerce.net/"
+    }
+}

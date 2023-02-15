@@ -1,0 +1,1069 @@
+<Page_Update code="OPAY"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
+<input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
+
+<iframe id="mivapay_frame" name="MivaPay_Frame" src="" title="Payment Details" style="width: 100%; height: 0; border: 0 none; visibility: hidden;"></iframe>
+
+<script>
+	function stoi(value) {
+		return parseInt(value, 10);
+	}
+
+	function stoi_def_nonneg(value, default_value) {
+		value = stoi(value);
+
+		return ((isNaN(value) || (value < 0) || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) ? default_value : value);
+	}
+
+	function AddEvent(obj, eventType, fn) {
+		if (obj.addEventListener) {
+			obj.addEventListener(eventType, fn, false);
+			return true;
+		}
+		else if (obj.attachEvent) {
+			var r = obj.attachEvent('on' + eventType, fn);
+			return r;
+		}
+		else {
+			return false;
+		}
+	}
+
+	function parentForm(element) {
+		while (element.nodeName.toLowerCase() !== 'form' && element.parentNode) {
+			element = element.parentNode;
+		}
+
+		if (element.nodeName.toLowerCase() !== 'form') {
+			return;
+		}
+
+		return element;
+	}
+
+	function MivaPay() {
+		var self = this;
+
+		this.submitting = false;
+		this.request_xml = '&mvtj:mivapay:paymentcardfields:request_xml;';
+		this.request_signature = '&mvtj:mivapay:paymentcardfields:request_signature;';
+		this.event_receivemessage = function (event) {
+			self.Receive_Message(event);
+		};
+
+		AddEvent(window, 'message', this.event_receivemessage);
+
+		this.element_frame = document.getElementById('mivapay_frame');
+		this.element_response_xml = document.getElementById('mivapay_response_xml');
+		this.element_response_signature = document.getElementById('mivapay_response_signature');
+
+		if (this.element_form === document.getElementById('mivapay_form')) {
+			this.element_form_request_xml = document.getElementById('mivapay_form_request_xml');
+			this.element_form_request_signature = document.getElementById('mivapay_form_request_signature');
+		}
+		else {
+			this.element_form = document.createElement('form');
+			this.element_form.id = 'mivapay_form';
+			this.element_form.target = 'MivaPay_Frame';
+			this.element_form.method = 'POST';
+			this.element_form.action = '&mvtj:paymentsettings:mivapay:payment_url_sep;';
+
+			this.element_form_request_xml = document.createElement('input');
+			this.element_form_request_xml.id = 'mivapay_form_request_xml';
+			this.element_form_request_xml.type = 'hidden';
+			this.element_form_request_xml.name = 'RequestXML';
+
+			this.element_form_request_signature = document.createElement('input');
+			this.element_form_request_signature.id = 'mivapay_form_request_signature';
+			this.element_form_request_signature.type = 'hidden';
+			this.element_form_request_signature.name = 'RequestSignature';
+
+			this.element_form.appendChild(this.element_form_request_xml);
+			this.element_form.appendChild(this.element_form_request_signature);
+			document.body.appendChild(this.element_form);
+		}
+
+		this.element_form_request_xml.value = this.request_xml;
+		this.element_form_request_signature.value = this.request_signature;
+
+		this.element_form.submit();
+	}
+
+	MivaPay.prototype.Submit = function (callback) {
+		this.submit_callback = callback;
+
+		if (this.element_frame && !this.submitting) {
+			this.submitting = true;
+			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
+		}
+	};
+
+	MivaPay.prototype.Receive_Message = function (event) {
+		var origin, response, signature;
+
+		origin = event.origin || event.originalEvent.origin;
+		this.submitting = false;
+
+		if ('&mvtj:paymentsettings:mivapay:base_url;/'.indexOf(origin + '/') !== 0) {
+			return;
+		}
+
+		if (event && (typeof event.data === 'string')) {
+			if (event.data.indexOf('dimensions:') === 0) {
+				if (this.element_frame) {
+					this.element_frame.style.width = '100%';
+					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
+					this.element_frame.style.visibility = 'visible';
+				}
+			}
+			else if (event.data.indexOf('response:') === 0) {
+				response = event.data.split(':')[1];
+				signature = event.data.split(':')[2];
+
+				this.element_response_xml.value = response;
+				this.element_response_signature.value = signature;
+
+				if (typeof this.submit_callback === 'function') {
+					this.submit_callback();
+				}
+			}
+			else if (event.data.indexOf('error:') === 0) {
+				this.element_response_xml.value = '';
+				this.element_response_signature.value = '';
+
+				if (typeof this.submit_callback === 'function') {
+					this.submit_callback();
+				}
+			}
+		}
+	};
+
+	var MivaPay = new MivaPay();
+</script>
+]]></Template><Notes>#Set_Current_Time#</Notes><Mode>checkout</Mode><CardTypePromptHidden>No</CardTypePromptHidden><CardTypePrompt>Card Type:</CardTypePrompt><StoreCardPrompt>Store This Card For Future Use</StoreCardPrompt><StoreCardPromptCheckedByDefault>No</StoreCardPromptCheckedByDefault></PaymentCardFields><PaymentCardFields_CSS><Template>{
+	"selector": "html",
+	"properties": {
+		"box-sizing": "border-box",
+		"height": "100%",
+		"min-height": "100%",
+		"font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+		"font-size": "1rem",
+		"-webkit-font-smoothing": "antialiased",
+		"-moz-osx-font-smoothing": "grayscale",
+		"line-height": "1.5",
+		"-webkit-text-size-adjust": "100%",
+		"-ms-text-size-adjust": "100%",
+		"color": "rgb(74, 74, 74)",
+		"-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)",
+		"touch-action": "manipulation"
+	}
+},
+{
+	"selector": "body",
+	"properties": {
+		"margin": "0"
+	}
+},
+{
+	"selector": ".form_row.invalid input[type=\"text\"],.form_row.invalid select",
+	"properties": {
+		"border-color": "rgb(200, 16, 46)"
+	}
+},
+{
+	"selector": ".form_row.invalid label",
+	"properties": {
+		"color": "rgb(200, 16, 46)"
+	}
+},
+{
+	"selector": ".bold",
+	"properties": {
+		"font-weight": "700"
+	}
+},
+{
+	"selector": "*, *::before, *::after ",
+	"properties": {
+		"box-sizing": "inherit"
+	}
+},
+{
+	"selector": "#document-sizer",
+	"properties": {
+		"min-width": "100%"
+	}
+},
+{
+	"selector": "#payment-fields",
+	"properties": {
+		"display": "flex",
+		"width": "100%",
+		"flex-direction": "column",
+		"align-items": "center"
+	}
+},
+{
+	"selector": "#mivapay_form",
+	"properties": {
+		"position": "relative",
+		"height": "auto",
+		"clear": "both",
+		"overflow": "auto",
+		"zoom": "1"
+	}
+},
+{
+	"selector": ".form_row",
+	"properties": {
+		"display": "flex",
+		"width": "100%",
+		"min-height": "1px",
+		"margin-bottom": "1rem",
+		"flex-wrap": "wrap",
+		"align-items": "center",
+		"justify-content": "space-between"
+	}
+},
+{
+	"selector": ".form_row label",
+	"properties": {
+		"display": "block",
+		"flex-basis": "100%",
+		"margin-bottom": "0.25rem",
+		"font-size": "0.832em",
+		"font-weight": "600",
+		"text-transform": "uppercase"
+	}
+},
+{
+	"selector": "input[type='text'], select",
+	"properties": {
+		"border": "1px solid rgb(192, 192, 192)",
+		"padding": "0.5rem",
+		"width": "100%",
+		"height": "calc(4.5em - (1px * 2))",
+		"line-height": "calc(4.5em - (1px * 2))",
+		"border-radius": "0.125em",
+		"box-shadow": "0 0 0 0 rgba(0, 0, 0, 0.2)",
+		"outline": "0",
+		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
+		"display": "inline-block"
+	}
+
+},
+{
+	"selector": "input[type='text']:focus, select:focus",
+	"properties": {
+		"border-color": "rgb(255, 255, 255)",
+		"box-shadow": "0 0 8px 0 rgba(0, 0, 0, 0.2)",
+		"outline": "none"
+	}
+
+},
+{
+	"selector": "#mvp_exp_month, #mvp_exp_year, .form_row input.mvp_cvv",
+	"properties": {
+		"width": "calc((100% - 1rem) / 2)"
+	}
+},
+{
+	"selector": "#mvp_addressfields_container.mvp_addressfields_container",
+	"properties": {
+		"display": "flex",
+		"width": "100%",
+		"align-items": "center",
+		"flex-direction": "column"
+	}
+},
+{
+	"selector": "#mvp_addressfields_container.mvp_addressfields_hide",
+	"properties": {
+		"display": "none"
+	}
+},
+{
+	"selector": ".mvp_storetoken_container",
+	"properties": {
+		"justify-content": "flex-start"
+	}
+},
+{
+	"selector": ".mvp_storetoken",
+	"properties": {
+		"margin-right": "1em"
+	}
+},
+{
+	"selector": "input[type='text']:-moz-placeholder",
+	"properties": {
+		"color": "#8a7b7b"
+	}
+
+},
+{
+	"selector": "input[type='text']::-moz-placeholder",
+	"properties": {
+		"color": "#8a7b7b"
+	}
+
+},
+{
+	"selector": "input[type='text']:-ms-input-placeholder",
+	"properties": {
+		"color": "#8a7b7b"
+	}
+
+},
+{
+	"selector": "input[type='text']::-webkit-input-placeholder",
+	"properties": {
+		"color": "#8a7b7b"
+	}
+
+},
+{
+"at-rule": "media",
+"media": "screen and (min-width: 748px)",
+"selectors":
+	[
+		{
+			"selector": ".form_row",
+			"properties": {
+				"max-width": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container",
+			"properties": {
+				"float": "none"
+			}
+		}
+	]
+}
+</Template><Notes>#Set_Current_Time#</Notes></PaymentCardFields_CSS></Item></Page_Update><Page_Update code="CPCA"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
+<input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
+
+<iframe id="mivapay_frame" name="MivaPay_Frame" src="" style="width: 100%; height: 0; border: 0 none; visibility: hidden;" title="Payment Card Details"></iframe>
+
+<script>
+	function stoi(value) {
+		return parseInt(value, 10);
+	}
+
+	function stoi_def_nonneg(value, default_value) {
+		value = stoi(value);
+
+		return ((isNaN(value) || (value < 0) || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) ? default_value : value);
+	}
+
+	function AddEvent(obj, eventType, fn) {
+		if (obj.addEventListener) {
+			obj.addEventListener(eventType, fn, false);
+			return true;
+		}
+		else if (obj.attachEvent) {
+			var r = obj.attachEvent('on' + eventType, fn);
+			return r;
+		}
+		else {
+			return false;
+		}
+	}
+
+	function parentForm(element) {
+		while (element.nodeName.toLowerCase() !== 'form' && element.parentNode) {
+			element = element.parentNode;
+		}
+
+		if (element.nodeName.toLowerCase() !== 'form') {
+			return;
+		}
+
+		return element;
+	}
+
+	function MivaPay() {
+		var self = this;
+
+		this.submitting = false;
+		this.request_xml = '&mvtj:mivapay:paymentcardfields:request_xml;';
+		this.request_signature = '&mvtj:mivapay:paymentcardfields:request_signature;';
+		this.event_receivemessage = function (event) {
+			self.Receive_Message(event);
+		};
+
+		AddEvent(window, 'message', this.event_receivemessage);
+
+		this.element_frame = document.getElementById('mivapay_frame');
+		this.element_response_xml = document.getElementById('mivapay_response_xml');
+		this.element_response_signature = document.getElementById('mivapay_response_signature');
+
+		if (this.element_form === document.getElementById('mivapay_form')) {
+			this.element_form_request_xml = document.getElementById('mivapay_form_request_xml');
+			this.element_form_request_signature = document.getElementById('mivapay_form_request_signature');
+		}
+		else {
+			this.element_form = document.createElement('form');
+			this.element_form.id = 'mivapay_form';
+			this.element_form.target = 'MivaPay_Frame';
+			this.element_form.method = 'POST';
+			this.element_form.action = '&mvtj:paymentsettings:mivapay:payment_url_sep;';
+
+			this.element_form_request_xml = document.createElement('input');
+			this.element_form_request_xml.id = 'mivapay_form_request_xml';
+			this.element_form_request_xml.type = 'hidden';
+			this.element_form_request_xml.name = 'RequestXML';
+
+			this.element_form_request_signature = document.createElement('input');
+			this.element_form_request_signature.id = 'mivapay_form_request_signature';
+			this.element_form_request_signature.type = 'hidden';
+			this.element_form_request_signature.name = 'RequestSignature';
+
+			this.element_form.appendChild(this.element_form_request_xml);
+			this.element_form.appendChild(this.element_form_request_signature);
+			document.body.appendChild(this.element_form);
+		}
+
+		this.element_form_request_xml.value = this.request_xml;
+		this.element_form_request_signature.value = this.request_signature;
+
+		this.element_form.submit();
+	}
+
+	MivaPay.prototype.Submit = function (callback) {
+		this.submit_callback = callback;
+
+		if (this.element_frame && !this.submitting) {
+			this.submitting = true;
+			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
+		}
+	}
+
+	MivaPay.prototype.Receive_Message = function (event) {
+		var origin, response, signature;
+
+		origin = event.origin || event.originalEvent.origin;
+		this.submitting = false;
+
+		if ('&mvtj:paymentsettings:mivapay:base_url;/'.indexOf(origin + '/') !== 0) {
+			return;
+		}
+
+		if (event && (typeof event.data === 'string')) {
+			if (event.data.indexOf('dimensions:') === 0) {
+				if (this.element_frame) {
+					this.element_frame.style.width = '100%';
+					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
+					this.element_frame.style.visibility = 'visible';
+				}
+			}
+			else if (event.data.indexOf('response:') === 0) {
+				response = event.data.split(':')[1];
+				signature = event.data.split(':')[2];
+
+				this.element_response_xml.value = response;
+				this.element_response_signature.value = signature;
+
+				if (typeof this.submit_callback === 'function') {
+					this.submit_callback();
+				}
+			}
+		}
+	}
+
+	var MivaPay = new MivaPay();
+</script>
+]]></Template><Notes>#Set_Current_Time#</Notes><Mode>paymentcard_add</Mode><CardTypePromptHidden>No</CardTypePromptHidden><CardTypePrompt>Card Type:</CardTypePrompt><StoreCardPrompt>Store This Card For Future Use</StoreCardPrompt><StoreCardPromptCheckedByDefault>No</StoreCardPromptCheckedByDefault></PaymentCardFields><PaymentCardFields_CSS><Template>{
+	"selector": "html",
+	"properties": {
+		"box-sizing": "border-box",
+		"height": "100%",
+		"min-height": "100%",
+		"font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+		"font-size": "1rem",
+		"-webkit-font-smoothing": "antialiased",
+		"-moz-osx-font-smoothing": "grayscale",
+		"line-height": "1.5",
+		"-webkit-text-size-adjust": "100%",
+		"-ms-text-size-adjust": "100%",
+		"color": "rgb(74, 74, 74)",
+		"-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)",
+		"touch-action": "manipulation"
+	}
+},
+{
+	"selector": "body",
+	"properties": {
+		"margin": "0"
+	}
+},
+{
+	"selector": ".form_row.invalid input[type=\"text\"],.form_row.invalid select",
+	"properties": {
+		"border-color": "rgb(200, 16, 46)"
+	}
+},
+{
+	"selector": "*, *::before, *::after ",
+	"properties": {
+		"box-sizing": "inherit"
+	}
+},
+{
+	"selector": "#mvp_exp_date_container::after",
+	"properties": {
+		"content": "'Billing Address'",
+		"display": "block",
+		"font-size": "1.125rem",
+		"position": "relative",
+		"bottom": "-1.5rem",
+		"padding": "2rem 0",
+		"clear": "both",
+		"text-transform": "uppercase"
+	}
+},
+{
+	"selector": ".form_row",
+	"properties": {
+		"margin-bottom": "1rem",
+		"float": "left",
+		"position": "relative",
+		"width": "100%",
+		"min-height": "1px"
+	}
+},
+{
+	"selector": ".form_row label",
+	"properties": {
+		"display": "block",
+		"margin-bottom": "0.25rem",
+		"font-size": "0.75em",
+		"font-weight": "700",
+		"text-transform": "uppercase"
+	}
+},
+{
+	"selector": "input[type='text'], select",
+	"properties": {
+		"border": "1px solid rgb(192, 192, 192)",
+		"padding": "0.5rem",
+		"width": "100%",
+		"height": "calc(3.875em - (1px * 2))",
+		"line-height": "calc(3.875em - (1px * 2))",
+		"border-radius": "0.125em",
+		"box-shadow": "0 0 0 0 rgba(0, 0, 0, 0.2)",
+		"outline": "0",
+		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
+		"display": "inline-block"
+	}
+
+},
+{
+	"selector": "input[type='text']:focus, select:focus",
+	"properties": {
+		"border-color": "rgb(255, 255, 255)",
+		"box-shadow": "0 0 8px 0 rgba(0, 0, 0, 0.2)",
+		"outline": "none"
+	}
+
+},
+{
+	"selector": "#mvp_exp_month,#mvp_exp_year",
+	"properties": {
+		"width": "45%"
+	}
+},
+{
+	"selector": "#mvp_exp_month",
+	"properties": {
+		"float": "left"
+	}
+},
+{
+	"selector": "#mvp_exp_date_container::before",
+	"properties": {
+		"content": "'/'",
+		"display": "inline-block",
+		"position": "absolute",
+		"left": "49%",
+		"top": "20%",
+		"font-size": "1em"
+	}
+},
+{
+	"selector": "#mvp_exp_year",
+	"properties": {
+		"float": "right"
+	}
+},
+{
+"at-rule": "media",
+"media": "screen and (min-width: 550px)",
+"selectors":
+	[
+		{
+			"selector": ".form_row",
+			"properties": {
+				"padding-right": "1rem",
+				"padding-left": "1rem"
+			}
+		},
+		{
+			"selector": "#mivapay_form",
+			"properties": {
+				"position": "relative",
+				"height": "auto",
+				"clear": "both",
+				"overflow": "auto",
+				"zoom": "1"
+			}
+		},
+		{
+			"selector": "#mvp_exp_date_container::after",
+			"properties": {
+				"display": "none"
+			}
+		},
+		{
+			"selector": "#mvp_exp_date_container::before",
+			"properties": {
+				"top": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_cardnumber_container::after",
+			"properties": {
+				"content": "'Billing Address'",
+				"display": "block",
+				"font-size": "1.25rem",
+				"font-weight": "700",
+				"margin": "2rem 0 0",
+				"text-transform": "uppercase"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container, #mvp_address2_container, #mvp_addresslist_container, #mvp_stateselect_container, #mvp_state_container, #mvp_zip_container",
+			"properties": {
+				"width": "33.3332%"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container",
+			"properties": {
+				"float": "none"
+			}
+		},
+		{
+			"selector": "#mvp_firstname_container, #mvp_lastname_container, #mvp_cardnumber_container, #mvp_exp_date_container, #mvp_country_container",
+			"properties": {
+				"width": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container",
+			"properties": {
+				"width": "66.6665%",
+				"clear": "left"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container label::before, #mvp_address2_container label::before",
+			"properties": {
+				"content": "'Street'",
+				"display": "inline-block",
+				"margin-right": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_address2_container label::after",
+			"properties": {
+				"content": "'(Optional)'",
+				"display": "inline-block",
+				"margin-left": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_country_container",
+			"properties": {
+				"clear": "both",
+				"float": "none"
+			}
+		}
+	]
+}
+</Template><Notes>#Set_Current_Time#</Notes></PaymentCardFields_CSS></Item></Page_Update><Page_Update code="CPCE"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
+<input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
+
+<iframe id="mivapay_frame" name="MivaPay_Frame" src="" style="width: 100%; height: 0; border: 0 none; visibility: hidden;" title="Payment Card Details"></iframe>
+
+<script>
+	function stoi(value) {
+		return parseInt(value, 10);
+	}
+
+	function stoi_def_nonneg(value, default_value) {
+		value = stoi(value);
+
+		return ((isNaN(value) || (value < 0) || value === Number.POSITIVE_INFINITY || value === Number.NEGATIVE_INFINITY) ? default_value : value);
+	}
+
+	function AddEvent(obj, eventType, fn) {
+		if (obj.addEventListener) {
+			obj.addEventListener(eventType, fn, false);
+			return true;
+		}
+		else if (obj.attachEvent) {
+			var r = obj.attachEvent('on' + eventType, fn);
+			return r;
+		}
+		else {
+			return false;
+		}
+	}
+
+	function parentForm(element) {
+		while (element.nodeName.toLowerCase() !== 'form' && element.parentNode) {
+			element = element.parentNode;
+		}
+
+		if (element.nodeName.toLowerCase() !== 'form') {
+			return;
+		}
+
+		return element;
+	}
+
+	function MivaPay() {
+		var self = this;
+
+		this.submitting = false;
+		this.request_xml = '&mvtj:mivapay:paymentcardfields:request_xml;';
+		this.request_signature = '&mvtj:mivapay:paymentcardfields:request_signature;';
+		this.event_receivemessage = function (event) {
+			self.Receive_Message(event);
+		};
+
+		AddEvent(window, 'message', this.event_receivemessage);
+
+		this.element_frame = document.getElementById('mivapay_frame');
+		this.element_response_xml = document.getElementById('mivapay_response_xml');
+		this.element_response_signature = document.getElementById('mivapay_response_signature');
+
+		if (this.element_form === document.getElementById('mivapay_form')) {
+			this.element_form_request_xml = document.getElementById('mivapay_form_request_xml');
+			this.element_form_request_signature = document.getElementById('mivapay_form_request_signature');
+		}
+		else {
+			this.element_form = document.createElement('form');
+			this.element_form.id = 'mivapay_form';
+			this.element_form.target = 'MivaPay_Frame';
+			this.element_form.method = 'POST';
+			this.element_form.action = '&mvtj:paymentsettings:mivapay:payment_url_sep;';
+
+			this.element_form_request_xml = document.createElement('input');
+			this.element_form_request_xml.id = 'mivapay_form_request_xml';
+			this.element_form_request_xml.type = 'hidden';
+			this.element_form_request_xml.name = 'RequestXML';
+
+			this.element_form_request_signature = document.createElement('input');
+			this.element_form_request_signature.id = 'mivapay_form_request_signature';
+			this.element_form_request_signature.type = 'hidden';
+			this.element_form_request_signature.name = 'RequestSignature';
+
+			this.element_form.appendChild(this.element_form_request_xml);
+			this.element_form.appendChild(this.element_form_request_signature);
+			document.body.appendChild(this.element_form);
+		}
+
+		this.element_form_request_xml.value = this.request_xml;
+		this.element_form_request_signature.value = this.request_signature;
+
+		this.element_form.submit();
+	}
+
+	MivaPay.prototype.Submit = function (callback) {
+		this.submit_callback = callback;
+
+		if (this.element_frame && !this.submitting) {
+			this.submitting = true;
+			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
+		}
+	}
+
+	MivaPay.prototype.Receive_Message = function (event) {
+		var origin, response, signature;
+
+		origin = event.origin || event.originalEvent.origin;
+		this.submitting = false;
+
+		if ('&mvtj:paymentsettings:mivapay:base_url;/'.indexOf(origin + '/') !== 0) {
+			return;
+		}
+
+		if (event && (typeof event.data === 'string')) {
+			if (event.data.indexOf('dimensions:') === 0) {
+				if (this.element_frame) {
+					this.element_frame.style.width = '100%';
+					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
+					this.element_frame.style.visibility = 'visible';
+				}
+			}
+			else if (event.data.indexOf('response:') === 0) {
+				response = event.data.split(':')[1];
+				signature = event.data.split(':')[2];
+
+				this.element_response_xml.value = response;
+				this.element_response_signature.value = signature;
+
+				if (typeof this.submit_callback === 'function') {
+					this.submit_callback();
+				}
+			}
+		}
+	}
+
+	var MivaPay = new MivaPay();
+</script>
+]]></Template><Notes>#Set_Current_Time#</Notes><Mode>paymentcard_edit</Mode><CardTypePromptHidden>No</CardTypePromptHidden><CardTypePrompt>Card Type:</CardTypePrompt><StoreCardPrompt>Store This Card For Future Use</StoreCardPrompt><StoreCardPromptCheckedByDefault>No</StoreCardPromptCheckedByDefault></PaymentCardFields><PaymentCardFields_CSS><Template>{
+	"selector": "html",
+	"properties": {
+		"box-sizing": "border-box",
+		"height": "100%",
+		"min-height": "100%",
+		"font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
+		"font-size": "1rem",
+		"-webkit-font-smoothing": "antialiased",
+		"-moz-osx-font-smoothing": "grayscale",
+		"line-height": "1.5",
+		"-webkit-text-size-adjust": "100%",
+		"-ms-text-size-adjust": "100%",
+		"color": "rgb(74, 74, 74)",
+		"-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)",
+		"touch-action": "manipulation"
+	}
+},
+{
+	"selector": "body",
+	"properties": {
+		"margin": "0"
+	}
+},
+{
+	"selector": ".form_row.invalid input[type=\"text\"],.form_row.invalid select",
+	"properties": {
+		"border-color": "rgb(200, 16, 46)"
+	}
+},
+{
+	"selector": "*, *::before, *::after ",
+	"properties": {
+		"box-sizing": "inherit"
+	}
+},
+{
+	"selector": "#mvp_exp_date_container::after",
+	"properties": {
+		"content": "'Billing Address'",
+		"display": "block",
+		"font-size": "1.125rem",
+		"position": "relative",
+		"bottom": "-1.5rem",
+		"padding": "2rem 0",
+		"clear": "both",
+		"text-transform": "uppercase"
+	}
+},
+{
+	"selector": ".form_row",
+	"properties": {
+		"margin-bottom": "1rem",
+		"float": "left",
+		"position": "relative",
+		"width": "100%",
+		"min-height": "1px"
+	}
+},
+{
+	"selector": ".form_row label",
+	"properties": {
+		"display": "block",
+		"margin-bottom": "0.25rem",
+		"font-size": "0.75em",
+		"font-weight": "700",
+		"text-transform": "uppercase"
+	}
+},
+{
+	"selector": "input[type='text'], select",
+	"properties": {
+		"border": "1px solid rgb(192, 192, 192)",
+		"padding": "0.5rem",
+		"width": "100%",
+		"height": "calc(3.875em - (1px * 2))",
+		"line-height": "calc(3.875em - (1px * 2))",
+		"border-radius": "0.125em",
+		"box-shadow": "0 0 0 0 rgba(0, 0, 0, 0.2)",
+		"outline": "0",
+		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
+		"display": "inline-block"
+	}
+
+},
+{
+	"selector": "input[type='text']:focus, select:focus",
+	"properties": {
+		"border-color": "rgb(255, 255, 255)",
+		"box-shadow": "0 0 8px 0 rgba(0, 0, 0, 0.2)",
+		"outline": "none"
+	}
+
+},
+{
+	"selector": "#mvp_exp_month,#mvp_exp_year",
+	"properties": {
+		"width": "45%"
+	}
+},
+{
+	"selector": "#mvp_exp_month",
+	"properties": {
+		"float": "left"
+	}
+},
+{
+	"selector": "#mvp_exp_date_container::before",
+	"properties": {
+		"content": "'/'",
+		"display": "inline-block",
+		"position": "absolute",
+		"left": "49%",
+		"top": "20%",
+		"font-size": "1em"
+	}
+},
+{
+	"selector": "#mvp_exp_year",
+	"properties": {
+		"float": "right"
+	}
+},
+{
+"at-rule": "media",
+"media": "screen and (min-width: 550px)",
+"selectors":
+	[
+		{
+			"selector": ".form_row",
+			"properties": {
+				"padding-right": "1rem",
+				"padding-left": "1rem"
+			}
+		},
+		{
+			"selector": "#mivapay_form",
+			"properties": {
+				"position": "relative",
+				"height": "auto",
+				"clear": "both",
+				"overflow": "auto",
+				"zoom": "1"
+			}
+		},
+		{
+			"selector": "#mvp_exp_date_container::after",
+			"properties": {
+				"display": "none"
+			}
+		},
+		{
+			"selector": "#mvp_exp_date_container::before",
+			"properties": {
+				"top": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_cardnumber_container::after",
+			"properties": {
+				"content": "'Billing Address'",
+				"display": "block",
+				"font-size": "1.25rem",
+				"font-weight": "700",
+				"margin": "2rem 0 0",
+				"text-transform": "uppercase"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container, #mvp_address2_container, #mvp_addresslist_container, #mvp_stateselect_container, #mvp_state_container, #mvp_zip_container",
+			"properties": {
+				"width": "33.3332%"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container",
+			"properties": {
+				"float": "none"
+			}
+		},
+		{
+			"selector": "#mvp_firstname_container, #mvp_lastname_container, #mvp_cardnumber_container, #mvp_exp_date_container, #mvp_country_container",
+			"properties": {
+				"width": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container",
+			"properties": {
+				"width": "66.6665%",
+				"clear": "left"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container label::before, #mvp_address2_container label::before",
+			"properties": {
+				"content": "'Street'",
+				"display": "inline-block",
+				"margin-right": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_address2_container label::after",
+			"properties": {
+				"content": "'(Optional)'",
+				"display": "inline-block",
+				"margin-left": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_country_container",
+			"properties": {
+				"clear": "both",
+				"float": "none"
+			}
+		}
+	]
+}
+</Template><Notes>#Set_Current_Time#</Notes></PaymentCardFields_CSS></Item></Page_Update>

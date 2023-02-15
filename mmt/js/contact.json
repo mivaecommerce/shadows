@@ -1,0 +1,11 @@
+{
+    "code": "contact",
+    "type": "L",
+    "branchless_filepath": "themes/00000001/shadows/extensions/contact/contact.js",
+    "is_global": false,
+    "active": true,
+    "attributes": [],
+    "linked_pages": [
+        "CTUS"
+    ]
+}

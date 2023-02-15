@@ -1,0 +1,109 @@
+<mvt:if expr="NOT l.settings:orders_found GT 0">
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<p class="x-messages x-messages--info">No matching orders found.</p>
+		</div>
+	</section>
+	<mvt:exit />
+</mvt:if>
+
+<section class="o-layout">
+	<div class="o-layout__item u-width-12">
+		<form method="post" action="&mvte:urls:ORDS:auto;">
+			<fieldset>
+				<legend>Search Orders</legend>
+				<div class="c-form-list">
+					<div class="c-form-list__item c-form-list__item--full">
+						<label class="u-font-small u-text-uppercase" for="Order_ID">Missing an order? We can help you find it.</label>
+					</div>
+					<div class="c-form-list__item c-control-group u-flex">
+						<input id="Order_ID" class="c-form-input c-form-input--large c-control-group__field" type="text" inputmode="decimal" name="Order_ID" placeholder="Order #" required>
+						<input class="c-button c-button--large c-control-group__button u-bg-gray-50 u-border-none u-font-small u-text-uppercase" type="submit" value="Find">
+					</div>
+				</div>
+			</fieldset>
+		</form>
+		<hr class="c-keyline">
+	</div>
+	<div class="o-layout__item u-width-12">
+		<table class="c-table-responsive">
+			<thead class="c-table-responsive_thead">
+				<tr class="c-table-responsive__row u-color-gray-30 u-font-small u-text-bold u-text-uppercase">
+					<th class="c-table-responsive__cell" scope="col">
+						<mvt:if expr="g.SortBy EQ 'InvAsc' OR ISNULL g.SortBy">
+							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=InvDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order #</a>
+						<mvt:else>
+							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=InvAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order #</a>
+						</mvt:if>
+					</th>
+					<th class="c-table-responsive__cell" scope="col">
+						<mvt:if expr="g.SortBy EQ 'OrdDtAsc' OR ISNULL g.SortBy">
+							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=OrdDtDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Date</a>
+						<mvt:else>
+							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=OrdDtAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Date</a>
+						</mvt:if>
+					</th>
+					<th class="c-table-responsive__cell" scope="col">Products</th>
+					<th class="c-table-responsive__cell" scope="col">Quantity</th>
+					<th class="c-table-responsive__cell" scope="col">Status</th>
+					<th class="c-table-responsive__cell" scope="col">Shipments</th>
+					<th class="c-table-responsive__cell u-text-right--m" scope="col">
+						<mvt:if expr="g.SortBy EQ 'OrdTotAsc' OR ISNULL g.SortBy">
+							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=OrdTotDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order Total</a>
+						<mvt:else>
+							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=OrdTotAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order Total</a>
+						</mvt:if>
+					</th>
+					<th class="c-table-responsive__cell" scope="col">&nbsp;</th>
+				</tr>
+			</thead>
+			<tbody>
+				<mvt:foreach iterator="order" array="orders">
+					<tr class="c-table-responsive__row">
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order #">&mvt:order:id;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Date">&mvt:order:date_formatted;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Products">&mvt:order:prod_num;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Quantity">&mvt:order:prod_qty;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Status">&mvt:order:order_status;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Shipments">
+							<mvt:foreach iterator="shipment" array="order:shipments">
+								<a class="u-color-gray-50" href="&mvt:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
+							</mvt:foreach>
+						</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-right--m" data-label="Total">&mvt:order:formatted_total;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="">
+							<a class="u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:ORDS:auto_sep;SortBy=&mvta:global:SortBy;&amp;Offset=&mvta:global:Offset;&amp;Order_ID=&mvt:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">View</a>
+						</td>
+					</tr>
+				</mvt:foreach>
+			</tbody>
+		</table>
+	</div>
+</section>
+
+<div class="o-layout o-layout--justify-around">
+	<mvt:if expr="(g.Offset OR g.NextOffset) AND (l.settings:orderhistory_list:per_page NE 0)">
+		<mvt:if expr="g.Offset EQ 0">
+			<div class="o-layout__item">&nbsp;</div>
+		<mvt:else>
+			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;">
+				<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
+				<input type="hidden" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" />
+				<input type="hidden" name="Order_BillZip" value="&mvte:global:Order_BillZip;" />
+				<input type="hidden" name="Offset" value="&mvte:global:PrevOffset;" />
+				<mvt:item name="buttons" param="Previous" />
+			</form>
+		</mvt:if>
+		<mvt:if expr="g.NextOffset EQ 0">
+			<div class="o-layout__item">&nbsp;</div>
+		<mvt:else>
+			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;">
+				<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
+				<input type="hidden" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" />
+				<input type="hidden" name="Order_BillZip" value="&mvte:global:Order_BillZip;" />
+				<input type="hidden" name="Offset" value="&mvte:global:NextOffset;" />
+				<mvt:item name="buttons" param="Next" />
+			</form>
+		</mvt:if>
+	</mvt:if>
+</div>

@@ -1,0 +1,5 @@
+<div class="x-transfigure-navigation__footer">
+	<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
+		<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+	</mvt:foreach>
+</div>

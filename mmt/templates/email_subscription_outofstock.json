@@ -1,0 +1,15 @@
+{
+    "toe_subscriptions": {
+        "advanced": 0,
+        "b_height": 200,
+        "b_width": 200,
+        "constrain": "B",
+        "image": "main",
+        "imagetypes": [
+            "main"
+        ],
+        "lineitemdiscounts": 0,
+        "price": "base",
+        "template_filename": "email_subscription_outofstock-toe_subscriptions.mvc"
+    }
+}

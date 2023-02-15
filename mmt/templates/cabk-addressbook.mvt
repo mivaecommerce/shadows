@@ -1,0 +1,210 @@
+<section class="o-layout">
+	<div class="o-layout__item">
+		<p><a class="c-button c-button--large u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CADA:secure;">Add An Address</a></p>
+		<hr class="c-keyline">
+	</div>
+</section>
+
+<section class="o-layout u-grids-1 u-grids-2--m">
+	<mvt:if expr="l.settings:addressbook:address_ship:id">
+		<article class="o-layout__item">
+			<mvt:if expr="l.settings:addressbook:address_ship:id EQ l.settings:addressbook:address_bill:id">
+				<p class="c-heading-delta u-text-bold u-text-uppercase">Default Shipping/Billing Address</p>
+			<mvt:else>
+				<p class="c-heading-delta u-text-bold u-text-uppercase"><span class="u-icon-truck" aria-hidden="true"></span> Default Shipping Address</p>
+			</mvt:if>
+			<ul class="o-list-inline u-font-small">
+				<li class="o-list-inline__item">
+					<a href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:addressbook:address_ship:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
+				</li>
+				<li class="o-list-inline__item">
+					<a href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\\x0A\\x0AContinue?' ) )  MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:addressbook:address_ship:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete</a>
+				</li>
+				<mvt:if expr="l.settings:addressbook:address_ship:id NE g.Customer:ship_id">
+					<li class="o-list-inline__item">
+						<a href="#" onclick="MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'CCSA', 'ShippingAddress_ID': '&mvtj:addressbook:address_ship:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Set As Default Shipping</a>
+					</li>
+				</mvt:if>
+				<mvt:if expr="l.settings:addressbook:address_ship:id NE g.Customer:bill_id">
+					<li class="o-list-inline__item">
+						<a href="#" onclick="MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'CCSA', 'BillingAddress_ID': '&mvtj:addressbook:address_ship:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Set As Default Billing</a>
+					</li>
+				</mvt:if>
+			</ul>
+			<p>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:fname OR NOT ISNULL l.settings:addressbook:address_ship:lname">
+					<strong>&mvte:addressbook:address_ship:fname; &mvte:addressbook:address_ship:lname;</strong><br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:addr1">
+					&mvte:addressbook:address_ship:addr1;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:addr2">
+					&mvte:addressbook:address_ship:addr2;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:city OR NOT ISNULL l.settings:addressbook:address_ship:state OR NOT ISNULL l.settings:addressbook:address_ship:zip">
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:city">&mvte:addressbook:address_ship:city;</mvt:if><mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:city AND NOT ISNULL l.settings:addressbook:address_ship:state">,</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:state">&mvte:addressbook:address_ship:state;</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:zip">&mvte:addressbook:address_ship:zip;</mvt:if>
+					<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:cntry">
+					&mvte:addressbook:address_ship:cntry;<br>
+				</mvt:if>
+				<mvt:if expr="l.settings:addressbook:address_ship:resdntl">
+					Residential Address<br>
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL l.settings:addressbook:address_ship:fname OR NOT ISNULL l.settings:addressbook:address_ship:lname ) AND ( NOT ISNULL l.settings:addressbook:address_ship:addr OR NOT ISNULL l.settings:addressbook:address_ship:addr2 OR NOT ISNULL l.settings:addressbook:address_ship:city OR NOT ISNULL l.settings:addressbook:address_ship:state OR NOT ISNULL l.settings:addressbook:address_ship:zip OR NOT ISNULL l.settings:addressbook:address_ship:cntry OR l.settings:addressbook:address_ship:resdntl )">
+					<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:comp">
+					Company: &mvte:addressbook:address_ship:comp;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:email">
+					Email: &mvte:addressbook:address_ship:email;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:phone">
+					Phone: &mvte:addressbook:address_ship:phone;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_ship:fax">
+					Fax: &mvte:addressbook:address_ship:fax;<br>
+				</mvt:if>
+			</p>
+		</article>
+	</mvt:if>
+	<mvt:if expr="l.settings:addressbook:address_bill:id AND l.settings:addressbook:address_bill:id NE l.settings:addressbook:address_ship:id">
+		<article class="o-layout__item">
+			<p class="c-heading-delta u-text-bold u-text-uppercase"><span class="u-icon-credit-card" aria-hidden="true"></span> Default Billing Address</p>
+			<ul class="o-list-inline u-font-small">
+				<li class="o-list-inline__item">
+					<a href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:addressbook:address_bill:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
+				</li>
+				<li class="o-list-inline__item">
+					<a href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\x0A\x0AContinue?' ) ) MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:addressbook:address_bill:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete</a>
+				</li>
+				<mvt:if expr="l.settings:addressbook:address_bill:id NE g.Customer:ship_id">
+					<li class="o-list-inline__item">
+						<a href="#" onclick="MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'CCSA', 'ShippingAddress_ID': '&mvtj:addressbook:address_bill:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Set As Default Shipping</a>
+					</li>
+				</mvt:if>
+				<mvt:if expr="l.settings:addressbook:address_bill:id NE g.Customer:bill_id">
+					<li class="o-list-inline__item">
+						<a href="#" onclick="MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'CCSA', 'BillingAddress_ID': '&mvtj:addressbook:address_bill:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Set As Default Billing</a>
+					</li>
+				</mvt:if>
+			</ul>
+			<p>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:fname OR NOT ISNULL l.settings:addressbook:address_bill:lname">
+					<strong>&mvte:addressbook:address_bill:fname; &mvte:addressbook:address_bill:lname;</strong><br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:addr1">
+					&mvte:addressbook:address_bill:addr1;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:addr2">
+					&mvte:addressbook:address_bill:addr2;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:city OR NOT ISNULL l.settings:addressbook:address_bill:state OR NOT ISNULL l.settings:addressbook:address_bill:zip">
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:city">&mvte:addressbook:address_bill:city;</mvt:if><mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:city AND NOT ISNULL l.settings:addressbook:address_bill:state">,</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:state">&mvte:addressbook:address_bill:state;</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:zip">&mvte:addressbook:address_bill:zip;</mvt:if>
+					<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:cntry">
+					&mvte:addressbook:address_bill:cntry;<br>
+				</mvt:if>
+				<mvt:if expr="l.settings:addressbook:address_bill:resdntl">
+					Residential Address<br>
+				</mvt:if>
+				<mvt:if expr="( NOT ISNULL l.settings:addressbook:address_bill:fname OR NOT ISNULL l.settings:addressbook:address_bill:lname ) AND ( NOT ISNULL l.settings:addressbook:address_bill:addr OR NOT ISNULL l.settings:addressbook:address_bill:addr2 OR NOT ISNULL l.settings:addressbook:address_bill:city OR NOT ISNULL l.settings:addressbook:address_bill:state OR NOT ISNULL l.settings:addressbook:address_bill:zip OR NOT ISNULL l.settings:addressbook:address_bill:cntry OR l.settings:addressbook:address_bill:resdntl )">
+					<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:comp">
+					Company: &mvte:addressbook:address_bill:comp;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:email">
+					Email: &mvte:addressbook:address_bill:email;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:phone">
+					Phone: &mvte:addressbook:address_bill:phone;<br>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:addressbook:address_bill:fax">
+					Fax: &mvte:addressbook:address_bill:fax;<br>
+				</mvt:if>
+			</p>
+		</article>
+	</mvt:if>
+</section>
+
+<mvt:if expr="l.settings:addressbook:address_count GT 0">
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<hr class="c-keyline">
+			<p class="c-heading-delta u-text-bold u-text-uppercase">Additional Addresses</p>
+			<hr class="c-keyline">
+		</div>
+	</section>
+	
+	<section class="o-layout u-grids-1 u-grids-3--m">
+		<mvt:foreach iterator="address" array="addressbook:addresses">
+			<article class="o-layout__item u-font-small">
+				<p class="c-heading-echo u-text-bold u-text-uppercase">
+					&mvte:address:descrip;<br>
+					<a class="c-heading--subheading" href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:address:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
+				</p>
+				<p>
+					<mvt:if expr="NOT ISNULL l.settings:address:fname OR NOT ISNULL l.settings:address:lname">
+						<strong>&mvte:address:fname; &mvte:address:lname;</strong><br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:addr1">
+						&mvte:address:addr1;<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:addr2">
+						&mvte:address:addr2;<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:city OR NOT ISNULL l.settings:address:state OR NOT ISNULL l.settings:address:zip">
+						<mvt:if expr="NOT ISNULL l.settings:address:city">&mvte:address:city;</mvt:if><mvt:if expr="NOT ISNULL l.settings:address:city AND NOT ISNULL l.settings:address:state">,</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:address:state">&mvte:address:state;</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:address:zip">&mvte:address:zip;</mvt:if>
+						<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:cntry">
+						&mvte:address:cntry;<br>
+					</mvt:if>
+					<mvt:if expr="l.settings:address:resdntl">
+						Residential Address<br>
+					</mvt:if>
+					<mvt:if expr="( NOT ISNULL l.settings:address:fname OR NOT ISNULL l.settings:address:lname ) AND ( NOT ISNULL l.settings:address:addr OR NOT ISNULL l.settings:address:addr2 OR NOT ISNULL l.settings:address:city OR NOT ISNULL l.settings:address:state OR NOT ISNULL l.settings:address:zip OR NOT ISNULL l.settings:address:cntry OR l.settings:address:resdntl )">
+						<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:comp">
+						Company: &mvte:address:comp;<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:email">
+						Email: &mvte:address:email;<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:phone">
+						Phone: &mvte:address:phone;<br>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:fax">
+						Fax: &mvte:address:fax;<br>
+					</mvt:if>
+				</p>
+				<mvt:if expr="l.settings:address:id NE g.Customer:ship_id OR l.settings:address:id NE g.Customer:bill_id">
+					<ul class="o-list-inline u-font-small">
+						<li class="o-list-inline__item u-text-bold">Set as default:</li>
+						<mvt:if expr="l.settings:address:id NE g.Customer:ship_id">
+							<li class="o-list-inline__item">
+								<a href="&mvte:urls:_self:secure_sep;Action=CCSA&amp;ShippingAddress_ID=&mvta:address:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Shipping</a>
+							</li>
+						</mvt:if>
+						<mvt:if expr="l.settings:address:id NE g.Customer:bill_id">
+							<li class="o-list-inline__item">
+								<a href="&mvte:urls:_self:secure_sep;Action=CCSA&amp;BillingAddress_ID=&mvta:address:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Billing</a>
+							</li>
+						</mvt:if>
+					</ul>
+				</mvt:if>
+				<p><a class="u-color-red u-font-small" href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\x0A\x0AContinue?' ) ) MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:address:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete This Address</a></p>
+			</article>
+		</mvt:foreach>
+	</section>
+</mvt:if>

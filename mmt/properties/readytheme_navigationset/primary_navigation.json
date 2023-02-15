@@ -1,0 +1,120 @@
+{
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTLG\" target=\"_self\">Shop All</a>",
+            "link_dest": "CTLG",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Shop All",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTLG"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "items": [
+                {
+                    "active": 1,
+                    "id": "",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-1\" target=\"_self\">Subcategory 1</a>",
+                    "link_dest": "sub-cat-1",
+                    "link_targ": "_self",
+                    "link_type": "C",
+                    "name": "Subcategory 1",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-1"
+                },
+                {
+                    "active": 1,
+                    "id": "",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-2\" target=\"_self\">Subcategory 2</a>",
+                    "link_dest": "sub-cat-2",
+                    "link_targ": "_self",
+                    "link_type": "C",
+                    "name": "Subcategory 2",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-2"
+                }
+            ],
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01\" target=\"_self\">Category 1</a>",
+            "link_dest": "category_01",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Category 1",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "items": [
+                {
+                    "active": 1,
+                    "id": "",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-3\" target=\"_self\">Subcategory 3</a>",
+                    "link_dest": "sub-cat-3",
+                    "link_targ": "_self",
+                    "link_type": "C",
+                    "name": "Subcategory 3",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-3"
+                },
+                {
+                    "active": 1,
+                    "id": "",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-4\" target=\"_self\">Subcategory 4</a>",
+                    "link_dest": "Sub-cat-4",
+                    "link_targ": "_self",
+                    "link_type": "C",
+                    "name": "Subcategory 4",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-4"
+                }
+            ],
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02\" target=\"_self\">Category 2</a>",
+            "link_dest": "category_02",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Category 2",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03\" target=\"_self\">Category 3</a>",
+            "link_dest": "category_03",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Category 3",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04\" target=\"_self\">Category 4</a>",
+            "link_dest": "category_04",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Category 4",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale\" target=\"_self\">Sale</a>",
+            "link_dest": "sale",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Sale",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured\" target=\"_self\">Featured Products</a>",
+            "link_dest": "featured",
+            "link_targ": "_self",
+            "link_type": "C",
+            "name": "Featured Products",
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured"
+        }
+    ],
+    "layout": "H",
+    "name": "Primary Site Navigation Bar"
+}

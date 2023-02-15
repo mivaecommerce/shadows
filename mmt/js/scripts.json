@@ -1,0 +1,12 @@
+{
+    "code": "scripts",
+    "type": "C",
+    "is_global": true,
+    "active": true,
+    "attributes": [],
+    "linked_resources": [
+        "core",
+        "extensions",
+        "theme"
+    ]
+}

@@ -1,0 +1,13 @@
+<section class="o-layout u-bg-gray-50 t-site-header__top-navigation &mvte:global:checkout_hidden;">
+	<div class="o-layout__item u-bg-gray-50 u-color-white u-width-12 u-width-4--l u-width-7--w u-text-center u-text-left--l">
+		<mvt:item name="readytheme" param="banner( 'header_message' )" />
+	</div>
+	<div class="o-layout o-layout--align-center o-layout__item u-text-uppercase u-hidden u-flex--l u-width-8--l u-width-5--w t-site-header__links">
+		<div class="o-layout__item u-bg-gray-50 u-color-white">
+			<mvt:item name="readytheme" param="navigationset( 'support_navigation' )" />
+		</div>
+		<div class="o-layout__item u-bg-gray-50 u-color-white u-text-center">
+			&mvt:global:store:phone;
+		</div>
+	</div>
+</section>

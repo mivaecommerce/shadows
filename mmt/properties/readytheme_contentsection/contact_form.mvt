@@ -1,0 +1,76 @@
+<noscript>
+	<p class="x-messages x-messages--error" data-hook="contact-us__warning">You must javascript enabled to use this form.</p>
+</noscript>
+<form class="x-contact-form u-hidden" data-hook="contact-form" data-action="&mvte:urls:CTFM:auto;" method="post" accept-charset="UTF-8">
+	<fieldset>
+		<legend>Contact &mvte:global:store:name; Form</legend>
+		<mvt:comment>
+			<!--
+			This field is a spam-bot honeypot, it should not have a value!
+			-->
+		</mvt:comment>
+		<input class="u-hide-visually" type="text" name="website" aria-hidden="true" aria-label="website" tabindex="-1">
+		<div class="c-form-list">
+			<mvt:if expr="g.status EQ 'submitted'">
+				<div class="c-form-list__item c-form-list__item--full x-messages x-messages--success">Thank you for your inquiry. A &mvte:global:store:name; representative will contact you shortly.</div>
+			<mvt:elseif expr="g.status EQ 'error'">
+				<div class="c-form-list__item c-form-list__item--full x-messages x-messages--error">We're sorry, there was a problem processing your request.</div>
+			</mvt:if>
+			<div class="c-form-list__item c-form-list__item--full">
+				<label class="c-form-label is-required" for="contactName">Your name</label>
+				<input id="contactName" class="c-form-input" type="text" name="contactName" value="&mvte:global:contactName;" required aria-required="true">
+			</div>
+			<div class="c-form-list__item c-form-list__item--full">
+				<label class="c-form-label is-required" for="contactEmail">Your email address</label>
+				<input id="contactEmail" class="c-form-input" type="email" name="contactEmail" value="&mvte:global:contactEmail;" placeholder="test@domain.com" required aria-required="true">
+			</div>
+			<mvt:comment>
+				<!--
+				This field helps to set the subject of the email. Set as many options as you would like.
+				-->
+			</mvt:comment>
+			<div class="c-form-list__item c-form-list__item--full">
+				<label class="c-form-label is-required" for="contactSubject">What can we help you with?</label>
+				<div class="c-form-select">
+					<select id="contactSubject" class="c-form-select__dropdown" name="contactSubject" required aria-required="true">
+						<mvt:if expr="g.contactSubject EQ 'Questions'">
+							<option value="Questions" selected>Questions</option>
+						<mvt:else>
+							<option value="Questions">Questions</option>
+						</mvt:if>
+						<mvt:if expr="g.contactSubject EQ 'Feedback'">
+							<option value="Feedback" selected>Feedback</option>
+						<mvt:else>
+							<option value="Feedback">Feedback</option>
+						</mvt:if>
+					</select>
+				</div>
+			</div>
+			<div class="c-form-list__item c-form-list__item--full">
+				<label class="c-form-label is-required" for="contactMessage">Message</label>
+				<textarea id="contactMessage" class="c-form-input c-form-input--long" name="contactMessage" placeholder="Type your message here...">&mvte:global:contactMessage;</textarea>
+			</div>
+			<div class="c-form-list__item &mvte:global:fault;">
+				<label class="c-form-label is-required" for="contactHuman">Are you human?</label>
+				<div class="c-control-group">
+					<mvt:comment>
+						<!--
+						This is a basic math challenge to confirm there is a person
+						entering the information. The numbers are random and the
+						answer key is passed to the process in Base64 for comparison.
+						-->
+					</mvt:comment>
+					<mvt:assign name="l.settings:humanOne" value="random('25')" />
+					<mvt:assign name="l.settings:humanTwo" value="random('25')" />
+					<mvt:assign name="l.settings:verify" value="crypto_base64_encode(l.settings:humanOne + l.settings:humanTwo)" />
+					<input class="c-form-input c-control-group__field u-text-center" type="text" value="&mvte:humanOne; + &mvte:humanTwo; =" disabled aria-label="What is &mvte:humanOne; + &mvte:humanTwo;?">
+					<input id="contactHuman" class="c-form-input c-control-group__field" type="text" inputmode="decimal" name="human" value="" required aria-required="true">
+					<input type="hidden" name="verify" value="&mvte:verify;">
+				</div>
+			</div>
+			<div class="c-form-list__item">
+				<button class="c-button c-button--full c-button--large u-bg-gray-50 u-color-white u-text-uppercase" data-hook="contact-form__submit" type="submit" name="submit" disabled>Submit</button>
+			</div>
+		</div>
+	</fieldset>
+</form>

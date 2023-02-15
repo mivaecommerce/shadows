@@ -1,0 +1,17 @@
+{
+    "code": "preconnect-google-analytics",
+    "type": "E",
+    "filepath": "//www.google-analytics.com",
+    "is_global": true,
+    "active": true,
+    "attributes": [
+        {
+            "name": "rel",
+            "value": "preconnect"
+        },
+        {
+            "name": "crossorigin",
+            "value": ""
+        }
+    ]
+}

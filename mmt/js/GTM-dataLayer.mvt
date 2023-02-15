@@ -1,0 +1,233 @@
+<mvt:comment><!-- Google Tag Manager - Data Layer --></mvt:comment>
+var dataLayer = dataLayer || [];
+<mvt:comment><!-- Page Type Assignment --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'SFNT'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'home'" />
+<mvt:elseif expr="l.settings:page:code EQ 'SRCH' OR l.settings:page:code EQ 'SEARCH'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'searchresults'" />
+<mvt:elseif expr="l.settings:page:code EQ 'CTGY'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'category'" />
+<mvt:elseif expr="l.settings:page:code EQ 'PROD'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'product'" />
+<mvt:elseif expr="l.settings:page:code CIN 'BASK,ORDL,OCST,OUS1,OUSM,OSEL,OPAY'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'cart'" />
+<mvt:elseif expr="l.settings:page:code EQ 'INVC'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'purchase'" />
+<mvt:else>
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'other'" />
+</mvt:if>
+
+<mvt:comment><!-- Checkout Step Assignment --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'BASK'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="1"/>
+<mvt:elseif expr="l.settings:page:code EQ 'ORDL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="2"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OCST'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="3"/>
+<mvt:elseif expr="g.Screen EQ 'OUSL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="4"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OSEL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="5"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OPAY'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="6"/>
+</mvt:if>
+
+<mvt:comment><!-- User Email Assignment --></mvt:comment>
+<mvt:if expr="g.customer:bill_email">
+	<mvt:assign name="l.settings:datalayer:userEmail" value="g.customer:bill_email" />
+<mvt:elseif expr="g.basket:bill_email">
+	<mvt:assign name="l.settings:datalayer:userEmail" value="g.basket:bill_email" />
+<mvt:else>
+	<mvt:assign name="l.settings:datalayer:userEmail" value="''" />
+</mvt:if>
+
+<mvt:comment><!-- Basic DataLayer Push --></mvt:comment>
+dataLayer.push({
+	<mvt:if expr="g.Screen EQ 'NTFD'">
+		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+		"event": "NTFD",
+	<mvt:elseif expr="g.Screen EQ 'SRCH'">
+		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+		"searchTerm": "&mvtj:global:Search;",
+		"event": "SRCH",
+	<mvt:else>
+		"canonicalUri": "&mvtj:ga_tracking:url_override_unencoded;",
+	</mvt:if>
+	"requestUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+	"refererUri": "<mvt:eval expr="encodejavascriptstring( s.http_referer )" />",
+	"pageCode": "&mvtj:page:code;",
+	"pageType": "&mvtj:datalayer:pageType;",
+	"pageName": "&mvtj:datalayer:pageName;",
+	"userId": "&mvtj:global:basket:cust_id;",
+	"userEmail": "&mvtj:datalayer:userEmail;",
+	"basketId": "&mvtj:global:basket:basket_id;",
+	"categoryCode": "&mvtj:global:Category_Code;",
+	"categoryName": "&mvtj:datalayer:categoryName;",
+	"productCode": "&mvtj:product:code;",
+	"checkoutStep": "&mvtj:datalayer:checkout_step;"
+});
+
+<mvt:comment><!-- PROD DataLayer Push --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'PROD'">
+	<mvt:if expr="NOT ISNULL l.settings:product:variant">
+		dataLayer.push({
+			"ecommerce": {
+				"detail": {
+					"products": [{
+						"name": "&mvtj:product:variant:name;",
+						"id": "&mvtj:product:variant:code;",
+						"price": "&mvtj:product:variant:price;",
+						"sku": "&mvtj:product:variant:code;",
+						"category": "",
+						"variant": ""
+					}]
+				}
+			},
+			"content_type": "product",
+			"content_ids": "&mvtj:product:variant:code;",
+			"value": "&mvt:product:variant:price;",
+			"currency": "USD"
+		});
+	<mvt:else>
+		dataLayer.push({
+			"ecommerce": {
+				"detail": {
+					"products": [{
+						"name": "&mvtj:product:name;",
+						"id": "&mvtj:product:code;",
+						"price": "&mvtj:product:price;",
+						"sku": "&mvtj:item:sku;",
+						"category": "",
+						"variant": ""
+					}]
+				}
+			},
+			"content_type": "product",
+			"content_ids": "&mvtj:product:code;",
+			"value": "&mvt:product:price;",
+			"currency": "USD"
+		});
+	</mvt:if>
+</mvt:if>
+
+<mvt:comment><!-- INVC DataLayer Push --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'INVC'">
+	<mvt:foreach iterator="charge" array="order:charges">
+		<mvt:if expr="l.settings:charge:type EQ 'TAX'">
+			<mvt:assign name="l.settings:gtm:tax" value="l.settings:charge:disp_amt" />
+		<mvt:elseif expr="l.settings:charge:type EQ 'SHIPPING'">
+			<mvt:assign name="l.settings:gtm:shipping" value="l.settings:charge:disp_amt" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="'['" />
+	</mvt:if>
+	<mvt:foreach iterator="item" array="order:items">
+		<mvt:if expr="POS1 GT 1">
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		<mvt:else>
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	</mvt:if>
+
+	dataLayer.push({
+		"event": "invc",
+		"ecommerce": {
+			"purchase": {
+				"actionField": {
+					"id": "&mvtj:order:id;",
+					"revenue": "&mvtj:order:total;",
+					"tax": "&mvtj:gtm:tax;",
+					"shipping": "&mvtj:gtm:shipping;"
+				},
+				"products": [
+				<mvt:foreach iterator="item" array="order:groups">
+					<mvt:if expr="POS1 GT 1">,</mvt:if>
+					{
+						"name": "&mvtj:item:name;",
+						"id": "&mvtj:item:code;",
+						"price": "&mvtj:item:price;",
+						"sku": "&mvtj:item:sku;",
+						<mvt:if expr="miva_array_elements(l.settings:item:options) GT 0">
+							<mvt:assign name="l.settings:item:gtm_variant" value="''" />
+							<mvt:foreach iterator="option" array="item:options">
+								<mvt:if expr="POS2 GT 1">
+									<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ ' ' " />
+								</mvt:if>
+								<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ l.settings:option:opt_code" />
+							</mvt:foreach>
+							<mvt:if expr="l.settings:item:gtm_variant">
+							"variant": "&mvtj:item:gtm_variant;",
+							</mvt:if>
+						</mvt:if>
+						"quantity": &mvtj:item:quantity;
+					},
+				</mvt:foreach>
+				],
+				"coupons": [
+				<mvt:foreach iterator="coupon" array="order:coupons">
+					"&mvtj:coupon:code;",
+				</mvt:foreach>
+				]
+			}
+		},
+		"order_id": "&mvtj:order:id;",
+		"order_total": "&mvtj:order:total;",
+		"content_type": "product",
+		"content_ids": "&mvtj:content_ids;",
+		"value": &mvtj:order:total;,
+		"currency": "USD"
+	});
+
+<mvt:comment><!-- (OTHER)CHECKOUT PAGES DataLayer Push --></mvt:comment>
+<mvt:elseif expr="l.settings:datalayer:checkout_step">
+
+	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="'['" />
+	</mvt:if>
+	<mvt:foreach iterator="item" array="basket:items">
+		<mvt:if expr="POS1 GT 1">
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		<mvt:else>
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	</mvt:if>
+	dataLayer.push({
+		"event": "checkout",
+		"ecommerce": {
+			"checkout": {
+				"actionField": {
+					"step": &mvt:datalayer:checkout_step;
+				},
+				"products": [
+					<mvt:foreach iterator="item" array="global_minibasket:items">
+						{
+							"name": "&mvtj:item:name;",
+							"id": "&mvtj:item:product:code;",
+							"price": "&mvtj:item:price;",
+							"sku": "&mvtj:item:sku;",
+							"category": "",
+							"variant": "",
+							"quantity": &mvtj:item:quantity;
+						},
+					</mvt:foreach>
+				],
+				"coupons": [
+				<mvt:foreach iterator="coupon" array="global_minibasket:coupons">
+					"&mvtj:coupon:code;",
+				</mvt:foreach>
+				]
+			}
+		},
+		"content_type": "product",
+		"content_ids": "&mvt:content_ids;",
+		"value": "&mvt:basket:total;",
+		"currency": "USD"
+	});
+</mvt:if>

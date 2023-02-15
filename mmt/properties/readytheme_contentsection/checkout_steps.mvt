@@ -1,0 +1,44 @@
+<mvt:if expr="NOT (l.settings:page:code CIN 'ORDL,OCST,OUS1,OUSM,UATM,UATR,OSEL,OPAY,INVC' OR ('AMAZONPAY' CIN l.settings:page:code))">
+	<mvt:exit/>
+</mvt:if>
+<br>
+<ul class="o-layout o-layout--align-center o-list-inline u-text-uppercase u-font-small">
+	<mvt:comment><!-- OCST --></mvt:comment>
+	<li class="o-list-inline__item">
+		<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OPAY|'">
+			<a class="u-color-gray-30" href="&mvte:urls:OCST:auto;">Customer</a>
+		<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OPAY'">
+			<a class="u-color-gray-30" href="&mvte:urls:AMAZONPAY_OCST:auto;">Shipping</a>
+		<mvt:else>
+			<span class="u-text-bold">Customer</span>
+		</mvt:if>
+	</li>
+	<li class="o-list-inline__item o-layout--grow">
+		<hr class="c-keyline c-keyline--small">
+	</li>
+	<mvt:comment><!-- OSEL --></mvt:comment>
+	<li class="o-list-inline__item">
+		<mvt:if expr="l.settings:page:code CIN 'OPAY'">
+			<a class="u-color-gray-30" href="&mvte:urls:OSEL:auto;">Shipping</a>
+		<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OPAY'">
+			<a class="u-color-gray-30" href="&mvte:urls:AMAZONPAY_OSEL:auto;">Shipping</a>
+		<mvt:elseif expr="l.settings:page:code CIN 'OSEL' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL')">
+			<span class="u-text-bold">Shipping</span>
+		<mvt:else>
+			<span class="u-color-gray-30">Shipping</span>
+		</mvt:if>
+	</li>
+	<li class="o-list-inline__item o-layout--grow">
+		<hr class="c-keyline c-keyline--small">
+	</li>
+	<mvt:comment><!-- OPAY --></mvt:comment>
+	<li class="o-list-inline__item">
+		<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OCST' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OCST')">
+			<span class="u-color-gray-30">Payment</span>
+		<mvt:else>
+			<span class="u-text-bold">Payment</span>
+		</mvt:if>
+	</li>
+</ul>
+<br>
+<!-- end checkout_steps -->

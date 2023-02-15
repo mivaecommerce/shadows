@@ -1,0 +1,72 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+		</div>
+	</section>
+	<br>
+
+	<section class="o-layout o-layout--justify-around">
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
+			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">Log In or Register</p>
+			<form method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<input type="hidden" name="Action" value="LOGN" />
+					<div class="c-form-list">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+						</div>
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required>
+						</div>
+						<div class="c-form-list__item c-form-list__item--full">
+							<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Log In">
+							<a class="c-button c-button--full c-button--large u-bg-gray-10 u-color-gray-50 u-font-small u-text-uppercase" href="&mvte:urls:ACAD:secure_sep;Order=1" title="Create Your Account">Register</a>
+							<span class="u-font-small">
+								<a class="c-button c-button--full c-button--huge u-bg-white u-color-gray-50 u-font-tiny u-text-uppercase" data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" title="Forgot Your Password?">Forgot your password?</a>
+							</span>
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+		<mvt:if expr="g.Basket:sub_count EQ 0">
+			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l u-text-center">
+				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+				<p class="c-heading-charlie u-text-bold u-text-uppercase">Guest Checkout</p>
+				<p class="u-color-gray-40 u-font-small">Finalize your order without creating an account.</p>
+				<br>
+				<p class="u-text-right"><a class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
+			</div>
+		</mvt:if>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+			<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

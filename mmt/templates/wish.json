@@ -1,0 +1,65 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "wish-footer.mvc"
+        },
+        "header": {
+            "template_filename": "wish-header.mvc"
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://local.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "wishlist": {
+        "mode": "tokens_only_nodisplay",
+        "template_filename": "wish-wishlist.mvc"
+    },
+    "wishlistitems": {
+        "additionalprice": "base",
+        "advanced": 1,
+        "b_height": 208,
+        "b_width": 208,
+        "button_add": 1,
+        "constrain": "B",
+        "default_sort": "id_desc",
+        "displaydiscounts": 0,
+        "field_code": 1,
+        "field_dtadded": 1,
+        "field_name": 1,
+        "field_notes": 1,
+        "field_options": 1,
+        "field_price": 1,
+        "field_quantity": 1,
+        "imagetypes": [
+            "main"
+        ],
+        "invmsg": "N",
+        "items_per_page_filter": 1,
+        "page_disp_count": 0,
+        "per_page": 0,
+        "predictdiscounts": 1,
+        "price": "sale",
+        "reverse_default_disp_order": 0,
+        "sort_by": {
+            "code": 0,
+            "dtadded": 0,
+            "name": 0,
+            "price": 0,
+            "switch": 0
+        },
+        "template_filename": "wish-wishlistitems.mvc"
+    }
+}
