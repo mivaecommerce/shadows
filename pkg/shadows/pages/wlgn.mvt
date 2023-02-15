@@ -75,7 +75,26 @@
 			<form class="o-layout" method="post" action="&mvte:urls:WISH:secure;">
 				<fieldset class="o-layout__item">
 					<legend>Customer Log In</legend>
-					<input type="hidden" name="Action" value="ICSQ" />
+					<mvt:if expr="ISNULL g.Action">
+						<mvt:assign name="g.Action" value="'ICSQ,ATWL'" />
+					<mvt:else>
+						<mvt:assign name = "g.Action" value="'ICSQ,' $ g.Action" />
+					</mvt:if>
+					<input type="hidden" name="Action" value="&mvte:global:Action;" />
+					<input type="hidden" name="Quantity" value="&mvte:global:Quantity;" />
+					<input type="hidden" name="Line_ID" value="&mvte:global:Line_ID;" />
+					<input type="hidden" name="Group_ID" value="&mvte:global:Group_ID;" />
+					<input type="hidden" name="Wish_ID" value="&mvte:global:Wish_ID;" />
+					<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
+					<mvt:assign name="l.settings:attribute_index" value="0" />
+					<mvt:foreach iterator="attribute" array="global:Product_Attributes">
+						<mvt:assign name="l.settings:attribute_index" value="l.settings:attribute_index + 1" />
+						<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:code" value="&mvte:attribute:code;" />
+						<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:value" value="&mvte:attribute:value;" />
+						<mvt:if expr="l.settings:attribute:template_code NE 0">
+							<input type="hidden" name="Product_Attributes[ &mvt:attribute_index; ]:template_code" value="&mvte:attribute:template_code;" />
+						</mvt:if>
+					</mvt:foreach>
 					<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 					<input type="hidden" name="WishList" value="1">
 					<div class="c-form-list">
