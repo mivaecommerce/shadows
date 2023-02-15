@@ -7,7 +7,7 @@ let zoomImageLink = document.querySelector('[data-photograph]');
 ImageMachine.prototype.oninitialize = function (data) {
 	images = [];
 	thumbnailIndex = 0;
-	zoomImageLink.href = data[0].image_data[this.closeup_index];
+	zoomImageLink.href = (data.length > 0) ? data[0].image_data[this.closeup_index] : 'graphics/en-US/admin/blank.gif';
 	this.Initialize(data);
 	MovingPictures();
 };

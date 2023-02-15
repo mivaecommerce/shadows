@@ -104,28 +104,34 @@
 					<span class="c-form-checkbox__caption u-font-tiny">Shipping Information Same as Billing</span>
 				</label>
 			</div>
-			<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
-				<div class="c-form-list__item o-layout__item &mvte:global:ShipID_Row;">
-					<label id="shipping_selector_label" class="c-form-label u-text-bold is-required u-font-tiny" for="shipping_selector">Saved Address</label>
-					<div class="c-form-select">
-						<select id="shipping_selector" class="c-form-select__dropdown c-form-input--large" name="ShipID" aria-describedby="ShippingInformation shipping_selector_label">
-							<option value="-1">&lt;New&gt;</option>
-							<mvt:foreach iterator="address" array="customer:addresses">
-								<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.ShipFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.ShipLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.ShipEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.ShipCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.ShipPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.ShipFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.ShipAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.ShipAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.ShipCity ) AND ( ( ( NOT ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipStateSelect ) ) ) OR ( ( ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.ShipZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.ShipCountry )">
-									<option value="&mvte:address:id;" selected>&mvte:address:descrip;</option>
-								<mvt:else>
-									<option value="&mvte:address:id;">&mvte:address:descrip;</option>
-								</mvt:if>
-							</mvt:foreach>
-						</select>
-					</div>
-				</div>
-			</mvt:if>
 		</div>
 		
 		<section id="shipping_fields">
 			<mvt:if expr="NOT ISNULL l.settings:customer:validated_ship_addresses">
 				<input type="hidden" name="ShipValidated" value="1" />
+			</mvt:if>
+			<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
+				<div class="c-form-list o-layout o-layout--wide u-text-uppercase">
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:ShipID_Row;">
+						<label id="shipping_selector_label" class="c-form-label u-text-bold is-required u-font-tiny" for="shipping_selector">Saved Address</label>
+						<div class="c-form-select">
+							<select id="shipping_selector" class="c-form-select__dropdown c-form-input--large" name="ShipID" aria-describedby="ShippingInformation shipping_selector_label">
+								<option value="-1">&lt;New&gt;</option>
+								<mvt:foreach iterator="address" array="customer:addresses">
+									<mvt:if expr="toupper( l.settings:address:fname ) EQ toupper( g.ShipFirstName ) AND toupper( l.settings:address:lname ) EQ toupper( g.ShipLastName ) AND toupper( l.settings:address:email ) EQ toupper( g.ShipEmail ) AND toupper( l.settings:address:comp ) EQ toupper( g.ShipCompany ) AND toupper( l.settings:address:phone ) EQ toupper( g.ShipPhone ) AND toupper( l.settings:address:fax ) EQ toupper( g.ShipFax ) AND toupper( l.settings:address:addr1 ) EQ toupper( g.ShipAddress1 ) AND toupper( l.settings:address:addr2 ) EQ toupper( g.ShipAddress2 ) AND toupper( l.settings:address:city ) EQ toupper( g.ShipCity ) AND ( ( ( NOT ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipStateSelect ) ) ) OR ( ( ISNULL g.ShipStateSelect ) AND ( toupper( l.settings:address:state ) EQ toupper( g.ShipState ) ) ) ) AND toupper( l.settings:address:zip ) EQ toupper( g.ShipZip ) AND toupper( l.settings:address:cntry ) EQ toupper( g.ShipCountry )">
+										<option value="&mvte:address:id;" selected>&mvte:address:descrip;</option>
+									<mvt:else>
+										<option value="&mvte:address:id;">&mvte:address:descrip;</option>
+									</mvt:if>
+								</mvt:foreach>
+							</select>
+						</div>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:ShipDescription_Row;">
+						<label id="ShipDescription_label" class="c-form-label u-font-small u-text-italic" for="ShipDescription">Description</label>
+						<input id="ShipDescription" class="c-form-input c-form-input--large" type="text" name="ShipDescription" value="&mvte:global:ShipDescription;" aria-describedby="ShippingInformation ShipDescription_label" autocomplete="off">
+					</div>
+				</div>
 			</mvt:if>
 			<div class="c-form-list o-layout o-layout--wide u-text-uppercase">
 				<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:ShipFirstName_Row;">
@@ -218,7 +224,7 @@
 			</mvt:if>
 			<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
 				<div class="c-form-list o-layout o-layout--wide u-text-uppercase">
-					<div class="c-form-list__item o-layout__item &mvte:global:BillID_Row;">
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:BillID_Row;">
 						<label id="billing_selector_label" class="c-form-label u-text-bold is-required u-font-tiny" for="billing_selector">Saved Address</label>
 						<div class="c-form-select">
 							<select id="billing_selector" class="c-form-select__dropdown c-form-input--large" name="BillID" aria-describedby="BillingInformation billing_selector_label">
@@ -232,6 +238,10 @@
 								</mvt:foreach>
 							</select>
 						</div>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:BillDescription_Row;">
+						<label id="BillDescription_label" class="c-form-label u-font-small u-text-italic" for="BillDescription">Description</label>
+						<input id="BillDescription" class="c-form-input c-form-input--large" type="text" name="BillDescription" value="&mvte:global:BillDescription;" aria-describedby="BillingInformation BillDescription_label" autocomplete="off">
 					</div>
 				</div>
 			</mvt:if>
