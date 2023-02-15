@@ -85,6 +85,58 @@ AttributeMachine.prototype.Swatch_Click = function(input, attribute, option) {
 		}
 	});
 };
+
+
+MivaEvents.SubscribeToEvent('variant_changed', function (data) {
+	AJAX_Call_Module(Update_Volume_Pricing, 'runtime', 'discount_volume', 'Runtime_VolumePricing_Load_Product_Variant', 'Product_Code=' + encodeURIComponent(data.product_code) + '&' + 'Variant_ID=' + encodeURIComponent(data.variant_id));
+});
+
+const Update_Volume_Pricing = function (priceData) {
+	const volumePricingContainer = document.querySelector('[data-volume-pricing]');
+
+	if (priceData.success === 1) {
+		volumePricingContainer.innerHTML = [
+			'<table class="o-table o-table--fixed c-table-simple">',
+			'<thead>',
+			'<tr class="c-table-simple__row">',
+			'<th class="c-table-simple__cell">Quantity</th>',
+			'<th class="c-table-simple__cell">Price</th>',
+			'</tr>',
+			'</thead>',
+			'<tbody data-pricing-grid>',
+			'</tbody>',
+			'</table>'
+		].join('');
+
+		let tableBody = volumePricingContainer.querySelector('[data-pricing-grid]');
+
+		priceData.data.forEach(function (entry) {
+			const pricingRow = document.createElement('tr');
+			const quantityCell = document.createElement('td');
+			const priceCell = document.createElement('td');
+
+			pricingRow.classList.add('c-table-simple__row');
+			quantityCell.classList.add('c-table-simple__cell');
+			priceCell.classList.add('c-table-simple__cell');
+
+			if (entry.low === entry.high) {
+				quantityCell.innerText = entry.low;
+			}
+			else if (entry.high) {
+				quantityCell.innerText = entry.low + ' - ' + entry.high;
+			}
+			else {
+				quantityCell.innerText = entry.low + '+';
+			}
+			priceCell.innerText = entry.formatted_price;
+			pricingRow.append(quantityCell, priceCell);
+			tableBody.append(pricingRow);
+		});
+	}
+	else {
+		volumePricingContainer.innerHTML = '';
+	}
+};
 ]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="attributemachine"><Enabled>Yes</Enabled><InitialAttributeState>Preload</InitialAttributeState><DependencyResolution>First</DependencyResolution><InventoryElement/><InventoryMessage>Short</InventoryMessage><PriceElement/><AdditionalPriceElement/><DiscountElement/><PriceDisplay>Base</PriceDisplay><AdditionalPriceDisplay>None</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>No</PredictDiscounts><SwatchElement/><InvalidAttributeCombinationMessage>Please select a valid combination of attributes.</InvalidAttributeCombinationMessage><MissingTextFieldValueMessage><![CDATA[<br>A value must be entered for <b>%attribute_prompt%</b>.]]></MissingTextFieldValueMessage><MissingRadioSelectionMessage><![CDATA[<br>An option must be selected for <b>%attribute_prompt%</b>.]]></MissingRadioSelectionMessage><Template><![CDATA[AttributeMachine.prototype.Generate_Discount = function (discount) {
 	let discount_div;
 
@@ -171,5 +223,57 @@ AttributeMachine.prototype.Swatch_Click = function(input, attribute, option) {
 			swatchImage.focus();
 		}
 	});
+};
+
+
+MivaEvents.SubscribeToEvent('variant_changed', function (data) {
+	AJAX_Call_Module(Update_Volume_Pricing, 'runtime', 'discount_volume', 'Runtime_VolumePricing_Load_Product_Variant', 'Product_Code=' + encodeURIComponent(data.product_code) + '&' + 'Variant_ID=' + encodeURIComponent(data.variant_id));
+});
+
+const Update_Volume_Pricing = function (priceData) {
+	const volumePricingContainer = document.querySelector('[data-volume-pricing]');
+
+	if (priceData.success === 1) {
+		volumePricingContainer.innerHTML = [
+			'<table class="o-table o-table--fixed c-table-simple">',
+			'<thead>',
+			'<tr class="c-table-simple__row">',
+			'<th class="c-table-simple__cell">Quantity</th>',
+			'<th class="c-table-simple__cell">Price</th>',
+			'</tr>',
+			'</thead>',
+			'<tbody data-pricing-grid>',
+			'</tbody>',
+			'</table>'
+		].join('');
+
+		let tableBody = volumePricingContainer.querySelector('[data-pricing-grid]');
+
+		priceData.data.forEach(function (entry) {
+			const pricingRow = document.createElement('tr');
+			const quantityCell = document.createElement('td');
+			const priceCell = document.createElement('td');
+
+			pricingRow.classList.add('c-table-simple__row');
+			quantityCell.classList.add('c-table-simple__cell');
+			priceCell.classList.add('c-table-simple__cell');
+
+			if (entry.low === entry.high) {
+				quantityCell.innerText = entry.low;
+			}
+			else if (entry.high) {
+				quantityCell.innerText = entry.low + ' - ' + entry.high;
+			}
+			else {
+				quantityCell.innerText = entry.low + '+';
+			}
+			priceCell.innerText = entry.formatted_price;
+			pricingRow.append(quantityCell, priceCell);
+			tableBody.append(pricingRow);
+		});
+	}
+	else {
+		volumePricingContainer.innerHTML = '';
+	}
 };
 ]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

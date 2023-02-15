@@ -1595,7 +1595,7 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 
 [data-filmstrip] li {
 	flex: 0 0 auto;
-	padding-right: 16px;
+	margin-right: 16px;
 	list-style: none;
 	scroll-snap-align: none;
 	transition: opacity ease-in-out 0.1s;
