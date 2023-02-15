@@ -1,7 +1,10 @@
 <br>
 <table class="c-table-responsive">
 	<caption class="u-text-left">
-		<h1 class="c-heading-echo u-text-bold u-text-uppercase">Order Summary</h1>
+		<h1 class="c-heading-echo o-layout--justify-between u-flex u-text-bold u-text-uppercase">
+			Order Summary
+			<button class="c-button c-button--clear c-button--flush u-bg-transparent u-color-black u-font-small" data-hook="print-invoice"><span class="u-icon-print" aria-hidden="true"></span> Print Receipt</button>
+		</h1>
 	</caption>
 	<thead class="u-text-left u-hide-visually">
 		<tr class="c-table-simple__row">

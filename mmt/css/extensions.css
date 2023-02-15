@@ -571,11 +571,10 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 .x-product-layout-purchase__pricing-original,
 .x-product-layout-purchase__pricing-current {
 	font-size: 1.125rem;
-	font-weight: 500;
 }
 
-.x-product-layout-purchase .is-required {
-	font-weight: 500;
+.x-product-layout-purchase__pricing-current {
+	font-weight: 700;
 }
 
 .x-product-layout-purchase__pricing-original:not(:empty) {
@@ -1504,6 +1503,40 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	.x-fasten-header__logo-image {
 		max-height: 4rem;
 	}
+}
+
+/* ==========================================================================
+   EXTENSIONS / SHOW PASSWORD / SHOW PASSWORD
+   ========================================================================== */
+/**
+ * This extension allows a user to reveal the password they have typed.
+ */
+.x-toggle-password {
+	width: 8ch;
+	margin-top: -0.125em;
+	padding: calc(0.5em - 1px);
+	position: absolute;
+	top: 50%;
+	right: 2%;
+	color: currentColor;
+	font-size: 0.75em;
+	font-weight: 400;
+	text-decoration: underline;
+	border: 0 none;
+	border-radius: 0;
+}
+
+.x-toggle-password--no-label {
+	margin-top: 0;
+	padding: 0.5em;
+	top: 25%;
+}
+
+.x-toggle-password:focus,
+.x-toggle-password:hover {
+	color: #000;
+	text-shadow: 0 0 0 currentColor;
+	outline: 2px solid currentColor;
 }
 
 .x-collapsible-content__toggle {

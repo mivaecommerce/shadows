@@ -9,19 +9,19 @@
 	<mvt:if expr="g.Basket:cust_id EQ 0">
 		<div class="x-messages t-ocst-account-message x-collapsible-content">
 			Already have an account? <button class="c-button c-button--clear u-color-black u-text-bold" data-a11y-toggle="checkoutLogIn" title="Click Here to Log Into Your Account">Click here to log in</button> or you can continue as a guest.
-			<form id="checkoutLogIn" class="t-checkout-log-in__form x-collapsible-content__item" method="post" action="&mvte:urls:CACT:secure;" autocomplete="off">
+			<form id="checkoutLogIn" class="t-checkout-log-in__form x-collapsible-content__item" method="post" action="&mvte:urls:OINF:secure;" autocomplete="off">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
-					<input type="hidden" name="current_location" value="&mvte:urls:OINF:secure_sep;">
+					<input type="hidden" name="Action" value="LOGN" />
 					<input type="hidden" name="Order" value="&mvte:global:Order;">
 					<div class="o-layout u-grids-1 u-grids-3--s">
 						<div class="o-layout__item">
-							<label class="u-hide-visually" for="register_email">Add Promo Code</label>
-							<input id="register_email" class="c-form-input c-form-input--large c-control-group__field" type="text" inputmode="email" name="register_email" value="&mvte:global:register_email;" autocomplete="email" placeholder="Email" required>
+							<label class="u-hide-visually" for="register_email">Account Email Address</label>
+							<input id="Customer_LoginEmail" class="c-form-input c-form-input--large c-control-group__field" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" placeholder="Email" required aria-required="true">
 						</div>
 						<div class="o-layout__item">
-							<label class="u-hide-visually" for="register_password">Add Promo Code</label>
-							<input id="register_password" class="c-form-input c-form-input--large" type="password" name="register_password" autocomplete="current-password" placeholder="Password" required>
+							<label class="u-hide-visually" for="Customer_Password">Account Password</label>
+							<input id="Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
 						</div>
 						<div class="o-layout__item">
 							<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Log In">
@@ -29,7 +29,6 @@
 					</div>
 				</fieldset>
 			</form>
-	
 		</div>
 		<hr class="c-keyline">
 	<mvt:else>

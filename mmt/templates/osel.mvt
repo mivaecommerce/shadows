@@ -40,7 +40,7 @@
 							</div>
 						</mvt:if>
 						<mvt:if expr="ISNULL l.settings:shippingmethods">
-							<div class="c-form-list__item c-form-list__item--full u-font-small">
+							<div class="c-form-list__item c-form-list__item--full u-font-small t-shipping-method">
 								<mvt:if expr="ISNULL l.settings:fallbackshippingmethod">
 									<label class="c-form-checkbox c-form-checkbox--radio">
 										<input class="c-form-checkbox__input" type="radio" name="ShippingMethod" value="" checked>
@@ -50,7 +50,7 @@
 									<label class="c-form-checkbox c-form-checkbox--radio">
 										<input class="c-form-checkbox__input" type="radio" name="ShippingMethod" value="" checked>
 										<span class="c-form-checkbox__caption o-layout o-list-inline o-layout--align-baseline u-flex">
-											<span class="o-list-inline__item">&mvt:fallbackshippingmethod:name;</span>
+											<span class="o-list-inline__item t-shipping-method-name">&mvt:fallbackshippingmethod:name;</span>
 											<span class="o-list-inline__item o-layout--grow">
 												<span class="c-keyline c-keyline--small u-block"></span>
 											</span>
@@ -61,12 +61,12 @@
 							</div>
 						<mvt:else>
 							<mvt:foreach array="shippingmethods" iterator="method">
-								<div class="c-form-list__item c-form-list__item--full u-font-small">
+								<div class="c-form-list__item c-form-list__item--full u-font-small t-shipping-method">
 									<mvt:if expr="pos1 EQ 1">
 										<label class="c-form-checkbox c-form-checkbox--radio">
 											<input class="c-form-checkbox__input" type="radio" name="ShippingMethod" value="&mvte:method:module;:&mvte:method:code" checked>
 											<span class="c-form-checkbox__caption o-layout o-list-inline o-layout--align-baseline u-flex">
-												<span class="o-list-inline__item">&mvt:method:name;</span>
+												<span class="o-list-inline__item t-shipping-method-name">&mvt:method:name;</span>
 												<mvt:if expr="NOT ISNULL l.settings:method:price">
 													<span class="o-list-inline__item o-layout--grow">
 														<span class="c-keyline c-keyline--small u-block"></span>
@@ -79,7 +79,7 @@
 										<label class="c-form-checkbox c-form-checkbox--radio">
 											<input class="c-form-checkbox__input" type="radio" name="ShippingMethod" value="&mvte:method:module;:&mvte:method:code">
 											<span class="c-form-checkbox__caption o-layout o-list-inline o-layout--align-baseline u-flex">
-												<span class="o-list-inline__item">&mvt:method:name;</span>
+												<span class="o-list-inline__item t-shipping-method-name">&mvt:method:name;</span>
 												<mvt:if expr="NOT ISNULL l.settings:method:price">
 													<span class="o-list-inline__item o-layout--grow">
 														<span class="c-keyline c-keyline--small u-block"></span>
