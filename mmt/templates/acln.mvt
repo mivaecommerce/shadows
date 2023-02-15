@@ -11,7 +11,7 @@
 	<mvt:item name="head" param="css_list" />
 	<mvt:item name="head" param="head_tag" />
 </head>
-<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
 
 	<section class="o-layout">
@@ -38,11 +38,11 @@
 							<table class="o-table c-table-simple u-font-small u-text-bold">
 								<tr>
 									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Name</td>
-									<td class="c-table-simple__cell">&mvt:global:customer:ship_fname; &mvt:global:customer:ship_lname;</td>
+									<td class="c-table-simple__cell">&mvte:global:customer:ship_fname; &mvte:global:customer:ship_lname;</td>
 								</tr>
 								<tr>
 									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Email</td>
-									<td class="c-table-simple__cell">&mvt:global:customer:ship_email;</td>
+									<td class="c-table-simple__cell">&mvte:global:customer:ship_email;</td>
 								</tr>
 								<tr>
 									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Password</td>
