@@ -2,8 +2,8 @@
     "basket": {
         "advanced": 1,
         "applycoupons": 0,
-        "b_height": 80,
-        "b_width": 80,
+        "b_height": 96,
+        "b_width": 96,
         "button_wish": 0,
         "constrain": "B",
         "discounts": 1,

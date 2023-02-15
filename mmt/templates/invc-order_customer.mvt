@@ -1,94 +1,88 @@
-<div class="t-checkout-customer-summary u-bg-gray-10">
-	<br>
-	<ul class="o-list-block">
-		<li class="o-list-block__item">
-			<p class="c-heading-echo u-text-bold u-text-uppercase">Shipping Address</p>
-			<hr class="c-keyline">
-			<p class="u-font-small u-color-gray-40">
-				<mvt:if expr="l.settings:order:ship_fname OR l.settings:order:ship_lname">
-					<strong>&mvte:order:ship_fname; &mvte:order:ship_lname;</strong><br>
-				</mvt:if>
-				<span>
-					<mvt:if expr="l.settings:order:ship_comp">
-						&mvte:order:ship_comp;<br>
-					</mvt:if>
-					<mvt:if expr="l.settings:order:ship_addr1 OR l.settings:order:ship_addr2 OR l.settings:order:ship_city OR l.settings:order:ship_state OR l.settings:order:ship_zip OR l.settings:order:ship_cntry OR l.settings:order:ship_res">
-						&mvte:order:ship_addr1;<br>
-						<mvt:if expr="l.settings:order:ship_addr2">
-							&mvte:order:ship_addr2;<br>
-						</mvt:if>
-						<mvt:if expr="(NOT ISNULL l.settings:order:ship_city) AND (NOT ISNULL l.settings:order:ship_state)">
-							&mvte:order:ship_city;, &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
-						<mvt:else>
-							&mvte:order:ship_city; &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
-						</mvt:if>
-						<mvt:if expr="l.settings:order:ship_res">
-							<br>Residential Address
-						</mvt:if>
-					</mvt:if>
-				</span>
-			</p>
-			<br>
-		</li>
-		<li class="o-list-block__item">
-			<p class="c-heading-echo u-text-bold u-text-uppercase">Billing Address</p>
-			<hr class="c-keyline">
-			<p class="u-font-small u-color-gray-40">
-				<mvt:if expr="l.settings:order:bill_fname OR l.settings:order:bill_lname">
-					<strong>&mvte:order:bill_fname; &mvte:order:bill_lname;</strong><br>
-				</mvt:if>
-				<span>
-					<mvt:if expr="l.settings:order:bill_comp">
-						&mvte:order:bill_comp;<br>
-					</mvt:if>
-					<mvt:if expr="l.settings:order:bill_addr1 OR l.settings:order:bill_addr2 OR l.settings:order:bill_city OR l.settings:order:bill_state OR l.settings:order:bill_zip OR l.settings:order:bill_cntry OR l.settings:order:bill_res">
-						&mvte:order:bill_addr1;<br>
-						<mvt:if expr="l.settings:order:bill_addr2">
-							&mvte:order:bill_addr2;<br>
-						</mvt:if>
-						<mvt:if expr="(NOT ISNULL l.settings:order:bill_city) AND (NOT ISNULL l.settings:order:bill_state)">
-							&mvte:order:bill_city;, &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
-						<mvt:else>
-							&mvte:order:bill_city; &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
-						</mvt:if>
-						<mvt:if expr="l.settings:order:bill_res">
-							<br>Residential Address
-						</mvt:if>
-					</mvt:if>
-				</span>
-			</p>
-			<br>
-		</li>
-		<li class="o-list-block__item">
-			<p class="c-heading-echo u-text-bold u-text-uppercase">Shipping Method</p>
-			<hr class="c-keyline">
-			<p class="u-font-small u-color-gray-40">
-				<mvt:foreach iterator="charge" array="order:charges">
-					<mvt:if expr="l.settings:charge:type EQ 'SHIPPING'">
-						<mvt:eval expr="glosub(l.settings:charge:descrip, 'Shipping:', '')"/>
-					</mvt:if>
-				</mvt:foreach>
-			</p>
-			<br>
-		</li>
-		<mvt:item name="customfields" param="Read_Basket('order_instructions', l.settings:order_instructions)" />
-		<mvt:item name="customfields" param="Write_Order(l.settings:order:id, 'order_instructions', l.settings:order_instructions)" />
-		<mvt:if expr="l.settings:order_instructions">
-			<li class="o-list-block__item">
-				<p class="c-heading-echo u-text-bold u-text-uppercase">Delivery Notes</p>
-				<hr class="c-keyline">
-				<p class="u-font-small u-color-gray-40">
-					&mvte:order_instructions;<br>
-				</p>
-				<br>
-			</li>
+<div class="t-checkout-customer-summary">
+	<p class="c-heading--subheading--x-small u-color-black">Shipping To</p>
+	<p class="u-font-small">
+		<mvt:if expr="NOT ISNULL l.settings:order:ship_fname OR NOT ISNULL l.settings:order:ship_lname">
+			&mvte:order:ship_fname; &mvte:order:ship_lname;<br>
 		</mvt:if>
-		<li class="o-list-block__item">
+		<span>
+			<mvt:if expr="NOT ISNULL l.settings:order:ship_comp">
+				&mvte:order:ship_comp;<br>
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:order:ship_addr1 OR NOT ISNULL l.settings:order:ship_addr2 OR NOT ISNULL l.settings:order:ship_city OR NOT ISNULL l.settings:order:ship_state OR NOT ISNULL l.settings:order:ship_zip OR NOT ISNULL l.settings:order:ship_cntry OR NOT ISNULL l.settings:order:ship_res">
+				&mvte:order:ship_addr1;<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_addr2">
+					&mvte:order:ship_addr2;<br>
+				</mvt:if>
+				<mvt:if expr="(NOT ISNULL l.settings:order:ship_city) AND (NOT ISNULL l.settings:order:ship_state)">
+					&mvte:order:ship_city;, &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
+				<mvt:else>
+					&mvte:order:ship_city; &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_res">
+					<br>Residential Address
+				</mvt:if>
+			</mvt:if>
 			<br>
-			<div class="u-font-small">
-				<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
-			</div>
-		</li>
-	</ul>
+			<mvt:if expr="NOT ISNULL l.settings:order:ship_phone">
+				<br>&mvte:order:ship_phone;
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:order:ship_email">
+				<br>&mvte:order:ship_email;
+			</mvt:if>
+		</span>
+	</p>
 	<br>
+	<p class="c-heading--subheading--x-small u-color-black">Shipping Method</p>
+	<p class="u-font-small">
+		<mvt:foreach iterator="charge" array="order:charges">
+			<mvt:if expr="l.settings:charge:type EQ 'SHIPPING'">
+				<mvt:eval expr="glosub(l.settings:charge:descrip, 'Shipping:', '')"/>
+			</mvt:if>
+		</mvt:foreach>
+	</p>
+	<br>
+	<mvt:item name="customfields" param="Read_Basket('order_instructions', l.settings:order_instructions)" />
+	<mvt:item name="customfields" param="Write_Order(l.settings:order:id, 'order_instructions', l.settings:order_instructions)" />
+	<mvt:if expr="l.settings:order_instructions">
+		<p class="c-heading--subheading--x-small u-color-black">Delivery Notes</p>
+		<p class="u-font-small">&mvte:order_instructions;</p>
+		<br>
+	</mvt:if>
+	<p class="c-heading--subheading--x-small u-color-black">Billing To</p>
+	<p class="u-font-small">
+		<mvt:if expr="NOT ISNULL l.settings:order:bill_fname OR NOT ISNULL l.settings:order:bill_lname">
+			&mvte:order:bill_fname; &mvte:order:bill_lname;<br>
+		</mvt:if>
+		<span>
+			<mvt:if expr="NOT ISNULL l.settings:order:bill_comp">
+				&mvte:order:bill_comp;<br>
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:order:bill_addr1 OR NOT ISNULL l.settings:order:bill_addr2 OR NOT ISNULL l.settings:order:bill_city OR NOT ISNULL l.settings:order:bill_state OR NOT ISNULL l.settings:order:bill_zip OR NOT ISNULL l.settings:order:bill_cntry OR NOT ISNULL l.settings:order:bill_res">
+				&mvte:order:bill_addr1;<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_addr2">
+					&mvte:order:bill_addr2;<br>
+				</mvt:if>
+				<mvt:if expr="(NOT ISNULL l.settings:order:bill_city) AND (NOT ISNULL l.settings:order:bill_state)">
+					&mvte:order:bill_city;, &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
+				<mvt:else>
+					&mvte:order:bill_city; &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_res">
+					<br>Residential Address
+				</mvt:if>
+			</mvt:if>
+			<br>
+			<mvt:if expr="NOT ISNULL l.settings:order:bill_phone">
+				<br>&mvte:order:bill_phone;
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:order:bill_email">
+				<br>&mvte:order:bill_email;
+			</mvt:if>
+		</span>
+	</p>
+	<br>
+	<p class="c-heading--subheading--x-small u-color-black">Payment Method</p>
+	<p class="u-font-small">&mvte:payment:desc;</p>
+	<br>
+	<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
 </div>

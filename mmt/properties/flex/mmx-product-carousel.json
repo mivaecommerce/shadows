@@ -1,0 +1,775 @@
+{
+    "advanced_properties": [
+        {
+            "code": "spacing",
+            "prompt": "Spacing",
+            "properties": [
+                {
+                    "code": "top",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Top",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                },
+                {
+                    "code": "bottom",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Bottom",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                }
+            ],
+            "type": "group"
+        },
+        {
+            "code": "settings",
+            "prompt": "Display Settings",
+            "properties": [
+                {
+                    "code": "per_page",
+                    "options": [
+                        {
+                            "text": 2,
+                            "value": "1,2,2"
+                        },
+                        {
+                            "text": 3,
+                            "value": "1,3,3"
+                        },
+                        {
+                            "text": 4,
+                            "value": "1,3,4"
+                        },
+                        {
+                            "text": 5,
+                            "value": "1,3,5"
+                        },
+                        {
+                            "text": 6,
+                            "value": "1,3,6"
+                        },
+                        {
+                            "text": 7,
+                            "value": "1,4,7"
+                        },
+                        {
+                            "text": 8,
+                            "value": "1,4,8"
+                        }
+                    ],
+                    "prompt": "Items Per Page",
+                    "type": "select"
+                },
+                {
+                    "code": "per_move",
+                    "options": [
+                        {
+                            "text": "Full Page at a Time",
+                            "value": "auto"
+                        },
+                        {
+                            "text": "One Item at a Time",
+                            "value": 1
+                        }
+                    ],
+                    "prompt": "Items Per Scroll",
+                    "type": "select"
+                },
+                {
+                    "code": "image_type",
+                    "prompt": "Image Type",
+                    "required": 1,
+                    "type": "text"
+                },
+                {
+                    "code": "image_dimensions",
+                    "placeholder": "300x300",
+                    "prompt": "Image Dimensions",
+                    "required": 1,
+                    "type": "text",
+                    "validation_message": "Enter the pixel dimensions that the image shoud be cropped to (ex. 300x300)",
+                    "validation_pattern": "\\d+x\\d+"
+                },
+                {
+                    "code": "displayed_price",
+                    "options": [
+                        {
+                            "text": "Sale",
+                            "value": "sale"
+                        },
+                        {
+                            "text": "Retail",
+                            "value": "retail"
+                        },
+                        {
+                            "text": "Base",
+                            "value": "base"
+                        }
+                    ],
+                    "prompt": "Displayed Price",
+                    "required": 1,
+                    "type": "select"
+                },
+                {
+                    "code": "additional_price",
+                    "options": [
+                        {
+                            "text": "Base",
+                            "value": "base"
+                        },
+                        {
+                            "text": "Retail",
+                            "value": "retail"
+                        },
+                        {
+                            "text": "None",
+                            "value": "none"
+                        }
+                    ],
+                    "prompt": "Additional Price",
+                    "required": 1,
+                    "type": "select"
+                },
+                {
+                    "can_disable": 1,
+                    "code": "button",
+                    "prompt": "Button",
+                    "properties": [
+                        {
+                            "code": "adpr_text",
+                            "prompt": "Add to Cart Text",
+                            "textsettings": {
+                                "fields": [
+                                    {
+                                        "code": "button_style",
+                                        "options": [
+                                            {
+                                                "text": "Default"
+                                            },
+                                            {
+                                                "text": "Primary",
+                                                "value": "primary"
+                                            },
+                                            {
+                                                "text": "Secondary",
+                                                "value": "secondary"
+                                            },
+                                            {
+                                                "text": "Display Link",
+                                                "value": "display-link"
+                                            },
+                                            {
+                                                "text": "Primary Link",
+                                                "value": "primary-link"
+                                            },
+                                            {
+                                                "text": "Secondary Link",
+                                                "value": "secondary-link"
+                                            }
+                                        ],
+                                        "prompt": "Button Style",
+                                        "pseudoclasses": [
+                                            "normal"
+                                        ],
+                                        "type": "select"
+                                    },
+                                    {
+                                        "code": "button_size",
+                                        "options": [
+                                            {
+                                                "text": "Default"
+                                            },
+                                            {
+                                                "text": "X-Small",
+                                                "value": "xs"
+                                            },
+                                            {
+                                                "text": "Small",
+                                                "value": "s"
+                                            },
+                                            {
+                                                "text": "Medium",
+                                                "value": "m"
+                                            },
+                                            {
+                                                "text": "Large",
+                                                "value": "l"
+                                            }
+                                        ],
+                                        "prompt": "Button Size",
+                                        "pseudoclasses": [
+                                            "normal"
+                                        ],
+                                        "type": "select"
+                                    }
+                                ]
+                            },
+                            "type": "text"
+                        },
+                        {
+                            "code": "prod_text",
+                            "prompt": "Products With Attributes Text",
+                            "required": 1,
+                            "type": "text"
+                        }
+                    ],
+                    "type": "group"
+                }
+            ],
+            "type": "group"
+        }
+    ],
+    "category": "product-carousel",
+    "defaults": {
+        "advanced": {
+            "settings": {
+                "additional_price": {
+                    "value": "base"
+                },
+                "button": {
+                    "adpr_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "button_size": {
+                                        "value": "s"
+                                    },
+                                    "button_style": {
+                                        "value": "primary"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Add to Cart"
+                    },
+                    "prod_text": {
+                        "value": "See Details"
+                    },
+                    "settings": {
+                        "enabled": 0
+                    }
+                },
+                "displayed_price": {
+                    "value": "sale"
+                },
+                "image_dimensions": {
+                    "value": "300x300"
+                },
+                "image_type": {
+                    "value": "main"
+                },
+                "per_move": {
+                    "value": "auto"
+                },
+                "per_page": {
+                    "value": "1,3,5"
+                }
+            }
+        },
+        "heading": {
+            "heading_align": {
+                "value": "center"
+            },
+            "heading_text": {
+                "value": "Featured Products"
+            },
+            "settings": {
+                "enabled": 1
+            }
+        },
+        "products": {
+            "from_category": {
+                "category": {
+                    "category_code": "featured"
+                },
+                "count": {
+                    "value": 15
+                },
+                "settings": {
+                    "enabled": 1
+                },
+                "sort": {
+                    "value": "bestsellers"
+                }
+            },
+            "from_individual": {
+                "settings": {
+                    "enabled": 0
+                }
+            },
+            "image_fit": {
+                "value": "contain"
+            },
+            "image_size": {
+                "value": "auto"
+            }
+        }
+    },
+    "initialization_template_filename": "flex-initialization-template-mmx-product-carousel.mvc",
+    "name": "Product Carousel",
+    "preview": "<svg xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" width=\"1600\" height=\"507\" viewBox=\"0 0 1600 507\">\n  <defs>\n    <clipPath id=\"clip-path\">\n      <rect width=\"1438\" height=\"338\" fill=\"none\"/>\n    </clipPath>\n  </defs>\n  <g id=\"Product_Carousel\" data-name=\"Product Carousel\" transform=\"translate(0 -1917)\">\n    <g id=\"Product_Carousel-2\" data-name=\"Product Carousel\" transform=\"translate(0 -337)\">\n      <text id=\"Product_Carousel_Heading\" data-name=\"Product Carousel Heading\" transform=\"translate(800 2333)\" fill=\"#494a53\" font-size=\"40\" font-family=\"Helvetica-Bold, Helvetica\" font-weight=\"700\"><tspan x=\"-251.152\" y=\"0\">Product Carousel Heading</tspan></text>\n      <g id=\"Repeat_Grid_244\" data-name=\"Repeat Grid 244\" transform=\"translate(81 2383)\" clip-path=\"url(#clip-path)\">\n        <g id=\"Group_4462\" data-name=\"Group 4462\">\n          <rect id=\"_0d367bee-2150-44fe-b46c-dba210b5b7ca\" data-name=\"0d367bee-2150-44fe-b46c-dba210b5b7ca\" width=\"262\" height=\"262\" rx=\"16\" fill=\"#cfd2d6\"/>\n          <rect id=\"Rectangle_3472\" data-name=\"Rectangle 3472\" width=\"115\" height=\"10\" rx=\"5\" transform=\"translate(0 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3499\" data-name=\"Rectangle 3499\" width=\"68\" height=\"10\" rx=\"5\" transform=\"translate(121 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3473\" data-name=\"Rectangle 3473\" width=\"72\" height=\"16\" rx=\"8\" transform=\"translate(0 322)\" fill=\"#494a53\"/>\n        </g>\n        <g id=\"Group_4462-2\" data-name=\"Group 4462\" transform=\"translate(294)\">\n          <rect id=\"_0d367bee-2150-44fe-b46c-dba210b5b7ca-2\" data-name=\"0d367bee-2150-44fe-b46c-dba210b5b7ca\" width=\"262\" height=\"262\" rx=\"16\" fill=\"#cfd2d6\"/>\n          <rect id=\"Rectangle_3472-2\" data-name=\"Rectangle 3472\" width=\"115\" height=\"10\" rx=\"5\" transform=\"translate(0 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3499-2\" data-name=\"Rectangle 3499\" width=\"68\" height=\"10\" rx=\"5\" transform=\"translate(121 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3473-2\" data-name=\"Rectangle 3473\" width=\"72\" height=\"16\" rx=\"8\" transform=\"translate(0 322)\" fill=\"#494a53\"/>\n        </g>\n        <g id=\"Group_4462-3\" data-name=\"Group 4462\" transform=\"translate(588)\">\n          <rect id=\"_0d367bee-2150-44fe-b46c-dba210b5b7ca-3\" data-name=\"0d367bee-2150-44fe-b46c-dba210b5b7ca\" width=\"262\" height=\"262\" rx=\"16\" fill=\"#cfd2d6\"/>\n          <rect id=\"Rectangle_3472-3\" data-name=\"Rectangle 3472\" width=\"115\" height=\"10\" rx=\"5\" transform=\"translate(0 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3499-3\" data-name=\"Rectangle 3499\" width=\"68\" height=\"10\" rx=\"5\" transform=\"translate(121 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3473-3\" data-name=\"Rectangle 3473\" width=\"72\" height=\"16\" rx=\"8\" transform=\"translate(0 322)\" fill=\"#494a53\"/>\n        </g>\n        <g id=\"Group_4462-4\" data-name=\"Group 4462\" transform=\"translate(882)\">\n          <rect id=\"_0d367bee-2150-44fe-b46c-dba210b5b7ca-4\" data-name=\"0d367bee-2150-44fe-b46c-dba210b5b7ca\" width=\"262\" height=\"262\" rx=\"16\" fill=\"#cfd2d6\"/>\n          <rect id=\"Rectangle_3472-4\" data-name=\"Rectangle 3472\" width=\"115\" height=\"10\" rx=\"5\" transform=\"translate(0 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3499-4\" data-name=\"Rectangle 3499\" width=\"68\" height=\"10\" rx=\"5\" transform=\"translate(121 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3473-4\" data-name=\"Rectangle 3473\" width=\"72\" height=\"16\" rx=\"8\" transform=\"translate(0 322)\" fill=\"#494a53\"/>\n        </g>\n        <g id=\"Group_4462-5\" data-name=\"Group 4462\" transform=\"translate(1176)\">\n          <rect id=\"_0d367bee-2150-44fe-b46c-dba210b5b7ca-5\" data-name=\"0d367bee-2150-44fe-b46c-dba210b5b7ca\" width=\"262\" height=\"262\" rx=\"16\" fill=\"#cfd2d6\"/>\n          <rect id=\"Rectangle_3472-5\" data-name=\"Rectangle 3472\" width=\"115\" height=\"10\" rx=\"5\" transform=\"translate(0 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3499-5\" data-name=\"Rectangle 3499\" width=\"68\" height=\"10\" rx=\"5\" transform=\"translate(121 286)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3473-5\" data-name=\"Rectangle 3473\" width=\"72\" height=\"16\" rx=\"8\" transform=\"translate(0 322)\" fill=\"#494a53\"/>\n        </g>\n      </g>\n      <g id=\"Arrow-left\" transform=\"translate(19.971 2493.002)\">\n        <g id=\"Group_1453\" data-name=\"Group 1453\">\n          <g id=\"Ellipse_82\" data-name=\"Ellipse 82\" fill=\"#fff\" stroke=\"#cfd2d6\" stroke-width=\"2\">\n            <circle cx=\"22.515\" cy=\"22.515\" r=\"22.515\" stroke=\"none\"/>\n            <circle cx=\"22.515\" cy=\"22.515\" r=\"21.515\" fill=\"none\"/>\n          </g>\n        </g>\n        <g id=\"Left-arrow\" transform=\"translate(18.014 16.272)\">\n          <path id=\"Icons-07\" d=\"M1.31,0,0,1.3,5.916,7.2l5.916-5.9L10.521,0,5.916,4.606Z\" transform=\"translate(7.197) rotate(90)\" fill=\"#494a53\"/>\n        </g>\n      </g>\n      <g id=\"Arrow-left-2\" data-name=\"Arrow-left\" transform=\"translate(1580 2538.031) rotate(180)\">\n        <g id=\"Group_1453-2\" data-name=\"Group 1453\">\n          <g id=\"Ellipse_82-2\" data-name=\"Ellipse 82\" fill=\"#fff\" stroke=\"#cfd2d6\" stroke-width=\"2\">\n            <circle cx=\"22.515\" cy=\"22.515\" r=\"22.515\" stroke=\"none\"/>\n            <circle cx=\"22.515\" cy=\"22.515\" r=\"21.515\" fill=\"none\"/>\n          </g>\n        </g>\n        <g id=\"Left-arrow-2\" data-name=\"Left-arrow\" transform=\"translate(18.014 16.272)\">\n          <path id=\"Icons-07-2\" data-name=\"Icons-07\" d=\"M1.31,0,0,1.3,5.916,7.2l5.916-5.9L10.521,0,5.916,4.606Z\" transform=\"translate(7.197) rotate(90)\" fill=\"#494a53\"/>\n        </g>\n      </g>\n    </g>\n    <rect id=\"Rectangle_3501\" data-name=\"Rectangle 3501\" width=\"1600\" height=\"507\" transform=\"translate(0 1917)\" fill=\"none\"/>\n  </g>\n</svg>",
+    "properties": [
+        {
+            "can_disable": 1,
+            "code": "heading",
+            "prompt": "Section Title",
+            "properties": [
+                {
+                    "code": "heading_align",
+                    "options": [
+                        {
+                            "text": "align_left",
+                            "type": "icon",
+                            "value": "left"
+                        },
+                        {
+                            "text": "align_center",
+                            "type": "icon",
+                            "value": "center"
+                        },
+                        {
+                            "text": "align_right",
+                            "type": "icon",
+                            "value": "right"
+                        }
+                    ],
+                    "prompt": "Heading Alignment",
+                    "type": "selector"
+                },
+                {
+                    "code": "heading_text",
+                    "prompt": "Heading Text",
+                    "textsettings": {
+                        "fields": [
+                            {
+                                "code": "heading_style",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Display One",
+                                        "value": "display-1"
+                                    },
+                                    {
+                                        "text": "Display Two",
+                                        "value": "display-2"
+                                    },
+                                    {
+                                        "text": "Display Three",
+                                        "value": "display-3"
+                                    },
+                                    {
+                                        "text": "Title One",
+                                        "value": "title-1"
+                                    },
+                                    {
+                                        "text": "Title Two",
+                                        "value": "title-2"
+                                    },
+                                    {
+                                        "text": "Title Three",
+                                        "value": "title-3"
+                                    },
+                                    {
+                                        "text": "Title Four",
+                                        "value": "title-4"
+                                    },
+                                    {
+                                        "text": "Subheading Large",
+                                        "value": "subheading-l"
+                                    },
+                                    {
+                                        "text": "Subheading Small",
+                                        "value": "subheading-s"
+                                    },
+                                    {
+                                        "text": "Subheading Extra-Small",
+                                        "value": "subheading-xs"
+                                    },
+                                    {
+                                        "text": "Paragraph Large",
+                                        "value": "paragraph-l"
+                                    },
+                                    {
+                                        "text": "Paragraph Small",
+                                        "value": "paragraph-s"
+                                    },
+                                    {
+                                        "text": "Paragraph Extra-Small",
+                                        "value": "paragraph-xs"
+                                    }
+                                ],
+                                "prompt": "Heading Style",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_family",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Helvetica",
+                                        "value": "Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Georgia",
+                                        "value": "Georgia, serif"
+                                    },
+                                    {
+                                        "text": "Palatino Linotype",
+                                        "value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+                                    },
+                                    {
+                                        "text": "Times New Roman",
+                                        "value": "\"Times New Roman\", Times, serif"
+                                    },
+                                    {
+                                        "text": "Arial",
+                                        "value": "Arial, Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Arial Black",
+                                        "value": "\"Arial Black\", Gadget, sans-serif"
+                                    },
+                                    {
+                                        "text": "Comic Sans MS",
+                                        "value": "\"Comic Sans MS\", cursive, sans-serif"
+                                    },
+                                    {
+                                        "text": "Impact",
+                                        "value": "Impact, Charcoal, sans-serif"
+                                    },
+                                    {
+                                        "text": "Lucida Sans Unicode",
+                                        "value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+                                    },
+                                    {
+                                        "text": "Tahoma",
+                                        "value": "Tahoma, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Trebuchet MS",
+                                        "value": "\"Trebuchet MS\", Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Verdana",
+                                        "value": "Verdana, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Courier New",
+                                        "value": "\"Courier New\", Courier, monospace"
+                                    },
+                                    {
+                                        "text": "Lucida Console",
+                                        "value": "\"Lucida Console\", Monaco, monospace"
+                                    }
+                                ],
+                                "prompt": "Font Family",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "font-family",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_size",
+                                "label": "px",
+                                "min": 1,
+                                "prompt": "Font Size",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "one-third",
+                                "style": "font-size",
+                                "style_suffix": "px",
+                                "text_type": "number",
+                                "type": "text"
+                            },
+                            {
+                                "code": "font_weight",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Ultra-Thin",
+                                        "value": 100
+                                    },
+                                    {
+                                        "text": "Light",
+                                        "value": 200
+                                    },
+                                    {
+                                        "text": "Book",
+                                        "value": 300
+                                    },
+                                    {
+                                        "text": "Normal",
+                                        "value": 400
+                                    },
+                                    {
+                                        "text": "Medium",
+                                        "value": 500
+                                    },
+                                    {
+                                        "text": "Semi-Bold",
+                                        "value": 600
+                                    },
+                                    {
+                                        "text": "Bold",
+                                        "value": 700
+                                    },
+                                    {
+                                        "text": "Black",
+                                        "value": 900
+                                    }
+                                ],
+                                "prompt": "Font Weight",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "two-thirds",
+                                "style": "font-weight",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_color",
+                                "placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+                                "prompt": "Font Color",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "color",
+                                "type": "color"
+                            },
+                            {
+                                "code": "heading_tag",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "h1",
+                                        "value": "h1"
+                                    },
+                                    {
+                                        "text": "h2",
+                                        "value": "h2"
+                                    },
+                                    {
+                                        "text": "h3",
+                                        "value": "h3"
+                                    },
+                                    {
+                                        "text": "h4",
+                                        "value": "h4"
+                                    },
+                                    {
+                                        "text": "h5",
+                                        "value": "h5"
+                                    },
+                                    {
+                                        "text": "h6",
+                                        "value": "h6"
+                                    },
+                                    {
+                                        "text": "p",
+                                        "value": "p"
+                                    }
+                                ],
+                                "prompt": "Heading Tag",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            }
+                        ]
+                    },
+                    "type": "text"
+                }
+            ],
+            "type": "group"
+        },
+        {
+            "code": "products",
+            "prompt": "Products",
+            "properties": [
+                {
+                    "code": "image_size",
+                    "options": [
+                        {
+                            "text": "Defined by Smallest Image Size",
+                            "value": "auto"
+                        },
+                        {
+                            "text": "Small",
+                            "value": "s"
+                        },
+                        {
+                            "text": "Medium",
+                            "value": "m"
+                        },
+                        {
+                            "text": "Large",
+                            "value": "l"
+                        }
+                    ],
+                    "prompt": "Image Height",
+                    "type": "select"
+                },
+                {
+                    "code": "image_fit",
+                    "options": [
+                        {
+                            "text": "Cover",
+                            "value": "cover"
+                        },
+                        {
+                            "text": "Contain",
+                            "value": "contain"
+                        },
+                        {
+                            "text": "Fill",
+                            "value": "fill"
+                        },
+                        {
+                            "text": "None",
+                            "value": "none"
+                        },
+                        {
+                            "text": "Scale Down",
+                            "value": "scale-down"
+                        }
+                    ],
+                    "prompt": "Image Fit",
+                    "type": "select"
+                },
+                {
+                    "can_disable": 1,
+                    "code": "from_category",
+                    "prompt": "Select a Category",
+                    "properties": [
+                        {
+                            "code": "category",
+                            "prompt": "Category",
+                            "type": "category"
+                        },
+                        {
+                            "code": "count",
+                            "options": [
+                                {
+                                    "text": 5,
+                                    "value": 5
+                                },
+                                {
+                                    "text": 10,
+                                    "value": 10
+                                },
+                                {
+                                    "text": 15,
+                                    "value": 15
+                                },
+                                {
+                                    "text": 20,
+                                    "value": 20
+                                }
+                            ],
+                            "prompt": "Number of Products",
+                            "type": "select"
+                        },
+                        {
+                            "code": "sort",
+                            "options": [
+                                {
+                                    "text": "Relevance",
+                                    "value": "relevance"
+                                },
+                                {
+                                    "text": "Display Order",
+                                    "value": "disp_order"
+                                },
+                                {
+                                    "text": "Display Order Descending",
+                                    "value": "disp_order_desc"
+                                },
+                                {
+                                    "text": "Newest",
+                                    "value": "newest"
+                                },
+                                {
+                                    "text": "Oldest",
+                                    "value": "oldest"
+                                },
+                                {
+                                    "text": "Recently Updated",
+                                    "value": "updated"
+                                },
+                                {
+                                    "text": "Code Ascending",
+                                    "value": "code_asc"
+                                },
+                                {
+                                    "text": "Code Descending",
+                                    "value": "code_desc"
+                                },
+                                {
+                                    "text": "Name Ascending",
+                                    "value": "name_asc"
+                                },
+                                {
+                                    "text": "Name Descending",
+                                    "value": "name_desc"
+                                },
+                                {
+                                    "text": "Price Ascending",
+                                    "value": "price_asc"
+                                },
+                                {
+                                    "text": "Price Descending",
+                                    "value": "price_desc"
+                                },
+                                {
+                                    "text": "Best Sellers",
+                                    "value": "bestsellers"
+                                }
+                            ],
+                            "prompt": "Sort Order",
+                            "type": "select"
+                        }
+                    ],
+                    "type": "group"
+                },
+                {
+                    "can_disable": 1,
+                    "code": "from_individual",
+                    "prompt": "Select Individual Products",
+                    "properties": [
+                        {
+                            "code": "products",
+                            "list_type": "product",
+                            "prompt": "Products",
+                            "type": "list"
+                        }
+                    ],
+                    "type": "group"
+                }
+            ],
+            "type": "group"
+        }
+    ],
+    "resourcegroup_code": "mmx-product-carousel",
+    "version": "10.05.00"
+}

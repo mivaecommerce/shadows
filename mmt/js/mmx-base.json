@@ -1,0 +1,14 @@
+{
+    "code": "mmx-base",
+    "type": "L",
+    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-base/scripts.js",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        }
+    ],
+    "linked_pages": []
+}

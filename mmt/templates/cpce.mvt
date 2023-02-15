@@ -23,6 +23,9 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<br>
 			<form data-hook="cpce-form" method="post" action="&mvte:urls:CPCD:auto;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
@@ -35,16 +38,13 @@
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
 							<script>
-								var onclick_submit = function (event) {
-									if (MivaPay && (typeof MivaPay.Submit === 'function')) {
-										MivaPay.Submit(function() {
-											var form;
-		
-											form = document.querySelector('[data-hook="cpce-form"]');
-											form.submit();
-										});
-									}
-								}
+								const onclick_submit = event => {
+								    if (MivaPay && (typeof MivaPay.Submit === 'function')) {
+								        MivaPay.Submit(() => {
+											document.querySelector('[data-hook="cpce-form"]').submit();
+								        });
+								    }
+								};
 							</script>
 							<span onclick="onclick_submit(); return false;" class="u-inline-block">
 								<mvt:item name="buttons" param="Save" />

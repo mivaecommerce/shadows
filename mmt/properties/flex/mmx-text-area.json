@@ -1,0 +1,931 @@
+{
+    "advanced_properties": [
+        {
+            "code": "spacing",
+            "prompt": "Spacing",
+            "properties": [
+                {
+                    "code": "top",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Top",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                },
+                {
+                    "code": "bottom",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Bottom",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                }
+            ],
+            "type": "group"
+        },
+        {
+            "code": "desktop",
+            "prompt": "Desktop",
+            "properties": [
+                {
+                    "code": "width",
+                    "label": "%",
+                    "precision": -1,
+                    "prompt": "Width",
+                    "range_high": 100,
+                    "range_low": 20,
+                    "scale": -1,
+                    "type": "slider"
+                }
+            ],
+            "type": "group"
+        }
+    ],
+    "category": "text-area",
+    "defaults": {
+        "advanced": {
+            "desktop": {
+                "width": {
+                    "value": "default"
+                }
+            }
+        },
+        "content": {
+            "align": {
+                "value": "center"
+            },
+            "body": {
+                "textsettings": {
+                    "fields": {
+                        "normal": {
+                            "body_style": {
+                                "value": "paragraph-s"
+                            }
+                        }
+                    }
+                },
+                "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
+            },
+            "button": {
+                "button_link": {
+                    "type": "page",
+                    "value": "SFNT"
+                },
+                "button_text": {
+                    "textsettings": {
+                        "fields": {
+                            "normal": {
+                                "button_size": {
+                                    "value": "s"
+                                },
+                                "button_style": {
+                                    "value": "primary"
+                                }
+                            }
+                        }
+                    },
+                    "value": "Shop Now"
+                },
+                "settings": {
+                    "enabled": 1
+                }
+            },
+            "heading": {
+                "textsettings": {
+                    "fields": {
+                        "normal": {
+                            "heading_style": {
+                                "value": "display-3"
+                            }
+                        }
+                    }
+                },
+                "value": "Heading Goes In This Space"
+            },
+            "subheading": {
+                "textsettings": {
+                    "fields": {
+                        "normal": {
+                            "subheading_style": {
+                                "value": "subheading-s"
+                            }
+                        }
+                    }
+                },
+                "value": "Subheading Goes Here"
+            }
+        }
+    },
+    "initialization_template_filename": "flex-initialization-template-mmx-text-area.mvc",
+    "name": "Text Area",
+    "preview": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1600\" height=\"455\" viewBox=\"0 0 1600 455\">\n  <g id=\"Text_Area\" data-name=\"Text Area\" transform=\"translate(0 -3615)\">\n    <g id=\"Group_6585\" data-name=\"Group 6585\">\n      <g id=\"Text_Area-2\" data-name=\"Text Area\" transform=\"translate(108 -542)\">\n        <text id=\"Text_Area_Heading\" data-name=\"Text Area Heading\" transform=\"translate(82 4258)\" fill=\"#494a53\" font-size=\"40\" font-family=\"Helvetica-Bold, Helvetica\" font-weight=\"700\"><tspan x=\"0\" y=\"0\">Text Area Heading</tspan></text>\n        <rect id=\"Rectangle_3482\" data-name=\"Rectangle 3482\" width=\"200\" height=\"10\" rx=\"5\" transform=\"translate(82 4197)\" fill=\"#969da8\"/>\n        <g id=\"Group_6575\" data-name=\"Group 6575\" transform=\"translate(82 4300)\">\n          <rect id=\"Rectangle_3483\" data-name=\"Rectangle 3483\" width=\"1168\" height=\"10\" rx=\"5\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3484\" data-name=\"Rectangle 3484\" width=\"1148\" height=\"10\" rx=\"5\" transform=\"translate(0 26)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3485\" data-name=\"Rectangle 3485\" width=\"1220\" height=\"10\" rx=\"5\" transform=\"translate(0 52)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3486\" data-name=\"Rectangle 3486\" width=\"1200\" height=\"10\" rx=\"5\" transform=\"translate(0 78)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3487\" data-name=\"Rectangle 3487\" width=\"1200\" height=\"10\" rx=\"5\" transform=\"translate(0 104)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3488\" data-name=\"Rectangle 3488\" width=\"1192\" height=\"10\" rx=\"5\" transform=\"translate(0 138)\" fill=\"#969da8\"/>\n          <rect id=\"Rectangle_3489\" data-name=\"Rectangle 3489\" width=\"1192\" height=\"10\" rx=\"5\" transform=\"translate(0 164)\" fill=\"#969da8\"/>\n        </g>\n        <rect id=\"Rectangle_3490\" data-name=\"Rectangle 3490\" width=\"358\" height=\"10\" rx=\"5\" transform=\"translate(82 4490)\" fill=\"#969da8\"/>\n        <g id=\"Group_6574\" data-name=\"Group 6574\" transform=\"translate(82 4524)\">\n          <g id=\"Primary_Button_CTA\" data-name=\"Primary Button CTA\">\n            <rect id=\"Rectangle_3062\" data-name=\"Rectangle 3062\" width=\"120\" height=\"48\" rx=\"4\" fill=\"#494a53\"/>\n          </g>\n          <rect id=\"Rectangle_3476\" data-name=\"Rectangle 3476\" width=\"64\" height=\"10\" rx=\"5\" transform=\"translate(28 19)\" fill=\"#fff\"/>\n        </g>\n      </g>\n      <rect id=\"Rectangle_3504\" data-name=\"Rectangle 3504\" width=\"1600\" height=\"455\" transform=\"translate(0 3615)\" fill=\"none\"/>\n    </g>\n  </g>\n</svg>",
+    "properties": [
+        {
+            "code": "content",
+            "prompt": "Text",
+            "properties": [
+                {
+                    "code": "align",
+                    "options": [
+                        {
+                            "text": "align_left",
+                            "type": "icon",
+                            "value": "left"
+                        },
+                        {
+                            "text": "align_center",
+                            "type": "icon",
+                            "value": "center"
+                        },
+                        {
+                            "text": "align_right",
+                            "type": "icon",
+                            "value": "right"
+                        }
+                    ],
+                    "prompt": "Text Alignment",
+                    "type": "selector"
+                },
+                {
+                    "code": "heading",
+                    "prompt": "Heading Text",
+                    "textsettings": {
+                        "fields": [
+                            {
+                                "code": "heading_style",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Display One",
+                                        "value": "display-1"
+                                    },
+                                    {
+                                        "text": "Display Two",
+                                        "value": "display-2"
+                                    },
+                                    {
+                                        "text": "Display Three",
+                                        "value": "display-3"
+                                    },
+                                    {
+                                        "text": "Title One",
+                                        "value": "title-1"
+                                    },
+                                    {
+                                        "text": "Title Two",
+                                        "value": "title-2"
+                                    },
+                                    {
+                                        "text": "Title Three",
+                                        "value": "title-3"
+                                    },
+                                    {
+                                        "text": "Title Four",
+                                        "value": "title-4"
+                                    },
+                                    {
+                                        "text": "Subheading Large",
+                                        "value": "subheading-l"
+                                    },
+                                    {
+                                        "text": "Subheading Small",
+                                        "value": "subheading-s"
+                                    },
+                                    {
+                                        "text": "Subheading Extra-Small",
+                                        "value": "subheading-xs"
+                                    },
+                                    {
+                                        "text": "Paragraph Large",
+                                        "value": "paragraph-l"
+                                    },
+                                    {
+                                        "text": "Paragraph Small",
+                                        "value": "paragraph-s"
+                                    },
+                                    {
+                                        "text": "Paragraph Extra-Small",
+                                        "value": "paragraph-xs"
+                                    }
+                                ],
+                                "prompt": "Heading Style",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_family",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Helvetica",
+                                        "value": "Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Georgia",
+                                        "value": "Georgia, serif"
+                                    },
+                                    {
+                                        "text": "Palatino Linotype",
+                                        "value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+                                    },
+                                    {
+                                        "text": "Times New Roman",
+                                        "value": "\"Times New Roman\", Times, serif"
+                                    },
+                                    {
+                                        "text": "Arial",
+                                        "value": "Arial, Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Arial Black",
+                                        "value": "\"Arial Black\", Gadget, sans-serif"
+                                    },
+                                    {
+                                        "text": "Comic Sans MS",
+                                        "value": "\"Comic Sans MS\", cursive, sans-serif"
+                                    },
+                                    {
+                                        "text": "Impact",
+                                        "value": "Impact, Charcoal, sans-serif"
+                                    },
+                                    {
+                                        "text": "Lucida Sans Unicode",
+                                        "value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+                                    },
+                                    {
+                                        "text": "Tahoma",
+                                        "value": "Tahoma, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Trebuchet MS",
+                                        "value": "\"Trebuchet MS\", Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Verdana",
+                                        "value": "Verdana, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Courier New",
+                                        "value": "\"Courier New\", Courier, monospace"
+                                    },
+                                    {
+                                        "text": "Lucida Console",
+                                        "value": "\"Lucida Console\", Monaco, monospace"
+                                    }
+                                ],
+                                "prompt": "Font Family",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "font-family",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_size",
+                                "label": "px",
+                                "min": 1,
+                                "prompt": "Font Size",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "one-third",
+                                "style": "font-size",
+                                "style_suffix": "px",
+                                "text_type": "number",
+                                "type": "text"
+                            },
+                            {
+                                "code": "font_weight",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Ultra-Thin",
+                                        "value": 100
+                                    },
+                                    {
+                                        "text": "Light",
+                                        "value": 200
+                                    },
+                                    {
+                                        "text": "Book",
+                                        "value": 300
+                                    },
+                                    {
+                                        "text": "Normal",
+                                        "value": 400
+                                    },
+                                    {
+                                        "text": "Medium",
+                                        "value": 500
+                                    },
+                                    {
+                                        "text": "Semi-Bold",
+                                        "value": 600
+                                    },
+                                    {
+                                        "text": "Bold",
+                                        "value": 700
+                                    },
+                                    {
+                                        "text": "Black",
+                                        "value": 900
+                                    }
+                                ],
+                                "prompt": "Font Weight",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "two-thirds",
+                                "style": "font-weight",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_color",
+                                "placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+                                "prompt": "Font Color",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "color",
+                                "type": "color"
+                            },
+                            {
+                                "code": "heading_tag",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "h1",
+                                        "value": "h1"
+                                    },
+                                    {
+                                        "text": "h2",
+                                        "value": "h2"
+                                    },
+                                    {
+                                        "text": "h3",
+                                        "value": "h3"
+                                    },
+                                    {
+                                        "text": "h4",
+                                        "value": "h4"
+                                    },
+                                    {
+                                        "text": "h5",
+                                        "value": "h5"
+                                    },
+                                    {
+                                        "text": "h6",
+                                        "value": "h6"
+                                    },
+                                    {
+                                        "text": "p",
+                                        "value": "p"
+                                    }
+                                ],
+                                "prompt": "Heading Tag",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            }
+                        ]
+                    },
+                    "type": "text"
+                },
+                {
+                    "code": "subheading",
+                    "prompt": "Subheading Text",
+                    "textsettings": {
+                        "fields": [
+                            {
+                                "code": "subheading_style",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Display One",
+                                        "value": "display-1"
+                                    },
+                                    {
+                                        "text": "Display Two",
+                                        "value": "display-2"
+                                    },
+                                    {
+                                        "text": "Display Three",
+                                        "value": "display-3"
+                                    },
+                                    {
+                                        "text": "Title One",
+                                        "value": "title-1"
+                                    },
+                                    {
+                                        "text": "Title Two",
+                                        "value": "title-2"
+                                    },
+                                    {
+                                        "text": "Title Three",
+                                        "value": "title-3"
+                                    },
+                                    {
+                                        "text": "Title Four",
+                                        "value": "title-4"
+                                    },
+                                    {
+                                        "text": "Subheading Large",
+                                        "value": "subheading-l"
+                                    },
+                                    {
+                                        "text": "Subheading Small",
+                                        "value": "subheading-s"
+                                    },
+                                    {
+                                        "text": "Subheading Extra-Small",
+                                        "value": "subheading-xs"
+                                    },
+                                    {
+                                        "text": "Paragraph Large",
+                                        "value": "paragraph-l"
+                                    },
+                                    {
+                                        "text": "Paragraph Small",
+                                        "value": "paragraph-s"
+                                    },
+                                    {
+                                        "text": "Paragraph Extra-Small",
+                                        "value": "paragraph-xs"
+                                    }
+                                ],
+                                "prompt": "Subheading Style",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_family",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Helvetica",
+                                        "value": "Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Georgia",
+                                        "value": "Georgia, serif"
+                                    },
+                                    {
+                                        "text": "Palatino Linotype",
+                                        "value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+                                    },
+                                    {
+                                        "text": "Times New Roman",
+                                        "value": "\"Times New Roman\", Times, serif"
+                                    },
+                                    {
+                                        "text": "Arial",
+                                        "value": "Arial, Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Arial Black",
+                                        "value": "\"Arial Black\", Gadget, sans-serif"
+                                    },
+                                    {
+                                        "text": "Comic Sans MS",
+                                        "value": "\"Comic Sans MS\", cursive, sans-serif"
+                                    },
+                                    {
+                                        "text": "Impact",
+                                        "value": "Impact, Charcoal, sans-serif"
+                                    },
+                                    {
+                                        "text": "Lucida Sans Unicode",
+                                        "value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+                                    },
+                                    {
+                                        "text": "Tahoma",
+                                        "value": "Tahoma, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Trebuchet MS",
+                                        "value": "\"Trebuchet MS\", Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Verdana",
+                                        "value": "Verdana, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Courier New",
+                                        "value": "\"Courier New\", Courier, monospace"
+                                    },
+                                    {
+                                        "text": "Lucida Console",
+                                        "value": "\"Lucida Console\", Monaco, monospace"
+                                    }
+                                ],
+                                "prompt": "Font Family",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "font-family",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_size",
+                                "label": "px",
+                                "min": 1,
+                                "prompt": "Font Size",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "one-third",
+                                "style": "font-size",
+                                "style_suffix": "px",
+                                "text_type": "number",
+                                "type": "text"
+                            },
+                            {
+                                "code": "font_weight",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Ultra-Thin",
+                                        "value": 100
+                                    },
+                                    {
+                                        "text": "Light",
+                                        "value": 200
+                                    },
+                                    {
+                                        "text": "Book",
+                                        "value": 300
+                                    },
+                                    {
+                                        "text": "Normal",
+                                        "value": 400
+                                    },
+                                    {
+                                        "text": "Medium",
+                                        "value": 500
+                                    },
+                                    {
+                                        "text": "Semi-Bold",
+                                        "value": 600
+                                    },
+                                    {
+                                        "text": "Bold",
+                                        "value": 700
+                                    },
+                                    {
+                                        "text": "Black",
+                                        "value": 900
+                                    }
+                                ],
+                                "prompt": "Font Weight",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "two-thirds",
+                                "style": "font-weight",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_color",
+                                "placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+                                "prompt": "Font Color",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "color",
+                                "type": "color"
+                            }
+                        ]
+                    },
+                    "type": "text"
+                },
+                {
+                    "code": "body",
+                    "prompt": "Body Text",
+                    "textsettings": {
+                        "fields": [
+                            {
+                                "code": "body_style",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Display One",
+                                        "value": "display-1"
+                                    },
+                                    {
+                                        "text": "Display Two",
+                                        "value": "display-2"
+                                    },
+                                    {
+                                        "text": "Display Three",
+                                        "value": "display-3"
+                                    },
+                                    {
+                                        "text": "Title One",
+                                        "value": "title-1"
+                                    },
+                                    {
+                                        "text": "Title Two",
+                                        "value": "title-2"
+                                    },
+                                    {
+                                        "text": "Title Three",
+                                        "value": "title-3"
+                                    },
+                                    {
+                                        "text": "Title Four",
+                                        "value": "title-4"
+                                    },
+                                    {
+                                        "text": "Subheading Large",
+                                        "value": "subheading-l"
+                                    },
+                                    {
+                                        "text": "Subheading Small",
+                                        "value": "subheading-s"
+                                    },
+                                    {
+                                        "text": "Subheading Extra-Small",
+                                        "value": "subheading-xs"
+                                    },
+                                    {
+                                        "text": "Paragraph Large",
+                                        "value": "paragraph-l"
+                                    },
+                                    {
+                                        "text": "Paragraph Small",
+                                        "value": "paragraph-s"
+                                    },
+                                    {
+                                        "text": "Paragraph Extra-Small",
+                                        "value": "paragraph-xs"
+                                    }
+                                ],
+                                "prompt": "Body Style",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_family",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Helvetica",
+                                        "value": "Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Georgia",
+                                        "value": "Georgia, serif"
+                                    },
+                                    {
+                                        "text": "Palatino Linotype",
+                                        "value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+                                    },
+                                    {
+                                        "text": "Times New Roman",
+                                        "value": "\"Times New Roman\", Times, serif"
+                                    },
+                                    {
+                                        "text": "Arial",
+                                        "value": "Arial, Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Arial Black",
+                                        "value": "\"Arial Black\", Gadget, sans-serif"
+                                    },
+                                    {
+                                        "text": "Comic Sans MS",
+                                        "value": "\"Comic Sans MS\", cursive, sans-serif"
+                                    },
+                                    {
+                                        "text": "Impact",
+                                        "value": "Impact, Charcoal, sans-serif"
+                                    },
+                                    {
+                                        "text": "Lucida Sans Unicode",
+                                        "value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+                                    },
+                                    {
+                                        "text": "Tahoma",
+                                        "value": "Tahoma, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Trebuchet MS",
+                                        "value": "\"Trebuchet MS\", Helvetica, sans-serif"
+                                    },
+                                    {
+                                        "text": "Verdana",
+                                        "value": "Verdana, Geneva, sans-serif"
+                                    },
+                                    {
+                                        "text": "Courier New",
+                                        "value": "\"Courier New\", Courier, monospace"
+                                    },
+                                    {
+                                        "text": "Lucida Console",
+                                        "value": "\"Lucida Console\", Monaco, monospace"
+                                    }
+                                ],
+                                "prompt": "Font Family",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "font-family",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_size",
+                                "label": "px",
+                                "min": 1,
+                                "prompt": "Font Size",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "one-third",
+                                "style": "font-size",
+                                "style_suffix": "px",
+                                "text_type": "number",
+                                "type": "text"
+                            },
+                            {
+                                "code": "font_weight",
+                                "options": [
+                                    {
+                                        "text": "Default"
+                                    },
+                                    {
+                                        "text": "Ultra-Thin",
+                                        "value": 100
+                                    },
+                                    {
+                                        "text": "Light",
+                                        "value": 200
+                                    },
+                                    {
+                                        "text": "Book",
+                                        "value": 300
+                                    },
+                                    {
+                                        "text": "Normal",
+                                        "value": 400
+                                    },
+                                    {
+                                        "text": "Medium",
+                                        "value": 500
+                                    },
+                                    {
+                                        "text": "Semi-Bold",
+                                        "value": 600
+                                    },
+                                    {
+                                        "text": "Bold",
+                                        "value": 700
+                                    },
+                                    {
+                                        "text": "Black",
+                                        "value": 900
+                                    }
+                                ],
+                                "prompt": "Font Weight",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "size": "two-thirds",
+                                "style": "font-weight",
+                                "type": "select"
+                            },
+                            {
+                                "code": "font_color",
+                                "placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+                                "prompt": "Font Color",
+                                "pseudoclasses": [
+                                    "normal"
+                                ],
+                                "style": "color",
+                                "type": "color"
+                            }
+                        ]
+                    },
+                    "type": "textarea"
+                },
+                {
+                    "can_disable": 1,
+                    "code": "button",
+                    "prompt": "Button",
+                    "properties": [
+                        {
+                            "code": "button_text",
+                            "prompt": "Button Text",
+                            "textsettings": {
+                                "fields": [
+                                    {
+                                        "code": "button_style",
+                                        "options": [
+                                            {
+                                                "text": "Default"
+                                            },
+                                            {
+                                                "text": "Primary",
+                                                "value": "primary"
+                                            },
+                                            {
+                                                "text": "Secondary",
+                                                "value": "secondary"
+                                            },
+                                            {
+                                                "text": "Display Link",
+                                                "value": "display-link"
+                                            },
+                                            {
+                                                "text": "Primary Link",
+                                                "value": "primary-link"
+                                            },
+                                            {
+                                                "text": "Secondary Link",
+                                                "value": "secondary-link"
+                                            }
+                                        ],
+                                        "prompt": "Button Style",
+                                        "pseudoclasses": [
+                                            "normal"
+                                        ],
+                                        "type": "select"
+                                    },
+                                    {
+                                        "code": "button_size",
+                                        "options": [
+                                            {
+                                                "text": "Default"
+                                            },
+                                            {
+                                                "text": "X-Small",
+                                                "value": "xs"
+                                            },
+                                            {
+                                                "text": "Small",
+                                                "value": "s"
+                                            },
+                                            {
+                                                "text": "Medium",
+                                                "value": "m"
+                                            },
+                                            {
+                                                "text": "Large",
+                                                "value": "l"
+                                            }
+                                        ],
+                                        "prompt": "Button Size",
+                                        "pseudoclasses": [
+                                            "normal"
+                                        ],
+                                        "type": "select"
+                                    }
+                                ]
+                            },
+                            "type": "text"
+                        },
+                        {
+                            "code": "button_link",
+                            "prompt": "Button Link",
+                            "type": "link"
+                        }
+                    ],
+                    "type": "group"
+                }
+            ],
+            "type": "group"
+        }
+    ],
+    "resourcegroup_code": "mmx-text-area",
+    "version": "10.05.00"
+}

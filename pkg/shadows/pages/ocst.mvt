@@ -21,13 +21,18 @@
 	</section>
 
 	<section class="o-layout o-layout--wide">
-		<div class="o-layout__item u-width-12 u-width-8--l u-width-5--w u-offset-2--w">
-			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
-			<mvt:item name="customer" />
-			<mvt:item name="readytheme" param="contentsection( 'address_validation' )" />
+		<div class="o-layout__item u-width-12 u-width-8--l u-width-9--w">
+			<div class="t-basket__product-contents">
+				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+				<mvt:item name="customer" />
+				<mvt:item name="readytheme" param="contentsection( 'address_validation' )" />
+			</div>
 		</div>
-		<aside class="o-layout__item u-width-12 u-width-4--l u-width-5--w">
-			<mvt:item name="basket" />
+		<aside class="o-layout__item u-width-12 u-width-4--l u-width-3--w">
+			<div class="t-basket__order-summary">
+				<mvt:item name="basket" />
+			</div>
+			<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
 		</aside>
 	</section>
 	

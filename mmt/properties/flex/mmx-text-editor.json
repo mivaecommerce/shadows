@@ -1,0 +1,51 @@
+{
+    "advanced_properties": [
+        {
+            "code": "spacing",
+            "prompt": "Spacing",
+            "properties": [
+                {
+                    "code": "top",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Top",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                },
+                {
+                    "code": "bottom",
+                    "label": "px",
+                    "max": 200,
+                    "min": -50,
+                    "prompt": "Bottom",
+                    "required": 0,
+                    "step": 1,
+                    "text_type": "number",
+                    "type": "text"
+                }
+            ],
+            "type": "group"
+        }
+    ],
+    "category": "text-editor",
+    "defaults": {
+        "content": {
+            "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
+        }
+    },
+    "initialization_template_filename": "flex-initialization-template-mmx-text-editor.mvc",
+    "name": "Rich Text Editor",
+    "preview": "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1600\" height=\"660\" viewBox=\"0 0 1600 660\">\n  <g id=\"RichTextEditor\" transform=\"translate(0 -4854)\">\n    <g id=\"RichTextEditor-2\" data-name=\"RichTextEditor\" transform=\"translate(0 -685)\">\n      <g id=\"Rectangle_3193\" data-name=\"Rectangle 3193\" transform=\"translate(80 5579)\" fill=\"#fff\" stroke=\"#cfd2d6\" stroke-width=\"4\">\n        <rect width=\"1440\" height=\"580\" rx=\"16\" stroke=\"none\"/>\n        <rect x=\"2\" y=\"2\" width=\"1436\" height=\"576\" rx=\"14\" fill=\"none\"/>\n      </g>\n    </g>\n    <rect id=\"Rectangle_3507\" data-name=\"Rectangle 3507\" width=\"1600\" height=\"660\" transform=\"translate(0 4854)\" fill=\"none\"/>\n    <g id=\"Text_Area\" data-name=\"Text Area\" transform=\"translate(58 857)\">\n      <text id=\"Rich_Text_Editor\" data-name=\"Rich Text Editor\" transform=\"translate(82 4266)\" fill=\"#494a53\" font-size=\"40\" font-family=\"Helvetica-Bold, Helvetica\" font-weight=\"700\"><tspan x=\"0\" y=\"0\">Rich Text Editor</tspan></text>\n      <g id=\"Group_6575\" data-name=\"Group 6575\" transform=\"translate(82 4300)\">\n        <rect id=\"Rectangle_3483\" data-name=\"Rectangle 3483\" width=\"1168\" height=\"10\" rx=\"5\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3484\" data-name=\"Rectangle 3484\" width=\"1148\" height=\"10\" rx=\"5\" transform=\"translate(0 26)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3485\" data-name=\"Rectangle 3485\" width=\"1220\" height=\"10\" rx=\"5\" transform=\"translate(0 52)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3486\" data-name=\"Rectangle 3486\" width=\"1200\" height=\"10\" rx=\"5\" transform=\"translate(0 78)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3487\" data-name=\"Rectangle 3487\" width=\"1200\" height=\"10\" rx=\"5\" transform=\"translate(0 104)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3488\" data-name=\"Rectangle 3488\" width=\"358\" height=\"10\" rx=\"5\" transform=\"translate(42 146)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3489\" data-name=\"Rectangle 3489\" width=\"358\" height=\"10\" rx=\"5\" transform=\"translate(42 172)\" fill=\"#969da8\"/>\n        <circle id=\"Ellipse_626\" data-name=\"Ellipse 626\" cx=\"5\" cy=\"5\" r=\"5\" transform=\"translate(1 146)\" fill=\"#969da8\"/>\n        <circle id=\"Ellipse_627\" data-name=\"Ellipse 627\" cx=\"5\" cy=\"5\" r=\"5\" transform=\"translate(1 172)\" fill=\"#969da8\"/>\n        <circle id=\"Ellipse_628\" data-name=\"Ellipse 628\" cx=\"5\" cy=\"5\" r=\"5\" transform=\"translate(1 198)\" fill=\"#969da8\"/>\n        <rect id=\"Rectangle_3533\" data-name=\"Rectangle 3533\" width=\"358\" height=\"10\" rx=\"5\" transform=\"translate(42 198)\" fill=\"#969da8\"/>\n      </g>\n    </g>\n    <g id=\"RichTextEditor-3\" data-name=\"RichTextEditor\" transform=\"translate(0 -641)\">\n      <rect id=\"Rectangle_3193-2\" data-name=\"Rectangle 3193\" width=\"1380\" height=\"60\" rx=\"8\" transform=\"translate(110 5609)\" fill=\"#cfd2d6\"/>\n    </g>\n    <rect id=\"Rectangle_3528\" data-name=\"Rectangle 3528\" width=\"88\" height=\"10\" rx=\"5\" transform=\"translate(140 4934)\" fill=\"#969da8\"/>\n    <rect id=\"Rectangle_3532\" data-name=\"Rectangle 3532\" width=\"88\" height=\"10\" rx=\"5\" transform=\"translate(722 4934)\" fill=\"#969da8\"/>\n    <rect id=\"Rectangle_3529\" data-name=\"Rectangle 3529\" width=\"136\" height=\"10\" rx=\"5\" transform=\"translate(260 4934)\" fill=\"#969da8\"/>\n    <rect id=\"Rectangle_3531\" data-name=\"Rectangle 3531\" width=\"136\" height=\"10\" rx=\"5\" transform=\"translate(554 4934)\" fill=\"#969da8\"/>\n    <rect id=\"Rectangle_3530\" data-name=\"Rectangle 3530\" width=\"94\" height=\"10\" rx=\"5\" transform=\"translate(428 4934)\" fill=\"#969da8\"/>\n  </g>\n</svg>",
+    "properties": [
+        {
+            "code": "content",
+            "prompt": "Content",
+            "type": "texteditor"
+        }
+    ],
+    "resourcegroup_code": "mmx-text-editor",
+    "version": "10.05.00"
+}

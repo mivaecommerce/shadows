@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "",
+            "id": "2ba05a0db170712711053e4af7f11101",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Statement</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "62488669a107dabda3a564cd7d53ad20",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping and Return Policies</a>",
             "link_dest": "SARP",
             "link_targ": "_self",

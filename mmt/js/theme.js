@@ -3,24 +3,7 @@
  * pages. You will use this to extend your theme instead of adding code to the core framework files.
  */
 const themeFunctionality = {
-	global: function () {
-		/**
-		 * Although NodeList is not an Array, it is possible to iterate on it using forEach().
-		 * It can also be converted to an Array using Array.from().
-		 * However some older browsers have not yet implemented NodeList.forEach() nor Array.from().
-		 * But those limitations can be circumvented by using Array.prototype.forEach().
-		 * This polyfill adds compatibility to browsers which do not support NodeList.forEach(). [IE11]
-		 */
-		if (window.NodeList && !NodeList.prototype.forEach) {
-			NodeList.prototype.forEach = function (callback, thisArg) {
-				thisArg = thisArg || window;
-				for (let i = 0; i < this.length; i++) {
-					callback.call(thisArg, this[i], i, this);
-				}
-			};
-		}
-		
-		
+	global() {
 		/**
 		 * Add `ID`, `CLASS`, and `aria-describedby` attributes to `INPUT` and `SELECT` elements
 		 * dynamically created by Miva, where needed.
@@ -35,8 +18,8 @@ const themeFunctionality = {
 				description: element.getAttribute('data-mvt-describedby'),
 				autocomplete: element.getAttribute('data-mvt-autocomplete')
 			};
-			
-			mvtItems.forEach(function (mvtItem) {
+
+			mvtItems.forEach(mvtItem => {
 				if (attr.id !== null) {
 					mvtItem.setAttribute('id', attr.id);
 				}
@@ -50,49 +33,71 @@ const themeFunctionality = {
 					mvtItem.setAttribute('autocomplete', attr.autocomplete);
 				}
 			});
-			
 		};
-		
-		mvtInputWraps.forEach(function (element) {
+
+		mvtInputWraps.forEach(element => {
 			styleMVT(element, 'input');
 		});
-		
-		mvtSelectWraps.forEach(function (element) {
+
+
+		mvtSelectWraps.forEach(element => {
 			styleMVT(element, 'select');
 		});
 
-	},
-	init: function () {
 		/**
-		 * Initialize A11y-Toggle extension
+		 * Search form toggle for smaller screens
+		 */
+		(() => {
+			const header = document.querySelector('[data-hook="site-header"]');
+			const headerSearch = header.querySelector('[data-hook="site-header__search"]');
+			const headerSearchToggle = header.querySelector('[data-hook="open-header-search"]');
+
+			if (headerSearch && headerSearchToggle) {
+				const headerSearchInput = headerSearch.querySelector('input');
+
+				headerSearchToggle.addEventListener('click', () => {
+					let isActive = header.classList.contains('search-is-active');
+
+					if (!isActive) {
+						header.classList.add('search-is-active');
+						headerSearchInput.focus();
+					}
+					else {
+						header.classList.remove('search-is-active');
+						headerSearchToggle.focus();
+					}
+				});
+			}
+		})();
+
+	},
+	init() {
+		/**
+		 * Initialize the A11y-Toggle extension
 		 */
 		a11yToggle();
 		if (_hook('global-account') && _hook('global-account').length !== 0) {
 			a11yToggleClose(_hook('global-account')); // Close the global account box when clicking on a different target.
 		}
-		
-		
-		/**
-		 * Initialize Mini-Basket extension
-		 */
-		miniBasket.init();
-		
-		
-		/**
-		 * Initialize Transfigure Navigation extension
-		 */
-		$.hook('has-drop-down').transfigureNavigation();
-
 
 		/**
 		 * Initialize Quantify extension
 		 */
 		quantify.init(document);
 
-	},
-	stateDatalist: function () {
-		'use strict';
+		/**
+		 * Initialize the Mini-Basket extension
+		 */
+		miniBasket?.init?.();
 
+
+		/**
+		 * Initialize the Transfigure Navigation extension
+		 */
+		$.hook('has-drop-down').transfigureNavigation();
+
+	},
+	stateDatalist() {
 		/**
 		 * [1] This function is an enhancement to the `datalist` State/Province and Country replacement.
 		 * Since a customer can type a value in the input, this will check if the entered value
@@ -114,13 +119,11 @@ const themeFunctionality = {
 
 		// [1]
 		function checkOption(entry, list) {
-			let datalist = document.querySelector('#' + list);
+            let datalist = document.querySelector(`#${list}`);
 			let datalistOptions = datalist.querySelectorAll('option');
 			let value = '';
 
-			for (let i = 0; i < datalistOptions.length; i++) {
-				let option = datalistOptions[i];
-
+            for (let option of datalistOptions) {
 				if (entry.toLowerCase() === option.value.toLowerCase() || entry.toLowerCase() === option.text.toLowerCase()) {
 					value = option.value;
 				}
@@ -131,10 +134,10 @@ const themeFunctionality = {
 
 		// [2]
 		function updateRequiredStateAttributes(countrySelector, stateInput) {
-			countrySelector.addEventListener('change', function () {
+			countrySelector.addEventListener('change', () => {
 				let selectedCountry = countrySelector.options[countrySelector.selectedIndex].value;
 
-				if (countriesRequiringSP.indexOf(selectedCountry) !== -1) {
+				if (countriesRequiringSP.includes(selectedCountry)) {
 					stateInput.setAttribute('required', '');
 					stateInput.setAttribute('aria-required', 'true');
 				}
@@ -146,10 +149,8 @@ const themeFunctionality = {
 		}
 
 		if (datalist.length > 0) {
-			for (let i = 0; i < datalist.length; i++) {
-				let list = datalist[i];
-
-				list.addEventListener('blur', function () {
+			for (let list of datalist) {
+                list.addEventListener('blur', () => {
 					let thisDatalist = list.getAttribute('list');
 					let checkValue = checkOption(list.value, thisDatalist);
 
@@ -169,73 +170,75 @@ const themeFunctionality = {
 			let billPrefix;
 			let shipPrefix;
 
-			if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ORDR')) {
-				billPrefix = 'Bill';
-				shipPrefix = 'Ship';
-			}
-			else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICST' || formElement.elements.Action.value === 'UCST')) {
-				billPrefix = 'Customer_Bill';
-				shipPrefix = 'Customer_Ship';
-			}
-			else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICSA' || formElement.elements.Action.value === 'UCSA')) {
-				billPrefix = 'Address_';
-				shipPrefix = 'Address_';
-			}
+			if (formElement) {
+				if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ORDR')) {
+					billPrefix = 'Bill';
+					shipPrefix = 'Ship';
+				}
+				else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICST' || formElement.elements.Action.value === 'UCST')) {
+					billPrefix = 'Customer_Bill';
+					shipPrefix = 'Customer_Ship';
+				}
+				else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICSA' || formElement.elements.Action.value === 'UCSA')) {
+					billPrefix = 'Address_';
+					shipPrefix = 'Address_';
+				}
 
-			const shippingState = document.querySelector('input[name="' + shipPrefix + 'State"]');
-			const billingState = document.querySelector('input[name="' + billPrefix + 'State"]');
+				const shippingState = document.querySelector(`input[name="${shipPrefix}State"]`);
+				const billingState = document.querySelector(`input[name="${billPrefix}State"]`);
 
-			function updateState(stateEntry) {
-				stateEntry.nextElementSibling.value = stateEntry.value;
-				stateEntry.nextElementSibling.blur();
+				function updateState({nextElementSibling, value}) {
+					nextElementSibling.value = value;
+					nextElementSibling.blur();
+				}
+
+				if (shippingState.value !== '') {
+					shippingState.nextElementSibling.value = shippingState.value;
+				}
+				shippingState.nextElementSibling.blur();
+
+				if (billingState.value !== '') {
+					billingState.nextElementSibling.value = billingState.value;
+				}
+				billingState.nextElementSibling.blur();
+
+				if (updateShippingState !== null) {
+					updateShippingState.addEventListener('change', () => {
+						updateState(shippingState);
+					});
+				}
+
+				if (updateBillingState !== null) {
+					updateBillingState.addEventListener('change', () => {
+						updateState(billingState);
+					});
+				}
+
+				if (primaryAddress === 'shipping') {
+					const shippingCountrySelector = document.querySelector(`#${shipPrefix}Country`);
+					const shippingStateInput = document.querySelector(`#${shipPrefix}StateSelect`);
+
+					updateRequiredStateAttributes(shippingCountrySelector, shippingStateInput);
+				}
+				else {
+					const billingCountrySelector = document.querySelector(`#${billPrefix}Country`);
+					const billingStateInput = document.querySelector(`#${billPrefix}StateSelect`);
+
+					updateRequiredStateAttributes(billingCountrySelector, billingStateInput);
+				}
+
+				(() => {
+					document.querySelector(`#${shipPrefix}Country`).dispatchEvent(new Event('change', {'bubbles': true}));
+					document.querySelector(`#${billPrefix}Country`).dispatchEvent(new Event('change', {'bubbles': true}));
+				})();
 			}
-
-			if (shippingState.value !== '') {
-				shippingState.nextElementSibling.value = shippingState.value;
-			}
-			shippingState.nextElementSibling.blur();
-
-			if (billingState.value !== '') {
-				billingState.nextElementSibling.value = billingState.value;
-			}
-			billingState.nextElementSibling.blur();
-
-			if (updateShippingState !== null) {
-				updateShippingState.addEventListener('change', function () {
-					updateState(shippingState);
-				});
-			}
-
-			if (updateBillingState !== null) {
-				updateBillingState.addEventListener('change', function () {
-					updateState(billingState);
-				});
-			}
-
-			if (primaryAddress === 'shipping') {
-				const shippingCountrySelector = document.querySelector('#' + shipPrefix + 'Country');
-				const shippingStateInput = document.querySelector('#' + shipPrefix + 'StateSelect');
-
-				updateRequiredStateAttributes(shippingCountrySelector, shippingStateInput);
-			}
-			else {
-				const billingCountrySelector = document.querySelector('#' + billPrefix + 'Country');
-				const billingStateInput = document.querySelector('#' + billPrefix + 'StateSelect');
-
-				updateRequiredStateAttributes(billingCountrySelector, billingStateInput);
-			}
-
-			(function () {
-				document.querySelector('#' + shipPrefix + 'Country').dispatchEvent(new Event('change', {'bubbles': true}));
-				document.querySelector('#' + billPrefix + 'Country').dispatchEvent(new Event('change', {'bubbles': true}));
-			}());
 		}
 	},
-	jsSFNT: function () {
+    jsSFNT() {
 	},
-	jsCTGY: function () {
+    jsCTGY() {
 	},
-	jsPROD: function () {
+    jsPROD() {
 		/**
 		 * Initialize the AJAX Add-To-Cart extension
 		 */
@@ -246,261 +249,204 @@ const themeFunctionality = {
 		 */
 		tabbedContent.init();
 	},
-	jsPLST: function () {
+    jsPLST() {
 	},
-	jsSRCH: function () {
+    jsSRCH() {
 	},
-	jsBASK: function () {
+    jsBASK() {
 		/**
 		 * Estimate Shipping
 		 */
-		(function (document) {
-			'use strict';
+		(document => {
+			let formElement = _hook('shipping-estimate-form');
 
-			let formElement = document.querySelector('[data-hook="shipping-estimate-form"]');
-			
-			if (document.body.contains(formElement)) {
-				let formButton = formElement.querySelector('[data-hook="calculate-shipping-estimate"]');
-				
+			if (formElement.length > 0) {
+				let formButton = _hook('calculate-shipping-estimate', formElement);
+
 				function createCalculation() {
 					let processor = document.createElement('iframe');
-					
+
 					processor.id = 'calculate-shipping';
 					processor.name = 'calculate-shipping';
 					processor.style.display = 'none';
 					formElement.before(processor);
-					processor.addEventListener('load', function () {
+					processor.addEventListener('load', () => {
 						displayResults(processor);
 					});
 					formElement.submit();
 				}
-				
+
 				function displayResults(source) {
 					let content = source.contentWindow.document.body.innerHTML;
-					
-					formElement.querySelector('[data-hook="shipping-estimate-fields"]').classList.add('u-hidden');
-					formElement.querySelector('[data-hook="shipping-estimate-results"]').innerHTML = content;
+
+					_hook('shipping-estimate-fields', formElement).classList.add('u-hidden');
+					_hook('shipping-estimate-results', formElement).innerHTML = content;
 					formElement.setAttribute('data-status', 'idle');
-					
-					formElement.querySelector('[data-hook="shipping-estimate-recalculate"]').addEventListener('click', function () {
-						formElement.querySelector('[data-hook="shipping-estimate-results"]').innerHTML = '';
-						formElement.querySelector('[data-hook="shipping-estimate-fields"]').classList.remove('u-hidden');
+
+					_hook('shipping-estimate-recalculate', formElement).addEventListener('click', () => {
+						_hook('shipping-estimate-results', formElement).innerHTML = '';
+						_hook('shipping-estimate-fields', formElement).classList.remove('u-hidden');
 					});
-					
+
 					setTimeout(
-						function () {
+						() => {
 							source.parentNode.removeChild(source);
 						}, 1
 					);
 				}
-				
-				formButton.addEventListener('click', function (event) {
+
+				formButton.addEventListener('click', event => {
 					event.preventDefault();
 					createCalculation();
 				}, false);
 			}
-		}(document));
+		})(document);
 	},
-	jsORDL: function () {
+    jsORDL() {
+		document.addEventListener('click', event => {
+			if (!event.target.hasAttribute('data-disclosure')) return;
+
+			const target = event.target;
+			const targetContent = document.querySelector(`#${target.getAttribute('aria-controls')}`);
+			const sibling = target.parentNode.querySelector('[data-disclosure].u-hidden');
+			const siblingContent = document.querySelector(`#${sibling.getAttribute('aria-controls')}`);
+
+			if (!targetContent) return;
+
+			sibling.setAttribute('aria-expanded', 'true');
+			sibling.classList.remove('u-hidden');
+			siblingContent.classList.add('u-hidden');
+			target.setAttribute('aria-expanded', 'false');
+			target.classList.add('u-hidden');
+			targetContent.classList.remove('u-hidden');
+		});
 	},
-	jsOCST: function () {
+    jsOCST() {
 		themeFunctionality.stateDatalist();
-
-		/**
-		 * Use AJAX for coupon form to prevent page refresh.
-		 * https://github.com/mivaecommerce/readytheme-shadows/issues/54
-		 */
-		(function (document) {
-			'use strict';
-
-			document.addEventListener('click', function (evt) {
-				let submitButton = document.querySelector('[data-hook="basket__coupon-form-submit"]');
-				let submitButtonText = ((submitButton.nodeName.toLowerCase() === 'input') ? submitButton.value : submitButton.textContent);
-				let ajaxForm = document.querySelector('[data-hook="basket__coupon-form"]');
-
-				if (evt.target.matches('[data-hook="basket__coupon-form-submit"]')) {
-					evt.preventDefault();
-					evt.stopImmediatePropagation();
-
-					let data = new FormData(ajaxForm);
-					let request = new XMLHttpRequest(); // Set up our HTTP request
-
-					ajaxForm.setAttribute('data-status', 'idle');
-
-					if (ajaxForm.getAttribute('data-status') !== 'submitting') {
-						ajaxForm.setAttribute('data-status', 'submitting');
-						submitButton.classList.add('is-disabled');
-
-						if (submitButton.nodeName.toLowerCase() === 'input') {
-							submitButton.value = 'Processing...';
-						}
-						else {
-							submitButton.textContent = 'Processing...';
-						}
-
-						document.querySelector('#messages').parentNode.removeChild(document.querySelector('#messages'));
-
-						// Setup our listener to process completed requests
-						request.onreadystatechange = function () {
-							// Only run if the request is complete
-							if (request.readyState !== 4) {
-								return;
-							}
-
-							// Process our return data
-							if (request.status === 200) {
-								// What do when the request is successful
-								let response = request.response;
-								let basketSummary = response.querySelector('#checkout_basket_summary');
-								let responseMessage = response.querySelector('#messages');
-
-								response.querySelector('[data-hook="basket__coupon-form"]').parentElement.prepend(responseMessage);
-								document.querySelector('#checkout_basket_summary').innerHTML = basketSummary.innerHTML;
-
-
-								// Reset button text and form status
-								submitButton.classList.remove('is-disabled');
-
-								if (submitButton.nodeName.toLowerCase() === 'input') {
-									submitButton.value = submitButtonText;
-								}
-								else {
-									submitButton.textContent = submitButtonText;
-								}
-
-								ajaxForm.setAttribute('data-status', 'idle');
-							}
-							else {
-								// What do when the request fails
-								console.warn('The request failed!');
-								ajaxForm.setAttribute('data-status', 'idle');
-							}
-						};
-
-						/**
-						 * Create and send a request
-						 * The first argument is the post type (GET, POST, PUT, DELETE, etc.)
-						 * The second argument is the endpoint URL
-						 */
-						request.open(ajaxForm.method, ajaxForm.action, true);
-						request.responseType = 'document';
-						request.send(data);
-					}
-				}
-			}, false);
-
-		}(document));
 	},
-	jsOSEL: function () {
+    jsOSEL() {
 	},
-	jsOPAY: function () {
+    jsOPAY() {
 		/**
 		 * Added functionality to help style the default Miva output payment
 		 * fields.
 		 */
-		$.hook('mvt-input').each(function () {
-			let dataHook = $(this).attr('data-datahook');
+		_hook('mvt-input').forEach(element => {
+			let dataHook = element.getAttribute('data-datahook');
 
 			if (dataHook) {
-				$(this).find('input').attr('data-hook', dataHook);
+				element.querySelector('input').setAttribute('data-hook', dataHook);
 			}
 		});
 
-		$.hook('mvt-select').find('select').each(function () {
+		_hook('mvt-select').querySelectorAll('select').forEach(element => {
 			let wrapDiv = document.createElement('div');
-			let select = this;
 
 			wrapDiv.classList.add('c-form-select');
-			select.parentNode.insertBefore(wrapDiv, select);
-			wrapDiv.appendChild(select);
+			element.parentNode.insertBefore(wrapDiv, element);
+			wrapDiv.appendChild(element);
+
+			if (wrapDiv.nextSibling.nodeType === 3) {
+				wrapDiv.nextSibling.remove();
+			}
 		});
 
 		/**
 		 * Credit Card Detection
 		 */
-		(function (document) {
-			let creditCardInput = document.querySelector('[data-hook="detect-card"]');
-			
+		(() => {
+			let creditCardInput = _hook('detect-card');
+
 			if (creditCardInput !== null) {
-				['input', 'paste'].forEach(function (event) {
+				['input', 'paste'].forEach(event => {
 					creditCardInput.addEventListener(event, function () {
 						let cardInput = this;
-						
+
 						if (isNaN(this.value)) {
 							this.classList.add('has-error');
 						}
-						
-						paymentMethod.detect(this, function (paymentDetected) {
+
+						paymentMethod.detect(this, paymentDetected => {
 							if (paymentDetected && supportedPaymentMethods.findPaymentMethod(paymentDetected.name)) {
 								cardInput.classList.remove('has-error');
-								document.querySelector('[data-hook="payment-method-display"]').textContent = paymentDetected.display;
-								document.querySelector('[data-hook="payment-method"]').value = supportedPaymentMethods.findPaymentMethod(paymentDetected.name);
+								_hook('payment-method-display').textContent = paymentDetected.display;
+								_hook('payment-method').value = supportedPaymentMethods.findPaymentMethod(paymentDetected.name);
 							}
 							else {
 								cardInput.classList.add('has-error');
 							}
 						})
-						
+
 					})
 				});
 			}
-		}(document));
+		})();
 	},
-	jsINVC: function () {
-		/**
-		 *  Launch Printer Dialog
-		 */
-		$.hook('print-invoice').on('click', function (element) {
+    jsINVC() {
+		const toggle = _hook('toggle-login-options');
+
+		if (toggle.length !== 0) {
+			const defaultCheck = toggle.querySelector('[data-toggle-login-check]');
+			const wrap = toggle.querySelector('[data-toggle-login-email-wrap]');
+			const emailInput = wrap.querySelector('[data-toggle-login-email]');
+
+			defaultCheck.addEventListener('change', event => {
+				if (event.target.checked) {
+					wrap.hidden = true;
+					emailInput.setAttribute('disabled', '');
+				}
+				else {
+					wrap.hidden = false;
+					emailInput.removeAttribute('disabled');
+					emailInput.focus();
+				}
+			});
+		}
+
+		_hook('print-invoice').addEventListener('click', element => {
 			element.preventDefault();
 			window.print();
 		});
 	},
-	jsLOGN: function () {
+    jsLOGN() {
 	},
-	jsACAD: function () {
+    jsACAD() {
 		themeFunctionality.stateDatalist();
 	},
-	jsACED: function () {
+    jsACED() {
 		themeFunctionality.stateDatalist();
 	},
-	jsCABK: function () {
+    jsCABK() {
 	},
-	jsCADA: function () {
+    jsCADA() {
 		themeFunctionality.stateDatalist();
 	},
-	jsCADE: function () {
+    jsCADE() {
 		themeFunctionality.stateDatalist();
 	},
-	jsAFCL: function () {
+    jsAFCL() {
 	},
-	jsAFAD: function () {
+    jsAFAD() {
 		themeFunctionality.stateDatalist();
 	},
-	jsAFED: function () {
+    jsAFED() {
 	},
-	jsORHL: function () {
+    jsORHL() {
 	},
-	jsORDS: function () {
-		/**
-		 *  Launch Printer Dialog
-		 */
-		$.hook('print-invoice').on('click', function (element) {
+    jsORDS() {
+		_hook('print-invoice').addEventListener('click', element => {
 			element.preventDefault();
 			window.print();
 		});
 	},
-	jsCTUS: function () {
+    jsCTUS() {
 	}
 };
 
 
-(function () {
+(() => {
 	String.prototype.toCamelCase = function (cap1st) {
-		'use strict';
-		
-		return ((cap1st ? '-' : '') + this).replace(/-+([^-])/g, function (a, b) {
-			return b.toUpperCase();
-		});
+        return ((cap1st ? '-' : '') + this).replace(/-+([^-])/g, (a, b) => b.toUpperCase());
 	};
 	
 	let pageID = document.body.id.toCamelCase();
@@ -522,4 +468,4 @@ const themeFunctionality = {
 		themeFunctionality[pageID]();
 	}
 	
-}());
+})();

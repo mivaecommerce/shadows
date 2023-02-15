@@ -1,0 +1,22 @@
+{
+    "code": "mmx-hero-slider",
+    "type": "L",
+    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-hero-slider/styles.css",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        },
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        }
+    ],
+    "linked_pages": []
+}

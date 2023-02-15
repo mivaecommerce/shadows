@@ -236,10 +236,10 @@
 					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell u-flex o-layout--justify-between">
 							<mvt:if expr="l.settings:payment:type EQ 6">
-								<span>Refund: &mvt:payment:desc;</span>
+								<span>Refund: &mvte:payment:desc;</span>
 								<span>&mvt:payment:formatted_amount;</span>
 							<mvt:else>
-								<span>Payment: &mvt:payment:desc;</span>
+								<span>Payment: &mvte:payment:desc;</span>
 								<span>&mvt:payment:formatted_amount_negative;</span>
 							</mvt:if>
 						</td>

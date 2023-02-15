@@ -1,18 +1,17 @@
 <nav class="x-category-tree x-collapsible-content" aria-labelledby="categoryTree-label">
 	<div class="x-category-tree__title">
-		<h3 id="categoryTree-label" class="x-category-tree__heading c-heading-echo u-text-bold u-text-uppercase">Categories</h3>
-		<hr class="c-keyline">
+		<p id="categoryTree-label" class="x-category-tree__heading">Categories</p>
 	</div>
-	<button class="x-category-tree__label x-collapsible-content__toggle u-text-uppercase" data-a11y-toggle="categoryTree" type="button">Categories <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="categoryTree" type="button">Categories <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 	<ul id="categoryTree" class="x-category-tree__row x-collapsible-content__item">
 		<mvt:foreach array="cattree_categories" iterator="cattree_category">
 			<li class="x-category-tree__list x-category-tree__list--level-&mvte:cattree_category:level;">
 				<mvt:if expr="NOT ISNULL l.settings:category:id AND l.settings:category:id EQ l.settings:cattree_category:id AND l.settings:page:code NE 'CTLG'">
-					<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:cattree_category:link;" title="&mvte:cattree_category:name;">&mvte:cattree_category:name;</a>
+					<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:cattree_category:link;">&mvt:cattree_category:name;</a>
 				<mvt:elseif expr="NOT ISNULL g.Category_Code AND ISNULL l.settings:category:id AND l.settings:cattree_category:code EQ g.Category_Code AND l.settings:page:code NE 'CTLG'">
-					<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:cattree_category:link;" title="&mvte:cattree_category:name;">&mvte:cattree_category:name;</a>
+					<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:cattree_category:link;">&mvt:cattree_category:name;</a>
 				<mvt:else>
-					<a class="x-category-tree__link" href="&mvte:cattree_category:link;" title="&mvte:cattree_category:name;">&mvte:cattree_category:name;</a>
+					<a class="x-category-tree__link" href="&mvte:cattree_category:link;">&mvt:cattree_category:name;</a>
 				</mvt:if>
 			</li>
 		</mvt:foreach>

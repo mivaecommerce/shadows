@@ -1,0 +1,755 @@
+/* ==========================================================================
+   MMX / BASE
+   ========================================================================== */
+
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+
+/* Design System Variables
+   =========================================== */
+:root {
+
+	/**
+	 * Base Colors
+	 */
+	--blue-01: #3A58FC;
+	--blue-02: #8FBBE6;
+	--blue-03: #F3F9FE;
+	--blue-04: #2E669E;
+	--grey-01: #F5F5F5;
+	--grey-02: #EAEAEA;
+	--grey-03: #DDDDDD;
+	--grey-04: #CCCCCC;
+	--grey-05: #767676;
+	--grey-06: #575A5D;
+	--black: #111111;
+	--white: #FFFFFF;
+
+
+	/**
+	 * Feedback Colors > Error
+	 */
+	--color-red-001: #B13138;
+		--color-error-text: var(--color-red-001);
+	--color-red-002: #F9C4C7;
+		--color-error-border: var(--color-red-002);
+	--color-red-003: #FBE3E3;
+		--color-error-background: var(--color-red-003);
+
+
+	/**
+	 * Feedback Colors > Warning
+	 */
+	--color-yellow-001: #65602E;
+		--color-warning-text: var(--color-yellow-001);
+	--color-yellow-002: #E6E086;
+		--color-warning-border: var(--color-yellow-002);
+	--color-yellow-003: #F8F8E1;
+		--color-warning-background: var(--color-yellow-003);
+
+
+	/**
+	 * Feedback Colors > Success
+	 */
+	--color-green-001: #0A7448;
+		--color-success-text: var(--color-green-001);
+	--color-green-002: #BBE1D3;
+		--color-success-border: var(--color-green-002);
+	--color-green-003: #DAF5EB;
+		--color-success-background: var(--color-green-003);
+
+
+	/**
+	 * Feedback Colors > General/Info
+	 */
+	--color-blue-001: #0C5298;
+		--color-info-text: var(--color-blue-001);
+	--color-blue-002: #8FBBE6;
+		--color-info-border: var(--color-blue-002);
+	--color-blue-003: #F3F9FE;
+		--color-info-background: var(--color-blue-003);
+
+
+	/**
+	 * Fonts
+	 */
+	--font-family-1: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	--text-margin-bottom: 0.3em;
+
+
+	/**
+	 * Font-Weights
+	 */
+	--font-weight-ultrathin: 100;
+	--font-weight-light: 200;
+	--font-weight-book: 300;
+	--font-weight-normal: 400;
+	--font-weight-medium: 500;
+	--font-weight-semibold: 600;
+	--font-weight-bold: 700;
+	--font-weight-black: 900;
+
+
+	/**
+	 * Typography > Headings > Base
+	 */
+	--heading-case: none;
+	--heading-color: var(--color-headings);
+	--heading-font-family: var(--font-family-1);
+	--heading-spacing: 0;
+	--heading-style: normal;
+	--heading-weight: var(--font-weight-bold);
+
+
+	/**
+	 * Typography > Headings > Display One
+	 */
+	--display-1-style: var(--heading-style);
+	--display-1-weight: var(--heading-weight);
+	--display-1-case: var(--heading-case);
+	--display-1-spacing: var(--heading-spacing);
+	--display-1-color: var(--heading-color);
+	--display-1-line-height: calc(84 / 76);
+	--display-1-size: 76px;
+	--display-1-font: var(--display-1-style) var(--display-1-weight) var(--display-1-size) / var(--display-1-line-height) var(--display-1-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Display Two
+	 */
+	--display-2-style: var(--heading-style);
+	--display-2-weight: var(--heading-weight);
+	--display-2-case: var(--heading-case);
+	--display-2-spacing: var(--heading-spacing);
+	--display-2-color: var(--heading-color);
+	--display-2-line-height: calc(68 / 60);
+	--display-2-size: 60px;
+	--display-2-font: var(--display-2-style) var(--display-2-weight) var(--display-2-size) / var(--display-2-line-height) var(--display-2-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Display Three
+	 */
+	--display-3-style: var(--heading-style);
+	--display-3-weight: var(--heading-weight);
+	--display-3-case: var(--heading-case);
+	--display-3-spacing: var(--heading-spacing);
+	--display-3-color: var(--heading-color);
+	--display-3-line-height: calc(56 / 48);
+	--display-3-size: 48px;
+	--display-3-font: var(--display-3-style) var(--display-3-weight) var(--display-3-size) / var(--display-3-line-height) var(--display-3-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title One
+	 */
+	--title-1-style: var(--heading-style);
+	--title-1-weight: var(--heading-weight);
+	--title-1-case: var(--heading-case);
+	--title-1-spacing: var(--heading-spacing);
+	--title-1-color: var(--heading-color);
+	--title-1-line-height: calc(48 / 40);
+	--title-1-size: 40px;
+	--title-1-font: var(--title-1-style) var(--title-1-weight) var(--title-1-size) / var(--title-1-line-height) var(--title-1-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Two
+	 */
+	--title-2-style: var(--heading-style);
+	--title-2-weight: var(--heading-weight);
+	--title-2-case: var(--heading-case);
+	--title-2-spacing: var(--heading-spacing);
+	--title-2-color: var(--heading-color);
+	--title-2-line-height: calc(40 / 32);
+	--title-2-size: 32px;
+	--title-2-font: var(--title-2-style) var(--title-2-weight) var(--title-2-size) / var(--title-2-line-height) var(--title-2-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Three
+	 */
+	--title-3-style: var(--heading-style);
+	--title-3-weight: var(--heading-weight);
+	--title-3-case: var(--heading-case);
+	--title-3-spacing: var(--heading-spacing);
+	--title-3-color: var(--heading-color);
+	--title-3-line-height: calc(32 / 24);
+	--title-3-size: 24px;
+	--title-3-font: var(--title-3-style) var(--title-3-weight) var(--title-3-size) / var(--title-3-line-height) var(--title-3-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Four
+	 */
+	--title-4-style: var(--heading-style);
+	--title-4-weight: var(--heading-weight);
+	--title-4-case: var(--heading-case);
+	--title-4-spacing: var(--heading-spacing);
+	--title-4-color: var(--heading-color);
+	--title-4-line-height: calc(28 / 20);
+	--title-4-size: 20px;
+	--title-4-font: var(--title-4-style) var(--title-4-weight) var(--title-4-size) / var(--title-4-line-height) var(--title-4-font-family, var(--heading-font-family));
+
+
+	/**
+	 * Typography > Subheadings > Base
+	 */
+	--subheading-font-family: var(--heading-font-family);
+	--subheading-style: normal;
+	--subheading-weight: var(--font-weight-book);
+	--subheading-case: none;
+	--subheading-spacing: 0;
+	--subheading-color: var(--color-subheadings);
+
+
+	/**
+	 * Typography > Subheadings > Large
+	 */
+	--subheading-l-font-family: var(--subheading-font-family);
+	--subheading-l-style: var(--subheading-style);
+	--subheading-l-weight: var(--subheading-weight);
+	--subheading-l-case: var(--subheading-case);
+	--subheading-l-spacing: var(--subheading-spacing);
+	--subheading-l-color: var(--subheading-color);
+	--subheading-l-line-height: calc(28 / 20);
+	--subheading-l-size: 20px;
+	--subheading-l-font: var(--subheading-l-style) var(--subheading-l-weight) var(--subheading-l-size) / var(--subheading-l-line-height) var(--subheading-l-font-family);
+
+
+	/**
+	 * Typography > Subheadings > Small
+	 */
+	--subheading-s-font-family: var(--subheading-font-family);
+	--subheading-s-style: var(--subheading-style);
+	--subheading-s-weight: var(--subheading-weight);
+	--subheading-s-case: var(--subheading-case);
+	--subheading-s-spacing: var(--subheading-spacing);
+	--subheading-s-color: var(--subheading-color);
+	--subheading-s-line-height: calc(24 / 18);
+	--subheading-s-size: 18px;
+	--subheading-s-font: var(--subheading-s-style) var(--subheading-s-weight) var(--subheading-s-size) / var(--subheading-s-line-height) var(--subheading-s-font-family);
+
+
+	/**
+	 * Typography > Subheadings > X-Small
+	 */
+	--subheading-xs-font-family: var(--subheading-font-family);
+	--subheading-xs-style: var(--subheading-style);
+	--subheading-xs-weight: var(--subheading-weight);
+	--subheading-xs-case: var(--subheading-case);
+	--subheading-xs-spacing: var(--subheading-spacing);
+	--subheading-xs-color: var(--subheading-color);
+	--subheading-xs-line-height: calc(24 / 16);
+	--subheading-xs-size: 16px;
+	--subheading-xs-font: var(--subheading-xs-style) var(--subheading-xs-weight) var(--subheading-xs-size) / var(--subheading-xs-line-height) var(--subheading-xs-font-family);
+
+
+	/**
+	 * Typography > Paragraph > Base
+	 */
+	--paragraph-font-family: var(--font-family-1);
+	--paragraph-style: normal;
+	--paragraph-weight: var(--font-weight-normal);
+	--paragraph-case: none;
+	--paragraph-spacing: 0;
+	--paragraph-color: var(--color-body-copy);
+
+
+	/**
+	 * Typography > Paragraph > Large
+	 */
+	--paragraph-l-font-family: var(--paragraph-font-family);
+	--paragraph-l-style: var(--paragraph-style);
+	--paragraph-l-weight: var(--paragraph-weight);
+	--paragraph-l-case: var(--paragraph-case);
+	--paragraph-l-spacing: var(--paragraph-spacing);
+	--paragraph-l-color: var(--paragraph-color);
+	--paragraph-l-line-height: calc(24 / 16);
+	--paragraph-l-size: 16px;
+	--paragraph-l-font: var(--paragraph-l-style) var(--paragraph-l-weight) var(--paragraph-l-size) / var(--paragraph-l-line-height) var(--paragraph-l-font-family);
+
+
+	/**
+	 * Typography > Paragraph > Small
+	 */
+	--paragraph-s-font-family: var(--paragraph-font-family);
+	--paragraph-s-style: var(--paragraph-style);
+	--paragraph-s-weight: var(--paragraph-weight);
+	--paragraph-s-case: var(--paragraph-case);
+	--paragraph-s-spacing: var(--paragraph-spacing);
+	--paragraph-s-color: var(--paragraph-color);
+	--paragraph-s-line-height: calc(20 / 14);
+	--paragraph-s-size: 14px;
+	--paragraph-s-font: var(--paragraph-s-style) var(--paragraph-s-weight) var(--paragraph-s-size) / var(--paragraph-s-line-height) var(--paragraph-s-font-family);
+
+
+	/**
+	 * Typography > Paragraph > X-Small
+	 */
+	--paragraph-xs-font-family: var(--paragraph-font-family);
+	--paragraph-xs-style: var(--paragraph-style);
+	--paragraph-xs-weight: var(--paragraph-weight);
+	--paragraph-xs-case: var(--paragraph-case);
+	--paragraph-xs-spacing: var(--paragraph-spacing);
+	--paragraph-xs-color: var(--paragraph-color);
+	--paragraph-xs-line-height: calc(18 / 12);
+	--paragraph-xs-size: 12px;
+	--paragraph-xs-font: var(--paragraph-xs-style) var(--paragraph-xs-weight) var(--paragraph-xs-size) / var(--paragraph-xs-line-height) var(--paragraph-xs-font-family);
+
+
+	/**
+	 * Typography > Call to Action
+	 */
+	--call-to-action-font-family: var(--font-family-1);
+	--call-to-action-style: normal;
+	--call-to-action-weight: var(--font-weight-medium);
+	--call-to-action-case: none;
+	--call-to-action-spacing: 0;
+	--call-to-action-color: var(--black);
+	--call-to-action-line-height: calc(18 / 13);
+	--call-to-action-size: 13px;
+	--call-to-action-font: var(--call-to-action-style) var(--call-to-action-weight) var(--call-to-action-size) / var(--call-to-action-line-height) var(--call-to-action-font-family);
+
+	/**
+	 * Typography > Product Name
+	 */
+	--product-name-font-family: var(--font-family-1);
+	--product-name-style: normal;
+	--product-name-weight: var(--font-weight-normal);
+	--product-name-case: none;
+	--product-name-spacing: 0;
+	--product-name-color: var(--black);
+	--product-name-line-height: calc(20 / 14);
+	--product-name-size: 14px;
+	--product-name-font: var(--product-name-style) var(--product-name-weight) var(--product-name-size) / var(--product-name-line-height) var(--product-name-font-family);
+
+	/**
+	 * Typography > Product Price
+	 */
+	--product-price-font-family: var(--font-family-1);
+	--product-price-style: normal;
+	--product-price-weight: var(--font-weight-semibold);
+	--product-price-case: none;
+	--product-price-spacing: 0;
+	--product-price-color: var(--black);
+	--product-price-line-height: calc(20 / 13);
+	--product-price-size: 13px;
+	--product-price-font: var(--product-price-style) var(--product-price-weight) var(--product-price-size) / var(--product-price-line-height) var(--product-price-font-family);
+
+	/**
+	 * Typography > Product Additional Price
+	 */
+	--product-additional-price-font-family: var(--font-family-1);
+	--product-additional-price-style: normal;
+	--product-additional-price-weight: var(--font-weight-medium);
+	--product-additional-price-case: none;
+	--product-additional-price-spacing: 0;
+	--product-additional-price-color: var(--grey-05);
+	--product-additional-price-line-height: calc(20 / 13);
+	--product-additional-price-size: 13px;
+	--product-additional-price-font: var(--product-additional-price-style) var(--product-additional-price-weight) var(--product-additional-price-size) / var(--product-additional-price-line-height) var(--product-additional-price-font-family);
+
+
+	/**
+	 * Spacing
+	 */
+	--spacing-xs: 4px;
+	--spacing-s: 8px;
+	--spacing-m: 16px;
+	--spacing-l: 32px;
+	--spacing-xl: 64px;
+	--spacing-sequence: 40px;
+}
+
+
+
+/* Light Theme Variables
+   =========================================== */
+:root,
+.mmx-theme--light {
+	--color-primary-bg: var(--black);
+	--color-primary-text: var(--white);
+	--color-primary-disabled-text: var(--white);
+	--color-headings: var(--black);
+	--color-nav-links: var(--black);
+	--color-form-labels: var(--black);
+	--color-icons: var(--black);
+	--color-focus: var(--blue-01);
+	--color-text--medium: var(--grey-06);
+	--color-captions: var(--grey-06);
+	--color-body-copy: var(--grey-06);
+	--color-text-link: var(--grey-06);
+	--color-subheadings: var(--grey-06);
+	--color-input-border--active: var(--grey-06);
+	--color-text--light: var(--grey-05);
+	--color-active-filters: var(--grey-05);
+	--color-default-wishlist-state: var(--grey-05);
+	--color-disabled: var(--grey-04);
+	--color-progress--empty: var(--grey-04);
+	--color-divider: var(--grey-03);
+	--color-input-border: var(--grey-03);
+	--color-slider-bar: var(--grey-03);
+	--color-background: var(--grey-02);
+	--color-form-field-fill: var(--grey-02);
+	--color-background--light: var(--grey-01);
+	--color-form-field-fill--light: var(--grey-01);
+	--color-dark-focus: #8CB1E1;
+	--color-secondary-link: #575A5D;
+}
+
+
+
+/* Dark Theme Variables
+   =========================================== */
+.mmx-theme--dark {
+	--color-primary-bg: var(--white);
+	--color-primary-text: var(--black);
+	--color-primary-disabled-text: var(--white);
+	--color-secondary-disabled-text: #767676;
+	--color-secondary-disabled-border: #898989;
+	--heading-color: var(--white);
+	--color-body-copy: var(--white);
+	--paragraph-color: var(--color-body-copy);
+	--subheading-color: var(--white);
+	--display-1-color: var(--heading-color);
+	--display-2-color: var(--heading-color);
+	--display-3-color: var(--heading-color);
+	--call-to-action-color: var(--paragraph-color);
+	--paragraph-l-color: var(--paragraph-color);
+	--paragraph-s-color: var(--paragraph-color);
+	--subheading-l-color: var(--subheading-color);
+	--subheading-s-color: var(--subheading-color);
+	--subheading-xs-color: var(--subheading-color);
+	--title-1-color: var(--heading-color);
+	--title-2-color: var(--heading-color);
+	--title-3-color: var(--heading-color);
+	--title-4-color: var(--heading-color);
+	--color-focus: var(--color-dark-focus);
+	--color-secondary-link: var(--white);
+}
+
+@media (min-width: 60em) {
+	.mmx-theme--dark--l {
+		--color-primary-bg: var(--white);
+		--color-primary-text: var(--black);
+		--color-primary-disabled-text: var(--white);
+		--color-secondary-disabled-text: #767676;
+		--color-secondary-disabled-border: #898989;
+		--heading-color: var(--white);
+		--color-body-copy: var(--white);
+		--paragraph-color: var(--color-body-copy);
+		--subheading-color: var(--white);
+		--display-1-color: var(--heading-color);
+		--display-2-color: var(--heading-color);
+		--display-3-color: var(--heading-color);
+		--call-to-action-color: var(--paragraph-color);
+		--paragraph-l-color: var(--paragraph-color);
+		--paragraph-s-color: var(--paragraph-color);
+		--subheading-l-color: var(--subheading-color);
+		--subheading-s-color: var(--subheading-color);
+		--subheading-xs-color: var(--subheading-color);
+		--title-1-color: var(--heading-color);
+		--title-2-color: var(--heading-color);
+		--title-3-color: var(--heading-color);
+		--title-4-color: var(--heading-color);
+		--color-focus: var(--color-dark-focus);
+		--color-secondary-link: var(--white);
+	}
+}
+
+
+
+/* mmx-wrapper Margins
+   =========================================== */
+.mmx-wrapper {
+	display: inline-block;
+	margin-bottom: var(--spacing-sequence);
+	margin-top: 0;
+	width: 100%;
+}
+
+.mmx-wrapper ~ .mmx-wrapper {
+	margin-top: var(--spacing-sequence);
+	margin-bottom: var(--spacing-sequence);
+}
+
+
+/* Base Styles
+   =========================================== */
+.type-display-1,
+.type-display-2,
+.type-display-3,
+.type-title-1,
+.type-title-2,
+.type-title-3,
+.type-title-4,
+.type-subheading-l,
+.type-subheading-s,
+.type-subheading-xs,
+.type-paragraph-l,
+.type-paragraph-s,
+.type-paragraph-xs,
+.type-call-to-action,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	display: block;
+	padding: 0;
+	margin: 0 0 var(--text-margin-bottom) 0;
+}
+
+
+
+/* Typography: Mobile First
+   =========================================== */
+.type-display-1 {
+	color: var(--heading-color);
+	font: var(--title-2-font);
+	text-transform: var(--heading-case);
+}
+
+.type-display-2,
+h1 {
+	color: var(--heading-color);
+	font: var(--title-2-font);
+	text-transform: var(--heading-case);
+}
+
+.type-display-3,
+h2 {
+	color: var(--heading-color);
+	font: var(--title-3-font);
+	text-transform: var(--heading-case);
+}
+
+.type-title-1,
+h3 {
+	color: var(--heading-color);
+	font: var(--title-3-font);
+	text-transform: var(--heading-case);
+}
+
+.type-title-2,
+h4 {
+	color: var(--heading-color);
+	font: var(--title-3-font);
+	text-transform: var(--heading-case);
+}
+
+.type-title-3,
+h5 {
+	color: var(--heading-color);
+	font: var(--title-4-font);
+	text-transform: var(--heading-case);
+}
+
+.type-title-4,
+h6 {
+	color: var(--heading-color);
+	font: var(--title-4-font);
+	text-transform: var(--heading-case);
+}
+
+.type-subheading-l {
+	color: var(--subheading-color);
+	font: var(--paragraph-l-font);
+	text-transform: var(--subheading-case);
+}
+
+.type-subheading-s {
+	color: var(--subheading-color);
+	font: var(--paragraph-l-font);
+	text-transform: var(--subheading-case);
+}
+
+.type-subheading-xs {
+	color: var(--subheading-color);
+	font: var(--paragraph-l-font);
+	text-transform: var(--subheading-case);
+}
+
+.type-paragraph-l {
+	color: var(--paragraph-color);
+	font: var(--paragraph-s-font);
+	text-transform: var(--paragraph-case);
+}
+
+.type-paragraph-s {
+	color: var(--paragraph-color);
+	font: var(--paragraph-s-font);
+	text-transform: var(--paragraph-case);
+}
+
+.type-call-to-action {
+	color: var(--call-to-action-color);
+	font: var(--call-to-action-font);
+	text-transform: var(--call-to-action-case);
+}
+
+.type-product-name {
+	color: var(--product-name-color);
+	font: var(--product-name-font);
+	text-transform: var(--product-name-case);
+}
+
+.type-product-price {
+	color: var(--product-price-color);
+	font: var(--product-price-font);
+	text-transform: var(--product-price-case);
+}
+
+.type-product-additional-price {
+	color: var(--product-additional-price-color);
+	font: var(--product-additional-price-font);
+	text-decoration: line-through;
+	text-transform: var(--product-additional-price-case);
+}
+
+
+/* Typography: Small Breakpoint [40em = 640px]
+   =========================================== */
+@media screen and (min-width: 40em) {
+	.type-display-1 {
+		font: var(--title-1-font);
+	}
+
+	.type-display-2,
+	h1 {
+		font: var(--title-1-font);
+	}
+
+	.type-display-3,
+	h2 {
+		font: var(--title-2-font);
+	}
+
+	.type-title-1,
+	h3 {
+		font: var(--title-3-font);
+	}
+
+	.type-title-2,
+	h4 {
+		font: var(--title-3-font);
+	}
+
+	.type-title-3,
+	h5 {
+		font: var(--title-4-font);
+	}
+
+	.type-title-4,
+	h6 {
+		font: var(--title-4-font);
+	}
+
+	.type-subheading-l {
+		font: var(--subheading-s-font);
+	}
+
+	.type-subheading-s {
+		font: var(--paragraph-l-font);
+	}
+
+	.type-subheading-xs {
+		font: var(--paragraph-l-font);
+	}
+
+	.type-paragraph-l {
+		font: var(--paragraph-s-font);
+	}
+
+	.type-paragraph-s {
+		font: var(--paragraph-s-font);
+	}
+
+	.type-paragraph-xs {
+		font: var(--paragraph-xs-font);
+	}
+}
+
+/* Typography: Large Breakpoint [60em = 960px]
+   =========================================== */
+@media screen and (min-width: 60em) {
+	.type-display-1 {
+		font: var(--display-1-font);
+	}
+
+	.type-display-2,
+	h1 {
+		font: var(--display-2-font);
+	}
+
+	.type-display-3,
+	h2 {
+		font: var(--display-3-font);
+	}
+
+	.type-title-1,
+	h3 {
+		font: var(--title-1-font);
+	}
+
+	.type-title-2,
+	h4 {
+		font: var(--title-2-font);
+	}
+
+	.type-title-3,
+	h5 {
+		font: var(--title-3-font);
+	}
+
+	.type-title-4,
+	h6 {
+		font: var(--title-4-font);
+	}
+
+	.type-subheading-l {
+		font: var(--subheading-l-font);
+	}
+
+	.type-subheading-s {
+		font: var(--subheading-s-font);
+	}
+
+	.type-subheading-xs {
+		font: var(--subheading-xs-font);
+	}
+
+	.type-paragraph-l {
+		font: var(--paragraph-l-font);
+	}
+
+	.type-paragraph-s {
+		font: var(--paragraph-s-font);
+	}
+
+	.type-paragraph-xs {
+		font: var(--paragraph-xs-font);
+	}
+}
+
+
+
+/* Handle FOUC of Web Components
+   =========================================== */
+mmx-text:not(:defined),
+mmx-button:not(:defined),
+mmx-example:not(:defined),
+mmx-hero:not(:defined),
+mmx-hero-slider:not(:defined),
+mmx-image-across:not(:defined),
+mmx-text-editor:not(:defined),
+mmx-product-carousel:not(:defined),
+mmx-featured-product:not(:defined),
+mmx-category-carousel:not(:defined) {
+	visibility: hidden;
+}

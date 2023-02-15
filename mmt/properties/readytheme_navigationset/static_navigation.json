@@ -3,7 +3,7 @@
     "items": [
         {
             "active": 1,
-            "id": "",
+            "id": "a4e6410239c1355d62d7bef74a15732c",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -13,7 +13,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "58378d4f0313202652a7b680b9a1c483",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -23,7 +23,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "2510897a1ab46dbdc581e555b63fe94d",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequently Asked Questions</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
@@ -33,7 +33,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "b406aac3c3bb711799ac8e04fc30b0c5",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
@@ -43,7 +43,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "c762b898b98993438225552fda5fd495",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp; Return Policy</a>",
             "link_dest": "SARP",
             "link_targ": "_self",

@@ -17,13 +17,9 @@
 						<input id="global-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" placeholder="Password">
 					</div>
 					<div class="c-form-list__item c-form-list__item--full">
-						<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-color-white u-text-bold u-text-uppercase" type="submit" value="Sign In">
-					</div>
-					<div class="c-form-list__item c-form-list__item--full">
-						<a class="c-button c-button--full c-button--hollow c-button--huge u-bg-white u-color-gray-50 u-text-bold u-text-uppercase" href="&mvte:urls:LOGN:secure;">Register</a>
-					</div>
-					<div class="c-form-list__item c-form-list__item--full u-text-center">
-						<a class="u-color-gray-40 u-text-bold u-font-small u-text-uppercase" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+						<p><a class="t-input-font-size" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
+						<p><input class="c-button c-button--full" type="submit" value="Sign In"></p>
+						<a class="t-input-font-size u-block u-text-center u-text-medium" href="&mvte:urls:LOGN:secure;">Register</a>
 					</div>
 				</div>
 			</fieldset>

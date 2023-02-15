@@ -1,7 +1,7 @@
 {
     "code": "google-fonts",
     "type": "E",
-    "filepath": "https://fonts.googleapis.com/css?family=Poppins:400,500,700",
+    "filepath": "https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap",
     "is_global": true,
     "active": true,
     "attributes": [

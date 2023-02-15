@@ -19,25 +19,74 @@
 <body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<div class="u-printable">
 		<mvt:item name="hdft" param="global_header" />
-	
-		<section class="o-layout">
+
+		<br>
+		<section class="o-layout o-layout--wide">
+			<div class="o-layout__item">
+				<div class="t-order-complete-heading">
+					<p class="c-heading-foxtrot">Thank You, &mvte:order:ship_fname;</p>
+					<p class="c-heading--subheading--x-small u-color-gray-600">Order Confirmation #&mvt:order:id;</p>
+					<p class="u-font-small">Email confirmation will be sent shortly.</p>
+					<mvt:if expr="g.Basket:cust_id EQ 0">
+						<form class="t-account-at-checkout" method="post" action="&mvte:urls:ACLN:secure;">
+							<p class="c-heading--subheading--x-small">Finish creating your account to check out faster next time!</p>
+							<fieldset>
+								<legend>Create An Account</legend>
+								<input type="hidden" name="Action" value="ICSQ" />
+								<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
+								<div class="c-form-list">
+									<div class="c-form-list__item">
+										<mvt:if expr="NOT g.Data_Entry_Error">
+											<mvt:assign name="g.Customer_LoginEmail" value="g.Order:ship_email" />
+											<div data-hook="toggle-login-options">
+												<label class="c-form-checkbox">
+													<input class="c-form-checkbox__input" data-toggle-login-check type="checkbox" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" checked>
+													<span class="c-form-checkbox__caption">Use &mvte:global:Customer_LoginEmail;</span>
+												</label>
+												<div data-toggle-login-email-wrap hidden>
+													<label class="c-form-label is-required" for="Customer_LoginEmail">Email Address</label>
+													<input id="Customer_LoginEmail" class="c-form-input" data-toggle-login-email type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true" disabled>
+												</div>
+											</div>
+										<mvt:else>
+											<label class="c-form-label is-required" for="Customer_LoginEmail">Email Address</label>
+											<input id="Customer_LoginEmail" class="c-form-input" type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
+										</mvt:if>
+									</div>
+									<div class="c-form-list__item">
+										<div class="c-form-inline-set o-layout--wrap">
+											<span>
+												<label class="c-form-label is-required" for="Customer_Password">Password</label>
+												<input id="Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required>
+											</span>
+											<input class="c-button c-button--full-small" type="submit" value="Create Account">
+										</div>
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</mvt:if>
+				</div>
+			</div>
+		</section>
+		
+		<section class="o-layout o-layout--wide">
 			<div class="o-layout__item">
 				<mvt:item name="hdft" param="header" />
 				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 			</div>
 		</section>
-		<br>
 	
-		<section class="o-layout o-layout--wide">
+		<section class="o-layout o-layout--flush o-layout--justify-between t-order-complete-content">
 			<div class="o-layout__item u-width-12 u-width-8--l">
 				<mvt:item name="order_contents" />
 			</div>
-			<aside class="o-layout__item u-width-12 u-width-4--l">
+			<aside class="o-layout__item u-width-12 u-width-2--l">
 				<mvt:item name="order_customer" />
 			</aside>
 		</section>
 		
-		<section class="o-layout">
+		<section class="o-layout o-layout--wide">
 			<div class="o-layout__item">
 				<mvt:item name="hdft" param="footer" />
 			</div>

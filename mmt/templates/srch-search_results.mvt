@@ -8,9 +8,9 @@
 			</mvt:if>
 		</mvt:foreach>
 	</mvt:foreach>
-	<section class="u-hidden u-flex--l o-layout--align-center o-layout--justify-between o-layout--wrap">
-		<h1 class="c-heading-delta u-text-bold u-text-uppercase">&mvte:page:name;</h1>
-		<div class="x-display-list-filtering t-display-list-filtering">
+	<section class="o-layout--align-bottom o-layout--justify-between o-layout--wrap u-flex--l u-hidden">
+		<p class="u-color-gray-600">&mvte:search_results:total_prod_count; Items</p>
+		<div class="x-display-list-filtering">
 			<form class="x-display-list-filtering__per-page" method="get" action="&mvte:urls:_self:auto_noparams;">
 				<fieldset>
 					<legend>Number of Products to Show</legend>
@@ -31,9 +31,9 @@
 					</mvt:foreach>
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-per_page">View</label>
+							<label class="c-form-label u-text-bold" for="l-per_page">View</label>
 							<div class="c-form-select">
-								<select id="l-per_page" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Per_Page" onchange="MMProdList_UpdateQuery( this ); return true;">
+								<select id="l-per_page" class="c-form-select__dropdown" name="Per_Page" onchange="MMProdList_UpdateQuery( this ); return true;">
 									<mvt:if expr="g.Per_Page EQ 12">
 										<option value="12" selected="selected">12 Items/Page</option>
 									<mvt:else>
@@ -81,9 +81,9 @@
 					</mvt:foreach>
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-sort_by">Sort</label>
+							<label class="c-form-label u-text-bold" for="l-sort_by">Sort By</label>
 							<div class="c-form-select">
-								<select id="l-sort_by" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Sort_By" onchange="MMProdList_UpdateQuery( this ); return true;">
+								<select id="l-sort_by" class="c-form-select__dropdown" name="Sort_By" onchange="MMProdList_UpdateQuery( this ); return true;">
 									<mvt:if expr="ISNULL g.Sort_By">
 										<option value="disp_order" selected>Featured</option>
 									<mvt:else>
@@ -119,51 +119,56 @@
 		</div>
 		<!-- end .x-display-list-filtering -->
 	</section>
-	<hr class="c-keyline u-hidden u-shown--l">
+	<br>
 </mvt:if>
 
-<section class="o-layout u-grids-2 u-grids-3--l x-product-list">
+<section class="x-product-list">
 	<mvt:foreach iterator="product" array="search_results:products">
-		<div class="o-layout__item u-text-center x-product-list__item">
-			<a class="u-block x-product-list__link" href="&mvte:product:link;" title="&mvte:product:name;">
-				<figure class="x-product-list__figure">
+		<div class="x-product-list__item">
+			<figure class="x-product-list__figure">
+				<picture class="x-product-list__picture">
 					<img class="x-product-list__image" src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:search_results:b_width;" height="&mvte:search_results:b_height;">
-					<figcaption>
-						<strong class="x-product-list__name">&mvte:product:name;</strong>
-						<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
-							<span class="x-product-list__price u-color-gray-30"><s>&mvt:product:formatted_base_price;</s></span>
-							<span class="x-product-list__price u-color-red">&mvt:product:formatted_price;</span>
-						<mvt:else>
-							<span class="x-product-list__price">&mvt:product:formatted_price;</span>
-						</mvt:if>
-						<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
-					</figcaption>
-				</figure>
-			</a>
+				</picture>
+				<figcaption class="x-product-list__figure-caption">
+					<a class="x-product-list__link" href="&mvte:product:link;">
+						<span class="x-product-list__name">&mvt:product:name;</span>
+					</a>
+					<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+						<span class="x-product-list__price_set">
+							<span class="x-product-list__price u-text-bold">&mvt:product:formatted_price;</span>
+							<span class="x-product-list__price u-color-gray-500 u-text-medium"><s>&mvt:product:formatted_base_price;</s></span>
+						</span>
+					<mvt:else>
+						<span class="x-product-list__price">&mvt:product:formatted_price;</span>
+					</mvt:if>
+					<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
+				</figcaption>
+			</figure>
 		</div>
 	</mvt:foreach>
 </section>
 <!-- end .x-product-list -->
 
 <mvt:if expr="l.settings:search_results:page_links:last_page GT 1">
-	<nav class="x-pagination x-pagination--centered t-pagination" aria-label="Pagination">
-		<ul class="o-list-inline">
+	<nav class="x-pagination x-pagination--centered" aria-label="Pagination">
+		<ul class="x-pagination__list">
 			<mvt:if expr="l.settings:search_results:page_links:current_page NE 1">
-				<li class="o-list-inline__item">
-					<a class="c-button c-button--hollow u-border-rounded u-color-gray-40" href="&mvte:urls:_self:auto_sep;&mvte:search_results:page_links:prev_link_params;" aria-label="Go to the previous page.">
+				<mvt:assign name="l.settings:prev_page" value="l.settings:search_results:page_links:current_page - 1"/>
+				<li class="x-pagination__item">
+					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
-				<li class="o-list-inline__item">
-					<span class="c-button c-button--hollow u-border-rounded u-color-gray-40" title="You are on the first page.">
+				<li class="x-pagination__item">
+					<span class="c-button c-button--secondary x-pagination__link">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</span>
 				</li>
 			</mvt:if>
-			<li class="o-list-inline__item o-layout--grow">
+			<li class="x-pagination__item o-layout--grow">
 				<div class="c-form-select">
-					<select class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold u-color-gray-40" aria-label="Go to page" onchange="window.location.href=this.options[ this.selectedIndex ].value">
+					<select class="c-form-select__dropdown" aria-label="Go to page" onchange="window.location.href=this.options[ this.selectedIndex ].value">
 						<mvt:foreach iterator="pages" array="search_results:page_links:pages">
 							<mvt:if expr="l.settings:search_results:page_links:current_page EQ l.settings:pages:page_num">
 								<option value="&mvte:urls:_self:auto_sep;&mvte:pages:link_params;" aria-current="page" selected>Page &mvte:pages:page_num; of &mvte:search_results:page_links:last_page;</option>
@@ -175,14 +180,15 @@
 				</div>
 			</li>
 			<mvt:if expr="l.settings:search_results:page_links:current_page NE l.settings:search_results:page_links:last_page">
-				<li class="o-list-inline__item">
-					<a class="c-button c-button--hollow u-border-rounded u-color-gray-40" href="&mvte:urls:_self:auto_sep;&mvte:search_results:page_links:next_link_params;" aria-label="Go to the next page.">
+				<mvt:assign name="l.settings:next_page" value="l.settings:search_results:page_links:current_page + 1"/>
+				<li class="x-pagination__item">
+					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:search_results:page_links:next_link_params;" aria-label="Go to page &mvte:next_page;.">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
-				<li class="o-list-inline__item">
-					<span class="c-button c-button--hollow u-border-rounded u-color-gray-40" title="You are on the last page.">
+				<li class="x-pagination__item">
+					<span class="c-button c-button--secondary x-pagination__link">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</span>
 				</li>

@@ -23,9 +23,8 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<p class="c-heading-delta">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></p>
-			<p><a class="c-button c-button--large u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:RGFT:auto;" title="Redeem Gift Certificate">Redeem Gift Certificate</a></p>
-			<hr class="c-keyline">
+			<h1 class="c-heading-delta">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></h1>
+			<p><a class="c-button c-button--secondary c-button--small" href="&mvte:urls:RGFT:auto;" title="Redeem Gift Certificate">Redeem Gift Certificate</a></p>
 			<mvt:item name="customercredithistory" />
 		</div>
 		<aside class="o-layout__item u-width-12 u-width-3--l">

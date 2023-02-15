@@ -16,14 +16,15 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="u-hide-visually">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
 	</section>
 
-	<section class="o-layout o-layout--justify-around">
-		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">Welcome Back</p>
+	<section class="o-layout o-layout--justify-center">
+		<div class="o-layout__item u-width-12 u-width-6--l u-width-4--w t-logn-block">
+			<p class="c-heading-foxtrot">Welcome Back</p>
 			<mvt:if expr="NOT ISNULL g.QuoteCode">
 				<mvt:assign name="l.settings:url" value="l.settings:urls:QUOT:secure" />
 			<mvt:elseif expr="g.Customer_Temporary_Password">
@@ -39,30 +40,34 @@
 					<input type="hidden" name="Action" value="LOGN" />
 					<input type="hidden" name="QuoteCode" value="&mvte:global:QuoteCode;" />
 					<div class="c-form-list">
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="Customer_LoginEmail_LOGN">Account Email Address</label>
-							<input id="Customer_LoginEmail_LOGN" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="Customer_LoginEmail_LOGN">Account Email Address</label>
+							<input id="Customer_LoginEmail_LOGN" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
 						</div>
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="Customer_Password">Password:</label>
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="Customer_Password">Password:</label>
 							<mvt:if expr="g.Customer_Temporary_Password">
 								<input type="hidden" name="Customer_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
 								<input type="hidden" name="Customer_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
-								<input id="Customer_Password" class="c-form-input c-form-input--large" type="text" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off" disabled readonly>
+								<input id="Customer_Password" class="c-form-input" type="text" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off" disabled readonly>
 							<mvt:else>
-								<input id="Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
+								<input id="Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
 							</mvt:if>
 						</div>
-						<div class="c-form-list__item u-text-right">
-							<mvt:item name="buttons" param="Login" />
+						<div class="c-form-list__item c-form-list__item--full">
+							<p>
+								<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+							</p>
+							<p>
+								<mvt:item name="buttons" param="Login" />
+							</p>
 						</div>
 					</div>
 				</fieldset>
 			</form>
-			<p class="u-font-small"><a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot your password?</a></p>
 		</div>
-		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">New Customers</p>
+		<div class="o-layout__item u-width-12 u-width-6--l u-width-4--w t-logn-block">
+			<p class="c-heading-foxtrot">New Customers</p>
 			<mvt:if expr="g.Order">
 				<mvt:assign name="l.settings:return_url" value="l.settings:urls:OINF:secure" />
 			<mvt:elseif expr="g.Redeem">
@@ -85,24 +90,24 @@
 					</mvt:if>
 					<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 					<div class="c-form-list">
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_fname">First Name</label>
-							<input id="register_fname" class="c-form-input c-form-input--large" type="text" name="Customer_ShipFirstName" value="&mvte:global:Customer_ShipFirstName;" autocomplete="given-name" required aria-required="true">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required" for="register_fname">First Name</label>
+							<input id="register_fname" class="c-form-input" type="text" name="Customer_ShipFirstName" value="&mvte:global:Customer_ShipFirstName;" autocomplete="given-name" required aria-required="true">
 						</div>
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_lname">Last Name</label>
-							<input id="register_lname" class="c-form-input c-form-input--large" type="text" name="Customer_ShipLastName" value="&mvte:global:Customer_ShipLastName;" autocomplete="family-name" required aria-required="true">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required" for="register_lname">Last Name</label>
+							<input id="register_lname" class="c-form-input" type="text" name="Customer_ShipLastName" value="&mvte:global:Customer_ShipLastName;" autocomplete="family-name" required aria-required="true">
 						</div>
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_email">Email Address</label>
-							<input id="register_email" class="c-form-input c-form-input--large" type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required" for="register_email">Email Address</label>
+							<input id="register_email" class="c-form-input" type="email" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
 						</div>
-						<div class="c-form-list__item">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_password">Password</label>
-							<input id="register_password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required" for="register_password">Password</label>
+							<input id="register_password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
-						<div class="c-form-list__item u-text-right">
-							<input class="c-button c-button--full c-button--hollow c-button--huge u-bg-white u-color-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Create My Account">
+						<div class="c-form-list__item c-form-list__item--full">
+							<input class="c-button c-button--full c-button--secondary" type="submit" value="Create My Account">
 						</div>
 					</div>
 				</fieldset>

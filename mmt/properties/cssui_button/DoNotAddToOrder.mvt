@@ -1,1 +1,1 @@
-<input class="c-button c-button--large u-font-small u-text-bold u-text-uppercase" type="submit" value="Do Not Add to Order">
+<input class="c-button c-button--secondary" type="submit" value="Do Not Add to Order">

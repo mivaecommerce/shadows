@@ -1,0 +1,658 @@
+{
+    "flex": {
+        "featured-product": {
+            "component_code": "mmx-featured-product",
+            "item_code": "featured-product",
+            "settings": {
+                "advanced": {
+                    "product": {
+                        "button": {
+                            "button_text": {
+                                "textsettings": {
+                                    "fields": {
+                                        "normal": {
+                                            "button_size": {
+                                                "value": "xs"
+                                            }
+                                        }
+                                    }
+                                },
+                                "value": "Add to Cart"
+                            },
+                            "settings": {
+                                "enabled": 1
+                            }
+                        },
+                        "discount": {
+                            "value": 1
+                        },
+                        "image_fit": {
+                            "value": "contain"
+                        },
+                        "image_type": {
+                            "value": "main"
+                        },
+                        "multiple_images": {
+                            "value": 1
+                        },
+                        "product_name_tag": {
+                            "value": "div"
+                        }
+                    }
+                },
+                "layout": {
+                    "image_position": {
+                        "value": "left"
+                    }
+                },
+                "text": {
+                    "description": {
+                        "description_style": {
+                            "value": "paragraph-s"
+                        },
+                        "overwritten_description": {
+                            "settings": {
+                                "enabled": 0
+                            }
+                        }
+                    },
+                    "product_name": {
+                        "product_name_style": {
+                            "value": "title-1"
+                        }
+                    },
+                    "subheading": {
+                        "text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "font_color": {
+                                            "value": "#575A5D"
+                                        },
+                                        "font_size": {
+                                            "value": 12
+                                        },
+                                        "font_weight": {
+                                            "value": 500
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "SKU OR BRAND NAME"
+                        }
+                    }
+                }
+            }
+        },
+        "hero": {
+            "component_code": "mmx-hero",
+            "item_code": "hero",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "desktop": {
+                        "background_color": {
+                            "settings": {
+                                "enabled": 0
+                            }
+                        },
+                        "container_width": {
+                            "value": "40%"
+                        },
+                        "overlay_opacity": {
+                            "value": 0
+                        }
+                    },
+                    "mobile": {
+                        "background_color": {
+                            "settings": {
+                                "enabled": 0
+                            }
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "body_style": {
+                                        "value": "paragraph-l"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                    },
+                    "button": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "button_size": {
+                                        "value": "s"
+                                    },
+                                    "button_style": {
+                                        "value": "primary"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Shop Now"
+                    },
+                    "content_location": {
+                        "value": "center"
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "display-3"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes Here"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "subheading_style": {
+                                        "value": "subheading-s"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "img": {
+                        "image": "graphics/00000001/placeholder__1440x400.jpg"
+                    },
+                    "size": {
+                        "value": "auto"
+                    }
+                },
+                "link": {
+                    "type": "page",
+                    "value": "SFNT"
+                }
+            }
+        },
+        "image-and-text": {
+            "component_code": "mmx-image-and-text",
+            "item_code": "image-and-text",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "text_background": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "left"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "body_style": {
+                                        "value": "paragraph-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
+                    },
+                    "button": {
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_size": {
+                                            "value": "s"
+                                        },
+                                        "button_style": {
+                                            "value": "primary"
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-1"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes Here"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "subheading_style": {
+                                        "value": "subheading-s"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "image": {
+                    "img": {
+                        "image": "graphics/00000001/placeholder__880x480.jpg"
+                    },
+                    "size": {
+                        "value": "auto"
+                    }
+                },
+                "layout": {
+                    "content_width": {
+                        "value": 50
+                    },
+                    "image_position": {
+                        "value": "left"
+                    }
+                },
+                "link": {
+                    "type": "page",
+                    "value": "SFNT"
+                }
+            }
+        },
+        "text-banner": {
+            "component_code": "mmx-text-banner",
+            "item_code": "text-banner",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    }
+                },
+                "background": {
+                    "color": {
+                        "value": "#F5F5F5"
+                    }
+                },
+                "banner_size": {
+                    "value": "m"
+                },
+                "content": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "body_style": {
+                                        "value": "paragraph-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc."
+                    },
+                    "button": {
+                        "button_link": {
+                            "type": "page",
+                            "value": "SFNT"
+                        },
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_size": {
+                                            "value": "xs"
+                                        },
+                                        "button_style": {
+                                            "value": "primary"
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-4"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Short Main Heading Here"
+                    }
+                },
+                "text_layout": {
+                    "value": "horizontal-banner"
+                }
+            }
+        },
+        "two-across": {
+            "component_code": "mmx-image-across",
+            "item_code": "two-across",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "desktop": {
+                        "column_count": {
+                            "value": "auto"
+                        },
+                        "overlay_opacity": {
+                            "value": 0
+                        }
+                    },
+                    "mobile": {
+                        "overflow_behavior": {
+                            "value": "scroll"
+                        }
+                    }
+                },
+                "content_styles": {
+                    "align": {
+                        "value": "left"
+                    },
+                    "body_text_styles": {
+                        "body_style": {
+                            "value": "paragraph-s"
+                        }
+                    },
+                    "button_styles": {
+                        "button_size": {
+                            "value": "s"
+                        },
+                        "button_style": {
+                            "value": "secondary-link"
+                        }
+                    },
+                    "content_location": {
+                        "value": "under"
+                    },
+                    "heading_text_styles": {
+                        "heading_style": {
+                            "value": "title-3"
+                        }
+                    },
+                    "subheading_text_styles": {
+                        "subheading_style": {
+                            "value": "subheading-s"
+                        }
+                    }
+                },
+                "heading": {
+                    "settings": {
+                        "enabled": 0
+                    }
+                },
+                "images_group": {
+                    "image_size": {
+                        "value": "m"
+                    },
+                    "images_across": {
+                        "children": [
+                            {
+                                "img": {
+                                    "image": "graphics/00000001/placeholder__704x480.jpg"
+                                },
+                                "link": {
+                                    "type": "page",
+                                    "value": "SFNT"
+                                },
+                                "text": {
+                                    "body": {
+                                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies."
+                                    },
+                                    "button": {
+                                        "value": "Explore Products"
+                                    },
+                                    "heading": {
+                                        "value": "Section Title for Left Image"
+                                    },
+                                    "settings": {
+                                        "enabled": 1
+                                    },
+                                    "subheading": {
+                                        "value": "Complementary Subheading"
+                                    }
+                                }
+                            },
+                            {
+                                "img": {
+                                    "image": "graphics/00000001/placeholder__704x480.jpg"
+                                },
+                                "link": {
+                                    "type": "page",
+                                    "value": "SFNT"
+                                },
+                                "text": {
+                                    "body": {
+                                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies."
+                                    },
+                                    "button": {
+                                        "value": "Explore Products"
+                                    },
+                                    "heading": {
+                                        "value": "Section Title for Right Image"
+                                    },
+                                    "settings": {
+                                        "enabled": 1
+                                    },
+                                    "subheading": {
+                                        "value": "Complementary Subheading"
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "video": {
+            "component_code": "mmx-video",
+            "item_code": "video",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "controls": {
+                        "autoplay": {
+                            "value": 1
+                        },
+                        "controls": {
+                            "value": 0
+                        },
+                        "height": {
+                            "value": 900
+                        },
+                        "loop": {
+                            "value": 1
+                        },
+                        "muted": {
+                            "value": 1
+                        },
+                        "start": {
+                            "value": 0
+                        },
+                        "width": {
+                            "value": 1600
+                        }
+                    },
+                    "desktop": {
+                        "background_color": {
+                            "settings": {
+                                "enabled": 0
+                            }
+                        },
+                        "overlay_opacity": {
+                            "value": 0
+                        }
+                    },
+                    "mobile": {
+                        "background_color": {
+                            "color": {
+                                "value": "#FFFFFF"
+                            },
+                            "settings": {
+                                "enabled": 1
+                            }
+                        }
+                    },
+                    "spacing": {
+                        "top": {
+                            "value": 0
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "content_location": {
+                        "value": "above"
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-1"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Large Text Area to Introduce Next Content Section"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    }
+                },
+                "size": {
+                    "value": "m"
+                },
+                "video": {
+                    "value": "https://vimeo.com/759640679"
+                }
+            }
+        }
+    },
+    "hdft": {
+        "footer": {
+            "template_filename": "layout_landing_page_2-footer.mvc"
+        },
+        "header": {
+            "template_filename": "layout_landing_page_2-header.mvc"
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://local.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "8451aac135b33173b8ad096041f259c3",
+                "item": "flex",
+                "name": "Hero",
+                "param": "hero"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "7fb59d0ff5221c5e4aec4c9a67b5046c",
+                "item": "flex",
+                "name": "Two Across",
+                "param": "two-across"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "c4c387a921ca267b542aeacde677db5c",
+                "item": "flex",
+                "name": "Text Banner",
+                "param": "text-banner"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "fc80f8d3c1dfdce0e12eb7039ef89ddf",
+                "item": "flex",
+                "name": "Featured Product",
+                "param": "featured-product"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "2a53050a4c67a2ad4f3bc3fddd11fbca",
+                "item": "flex",
+                "name": "Video",
+                "param": "video"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "dce8a5b9a9522be821ecc99c66e63955",
+                "item": "flex",
+                "name": "Image and Text",
+                "param": "image-and-text"
+            }
+        ],
+        "title": "Sequence"
+    }
+}

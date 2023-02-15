@@ -1,1 +1,1 @@
-<input type="submit" value="Next &gt;" class="button" />
+<input class="c-button" type="submit" value="Next">

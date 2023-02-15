@@ -1,6 +1,9 @@
 <Page_Update code="ORDH"><Item code="orderhistory_list"><OrdersPerPage>12</OrdersPerPage><Template><![CDATA[<mvt:if expr="NOT l.settings:orders_found GT 0">
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<br>
 			<p class="x-messages x-messages--info">No matching orders found.</p>
 		</div>
 	</section>
@@ -9,16 +12,19 @@
 
 <section class="o-layout">
 	<div class="o-layout__item u-width-12">
+		<h1 class="c-heading-delta">&mvt:page:name;</h1>
+		<hr class="c-keyline">
+		<br>
 		<form method="post" action="&mvte:urls:ORDS:auto;">
 			<fieldset>
 				<legend>Search Orders</legend>
 				<div class="c-form-list">
 					<div class="c-form-list__item c-form-list__item--full">
-						<label class="u-font-small u-text-uppercase" for="Order_ID">Missing an order? We can help you find it.</label>
+						<label for="Order_ID">Missing an order? We can help you find it.</label>
 					</div>
-					<div class="c-form-list__item c-control-group u-flex">
-						<input id="Order_ID" class="c-form-input c-form-input--large c-control-group__field" type="text" inputmode="decimal" name="Order_ID" placeholder="Order #" required>
-						<input class="c-button c-button--large c-control-group__button u-bg-gray-50 u-border-none u-font-small u-text-uppercase" type="submit" value="Find">
+					<div class="c-form-list__item c-form-inline-set">
+						<input id="Order_ID" class="c-form-input" type="text" inputmode="decimal" name="Order_ID" placeholder="Order #" required>
+						<input class="c-button" type="submit" value="Find">
 					</div>
 				</div>
 			</fieldset>
@@ -26,59 +32,99 @@
 		<hr class="c-keyline">
 	</div>
 	<div class="o-layout__item u-width-12">
+		<mvt:assign name="l.settings:js_encoded_url" value="encodejavascriptstring( l.settings:urls:_self:auto_sep )"/>
+		<mvt:assign name="l.settings:js_encoded_email" value="encodejavascriptstring( g.Order_BillEmail )"/>
+		<mvt:assign name="l.settings:js_encoded_zip" value="encodejavascriptstring( g.Order_BillZip )"/>
 		<table class="c-table-responsive">
+			<caption class="u-hide-visually">Column headers with buttons are sortable.</caption>
 			<thead class="c-table-responsive_thead">
-				<tr class="c-table-responsive__row u-color-gray-30 u-font-small u-text-bold u-text-uppercase">
-					<th class="c-table-responsive__cell" scope="col">
-						<mvt:if expr="g.SortBy EQ 'InvAsc' OR ISNULL g.SortBy">
-							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=InvDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order #</a>
-						<mvt:else>
-							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=InvAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order #</a>
+				<tr class="c-table-responsive__row u-text-uppercase u-font-tiny">
+					<mvt:if expr="g.SortBy EQ 'InvAsc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=ascending'"/>
+					<mvt:elseif expr="g.SortBy EQ 'InvDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=descending'"/>
+					<mvt:elseif expr="g.SortBy NE 'InvAsc' AND g.SortBy NE 'InvDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="''"/>
+					</mvt:if>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col" &mvte:ariaSort;>
+						<mvt:if expr="g.SortBy EQ 'InvAsc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=InvDesc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Descending">Order # &nbsp;<span class="u-font-small u-icon-triangle-up" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy EQ 'InvDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=InvAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Order # &nbsp;<span class="u-font-small u-icon-triangle-down" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy NE 'InvAsc' AND g.SortBy NE 'InvDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=InvAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Order # &nbsp;<span class="u-font-small u-icon-subtract" aria-hidden="true"></span></button>
 						</mvt:if>
 					</th>
-					<th class="c-table-responsive__cell" scope="col">
-						<mvt:if expr="g.SortBy EQ 'OrdDtAsc' OR ISNULL g.SortBy">
-							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=OrdDtDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Date</a>
-						<mvt:else>
-							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=OrdDtAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Date</a>
+					<mvt:if expr="g.SortBy EQ 'OrdDtAsc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=ascending'"/>
+					<mvt:elseif expr="g.SortBy EQ 'OrdDtDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=descending'"/>
+					<mvt:elseif expr="g.SortBy NE 'OrdDtAsc' AND g.SortBy NE 'OrdDtDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="''"/>
+					</mvt:if>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col" &mvte:ariaSort;>
+						<mvt:if expr="g.SortBy EQ 'OrdDtAsc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdDtDesc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Descending">Date &nbsp;<span class="u-font-small u-icon-triangle-up" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy EQ 'OrdDtDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdDtAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Date &nbsp;<span class="u-font-small u-icon-triangle-down" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy NE 'OrdDtAsc' AND g.SortBy NE 'OrdDtDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdDtAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Date &nbsp;<span class="u-font-small u-icon-subtract" aria-hidden="true"></span></button>
 						</mvt:if>
 					</th>
-					<th class="c-table-responsive__cell" scope="col">Products</th>
-					<th class="c-table-responsive__cell" scope="col">Quantity</th>
-					<th class="c-table-responsive__cell" scope="col">
-						<mvt:if expr="g.SortBy EQ 'StusAsc' OR ISNULL g.SortBy">
-							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=StusDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Status</a>
-						<mvt:else>
-							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=StusAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Status</a>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col">Products</th>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col">Quantity</th>
+					<mvt:if expr="g.SortBy EQ 'StusAsc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=ascending'"/>
+					<mvt:elseif expr="g.SortBy EQ 'StusDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=descending'"/>
+					<mvt:elseif expr="g.SortBy NE 'StusAsc' AND g.SortBy NE 'StusDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="''"/>
+					</mvt:if>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col" &mvte:ariaSort;>
+						<mvt:if expr="g.SortBy EQ 'StusAsc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=StusDesc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Descending">Status &nbsp;<span class="u-font-small u-icon-triangle-up" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy EQ 'StusDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=StusAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Status &nbsp;<span class="u-font-small u-icon-triangle-down" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy NE 'StusAsc' AND g.SortBy NE 'StusDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=StusAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Status &nbsp;<span class="u-font-small u-icon-subtract" aria-hidden="true"></span></button>
 						</mvt:if>
 					</th>
-					<th class="c-table-responsive__cell" scope="col">Shipments</th>
-					<th class="c-table-responsive__cell u-text-right--m" scope="col">
-						<mvt:if expr="g.SortBy EQ 'OrdTotAsc' OR ISNULL g.SortBy">
-							<a class="u-color-gray-50" href="&mvte:urls:_self:auto_sep;SortBy=OrdTotDesc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order Total</a>
-						<mvt:else>
-							<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:_self:auto_sep;SortBy=OrdTotAsc&Order_BillEmail=&mvta:global:Order_BillEmail;&Order_BillZip=&mvta:global:Order_BillZip;">Order Total</a>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col">Shipments</th>
+					<mvt:if expr="g.SortBy EQ 'OrdTotAsc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=ascending'"/>
+					<mvt:elseif expr="g.SortBy EQ 'OrdTotDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="'aria-sort=descending'"/>
+					<mvt:elseif expr="g.SortBy NE 'OrdTotAsc' AND g.SortBy NE 'OrdTotDesc'">
+						<mvt:assign name="l.settings:ariaSort" value="''"/>
+					</mvt:if>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard u-text-right" scope="col" &mvte:ariaSort;>
+						<mvt:if expr="g.SortBy EQ 'OrdTotAsc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdTotDesc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Descending">Order Total &nbsp;<span class="u-font-small u-icon-triangle-up" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy EQ 'OrdTotDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdTotAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Order Total &nbsp;<span class="u-font-small u-icon-triangle-down" aria-hidden="true"></span></button>
+						<mvt:elseif expr="g.SortBy NE 'OrdTotAsc' AND g.SortBy NE 'OrdTotDesc'">
+							<button class="c-button c-button--as-link u-text-no-underline u-text-uppercase" onclick="document.location='&mvte:js_encoded_url;SortBy=OrdTotAsc&Order_BillEmail=' + encodeURIComponent(  '&mvte:js_encoded_email;' ) + '&amp;Order_BillZip=' + encodeURIComponent( '&mvte:js_encoded_zip;' );" aria-label="Sort History by Order Number Ascending">Order Total &nbsp;<span class="u-font-small u-icon-subtract" aria-hidden="true"></span></button>
 						</mvt:if>
 					</th>
-					<th class="c-table-responsive__cell" scope="col">&nbsp;</th>
+					<th class="c-table-responsive__cell c-table-responsive__cell--standard" scope="col">&nbsp;</th>
 				</tr>
 			</thead>
 			<tbody>
 				<mvt:foreach iterator="order" array="orders">
 					<tr class="c-table-responsive__row">
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order #">&mvt:order:id;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Date">&mvt:order:date_formatted;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Products">&mvt:order:prod_num;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Quantity">&mvt:order:prod_qty;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Status">&mvt:order:order_status;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Shipments">
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Order #">&mvt:order:id;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Date">&mvt:order:date_formatted;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Products">&mvt:order:prod_num;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Quantity">&mvt:order:prod_qty;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Status">&mvt:order:order_status;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="Shipments">
 							<mvt:foreach iterator="shipment" array="order:shipments">
-								<a class="u-color-gray-50" href="&mvt:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
+								<a class="u-color-gray-50" href="&mvte:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
 							</mvt:foreach>
 						</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-right--m" data-label="Total">&mvt:order:formatted_total;</td>
-						<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="">
-							<a class="u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:ORDS:auto_sep;SortBy=&mvta:global:SortBy;&amp;Offset=&mvta:global:Offset;&amp;Order_ID=&mvt:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">View</a>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard u-text-right--m" data-label="Total">&mvt:order:formatted_total;</td>
+						<td class="c-table-responsive__cell c-table-responsive__cell--flex c-table-responsive__cell--standard" data-label="">
+							<a class="u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:ORDS:auto_sep;SortBy=&mvta:global:SortBy;&amp;Offset=&mvta:global:Offset;&amp;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">View</a>
 						</td>
 					</tr>
 				</mvt:foreach>
@@ -112,15 +158,14 @@
 			</form>
 		</mvt:if>
 	</mvt:if>
-</div>
-]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="orderhistory_list"><OrdersPerPage>5</OrdersPerPage><Template><![CDATA[<mvt:if expr="NOT l.settings:orders_found GT 0">
+</div>]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="orderhistory_list"><OrdersPerPage>5</OrdersPerPage><Template><![CDATA[<mvt:if expr="NOT l.settings:orders_found GT 0">
 	<p class="x-messages x-messages--info">No matching orders found.</p>
 	<mvt:exit />
 </mvt:if>
 
-<table class="c-table-responsive u-font-small">
+<table class="c-table-responsive">
 	<thead class="c-table-responsive_thead">
-		<tr class="c-table-responsive__row u-border-none u-color-gray-30 u-font-small u-text-bold u-text-uppercase">
+		<tr class="c-table-responsive__row u-font-small u-text-bold u-text-uppercase">
 			<th class="c-table-responsive__cell" scope="col">Order #</th>
 			<th class="c-table-responsive__cell" scope="col">Order Placed</th>
 			<th class="c-table-responsive__cell" scope="col">Total</th>
@@ -130,22 +175,20 @@
 	</thead>
 	<tbody>
 		<mvt:foreach iterator="order" array="orders">
-			<tr class="c-table-responsive__row u-border-none u-text-bold">
+			<tr class="c-table-responsive__row u-border-none">
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order #">
 					&mvt:order:id;<br>
-					<a class="u-color-gray-30 u-font-small u-text-normal" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvt:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
+					<a class="u-color-gray-600 u-font-small" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
 				</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order Placed">&mvt:order:date_formatted;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Total">&mvt:order:formatted_total;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Status">&mvt:order:order_status;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Shipments">
 					<mvt:foreach iterator="shipment" array="order:shipments">
-						<a class="u-color-gray-50 u-font-small u-text-underline" href="&mvt:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
+						<a class="u-color-gray-50 u-font-small" href="&mvte:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
 					</mvt:foreach>
 				</td>
 			</tr>
 		</mvt:foreach>
 	</tbody>
-</table>
-
-]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+</table>]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
