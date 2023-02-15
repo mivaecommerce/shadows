@@ -17,11 +17,17 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
-			<br>
-			<h2 class="c-heading-bravo u-text-center">
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--justify-center o-layout--wide t-order-complete-content">
+		<div class="o-layout__item">
+			<h1 class="c-heading-echo u-text-center">
 				Special Offers<br>
-				<span class="c-heading--subheading">Offer valid for this order only</span>
-			</h2>
+				<em class="u-font-tiny u-text-regular">Offer valid for this order only</em>
+			</h1>
+			<br>
 			<mvt:if expr="g.Upsold_Product_Count LE g.Upsell_Options:prod_sell OR g.Upsell_Options:prod_sell EQ 0">
 				<p>You may select <strong>one or more</strong> of the following:</p>
 			<mvt:elseif expr="g.Upsell_Options:prod_sell EQ 1">
@@ -29,12 +35,6 @@
 			<mvt:else>
 				<p>You may select up to <strong>&mvte:global:Upsell_Options:prod_sell;</strong> of the following:</p>
 			</mvt:if>
-			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
-		</div>
-	</section>
-
-	<section class="o-layout">
-		<div class="o-layout__item">
 			<form method="post" action="&mvte:urls:OSEL:secure;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
@@ -45,7 +45,7 @@
 		
 					<table class="c-table-responsive">
 						<thead class="c-table-responsive_thead u-text-left">
-							<tr class="c-table-responsive__row u-text-uppercase u-font-tiny u-color-gray-30">
+							<tr class="c-table-responsive__row u-text-uppercase u-font-tiny">
 								<th class="c-table-responsive__cell" scope="col">&nbsp;</th>
 								<th class="c-table-responsive__cell" scope="col">Code</th>
 								<th class="c-table-responsive__cell" scope="col">Product</th>

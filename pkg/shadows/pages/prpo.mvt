@@ -18,7 +18,7 @@
 		<div class="o-layout__item u-width-12 u-width-9--l u-width-10--w">
 			<section class="o-layout">
 				<div class="o-layout__item">
-					<h1 class="c-heading-delta u-text-bold u-text-uppercase">&mvte:page:name;</h1>
+					<h1 class="c-heading-delta">&mvt:page:name;</h1>
 					<hr class="c-keyline">
 				</div>
 			</section>
@@ -31,10 +31,10 @@
 
 			<section class="o-layout">
 				<div class="o-layout__item">
-					<mvt:item name="readytheme" param="contentsection( 'prpo_content' )" />
+					<mvt:item name="sequence" />
 				</div>
 			</section>
-			
+
 			<section class="o-layout">
 				<div class="o-layout__item">
 					<mvt:item name="hdft" param="footer" />

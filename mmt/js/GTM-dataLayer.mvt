@@ -1,5 +1,5 @@
 <mvt:comment><!-- Google Tag Manager - Data Layer --></mvt:comment>
-var dataLayer = dataLayer || [];
+let dataLayer = dataLayer || [];
 <mvt:comment><!-- Page Type Assignment --></mvt:comment>
 <mvt:if expr="l.settings:page:code EQ 'SFNT'">
 	<mvt:assign name="l.settings:dataLayer:pageType" value="'home'" />

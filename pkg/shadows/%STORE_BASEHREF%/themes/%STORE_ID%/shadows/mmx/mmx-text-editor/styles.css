@@ -1,0 +1,12 @@
+/* ==========================================================================
+   EXTENSIONS / MMX / RICH TEXT EDITOR
+   ========================================================================== */
+
+mmx-text-editor {
+	display: block;
+}
+
+.mmx-text-editor {
+	position: relative;
+	display: block;
+}

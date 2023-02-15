@@ -5,13 +5,13 @@
 		"height": "100%",
 		"min-height": "100%",
 		"font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
-		"font-size": "1rem",
+		"font-size": "13px",
 		"-webkit-font-smoothing": "antialiased",
 		"-moz-osx-font-smoothing": "grayscale",
 		"line-height": "1.5",
 		"-webkit-text-size-adjust": "100%",
 		"-ms-text-size-adjust": "100%",
-		"color": "rgb(74, 74, 74)",
+		"color": "#111",
 		"-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)",
 		"touch-action": "manipulation"
 	}
@@ -25,13 +25,32 @@
 {
 	"selector": ".form_row.invalid input[type=\"text\"],.form_row.invalid select",
 	"properties": {
-		"border-color": "rgb(200, 16, 46)"
+		"border-color": "#b13138"
+	}
+},
+{
+	"selector": ".form_row.invalid label",
+	"properties": {
+		"color": "#b13138"
+	}
+},
+{
+	"selector": ".bold",
+	"properties": {
+		"font-weight": "600"
 	}
 },
 {
 	"selector": "*, *::before, *::after ",
 	"properties": {
 		"box-sizing": "inherit"
+	}
+},
+{
+	"selector": "#payment-fields",
+	"properties": {
+		"padding": "0 0.25rem",
+		"width": "100%"
 	}
 },
 {
@@ -62,35 +81,54 @@
 	"properties": {
 		"display": "block",
 		"margin-bottom": "0.25rem",
-		"font-size": "0.75em",
-		"font-weight": "700",
-		"text-transform": "uppercase"
+		"font-size": "13px",
+		"font-weight": "600"
 	}
 },
 {
-	"selector": "input[type='text'], select",
+	"selector": "input[type='text']",
 	"properties": {
-		"border": "1px solid rgb(192, 192, 192)",
-		"padding": "0.5rem",
-		"width": "100%",
-		"height": "calc(3.875em - (1px * 2))",
-		"line-height": "calc(3.875em - (1px * 2))",
-		"border-radius": "0.125em",
-		"box-shadow": "0 0 0 0 rgba(0, 0, 0, 0.2)",
-		"outline": "0",
+		"appearance": "none",
+		"background-color": "#fff",
+		"border": "1px solid #ccc",
+		"border-radius": "0.25rem",
+		"display": "inline-block",
+		"font-family": "inherit",
+ 		"font-size": "13px",
+		"line-height": "1",
+		"margin-bottom": "0.25em",
+		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)",
+		"width": "100%"
+	}
+},
+{
+	"selector": "select",
+	"properties": {
+		"appearance": "none",
+		"background-color": "#fff",
+		"border": "1px solid #ccc",
+		"border-radius": "0.25rem",
+		"box-shadow": "0 0 0 0 rgba(17, 17, 17, 0.2)",
+		"cursor": "pointer",
+		"font-family": "inherit",
+		"margin-bottom": "0.25em",
+		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)",
 		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
-		"display": "inline-block"
+		"width": "100%"
 	}
-
 },
 {
-	"selector": "input[type='text']:focus, select:focus",
+	"selector": "input[type='text']:focus:not(:focus-visible), select:focus:not(:focus-visible)",
 	"properties": {
-		"border-color": "rgb(255, 255, 255)",
-		"box-shadow": "0 0 8px 0 rgba(0, 0, 0, 0.2)",
 		"outline": "none"
 	}
-
+},
+{
+	"selector": "input[type='text']:focus-visible, select:focus-visible",
+	"properties": {
+		"outline": "2px solid #3a58fc",
+		"outline-offset": "1px"
+	}
 },
 {
 	"selector": "#mvp_exp_month,#mvp_exp_year",

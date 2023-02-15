@@ -1,1 +1,1 @@
-<input type="submit" value="Add To Basket" class="button" />
+<input class="c-button" type="submit" value="Add To Basket">

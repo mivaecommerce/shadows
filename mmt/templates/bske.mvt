@@ -20,7 +20,7 @@
 		</div>
 	</section>
 
-	<section class="o-layout">
+	<section class="o-layout t-basket__product-contents">
 		<div class="o-layout__item">
 			<script>
 				function continueShopping(link) {
@@ -30,11 +30,11 @@
 				}
 			</script>
 			<div class="x-messages x-messages--info">
-				<strong>Your shopping cart is currently empty.</strong><br>
-				<a class="c-button c-button--hollow" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
+				<strong>Your shopping cart is currently empty.</strong> <a href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
 			</div>
 		</div>
 	</section>
+	
 	
 	<section class="o-layout">
 		<div class="o-layout__item">

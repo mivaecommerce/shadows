@@ -1,5 +1,10 @@
 <div class="x-transfigure-navigation__footer">
+	<mvt:if expr="g.Basket:cust_id EQ 0">
+		<a class="x-transfigure-navigation__footer-link u-hidden--l" href="&mvte:urls:LOGN:secure;">Sign In</a>
+	<mvt:else>
+		<a class="x-transfigure-navigation__footer-link u-hidden--l" href="&mvte:urls:ACLN:secure;">My Account</a>
+	</mvt:if>
 	<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
-		<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+		<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;">&mvte:navigationitem:name;</a>
 	</mvt:foreach>
 </div>

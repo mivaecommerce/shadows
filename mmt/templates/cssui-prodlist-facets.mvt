@@ -1,11 +1,26 @@
 <mvt:if expr="l.settings:facets:facet_count GT 0 OR l.settings:category_listing:products_on_page_count GT 1 OR l.settings:all_products:products_on_page_count GT 1 OR l.settings:search_results:products_on_page_count GT 1">
-	<nav class="x-category-tree x-collapsible-content t-faceting" aria-labelledby="searchFacets-label">
+	<br>
+	<nav class="x-category-tree x-collapsible-content" aria-labelledby="searchFacets-label">
 		<div class="x-category-tree__title">
-			<h3 id="searchFacets-label" class="x-category-tree__heading c-heading-echo u-text-bold u-text-uppercase">Filters</h3>
+			<mvt:if expr="NOT ISNULL g.Category_Code AND toupper( g.Screen ) NE 'CTGY'">
+				<mvt:assign name="l.settings:clear_facets:category" value="'&Category_Code=' $ encodeattribute(g.Category_Code)"/>
+			<mvt:elseif expr="NOT ISNULL g.Product_Code AND toupper( g.Screen ) NE 'PROD'">
+				<mvt:assign name="l.settings:clear_facets:product" value="'&Product_Code=' $ encodeattribute(g.Product_Code)"/>
+			</mvt:if>
+			<mvt:item name="urls" param="hidden_params:_self:auto" />
+			<input type="hidden" name="Search" value="&mvte:global:Search;" />
+			<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
+			<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
+			<mvt:assign name="l.settings:clear_facets" value="l.settings:urls:_self:auto_sep $ 'Search=' $ encodeattribute(g.Search) $ l.settings:clear_facets:category $ l.settings:clear_facets:product"/>
+			<p id="searchFacets-label" class="x-category-tree__heading x-category-tree__heading--facets">
+				Filters
+				<mvt:if expr="l.settings:facets:applied_facet_count GT 0">
+					<a href="&mvte:clear_facets;"><span class="u-icon-cross" aria-hidden="true"></span>Clear All</a>
+				</mvt:if>
+			</p>
 			<hr class="c-keyline">
 		</div>
-		<button class="x-category-tree__label x-collapsible-content__toggle u-text-uppercase" data-a11y-toggle="searchFacets" type="button">Filters <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
-
+		<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="searchFacets" type="button">Filters <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<div id="searchFacets" class="x-category-tree__row x-collapsible-content__item">
 			<mvt:assign name="g.facet_listings" value="''"/>
 			<mvt:foreach iterator="facet" array="facets:facets">
@@ -38,9 +53,9 @@
 							</mvt:foreach>
 							<div class="c-form-list">
 								<div class="c-form-list__item">
-									<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-per_page_filter">View</label>
+									<label class="c-form-label" for="l-per_page_filter">View</label>
 									<div class="c-form-select">
-										<select id="l-per_page_filter" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Per_Page" onchange="MMProdList_UpdateQuery( this ); return true;">
+										<select id="l-per_page_filter" class="c-form-select__dropdown u-font-small u-text-bold" name="Per_Page" onchange="MMProdList_UpdateQuery( this ); return true;">
 											<mvt:if expr="g.Per_Page EQ 12">
 												<option value="12" selected="selected">12 Items/Page</option>
 											<mvt:else>
@@ -88,9 +103,9 @@
 							</mvt:foreach>
 							<div class="c-form-list">
 								<div class="c-form-list__item">
-									<label class="c-form-label u-font-tiny u-text-uppercase u-text-normal" for="l-sort_by_filter">Sort</label>
+									<label class="c-form-label" for="l-sort_by_filter">Sort</label>
 									<div class="c-form-select">
-										<select id="l-sort_by_filter" class="c-form-select__dropdown u-font-small u-text-uppercase u-text-bold" name="Sort_By" onchange="MMProdList_UpdateQuery( this ); return true;">
+										<select id="l-sort_by_filter" class="c-form-select__dropdown u-font-small u-text-bold" name="Sort_By" onchange="MMProdList_UpdateQuery( this ); return true;">
 											<mvt:if expr="ISNULL g.Sort_By">
 												<option value="disp_order" selected>Featured</option>
 											<mvt:else>
@@ -127,28 +142,20 @@
 				<!-- end .x-display-list-filtering -->
 				<hr class="c-keyline">
 			</section>
-	
+
 			<form method="get" action="&mvte:urls:_self:auto_noparams;">
 				<fieldset>
 					<legend>Search Facets</legend>
 					<mvt:if expr="NOT ISNULL g.Category_Code AND toupper( g.Screen ) NE 'CTGY'">
 						<input type="hidden" name="Category_Code" value="&mvte:global:Category_Code;" />
-						<mvt:assign name="l.settings:clear_facets:category" value="'&Category_Code=' $ g.Category_Code"/>
 					<mvt:elseif expr="NOT ISNULL g.Product_Code AND toupper( g.Screen ) NE 'PROD'">
 						<input type="hidden" name="Product_Code" value="&mvte:global:Product_Code;" />
-						<mvt:assign name="l.settings:clear_facets:product" value="'&Product_Code=' $ g.Product_Code"/>
 					</mvt:if>
 					<mvt:item name="urls" param="hidden_params:_self:auto" />
 					<input type="hidden" name="Search" value="&mvte:global:Search;" />
 					<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
 					<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
-					<mvt:assign name="l.settings:clear_facets" value="l.settings:urls:_self:auto_sep $ 'Search=' $ g.Search $ l.settings:clear_facets:category $ l.settings:clear_facets:product"/>
 					<div class="c-form-list x-facets">
-						<mvt:if expr="l.settings:facets:applied_facet_count GT 0">
-							<div class="c-form-list__item">
-								<a class="u-color-red" href="&mvt:clear_facets;"><span class="u-icon-cross"></span> Clear Facets</a>
-							</div>
-						</mvt:if>
 						<mvt:foreach iterator="facet" array="facets:facets">
 							<div class="c-form-list__item x-facet-set">
 								<button class="x-collapsible-content__toggle x-facet-set__label" data-a11y-toggle="facet-set__&mvte:facet:code;" type="button">&mvt:facet:name; <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
@@ -197,29 +204,27 @@
 									<mvt:elseif expr="l.settings:facet:type EQ 'rangeslider'">
 										<mvt:assign name="l.settings:mm_facet_rangeslider_present" value="1" />
 										<span class="mm_facet_rangeslider mm_facet_rangeslider_mini" data-mm-facet-code="&mvte:facet:code;" data-mm-facet-module-code="&mvte:facet:module:code;" data-mm-facet-rangeslider-name="&mvte:facet:code;" data-mm-facet-rangeslider-range-low="&mvte:facet:value_low;" data-mm-facet-rangeslider-range-high="&mvte:facet:value_high;" data-mm-facet-rangeslider-selected-range-low="&mvte:facet:selected_value_low;"	data-mm-facet-rangeslider-selected-range-high="&mvte:facet:selected_value_high;"></span>
-									
+
 										<script>
 											/**
 											 * This function will reinitialize the Range Sliders when the page resizes.
 											 */
-											var animationTimeout;
-											var rangeSliders = document.querySelectorAll('[data-mm-facet-rangeslider-name]');
-											
-											window.addEventListener('resize', function () {
-												'use strict';
-										
-												if (animationTimeout) {
-													window.cancelAnimationFrame(animationTimeout);
-												}
-										
-												animationTimeout = window.requestAnimationFrame(function () {
-													if (rangeSliders.length > 0) {
-														MMFacet_RangeSlider_Initialize();
-													}
-												});
+											const rangeSliders = document.querySelectorAll('[data-mm-facet-rangeslider-name]');
+											let animationTimeout;
+
+											window.addEventListener('resize', () => {
+											    if (animationTimeout) {
+											        window.cancelAnimationFrame(animationTimeout);
+											    }
+
+											    animationTimeout = window.requestAnimationFrame(() => {
+											        if (rangeSliders.length > 0) {
+											            MMFacet_RangeSlider_Initialize();
+											        }
+											    });
 											}, false);
 										</script>
-										
+
 									<mvt:elseif expr="l.settings:facet:type EQ 'nested'">
 										<mvt:assign name="l.settings:nested_facet:level" value="1" />
 										<mvt:foreach iterator="applied_value" array="facet:applied_values">

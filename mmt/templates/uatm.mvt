@@ -17,12 +17,14 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
-			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
 	</section>
 
-	<section class="o-layout o-layout--justify-center">
-		<p class="o-layout__item u-width-12 c-heading-echo u-text-center">There are some required attributes you need to select to continue.</p>
+	<section class="o-layout o-layout--justify-center o-layout--wide t-order-complete-content">
+		<div class="o-layout__item u-width-12">
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+			<p class="c-heading-foxtrot u-text-center">There are some required attributes you need to select to continue.</p>
+		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
 			<form method="post" action="&mvte:urls:_self:rr;">
 				<fieldset>
@@ -32,9 +34,10 @@
 					<mvt:item name="tax" />
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full t-multiple-product-upsell-purchase__options">
+							<p class="u-font-small"><strong>Bold</strong> fields are required!</p>
 							<mvt:item name="upsell_attr_mult" />
 						</div>
-						<div class="c-form-list__item u-text-right">
+						<div class="c-form-list__item c-form-list__item--full u-text-center">
 							<mvt:item name="buttons" param="Continue" />
 						</div>
 					</div>

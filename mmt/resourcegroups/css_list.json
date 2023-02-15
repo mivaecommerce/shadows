@@ -4,6 +4,7 @@
     "linked_css_resources": [
         "preconnect-google-analytics",
         "preconnect-google-fonts",
+        "preconnect-gstatic",
         "google-fonts",
         "stylesheet"
     ]

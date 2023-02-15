@@ -20,44 +20,75 @@
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
 	</section>
-	<br>
 
-	<section class="o-layout o-layout--justify-around">
-		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">Log In or Register</p>
-			<form method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
-				<fieldset>
-					<legend>&mvt:page:name;</legend>
-					<input type="hidden" name="Action" value="LOGN" />
-					<div class="c-form-list">
-						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
-							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
-						</div>
-						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
-							<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required>
-						</div>
-						<div class="c-form-list__item c-form-list__item--full">
-							<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Log In">
-							<a class="c-button c-button--full c-button--large u-bg-gray-10 u-color-gray-50 u-font-small u-text-uppercase" href="&mvte:urls:ACAD:secure_sep;Order=1" title="Create Your Account">Register</a>
-							<span class="u-font-small">
-								<a class="c-button c-button--full c-button--huge u-bg-white u-color-gray-50 u-font-tiny u-text-uppercase" data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" title="Forgot Your Password?">Forgot your password?</a>
-							</span>
-						</div>
-					</div>
-				</fieldset>
-			</form>
-		</div>
+	<section class="o-layout o-layout--justify-center u-bg-white">
 		<mvt:if expr="g.Basket:sub_count EQ 0">
-			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l u-text-center">
-				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
-				<p class="c-heading-charlie u-text-bold u-text-uppercase">Guest Checkout</p>
-				<p class="u-color-gray-40 u-font-small">Finalize your order without creating an account.</p>
+			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-input-font-size t-logn-block">
+				<p class="c-heading-foxtrot">Guest Checkout</p>
 				<br>
-				<p class="u-text-right"><a class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
+				<p><a class="c-button c-button--full" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
+				<p class="u-color-gray-600">You can create an account at Order Confirmation</p>
+				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
 			</div>
 		</mvt:if>
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-input-font-size t-logn-block">
+			<p class="c-heading-foxtrot">Sign In or Register</p>
+			<div id="sign-in-form" class="t-ordl-form-wrapper" aria-labelledby="register-action" role="region">
+				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
+					<fieldset>
+						<legend>&mvt:page:name;</legend>
+						<input type="hidden" name="Action" value="LOGN" />
+						<div class="c-form-list">
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+								<input id="l-Customer_LoginEmail" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+							</div>
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+								<input id="l-Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="current-password" required>
+							</div>
+							<div class="c-form-list__item c-form-list__item--full">
+								<p>
+									<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+								</p>
+								<p>
+									<input class="c-button c-button--full c-button--secondary" type="submit" value="Sign In and Checkout">
+								</p>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<div id="register-form" class="t-ordl-form-wrapper u-hidden" aria-labelledby="sign-in-action" role="region">
+				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
+					<p>We will save the rest of your account information during checkout.</p>
+					<fieldset>
+						<legend>Create Customer Account</legend>
+						<input type="hidden" name="Action" value="ICSQ" />
+						<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
+						<div class="c-form-list">
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Create_Customer_LoginEmail">Email Address</label>
+								<input id="l-Create_Customer_LoginEmail" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+							</div>
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Create_Customer_Password">Password:</label>
+								<input id="l-Create_Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required>
+							</div>
+							<div class="c-form-list__item c-form-list__item--full">
+								<p>
+									<input class="c-button c-button--full c-button--secondary" type="submit" value="Register and Checkout">
+								</p>
+							</div>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+			<p class="u-text-center">
+				<button id="register-action" class="c-button c-button--as-link" aria-controls="register-form" aria-expanded="true" data-disclosure>Register Now</button>
+				<button id="sign-in-action" class="c-button c-button--as-link u-hidden" aria-controls="sign-in-form" aria-expanded="false" data-disclosure>Sign In Instead</button>
+			</p>
+		</div>
 	</section>
 	
 	<section class="o-layout">

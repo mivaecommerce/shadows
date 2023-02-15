@@ -34,6 +34,7 @@
 				dialogContent.querySelector('[data-product-image]').src = this.getAttribute('data-product-image');
 				dialogContent.querySelector('[data-product-name]').textContent = this.getAttribute('data-product-name');
 				dialogContent.querySelector('input[name="Quantity"]').value = this.getAttribute('data-product-quantity');
+				dialogContent.querySelector('#price-value').textContent = this.getAttribute('data-product-price');
 				product_attribute_content.innerHTML = '';
 				product_attribute_content.appendChild(product_attribute_template.content.cloneNode(true));
 

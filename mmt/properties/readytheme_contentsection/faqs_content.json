@@ -1,5 +1,6 @@
 {
     "active": 1,
+    "css_class": "t-faq-content",
     "name": "Frequently Asked Questions Page Content",
     "wrap_div": 1
 }

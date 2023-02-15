@@ -1,0 +1,286 @@
+/* ==========================================================================
+   MMX / HERO SLIDER
+   ========================================================================== */
+mmx-hero-slider {
+	--mmx-hero-slider__per-page: var(--mmx-hero-slider__per-page--mobile);
+
+	display: block;
+}
+
+/* Responsive Slide Widths for Tablet & Desktop
+=========================================== */
+@media screen and (min-width: 40em) {
+	mmx-hero-slider {
+		--mmx-hero-slider__per-page: var(--mmx-hero-slider__per-page--tablet);
+	}
+}
+
+@media screen and (min-width: 60em) {
+	mmx-hero-slider {
+		--mmx-hero-slider__per-page: var(--mmx-hero-slider__per-page--desktop);
+	}
+}
+
+.mmx-hero-slider {
+	position: relative;
+	display: block;
+	text-align: var(--mmx-hero-slider__text-align);
+}
+
+.mmx-hero-slider__slides {
+	position: relative;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-align: center;
+}
+
+.mmx-hero-slider__slides mmx-hero,
+.mmx-hero-slider__slides slot[name="hero_slide"]::slotted(mmx-hero) {
+	--mmx-hero__display: inline-block;
+
+	width: calc(100% / var(--mmx-hero-slider__per-page, 1));
+	white-space: normal;
+	transition: transform 0.3s ease-in-out;
+}
+
+.mmx-hero-slider__slides mmx-hero.notransition,
+.mmx-hero-slider__slides slot[name="hero_slide"]::slotted(mmx-hero.notransition) {
+	transition: none;
+}
+
+.mmx-hero-slider__slides mmx-hero:last-child,
+.mmx-hero-slider__slides slot[name="hero_slide"]:last-child:slotted(mmx-hero) {
+	margin-right: 0;
+}
+
+@media screen and (min-width: 60em) {
+	.mmx-hero-slider--per-page-1 .mmx-hero-slider__slides mmx-hero,
+	.mmx-hero-slider--per-page-1 .mmx-hero-slider__slides slot[name="hero_slide"]::slotted(mmx-hero) {
+		--mmx-hero__content-margin--hero-slide: 2.5% calc(52px + var(--spacing-l));
+	}
+}
+
+.mmx-hero-slider__arrow-left,
+.mmx-hero-slider__arrow-right {
+	border: none;
+	position: absolute;
+	top: 50%;
+	display: inline-flex;
+	background-color: transparent;
+	transform: translateY(-50%);
+	cursor: pointer;
+	outline: none;
+	align-items: center;
+	justify-content: center;
+}
+
+.mmx-hero-slider__arrow-left:disabled,
+.mmx-hero-slider__arrow-right:disabled {
+	cursor: not-allowed;
+	opacity: 0.1;
+}
+
+/* arrow-style-caret */
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left,
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right {
+	width: 60px;
+	height: 82px;
+	padding: 25px 20px;
+}
+
+/* Responsive Sizes for Desktop
+   =========================================== */
+
+@media screen and (min-width: 60em) {
+	.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left,
+	.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right {
+		width: 84px;
+		padding: 25px 32px;
+	}
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left {
+	left: 0;
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right {
+	right: 0;
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right svg {
+	transform: rotate(180deg);
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left .mmx-hero-slider__arrow-inner,
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right .mmx-hero-slider__arrow-inner {
+	fill: #fff;
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left .mmx-hero-slider__arrow-outer,
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right .mmx-hero-slider__arrow-outer {
+	fill: #575a5d;
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left:hover .mmx-hero-slider__arrow-outer,
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right:hover .mmx-hero-slider__arrow-outer {
+	fill: #111111;
+}
+
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left:focus .mmx-hero-slider__arrow-outer,
+.mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right:focus .mmx-hero-slider__arrow-outer {
+	fill: #3a58fc;
+}
+
+/* arrow-style-button */
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left,
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right {
+	width: 45px;
+	height: 45px;
+	padding: 10px;
+	background-color: white;
+	border: 1px solid var(--grey-03);
+	border-radius: 50%;
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right svg {
+	transform: rotate(180deg);
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left .mmx-hero-slider__arrow-button,
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right .mmx-hero-slider__arrow-button {
+	fill: #575a5d;
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left:focus,
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right:focus {
+	outline: 2px solid var(--color-focus);
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left:hover,
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right:hover {
+	box-shadow: 0 0 38px rgba(0, 0, 0, 0.21);
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left {
+	left: 10px;
+}
+
+.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right {
+	right: 10px;
+}
+
+@media screen and (min-width: 100em) {
+	.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left {
+		left: -65px;
+	}
+
+	.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right {
+		right: -65px;
+	}
+}
+
+@media screen and (pointer: coarse) and (max-width: 100em) {
+	.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left,
+	.mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right {
+		display: none;
+	}
+}
+
+/* arrow-style-none */
+.mmx-hero-slider--arrow-style-none .mmx-hero-slider__arrow-left,
+.mmx-hero-slider--arrow-style-none .mmx-hero-slider__arrow-right {
+	display: none;
+}
+
+.mmx-hero-slider__slider-navigation {
+	display: none;
+	left: 50%;
+	height: 22px;
+	padding: 0 16px;
+	border-radius: 11px;
+	align-items: center;
+	justify-content: space-between;
+	transform: translateX(-50%);
+}
+
+/* Responsive Sizes for Desktop
+   =========================================== */
+@media screen and (min-width: 60em) {
+	.mmx-hero-slider__slider-navigation--position-over {
+		display: flex;
+		bottom: 20px;
+		position: absolute;
+	}
+
+	.mmx-hero-slider__slider-navigation--position-under {
+		display: inline-flex;
+		position: relative;
+		margin-top: 10px;
+	}
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-none {
+	display: none;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal {
+	background-color: rgba(17, 17, 17, 0.2);
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal {
+	background-color: transparent;
+}
+
+.mmx-hero-slider__slider-navigation > button {
+	border: none;
+	position: relative;
+	display: inline-block;
+	margin-left: 16px;
+	width: 10px;
+	height: 12px;
+	border-radius: 50%;
+	cursor: pointer;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button {
+	background-color: rgba(255, 255, 255, 0.5);
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button {
+	background-color: #EAEAEA;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button.selected {
+	background-color: #FFFFFF;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button.selected {
+	background-color: #767676;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:focus {
+	background-color: #FFFFFF;
+	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px #3A58FC;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button:focus {
+	background-color: #767676;
+	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px #3A58FC;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:hover {
+	background-color: #FFFFFF;
+	box-shadow: 0 0 0 2px #B4B4B4, 0 0 0 3px #FFFFFF;
+}
+
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button:hover {
+	background-color: #767676;
+	box-shadow: 0 0 0 2px #B4B4B4, 0 0 0 3px #767676;
+}
+
+.mmx-hero-slider__slider-navigation > button:first-child {
+	margin-left: 0;
+}

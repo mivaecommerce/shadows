@@ -16,6 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -32,33 +33,33 @@
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
 							<mvt:do file="g.Module_Feature_CUS_DB" name="l.success" value="CustomerSettings_Load(l.settings:customersettings)" />
-							<p class="x-messages x-messages--borderless">
-								<span class="c-heading-echo u-block u-text-bold u-text-center u-text-uppercase">Requirements</span>
-								<span class="u-font-small">&bull; Minimum Password Length: &mvt:customersettings:pw_min_len;</span><br>
+							<p class="x-messages x-messages--warning">
+								<span class="c-heading-foxtrot u-block u-text-center">Requirements</span>
+								&bull; Minimum Password Length: &mvt:customersettings:pw_min_len;<br>
 								<mvt:if expr="l.settings:customersettings:pw_complex EQ 1">
-									<span class="u-font-small">&bull; At Least one Letter and one Number or Punctuation Character</span>
+									&bull; At Least one Letter and one Number or Punctuation Character
 								<mvt:elseif expr="l.settings:customersettings:pw_complex EQ 2">
-									<span class="u-font-small">&bull; Mixed Case Letters and at Least one Number or Punctuation Character</span>
+									&bull; Mixed Case Letters and at Least one Number or Punctuation Character
 								</mvt:if>
 							</p>
 							<p class="u-text-bold">Please enter your new password.</p>
 							<mvt:if expr="g.Customer_Password_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="Customer_PasswordResetNewPassword">New Password</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="Customer_PasswordResetNewPassword">New Password</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Customer_PasswordResetNewPassword">New Password</label>
+								<label class="c-form-label u-text-medium is-required" for="Customer_PasswordResetNewPassword">New Password</label>
 							</mvt:if>
-							<input id="Customer_PasswordResetNewPassword" class="c-form-input c-form-input--large" type="password" name="Customer_PasswordResetNewPassword" required>
+							<input id="Customer_PasswordResetNewPassword" class="c-form-input" type="password" name="Customer_PasswordResetNewPassword" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<mvt:if expr="g.Customer_VerifyPassword_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="Customer_PasswordResetVerifyNewPassword">Confirm Password</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="Customer_PasswordResetVerifyNewPassword">Confirm Password</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Customer_PasswordResetVerifyNewPassword">Confirm Password</label>
+								<label class="c-form-label u-text-medium is-required" for="Customer_PasswordResetVerifyNewPassword">Confirm Password</label>
 							</mvt:if>
-							<input id="Customer_PasswordResetVerifyNewPasswordd" class="c-form-input c-form-input--large" type="password" name="Customer_PasswordResetVerifyNewPassword" required>
+							<input id="Customer_PasswordResetVerifyNewPasswordd" class="c-form-input" type="password" name="Customer_PasswordResetVerifyNewPassword" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
-							<input class="c-button c-button--large u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Update" title="Click Here to Change Your Password">
+							<input class="c-button" type="submit" value="Update" title="Click Here to Change Your Password">
 						</div>
 					</div>
 				</fieldset>

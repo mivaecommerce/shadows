@@ -2,14 +2,14 @@
 	<div class="x-messages x-messages--info">No payment cards found.</div>
 	<mvt:exit />
 </mvt:if>
-<table class="o-table c-table-simple u-text-bold">
+<table class="o-table c-table-simple">
 	<thead class="u-font-tiny">
 		<tr>
 			<th class="c-table-simple__cell"></th>
-			<th class="c-table-simple__cell u-color-gray-30 u-text-right u-text-uppercase">Expires</th>
+			<th class="c-table-simple__cell u-text-right u-text-medium">Expires</th>
 		</tr>
 	</thead>
-	<tbody class="u-font-small">
+	<tbody>
 		<mvt:assign name="l.settings:card_count" value="0" />
 		<mvt:foreach iterator="paymentcard" array="paymentcards:paymentcards">
 			<mvt:assign name="l.settings:card_count" value="l.settings:card_count + 1" />
@@ -17,57 +17,51 @@
 				<mvt:foreachstop />
 			</mvt:if>
 			<tr>
-				<td class="c-table-simple__cell">&mvte:paymentcard:type; ending in &mvte:paymentcard:lastfour;</td>
+				<td class="c-table-simple__cell">&mvte:paymentcard:type; Ending in &mvte:paymentcard:lastfour;</td>
 				<td class="c-table-simple__cell u-text-right">&mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;</td>
 			</tr>
 		</mvt:foreach>
 	</tbody>
-</table>
-]]></Template><Mode>paymentcard_list</Mode><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CPCD"><Item code="paymentcards"><Template><![CDATA[<mvt:if expr="l.settings:paymentcards:paymentcard_count EQ 0">
+</table>]]></Template><Mode>paymentcard_list</Mode><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CPCD"><Item code="paymentcards"><Template><![CDATA[<mvt:if expr="l.settings:paymentcards:paymentcard_count EQ 0">
 	<div class="x-messages x-messages--info">No payment cards found.</div>
 	<mvt:exit />
 </mvt:if>
 <mvt:foreach iterator="paymentcard" array="paymentcards:paymentcards">
-	<mvt:if expr="'AMERICAN EXPRESS' EQ toupper(l.settings:paymentcard:type)">
+	<mvt:if expr="strcasecmp( l.settings:paymentcard:type, 'American Express' ) EQ 0">
 		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_amex.png'" />
-	<mvt:elseif expr="'VISA' EQ toupper(l.settings:paymentcard:type)">
+	<mvt:elseif expr="strcasecmp( l.settings:paymentcard:type, 'Visa' ) EQ 0">
 		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_visa.png'" />
-	<mvt:elseif expr="'MASTERCARD' EQ toupper(l.settings:paymentcard:type)">
+	<mvt:elseif expr="strcasecmp( l.settings:paymentcard:type, 'MasterCard' ) EQ 0">
 		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_mastercard.png'" />
-	<mvt:elseif expr="'DISCOVER' EQ toupper(l.settings:paymentcard:type)">
+	<mvt:elseif expr="strcasecmp( l.settings:paymentcard:type, 'Discover' ) EQ 0">
 		<mvt:assign name="l.settings:paymentcard:image" value="g.theme_path $ '/core/images/logo_discover.png'" />
 	<mvt:else>
 		<mvt:assign name="l.settings:paymentcard:image" value="''" />
 	</mvt:if>
-	<div class="o-layout u-grids-1 u-grids-2--s u-grids-4--m">
-		<div class="o-layout__item">
-			<mvt:if expr="l.settings:paymentcard:image">
-				<p class="c-heading-delta">
-					<img src="&mvte:paymentcard:image;" alt="&mvte:paymentcard:type;" loading="lazy"> <span class="c-heading--subheading u-text-uppercase">ending in &mvte:paymentcard:lastfour;</span>
-				</p>
-			<mvt:else>
-				<p class="c-heading-delta u-text-bold">
-					&mvte:paymentcard:type; <span class="c-heading--subheading">ending in &mvte:paymentcard:lastfour;</span>
-				</p>
+	<div class="x-payment-card">
+		<div class="x-payment-card__image">
+			<img src="&mvte:paymentcard:image;" alt="&mvte:paymentcard:type;" loading="lazy">
+		</div>
+		<div class="x-payment-card__number">
+			&mvte:paymentcard:type; Ending in &mvte:paymentcard:lastfour;
+		</div>
+		<div class="x-payment-card__cardholder">
+			&mvte:paymentcard:fname; &mvte:paymentcard:lname;
+		</div>
+		<div class="x-payment-card__expiry">
+			<mvt:if expr="mktime_t( l.settings:paymentcard:exp_year, l.settings:paymentcard:exp_month, s.tm_mday, s.tm_hour, s.tm_min, s.tm_sec, 'local') LT s.time_t">
+				<span class="u-color-red">(expired)</span><br>
 			</mvt:if>
+			&mvte:paymentcard:exp_month; / &mvte:paymentcard:exp_year;
 		</div>
-		<div class="o-layout__item">
-			<p>
-				<mvt:if expr="mktime_t( l.settings:paymentcard:exp_year, l.settings:paymentcard:exp_month, s.tm_mday, s.tm_hour, s.tm_min, s.tm_sec, 'local') LT s.time_t">
-					<span class="u-color-red">(expired)</span> &mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;
-				<mvt:else>
-					Expires: &mvte:paymentcard:exp_month;/&mvte:paymentcard:exp_year;
-				</mvt:if>
-			</p>
-		</div>
-		<div class="o-layout__item">
-			<p class="u-text-bold">&mvte:paymentcard:fname; &mvte:paymentcard:lname;</p>
-		</div>
-		<div class="o-layout__item">
-			<p class="c-control-group">
-				<a class="c-button c-button--full c-control-group__button u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CPCE:auto_sep;PaymentMethod=paymentcard:&mvta:paymentcard:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
-				<a class="c-button c-button--full c-button--hollow c-control-group__button u-color-red u-font-small u-text-bold u-text-uppercase" href="#" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\x0A\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvtj:urls:CPCD:secure;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvtj:paymentcard:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); } return false;">Delete</a>
-			</p>
+		<div class="x-payment-card__actions">
+			<span class="c-form-inline-set">
+				<a href="&mvte:urls:CPCE:auto_sep;PaymentMethod=paymentcard:&mvta:paymentcard:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
+				<mvt:assign name="l.settings:js_encoded_url" value="encodejavascriptstring( l.settings:urls:CPCD:secure )"/>
+				<mvt:assign name="l.settings:js_encoded_paymentcard_id" value="encodejavascriptstring( l.settings:paymentcard:id )"/>
+				<mvt:assign name="l.settings:js_encoded_csrf_token" value="encodejavascriptstring( g.Sort_By )"/>
+				<button class="c-button--as-link" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\x0A\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvte:js_encoded_url;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvte:js_encoded_paymentcard_id;', 'CSRF_Token': '&mvte:js_encoded_csrf_token;' } ); } return false;">Delete</button>
+			</span>
 		</div>
 	</div>
 	<hr class="c-keyline">

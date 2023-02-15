@@ -16,44 +16,49 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="u-hide-visually">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
 	</section>
 
-	<section class="o-layout o-layout--justify-around">
-		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-			<p class="c-heading-delta u-text-uppercase">Welcome Back</p>
+	<section class="o-layout o-layout--justify-center">
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
+			<p class="c-heading-foxtrot">Welcome Back</p>
 			<form data-hook="afcl-form" method="post" action="&mvte:urls:AFED:secure;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="ALGI" />
 					<div class="c-form-list">
-						<div class="c-form-list__item">
-							<label class="c-form-label u-text-bold is-required &mvte:global:invalid_credentials;" for="Affiliate_Code">Affiliate Code</label>
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="Affiliate_Code">Affiliate Code</label>
 							<input id="Affiliate_Code" class="c-form-input" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required aria-required="true">
 						</div>
-						<div class="c-form-list__item">
-							<label class="c-form-label u-text-bold is-required &mvte:global:invalid_credentials;" for="Affiliate_Password">Password</label>
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="Affiliate_Password">Password</label>
 							<mvt:if expr="g.Affiliate_Temporary_Password">
 								<input type="hidden" name="Affiliate_Temporary_Password" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off">
 								<input type="hidden" name="Affiliate_Password" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off">
-								<input id="Affiliate_Password" class="c-form-input c-form-input--large" type="text" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off" disabled readonly>
+								<input id="Affiliate_Password" class="c-form-input" type="text" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off" disabled readonly>
 							<mvt:else>
-								<input id="Affiliate_Password" class="c-form-input c-form-input--large" type="password" name="Affiliate_Password" autocomplete="current-password" required aria-required="true">
+								<input id="Affiliate_Password" class="c-form-input" type="password" name="Affiliate_Password" autocomplete="current-password" required aria-required="true">
 							</mvt:if>
 						</div>
-						<div class="c-form-list__item u-text-right">
-							<mvt:item name="buttons" param="Login" />
+						<div class="c-form-list__item c-form-list__item--full">
+							<p>
+								<a data-dialog-trigger="forgot-password" href="&mvte:urls:AFPW:secure;">Forgot Password?</a>
+							</p>
+							<p>
+								<mvt:item name="buttons" param="Login" />
+							</p>
 						</div>
 					</div>
 				</fieldset>
 			</form>
-			<p class="u-font-small"><a data-dialog-trigger="forgot-password" href="&mvte:urls:AFPW:secure;">Forgot your password?</a></p>
 		</div>
-		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-			<p class="c-heading-delta u-text-uppercase">New Affiliate</p>
-			<p><a class="c-button c-button--large u-bg-gray-30" href="&mvte:urls:AFAD:secure;" title="Register for an Affiliate Account">Register</a></p>
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
+			<p class="c-heading-foxtrot">New Affiliate</p>
+			<p><a class="c-button c-button--secondary" href="&mvte:urls:AFAD:secure;" title="Register for an Affiliate Account">Register</a></p>
 		</div>
 	</section>
 	

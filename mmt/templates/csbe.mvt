@@ -16,6 +16,16 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta u-text-bold u-text-uppercase">
+				Edit Subscription<br>
+				<span class="c-heading--subheading">&mvte:subscriptionfields:productsubscriptionterm:descrip;</span>
+			</h1>
+			<hr class="c-keyline">
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>

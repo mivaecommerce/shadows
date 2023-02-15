@@ -1,6 +1,6 @@
-/* ==========================================================================
+/* ======================
    EDIT BASKET ATTRIBUTES
-   ========================================================================== */
+   ====================== */
 
 .x-edit-basket-item {
 	background-color: transparent;
@@ -12,19 +12,19 @@
 	width: fit-content;
 }
 
-	.x-edit-basket-item:focus:focus:not(:focus-visible) {
-		outline: 0 none;
-	}
+.x-edit-basket-item:focus:focus:not(:focus-visible) {
+	outline: 0 none;
+}
 
-	.x-edit-basket-item:focus-visible,
-	.x-edit-basket-item:hover {
-		text-decoration: none;
-	}
+.x-edit-basket-item:focus-visible,
+.x-edit-basket-item:hover {
+	text-decoration: none;
+}
 
-	.x-edit-basket-item:focus-visible {
-		outline: max(1px, 0.1em) dotted currentColor;
-		outline-offset: max(1px, 0.1em);
-	}
+.x-edit-basket-item:focus-visible {
+	outline: max(1px, 0.1em) dotted currentColor;
+	outline-offset: max(1px, 0.1em);
+}
 
 .x-edit-basket-attributes .c-dialog__container {
 	max-width: 50rem;
@@ -37,50 +37,43 @@
 	grid-template-rows: min-content 1fr;
 }
 
+.x-edit-basket-attributes__form picture {
+	grid-area: 1 / 1 / 3 / 2;
+}
+
+.x-edit-basket-attributes__product-info {
+	grid-area: 1 / 2 / 2 / 3;
+}
+
+.x-edit-basket-attributes__product-price {
+	opacity: 1;
+	transition: ease-in-out 0.3s;
+}
+
+.x-edit-basket-attributes__product-price:empty {
+	opacity: 0;
+}
+
+.x-edit-basket-attributes__form fieldset {
+	grid-area: 2 / 2 / 3 / 3;
+}
+
+@media (max-width: 40em) {
 	.x-edit-basket-attributes__form picture {
-		grid-area: 1 / 1 / 3 / 2;
+		grid-area: 1 / 1 / 2 / 2;
 	}
 
 	.x-edit-basket-attributes__product-info {
 		grid-area: 1 / 2 / 2 / 3;
 	}
 
-		.x-edit-basket-attributes__product-price {
-			opacity: 1;
-			transition: ease-in-out 0.3s;
-		}
-
-		.x-edit-basket-attributes__product-price:empty {
-			opacity: 0;
-		}
-
 	.x-edit-basket-attributes__form fieldset {
-		grid-area: 2 / 2 / 3 / 3;
+		grid-area: 2 / 1 / 3 / 3;
 	}
+}
 
-	@media (max-width: 40em) {
-		.x-edit-basket-attributes__form picture {
-			grid-area: 1 / 1 / 2 / 2;
-		}
-
-		.x-edit-basket-attributes__product-info {
-			grid-area: 1 / 2 / 2 / 3;
-		}
-
-		.x-edit-basket-attributes__form fieldset {
-			grid-area: 2 / 1 / 3 / 3;
-		}
-	}
-
-	.x-edit-basket-attributes__form .x-quantify {
-		display: inline-grid;
-		gap: 0;
-		grid-template-columns: 3rem 33% 3rem;
-		grid-template-rows: 3rem;
-	}
-
-	.x-edit-basket-attributes__form [data-product-attributes] {
-		display: grid;
-		gap: 1rem;
-		grid-template-columns: repeat(2, auto);
-	}
+.x-edit-basket-attributes__form [data-product-attributes] {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: repeat(2, auto);
+}

@@ -26,5 +26,5 @@
 	</table>
 </mvt:if>
 <p class="u-text-center">
-	<button class="c-button c-button--large u-bg-gray-50" data-hook="shipping-estimate-recalculate" title="Recalculate Shipping">Recalculate</button>
+	<button class="c-button" data-hook="shipping-estimate-recalculate" title="Recalculate Shipping Estimate">Recalculate</button>
 </p>

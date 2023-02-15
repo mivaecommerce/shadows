@@ -1,0 +1,22 @@
+/* ==========================================================================
+   MMX / TEXT
+   ========================================================================== */
+
+/**
+ * Note: Most other text styles are in ../mmx-base/scripts.css so that people can style text outside of a web-component
+ */
+
+mmx-text {
+	display: block;
+}
+
+.mmx-text {
+	padding: 0;
+	margin: 0 0 var(--text-margin-bottom) 0;
+	text-align: var(--mmx-text__text-align, unset);
+}
+
+.mmx-text__inner {
+	display: inline-block;
+	max-width: var(--mmx-text__inner--max-width, auto);
+}

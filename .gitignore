@@ -1,8 +1,5 @@
 .mmt/
-flex/
 .DS_Store
 *.log
 cssresource-*
 scriptresource-*
-flex-*
-layout_*

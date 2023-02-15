@@ -1,5 +1,6 @@
 {
     "active": 1,
+    "css_class": "t-global-messeges",
     "name": "Error and Information Messages",
     "wrap_div": 1
 }

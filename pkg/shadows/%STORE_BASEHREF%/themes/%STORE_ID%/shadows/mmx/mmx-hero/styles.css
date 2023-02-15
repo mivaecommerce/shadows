@@ -1,0 +1,505 @@
+/* ==========================================================================
+   MMX / HERO
+   ========================================================================== */
+.mmx-hero-component {
+	display: var(--mmx-hero__display, inline-block);
+	width: 100%;
+}
+
+.mmx-hero {
+	display: flex;
+	position: relative;
+	overflow: hidden;
+	text-align: var(--mmx-hero__text-align);
+	text-decoration: none;
+	flex-direction: column;
+	max-width: var(--mmx-hero__max-width);
+	margin-left: auto;
+    margin-right: auto;
+}
+
+.mmx-hero--content-is-above-image {
+	flex-direction: column-reverse;
+}
+
+/* Background (i.e. Image, Video, Iframe, etc.)
+   =========================================== */
+
+.mmx-hero__image-container {
+	display: flex;
+	justify-items: center;
+	align-items: center;
+	height: var(--mmx-hero__max-height);
+	overflow: hidden;
+	position: relative;
+}
+
+.mmx-hero__image-container::after {
+	content: '';
+	background: none;
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+}
+
+.mmx-hero:not(.mmx-hero--layout-hero) .mmx-hero__image-container::after {
+	background: var(--mmx-hero__overlay-bg);
+}
+
+.mmx-hero__image-container > *,
+.mmx-hero__image-container > picture img,
+slot[name="image"]::slotted(*),
+.mmx-hero-component embed,
+.mmx-hero-component img,
+.mmx-hero-component object,
+.mmx-hero-component video {
+	user-select: none;
+	pointer-events: none;
+	object-position: center;
+	height: 100%;
+	width: 100%;
+	object-fit: var(--mmx-hero__object-fit);
+	aspect-ratio: var(--mmx-hero__aspect-ratio);
+}
+
+.mmx-hero__image-container > *:is(iframe, video, embed) {
+	pointer-events: unset;
+}
+
+/* Replicate object-fit: cover With Iframed Videos (ex YouTube & Vimeo)
+   =========================================== */
+
+.mmx-hero {
+  --mmx-hero__iframe-width: 100vw;
+  --mmx-hero__iframe-height: 100vh;
+}
+
+.mmx-hero:is(.mmx-hero--size-method--preset) .mmx-hero__image-container > iframe,
+.mmx-hero:is(.mmx-hero--size-method--preset) .mmx-hero__image-container slot[name="image"]::slotted(iframe) {
+	max-inline-size: 100%;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: var(--mmx-hero__iframe-width);
+	height: var(--mmx-hero__iframe-height);
+	transform: translate(-50%, -50%);
+}
+
+.mmx-hero:is(.mmx-hero--size-method--dimensions) .mmx-hero__image-container {
+	aspect-ratio: var(--mmx-hero__iframe-width) / var(--mmx-hero__iframe-height);
+	height: auto;
+	max-height: var(--mmx-hero__max-height);
+}
+
+/* Foreground / Content
+   =========================================== */
+
+.mmx-hero__content-bg {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	pointer-events: none;
+}
+
+.mmx-hero__content-wrapper {
+	width: 100%;
+	display: flex;
+	align-items: stretch;
+	justify-content: center;
+	pointer-events: none;
+}
+
+.mmx-hero__content {
+	width: 100%;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	margin: var(--mmx-hero__content-margin);
+	padding: var(--mmx-hero__content-padding);
+	background: var(--mmx-hero__content-bg-color--mobile);
+	min-height: var(--mmx-hero__content-height);
+	pointer-events: auto;
+}
+
+.mmx-hero--content-is-over-image .mmx-hero__content {
+	margin: var(--mmx-hero__content-margin--hero-slide, var(--mmx-hero__content-margin));
+}
+
+.mmx-hero__content > *,
+slot[name="content"]::slotted(*) {
+	flex-basis: 100%;
+	flex-grow: 1;
+	width: auto;
+}
+
+.mmx-hero__content > *:not(slot):empty {
+	display: none;
+}
+
+
+/* Content Text Margins
+   =========================================== */
+mmx-text[type]:last-of-type {
+	--text-margin-bottom: 0;
+}
+
+mmx-text + mmx-button {
+	display: block;
+	margin-top: 18px;
+}
+
+
+/* Main Styles for Desktop
+   =========================================== */
+@media (min-width: 60em) {
+	.mmx-hero__image-container::after {
+		background: var(--mmx-hero__overlay-bg);
+	}
+
+	mmx-text[type^="subheading"] {
+		--text-margin-bottom: 10px;
+	}
+
+	.mmx-hero__content {
+		background: var(--mmx-hero__content-bg-color--desktop);
+		border-radius: 4px;
+		width: var(--mmx-hero__content-width);
+		flex-wrap: wrap;
+	}
+
+	.mmx-hero--content-theme-invert.mmx-hero--content-is-over-image .mmx-hero__content,
+	.mmx-hero--content-theme-invert.mmx-hero--content-is-next-to-image .mmx-hero__content-bg,
+	.mmx-hero--content-theme-invert.mmx-hero--content-is-under-image .mmx-hero__content-bg {
+		filter: invert(100%);
+	}
+
+	.mmx-hero__content-bg--top-left,
+	.mmx-hero__content-bg--top-center,
+	.mmx-hero__content-bg--top-right,
+	.mmx-hero__content-bg--center-left,
+	.mmx-hero__content-bg--center,
+	.mmx-hero__content-bg--center-right,
+	.mmx-hero__content-bg--bottom-left,
+	.mmx-hero__content-bg--bottom-center,
+	.mmx-hero__content-bg--bottom-right {
+		display: flex;
+		position: absolute;
+		top: 0;
+	}
+
+	.mmx-hero__content-bg--top-left .mmx-hero__content-wrapper {
+		justify-content: start;
+		align-items: start;
+	}
+
+	.mmx-hero__content-bg--top-center .mmx-hero__content-wrapper {
+		justify-content: center;
+		align-items: start;
+	}
+
+	.mmx-hero__content-bg--top-right .mmx-hero__content-wrapper {
+		justify-content: end;
+		align-items: start;
+	}
+
+	.mmx-hero__content-bg--center-left .mmx-hero__content-wrapper {
+		justify-content: start;
+		align-items: center;
+	}
+
+	.mmx-hero__content-bg--center .mmx-hero__content-wrapper {
+		justify-content: center;
+		align-items: center;
+	}
+
+	.mmx-hero__content-bg--center-right .mmx-hero__content-wrapper {
+		justify-content: end;
+		align-items: center;
+	}
+
+	.mmx-hero__content-bg--bottom-left .mmx-hero__content-wrapper {
+		justify-content: start;
+		align-items: end;
+	}
+
+	.mmx-hero__content-bg--bottom-center .mmx-hero__content-wrapper {
+		justify-content: center;
+		align-items: end;
+	}
+
+	.mmx-hero__content-bg--bottom-right .mmx-hero__content-wrapper {
+		justify-content: end;
+		align-items: end;
+	}
+
+	.mmx-hero__content-bg--under {
+		position: static;
+	}
+
+	.mmx-hero--content-is-next-to-image {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 0;
+	}
+
+	.mmx-hero--content-is-next-to-image .mmx-hero__content-bg--left {
+		order: -1;
+	}
+
+	.mmx-hero--content-is-next-to-image .mmx-hero__content {
+		width: 100%;
+	}
+}
+
+
+/* Desktop Customizations
+   =========================================== */
+@media screen and (min-width: 75em) {
+	.mmx-hero--content-is-next-to-image {
+		grid-template-columns: var(--mmx-hero__grid-template-columns);
+	}
+}
+
+
+/* Size: Content
+   =========================================== */
+.mmx-hero--size--content .mmx-hero__image-container {
+	height: 100%;
+    position: absolute;
+    width: 100%;
+    z-index: -1;
+}
+
+.mmx-hero--size--content .mmx-hero__content-bg {
+	position: static;
+}
+
+
+/* Responsive Heights for Mobile
+   =========================================== */
+.mmx-hero--size--l .mmx-hero__image-container {
+	height: var(--mmx-hero--size--l, 400px);
+}
+
+.mmx-hero--size--m .mmx-hero__image-container {
+	height: var(--mmx-hero--size--m, 320px);
+}
+
+.mmx-hero--size--s .mmx-hero__image-container {
+	height: var(--mmx-hero--size--s, 240px);
+}
+
+
+/* Responsive Heights for Desktop
+   =========================================== */
+@media screen and (min-width: 60em) {
+	.mmx-hero--size--l .mmx-hero__image-container,
+	.mmx-hero--size--l.mmx-hero--content-is-next-to-image {
+		height: var(--mmx-hero--size--l, 740px);
+	}
+
+	.mmx-hero--size--m .mmx-hero__image-container,
+	.mmx-hero--size--m.mmx-hero--content-is-next-to-image {
+		height: var(--mmx-hero--size--m, 580px);
+	}
+
+	.mmx-hero--size--s .mmx-hero__image-container,
+	.mmx-hero--size--s.mmx-hero--content-is-next-to-image {
+		height: var(--mmx-hero--size--s, 400px);
+	}
+}
+
+/* Content Layout: Horizontal
+   =========================================== */
+.mmx-hero--layout-horizontal-banner {
+	text-align: center;
+}
+
+@media screen and (min-width: 60em) {
+	.mmx-hero--layout-horizontal-banner {
+		text-align: var(--mmx-hero__text-align);
+	}
+
+	.mmx-hero--layout-horizontal-banner .mmx-hero__content {
+		--text-margin-bottom: 0;
+	}
+
+	.mmx-hero--layout-horizontal-banner .mmx-hero__individual-content {
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.mmx-hero--layout-horizontal-banner.mmx-hero--padding-m .mmx-hero__individual-content {
+		gap: 40px;
+	}
+
+	.mmx-hero--layout-horizontal-banner.mmx-hero--padding-l .mmx-hero__individual-content {
+		gap: 60px;
+	}
+
+	.mmx-hero--layout-horizontal-banner .mmx-hero__individual-content slot[name="heading"],
+	.mmx-hero--layout-horizontal-banner .mmx-hero__individual-content slot[name="body"] {
+		display: block;
+	}
+
+	.mmx-hero--layout-horizontal-banner .mmx-hero__individual-content slot[name="body"]::slotted(*) {
+		max-width: 600px;
+	}
+
+	.mmx-hero--layout-horizontal-banner .mmx-hero__individual-content slot[name="button"]::slotted(mmx-button) {
+		margin-top: 0 !important;
+	}
+}
+
+/* Content Layout: Vertical
+   =========================================== */
+.mmx-hero--layout-vertical-banner .mmx-hero__individual-content slot[name="heading"]::slotted(*) {
+	margin: 0 auto;
+	max-width: 1000px;
+}
+
+.mmx-hero--layout-vertical-banner .mmx-hero__individual-content slot[name="body"]::slotted(*) {
+	margin: 0 auto;
+	max-width: 800px;
+}
+
+/* Content Layout: Video
+   =========================================== */
+.mmx-hero--layout-video .mmx-hero__image-container {
+	position: relative;
+}
+
+/* Hero > Product Card Styles
+   =========================================== */
+mmx-hero .type-product-prices {
+	margin-top: 6px;
+}
+
+mmx-hero .type-product-additional-price {
+	margin-left: min(10%, 17px);
+}
+
+mmx-hero mmx-button {
+	display: block;
+	margin-top: 14px;
+}
+
+/* Content Margin & Padding
+   =========================================== */
+
+/* Mobile / Default */
+.mmx-hero {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 15px 0 30px 0;
+}
+
+.mmx-hero--mobile-no-bg,
+.mmx-hero--content-is-under-image {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 15px 0;
+}
+
+.mmx-hero--mobile-has-bg,
+.mmx-hero--size--content {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 15px 20px 30px 20px;
+}
+
+@media screen and (min-width: 60em) {
+	.mmx-hero--desktop-has-bg,
+	.mmx-hero--size--content {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 1% 1.5% 2% 1.5%;
+	}
+}
+
+/* Over Image */
+@media screen and (min-width: 60em) {
+	.mmx-hero--content-is-over-image {
+		--mmx-hero__content-margin: 2.5% 3.5%;
+		--mmx-hero__content-padding: 0;
+	}
+
+	.mmx-hero--content-is-over-image.mmx-hero--desktop-has-bg {
+		--mmx-hero__content-margin: 2.5% 3.5%;
+		--mmx-hero__content-padding: 3%;
+	}
+}
+
+@media screen and (min-width: 75em) {
+	.mmx-hero--content-is-over-image {
+		--mmx-hero__content-margin: max(32px, 3.5%) 4.5%;
+		--mmx-hero__content-padding: 0;
+	}
+}
+
+/* Above Image */
+.mmx-hero--content-is-above-image {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 0 0 2% 0;
+}
+
+.mmx-hero--content-is-above-image.mmx-hero--mobile-has-bg {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 15px 20px 30px 20px;
+}
+
+@media screen and (min-width: 60em) {
+	.mmx-hero--content-is-above-image.mmx-hero--desktop-has-bg {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 1% 1.5% 2% 1.5%;
+	}
+}
+
+/* Next To Image */
+@media screen and (min-width: 60em) {
+	.mmx-hero--content-is-next-to-image {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 40px clamp(40px, 8%, 80px);
+	}
+}
+
+@media screen and (min-width: 75em) {
+	.mmx-hero--content-is-next-to-image {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 40px clamp(40px, 11%, 80px);
+	}
+}
+
+/* Size: Content */
+.mmx-hero--size--content:where(.mmx-hero--layout-hero.mmx-hero--content-is-over-image) {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 3% 1%;
+}
+
+@media screen and (min-width: 60em) {
+	.mmx-hero--size--content:where(.mmx-hero--layout-hero.mmx-hero--content-is-over-image) {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 3% 4%;
+	}
+}
+
+@media screen and (min-width: 75em) {
+	.mmx-hero--size--content:where(.mmx-hero--layout-hero.mmx-hero--content-is-over-image) {
+		--mmx-hero__content-margin: 0;
+		--mmx-hero__content-padding: 6% 0;
+	}
+}
+
+/* Specific Padding */
+.mmx-hero--padding-s {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 1% 4%;
+}
+
+.mmx-hero--padding-m {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 3% 4%;
+}
+
+.mmx-hero--padding-l {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 5.5% 4% 6% 4%;
+}
