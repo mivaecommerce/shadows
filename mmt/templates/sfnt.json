@@ -950,7 +950,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "53536a168c0c756f368c2d302fb26710",
+                "id": "",
                 "item": "flex",
                 "name": "Hero",
                 "param": "hero"
@@ -959,7 +959,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "9d675ea86cf982e11613528ea91e67a3",
+                "id": "",
                 "item": "flex",
                 "name": "Text Banner",
                 "param": "text-banner"
@@ -968,7 +968,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "a34dff5914d4c2db4559f56db60d2d1e",
+                "id": "",
                 "item": "flex",
                 "name": "Six Across",
                 "param": "six-across"
@@ -977,7 +977,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "62acef5b481cf47f61e57062ede92b8d",
+                "id": "",
                 "item": "flex",
                 "name": "Two Across",
                 "param": "two-across"
@@ -986,7 +986,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "7250c6dfb35031a80b949e5f67532229",
+                "id": "",
                 "item": "flex",
                 "name": "Hero 2",
                 "param": "hero-2"
@@ -995,7 +995,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "1e9f5918809f7bf6f2a5744e313c9ded",
+                "id": "",
                 "item": "flex",
                 "name": "Product Carousel",
                 "param": "product-carousel"
@@ -1004,7 +1004,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "fda18dae04680cfcd22b6da9ced872bd",
+                "id": "",
                 "item": "flex",
                 "name": "Text Banner 2",
                 "param": "text-banner-2"
@@ -1013,7 +1013,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "dd460e075c48afa8046c98c9e8e049db",
+                "id": "",
                 "item": "flex",
                 "name": "Three Across",
                 "param": "three-across"
@@ -1022,7 +1022,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "0f5f817d4aa3c4df8a1aa95b2259be7a",
+                "id": "",
                 "item": "flex",
                 "name": "Text Banner 3",
                 "param": "text-banner-3"

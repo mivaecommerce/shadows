@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "7e11549ba75125555a218f2827b40f15",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "85cc7cefa190c5c68ca0763082d11deb",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -22,7 +22,7 @@
         },
         {
             "active": 1,
-            "id": "62616338f6bddaca3e45ab2ff0c4cbcb",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequent Questions</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",

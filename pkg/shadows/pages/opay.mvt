@@ -128,11 +128,14 @@
 								</div>
 							</div>
 						<mvt:elseif expr="'square' CIN g.PaymentMethod">
-							<div class="c-form-list o-layout u-grids-1 t-payment-form t-square-payment-form">
-								<div class="c-form-list__item">
-									<mvt:foreach array="payment:fields" iterator="field">
-										<mvt:item name="payment" param="field:code" />
-									</mvt:foreach>
+							<div class="c-form-list">
+								<div class="c-form-list__item c-form-list__item--full">
+									<div class="t-square-payment-form__fields">
+										<mvt:foreach array="payment:fields" iterator="field">
+											<mvt:item name="payment" param="field:code" />
+										</mvt:foreach>
+										<input class="c-button c-button--full" type="submit" value="Place Order">
+									</div>
 								</div>
 							</div>
 						<mvt:elseif expr="g.PaymentMethod EQ 'paypalcp:paypal'">
@@ -456,7 +459,9 @@
 										<span onclick="onclick_submit(); return false;">
 											<input class="c-button c-button--full-small" type="submit" value="Place Order">
 										</span>
-									<mvt:elseif expr="'brain' CIN g.PaymentMethod OR 'square' CIN g.PaymentMethod">
+									<mvt:elseif expr="'square' CIN g.PaymentMethod">
+										<mvt:comment>No button here. Button displays above</mvt:comment>
+									<mvt:elseif expr="'brain' CIN g.PaymentMethod">
 										<input class="c-button c-button--full-small" type="submit" value="Place Order">
 									<mvt:else>
 										<mvt:if expr="g.cc_payment EQ 1">

@@ -378,7 +378,9 @@ let MovingPictures = function MovingPictures() {
 		}
 		for (let i = 0; i < images.length; i++) {
 			if (images[i].hasOwnProperty('imageSrc')) {
-				if (clickedImage.includes(images[i].imageSrc)) {
+				const clickedImageURL = new URL(clickedImage);
+				const imageURL = new URL(images[i].imageSrc, document.baseURI);
+				if (clickedImageURL.pathname === imageURL.pathname) {
 					OpenPhotoViewer(images[i]);
 				}
 			}

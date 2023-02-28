@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "20ee13563e3054e91d87b9593beffe32",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "89fbd40c714e6e5bac7bfa85d9f62d31",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACLN\" target=\"_self\">Account</a>",
             "link_dest": "ACLN",
             "link_targ": "_self",
@@ -22,7 +22,7 @@
         },
         {
             "active": 1,
-            "id": "606a949e36765dfa174940b244f295e0",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -32,7 +32,7 @@
         },
         {
             "active": 1,
-            "id": "02043b4adccb25bb550cb527af8370d7",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">FAQS</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
@@ -42,7 +42,7 @@
         },
         {
             "active": 1,
-            "id": "61a70e4127dff0e5e71afe655224b5b8",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order Status</a>",
             "link_dest": "ORDH",
             "link_targ": "_self",
@@ -52,7 +52,7 @@
         },
         {
             "active": 1,
-            "id": "87de24bfd2290ef75cce59ede5dcdfce",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
             "link_dest": "WLST",
             "link_targ": "_self",
@@ -62,7 +62,7 @@
         },
         {
             "active": 1,
-            "id": "1de27d94359eec6786008956a846bfc4",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
@@ -72,7 +72,7 @@
         },
         {
             "active": 1,
-            "id": "52ce96369782bd9430e26d9c44b87861",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp;amp; Returns</a>",
             "link_dest": "SARP",
             "link_targ": "_self",
@@ -82,7 +82,7 @@
         },
         {
             "active": 1,
-            "id": "f98eddffb9c66c9f96d9529347ef8a41",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP\" target=\"_self\">Site Map</a>",
             "link_dest": "SMAP",
             "link_targ": "_self",
