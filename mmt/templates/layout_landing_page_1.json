@@ -1036,7 +1036,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "21e7d1342847cd1b20ae92048240f7b9",
+                "id": "",
                 "item": "flex",
                 "name": "Hero",
                 "param": "hero"
@@ -1045,7 +1045,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "bd550f5f7bd1f464c9f95eaedadc352d",
+                "id": "",
                 "item": "flex",
                 "name": "Text Banner",
                 "param": "text-banner"
@@ -1054,7 +1054,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "75d84071d82915f9c847e916de4aa85b",
+                "id": "",
                 "item": "flex",
                 "name": "Four Across",
                 "param": "four-across"
@@ -1063,7 +1063,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "1e228da2ea8fdc9045b13b6c6334af40",
+                "id": "",
                 "item": "flex",
                 "name": "Eight Across",
                 "param": "eight-across"
@@ -1072,7 +1072,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "5b4bb1d921e4a1d6966c5c67ee59a187",
+                "id": "",
                 "item": "flex",
                 "name": "Two Across",
                 "param": "two-across"
@@ -1081,7 +1081,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "a213b197deb55627f3dfaf5479b22244",
+                "id": "",
                 "item": "flex",
                 "name": "Product Carousel",
                 "param": "product-carousel"
@@ -1090,7 +1090,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "0372ee75f3d026e998ec5af8d58d3b2b",
+                "id": "",
                 "item": "flex",
                 "name": "Hero 2",
                 "param": "hero-2"
@@ -1099,7 +1099,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "57542725fab1dad85c61a4b23417fb32",
+                "id": "",
                 "item": "flex",
                 "name": "Product Carousel 2",
                 "param": "product-carousel-2"
@@ -1108,7 +1108,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "b254d948e395371db3b9efe7ae94f4d8",
+                "id": "",
                 "item": "flex",
                 "name": "Image and Text",
                 "param": "image-and-text"

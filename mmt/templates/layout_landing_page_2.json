@@ -602,7 +602,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "8451aac135b33173b8ad096041f259c3",
+                "id": "",
                 "item": "flex",
                 "name": "Hero",
                 "param": "hero"
@@ -611,7 +611,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "7fb59d0ff5221c5e4aec4c9a67b5046c",
+                "id": "",
                 "item": "flex",
                 "name": "Two Across",
                 "param": "two-across"
@@ -620,7 +620,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "c4c387a921ca267b542aeacde677db5c",
+                "id": "",
                 "item": "flex",
                 "name": "Text Banner",
                 "param": "text-banner"
@@ -629,7 +629,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "fc80f8d3c1dfdce0e12eb7039ef89ddf",
+                "id": "",
                 "item": "flex",
                 "name": "Featured Product",
                 "param": "featured-product"
@@ -638,7 +638,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "2a53050a4c67a2ad4f3bc3fddd11fbca",
+                "id": "",
                 "item": "flex",
                 "name": "Video",
                 "param": "video"
@@ -647,7 +647,7 @@
                 "dt_end": 0,
                 "dt_start": 0,
                 "enabled": 1,
-                "id": "dce8a5b9a9522be821ecc99c66e63955",
+                "id": "",
                 "item": "flex",
                 "name": "Image and Text",
                 "param": "image-and-text"

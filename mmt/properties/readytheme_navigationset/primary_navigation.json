@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "1174878b6318fb762a534eb9af0c4c0e",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTLG\" target=\"_self\">Shop All</a>",
             "link_dest": "CTLG",
             "link_targ": "_self",
@@ -12,11 +12,11 @@
         },
         {
             "active": 1,
-            "id": "c344162d54b8302d3f2fdb1da0a8b4cf",
+            "id": "",
             "items": [
                 {
                     "active": 1,
-                    "id": "e95afda1f5d626bd61b69fa75f29c848",
+                    "id": "",
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-1\" target=\"_self\">Subcategory 1</a>",
                     "link_dest": "sub-cat-1",
                     "link_targ": "_self",
@@ -26,7 +26,7 @@
                 },
                 {
                     "active": 1,
-                    "id": "4475ba04873e445ffabd3173e82b636a",
+                    "id": "",
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-2\" target=\"_self\">Subcategory 2</a>",
                     "link_dest": "sub-cat-2",
                     "link_targ": "_self",
@@ -44,11 +44,11 @@
         },
         {
             "active": 1,
-            "id": "f567378f6a8dc8cd87f835ec76cb58e5",
+            "id": "",
             "items": [
                 {
                     "active": 1,
-                    "id": "5134f49c515c7113fd31891fe063182c",
+                    "id": "",
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-3\" target=\"_self\">Subcategory 3</a>",
                     "link_dest": "sub-cat-3",
                     "link_targ": "_self",
@@ -58,7 +58,7 @@
                 },
                 {
                     "active": 1,
-                    "id": "fcc9bfbaae068be58ef45ec7f8227c70",
+                    "id": "",
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sub-cat-4\" target=\"_self\">Subcategory 4</a>",
                     "link_dest": "Sub-cat-4",
                     "link_targ": "_self",
@@ -76,7 +76,7 @@
         },
         {
             "active": 1,
-            "id": "90d1659899a12c38da535e6612c62dff",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03\" target=\"_self\">Category 3</a>",
             "link_dest": "category_03",
             "link_targ": "_self",
@@ -86,7 +86,7 @@
         },
         {
             "active": 1,
-            "id": "875526b289e8bd5a470a2176e50882b1",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04\" target=\"_self\">Category 4</a>",
             "link_dest": "category_04",
             "link_targ": "_self",
@@ -96,7 +96,7 @@
         },
         {
             "active": 1,
-            "id": "7caec32b0070617c38ec70343da6680c",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale\" target=\"_self\">Sale</a>",
             "link_dest": "sale",
             "link_targ": "_self",
@@ -106,7 +106,7 @@
         },
         {
             "active": 1,
-            "id": "96701d1981bf11c483c7ef5a257adaef",
+            "id": "",
             "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured\" target=\"_self\">Featured Products</a>",
             "link_dest": "featured",
             "link_targ": "_self",
