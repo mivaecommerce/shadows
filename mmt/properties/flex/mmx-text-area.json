@@ -52,7 +52,7 @@
         "advanced": {
             "desktop": {
                 "width": {
-                    "value": "default"
+                    "value": 80
                 }
             }
         },
@@ -927,5 +927,5 @@
         }
     ],
     "resourcegroup_code": "mmx-text-area",
-    "version": "10.05.00"
+    "version": "10.06.00"
 }

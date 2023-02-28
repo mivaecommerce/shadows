@@ -73,7 +73,11 @@
 								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 							</td>
 							<td class="t-basket__product-details" data-label="">
-								<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+								<mvt:if expr="ISNULL l.settings:group:link">
+									<span class="t-basket__product-name">&mvt:group:name;</span>
+								<mvt:else>
+									<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+								</mvt:if>
 								<mvt:if expr="l.settings:group:upsold">
 									<div class="c-heading--subheading">(Special Offer)</div>
 								</mvt:if>
@@ -93,7 +97,6 @@
 									</mvt:foreach>
 									<div class="t-basket__product-sku">SKU: &mvt:group:code;</div>
 									<div class="t-basket__product-attr-options">
-										<mvt:assign name="l.settings:attr_ref" value="''" />
 										<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
 										<mvt:assign name="g.quote_item" value="'0'" />
 										<mvt:foreach iterator="option" array="group:options">
@@ -105,41 +108,46 @@
 											</mvt:if>
 											<mvt:assign name="l.settings:group:option_counter" value="l.settings:group:option_counter + 1" />
 											<span class="u-flex">
-												<mvt:if expr="l.settings:option:attmpat_id">
-													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:template_code=' $ encodeattribute( l.settings:option:attr_code )" />
-													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_prompt" />
+												<mvt:if expr="NOT l.settings:option:attmpat_id">
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:option:attr_code )" />
 												<mvt:else>
-													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_code" />
+													<mvt:do file="g.Module_Library_DB" name="l.success" value="Attribute_Load_ID( l.settings:option:attr_id, l.product_attribute )" />
+													<mvt:if expr="l.success">
+														<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.product_attribute:code )" />
+														<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:template_code=' $ encodeattribute( l.settings:option:attr_code )" />
+													<mvt:else>
+														<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:option:attr_code )" />
+													</mvt:if>
 												</mvt:if>
 
 												<mvt:if expr="l.settings:option:option_id">
-													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:opt_code )" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:opt_code )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:attr_ref) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:opt_code) $ asciichar(34) $ ', '" />
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:opt_code) $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data">
-													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data )" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:attr_ref) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data) $ asciichar(34) $ ', '" />
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data) $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data_long )" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data_long )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:attr_ref) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data_long) $ asciichar(34) $ ', '" />
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data_long) $ asciichar(34) $ ', '" />
 												<mvt:else>
-													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:attr_prompt )" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:attr_prompt )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:attr_ref) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_prompt) $ asciichar(34) $ ', '" />
+													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_prompt) $ asciichar(34) $ ', '" />
 												</mvt:if>
 											</span>
 											<mvt:foreach iterator="discount" array="option:discounts">

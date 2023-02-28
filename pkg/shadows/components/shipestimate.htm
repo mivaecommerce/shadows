@@ -1466,9 +1466,9 @@
 											<option value="TN">Tunisia</option>
 										</mvt:if>
 										<mvt:if expr="g.ShipEstimate:ship_cntry EQ 'TR'">
-											<option value="TR" selected>Turkey</option>
+											<option value="TR" selected>Turkiye</option>
 										<mvt:else>
-											<option value="TR">Turkey</option>
+											<option value="TR">Turkiye</option>
 										</mvt:if>
 										<mvt:if expr="g.ShipEstimate:ship_cntry EQ 'TM'">
 											<option value="TM" selected>Turkmenistan</option>
@@ -1589,9 +1589,13 @@
 							</div>
 						</div>
 						<div data-hook="shipping-estimate-results"></div>
+						<div class="u-text-center">
+							<button type="button" class="c-button u-hidden" data-hook="shipping-estimate-recalculate" title="Recalculate Shipping Estimate">Recalculate</button>
+						</div>
 					</fieldset>
 				</form>
 			</div>
 		</div>
 	</div>
-</div>]]></Template><Notes>#Set_Current_Time#</Notes></ShipEstimate_Update></Item></Page_Update>
+</div>
+]]></Template><Notes>#Set_Current_Time#</Notes></ShipEstimate_Update></Item></Page_Update>

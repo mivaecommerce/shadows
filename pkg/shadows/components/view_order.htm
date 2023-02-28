@@ -29,7 +29,11 @@
 						<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 					</td>
 					<td class="t-basket__product-details" data-label="">
-						<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+						<mvt:if expr="ISNULL l.settings:group:link">
+							<span class="t-basket__product-name">&mvt:group:name;</span>
+						<mvt:else>
+							<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+						</mvt:if>
 						<mvt:if expr="l.settings:group:upsold">
 							<div class="c-heading--subheading">(Special Offer)</div>
 						</mvt:if>
