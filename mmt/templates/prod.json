@@ -17,7 +17,8 @@
         "price_element_id": "price-value",
         "swatch_element_id": "swatches",
         "template_filename": "prod-attributemachine.mvc",
-        "template_id": 370
+        "template_id": 370,
+        "weight_element_id": "product-weight-value"
     },
     "discount_volume": {
         "template_filename": "prod-discount_volume.mvc",

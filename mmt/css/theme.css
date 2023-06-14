@@ -633,6 +633,32 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	border-color: #c0c0c0;
 }
 
+.t-shipping-method .c-form-checkbox__caption::before {
+	position: absolute;
+}
+
+.t-shipping-method-name {
+	max-width: 45ch;
+}
+
+.t-shipping-method .c-keyline {
+	margin-bottom: 0;
+}
+
+.t-order-complete-heading {
+	padding: 2em 2em 1em 1em;
+}
+
+.t-order-complete-heading form {
+	padding-top: 0.5em;
+}
+
+.t-page-invc .x-toggle-password {
+	margin-top: 0;
+	padding: 0.5em;
+	top: 25%;
+}
+
 /* Account Landing Page
     =========================================== */
 .t-account-landing-section {
