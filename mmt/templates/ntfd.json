@@ -9,7 +9,12 @@
             "template_id": 341
         }
     },
-    "http_headers": "none",
+    "http_headers": [
+        {
+            "name": "Status",
+            "value": "404 Not Found"
+        }
+    ],
     "seo_settings": {
         "cat_lit": "category",
         "cat_lit_choice": "category",
