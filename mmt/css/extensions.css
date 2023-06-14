@@ -1802,12 +1802,13 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-photo-viewer__title {
-	flex-grow: 1;
+	flex: 1;
 	margin: 0;
 	padding-left: 2.1em;
 	color: #fff;
 	font-size: 1.25rem;
 	text-align: center;
+	white-space: normal;
 }
 
 .x-photo-viewer__close {

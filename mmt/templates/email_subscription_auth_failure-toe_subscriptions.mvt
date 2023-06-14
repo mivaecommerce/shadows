@@ -272,7 +272,6 @@
 						<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Ship To</strong></div>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-
 						<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
 							&mvte:subscriptionorder:address:fname; &mvte:subscriptionorder:address:lname;<br />
 							&mvte:subscriptionorder:address:addr1; &mvte:subscriptionorder:address:addr2;<br />
@@ -291,8 +290,7 @@
 					<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+								<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 							</tr>
 						</table>
 					</th>
@@ -317,10 +315,8 @@
 						<mvt:if expr="l.settings:subscriptionorder:paymentcard:id">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="25" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-
 							<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Payment Method</strong></div>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
 
 							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvte:subscriptionorder:paymentcard:type; Ending in &mvte:subscriptionorder:paymentcard:lastfour;</div>
 						</mvt:if>
@@ -328,7 +324,6 @@
 				</tr>
 			</table>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
 		</td>
 	</tr>
 </table>

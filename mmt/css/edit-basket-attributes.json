@@ -1,0 +1,19 @@
+{
+    "code": "edit-basket-attributes",
+    "type": "I",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        }
+    ],
+    "linked_pages": [
+        "BASK"
+    ]
+}

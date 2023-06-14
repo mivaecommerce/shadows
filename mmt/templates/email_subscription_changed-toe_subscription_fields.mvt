@@ -230,7 +230,6 @@
 						<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Ship To</strong></div>
 						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-
 						<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
 							&mvte:subscription:address:fname; &mvte:subscription:address:lname;<br />
 							&mvte:subscription:address:addr1; &mvte:subscription:address:addr2;<br />
@@ -249,8 +248,7 @@
 					<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 						<table width="100%" border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+								<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 							</tr>
 						</table>
 					</th>
@@ -275,10 +273,8 @@
 						<mvt:if expr="l.settings:subscription:paymentcard:id">
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="25" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-
 							<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Payment Method</strong></div>
 							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
 
 							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvte:subscription:paymentcard:type; Ending in &mvte:subscription:paymentcard:lastfour;</div>
 						</mvt:if>
@@ -310,8 +306,7 @@
 					<td align="center" bgcolor="#2a68ce">
 						<table border="0" cellspacing="0" cellpadding="0">
 							<tr>
-								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="40"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-</td>
+								<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="40"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table></td>
 								<td bgcolor="#2a68ce">
 									<div class="text-btn" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:22px; text-align:center">
 										<a href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Manage Your Subscription</span></a>

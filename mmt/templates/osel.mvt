@@ -17,7 +17,6 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
-			<mvt:item name="customfields" param="Write_Basket('basket', g.basket)" />
 		</div>
 	</section>
 

@@ -46,9 +46,9 @@
 	</mvt:if>
 	<mvt:if expr="NOT('check' CIN g.PaymentMethod) AND NOT('cod' CIN g.PaymentMethod) AND NOT('pal' CIN g.PaymentMethod)">
 		<script>
-			var supportedPaymentMethods = [
+			let supportedPaymentMethods = [
 				<mvt:foreach array="paymentmethods" iterator="method">
-					<mvt:if expr="l.settings:method:module NE 'check' AND l.settings:method:module NE 'cod' AND l.settings:method:module NE 'customercredit' AND NOT('pal' CIN l.settings:method:module)">
+					<mvt:if expr="(l.settings:method:module NE 'check' AND l.settings:method:module NE 'cod' AND l.settings:method:module NE 'customercredit' AND NOT('pal' CIN l.settings:method:module)) AND l.settings:method:module EQ gettoken(g.PaymentMethod, ':', 1)">
 						<mvt:if expr="'am' CIN l.settings:method:code OR 'ax' CIN l.settings:method:code OR '003' CIN l.settings:method:code">
 							{name: 'american-express', value: '&mvte:method:module;:&mvte:method:code;'},
 						<mvt:elseif expr="'di' CIN l.settings:method:code OR '004' CIN l.settings:method:code">

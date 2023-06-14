@@ -16,7 +16,7 @@
 					<input type="hidden" name="Order" value="&mvte:global:Order;">
 					<div class="o-layout u-grids-1 u-grids-3--s">
 						<div class="o-layout__item">
-							<label class="u-hide-visually" for="register_email">Account Email Address</label>
+							<label class="u-hide-visually" for="Customer_LoginEmail">Account Email Address</label>
 							<input id="Customer_LoginEmail" class="c-form-input c-form-input--large c-control-group__field" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" placeholder="Email" required aria-required="true">
 						</div>
 						<div class="o-layout__item">
@@ -38,34 +38,6 @@
 </mvt:if>
 
 <mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
-
-<mvt:item name="customfields" param="Read_Basket('basket', g.saved_fields)" />
-<mvt:if expr="NOT ISNULL g.saved_fields" >
-	<mvt:assign name="g.ShipFirstName" value="g.saved_fields:ship_fname" />
-	<mvt:assign name="g.ShipLastName" value="g.saved_fields:ship_lname" />
-	<mvt:assign name="g.ShipEmail" value="g.saved_fields:ship_email" />
-	<mvt:assign name="g.ShipCompany" value="g.saved_fields:ship_comp" />
-	<mvt:assign name="g.ShipPhone" value="g.saved_fields:ship_phone" />
-	<mvt:assign name="g.ShipFax" value="g.saved_fields:ship_fax" />
-	<mvt:assign name="g.ShipAddress1" value="g.saved_fields:ship_addr1" />
-	<mvt:assign name="g.ShipAddress2" value="g.saved_fields:ship_addr2" />
-	<mvt:assign name="g.ShipCity" value="g.saved_fields:ship_city" />
-	<mvt:assign name="g.ShipState" value="g.saved_fields:ship_state" />
-	<mvt:assign name="g.ShipZip" value="g.saved_fields:ship_zip" />
-	<mvt:assign name="g.ShipCountry" value="g.saved_fields:ship_cntry" />
-	<mvt:assign name="g.BillFirstName" value="g.saved_fields:bill_fname" />
-	<mvt:assign name="g.BillLastName" value="g.saved_fields:bill_lname" />
-	<mvt:assign name="g.BillEmail" value="g.saved_fields:bill_email" />
-	<mvt:assign name="g.BillCompany" value="g.saved_fields:bill_comp" />
-	<mvt:assign name="g.BillPhone" value="g.saved_fields:bill_phone" />
-	<mvt:assign name="g.BillFax" value="g.saved_fields:bill_fax" />
-	<mvt:assign name="g.BillAddress1" value="g.saved_fields:bill_addr1" />
-	<mvt:assign name="g.BillAddress2" value="g.saved_fields:bill_addr2" />
-	<mvt:assign name="g.BillCity" value="g.saved_fields:bill_city" />
-	<mvt:assign name="g.BillState" value="g.saved_fields:bill_state" />
-	<mvt:assign name="g.BillZip" value="g.saved_fields:bill_zip" />
-	<mvt:assign name="g.BillCountry" value="g.saved_fields:bill_cntry" />
-</mvt:if>
 
 <mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
 	<mvt:assign name="l.settings:shipping_required" value="'required aria-required=' $ asciichar(34) $ 'true' $ asciichar(34)"/>

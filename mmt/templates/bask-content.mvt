@@ -1,4 +1,4 @@
-<Page_Update code="BASK"><Item code="content"><Template><![CDATA[<mvt:if expr="miva_array_elements(l.settings:has_attributes) GT 0">
+<mvt:if expr="miva_array_elements(l.settings:has_attributes) GT 0">
 	<div class="c-dialog x-edit-basket-attributes" data-dialog="edit-basket-attributes" aria-hidden="true">
 		<div class="c-dialog__overlay" tabindex="-1">
 			<div class="c-dialog__container" aria-labelledby="edit-basket-attributes__title" aria-modal="true" role="dialog">
@@ -50,4 +50,3 @@
 		</div>
 	</div>
 </mvt:if>
-]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

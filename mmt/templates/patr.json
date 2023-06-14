@@ -7,7 +7,6 @@
         "invalid_msg": "Please select a valid combination of attributes.",
         "missing_radio_msg": "<br>An option must be selected for <b>%attribute_prompt%</b>.",
         "missing_text_msg": "<br>A value must be entered for <b>%attribute_prompt%</b>.",
-        "predictdiscounts": 0,
         "preload": 1,
         "price": "base",
         "template_filename": "patr-attributemachine.mvc"

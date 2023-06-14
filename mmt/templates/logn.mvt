@@ -24,7 +24,9 @@
 	<section class="o-layout o-layout--justify-around">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
 			<p class="c-heading-charlie u-text-bold u-text-center u-text-uppercase">Welcome Back</p>
-			<mvt:if expr="g.Customer_Temporary_Password">
+			<mvt:if expr="NOT ISNULL g.QuoteCode">
+				<mvt:assign name="l.settings:url" value="l.settings:urls:QUOT:secure" />
+			<mvt:elseif expr="g.Customer_Temporary_Password">
 				<mvt:assign name="l.settings:url" value="l.settings:urls:CPWD:secure" />
 			<mvt:elseif expr="g.Order">
 				<mvt:assign name="l.settings:url" value="l.settings:urls:OINF:secure" />
@@ -35,6 +37,7 @@
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="LOGN" />
+					<input type="hidden" name="QuoteCode" value="&mvte:global:QuoteCode;" />
 					<div class="c-form-list">
 						<div class="c-form-list__item">
 							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="Customer_LoginEmail_LOGN">Account Email Address</label>

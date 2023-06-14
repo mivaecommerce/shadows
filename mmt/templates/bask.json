@@ -22,6 +22,9 @@
         "splitpayments": 0,
         "template_filename": "bask-basket.mvc"
     },
+    "content": {
+        "template_filename": "bask-content.mvc"
+    },
     "hdft": {
         "footer": {
             "template_filename": "bask-footer.mvc"
@@ -29,6 +32,9 @@
         "header": {
             "template_filename": "bask-header.mvc"
         }
+    },
+    "product_attributes": {
+        "template_filename": "bask-product_attributes.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -64,6 +70,7 @@
         "ship_fname": 0,
         "ship_lname": 0,
         "ship_phone": 0,
+        "ship_res": 0,
         "ship_state": 1,
         "ship_zip": 1,
         "template_filename": "bask-shipestimate.mvc"
