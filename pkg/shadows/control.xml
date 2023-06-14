@@ -3,18 +3,14 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>1.0</Version>
-	<MinimumMerchantVersion>9.13.01</MinimumMerchantVersion>
-	<MinimumMivaScriptVersion>5.33</MinimumMivaScriptVersion>
-	<Description>
-		Shadows ReadyTheme by Miva, Inc. v2.0.0
-
-		Shadows is our ReadyTheme Development Framework.
-	</Description>
+	<Version>2.0</Version>
+	<MinimumMerchantVersion>10.00.00</MinimumMerchantVersion>
+	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
+	<Description>Shadows ReadyTheme v2.0.0</Description>
 	<Preview_URL />
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.0</Title>
+	<Title>Shadows v2.0.0</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
