@@ -40,7 +40,7 @@
 								<input type="hidden" name="Affiliate_Password" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off">
 								<input id="Affiliate_Password" class="c-form-input c-form-input--large" type="text" value="&mvte:global:Affiliate_Temporary_Password;" autocomplete="off" disabled readonly>
 							<mvt:else>
-								<input id="Affiliate_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
+								<input id="Affiliate_Password" class="c-form-input c-form-input--large" type="password" name="Affiliate_Password" autocomplete="current-password" required aria-required="true">
 							</mvt:if>
 						</div>
 						<div class="c-form-list__item u-text-right">

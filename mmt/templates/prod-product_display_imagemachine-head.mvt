@@ -56,6 +56,15 @@ ImageMachine.prototype.ImageMachine_Generate_Thumbnail = function (thumbnail_ima
 
 		thumbnailIndex++
 	}
+	else {
+		let image = {
+			imageIndex: thumbnailIndex,
+			imageSrc: closeup_image,
+			imageTitle: productName
+		};
+		images.push(image);
+
+	}
 
 	document.dispatchEvent(generate_thumbnail_event);
 

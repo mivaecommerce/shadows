@@ -26,7 +26,7 @@
 			<span class="c-form-label u-block &mvt:required_attribute_classes;" title="&mvte:attribute:prompt;">&mvte:attribute:prompt;</span>
 			<mvt:foreach iterator="option" array="attribute:options">
 				<label class="c-form-checkbox c-form-checkbox--radio c-form-checkbox--inline" title="&mvte:option:prompt;">
-					<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+					<mvt:if expr="((ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR ((NOT ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code))">
 						<input class="c-form-checkbox__input" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:option:price;" data-regular-price="" type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" checked &mvt:required_attribute;>
 					<mvt:else>
 						<input class="c-form-checkbox__input" data-attribute="&mvte:attribute:code;" data-option-price="&mvt:option:price;" data-regular-price="" type="radio" name="Product_Attributes[&mvte:attribute:index;]:value" value="&mvte:option:code;" &mvt:required_attribute;>
@@ -37,11 +37,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								<mvt:if expr="l.settings:option:price GT 0">
-									&nbsp;<mvt:eval expr="'+ $' $ rnd(l.settings:option:price, 2)" />
-								<mvt:else>
-									&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:option:price, 2), '-', '')" />
-								</mvt:if>
+								&nbsp;&mvte:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -54,26 +50,18 @@
 			<div class="c-form-select">
 				<select id="&mvt:attribute_ID;" class="c-form-select__dropdown c-form-input--large" data-attribute="&mvte:attribute:code;" name="Product_Attributes[&mvt:attribute:index;]:value" &mvt:required_attribute;>
 					<mvt:foreach iterator="option" array="attribute:options">
-						<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+						<mvt:if expr="((ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR ((NOT ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code))">
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									<mvt:if expr="l.settings:option:price GT 0">
-										&nbsp;<mvt:eval expr="' +$' $ rnd(l.settings:option:price, 2)" />
-									<mvt:else>
-										&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:option:price, 2), '-', '')" />
-									</mvt:if>
+									&nbsp;&mvte:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									<mvt:if expr="l.settings:option:price GT 0">
-										&nbsp;<mvt:eval expr="' +$' $ rnd(l.settings:option:price, 2)" />
-									<mvt:else>
-										&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:option:price, 2), '-', '')" />
-									</mvt:if>
+									&nbsp;&mvte:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -87,26 +75,18 @@
 			<div class="c-form-select u-hidden">
 				<select class="c-form-select__dropdown c-form-input--large" data-attribute="&mvte:attribute:code;" data-hook="attribute-swatch-select" name="Product_Attributes[&mvt:attribute:index;]:value" &mvt:required_attribute;>
 					<mvt:foreach iterator="option" array="attribute:options">
-						<mvt:if expr="((g.Product_Attributes[l.settings:attribute:index]:value EQ 0) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code)">
+						<mvt:if expr="((ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (l.settings:option:id EQ l.settings:attribute:default_id)) OR ((NOT ISNULL g.Product_Attributes[l.settings:attribute:index]:value) AND (g.Product_Attributes[l.settings:attribute:index]:value EQ l.settings:option:code))">
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									<mvt:if expr="l.settings:option:price GT 0">
-										&nbsp;<mvt:eval expr="' +$' $ rnd(l.settings:option:price, 2)" />
-									<mvt:else>
-										&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:option:price, 2), '-', '')" />
-									</mvt:if>
+									&nbsp;&mvte:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									<mvt:if expr="l.settings:option:price GT 0">
-										&nbsp;<mvt:eval expr="' +$' $ rnd(l.settings:option:price, 2)" />
-									<mvt:else>
-										&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:option:price, 2), '-', '')" />
-									</mvt:if>
+									&nbsp;&mvte:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -130,11 +110,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							<mvt:if expr="l.settings:attribute:price GT 0">
-								&nbsp;<mvt:eval expr="' +$' $ rnd(l.settings:attribute:price, 2)" />
-							<mvt:else>
-								&nbsp;<mvt:eval expr="' -$' $ glosub(rnd(l.settings:attribute:price, 2), '-', '')" />
-							</mvt:if>
+							&nbsp;&mvte:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>

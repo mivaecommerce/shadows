@@ -1,24 +1,20 @@
 {
     "addressbook": {
         "prevent_template_auto_update": 1,
-        "template_filename": "acln-addressbook.mvc",
-        "template_id": 255
+        "template_filename": "acln-addressbook.mvc"
     },
     "customer": {
         "editable": 0,
         "mode": "tokens_only_nodisplay",
         "prevent_template_auto_update": 0,
-        "template_filename": "acln-customer.mvc",
-        "template_id": 256
+        "template_filename": "acln-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "acln-footer.mvc",
-            "template_id": 258
+            "template_filename": "acln-footer.mvc"
         },
         "header": {
-            "template_filename": "acln-header.mvc",
-            "template_id": 257
+            "template_filename": "acln-header.mvc"
         }
     },
     "orderhistory_list": {
@@ -42,13 +38,11 @@
         },
         "status": 1,
         "template_filename": "acln-orderhistory_list.mvc",
-        "template_id": 259,
         "tracking": 1
     },
     "paymentcards": {
         "mode": "paymentcard_list",
-        "template_filename": "acln-paymentcards.mvc",
-        "template_id": 260
+        "template_filename": "acln-paymentcards.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

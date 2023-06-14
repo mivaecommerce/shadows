@@ -596,10 +596,12 @@ textarea {
 /**
  * Ensure that, when focused, the iOS Input Zoom doesn't happen.
  */
-input:not([type="checkbox"]):not([type="radio"]):focus,
-select:focus,
-textarea:focus {
-	font-size: 16px;
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+	input:not([type="checkbox"]):not([type="radio"]):focus,
+	select:focus,
+	textarea:focus {
+		font-size: 16px;
+	}
 }
 
 /* ==========================================================================
