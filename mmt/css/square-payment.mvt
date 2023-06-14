@@ -1,33 +1,14 @@
 <mvt:if expr="'square' CIN g.PaymentMethod">
-	<!--
-	/**
-	 * These styles help make the Square payment fields look more like the other input fields associated with the ReadyTheme.
-	 */
-	 -->
-	.t-square-payment-form label {
-		display: block;
-		font-size: 0.75rem;
-		margin-bottom: 0.25em;
+	.t-square-payment-form__fields {
+		background: var(--gray-100);
+		border-radius: calc(var(--default-border-radius) * 2);
+		padding: 1.25rem;
+		min-width: 250px; /* matches square's .sq-card-wrapper min-width */
 	}
-	
-	.t-square-payment-form .sq-input {
-		background-color: #fff;
-		border: 1px solid #c0c0c0;
-		border-radius: 0.125em;
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
-		display: block;
-		font-size: 1rem;
-		margin-bottom: 0.5em;
-		outline: 0;
-		transition: box-shadow 0.25s ease, border-color 0.25s ease;
-		width: 100%;
-	}
-	
-	.t-square-payment-form .sq-input--focus {
-		border-color: #003b6f;
-	}
-	
-	.t-square-payment-form .sq-input--error {
-		border-color: #f02;
+
+	@media (min-width: 48em) {
+		.t-square-payment-form__fields {
+			max-width: 350px;
+		}
 	}
 </mvt:if>

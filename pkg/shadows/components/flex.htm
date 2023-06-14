@@ -1,4 +1,4 @@
-<Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__200x200.jpg"/><Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__335x335.jpg"/><Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__720x720.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__1440x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__1440x580.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__152x152.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__214x214.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__335x240.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__336x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__459x320.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__704x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__704x480.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__728x320.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__880x480.jpg"/><Module code="cmp-mv-flex" feature="component"><FlexComponent_Delete code="mmx-hero" resources="retain"/><FlexComponent_Add><Code>mmx-hero</Code><Name>Hero</Name><Version>10.05.00</Version><Category>image</Category><ResourceGroupCode>mmx-hero</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="660" viewBox="0 0 1600 660">
+<Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__200x200.jpg"/><Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__335x335.jpg"/><Image_Add filepath="graphics/%STORE_ID%/catalog-fallback-image__720x720.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__1440x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__1440x580.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__152x152.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__214x214.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__335x240.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__336x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__459x320.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__704x400.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__704x480.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__728x320.jpg"/><Image_Add filepath="graphics/%STORE_ID%/placeholder__880x480.jpg"/><Module code="cmp-mv-flex" feature="component"><FlexComponent_Delete code="mmx-hero" resources="retain"/><FlexComponent_Add><Code>mmx-hero</Code><Name>Hero</Name><Version>10.06.00</Version><Category>image</Category><ResourceGroupCode>mmx-hero</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="660" viewBox="0 0 1600 660">
   <defs>
     <clipPath id="clip-path">
       <rect id="Rectangle_3173" data-name="Rectangle 3173" width="200" height="200" fill="#bbbec3"/>
@@ -37,14 +37,17 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
-<mvt:item name="head" param="js:mmx-hero" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-hero" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -70,9 +73,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 	<mvt:if expr="NOT ISNULL l.settings:instance:image:img:image">
 		<picture slot="image">
 			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:mobile" value="glosub( l.settings:instance:image:img:responsive_images:mobile, ' ', '%20' )" />
 				<source class="source__mobile" media="(max-width: 640px)" srcset="&mvte:instance:image:img:responsive_images:mobile;">
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:tablet" value="glosub( l.settings:instance:image:img:responsive_images:tablet, ' ', '%20' )" />
 				<source class="source__tablet" media="(max-width: 960px)" srcset="&mvte:instance:image:img:responsive_images:tablet;">
 			</mvt:if>
 			<img src="&mvte:instance:image:img:image;" alt="&mvte:instance:image:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
@@ -1220,7 +1225,8 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 						"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)"
 					}
 				],
-				"type": "group"
+				"type": "group",
+				"collapsed": 0
 			}
 		],
 		"type": "group"
@@ -1249,7 +1255,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "select"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-hero-slider" resources="retain"/><FlexComponent_Add><Code>mmx-hero-slider</Code><Name>Hero Slider</Name><Version>10.05.00</Version><Category>image-slider</Category><ResourceGroupCode>mmx-hero-slider</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="660" viewBox="0 0 1600 660">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-hero-slider" resources="retain"/><FlexComponent_Add><Code>mmx-hero-slider</Code><Name>Hero Slider</Name><Version>10.06.00</Version><Category>image-slider</Category><ResourceGroupCode>mmx-hero-slider</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="660" viewBox="0 0 1600 660">
   <defs>
     <clipPath id="clip-path">
       <rect id="Rectangle_3173" data-name="Rectangle 3173" width="200" height="200" fill="#bbbec3" stroke="rgba(0,0,0,0)" stroke-width="1"/>
@@ -1334,16 +1340,19 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
     <rect id="Rectangle_3497" data-name="Rectangle 3497" width="1600" height="660" transform="translate(0 848)" fill="none"/>
   </g>
 </svg>]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
-<mvt:item name="head" param="css:mmx-hero-slider" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
-<mvt:item name="head" param="js:mmx-hero-slider" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-hero-slider" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -1392,9 +1401,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			<mvt:comment>Slotted Image</mvt:comment>
 			<picture slot="image">
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_images:mobile">
+					<mvt:assign name="l.settings:hero_image:image:img:responsive_images:mobile" value="glosub( l.settings:hero_image:image:img:responsive_images:mobile, ' ', '%20' )" />
 					<source media="(max-width: 640px)" srcset="&mvte:hero_image:image:img:responsive_images:mobile;">
 				</mvt:if>
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_images:tablet">
+					<mvt:assign name="l.settings:hero_image:image:img:responsive_images:tablet" value="glosub( l.settings:hero_image:image:img:responsive_images:tablet, ' ', '%20' )" />
 					<source media="(max-width: 960px)" srcset="&mvte:hero_image:image:img:responsive_images:tablet;">
 				</mvt:if>
 				<img src="&mvte:hero_image:image:img:image;" alt="&mvte:hero_image:image:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
@@ -2858,7 +2869,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "group"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-image-across" resources="retain"/><FlexComponent_Add><Code>mmx-image-across</Code><Name>Image Across</Name><Version>10.05.00</Version><Category>image-across</Category><ResourceGroupCode>mmx-image-across</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="597" viewBox="0 0 1600 597">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-image-across" resources="retain"/><FlexComponent_Add><Code>mmx-image-across</Code><Name>Image Across</Name><Version>10.06.00</Version><Category>image-across</Category><ResourceGroupCode>mmx-image-across</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="597" viewBox="0 0 1600 597">
   <defs>
     <clipPath id="clip-path">
       <rect width="1441" height="428" fill="none"/>
@@ -2919,16 +2930,19 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
-<mvt:item name="head" param="css:mmx-image-across" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-image-across" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
-<mvt:item name="head" param="js:mmx-image-across" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-image-across" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -2936,6 +2950,9 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
 	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
 </mvt:if>
+
+<mvt:assign name="l.settings:instance:advanced:desktop:background_color:color:output_value" value="ternary(l.settings:instance:advanced:desktop:background_color:settings:enabled, l.settings:instance:advanced:desktop:background_color:color:value, '')" />
+<mvt:assign name="l.settings:instance:advanced:mobile:background_color:color:output_value" value="ternary(l.settings:instance:advanced:mobile:background_color:settings:enabled, l.settings:instance:advanced:mobile:background_color:color:value, '')" />
 
 <mvt:comment>Render Component</mvt:comment>
 <mmx-image-across
@@ -2980,15 +2997,19 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 
 			data-overlay-bg="color"
 			data-overlay-bg-color="rgba(0, 0, 0, &mvte:instance:advanced:desktop:overlay_opacity:value;%)"
+			data-content-bg-color--mobile="&mvte:instance:advanced:mobile:background_color:color:output_value;"
+			data-content-bg-color--desktop="&mvte:instance:advanced:desktop:background_color:color:output_value;"
 			data-content-theme="&mvte:instance:advanced:content_theme:value;"
 			data-overflow="&mvte:instance:advanced:mobile:overflow_behavior:value;"
 		>
 			<mvt:comment>Slotted Image</mvt:comment>
 			<picture slot="image">
 				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:mobile">
+					<mvt:assign name="l.settings:image_across:img:responsive_images:mobile" value="glosub( l.settings:image_across:img:responsive_images:mobile, ' ', '%20' )" />
 					<source class="source__mobile" media="(max-width: 640px)" srcset="&mvte:image_across:img:responsive_images:mobile;">
 				</mvt:if>
 				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:tablet">
+					<mvt:assign name="l.settings:image_across:img:responsive_images:tablet" value="glosub( l.settings:image_across:img:responsive_images:tablet, ' ', '%20' )" />
 					<source class="source__tablet" media="(max-width: 960px)" srcset="&mvte:image_across:img:responsive_images:tablet;">
 				</mvt:if>
 				<img src="&mvte:image_across:img:image;" alt="&mvte:image_across:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
@@ -2996,49 +3017,60 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 
 			<mvt:comment>Slotted Content</mvt:comment>
 			<mvt:if expr="l.settings:image_across:text:settings:enabled">
-				<mmx-text
-					slot="subheading"
-					data-style="&mvte:instance:content_styles:subheading_text_styles:subheading_style:value;"
-					style="
-						font-family: &mvte:instance:content_styles:subheading_text_styles:font_family;;
-						font-size: &mvte:instance:content_styles:subheading_text_styles:font_size;px;
-						font-weight: &mvte:instance:content_styles:subheading_text_styles:font_weight;;
-						color: &mvte:instance:content_styles:subheading_text_styles:font_color;;
-					"
-				>
-					&mvte:image_across:text:subheading:value;
-				</mmx-text>
-				<mmx-text
-					slot="heading"
-					data-style="&mvte:instance:content_styles:heading_text_styles:heading_style:value;"
-					style="
-						font-family: &mvte:instance:content_styles:heading_text_styles:font_family;;
-						font-size: &mvte:instance:content_styles:heading_text_styles:font_size;px;
-						font-weight: &mvte:instance:content_styles:heading_text_styles:font_weight;;
-						color: &mvte:instance:content_styles:heading_text_styles:font_color;;
-					"
-				>
-					&mvte:image_across:text:heading:value;
-				</mmx-text>
-				<mmx-text
-					slot="body"
-					data-style="&mvte:instance:content_styles:body_text_styles:body_style:value;"
-					style="
-						font-family: &mvte:instance:content_styles:body_text_styles:font_family;;
-						font-size: &mvte:instance:content_styles:body_text_styles:font_size;px;
-						font-weight: &mvte:instance:content_styles:body_text_styles:font_weight;;
-						color: &mvte:instance:content_styles:body_text_styles:font_color;;
-					"
-				>
-					&mvte:image_across:text:body:value;
-				</mmx-text>
-				<mmx-button
-					slot="button"
-					data-style="&mvte:instance:content_styles:button_styles:button_style:value;"
-					data-size="&mvte:instance:content_styles:button_styles:button_size:value;"
-				>
-					&mvte:image_across:text:button:value;
-				</mmx-button>
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:subheading:value">
+					<mmx-text
+						slot="subheading"
+						data-style="&mvte:instance:content_styles:subheading_text_styles:subheading_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:subheading_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:subheading_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:subheading_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:subheading_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:subheading:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:heading:value">
+					<mmx-text
+						slot="heading"
+						data-style="&mvte:instance:content_styles:heading_text_styles:heading_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:heading_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:heading_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:heading_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:heading_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:heading:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:body:value">
+					<mmx-text
+						slot="body"
+						data-style="&mvte:instance:content_styles:body_text_styles:body_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:body_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:body_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:body_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:body_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:body:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:button:value">
+					<mmx-button
+						slot="button"
+						data-style="&mvte:instance:content_styles:button_styles:button_style:value;"
+						data-size="&mvte:instance:content_styles:button_styles:button_size:value;"
+					>
+						&mvte:image_across:text:button:value;
+					</mmx-button>
+				</mvt:if>
 			</mvt:if>
 		</mmx-hero>
 	</mvt:foreach>
@@ -4191,6 +4223,14 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"color": {
+					"value": "#FFFFFF"
+				},
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -4199,6 +4239,14 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"color": {
+					"value": "#FFFFFF"
+				},
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -4363,6 +4411,22 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"prompt": "Desktop",
 		"properties": [
 			{
+				"can_disable": true,
+				"code": "background_color",
+				"prompt": "Text Background Color",
+				"properties": [
+					{
+						"code": "color",
+						"prompt": "Color",
+						"style": "color",
+						"type": "color",
+						"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)"
+					}
+				],
+				"type": "group",
+				"collapsed": 1
+			},
+			{
 				"code": "column_count",
 				"options": [
 					{
@@ -4423,6 +4487,22 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"prompt": "Mobile",
 		"properties": [
 			{
+				"can_disable": true,
+				"code": "background_color",
+				"prompt": "Text Background Color",
+				"properties": [
+					{
+						"code": "color",
+						"prompt": "Color",
+						"style": "color",
+						"type": "color",
+						"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)"
+					}
+				],
+				"type": "group",
+				"collapsed": 0
+			},
+			{
 				"code": "overflow_behavior",
 				"options": [
 					{
@@ -4464,7 +4544,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "select"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-image-and-text" resources="retain"/><FlexComponent_Add><Code>mmx-image-and-text</Code><Name>Image and Text</Name><Version>10.05.00</Version><Category>image-text</Category><ResourceGroupCode>mmx-image-and-text</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="560" viewBox="0 0 1600 560">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-image-and-text" resources="retain"/><FlexComponent_Add><Code>mmx-image-and-text</Code><Name>Image and Text</Name><Version>10.06.00</Version><Category>image-text</Category><ResourceGroupCode>mmx-image-and-text</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="560" viewBox="0 0 1600 560">
   <defs>
     <clipPath id="clip-path">
       <rect id="Rectangle_3173" data-name="Rectangle 3173" width="200" height="200" fill="#bbbec3"/>
@@ -4496,15 +4576,18 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
-<mvt:item name="head" param="js:mmx-image-and-text" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-image-and-text" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -4530,9 +4613,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 	<mvt:if expr="NOT ISNULL l.settings:instance:image:img:image">
 		<picture slot="image">
 			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:mobile" value="glosub( l.settings:instance:image:img:responsive_images:mobile, ' ', '%20' )" />
 				<source class="source__mobile" media="(max-width: 640px)" srcset="&mvte:instance:image:img:responsive_images:mobile;">
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:tablet" value="glosub( l.settings:instance:image:img:responsive_images:tablet, ' ', '%20' )" />
 				<source class="source__tablet" media="(max-width: 960px)" srcset="&mvte:instance:image:img:responsive_images:tablet;">
 			</mvt:if>
 			<img src="&mvte:instance:image:img:image;" alt="&mvte:instance:image:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
@@ -5626,7 +5711,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "select"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-text-area" resources="retain"/><FlexComponent_Add><Code>mmx-text-area</Code><Name>Text Area</Name><Version>10.05.00</Version><Category>text-area</Category><ResourceGroupCode>mmx-text-area</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="455" viewBox="0 0 1600 455">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-text-area" resources="retain"/><FlexComponent_Add><Code>mmx-text-area</Code><Name>Text Area</Name><Version>10.06.00</Version><Category>text-area</Category><ResourceGroupCode>mmx-text-area</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="455" viewBox="0 0 1600 455">
   <g id="Text_Area" data-name="Text Area" transform="translate(0 -3615)">
     <g id="Group_6585" data-name="Group 6585">
       <g id="Text_Area-2" data-name="Text Area" transform="translate(108 -542)">
@@ -5654,14 +5739,17 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
-<mvt:item name="head" param="js:mmx-hero" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-hero" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -5717,7 +5805,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			slot="button"
 			data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
 			data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
-			data-href="&mvte:instance:content:button:button_link:url;"
+			href="&mvte:instance:content:button:button_link:url;"
 		>
 			&mvte:instance:content:button:button_text:value;
 		</mmx-button>
@@ -6540,7 +6628,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 	"advanced": {
 		"desktop": {
 			"width": {
-				"value": "default"
+				"value": 80
 			}
 		}
 	},
@@ -6658,7 +6746,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "group"
 	}
 ]
-</AdvancedProperties><Scripts/><Styles/></FlexComponent_Add><FlexComponent_Delete code="mmx-text-banner" resources="retain"/><FlexComponent_Add><Code>mmx-text-banner</Code><Name>Text Banner</Name><Version>10.05.00</Version><Category>text-banner</Category><ResourceGroupCode>mmx-text-banner</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="224" viewBox="0 0 1600 224">
+</AdvancedProperties><Scripts/><Styles/></FlexComponent_Add><FlexComponent_Delete code="mmx-text-banner" resources="retain"/><FlexComponent_Add><Code>mmx-text-banner</Code><Name>Text Banner</Name><Version>10.06.00</Version><Category>text-banner</Category><ResourceGroupCode>mmx-text-banner</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="224" viewBox="0 0 1600 224">
   <g id="Text_Banner" data-name="Text Banner" transform="translate(0 -4630)">
     <g id="Text_Banner-2" data-name="Text Banner" transform="translate(0 3242)">
       <rect id="Rectangle_3233" data-name="Rectangle 3233" width="1440" height="144" rx="16" transform="translate(80 1428)" fill="#cfd2d6"/>
@@ -6678,14 +6766,17 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
-<mvt:item name="head" param="js:mmx-hero" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:item name="head" param="js:mmx-hero" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
@@ -6723,9 +6814,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 	<mvt:if expr="NOT ISNULL l.settings:instance:background:img:image">
 		<picture slot="image">
 			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:mobile" value="glosub( l.settings:instance:background:img:responsive_images:mobile, ' ', '%20' )" />
 				<source class="source__mobile" media="(max-width: 640px)" srcset="&mvte:instance:background:img:responsive_images:mobile;">
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:tablet" value="glosub( l.settings:instance:background:img:responsive_images:tablet, ' ', '%20' )" />
 				<source class="source__tablet" media="(max-width: 960px)" srcset="&mvte:instance:background:img:responsive_images:tablet;">
 			</mvt:if>
 			<img src="&mvte:instance:background:img:image;" alt="&mvte:instance:background:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
@@ -6758,7 +6851,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			slot="button"
 			data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
 			data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
-			data-href="&mvte:instance:content:button:button_link:url;"
+			href="&mvte:instance:content:button:button_link:url;"
 		>
 			&mvte:instance:content:button:button_text:value;
 		</mmx-button>
@@ -7543,7 +7636,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "select"
 	}
 ]
-</AdvancedProperties><Scripts/><Styles/></FlexComponent_Add><FlexComponent_Delete code="mmx-text-editor" resources="retain"/><FlexComponent_Add><Code>mmx-text-editor</Code><Name>Rich Text Editor</Name><Version>10.05.00</Version><Category>text-editor</Category><ResourceGroupCode>mmx-text-editor</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="660" viewBox="0 0 1600 660">
+</AdvancedProperties><Scripts/><Styles/></FlexComponent_Add><FlexComponent_Delete code="mmx-text-editor" resources="retain"/><FlexComponent_Add><Code>mmx-text-editor</Code><Name>Rich Text Editor</Name><Version>10.06.00</Version><Category>text-editor</Category><ResourceGroupCode>mmx-text-editor</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="660" viewBox="0 0 1600 660">
   <g id="RichTextEditor" transform="translate(0 -4854)">
     <g id="RichTextEditor-2" data-name="RichTextEditor" transform="translate(0 -685)">
       <g id="Rectangle_3193" data-name="Rectangle 3193" transform="translate(80 5579)" fill="#fff" stroke="#cfd2d6" stroke-width="4">
@@ -7579,10 +7672,13 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text-editor" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text-editor" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
-<mvt:item name="head" param="js:mmx-text-editor" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mmx-text-editor
+<mvt:item name="head" param="js:mmx-text-editor" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mmx-text-editor
 	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
@@ -7632,7 +7728,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "group"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-featured-product" resources="retain"/><FlexComponent_Add><Code>mmx-featured-product</Code><Name>Featured Product</Name><Version>10.05.00</Version><Category>featured-product</Category><ResourceGroupCode>mmx-featured-product</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="720" viewBox="0 0 1600 720">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-featured-product" resources="retain"/><FlexComponent_Add><Code>mmx-featured-product</Code><Name>Featured Product</Name><Version>10.06.00</Version><Category>featured-product</Category><ResourceGroupCode>mmx-featured-product</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="720" viewBox="0 0 1600 720">
   <defs>
     <clipPath id="clip-path">
       <rect id="Rectangle_3173" data-name="Rectangle 3173" width="200" height="200" fill="#bbbec3"/>
@@ -7676,11 +7772,13 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
-<mvt:item name="head" param="css:mmx-hero-slider" />
-<mvt:item name="head" param="css:mmx-featured-product" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+	<mvt:item name="head" param="css:mmx-featured-product" />
+</template>
 
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'ajax.js' )" />
@@ -7693,7 +7791,8 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
 <mvt:item name="head" param="js:mmx-hero-slider" />
-<mvt:item name="head" param="js:mmx-featured-product" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:assign name="l.settings:instance:fallback_product_image_default" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__720x720.jpg'" />
+<mvt:item name="head" param="js:mmx-featured-product" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:assign name="l.settings:instance:fallback_product_image_default" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__720x720.jpg'" />
 <mvt:assign name="l.settings:instance:fallback_product_image_mobile" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__335x335.jpg'" />
 
 <mmx-featured-product
@@ -8716,7 +8815,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "group"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-video" resources="retain"/><FlexComponent_Add><Code>mmx-video</Code><Name>Video</Name><Version>10.05.00</Version><Category>video</Category><ResourceGroupCode>mmx-video</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="660" viewBox="0 0 1600 660">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-video" resources="retain"/><FlexComponent_Add><Code>mmx-video</Code><Name>Video</Name><Version>10.06.00</Version><Category>video</Category><ResourceGroupCode>mmx-video</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="660" viewBox="0 0 1600 660">
   <g id="Video" transform="translate(0 -4854)">
     <g id="Video-2" data-name="Video" transform="translate(0 -685)">
       <rect id="Rectangle_3193" data-name="Rectangle 3193" width="1440" height="580" rx="16" transform="translate(80 5579)" fill="#cfd2d6"/>
@@ -8726,15 +8825,18 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
   </g>
 </svg>
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
-<mvt:item name="head" param="js:mmx-video" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Component Attribute Values</mvt:comment>
+<mvt:item name="head" param="js:mmx-video" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Determine Component Attribute Values</mvt:comment>
 <mvt:assign name="l.settings:instance:data:content_bg_color__desktop" value="ternary(l.settings:instance:advanced:desktop:background_color:settings:enabled, l.settings:instance:advanced:desktop:background_color:color:value, '')" />
 <mvt:assign name="l.settings:instance:data:content_bg_color__mobile" value="ternary(l.settings:instance:advanced:mobile:background_color:settings:enabled, l.settings:instance:advanced:mobile:background_color:color:value, '')" />
 
@@ -8799,8 +8901,8 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		<mvt:if expr="l.settings:instance:content:button:settings:enabled AND NOT ISNULL l.settings:instance:content:button:button_text:value">
 			<mmx-button
 				slot="button"
-				data-style="&mvte:instance:content:button:textsettings:fields:normal:button_style:value;"
-				data-size="&mvte:instance:content:button:textsettings:fields:normal:button_size:value;"
+				data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
+				data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
 				href="&mvte:instance:content:button:button_link:url;"
 			>
 				&mvte:instance:content:button:button_text:value;
@@ -9764,22 +9866,22 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 				"value": "SFNT"
 			},
 			"button_text": {
+				 "textsettings": {
+					"fields": {
+						"normal": {
+							"button_size": {
+								"value": "m"
+							},
+							"button_style": {
+								"value": "primary"
+							}
+						}
+					}
+				},
 				"value": "Shop Now"
 			},
 			"settings": {
 				"enabled": 1
-			},
-			"textsettings": {
-				"fields": {
-					"normal": {
-						"button_size": {
-							"value": "s"
-						},
-						"button_style": {
-							"value": "primary"
-						}
-					}
-				}
 			},
 			"value": "Shop Now"
 		},
@@ -9792,9 +9894,6 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 					"normal": {
 						"heading_style": {
 							"value": "display-3"
-						},
-						"heading_tag": {
-							"value": "h1"
 						}
 					}
 				}
@@ -9984,7 +10083,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		"type": "select"
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-product-carousel" resources="retain"/><FlexComponent_Add><Code>mmx-product-carousel</Code><Name>Product Carousel</Name><Version>10.05.00</Version><Category>product-carousel</Category><ResourceGroupCode>mmx-product-carousel</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="507" viewBox="0 0 1600 507">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-product-carousel" resources="retain"/><FlexComponent_Add><Code>mmx-product-carousel</Code><Name>Product Carousel</Name><Version>10.06.00</Version><Category>product-carousel</Category><ResourceGroupCode>mmx-product-carousel</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="507" viewBox="0 0 1600 507">
   <defs>
     <clipPath id="clip-path">
       <rect width="1438" height="338" fill="none"/>
@@ -10054,10 +10153,12 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
 
 <mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
-<mvt:item name="head" param="css:mmx-hero-slider" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
@@ -10098,8 +10199,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
 	</mvt:if>
-</mmx-product-carousel>
-]]></InstanceTemplate><Properties>[
+</mmx-product-carousel>]]></InstanceTemplate><Properties>[
 	{
 		"can_disable": true,
 		"code": "heading",
@@ -10641,8 +10741,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		}
 	}
-}
-</Defaults><AdvancedProperties>[
+}</Defaults><AdvancedProperties>[
 	{
 		"code": "spacing",
 		"prompt": "Spacing",
@@ -10872,7 +10971,7 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 		]
 	}
 ]
-</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-category-carousel" resources="retain"/><FlexComponent_Add><Code>mmx-category-carousel</Code><Name>Category Carousel</Name><Version>10.05.00</Version><Category>category-carousel</Category><ResourceGroupCode>mmx-category-carousel</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="471" viewBox="0 0 1600 471">
+</AdvancedProperties></FlexComponent_Add><FlexComponent_Delete code="mmx-category-carousel" resources="retain"/><FlexComponent_Add><Code>mmx-category-carousel</Code><Name>Category Carousel</Name><Version>10.06.00</Version><Category>category-carousel</Category><ResourceGroupCode>mmx-category-carousel</ResourceGroupCode><Preview><![CDATA[<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="471" viewBox="0 0 1600 471">
   <defs>
     <clipPath id="clip-path">
       <rect width="1438" height="302" fill="none"/>
@@ -10947,17 +11046,20 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 ]]></Preview><InitializationTemplate><![CDATA[<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
 
 <mvt:item name="head" param="css:mmx-base" />
-<mvt:item name="head" param="css:mmx-text" />
-<mvt:item name="head" param="css:mmx-button" />
-<mvt:item name="head" param="css:mmx-hero" />
-<mvt:item name="head" param="css:mmx-hero-slider" />
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+</template>
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
 <mvt:item name="head" param="js:mmx-hero-slider" />
-<mvt:item name="head" param="js:mmx-category-carousel" />]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Render Component</mvt:comment>
+<mvt:item name="head" param="js:mmx-category-carousel" />
+]]></InitializationTemplate><InstanceTemplate><![CDATA[<mvt:comment>Render Component</mvt:comment>
 <mmx-category-carousel
 	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
@@ -11851,6 +11953,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -11859,6 +11966,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -12348,11 +12460,21 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overlay_opacity": {
 				"value": "0"
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "wrap"
 			}
@@ -12507,6 +12629,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -12515,6 +12642,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -12850,11 +12982,21 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overlay_opacity": {
 				"value": "0"
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -13223,6 +13365,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -13231,6 +13378,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -13367,6 +13519,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -13375,6 +13532,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -13552,6 +13714,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -13560,6 +13727,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -14121,6 +14293,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -14129,6 +14306,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -14744,11 +14926,21 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overlay_opacity": {
 				"value": "0"
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "wrap"
 			}
@@ -14903,6 +15095,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"column_count": {
 				"value": "auto"
 			},
@@ -14911,6 +15108,11 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}
@@ -15246,11 +15448,21 @@ In This Space" transform="translate(120 367)" fill="#494a53" font-size="48" font
 			"value": "light"
 		},
 		"desktop": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overlay_opacity": {
 				"value": "0"
 			}
 		},
 		"mobile": {
+			"background_color": {
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"overflow_behavior": {
 				"value": "scroll"
 			}

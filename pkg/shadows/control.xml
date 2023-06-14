@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.05.00</Version>
+	<Version>10.06.00</Version>
 	<MinimumMerchantVersion>10.05.00</MinimumMerchantVersion>
-	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.05.00</Description>
+	<MinimumMivaScriptVersion>5.37</MinimumMivaScriptVersion>
+	<Description>Shadows ReadyTheme v10.06.00</Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
@@ -2583,6 +2583,7 @@
 		</CustomerFields_Update>
 		<CacheSettings_Update>
 			<Settings>
+				<Parameter name="gclid" mode="ignore" />
 				<Parameter name="utm_medium" mode="ignore" />
 				<Parameter name="utm_source" mode="ignore" />
 				<Parameter name="utm_campaign" mode="ignore" />
@@ -2886,7 +2887,7 @@
 			<Global>Yes</Global>
 			<Active>No</Active>
 			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</File_Path>
 		</CSSResource_Add>
 		<CSSResource_Delete code="square-payment" />
 		<CSSResource_Add>
@@ -2905,36 +2906,17 @@
 				</Attribute>
 			</Attributes>
 			<Template><![CDATA[<mvt:if expr="'square' CIN g.PaymentMethod">
-	<!--
-	/**
-	 * These styles help make the Square payment fields look more like the other input fields associated with the ReadyTheme.
-	 */
-	 -->
-	.t-square-payment-form label {
-		display: block;
-		font-size: 0.75rem;
-		margin-bottom: 0.25em;
+	.t-square-payment-form__fields {
+		background: var(--gray-100);
+		border-radius: calc(var(--default-border-radius) * 2);
+		padding: 1.25rem;
+		min-width: 250px; /* matches square's .sq-card-wrapper min-width */
 	}
 
-	.t-square-payment-form .sq-input {
-		background-color: #fff;
-		border: 1px solid #c0c0c0;
-		border-radius: 0.125em;
-		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
-		display: block;
-		font-size: 1rem;
-		margin-bottom: 0.5em;
-		outline: 0;
-		transition: box-shadow 0.25s ease, border-color 0.25s ease;
-		width: 100%;
-	}
-
-	.t-square-payment-form .sq-input--focus {
-		border-color: #003b6f;
-	}
-
-	.t-square-payment-form .sq-input--error {
-		border-color: #f02;
+	@media (min-width: 48em) {
+		.t-square-payment-form__fields {
+			max-width: 350px;
+		}
 	}
 </mvt:if>
 ]]></Template>
@@ -2981,7 +2963,7 @@
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/core.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/core.css</File_Path>
 		</CSSResource_Add>
 		<CSSResource_Delete code="extensions" />
 		<CSSResource_Add>
@@ -3003,7 +2985,7 @@
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/extensions.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions.css</File_Path>
 		</CSSResource_Add>
 		<CSSResource_Delete code="theme" />
 		<CSSResource_Add>
@@ -3025,7 +3007,7 @@
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/theme.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.css</File_Path>
 		</CSSResource_Add>
 		<CSSResource_Delete code="edit-basket-attributes" />
 		<CSSResource_Add>
@@ -3150,7 +3132,7 @@
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.05.00';
+	mivaJS.ReadyThemeVersion = '10.06.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -3181,7 +3163,7 @@
 			<Global>Yes</Global>
 			<Active>Yes</Active>
 			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/core.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/core.js</File_Path>
 		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="extensions" />
 		<JavaScriptResource_Add>
@@ -3190,7 +3172,7 @@
 			<Global>Yes</Global>
 			<Active>Yes</Active>
 			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/extensions.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions.js</File_Path>
 		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="theme" />
 		<JavaScriptResource_Add>
@@ -3199,7 +3181,7 @@
 			<Global>Yes</Global>
 			<Active>Yes</Active>
 			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/theme.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.js</File_Path>
 		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="contact" />
 		<JavaScriptResource_Add>
@@ -3208,7 +3190,7 @@
 			<Global>No</Global>
 			<Active>Yes</Active>
 			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/extensions/contact/contact.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</File_Path>
 		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="GTM-dataLayer" />
 		<JavaScriptResource_Add>
@@ -3791,7 +3773,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-base" />
@@ -3806,7 +3788,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResource_Delete code="mmx-text" />
@@ -3829,7 +3811,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-text" />
@@ -3844,7 +3826,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResource_Delete code="mmx-button" />
@@ -3867,7 +3849,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-button" />
@@ -3882,7 +3864,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<ResourceGroup_Delete code="mmx-hero" />
@@ -3909,7 +3891,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-hero" />
@@ -3924,7 +3906,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResourceXGroup_Assign code="mmx-hero" group_code="mmx-hero" />
@@ -3953,7 +3935,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-hero-slider" />
@@ -3968,7 +3950,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResourceXGroup_Assign code="mmx-hero-slider" group_code="mmx-hero-slider" />
@@ -3997,7 +3979,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-image-across" />
@@ -4012,7 +3994,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResourceXGroup_Assign code="mmx-image-across" group_code="mmx-image-across" />
@@ -4033,7 +4015,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<JavaScriptResourceXGroup_Assign code="mmx-image-and-text" group_code="mmx-image-and-text" />
@@ -4061,7 +4043,7 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-text-editor" />
@@ -4076,7 +4058,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResourceXGroup_Assign code="mmx-text-editor" group_code="mmx-text-editor" />
@@ -4105,7 +4087,8 @@ dataLayer.push({
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</File_Path>
+			<File_Path>
+				%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
 		<JavaScriptResource_Delete code="mmx-featured-product" />
@@ -4120,7 +4103,8 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</File_Path>
+			<File_Path>
+				%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<CSSResourceXGroup_Assign code="mmx-featured-product" group_code="mmx-featured-product" />
@@ -4142,7 +4126,7 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</File_Path>
+			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<JavaScriptResourceXGroup_Assign code="mmx-video" group_code="mmx-video" />
@@ -4170,7 +4154,8 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</File_Path>
+			<File_Path>
+				%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<JavaScriptResourceXGroup_Assign code="mmx-product-carousel"
@@ -4191,7 +4176,8 @@ dataLayer.push({
 					<Value>text/javascript</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</File_Path>
+			<File_Path>
+				%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</File_Path>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<JavaScriptResourceXGroup_Assign code="mmx-category-carousel"
@@ -4256,12 +4242,6 @@ dataLayer.push({
 			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__572x400.png</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.css</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.js</Name>
-		</File>
-		<File>
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/img_cvv.png</Name>
 		</File>
 		<File>
@@ -4283,82 +4263,110 @@ dataLayer.push({
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_visa.png</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.css</Name>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/core.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.js</Name>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/core.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</Name>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.css</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.js</Name>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</Name>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.js</Name>
+		</File>
+		<File>
+			<Name>
+				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</Name>
 		</File>
 	</ExternalFiles>
 </SKINFile>

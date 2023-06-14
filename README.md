@@ -4,6 +4,10 @@ This repo contains copies of the extracted shadows.pkg as well as code from `$ m
 
 ## Versions
 
+### 10.06
+
+* 10.06.00 -  [Diff](https://github.com/mivaecommerce/shadows/compare/10.05.00...10.06.00) | [mmt source](https://github.com/mivaecommerce/shadows/tree/10.06.00/mmt) | [pkg source](https://github.com/mivaecommerce/shadows/tree/10.06.00/pkg/shadows) | [shadows.pkg](https://github.com/mivaecommerce/shadows/raw/10.06.00/pkg/shadows.pkg)
+
 ### 10.05
 
 * 10.05.00 -  [Diff](https://github.com/mivaecommerce/shadows/compare/10.04.00...10.05.00) | [mmt source](https://github.com/mivaecommerce/shadows/tree/10.05.00/mmt) | [pkg source](https://github.com/mivaecommerce/shadows/tree/10.05.00/pkg/shadows) | [shadows.pkg](https://github.com/mivaecommerce/shadows/raw/10.05.00/pkg/shadows.pkg)
