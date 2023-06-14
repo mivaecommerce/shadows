@@ -16,6 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -32,22 +33,22 @@
 						<div class="c-form-list__item c-form-list__item--full">
 							<p class="u-text-bold">Please enter your new password.</p>
 							<mvt:if expr="g.Affiliate_Password_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="Affiliate_PasswordResetNewPassword">New Password</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="Affiliate_PasswordResetNewPassword">New Password</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Affiliate_PasswordResetNewPassword">New Password</label>
+								<label class="c-form-label u-text-medium is-required" for="Affiliate_PasswordResetNewPassword">New Password</label>
 							</mvt:if>
 							<input id="Affiliate_PasswordResetNewPassword" class="c-form-input c-form-input--large" type="password" name="Affiliate_PasswordResetNewPassword" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<mvt:if expr="g.Affiliate_VerifyPassword_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="Affiliate_PasswordResetVerifyNewPassword">Confirm Password</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="Affiliate_PasswordResetVerifyNewPassword">Confirm Password</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="Affiliate_PasswordResetVerifyNewPassword">Confirm Password</label>
+								<label class="c-form-label u-text-medium is-required" for="Affiliate_PasswordResetVerifyNewPassword">Confirm Password</label>
 							</mvt:if>
-							<input id="Affiliate_PasswordResetVerifyNewPassword" class="c-form-input c-form-input--large" type="password" name="Affiliate_PasswordResetVerifyNewPassword" required>
+							<input id="Affiliate_PasswordResetVerifyNewPassword" class="c-form-input" type="password" name="Affiliate_PasswordResetVerifyNewPassword" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
-							<input class="c-button c-button--large u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Update" title="Click Here to Change Your Password">
+							<input class="c-button" type="submit" value="Update" title="Click Here to Change Your Password">
 						</div>
 					</div>
 				</fieldset>

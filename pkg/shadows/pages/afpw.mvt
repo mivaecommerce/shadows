@@ -16,6 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -23,8 +24,8 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<p class="x-messages x-messages--borderless x-messages--with-icon">
-				<span class="x-messages__icon u-icon-info u-color-gray-30" aria-hidden="true">&nbsp;</span>
+			<p class="x-messages x-messages--info x-messages--with-icon">
+				<span class="x-messages__icon u-icon-info" aria-hidden="true">&nbsp;</span>
 				<span>Enter the login associated with your account.<br><br>If you do not remember your login, please contact customer support.</span>
 			</p>
 			<br>
@@ -34,10 +35,10 @@
 					<input type="hidden" name="Action" value="AFPW">
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Affiliate_Code">Affiliate Login</label>
-							<div class="c-control-group">
-								<input id="l-Affiliate_Code" class="c-form-input c-form-input--large c-control-group__field" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required>
-								<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Submit">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Affiliate_Code">Affiliate Login</label>
+							<div class="c-form-inline-set">
+								<input id="l-Affiliate_Code" class="c-form-input" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required>
+								<input class="c-button" type="submit" value="Submit">
 							</div>
 						</div>
 					</div>

@@ -1,6 +1,6 @@
 {
     "active": 1,
-    "css_class": "u-text-regular u-text-revert",
+    "css_class": "t-helpful-info u-text-medium",
     "descrip": "This section appears on the basket and checkout pages.",
     "name": "Helpful Info",
     "wrap_div": 1

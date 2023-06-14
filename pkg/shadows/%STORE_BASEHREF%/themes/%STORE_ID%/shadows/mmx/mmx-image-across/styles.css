@@ -1,0 +1,160 @@
+/* ==========================================================================
+   MMX / IMAGE ACROSS
+   ========================================================================== */
+
+mmx-image-across {
+	display: block;
+}
+
+.mmx-image-across {
+	display: block;
+	overflow-x: auto;
+	text-align: var(--mmx-image-across__text-align);
+}
+
+slot[name="title"]::slotted(*) {
+	margin: 0 auto 3%;
+}
+
+.mmx-image-across__images {
+	--mmx-image-across__gap: clamp(16px, calc(8vw / var(--mmx-image-across__columns)), 32px);
+
+	display: grid;
+	grid-template-columns: repeat(var(--mmx-image-across__columns), 1fr);
+	gap: var(--mmx-image-across__gap);
+}
+
+
+/* Overflow: Scroll
+   =========================================== */
+.mmx-image-across__images-overflow--scroll {
+	/*
+		--mmx-image-across__peek-base-amount
+			Base amount we should peek; regardless of if we are/aren't peeking
+
+		--mmx-image-across__peak-is-active
+			returns 1 if images > columns
+			returns 0 if columns <= images
+
+		--mmx-image-across__peek
+			The amount of peek to show accounting for if we are/aren't peeking
+			(based on the image & column count)
+	*/
+	--mmx-image-across__peek-base-amount: 15vw;
+	--mmx-image-across__peak-is-active: min(max(var(--mmx-image-across__image-count) - var(--mmx-image-across__columns), 0), 1);
+	--mmx-image-across__peek: calc(var(--mmx-image-across__peak-is-active) * var(--mmx-image-across__peek-base-amount));
+	--mmx-image-across__gap-per-column: calc((var(--mmx-image-across__gap) * (var(--mmx-image-across__columns) - 1)) / var(--mmx-image-across__columns));
+	--mmx-image-across__image-width: calc((100% - var(--mmx-image-across__peek)) / var(--mmx-image-across__columns) - var(--mmx-image-across__gap-per-column));
+
+	grid-template-columns: repeat(var(--mmx-image-across__image-count), var(--mmx-image-across__image-width));
+	overflow-x: auto;
+	scroll-snap-type: x mandatory;
+}
+
+.mmx-image-across__images-overflow--scroll > slot[name="image"]::slotted(*) {
+	scroll-snap-align: start;
+}
+
+@media screen and (min-width: 40em) {
+	.mmx-image-across__images-overflow--scroll {
+		--mmx-image-across__peek-base-amount: 10vw;
+	}
+}
+
+
+/* Overflow: Wrap: Mobile Columns
+   =========================================== */
+@media screen and (max-width: 40em) {
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--2,
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--3,
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--4 {
+		--mmx-image-across__columns: 1;
+	}
+
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--5,
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--6,
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--7 {
+		--mmx-image-across__columns: 2;
+	}
+
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--8 {
+		--mmx-image-across__columns: 3;
+	}
+}
+
+
+/* Overflow: Wrap: Tablet Columns
+   =========================================== */
+@media screen and (min-width: 40em) and (max-width: 75em) {
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--6 {
+		--mmx-image-across__columns: 3;
+	}
+
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--7,
+	.mmx-image-across__images-overflow--wrap.mmx-image-across__images-columns--8 {
+		--mmx-image-across__columns: 4;
+	}
+}
+
+
+/* Overflow: Scroll > Mobile Columns
+   =========================================== */
+@media screen and (max-width: 40em) {
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--2,
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--3,
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--4,
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--5 {
+		--mmx-image-across__columns: 1;
+	}
+
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--6 {
+		--mmx-image-across__columns: 2;
+	}
+
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--7,
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--8 {
+		--mmx-image-across__columns: 3;
+	}
+}
+
+
+/* Overflow: Scroll > Tablet Columns
+   =========================================== */
+@media screen and (min-width: 40em) and (max-width: 75em) {
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--6 {
+		--mmx-image-across__columns: 4;
+	}
+
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--7,
+	.mmx-image-across__images-overflow--scroll.mmx-image-across__images-columns--8 {
+		--mmx-image-across__columns: 5;
+	}
+}
+
+/* Responsive Heights for Mobile
+   =========================================== */
+mmx-image-across {
+	--mmx-hero--size--l: 240px;
+	--mmx-hero--size--m: 180px;
+	--mmx-hero--size--s: 160px;
+}
+
+/* Responsive Heights for Tablet
+   =========================================== */
+@media screen and (min-width: 48em) {
+	mmx-image-across {
+		--mmx-hero--size--l: 400px;
+		--mmx-hero--size--m: 240px;
+		--mmx-hero--size--s: 200px;
+	}
+}
+
+/* Responsive Heights for Desktop
+   =========================================== */
+@media screen and (min-width: 75em) {
+	mmx-image-across {
+		--mmx-hero--size--l: 640px;
+		--mmx-hero--size--m: 400px;
+		--mmx-hero--size--s: 240px;
+	}
+}

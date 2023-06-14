@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "1ec9eada779cfe5742d6c6047993d2b7",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/our-catalog.html\" target=\"_self\">Shop All</a>",
             "link_dest": "CTLG",
             "link_targ": "_self",
@@ -12,11 +12,11 @@
         },
         {
             "active": 1,
-            "id": "8e8685e6544f0e89a64f61218a15560c",
+            "id": "",
             "items": [
                 {
                     "active": 1,
-                    "id": "18f50b4b005d6f7eb346e0e5dace5e8a",
+                    "id": "",
                     "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sub-category-1.html\" target=\"_self\">Subcategory 1</a>",
                     "link_dest": "sub-cat-1",
                     "link_targ": "_self",
@@ -26,7 +26,7 @@
                 },
                 {
                     "active": 1,
-                    "id": "b76053f738ca13620f9ba7a56326fb42",
+                    "id": "",
                     "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sub-category-2.html\" target=\"_self\">Subcategory 2</a>",
                     "link_dest": "sub-cat-2",
                     "link_targ": "_self",
@@ -44,11 +44,11 @@
         },
         {
             "active": 1,
-            "id": "8a9848057cbf84a471c704b81c6a4c88",
+            "id": "",
             "items": [
                 {
                     "active": 1,
-                    "id": "67e4f7c0395393d0014c73b9e874cd6c",
+                    "id": "",
                     "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sub-category-3.html\" target=\"_self\">Subcategory 3</a>",
                     "link_dest": "sub-cat-3",
                     "link_targ": "_self",
@@ -58,7 +58,7 @@
                 },
                 {
                     "active": 1,
-                    "id": "56d2c8adf6450fe2678a30aa11bfcd89",
+                    "id": "",
                     "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sub-category-4.html\" target=\"_self\">Subcategory 4</a>",
                     "link_dest": "Sub-cat-4",
                     "link_targ": "_self",
@@ -76,7 +76,7 @@
         },
         {
             "active": 1,
-            "id": "f10b95eb6218391d66d82421c0a4d964",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-3.html\" target=\"_self\">Category 3</a>",
             "link_dest": "category_03",
             "link_targ": "_self",
@@ -86,7 +86,7 @@
         },
         {
             "active": 1,
-            "id": "b86b11fc2d9b584d3d9ea57396a716a0",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-4.html\" target=\"_self\">Category 4</a>",
             "link_dest": "category_04",
             "link_targ": "_self",
@@ -96,7 +96,7 @@
         },
         {
             "active": 1,
-            "id": "0492f7bde7a4fe8976d2701177023bc1",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sale.html\" target=\"_self\">Sale</a>",
             "link_dest": "sale",
             "link_targ": "_self",
@@ -106,7 +106,7 @@
         },
         {
             "active": 1,
-            "id": "ad54316bb737a41c582f626a20ea6fc4",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/featured-products.html\" target=\"_self\">Featured Products</a>",
             "link_dest": "featured",
             "link_targ": "_self",

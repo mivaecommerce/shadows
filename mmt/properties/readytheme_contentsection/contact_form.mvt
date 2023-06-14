@@ -63,13 +63,13 @@
 					<mvt:assign name="l.settings:humanOne" value="random('25')" />
 					<mvt:assign name="l.settings:humanTwo" value="random('25')" />
 					<mvt:assign name="l.settings:verify" value="crypto_base64_encode(l.settings:humanOne + l.settings:humanTwo)" />
-					<input class="c-form-input c-control-group__field u-text-center" type="text" value="&mvte:humanOne; + &mvte:humanTwo; =" disabled aria-label="What is &mvte:humanOne; + &mvte:humanTwo;?">
+					<input class="c-form-input c-control-group__field u-color-black u-text-medium u-text-center" type="text" value="&mvte:humanOne; + &mvte:humanTwo; =" disabled aria-label="What is &mvte:humanOne; + &mvte:humanTwo;?">
 					<input id="contactHuman" class="c-form-input c-control-group__field" type="text" inputmode="decimal" name="human" value="" required aria-required="true">
 					<input type="hidden" name="verify" value="&mvte:verify;">
 				</div>
 			</div>
 			<div class="c-form-list__item">
-				<button class="c-button c-button--full c-button--large u-bg-gray-50 u-color-white u-text-uppercase" data-hook="contact-form__submit" type="submit" name="submit" disabled>Submit</button>
+				<button class="c-button c-button--full" data-hook="contact-form__submit" type="submit" name="submit" disabled>Submit</button>
 			</div>
 		</div>
 	</fieldset>

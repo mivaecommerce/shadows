@@ -3,16 +3,15 @@
  * https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
  */
 function functionExtender(container, funcName, prepend, append) {
-	(function () {
-		'use strict';
+	(() => {
 		let cachedFunction = container[funcName];
 
-		container[funcName] = function () {
+		container[funcName] = function (...args) {
 			if (prepend) {
 				prepend.apply(this);
 			}
 
-			let result = cachedFunction.apply(this, arguments);
+			let result = cachedFunction.apply(this, args);
 
 			if (append) {
 				append.apply(this);
@@ -29,7 +28,7 @@ function functionExtender(container, funcName, prepend, append) {
 functionExtender(
 	MMSearchField.prototype,
 	'Event_Keydown',
-	function () {},
+	() => {},
 	function () {
 		let tabTarget = this.selected_item;
 
@@ -42,11 +41,9 @@ functionExtender(
 );
 
 
-MMSearchField.prototype.onMenuAppendHeader = function () {
-	return null;
-};
+MMSearchField.prototype.onMenuAppendHeader = () => null;
 
-MMSearchField.prototype.onMenuAppendItem = function (data) {
+MMSearchField.prototype.onMenuAppendItem = data => {
 	let searchResult;
 
 	searchResult = newElement('li', {'class': 'x-search-preview__entry'}, null, null);
@@ -59,31 +56,45 @@ MMSearchField.prototype.onMenuAppendItem = function (data) {
 
 MMSearchField.prototype.Menu_Item_Select = function (item) {
 	this.selected_item = item;
-	this.menu_items.forEach(function (menuItem) {
+	this.menu_items.forEach(menuItem => {
 		menuItem.setAttribute('aria-selected', 'false');
 	});
 
 	if (item !== null) {
-		this.selected_item.className = classNameAdd( this.selected_item, 'mm_searchfield_menuitem_selected' );
+		this.selected_item.className = classNameAdd(this.selected_item, 'mm_searchfield_menuitem_selected');
 		this.selected_item.setAttribute('aria-selected', 'true');
 	}
 };
 
-MMSearchField.prototype.onMenuAppendStoreSearch = function (search_value) {
+MMSearchField.prototype.onMenuAppendStoreSearch = search_value => {
 	let searchAll;
 
 	searchAll = newElement('li', {'class': 'x-search-preview__search-all'}, null, null);
-	searchAll.element_text = newTextNode('Search store for product "' + search_value + '"', searchAll);
+	searchAll.element_text = newTextNode(`Search store for product "${search_value}"`, searchAll);
 	searchAll.setAttribute('aria-selected', 'false');
 	searchAll.setAttribute('role', 'option');
 
 	return searchAll;
 };
 
-MMSearchField.prototype.onFocus = function () {
-	this.element_menu.classList.toggle('x-search-preview--open');
-};
+MMSearchField.prototype.Menu_Show = function () {
+	if (this.menu_visible) {
+		return;
+	}
 
-MMSearchField.prototype.onBlur = function () {
-	this.element_menu.classList.toggle('x-search-preview--open');
-};
+	this.menu_visible = true;
+	this.element_menu.classList.add('x-search-preview--open');
+}
+
+MMSearchField.prototype.Menu_Hide = function () {
+	if (!this.menu_visible) {
+		return;
+	}
+
+	this.menu_visible = false;
+	this.element_menu.classList.remove('x-search-preview--open');
+}
+
+MMSearchField.prototype.onFocus = () => null;
+
+MMSearchField.prototype.onBlur = () => null;

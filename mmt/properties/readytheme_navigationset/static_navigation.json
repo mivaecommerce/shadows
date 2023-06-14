@@ -3,7 +3,7 @@
     "items": [
         {
             "active": 1,
-            "id": "a07d6a65bc84425158d75fc499ef6c13",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/about-us.html\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -13,7 +13,7 @@
         },
         {
             "active": 1,
-            "id": "25e5d27d3167358b3676da6667730245",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/contact-us.html\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -23,7 +23,7 @@
         },
         {
             "active": 1,
-            "id": "8b519c01820bc3701fb366a60779cc48",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html\" target=\"_self\">Frequently Asked Questions</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
@@ -33,7 +33,7 @@
         },
         {
             "active": 1,
-            "id": "46a831c5cd6a0f2b17b9108202746469",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/privacy-policy.html\" target=\"_self\">Privacy Policy</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
@@ -43,7 +43,7 @@
         },
         {
             "active": 1,
-            "id": "f69dec2d1770e5ccd260c6e5ff779187",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/shipping-and-return-policy.html\" target=\"_self\">Shipping &amp; Return Policy</a>",
             "link_dest": "SARP",
             "link_targ": "_self",

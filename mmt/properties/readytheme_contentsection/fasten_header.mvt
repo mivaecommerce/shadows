@@ -1,6 +1,6 @@
 <mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
-<section class="o-layout o-layout--align-center x-fasten-header &mvte:global:checkout_hidden;" data-hook="fasten-header" aria-hidden="true">
-	<div class="o-layout__item u-width-2 u-width-1--w u-text-left t-site-header__logo">
+<section class="o-layout o-layout--align-center o-layout--wide x-fasten-header &mvte:global:Session:shadows:checkout_hidden;" data-hook="fasten-header" aria-hidden="true">
+	<div class="o-layout__item u-width-2 u-text-left t-site-header__logo">
 		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
 			<mvt:if expr="l.settings:readytheme:fasten_header_logo:active">
 				<img class="x-fasten-header__logo-image" src="&mvte:readytheme:fasten_header_logo:image;" alt="&mvte:readytheme:fasten_header_logo:image_alt;" loading="lazy" width="&mvte:readytheme:fasten_header_logo:image_wdth;" height="&mvte:readytheme:fasten_header_logo:image_hght;">
@@ -15,8 +15,30 @@
 		</a>
 	</div>
 	
-	<div class="o-layout__item u-width-2 u-width-4--w">
-		<a class="c-button c-button--clear c-button--flush u-bg-transparent u-color-gray-50 u-text-medium u-text-uppercase" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop Our Catalog <span class="u-font-tiny u-icon-chevron-right" aria-hidden="true"></span></a>
+	<div class="o-layout__item u-width-3 u-width-2--xl x-fasten-header__navigation">
+		<details class="x-fasten-header__navigation-element" tabindex="-1">
+			<summary tabindex="-1"><span>Shop Categories</span></summary>
+			<nav>
+				<mvt:do name="l.result" file="g.Module_Library_DB" value="CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
+				<ul class="x-fasten-header__navigation-list">
+					<mvt:assign name="l.settings:parent_count" value="0"/>
+					<mvt:foreach iterator="parent" array="parent_categories">
+						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
+						<mvt:assign name="l.settings:parent_count" value="l.settings:parent_count + 1"/>
+						<mvt:if expr="l.settings:parent_count LE 5">
+							<li class="x-fasten-header__navigation-item">
+								<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
+							</li>
+						</mvt:if>
+					</mvt:foreach>
+					<mvt:if expr="miva_array_elements(l.settings:parent_categories) GT 5">
+						<li class="x-fasten-header__navigation-item">
+							<a class="x-fasten-header__navigation-link" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop All</a>
+						</li>
+					</mvt:if>
+				</ul>
+			</nav>
+		</details>
 	</div>
 	
 	<div class="o-layout__item u-width-4">
@@ -25,8 +47,9 @@
 				<legend>Product Search</legend>
 				<div class="c-form-list">
 					<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
-						<input class="c-form-input c-control-group__field u-bg-transparent u-border-none" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview--fasten" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required aria-label="Secondary Product Search" tabindex="-1">
-						<button class="c-button c-button--large c-control-group__button u-bg-transparent u-color-gray-50 u-icon-search u-border-none" type="submit" aria-label="Perform Secondary Product Search" tabindex="-1"></button>
+						<span class="u-bg-white u-color-gray-50 u-icon-search t-site-header__search-icon" aria-hidden="true"></span>
+						<input class="c-form-input c-control-group__field u-bg-transparent u-border-none t-site-header__search-field" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview--fasten" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required aria-label="Secondary Product Search" tabindex="-1">
+						<button class="c-button c-control-group__button u-bg-transparent u-color-gray-50 u-border-none t-site-header__search-button" type="submit" aria-label="Perform Secondary Product Search" tabindex="-1">Search</button>
 					</div>
 				</div>
 			</fieldset>
@@ -34,19 +57,23 @@
 		</form>
 	</div>
 
-	<div class="o-layout__item u-flex u-width-4 u-width-3--w t-site-header__masthead-links">
+	<div class="o-layout__item u-flex u-width-3 u-width-4--xl t-site-header__masthead-links">
 		<mvt:if expr="g.Basket:cust_id EQ 0">
-			<a class="u-color-gray-50 u-text-uppercase t-global-account-toggle" href="&mvte:urls:LOGN:secure;" tabindex="-1">
-				<span class="u-icon-user" aria-hidden="true"></span> Sign In
+			<a href="&mvte:urls:LOGN:secure;" class="t-global-account-toggle" tabindex="-1">
+				Sign In <span class="u-icon-chevron-down"  aria-hidden="true"></span>
 			</a>
 		<mvt:else>
-			<a class="u-color-gray-50 u-text-uppercase t-global-account-toggle" href="&mvte:urls:ACLN:secure;" tabindex="-1">
-				<span class="u-icon-user" aria-hidden="true"></span> My Account
+			<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle" tabindex="-1">
+				My Account <span class="u-icon-user"  aria-hidden="true"></span>
 			</a>
 		</mvt:if>
-		<a class="u-color-gray-50 u-text-uppercase t-site-header__basket-link" data-hook="open-mini-basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
-			<span class="u-icon-cart-empty" data-hook="open-mini-basket" aria-hidden="true"></span> Cart
-			<span class="u-bg-gray-50 u-color-white t-site-header__basket-link-quantity" data-hook="open-mini-basket mini-basket-count">&mvte:global_minibasket:basket_count;</span>
+		<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
+			<mvt:if expr="l.settings:global_minibasket:basket_count GT 0">
+				<span class="u-icon-cart-full" aria-hidden="true"></span>
+			<mvt:else>
+				<span class="u-icon-cart-empty" aria-hidden="true"></span>
+			</mvt:if>
+			<span class="t-site-header__basket-link-quantity" data-hook="mini-basket-count">&mvte:global_minibasket:basket_count;</span>
 		</a>
 	</div>
 </section>

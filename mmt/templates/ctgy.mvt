@@ -16,8 +16,46 @@
 <body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
 	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="header_sequence" />
+		</div>
+	</section>
+	
+	<mvt:foreach array="cattree_categories" iterator="category_children">
+		<mvt:if expr="l.settings:category_children:parent_id EQ l.settings:category:id">
+			<mvt:assign name="l.null" value="miva_array_insert(l.settings:subcategories, l.settings:category_children, -1)" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:assign name="l.settings:subcategory_count" value="miva_array_elements(l.settings:subcategories)" />
+	<mvt:if expr="l.settings:subcategories GT 0">
+		<h1 class="c-heading-charlie t-category-name u-text-center">&mvt:category:name;</h1><br>
+		<section class="x-subcategory-list">
+			<mvt:foreach iterator="subcategory" array="subcategories">
+				<div class="x-subcategory-list__item">
+					<figure class="x-subcategory-list__figure">
+						<picture class="x-subcategory-list__picture">
+							<mvt:if expr="l.settings:subcategory:image">
+								<img class="x-subcategory-list__image" src="&mvte:subcategory:image;" width="152" height="152 alt="&mvte:subcategory:name;">
+							<mvt:else>
+								<img class="x-subcategory-list__image" src="data:image/svg+xml,%3Csvg width='152' height='152' xmlns='http://www.w3.org/2000/svg' viewBox='0 0 152 152'%3E%3Cpath fill='%23f5f5f5' data-name='0d367bee-2150-44fe-b46c-dba210b5b7ca' d='M0 0h152v152H0V0z'/%3E%3Cpath fill='%23eaeaea' d='M68.101 74.981c1.153-2.107 3.655-3.133 5.029-5.101 1.301-1.869 1.401-4.276 1.648-6.537s.812-4.724 2.652-6.06c2.234-1.624 5.439-.95 7.925-2.156 2.295-1.114 3.53-3.585 4.807-5.798s3.03-4.525 5.563-4.843c2.039-.256 4.083.877 6.111.527 1.967-.34 3.406-1.964 4.971-3.204s3.891-2.12 5.475-.907c1.856 1.418 1.081 4.496-.563 6.156s-3.915 2.658-5.331 4.516-1.84 4.382-3.575 5.918c-2.578 2.285-7.183 1.617-9.117 4.467-1.631 2.411-.304 5.995-1.955 8.396-1.981 2.882-7.104 2.425-8.593 5.59-.779 1.657-.174 3.617-.477 5.42-.402 2.398-2.326 4.207-4.139 5.828a18.192 18.192 0 0 1-4.154 3.049c-3.253 1.544-7.462.381-7.025-3.611.385-3.516-.978-8.501.745-11.661' data-name='Path 6820'/%3E%3Cpath fill='%23fff' d='M70.088 86.43a.132.132 0 0 1-.044-.008.116.116 0 0 1-.066-.149v-.003a79.664 79.664 0 0 1 39.575-42.031.116.116 0 0 1 .163.03.12.12 0 0 1-.029.164.198.198 0 0 1-.03.015 79.431 79.431 0 0 0-39.459 41.908.116.116 0 0 1-.103.072' data-name='Path 6821'/%3E%3Cpath fill='%23fff' d='M77.638 74.111a.116.116 0 0 1-.054-.222 28.391 28.391 0 0 1 8.597-2.851.116.116 0 0 1 .045.232h-.007a28.137 28.137 0 0 0-8.525 2.827.135.135 0 0 1-.058.015' data-name='Path 6822'/%3E%3Cpath fill='%23fff' d='M79.773 67.373h-.023a.116.116 0 0 1-.092-.137 21.145 21.145 0 0 0 .196-7.24.116.116 0 1 1 .232-.035 21.35 21.35 0 0 1-.197 7.322.116.116 0 0 1-.116.095' data-name='Path 6823'/%3E%3Cpath fill='%23fff' d='M85.111 63.897a.116.116 0 0 1-.055-.221 13.513 13.513 0 0 1 6.821-1.532.116.116 0 0 1 .111.122.119.119 0 0 1-.122.111 13.254 13.254 0 0 0-6.7 1.505.122.122 0 0 1-.055.013' data-name='Path 6824'/%3E%3Cpath fill='%23fff' d='M90.679 55.772a.119.119 0 0 1-.047-.01.116.116 0 0 1-.058-.155 32.194 32.194 0 0 0 2.154-7.073.116.116 0 0 1 .143-.086.116.116 0 0 1 .089.127 32.368 32.368 0 0 1-2.17 7.124.116.116 0 0 1-.104.072' data-name='Path 6825'/%3E%3Cpath fill='%23fff' d='M103.634 54.502a.116.116 0 0 1-.063-.018 9.254 9.254 0 0 0-6.76-1.286.116.116 0 0 1-.046-.232 9.492 9.492 0 0 1 6.932 1.321.116.116 0 0 1 .037.161.116.116 0 0 1-.104.054' data-name='Path 6826'/%3E%3Cpath fill='%23fff' d='M100.113 48.958a.116.116 0 0 1-.116-.116.109.109 0 0 1 .027-.077 12.4 12.4 0 0 0 1.66-2.658.116.116 0 0 1 .216.093v.005a12.596 12.596 0 0 1-1.692 2.708.116.116 0 0 1-.091.044' data-name='Path 6827'/%3E%3Cpath fill='%23fff' d='M107.534 47.721a.113.113 0 0 1-.046-.009 4.09 4.09 0 0 0-2.194-.261.116.116 0 0 1-.137-.09.116.116 0 0 1 .092-.137h.007a4.266 4.266 0 0 1 2.321.274.116.116 0 0 1-.046.227' data-name='Path 6828'/%3E%3Cpath fill='%23ddd' d='M61.327 78.482c.812-2.003 2.263-3.913 2.05-6.064-.29-2.939-3.508-4.778-4.298-7.624-.769-2.767.95-5.569 2.7-7.841s3.74-4.757 3.572-7.621c-.155-2.679-2.191-5.008-2.205-7.687-.01-2.35 1.541-4.409 3.22-6.052s3.602-3.125 4.722-5.194c1.164-2.139 1.334-4.672 2.27-6.904s3.201-4.329 5.535-3.669c1.973.555 2.97 2.81 3.056 4.856s-.471 4.074-.392 6.118c.161 4.135 2.87 8.354 1.204 12.153-1.363 3.098-5.372 4.913-5.527 8.293-.116 2.565 2.13 4.628 2.683 7.132 1.09 4.917-4.474 9.101-4.488 14.139-.007 2.977 1.932 5.609 2.495 8.528a9.613 9.613 0 0 1-3.314 9.1c-8.033 6.517-16.62-3.417-13.283-11.671' data-name='Path 6829'/%3E%3Cpath fill='%23fff' d='M67.841 84.984h-.007a.116.116 0 0 1-.111-.126 295.015 295.015 0 0 1 10.371-59.761.121.121 0 0 1 .144-.081.116.116 0 0 1 .081.144 294.698 294.698 0 0 0-10.358 59.714.116.116 0 0 1-.116.11' data-name='Path 6830'/%3E%3Cpath fill='%23fff' d='M69.679 78.653a.116.116 0 0 1-.058-.015.116.116 0 0 1-.049-.158 33.039 33.039 0 0 1 4.793-6.711.119.119 0 0 1 .166-.017.116.116 0 0 1 .015.166l-.007.009a32.758 32.758 0 0 0-4.757 6.665.121.121 0 0 1-.104.061' data-name='Path 6831'/%3E%3Cpath fill='%23fff' d='M67.908 68.974a.116.116 0 0 1-.116-.095 29.207 29.207 0 0 0-3.779-9.682.116.116 0 0 1 .2-.122 29.458 29.458 0 0 1 3.809 9.764.116.116 0 0 1-.092.137h-.023' data-name='Path 6832'/%3E%3Cpath fill='%23fff' d='M70.97 64.648a.12.12 0 0 1-.116-.12.125.125 0 0 1 .017-.058 35.939 35.939 0 0 1 6.266-7.658.116.116 0 0 1 .166.006.119.119 0 0 1-.006.168 35.791 35.791 0 0 0-6.224 7.605.12.12 0 0 1-.104.058' data-name='Path 6833'/%3E%3Cpath fill='%23fff' d='M70.801 52.251a.116.116 0 0 1-.116-.095 36.188 36.188 0 0 0-3.465-9.794.116.116 0 1 1 .188-.14.101.101 0 0 1 .017.032 36.459 36.459 0 0 1 3.486 9.859.116.116 0 0 1-.092.138h-.023' data-name='Path 6834'/%3E%3Cpath fill='%23fff' d='M74.056 47.324a.116.116 0 0 1-.116-.116.124.124 0 0 1 .02-.067 19.515 19.515 0 0 1 5.98-5.723.116.116 0 0 1 .122.2 19.28 19.28 0 0 0-5.907 5.65.116.116 0 0 1-.098.052' data-name='Path 6835'/%3E%3Cpath fill='%23fff' d='M72.895 40.224a.116.116 0 0 1-.116-.113 17.386 17.386 0 0 0-1.437-6.338.116.116 0 1 1 .216-.095 17.637 17.637 0 0 1 1.45 6.428.116.116 0 0 1-.113.121l-.001-.003z' data-name='Path 6836'/%3E%3Cpath fill='%23fff' d='M77.059 33.183a.116.116 0 0 1-.103-.174 8.011 8.011 0 0 1 3.35-3.265.116.116 0 0 1 .104.208 7.762 7.762 0 0 0-3.249 3.17.116.116 0 0 1-.104.061' data-name='Path 6837'/%3E%3Cpath fill='%23ccc' d='M69.898 75.797c-1.208-2.078-3.74-3.03-5.169-4.961-1.351-1.827-1.519-4.235-1.826-6.487s-.944-4.699-2.819-5.986c-2.277-1.558-5.462-.799-7.977-1.937-2.326-1.052-3.636-3.486-4.964-5.665s-3.154-4.439-5.691-4.686c-2.046-.2-4.061.99-6.092.696-1.973-.29-3.458-1.869-5.057-3.066s-3.945-2.017-5.499-.758c-1.823 1.468-.961 4.523.721 6.139s3.984 2.549 5.453 4.362 1.961 4.33 3.739 5.817c2.639 2.215 7.226 1.42 9.236 4.219 1.699 2.366.47 5.984 2.181 8.337 2.06 2.828 7.167 2.228 8.745 5.351.825 1.633.274 3.612.623 5.403.468 2.389 2.441 4.142 4.298 5.713a18.108 18.108 0 0 0 4.235 2.933c3.295 1.454 7.469.177 6.922-3.802-.482-3.505.744-8.528-1.063-11.635' data-name='Path 6838'/%3E%3Cpath fill='%23fff' d='M68.224 87.297a.12.12 0 0 1-.104-.072 79.423 79.423 0 0 0-40.596-40.803.116.116 0 0 1-.058-.155.116.116 0 0 1 .153-.058 79.671 79.671 0 0 1 40.716 40.923.116.116 0 0 1-.058.155.106.106 0 0 1-.047.01' data-name='Path 6839'/%3E%3Cpath fill='%23fff' d='M65.14 78.2h-.012a.116.116 0 0 1-.104-.127l.45-4.323a.116.116 0 0 1 .232.024l-.453 4.323a.116.116 0 0 1-.116.104' data-name='Path 6840'/%3E%3Cpath fill='%23fff' d='M60.34 75.193a.116.116 0 0 1-.051-.012 28.146 28.146 0 0 0-8.604-2.589.116.116 0 0 1 .032-.232 28.43 28.43 0 0 1 8.671 2.611.116.116 0 0 1 .058.154.116.116 0 0 1-.106.068' data-name='Path 6841'/%3E%3Cpath fill='%23fff' d='M58.024 68.516a.116.116 0 0 1-.116-.092 21.401 21.401 0 0 1-.4-7.315.12.12 0 0 1 .131-.104.116.116 0 0 1 .103.131 21.145 21.145 0 0 0 .395 7.233.116.116 0 0 1-.085.143.174.174 0 0 1-.027 0' data-name='Path 6842'/%3E%3Cpath fill='%23fff' d='M52.587 65.187a.122.122 0 0 1-.053-.012 13.238 13.238 0 0 0-6.735-1.32.116.116 0 0 1-.126-.11.116.116 0 0 1 .107-.125 13.483 13.483 0 0 1 6.856 1.344.116.116 0 0 1-.053.224' data-name='Path 6843'/%3E%3Cpath fill='%23fff' d='M46.798 57.219a.12.12 0 0 1-.101-.069 32.453 32.453 0 0 1-2.366-7.06.116.116 0 0 1 .227-.066l.003.017a32.181 32.181 0 0 0 2.348 7.011.116.116 0 0 1-.053.154.12.12 0 0 1-.05.012' data-name='Path 6844'/%3E%3Cpath fill='%23fff' d='M33.814 56.306a.116.116 0 0 1-.116-.116.116.116 0 0 1 .051-.096 9.488 9.488 0 0 1 6.893-1.515.116.116 0 0 1-.019.232.097.097 0 0 1-.021-.003 9.253 9.253 0 0 0-6.723 1.481.127.127 0 0 1-.066.02' data-name='Path 6845'/%3E%3Cpath fill='%23fff' d='M37.186 50.668a.119.119 0 0 1-.089-.041 12.604 12.604 0 0 1-1.766-2.658.116.116 0 1 1 .208-.105 12.432 12.432 0 0 0 1.734 2.611.116.116 0 0 1-.012.165.116.116 0 0 1-.077.03' data-name='Path 6846'/%3E%3Cpath fill='%23fff' d='M29.729 49.633a.116.116 0 0 1-.12-.116.116.116 0 0 1 .071-.111 4.268 4.268 0 0 1 2.312-.338.116.116 0 0 1-.03.232 4.078 4.078 0 0 0-2.181.321.129.129 0 0 1-.049.01' data-name='Path 6847'/%3E%3Cpath fill='%23fff' d='M69.08 104.586a17.405 17.405 0 0 1-17.405-17.405v-7.55h34.807v7.55a17.405 17.405 0 0 1-17.405 17.405' data-name='Path 6848'/%3E%3Cpath fill='%23767676' d='M110.166 66.152a.497.497 0 0 1-.497-.497v-9.042a10.87 10.87 0 1 0-21.741 0v9.039a.496.496 0 1 1-.992 0v-9.039a11.863 11.863 0 1 1 23.728 0v9.039a.497.497 0 0 1-.497.497' data-name='Path 6849'/%3E%3Cpath fill='%23ddd' d='M113.719 60.664H59.501l-5.091 71.634h54.218l5.091-71.634z' data-name='Path 6850'/%3E%3Cpath fill='%23ccc' d='M108.629 132.297h19.584l-3.776-71.634h-11.781l-4.027 71.634z' data-name='Path 6851'/%3E%3Cpath fill='%23ccc' d='m128.213 132.297-10.556-12.345-9.028 12.345h19.584z' data-name='Path 6852'/%3E%3Cpath fill='%23ddd' d='M117.656 119.952V60.663h6.78l3.779 71.634-10.559-12.345z' data-name='Path 6853'/%3E%3Cpath fill='%23fff' d='M77.813 65.655a2.339 2.339 0 1 1-2.339-2.339 2.338 2.338 0 0 1 2.339 2.339' data-name='Path 6854'/%3E%3Cpath fill='%23fff' d='M100.552 65.655a2.339 2.339 0 1 1-2.339-2.339 2.338 2.338 0 0 1 2.339 2.339' data-name='Path 6855'/%3E%3Cpath fill='%23767676' d='M98.208 66.152a.497.497 0 0 1-.497-.497v-9.042a10.87 10.87 0 1 0-21.741 0v9.039a.496.496 0 1 1-.992 0v-9.039a11.863 11.863 0 1 1 23.728 0v9.039a.497.497 0 0 1-.497.497' data-name='Path 6856'/%3E%3Cpath fill='%23ccc' d='M92.096 102.58v27.333a2.379 2.379 0 0 1-2.372 2.384H51.115a2.379 2.379 0 0 1-2.384-2.384V102.58h43.365z' data-name='Path 6857'/%3E%3Cpath fill='%23b9b9b9' d='m87.633 100.953 4.463 1.624H48.73l4.475-1.624-4.475-1.455h43.366l-4.463 1.455z' data-name='Path 6858'/%3E%3Cpath fill='%23767676' d='M53.2 100.958v1.617h-4.467l4.467-1.617z' data-name='Path 6859'/%3E%3Cpath fill='%23b9b9b9' d='M48.728 99.501v3.08l4.471-1.624-4.471-1.456z' data-name='Path 6860'/%3E%3Cpath fill='%23767676' d='M87.629 100.958v1.624H92.1l-4.471-1.624z' data-name='Path 6861'/%3E%3Cpath fill='%23b9b9b9' d='M92.1 99.501v3.08l-4.471-1.624 4.471-1.456z' data-name='Path 6862'/%3E%3Cpath fill='%23fff' d='M60.506 107.46a1.783 1.783 0 1 1-1.783-1.783 1.783 1.783 0 0 1 1.783 1.783' data-name='Path 6863'/%3E%3Cpath fill='%23fff' d='M83.886 107.46a1.783 1.783 0 1 1-1.783-1.783 1.783 1.783 0 0 1 1.783 1.783' data-name='Path 6864'/%3E%3Cpath fill='%23767676' d='M82.103 108.006a.546.546 0 0 1-.546-.546v-5.693a11.144 11.144 0 1 0-22.288 0v5.693a.546.546 0 1 1-1.091 0v-5.693a12.235 12.235 0 1 1 24.471 0v5.693a.546.546 0 0 1-.546.546' data-name='Path 6865'/%3E%3C/svg%3E" width="152" height="152" alt="&mvte:subcategory:name;">
+							</mvt:if>
+						</picture>
+						<figcaption class="x-subcategory-list__figure-caption">
+							<a class="x-subcategory-list__link" href="&mvte:subcategory:link;">
+								<span class="x-subcategory-list__name">&mvt:subcategory:name;</span>
+							</a>
+						</figcaption>
+					</figure>
+				</div>
+			</mvt:foreach>
+		</section>
+	<mvt:else>
+		<h1 class="c-heading-charlie t-category-name">&mvt:category:name;</h1><br>
+	</mvt:if>
+
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l o-layout--wide">
-		<div class="o-layout__item u-width-12 u-width-9--l">
+		<div class="o-layout__item u-width-12 u-width-10--l">
 			<mvt:if expr="NOT ISNULL l.settings:category_title:image">
 				<section class="o-layout u-hidden u-flex--l">
 					<div class="o-layout__item">
@@ -28,7 +66,7 @@
 					</div>
 				</section>
 			</mvt:if>
-	
+
 			<section class="o-layout">
 				<div class="o-layout__item">
 					<mvt:item name="hdft" param="header" />
@@ -41,32 +79,7 @@
 				</div>
 			</section>
 
-			<mvt:foreach array="cattree_categories" iterator="category_children">
-				<mvt:if expr="l.settings:category_children:parent_id EQ l.settings:category:id">
-					<mvt:assign name="l.null" value="miva_array_insert(l.settings:subcategories, l.settings:category_children, -1)" />
-				</mvt:if>
-			</mvt:foreach>
-			<mvt:assign name="l.settings:subcategory_count" value="miva_array_elements(l.settings:subcategories)" />
-			<mvt:if expr="l.settings:subcategories GT 0">
-				<section class="o-layout u-grids-2 u-grids-3--l x-product-list">
-					<mvt:foreach iterator="subcategory" array="subcategories">
-						<div class="o-layout__item u-text-center x-product-list__item">
-							<a class="u-block x-product-list__link" href="&mvte:subcategory:link;">
-								<figure class="x-product-list__figure">
-									<mvt:if expr="l.settings:subcategory:image">
-										<img class="x-product-list__image" src="&mvte:subcategory:image;" alt="&mvte:subcategory:name;" loading="lazy">
-									</mvt:if>
-									<figcaption>
-										<strong class="x-product-list__name u-text-uppercase">&mvte:subcategory:name;</strong>
-									</figcaption>
-								</figure>
-							</a>
-						</div>
-					</mvt:foreach>
-				</section>
-			<mvt:else>
-				<mvt:item name="category_listing" />
-			</mvt:if>
+			<mvt:item name="category_listing" />
 			
 			<section class="o-layout">
 				<div class="o-layout__item">
@@ -80,22 +93,16 @@
 				</div>
 			</section>
 		</div>
-		<aside class="o-layout__item u-width-12 u-width-3--l">
-			<section class="o-layout u-hidden--l">
-				<div class="o-layout__item">
-					<p class="c-heading-delta u-text-bold u-text-center u-text-uppercase">&mvte:category:name;</p>
-					<mvt:if expr="NOT ISNULL l.settings:category_title:image">
-						<div class="x-hero" title="&mvte:category:name;">
-							<img src="&mvte:category_title:image;" alt="&mvte:category:name;" loading="lazy">
-						</div>
-						<br>
-					</mvt:if>
-				</div>
-			</section>
+		<aside class="o-layout__item u-width-12 u-width-2--l">
 			<mvt:item name="category_tree" />
 			<mvt:item name="facets" />
 		</aside>
-		
+	</section>
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="footer_sequence" />
+		</div>
 	</section>
 	<mvt:item name="hdft" param="global_footer" />
 </body>

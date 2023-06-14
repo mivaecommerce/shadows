@@ -1,9 +1,9 @@
-<Page_Update code="BASK"><Item code="content"><Template><![CDATA[<mvt:if expr="miva_array_elements(l.settings:has_attributes) GT 0">
+<Page_Update code="BASK"><Item code="content"><Template><![CDATA[<mvt:if expr="l.settings:should_show_dialog">
 	<div class="c-dialog x-edit-basket-attributes" data-dialog="edit-basket-attributes" aria-hidden="true">
 		<div class="c-dialog__overlay" tabindex="-1">
 			<div class="c-dialog__container" aria-labelledby="edit-basket-attributes__title" aria-modal="true" role="dialog">
 				<header class="c-dialog__header">
-					<p id="edit-basket-attributes__title" class="c-dialog__title c-heading-charlie">Update Item</p>
+					<p id="edit-basket-attributes__title" class="c-dialog__title c-heading-echo">Update Item</p>
 					<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 				</header>
 				<div class="c-dialog__content" data-dialog-content>
@@ -12,12 +12,12 @@
 							<img data-product-image alt="" src=""/>
 						</picture>
 						<div class="x-edit-basket-attributes__product-info">
-							<p class="c-heading-delta">
-								<span class="u-font-tiny" data-product-code></span><br>
+							<p class="c-heading-foxtrot">
+								<span class="u-font-tiny u-text-regular" data-product-code></span><br>
 								<span data-product-name></span>
 							</p>
-							<p class="c-heading-charlie">
-								<strong id="price-value" class="x-edit-basket-attributes__product-price"></strong> <span class="c-heading--subheading">ea.</span>&nbsp;&nbsp;<span class="c-heading--subheading u-text-strike" id="price-value-additional"></span>
+							<p class="c-heading-echo">
+								<strong id="price-value" class="x-edit-basket-attributes__product-price"></strong> <span class="c-heading--subheading">ea.</span>&nbsp;&nbsp;<span class="c-heading--subheading--small u-text-regular u-text-strike" id="price-value-additional"></span>
 							</p>
 						</div>
 						<fieldset>
@@ -30,17 +30,18 @@
 								<div class="c-form-list__item c-form-list__item--full" data-product-attributes></div>
 								<div class="c-form-list__item">
 									<label class="u-hide-visually" for="l-quantity">Quantity</label>
-									<div class="x-quantify c-control-group" data-hook="quantify">
-										<button aria-label="Decrease Quantity" class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-subtract" data-action="decrement"></button>
-										<input class="c-form-input c-control-group__field u-text-center u-color-gray-40" id="l-quantity" data-max="" data-min="0" data-step="1" inputmode="decimal" name="Quantity" type="text" value="">
-										<button aria-label="Increase Quantity" class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-add" data-action="increment"></button>
+									<div class="x-quantify" data-hook="quantify">
+										<button class="c-button c-button--secondary u-icon-subtract" type="button" data-action="decrement" aria-label="Decrease Quantity"></button>
+										<input id="l-quantity" class="c-form-input u-text-center u-color-gray-40" data-max="" data-min="1" data-step="1" type="text" inputmode="decimal" name="Quantity" value="1">
+										<button class="c-button c-button--secondary u-icon-add" type="button" data-action="increment" aria-label="Increase Quantity"></button>
 									</div>
 								</div>
 								<div class="c-form-list__item c-form-list__item--full">
 									<div class="x-messages x-messages--info x-product-layout-purchase__inventory-message" data-hook="response-messages"></div>
 								</div>
 								<div class="c-form-list__item c-form-list__item--full">
-									<input class="c-button c-button--full c-button--large u-bg-gray-50 u-font-small u-text-medium u-text-uppercase" type="submit" value="Update Item">
+									<br>
+									<input class="c-button c-button--full" type="submit" value="Update Item">
 								</div>
 							</div>
 						</fieldset>
@@ -49,5 +50,4 @@
 			</div>
 		</div>
 	</div>
-</mvt:if>
-]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+</mvt:if>]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

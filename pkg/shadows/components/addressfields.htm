@@ -1,87 +1,90 @@
-<Page_Update code="CADA"><Item code="addressfields"><Template><![CDATA[<form method="post" action="&mvte:urls:CABK:secure;" data-validate-address>
+<Page_Update code="CADA"><Item code="addressfields"><Template><![CDATA[<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<hr class="c-keyline">
+<br>
+<form method="post" action="&mvte:urls:CABK:secure;" data-validate-address>
 	<input type="hidden" name="Action" value="ICSA" />
 	<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 	<mvt:if expr="NOT ISNULL l.settings:addressfields:validated_addresses">
 		<input type="hidden" name="Address_Validated" value="1" />
 	</mvt:if>
 	
-	<p class="c-heading-echo u-text-bold u-text-uppercase">Recipient</p>
+	<p class="c-heading-foxtrot">Recipient</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Description_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Description">Nickname</label>
-			<input id="l-Address_Description" class="c-form-input c-form-input--large" type="text" name="Address_Description" value="&mvte:global:Address_Description;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Description">Nickname</label>
+			<input id="l-Address_Description" class="c-form-input" type="text" name="Address_Description" value="&mvte:global:Address_Description;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_FirstName_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_FirstName">First Name</label>
-			<input id="l-Address_FirstName" class="c-form-input c-form-input--large" type="text" name="Address_FirstName" value="&mvte:global:Address_FirstName;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_FirstName">First Name</label>
+			<input id="l-Address_FirstName" class="c-form-input" type="text" name="Address_FirstName" value="&mvte:global:Address_FirstName;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_LastName_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_LastName">Last Name</label>
-			<input id="l-Address_LastName" class="c-form-input c-form-input--large" type="text" name="Address_LastName" value="&mvte:global:Address_LastName;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_LastName">Last Name</label>
+			<input id="l-Address_LastName" class="c-form-input" type="text" name="Address_LastName" value="&mvte:global:Address_LastName;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Company_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Company">Company (Optional)</label>
-			<input id="l-Address_Company" class="c-form-input c-form-input--large" type="text" name="Address_Company" value="&mvte:global:Address_Company;">
+			<label class="c-form-label u-text-italic" for="l-Address_Company">Company (Optional)</label>
+			<input id="l-Address_Company" class="c-form-input" type="text" name="Address_Company" value="&mvte:global:Address_Company;">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Email_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Email">Email Address</label>
-			<input id="l-Address_Email" class="c-form-input c-form-input--large" type="email" name="Address_Email" value="&mvte:global:Address_Email;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Email">Email Address</label>
+			<input id="l-Address_Email" class="c-form-input" type="email" name="Address_Email" value="&mvte:global:Address_Email;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Phone_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Phone">Phone Number</label>
-			<input id="l-Address_Phone" class="c-form-input c-form-input--large" type="tel" name="Address_Phone" value="&mvte:global:Address_Phone;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Phone">Phone Number</label>
+			<input id="l-Address_Phone" class="c-form-input" type="tel" name="Address_Phone" value="&mvte:global:Address_Phone;" required aria-required="true">
 		</div>
 		<!--div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Fax_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Fax">Fax Number</label>
-			<input id="l-Address_Fax" class="c-form-input c-form-input--large" type="tel" name="Address_Fax" value="&mvte:global:Address_Fax;">
+			<label class="c-form-label u-text-italic" for="l-Address_Fax">Fax Number</label>
+			<input id="l-Address_Fax" class="c-form-input" type="tel" name="Address_Fax" value="&mvte:global:Address_Fax;">
 		</div-->
 	</div>
 	<hr class="c-keyline">
 	
-	<p class="c-heading-echo u-text-bold u-text-uppercase">Address</p>
+	<p class="c-heading-foxtrot">Address</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_Address1_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Address1">Address</label>
-			<input id="l-Address_Address1" class="c-form-input c-form-input--large" type="text" name="Address_Address1" value="&mvte:global:Address_Address1;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Address1">Address</label>
+			<input id="l-Address_Address1" class="c-form-input" type="text" name="Address_Address1" value="&mvte:global:Address_Address1;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Address2_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Address2">Address 2</label>
-			<input id="l-Address_Address2" class="c-form-input c-form-input--large" type="text" name="Address_Address2" value="&mvte:global:Address_Address2;">
+			<label class="c-form-label u-text-italic" for="l-Address_Address2">Address 2</label>
+			<input id="l-Address_Address2" class="c-form-input" type="text" name="Address_Address2" value="&mvte:global:Address_Address2;">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_City_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_City">City</label>
-			<input id="l-Address_City" class="c-form-input c-form-input--large" type="text" name="Address_City" value="&mvte:global:Address_City;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_City">City</label>
+			<input id="l-Address_City" class="c-form-input" type="text" name="Address_City" value="&mvte:global:Address_City;" required aria-required="true">
 		</div>
 		
 		<mvt:do name="l.state_datalist_count" file="g.Module_Library_DB" value="StateList_Load_All(l.state_datalist)"/>
 		<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
 		<mvt:if expr="g.States_Empty">
 			<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_State_Row;">
-				<label id="Address_State_label" class="c-form-label u-font-small u-text-bold is-required" for="Address_State">State/Province</label>
-				<input id="Address_State" class="c-form-input c-form-input--large" type="text" name="Address_State" value="&mvte:global:Address_State;" required aria-required="true" aria-describedby="ShippingInformation Address_State_label" autocomplete="address-level1">
+				<label id="Address_State_label" class="c-form-label u-text-medium is-required" for="Address_State">State/Province</label>
+				<input id="Address_State" class="c-form-input" type="text" name="Address_State" value="&mvte:global:Address_State;" required aria-required="true" aria-describedby="ShippingInformation Address_State_label" autocomplete="address-level1">
 			</div>
 		<mvt:else>
 			<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_State_Row;">
-				<label id="Address_StateSelect_label" class="c-form-label u-font-small u-text-bold is-required" for="Address_StateSelect">State/Province</label>
+				<label id="Address_StateSelect_label" class="c-form-label u-text-medium is-required" for="Address_StateSelect">State/Province</label>
 				<input name="Address_State" type="hidden" value="&mvte:global:Address_State;">
-				<input id="Address_StateSelect" class="c-form-input c-form-input--large" data-datalist list="Address_StateDatalist" name="Address_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Address_StateSelect;" required aria-required="true" autocomplete="address-level1">
+				<input id="Address_StateSelect" class="c-form-input" data-datalist list="Address_StateDatalist" name="Address_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Address_StateSelect;" required aria-required="true" autocomplete="address-level1">
 				<datalist id="Address_StateDatalist">
 					<mvt:foreach array="global:StateDatalist" iterator="StateData">
-						<option value="&mvt:StateData:code;">&mvt:StateData:name;</option>
+						<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
 					</mvt:foreach>
 				</datalist>
 			</div>
 		</mvt:if>
 		
-		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown c-form-input--large" data-mvt-id="Address_Country" data-mvt-autocomplete="country">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="Address_Country">Country</label>
+		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="Address_Country" data-mvt-autocomplete="country">
+			<label class="c-form-label u-text-medium is-required" for="Address_Country">Country</label>
 			<div class="c-form-select">
 				<mvt:item name="countries" param="Address_Country" />
 			</div>
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Zip_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Zip">Zip/Postal Code</label>
-			<input id="l-Address_Zip" class="c-form-input c-form-input--large" type="text" name="Address_Zip" value="&mvte:global:Address_Zip;">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Zip">Zip/Postal Code</label>
+			<input id="l-Address_Zip" class="c-form-input" type="text" name="Address_Zip" value="&mvte:global:Address_Zip;">
 		</div>
 	</div>
 	<hr class="c-keyline">
@@ -91,12 +94,12 @@
 			<mvt:if expr="g.Address_Default_Shipping">
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Shipping" value="1" checked>
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Shipping Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Shipping Address</span>
 				</label>
 			<mvt:else>
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Shipping" value="1">
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Shipping Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Shipping Address</span>
 				</label>
 			</mvt:if>
 		</div>
@@ -104,27 +107,25 @@
 			<mvt:if expr="g.Address_Default_Billing">
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Billing" value="1" checked>
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Billing Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Billing Address</span>
 				</label>
 			<mvt:else>
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Billing" value="1">
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Billing Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Billing Address</span>
 				</label>
 			</mvt:if>
 		</div>
 	</div>
 	
-	<ul class="o-list-inline">
-		<li class="o-list-inline__item">
-			<a class="c-button c-button--hollow c-button--large u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CABK:secure;">Cancel</a>
-		</li>
-		<li class="o-list-inline__item">
-			<input class="c-button c-button--large u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Save">
-		</li>
-	</ul>
-</form>
-]]></Template><Mode>customeraddress_add</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CADE"><Item code="addressfields"><Template><![CDATA[<form method="post" action="&mvte:urls:CABK:secure;" data-validate-address>
+	<div class="o-layout--justify-end c-form-inline-set">
+		<input class="c-button" type="submit" value="Save">
+		<a class="c-button c-button--secondary" href="&mvte:urls:CABK:secure;">Cancel</a>
+	</div>
+</form>]]></Template><Mode>customeraddress_add</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CADE"><Item code="addressfields"><Template><![CDATA[<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<hr class="c-keyline">
+<br>
+<form method="post" action="&mvte:urls:CABK:secure;" data-validate-address>
 	<input type="hidden" name="Action" value="UCSA" />
 	<input type="hidden" name="Address_ID" value="&mvte:global:Address_ID;" />
 	<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
@@ -132,123 +133,118 @@
 		<input type="hidden" name="Address_Validated" value="1" />
 	</mvt:if>
 	
-	<p class="c-heading-echo u-text-bold u-text-uppercase">Recipient</p>
+	<p class="c-heading-foxtrot">Recipient</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Description_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Description">Nickname</label>
-			<input id="l-Address_Description" class="c-form-input c-form-input--large" type="text" name="Address_Description" value="&mvte:global:Address_Description;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Description">Nickname</label>
+			<input id="l-Address_Description" class="c-form-input" type="text" name="Address_Description" value="&mvte:global:Address_Description;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_FirstName_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_FirstName">First Name</label>
-			<input id="l-Address_FirstName" class="c-form-input c-form-input--large" type="text" name="Address_FirstName" value="&mvte:global:Address_FirstName;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_FirstName">First Name</label>
+			<input id="l-Address_FirstName" class="c-form-input" type="text" name="Address_FirstName" value="&mvte:global:Address_FirstName;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_LastName_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_LastName">Last Name</label>
-			<input id="l-Address_LastName" class="c-form-input c-form-input--large" type="text" name="Address_LastName" value="&mvte:global:Address_LastName;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_LastName">Last Name</label>
+			<input id="l-Address_LastName" class="c-form-input" type="text" name="Address_LastName" value="&mvte:global:Address_LastName;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Company_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Company">Company (Optional)</label>
-			<input id="l-Address_Company" class="c-form-input c-form-input--large" type="text" name="Address_Company" value="&mvte:global:Address_Company;">
+			<label class="c-form-label u-text-italic" for="l-Address_Company">Company (Optional)</label>
+			<input id="l-Address_Company" class="c-form-input" type="text" name="Address_Company" value="&mvte:global:Address_Company;">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Email_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Email">Email Address</label>
-			<input id="l-Address_Email" class="c-form-input c-form-input--large" type="email" name="Address_Email" value="&mvte:global:Address_Email;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Email">Email Address</label>
+			<input id="l-Address_Email" class="c-form-input" type="email" name="Address_Email" value="&mvte:global:Address_Email;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Phone_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Phone">Phone Number</label>
-			<input id="l-Address_Phone" class="c-form-input c-form-input--large" type="tel" name="Address_Phone" value="&mvte:global:Address_Phone;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Phone">Phone Number</label>
+			<input id="l-Address_Phone" class="c-form-input" type="tel" name="Address_Phone" value="&mvte:global:Address_Phone;" required aria-required="true">
 		</div>
 		<!--div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Fax_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Fax">Fax Number</label>
-			<input id="l-Address_Fax" class="c-form-input c-form-input--large" type="tel" name="Address_Fax" value="&mvte:global:Address_Fax;">
+			<label class="c-form-label u-text-italic" for="l-Address_Fax">Fax Number</label>
+			<input id="l-Address_Fax" class="c-form-input" type="tel" name="Address_Fax" value="&mvte:global:Address_Fax;">
 		</div-->
-	</ul>
+	</div>
 	<hr class="c-keyline">
 	
-	<p class="c-heading-echo u-text-bold u-text-uppercase">Address</p>
+	<p class="c-heading-foxtrot">Address</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_Address1_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Address1">Address</label>
-			<input id="l-Address_Address1" class="c-form-input c-form-input--large" type="text" name="Address_Address1" value="&mvte:global:Address_Address1;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Address1">Address</label>
+			<input id="l-Address_Address1" class="c-form-input" type="text" name="Address_Address1" value="&mvte:global:Address_Address1;" required aria-required="true">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Address2_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-italic" for="l-Address_Address2">Address 2</label>
-			<input id="l-Address_Address2" class="c-form-input c-form-input--large" type="text" name="Address_Address2" value="&mvte:global:Address_Address2;">
+			<label class="c-form-label u-text-italic" for="l-Address_Address2">Address 2</label>
+			<input id="l-Address_Address2" class="c-form-input" type="text" name="Address_Address2" value="&mvte:global:Address_Address2;">
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_City_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_City">City</label>
-			<input id="l-Address_City" class="c-form-input c-form-input--large" type="text" name="Address_City" value="&mvte:global:Address_City;" required aria-required="true">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_City">City</label>
+			<input id="l-Address_City" class="c-form-input" type="text" name="Address_City" value="&mvte:global:Address_City;" required aria-required="true">
 		</div>
 		
 		<mvt:do name="l.state_datalist_count" file="g.Module_Library_DB" value="StateList_Load_All(l.state_datalist)"/>
 		<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
 		<mvt:if expr="g.States_Empty">
 			<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_State_Row;">
-				<label id="Address_State_label" class="c-form-label u-font-small u-text-bold is-required" for="Address_State">State/Province</label>
-				<input id="Address_State" class="c-form-input c-form-input--large" type="text" name="Address_State" value="&mvte:global:Address_State;" required aria-required="true" aria-describedby="ShippingInformation Address_State_label" autocomplete="address-level1">
+				<label id="Address_State_label" class="c-form-label u-text-medium is-required" for="Address_State">State/Province</label>
+				<input id="Address_State" class="c-form-input" type="text" name="Address_State" value="&mvte:global:Address_State;" required aria-required="true" aria-describedby="ShippingInformation Address_State_label" autocomplete="address-level1">
 			</div>
 		<mvt:else>
 			<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_State_Row;">
-				<label id="Address_StateSelect_label" class="c-form-label u-font-small u-text-bold is-required" for="Address_StateSelect">State/Province</label>
+				<label id="Address_StateSelect_label" class="c-form-label u-text-medium is-required" for="Address_StateSelect">State/Province</label>
 				<input name="Address_State" type="hidden" value="&mvte:global:Address_State;">
-				<input id="Address_StateSelect" class="c-form-input c-form-input--large" data-datalist list="Address_StateDatalist" name="Address_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Address_StateSelect;" required aria-required="true" autocomplete="address-level1">
+				<input id="Address_StateSelect" class="c-form-input" data-datalist list="Address_StateDatalist" name="Address_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Address_StateSelect;" required aria-required="true" autocomplete="address-level1">
 				<datalist id="Address_StateDatalist">
 					<mvt:foreach array="global:StateDatalist" iterator="StateData">
-						<option value="&mvt:StateData:code;">&mvt:StateData:name;</option>
+						<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
 					</mvt:foreach>
 				</datalist>
 			</div>
 		</mvt:if>
 		
-		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown c-form-input--large" data-mvt-id="Address_Country" data-mvt-autocomplete="country">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="Address_Country">Country</label>
+		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="Address_Country" data-mvt-autocomplete="country">
+			<label class="c-form-label u-text-medium is-required" for="Address_Country">Country</label>
 			<div class="c-form-select">
 				<mvt:item name="countries" param="Address_Country" />
 			</div>
 		</div>
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Zip_Row;">
-			<label class="c-form-label u-font-tiny u-text-uppercase u-text-bold is-required" for="l-Address_Zip">Zip/Postal Code</label>
-			<input id="l-Address_Zip" class="c-form-input c-form-input--large" type="text" name="Address_Zip" value="&mvte:global:Address_Zip;">
+			<label class="c-form-label u-text-medium is-required" for="l-Address_Zip">Zip/Postal Code</label>
+			<input id="l-Address_Zip" class="c-form-input" type="text" name="Address_Zip" value="&mvte:global:Address_Zip;">
 		</div>
 	</div>
 	<hr class="c-keyline">
 	
 	<div class="c-form-list">
 		<div class="c-form-list__item &mvte:global:Address_Default_Shipping_Row;">
-			<mvt:if expr="g.Address_Default_Shipping OR (g.Address_ID EQ g.Customer:ship_id)">
+			<mvt:if expr="g.Address_Default_Shipping">
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Shipping" value="1" checked>
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Shipping Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Shipping Address</span>
 				</label>
 			<mvt:else>
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Shipping" value="1">
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Shipping Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Shipping Address</span>
 				</label>
 			</mvt:if>
 		</div>
 		<div class="c-form-list__item &mvte:global:Address_Default_Billing_Row;">
-			<mvt:if expr="g.Address_Default_Billing OR (g.Address_ID EQ g.Customer:bill_id)">
+			<mvt:if expr="g.Address_Default_Billing">
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Billing" value="1" checked>
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Billing Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Billing Address</span>
 				</label>
 			<mvt:else>
 				<label class="c-form-checkbox">
 					<input class="c-form-checkbox__input" type="checkbox" name="Address_Default_Billing" value="1">
-					<span class="c-form-checkbox__caption u-font-tiny u-text-italic">Set as Default Billing Address</span>
+					<span class="c-form-checkbox__caption u-text-italic">Set as Default Billing Address</span>
 				</label>
 			</mvt:if>
 		</div>
 	</div>
 	
-	<ul class="o-list-inline">
-		<li class="o-list-inline__item">
-			<a class="c-button c-button--hollow c-button--large u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CABK:secure;">Cancel</a>
-		</li>
-		<li class="o-list-inline__item">
-			<input class="c-button c-button--large u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Save">
-		</li>
-	</ul>
-</form>
-]]></Template><Mode>customeraddress_edit</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+	<div class="o-layout--justify-end c-form-inline-set">
+		<input class="c-button" type="submit" value="Save">
+		<a class="c-button c-button--secondary" href="&mvte:urls:CABK:secure;">Cancel</a>
+	</div>
+</form>]]></Template><Mode>customeraddress_edit</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

@@ -23,17 +23,20 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<br>
 			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
 				<fieldset class="o-layout__item u-width-12 u-width-6--m">
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="RDGC" />
-					<p class="c-heading-delta u-text-bold">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></p>
+					<p class="c-heading-foxtrot">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></p>
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="l-GiftCertificate_Code">Enter Gift Certificate Code</label>
-							<div class="c-control-group">
-								<input id="l-GiftCertificate_Code" class="c-form-input c-form-input--large c-control-group__field" type="text" name="GiftCertificate_Code" value="&mvte:global:GiftCertificate_Code;" required>
-								<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Redeem" title="Click here to redeem your certificate code">
+							<label class="c-form-label u-text-medium is-required" for="l-GiftCertificate_Code">Enter Gift Certificate Code</label>
+							<div class="c-form-inline-set">
+								<input id="l-GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" value="&mvte:global:GiftCertificate_Code;" required>
+								<input class="c-button" type="submit" value="Redeem" title="Click here to redeem your certificate code">
 							</div>
 						</div>
 					</div>

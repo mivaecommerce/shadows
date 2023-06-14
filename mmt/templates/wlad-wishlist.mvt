@@ -1,3 +1,6 @@
+<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<hr class="c-keyline">
+<br>
 <form class="o-layout o-layout--justify-center" action="&mvte:urls:WISH:secure;" method="post">
 	<fieldset class="o-layout__item u-width-12 u-width-6--m">
 		<legend>&mvt:page:name;</legend>
@@ -5,7 +8,7 @@
 		<input type="hidden" name="WishList_ID" value="&mvte:global:WishList_ID;" />
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full &mvte:global:WishList_Title_Row;">
-				<label class="c-form-label u-text-bold is-required" for="l-WishList_Title">Title</label>
+				<label class="c-form-label u-text-medium is-required" for="l-WishList_Title">Title</label>
 				<input id="l-WishList_Title" class="c-form-input" type="text" name="WishList_Title" value="&mvte:global:WishList_Title;" required>
 			</div>
 			<div class="c-form-list__item c-form-list__item--full &mvte:global:WishList_Notes_Row;">

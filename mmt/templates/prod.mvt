@@ -43,6 +43,7 @@
 	
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<mvt:item name="header_sequence" />
 			<mvt:item name="hdft" param="header" />
 		</div>
 	</section>
@@ -57,7 +58,7 @@
 	<mvt:comment>Strip any HTML from the product description.</mvt:comment>
 	<mvt:assign name="l.settings:product:stripped_descrip" value="miva_html_strip(l.settings:product:descrip, '')"/>
 
-	<div itemscope itemtype="http://schema.org/Product">
+	<div itemscope itemtype="https://schema.org/Product">
 		<mvt:if expr="NOT ISNULL l.settings:product:sku">
 			<meta itemprop="mpn" content="&mvte:product:sku;" />
 			<meta itemprop="sku" content="&mvte:product:sku;" />
@@ -74,7 +75,7 @@
 		<mvt:else>
 			<meta itemprop="brand" content="&mvte:global:store:name;" />
 		</mvt:if>
-		<div itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+		<div itemprop="offers" itemscope itemtype="https://schema.org/Offer">
 			<meta itemprop="url" content="&mvte:product:link;" />
 			<mvt:if expr="NOT ISNULL l.settings:product:sku">
 				<meta itemprop="sku" content="&mvte:product:sku;" />
@@ -125,6 +126,7 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />
+			<mvt:item name="footer_sequence" />
 		</div>
 	</section>
 	

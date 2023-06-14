@@ -23,23 +23,26 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<br>
 			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:CEML:secure;" autocomplete="off">
 				<fieldset class="o-layout__item u-width-12 u-width-6--m">
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="CEML" />
 					<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
+					<p class="x-messages x-messages--info x-messages--with-icon">
+						<span class="x-messages__icon u-icon-info" aria-hidden="true">&nbsp;</span>
+						<span>For security purposes, please enter your current password.</span>
+					</p>
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<p class="x-messages x-messages--borderless x-messages--with-icon">
-								<span class="x-messages__icon u-icon-info u-color-gray-30" aria-hidden="true">&nbsp;</span>
-								<span>For security purposes, please enter your current password.</span>
-							</p>
 							<mvt:if expr="g.Customer_CurrentPassword_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="l-Customer_CurrentPassword">Current Password</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="l-Customer_CurrentPassword">Current Password</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="l-Customer_CurrentPassword">Current Password</label>
+								<label class="c-form-labelu-text-medium is-required" for="l-Customer_CurrentPassword">Current Password</label>
 							</mvt:if>
-							<input id="l-Customer_CurrentPassword" class="c-form-input c-form-input--large" type="password" name="Customer_CurrentPassword" required autocomplete="current-password" aria-required="true">
+							<input id="l-Customer_CurrentPassword" class="c-form-input" type="password" name="Customer_CurrentPassword" required autocomplete="current-password" aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<hr class="c-divider">
@@ -50,19 +53,19 @@
 								<span class="u-font-small">Old Email Address: &mvte:global:Customer:pw_email;</span>
 							</p>
 							<mvt:if expr="g.Customer_LoginEmail_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="l-Customer_LoginEmail">New Email Address</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="l-Customer_LoginEmail">New Email Address</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="l-Customer_LoginEmail">New Email Address</label>
+								<label class="c-form-label u-text-medium is-required" for="l-Customer_LoginEmail">New Email Address</label>
 							</mvt:if>
-							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="email" name="Customer_LoginEmail" required autocomplete="email" aria-required="true">
+							<input id="l-Customer_LoginEmail" class="c-form-input" type="email" name="Customer_LoginEmail" required autocomplete="email" aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<mvt:if expr="g.Customer_VerifyLoginEmail_Invalid">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required u-color-red" for="l-Customer_VerifyLoginEmail">Confirm Email Address</label>
+								<label class="c-form-label u-text-medium is-required u-color-red" for="l-Customer_VerifyLoginEmail">Confirm Email Address</label>
 							<mvt:else>
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="l-Customer_VerifyLoginEmail">Confirm Email Address</label>
+								<label class="c-form-label u-text-medium is-required" for="l-Customer_VerifyLoginEmail">Confirm Email Address</label>
 							</mvt:if>
-							<input id="l-Customer_VerifyLoginEmail" class="c-form-input c-form-input--large" type="email" name="Customer_VerifyLoginEmail" required autocomplete="email" aria-required="true">
+							<input id="l-Customer_VerifyLoginEmail" class="c-form-input" type="email" name="Customer_VerifyLoginEmail" required autocomplete="email" aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
 							<mvt:item name="buttons" param="Save" />

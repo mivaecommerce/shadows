@@ -23,39 +23,34 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l o-layout--no-wrap">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<p class="c-heading-delta u-text-bold u-text-uppercase">
+			<h1 class="c-heading-delta">
 				&mvte:wishlist:title;
 				<mvt:if expr="l.settings:wishlist:cust_id EQ g.Basket:cust_id AND g.Customer_Session_Verified">
 					<mvt:if expr="l.settings:wishlist:shared">
-						<strong class="c-heading--subheading"> [Public]</strong>
+						<strong class="c-heading--subheading--x-small"> [Public]</strong>
 					<mvt:else>
-						<strong class="c-heading--subheading u-color-red"> [Private]</strong>
+						<strong class="c-heading--subheading--x-small u-color-red"> [Private]</strong>
 					</mvt:if>
 				</mvt:if>
-			</p>
+			</h1>
 			<mvt:if expr="NOT ISNULL l.settings:wishlist:notes">
 				<p>Notes: &mvte:wishlist:notes;</p>
 			</mvt:if>
 			<mvt:if expr="l.settings:wishlist:cust_id EQ g.Basket:cust_id AND g.Customer_Session_Verified">
-				<p class="u-font-small u-text-uppercase">
-					<span class="c-control-group">
-						<a class="c-button c-control-group__button u-bg-gray-50" href="&mvte:urls:WLED:auto_sep;WishList_ID=&mvta:wishlist:id;">Edit</a>
-						<a class="c-button c-button--hollow c-control-group__button u-bg-white u-color-gray-50" href="&mvte:urls:WLST:secure_sep;Action=DWSH&WishList_ID=&mvta:wishlist:id;" onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone\x0A\x0AContinue?' ) ) return false;">Delete</a>
-					</span>
+				<p class="c-form-inline-set">
+					<a class="c-button" href="&mvte:urls:WLED:auto_sep;WishList_ID=&mvta:wishlist:id;">Edit</a>
+					<a class="c-button c-button--secondary" href="&mvte:urls:WLST:secure_sep;Action=DWSH&WishList_ID=&mvta:wishlist:id;" onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone\x0A\x0AContinue?' ) ) return false;">Delete</a>
 				</p>
 				<mvt:if expr="l.settings:wishlist:shared">
-					<p class="x-messages">
-						<span class="u-font-small">
-							If you would like to share your wish list via email, copy this link:
-							<code class="u-block u-color-black u-text-bold">&mvte:urls:_self:auto_sep;WishList_ID=&mvte:global:WishList_ID;</code>
-						</span>
+					<p class="x-messages x-messages--info">
+						If you would like to share your wish list via email, copy this link: <code class="u-block u-color-black u-text-bold">&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;</code>
 					</p>
 				</mvt:if>
 			</mvt:if>
 			
 			<mvt:item name="wishlistitems" />
 			
-			<mvt:if expr="l.settings:wishlistitems:item_count">
+			<mvt:if expr="l.settings:wishlistitems:item_count AND ISNULL g.Edit_Wish">
 				<form method="post" action="&mvte:urls:BASK:secure;">
 					<fieldset>
 						<legend>Add All &mvte:wishlist:title; Items to Cart</legend>

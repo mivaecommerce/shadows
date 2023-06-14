@@ -1,40 +1,36 @@
-<section class="x-mini-basket" data-hook="mini-basket" data-item-count="&mvt:global_minibasket:basket_count;" data-subtotal="&mvt:global_minibasket:formatted_total;" aria-modal="true" tabindex="-1">
+<section class="x-mini-basket" data-hook="mini-basket" data-item-count="&mvte:global_minibasket:basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;" aria-modal="true" tabindex="-1">
 	<div class="x-mini-basket__content u-bg-white" data-hook="mini-basket__content" aria-describedby="mb-description" aria-label="Your Cart Summary" role="dialog" tabindex="0">
 		<header>
+			<mvt:assign name="l.settings:global_minibasket:complete_subtotal" value="0"/>
+			<mvt:foreach iterator="item" array="global_minibasket:groups">
+				<mvt:assign name="l.settings:global_minibasket:complete_subtotal" value="l.settings:global_minibasket:complete_subtotal + l.settings:item:subtotal_comprehensive"/>
+			</mvt:foreach>
+			<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:global_minibasket:formatted_complete_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:global_minibasket:complete_subtotal)"/>
 			<div class="x-mini-basket__header">
-				<strong id="mb-description">My Cart: &mvt:global_minibasket:basket_count; item(s)</strong>
-				<button class="c-button u-bg-gray-40 u-icon-cross" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
+				<strong id="mb-description" class="x-mini-basket__summary">Your Cart (&mvte:global_minibasket:basket_count;)</strong>
+				<button class="u-icon-cross" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
 			</div>
-			<hr class="c-keyline">
+			<mvt:if expr="NOT l.settings:global_minibasket:empty">
+				<div class="x-mini-basket__subtotal">
+					<span>Subtotal:</span>
+					<span>&mvt:global_minibasket:formatted_complete_subtotal;</span>
+				</div>
+			</mvt:if>
 		</header>
 		<mvt:if expr="NOT l.settings:global_minibasket:empty">
 			<div class="x-mini-basket__list">
 				<mvt:foreach iterator="item" array="global_minibasket:groups">
 					<mvt:do file="g.Module_Library_DB" name="l.success" value="Product_Load_Code(l.settings:item:code, l.settings:item_p )" />
 					<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:item:uri" value="Store_Product_URL(l.settings:item_p, NULL)" />
-					<mvt:comment>
-						<!--
-						Creates a new variable for the calculation of products with attribute pricing which do not
-						use inventory variants.
-						-->
-					</mvt:comment>
-					<mvt:assign name="l.settings:item:complete_subtotal" value="l.settings:item:subtotal"/>
 					<div class="x-mini-basket__line">
 						<figure class="x-mini-basket__image">
 							<img src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:global_minibasket:b_width;" height="&mvte:global_minibasket:b_height;">
 						</figure>
-						<a class="x-mini-basket__item u-color-gray-40" href="&mvt:item:uri;">
-							<span class="x-mini-basket__item-name">
-								&mvt:item:name;
+						<a class="x-mini-basket__item" href="&mvt:item:uri;">
+							<span class="x-mini-basket__item-name">&mvt:item:name;</span>
+							<span class="x-mini-basket__item-attributes">
 								<mvt:foreach iterator="option" array="item:options">
-									<mvt:comment>
-										<!--
-										Adds the attribute pricing to the product pricing.
-										-->
-									</mvt:comment>
-									<mvt:assign name="l.settings:item:complete_subtotal" value="l.settings:item:complete_subtotal + l.settings:option:subtotal"/>
-									<br>
-									<span class="u-font-small">
+									<span class="u-block">
 										<mvt:if expr="l.settings:option:option_id">
 											&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
 										<mvt:elseif expr="NOT ISNULL l.settings:option:data">
@@ -47,48 +43,66 @@
 									</span>
 								</mvt:foreach>
 								<mvt:if expr="l.settings:item:subterm_id">
-									<div class="u-font-small">Subscription: &mvte:item:productsubscriptionterm:descrip;</div>
+									<span class="u-block">Subscription: &mvte:item:productsubscriptionterm:descrip;</span>
 								</mvt:if>
 							</span>
 							<div class="x-mini-basket__item-total">
 								<span class="u-font-small">Qty: &mvte:item:quantity;</span>
-								<hr class="c-keyline">
-								<mvt:comment>
-									<!--
-									Formats the new product pricing to the current store currency setting.
-									-->
-								</mvt:comment>
-								<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:item:formatted_complete_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:item:complete_subtotal)"/>
-								<span class="u-text-bold x-mini-basket__item-price">&mvt:item:formatted_complete_subtotal;</span>
+								<span class="u-text-medium x-mini-basket__item-price">&mvt:item:formatted_subtotal_comprehensive;</span>
 							</div>
 						</a>
 					</div>
 				</mvt:foreach>
+				<div class="x-mini-basket__line">
+					<mvt:if expr="miva_array_elements(l.settings:global_minibasket:charges) GT 0">
+						<div class="x-mini-basket__charges">
+							<mvt:foreach iterator="charge" array="global_minibasket:charges">
+								<div class="x-mini-basket__charge-item">
+									<span>&mvt:charge:descrip;</span>
+									<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+								</div>
+							</mvt:foreach>
+						</div>
+					</mvt:if>
+					<div class="x-mini-basket__total">
+						<span>Total</span>
+						<span>&mvt:global_minibasket:formatted_total;</span>
+					</div>
+				</div>
 			</div>
 			<footer class="x-mini-basket__footer">
-				<hr class="c-keyline">
-				<div class="x-mini-basket__charges">
-					<mvt:foreach iterator="charge" array="global_minibasket:charges">
-						<div class="x-mini-basket__charge-item">
-							<span class="u-text-uppercase">&mvt:charge:descrip;</span>
-							<span>&mvt:charge:formatted_disp_amt;</span>
-						</div>
-					</mvt:foreach>
+				<div class="x-mini-basket__cta">
+					<a class="c-button c-button--full" href="&mvte:urls:OINF:secure;">Checkout</a>
+					<a class="c-button c-button--full c-button--secondary" href="&mvte:urls:BASK:auto;">Edit Cart</a>
 				</div>
-				<div class="x-mini-basket__total">
-					<span class="u-text-bold u-text-uppercase">Total</span>
-					<span class="u-text-bold">&mvt:global_minibasket:formatted_total;</span>
-				</div>
-				<div class="x-mini-basket__cta c-control-group">
-					<a class="c-button c-control-group__button c-button--full c-button--hollow c-button--huge u-bg-white u-color-gray-40 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:BASK:auto;">Edit Cart</a>
-					<a class="c-button c-control-group__button c-button--full c-button--huge u-bg-gray-40 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:OINF:secure;">Checkout</a>
-				</div>
-				<br>
-				<button class="c-button c-button--clear c-button--full u-font-tiny u-text-uppercase u-bg-transparent u-color-gray-30" data-hook="close-mini-basket">Continue Shopping</button>
 			</footer>
 		<mvt:else>
-			<footer class="x-mini-basket__footer">
-				<div class="x-messages x-messages--info">Your Shopping Cart Is Empty</div>
+			<script>
+				function continueShopping(link) {
+					if (sessionStorage.getItem('continue_url')) {
+						link.href = sessionStorage.getItem('continue_url');
+					}
+				}
+			</script>
+			<footer class="x-mini-basket__footer u-text-center">
+				<p class="x-mini-basket__empty-icon u-bg-gray-100" aria-hidden="true">
+					<svg width="31.972" height="32.562" xmlns="http://www.w3.org/2000/svg">
+						<defs>
+							<clipPath id="a">
+								<path d="M0 0h31.972v32.562H0z"/>
+							</clipPath>
+						</defs>
+						<g clip-path="url(#a)">
+							<path d="M31.158 12.03h-5.765v1.631h4.679l-2.749 9.351H10.482l-2.745-9.351h4.148V12.03H7.258l-1-3.4a.815.815 0 0 0-.781-.584H.788a.817.817 0 0 0 0 1.633h4.084l.976 3.336a.58.58 0 0 0 .033.115l3.21 10.933a.814.814 0 0 0 .781.585h18.057a.817.817 0 0 0 .8-.644l3.212-10.931a.8.8 0 0 0 .031-.217v-.022a.814.814 0 0 0-.814-.805M23.711 25.782a3.39 3.39 0 0 0-.034 6.779h.059a3.39 3.39 0 0 0-.025-6.779m1.244 4.629a1.755 1.755 0 1 1 .512-1.24 1.755 1.755 0 0 1-.512 1.24M14.092 25.782a3.39 3.39 0 0 0-.034 6.779h.059a3.39 3.39 0 0 0-.025-6.779m1.244 4.629a1.755 1.755 0 1 1 .512-1.24 1.755 1.755 0 0 1-.512 1.24"/>
+							<path d="M23.706 12.361 22.647 11.3l-3.253 3.251V0h-1.509v14.553l-3.25-3.253-1.059 1.059 5.065 5.065 5.065-5.063z"/>
+						</g>
+					</svg>
+				</p>
+				<br>
+				<p class="c-heading--subheading--small">Your Cart is Empty</p>
+				<p class="t-input-font-size">Add items to get started</p>
+				<br>
+				<a class="c-button c-button--full u-text-medium" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Continue Shopping</a>
 			</footer>
 		</mvt:if>
 	</div>

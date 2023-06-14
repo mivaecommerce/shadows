@@ -1,4 +1,15 @@
 {
+    "flex": {
+        "content": {
+            "component_code": "mmx-text-editor",
+            "item_code": "content",
+            "settings": {
+                "content": {
+                    "value": "<p>Orders are generally shipped in 1 day after your order is processed and they normally take an additional 3 - 5 business days to arrive.</p>\r\n<p>Orders are processed Mon-Fri during normal business hours.</p>\r\n<p>You may return damaged or defective merchandise within 10 days of the original purchase date for a full refund minus shipping charges. We will also be glad to exchange the damaged merchandise for anything on our site of equal or lesser value.</p>"
+                }
+            }
+        }
+    },
     "hdft": {
         "footer": {
             "template_filename": "sarp-footer.mvc"
@@ -22,5 +33,19 @@
         "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
         "url_delim": "/",
         "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Content",
+                "param": "content"
+            }
+        ],
+        "title": "Sequence"
     }
 }

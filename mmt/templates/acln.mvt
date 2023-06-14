@@ -13,6 +13,15 @@
 </head>
 <body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<h1 class="c-heading-delta o-layout--justify-between o-layout--wrap u-flex">
+				&mvt:page:name;
+				<a class="c-button c-button--secondary u-line-height-normal" href="&mvte:urls:SFNT:secure_sep;Action=LOGO">Log Out</a>
+			</h1>
+			<br>
+		</div>
+	</section>
 
 	<section class="o-layout">
 		<div class="o-layout__item">
@@ -26,28 +35,32 @@
 			<div class="o-layout">
 				<div class="o-layout__item u-width-12 u-width-6--m">
 					<section class="t-account-landing-section">
-						<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-							<div class="o-layout o-layout--align-center o-layout--justify-between">
-								<span class="o-layout__item c-heading-echo">Personal Information</span>
-								<span class="o-layout__item u-text-right">
-									<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:ACED:auto;" title="Update Your Information">Edit</a>
+						<div class="o-layout__item u-width-12">
+							<div class="o-layout o-layout--align-center">
+								<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Personal Information</span>
+								<span class="o-layout__item">
+									<a class="u-text-medium" href="&mvte:urls:ACED:auto;" title="Update Your Information">Edit</a>
 								</span>
 							</div>
 						</div>
+						<div class="o-layout__item u-width-12">
+							<br>
+							<hr class="c-keyline c-keyline--small">
+						</div>
 						<div class="o-layout__item u-width-12 t-account-landing-section__content">
-							<table class="o-table c-table-simple u-font-small u-text-bold">
+							<table class="o-table c-table-simple">
 								<tr>
-									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Name</td>
+									<td class="c-table-simple__cell u-text-medium">Name</td>
 									<td class="c-table-simple__cell">&mvte:global:customer:ship_fname; &mvte:global:customer:ship_lname;</td>
 								</tr>
 								<tr>
-									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Email</td>
+									<td class="c-table-simple__cell u-text-medium">Email</td>
 									<td class="c-table-simple__cell">&mvte:global:customer:ship_email;</td>
 								</tr>
 								<tr>
-									<td class="c-table-simple__cell u-color-gray-30 u-text-uppercase">Password</td>
+									<td class="c-table-simple__cell u-text-medium">Password</td>
 									<td class="c-table-simple__cell">
-										<a class="u-color-gray-50 u-text-uppercase" href="&mvte:urls:CPWD:secure;" title="Change Your Password">Change Password</a>
+										<a class="u-color-gray-600 u-text-medium" href="&mvte:urls:CPWD:secure;" title="Change Your Password">Change Password</a>
 									</td>
 								</tr>
 							</table>
@@ -58,13 +71,17 @@
 				<mvt:if expr="l.settings:paymentsettings:mivapay:enabled">
 					<div class="o-layout__item u-width-12 u-width-6--m">
 						<section class="t-account-landing-section">
-							<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-								<div class="o-layout o-layout--align-center o-layout--justify-between">
-									<span class="o-layout__item c-heading-echo">Payment Options</span>
-									<span class="o-layout__item u-text-right">
-										<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:CPCD:auto;" title="Manage Saved Cards">View All</a>
+							<div class="o-layout__item u-width-12">
+								<div class="o-layout o-layout--align-center">
+									<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Payment Options</span>
+									<span class="o-layout__item">
+										<a class="u-text-medium" href="&mvte:urls:CPCD:auto;" title="Manage Saved Cards">View All</a>
 									</span>
 								</div>
+							</div>
+							<div class="o-layout__item u-width-12">
+								<br>
+								<hr class="c-keyline c-keyline--small">
 							</div>
 							<div class="o-layout__item u-width-12 t-account-landing-section__content">
 								<mvt:item name="paymentcards" />
@@ -75,13 +92,17 @@
 			</div>
 			
 			<section class="t-account-landing-section">
-				<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-					<div class="o-layout o-layout--align-center o-layout--justify-between">
-						<span class="o-layout__item c-heading-echo">Order History</span>
-						<span class="o-layout__item u-text-right">
-							<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:ORDH:auto;" title="View All Orders">View All</a>
+				<div class="o-layout__item u-width-12">
+					<div class="o-layout o-layout--align-center">
+						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Order History</span>
+						<span class="o-layout__item">
+							<a class="u-text-medium" href="&mvte:urls:ORDH:auto;" title="View All Orders">View All</a>
 						</span>
 					</div>
+				</div>
+				<div class="o-layout__item u-width-12">
+					<br>
+					<hr class="c-keyline c-keyline--small">
 				</div>
 				<div class="o-layout__item u-width-12 t-account-landing-section__content">
 					<mvt:item name="orderhistory_list" />
@@ -89,38 +110,42 @@
 			</section>
 			
 			<section class="t-account-landing-section">
-				<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-					<div class="o-layout o-layout--align-center o-layout--justify-between">
-						<span class="o-layout__item c-heading-echo">Customer Credit</span>
-						<span class="o-layout__item u-text-right">
-							<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">Manage</a>
+				<div class="o-layout__item u-width-12">
+					<div class="o-layout o-layout--align-center">
+						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Customer Credit</span>
+						<span class="o-layout__item">
+							<a class="u-text-medium" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">Manage</a>
 						</span>
 					</div>
+				</div>
+				<div class="o-layout__item u-width-12">
+					<br>
+					<hr class="c-keyline c-keyline--small">
 				</div>
 				<div class="o-layout__item u-width-12 t-account-landing-section__content">
 					<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
 						<fieldset>
 							<legend>&mvt:page:name;</legend>
 							<input type="hidden" name="Action" value="RDGC" />
-							<div class="o-layout o-layout--align-bottom o-layout--justify-around">
+							<div class="o-layout">
 								<div class="o-layout__item u-width-12 u-width-3--l">
 									<div class="c-form-list">
-										<div class="c-form-list__item u-text-center">
-											<span class="u-color-gray-30 u-font-tiny u-text-bold u-text-uppercase">Current Credit Amount</span><br>
+										<div class="c-form-list__item">
+											<span class="c-form-label u-text-medium">Current Credit Amount</span><br>
 										</div>
-										<div class="c-form-list__item c-control-group u-flex">
-											<a class="c-button c-button--full c-button--small u-bg-gray-10 u-color-gray-50 u-font-large u-text-bold" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">&mvt:customer:formatted_credit;</a>
+										<div class="c-form-list__item">
+											<a class="c-heading--subheading--large u-text-no-underline" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">&mvt:customer:formatted_credit;</a>
 										</div>
 									</div>
 								</div>
 								<div class="o-layout__item u-width-12 u-width-5--l">
 									<div class="c-form-list">
 										<div class="c-form-list__item">
-											<label class="c-form-label u-color-gray-30 u-font-small u-hide-visually u-text-bold u-text-uppercase" for="GiftCertificate_Code">Enter Gift Certificate Code</label>
+											<label class="c-form-label u-text-medium" for="GiftCertificate_Code">Enter Gift Certificate Code</label>
 										</div>
-										<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
-											<input id="GiftCertificate_Code" class="c-form-input c-form-input--large c-control-group__field u-bg-gray-10 u-border-none" type="text" name="GiftCertificate_Code" placeholder="Enter Code Here" value="&mvte:global:GiftCertificate_Code;" required>
-											<input class="c-button c-button--large c-control-group__button u-bg-gray-50 u-border-none u-font-small u-text-uppercase" type="submit" value="Apply">
+										<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
+											<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" placeholder="Enter Code Here" value="&mvte:global:GiftCertificate_Code;" required>
+											<input class="c-button" type="submit" value="Apply">
 										</div>
 									</div>
 								</div>
@@ -131,13 +156,17 @@
 			</section>
 			
 			<section class="t-account-landing-section">
-				<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-					<div class="o-layout o-layout--align-center o-layout--justify-between">
-						<span class="o-layout__item c-heading-echo">Address Book</span>
-						<span class="o-layout__item u-text-right">
-							<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:CABK:auto;" title="View All Addresses">View All</a>
+				<div class="o-layout__item u-width-12">
+					<div class="o-layout o-layout--align-center">
+						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Address Book</span>
+						<span class="o-layout__item">
+							<a class="u-text-medium" href="&mvte:urls:CABK:auto;" title="View All Addresses">View All</a>
 						</span>
 					</div>
+				</div>
+				<div class="o-layout__item u-width-12">
+					<br>
+					<hr class="c-keyline c-keyline--small">
 				</div>
 				<div class="o-layout__item u-width-12 t-account-landing-section__content">
 					<mvt:item name="addressbook" />
@@ -145,36 +174,40 @@
 			</section>
 			
 			<section class="t-account-landing-section">
-				<div class="o-layout__item u-width-12 u-bg-gray-10 u-text-bold u-text-uppercase">
-					<div class="o-layout o-layout--align-center o-layout--justify-between">
-						<span class="o-layout__item c-heading-echo">Wish Lists</span>
-						<span class="o-layout__item u-text-right">
-							<a class="c-button c-button--huge u-bg-gray-30 u-color-white u-font-small" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">View All</a>
+				<div class="o-layout__item u-width-12">
+					<div class="o-layout o-layout--align-center">
+						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Wish Lists</span>
+						<span class="o-layout__item">
+							<a class="u-text-medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">View All</a>
 						</span>
 					</div>
 				</div>
-				<div class="o-layout__item u-width-12 t-account-landing-section__content">
+				<div class="o-layout__item u-width-12">
+					<br>
+					<hr class="c-keyline c-keyline--small">
+				</div>
+				<div class="o-layout__item u-width-12 t-account-landing-section__content t-page-acln__wish-list-content">
 					<mvt:if expr="NOT l.settings:customerwishlists:wishlist_count GT 0">
 						<p class="x-messages x-messages--info">No wish lists found.</p>
 					<mvt:else>
-						<table class="o-table o-table-borderless c-table-simple">
+						<table class="o-table c-table-simple">
 							<tbody>
 								<mvt:assign name="l.settings:wishlist_count" value="0" />
 								<mvt:foreach iterator="wishlist" array="customerwishlists:wishlists">
 									<mvt:assign name="l.settings:wishlist_count" value="l.settings:wishlist_count + 1" />
 									<mvt:if expr="l.settings:wishlist_count GT 4">
 										<tr class="c-table-simple__row">
-											<td class="c-table-simple__cell" colspan="2">
-												<a class="u-color-gray-50 u-font-tiny u-text-uppercase" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">more &hellip;</a>
+											<td class="c-table-simple__cell c-table-simple__cell--standard" colspan="2">
+												<a class="t-input-font-size u-text-medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">more &hellip;</a>
 											</td>
 										</tr>
 										<mvt:foreachstop />
 									</mvt:if>
-									<tr class="c-table-simple__row u-font-small">
-										<td class="c-table-simple__cell">
-											<a class="u-color-gray-50 u-text-underline" href="&mvte:urls:WISH:rr_sep;WishList_ID=&mvta:wishlist:id;">&mvte:wishlist:title;</a>
+									<tr class="c-table-simple__row">
+										<td class="c-table-simple__cell c-table-simple__cell--standard">
+											<a class="t-input-font-size u-text-medium" href="&mvte:urls:WISH:rr_sep;WishList_ID=&mvta:wishlist:id;">&mvte:wishlist:title;</a>
 										</td>
-										<td class="c-table-simple__cell">&mvte:wishlist:notes;</td>
+										<td class="c-table-simple__cell c-table-simple__cell--standard">&mvte:wishlist:notes;</td>
 									</tr>
 								</mvt:foreach>
 							</tbody>

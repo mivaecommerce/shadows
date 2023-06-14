@@ -1,0 +1,8 @@
+<section class="o-layout o-layout--flush u-color-gray-600 u-text-center t-site-footer__copyright">
+	<p class="o-layout__item">
+		&copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company; All Rights Reserved
+		<mvt:if expr="l.settings:page:code EQ 'ORDL' OR l.settings:page:code EQ 'OCST' OR l.settings:page:code EQ 'OUS1' OR l.settings:page:code EQ 'OUSM' OR l.settings:page:code EQ 'UATM' OR l.settings:page:code EQ 'UATR' OR l.settings:page:code EQ 'OSEL' OR l.settings:page:code EQ 'OPAY' OR ('AMAZONPAY' CIN l.settings:page:code)">
+			 | <a href="&mvte:urls:PRPO:auto;">Privacy Statement</a>
+		</mvt:if>
+	</p>
+</section>

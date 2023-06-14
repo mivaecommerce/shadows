@@ -37,6 +37,9 @@
             "updated": 0
         }
     },
+    "footer_sequence": {
+        "title": "Page Builder Footer"
+    },
     "hdft": {
         "footer": {
             "template_filename": "srch-footer.mvc"
@@ -45,11 +48,14 @@
             "template_filename": "srch-header.mvc"
         }
     },
+    "header_sequence": {
+        "title": "Page Builder Header"
+    },
     "search_results": {
         "additionalprice": "base",
         "advanced": 1,
-        "b_height": 360,
-        "b_width": 360,
+        "b_height": 384,
+        "b_width": 384,
         "button_add": 1,
         "button_buy": 1,
         "button_wish": 0,

@@ -23,6 +23,9 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<br>
 			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:_self:rr;" autocomplete="off">
 				<fieldset class="o-layout__item u-width-12 u-width-6--m">
 					<legend>&mvt:page:name;</legend>
@@ -53,7 +56,7 @@
 						</mvt:if>
 					</mvt:foreach>
 					<div class="c-form-list">
-						<div class="c-form-list__item c-form-list__item--full">
+						<div class="c-form-list__item">
 							<mvt:do name="l.return" file="g.Module_Library_DB" value="Product_Load_Code(g.Product_Code, l.settings:wish:product)" />
 							<mvt:if expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'ATWL\'' )">
 								<label class="c-form-label" for="WishList_ID">Add Product "&mvte:wish:product:name;" to wish list&hellip;</label>
@@ -76,7 +79,7 @@
 								</select>
 							</div>
 						</div>
-						<div class="c-form-list__item c-form-list__item--full u-text-right">
+						<div class="c-form-list__item u-text-right">
 							<mvt:item name="buttons" param="Continue" />
 						</div>
 					</div>

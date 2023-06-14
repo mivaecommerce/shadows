@@ -25,6 +25,9 @@
     "content": {
         "template_filename": "bask-content.mvc"
     },
+    "footer_sequence": {
+        "title": "Page Builder Footer"
+    },
     "hdft": {
         "footer": {
             "template_filename": "bask-footer.mvc"
@@ -32,6 +35,9 @@
         "header": {
             "template_filename": "bask-header.mvc"
         }
+    },
+    "header_sequence": {
+        "title": "Page Builder Header"
     },
     "product_attributes": {
         "template_filename": "bask-product_attributes.mvc"

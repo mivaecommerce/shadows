@@ -5,13 +5,13 @@
 		"height": "100%",
 		"min-height": "100%",
 		"font-family": "-apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Helvetica, Arial, sans-serif",
-		"font-size": "1rem",
+		"font-size": "13px",
 		"-webkit-font-smoothing": "antialiased",
 		"-moz-osx-font-smoothing": "grayscale",
 		"line-height": "1.5",
 		"-webkit-text-size-adjust": "100%",
 		"-ms-text-size-adjust": "100%",
-		"color": "rgb(74, 74, 74)",
+		"color": "#111",
 		"-webkit-tap-highlight-color": "rgba(0, 0, 0, 0)",
 		"touch-action": "manipulation"
 	}
@@ -25,19 +25,19 @@
 {
 	"selector": ".form_row.invalid input[type=\"text\"],.form_row.invalid select",
 	"properties": {
-		"border-color": "rgb(200, 16, 46)"
+		"border-color": "#b13138"
 	}
 },
 {
 	"selector": ".form_row.invalid label",
 	"properties": {
-		"color": "rgb(200, 16, 46)"
+		"color": "#b13138"
 	}
 },
 {
 	"selector": ".bold",
 	"properties": {
-		"font-weight": "700"
+		"font-weight": "600"
 	}
 },
 {
@@ -56,9 +56,11 @@
 	"selector": "#payment-fields",
 	"properties": {
 		"display": "flex",
-		"width": "100%",
-		"flex-direction": "column",
-		"align-items": "center"
+		"flex-wrap": "wrap",
+		"gap": "1rem",
+		"justify-content": "space-between",
+		"padding": "0 0.25rem",
+		"width": "100%"
 	}
 },
 {
@@ -75,54 +77,82 @@
 	"selector": ".form_row",
 	"properties": {
 		"display": "flex",
-		"width": "100%",
-		"min-height": "1px",
-		"margin-bottom": "1rem",
+		"flex": "1",
 		"flex-wrap": "wrap",
-		"align-items": "center",
-		"justify-content": "space-between"
+		"gap": "0 0.5rem"
 	}
 },
 {
 	"selector": ".form_row label",
 	"properties": {
-		"display": "block",
+		"display": "inline-flex",
 		"flex-basis": "100%",
-		"margin-bottom": "0.25rem",
-		"font-size": "0.832em",
-		"font-weight": "600",
-		"text-transform": "uppercase"
+		"font-size": "13px",
+		"margin-bottom": "0.5em"
 	}
 },
 {
-	"selector": "input[type='text'], select",
+	"selector": "input[type='text']",
 	"properties": {
-		"border": "1px solid rgb(192, 192, 192)",
-		"padding": "0.5rem",
-		"width": "100%",
-		"height": "calc(4.5em - (1px * 2))",
-		"line-height": "calc(4.5em - (1px * 2))",
-		"border-radius": "0.125em",
-		"box-shadow": "0 0 0 0 rgba(0, 0, 0, 0.2)",
-		"outline": "0",
-		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
-		"display": "inline-block"
+		"appearance": "none",
+		"background-color": "#fff",
+		"border": "1px solid #ccc",
+		"border-radius": "0.25rem",
+		"display": "inline-block",
+		"flex": "1",
+		"font-family": "inherit",
+ 		"font-size": "13px",
+		"line-height": "1",
+		"margin-bottom": "0.25em",
+		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)"
 	}
-
 },
 {
-	"selector": "input[type='text']:focus, select:focus",
+	"selector": "select",
 	"properties": {
-		"border-color": "rgb(255, 255, 255)",
-		"box-shadow": "0 0 8px 0 rgba(0, 0, 0, 0.2)",
+		"appearance": "none",
+		"background-color": "#fff",
+		"border": "1px solid #ccc",
+		"border-radius": "0.25rem",
+		"box-shadow": "0 0 0 0 rgba(17, 17, 17, 0.2)",
+		"cursor": "pointer",
+		"flex": "1",
+		"font-family": "inherit",
+		"margin-bottom": "0.25em",
+		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)",
+		"transition": "box-shadow 0.25s ease, border-color 0.25s ease"
+	}
+},
+{
+	"selector": "input[type='text']:focus:not(:focus-visible), select:focus:not(:focus-visible)",
+	"properties": {
 		"outline": "none"
 	}
-
 },
 {
-	"selector": "#mvp_exp_month, #mvp_exp_year, .form_row input.mvp_cvv",
+	"selector": "input[type='text']:focus-visible, select:focus-visible",
 	"properties": {
-		"width": "calc((100% - 1rem) / 2)"
+		"outline": "2px solid #3a58fc",
+		"outline-offset": "1px"
+	}
+},
+{
+	"selector": ".mvp_exp_date_container",
+	"properties": {
+		"display": "grid",
+		"grid-template-columns": "repeat(2, 1fr)"
+	}
+},
+{
+	"selector": ".mvp_exp_date_container label",
+	"properties": {
+		"grid-column": "span 2"
+	}
+},
+{
+	"selector": ".mvp_cvv_container",
+	"properties": {
+		"flex": "0"
 	}
 },
 {
@@ -149,48 +179,34 @@
 {
 	"selector": ".mvp_storetoken",
 	"properties": {
+		"filter": "grayscale(1)",
 		"margin-right": "1em"
 	}
 },
 {
-	"selector": "input[type='text']:-moz-placeholder",
+	"selector": "::placeholder",
 	"properties": {
-		"color": "#8a7b7b"
+		"line-height": "normal"
 	}
-
 },
 {
-	"selector": "input[type='text']::-moz-placeholder",
-	"properties": {
-		"color": "#8a7b7b"
-	}
-
-},
-{
-	"selector": "input[type='text']:-ms-input-placeholder",
-	"properties": {
-		"color": "#8a7b7b"
-	}
-
-},
-{
-	"selector": "input[type='text']::-webkit-input-placeholder",
-	"properties": {
-		"color": "#8a7b7b"
-	}
-
+"at-rule": "media",
+"media": "screen and (max-width: 747px)",
+"selectors":
+	[
+		{
+			"selector": ".mvp_exp_date_container",
+			"properties": {
+				"flex-basis": "auto"
+			}
+		}
+	]
 },
 {
 "at-rule": "media",
 "media": "screen and (min-width: 748px)",
 "selectors":
 	[
-		{
-			"selector": ".form_row",
-			"properties": {
-				"max-width": "50%"
-			}
-		},
 		{
 			"selector": "#mvp_cardtype_container",
 			"properties": {

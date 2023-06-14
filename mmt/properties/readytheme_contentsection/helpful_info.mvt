@@ -1,10 +1,20 @@
-<p class="u-text-bold u-text-uppercase">Helpful Info</p>
-<p class="u-color-gray-40 u-text-regular">
-	<strong>We can help you along the way.</strong><br>
-	Give us a call or email.
-</p>
-<p>
-	<strong>&mvt:global:store:email;</strong><br>
-	<strong>&mvt:global:store:phone;</strong><br>
-	<span class="u-color-gray-40 u-font-small">M-F 8:30 am - 5:30 pn PST</span>
-</p>
+<p class="c-heading--subheading--small">Need Help?</p>
+<p class="u-color-gray-600"><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
+<p class="u-color-gray-600"><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
+<p class="u-color-gray-600"><span class="u-icon-document" aria-hidden="true"></span><a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp">Shipping & Return Policy</a></p>
+
+<div class="c-dialog" data-dialog="sarp" aria-hidden="true">
+	<div class="c-dialog__overlay" tabindex="-1">
+		<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sarp-title" aria-modal="true" role="dialog">
+			<header class="c-dialog__header">
+				<p id="sarp-title" class="c-dialog__title c-heading-foxtrot">Shipping &amp; Return Policy</p>
+				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
+			</header>
+			<div class="c-dialog__content">
+				<p>Orders are generally shipped in 1 day after your order is processed and they normally take an additional 3 - 5 business days to arrive.</p>
+				<p>Orders are processed Mon-Fri during normal business hours.</p>
+				<p>You may return damaged or defective merchandise within 10 days of the original purchase date for a full refund minus shipping charges. We will also be glad to exchange the damaged merchandise for anything on our site of equal or lesser value.</p>
+			</div>
+		</div>
+	</div>
+</div>

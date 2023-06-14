@@ -37,6 +37,9 @@
             "updated": 0
         }
     },
+    "footer_sequence": {
+        "title": "Page Builder Footer"
+    },
     "hdft": {
         "footer": {
             "template_filename": "ctlg-footer.mvc"
@@ -44,6 +47,9 @@
         "header": {
             "template_filename": "ctlg-header.mvc"
         }
+    },
+    "header_sequence": {
+        "title": "Page Builder Header"
     },
     "seo_settings": {
         "cat_lit": "category",

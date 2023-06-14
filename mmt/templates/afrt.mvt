@@ -16,6 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 		</div>
 	</section>
@@ -27,12 +28,12 @@
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Affiliate_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
 					<input type="hidden" name="Affiliate_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
-					<p class="x-messages x-messages--borderless x-messages--with-icon">
-						<span class="x-messages__icon u-icon-info u-color-gray-30" aria-hidden="true">&nbsp;</span>
+					<p class="x-messages x-messages--info x-messages--with-icon">
+						<span class="x-messages__icon u-icon-info" aria-hidden="true">&nbsp;</span>
 						<span>Your password has been reset.<br><br>Your temporary password is &mvte:global:Affiliate_Temporary_Password;</span>
 					</p>
 					<p>
-						<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Click Here to Log In">
+						<input class="c-button" type="submit" value="Click Here to Log In">
 					</p>
 				</fieldset>
 			</form>

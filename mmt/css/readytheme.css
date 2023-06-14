@@ -1,0 +1,127 @@
+/* ----  These are the styles required to make the various navigation elements display and function correctly. ---- */
+	.navigation-set,
+	.navigation-set *,
+	.navigation-set *:before,
+	.navigation-set *:after { /* Apply a natural box layout model to all "navigation-set" elements */
+		-moz-box-sizing: border-box;
+		-webkit-box-sizing: border-box;
+		box-sizing: border-box;
+	}
+	.navigation-set {
+		margin: 0 auto;
+		padding: 0;
+		text-align: left;
+		-moz-transition: all 0.2s ease-in-out;
+		-webkit-transition: all 0.2s ease-in-out;
+		transition: all 0.2s ease-in-out;
+	}
+		.navigation-set li {
+			display: inline-block;
+			font-size: 16px;
+			height: 2em;
+			line-height: 2;
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			position: relative;
+			text-align: left;
+			white-space: nowrap;
+		}
+			.navigation-set li a {
+				color: #005596;
+				display: block;
+				padding: 0 16px;
+				text-decoration: none;
+			}
+			.navigation-set li:hover > a {
+				background: #666;
+				color: #7fdbff;
+			}
+
+	/* ------------------------ first sub-level ------------------------ */
+	.navigation-set li ul {
+		display: none;
+		font-size: 14px;
+		line-height: 1.5;
+		margin: 0;
+		min-width: 100%;
+		padding: 0;
+		position: absolute;
+		left: 0;
+		z-index: 999;
+	}
+	.navigation-set li:hover ul {
+		background: #ccc;
+		display: block;
+	}
+		.navigation-set li ul li {
+			display: block;
+			position: relative;
+		}
+
+		/* ------------------------ second and subsequent sub-levels ------------------------ */
+		.navigation-set li:hover ul ul {
+			display: none;
+		}
+			.navigation-set li ul li ul {
+				display: none;
+				position: absolute;
+				top: 0;
+				left: 100%;
+			}
+			.navigation-set li ul li:hover > ul {
+				display: block;
+			}
+
+	/* ------------------------ horizontal-mega-menu ------------------------ */
+	.navigation-set.horizontal-mega-menu li ul li {
+		display: inline-block;
+		height: auto;
+		vertical-align: top;
+	}
+		.navigation-set.horizontal-mega-menu li ul li ul {
+			display: block;
+			position: relative;
+			top: auto;
+			left: auto;
+		}
+			.navigation-set.horizontal-mega-menu li ul li ul li {
+				display: block;
+			}
+
+	/* ------------------------ vertical-fly-out ------------------------ */
+	.vertical-fly-out li {
+		display: block;
+	}
+		.vertical-fly-out li ul {
+			top: 0;
+			left: 100%;
+		}
+
+	/* ------------------------ single-navigation-column ------------------------ */
+	.single-navigation-column {
+		display: inline-block;
+		padding-right: 32px;
+		vertical-align: top;
+	}
+		.single-navigation-column li {
+			display: block;
+			font-size: 14px;
+			height: auto;
+			line-height: 1.75;
+		}
+			.single-navigation-column .single-navigation-title {
+				font-size: 16px;
+				font-weight: 700;
+				height: 2em;
+				line-height: 2;
+				margin-bottom: 4px;
+				text-transform: uppercase;
+			}
+			.single-navigation-column li a {
+				padding: 0;
+			}
+			.single-navigation-column li:hover > a {
+				background: transparent;
+				color: #7fdbff;
+			}

@@ -1,4 +1,7 @@
 {
+    "footer_sequence": {
+        "title": "Page Builder Footer"
+    },
     "hdft": {
         "footer": {
             "template_filename": "ctus-footer.mvc"
@@ -6,6 +9,9 @@
         "header": {
             "template_filename": "ctus-header.mvc"
         }
+    },
+    "header_sequence": {
+        "title": "Page Builder Header"
     },
     "seo_settings": {
         "cat_lit": "category",

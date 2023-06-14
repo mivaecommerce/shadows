@@ -3,9 +3,9 @@
 	<mvt:exit />
 </mvt:if>
 
-<table class="c-table-responsive u-font-small">
+<table class="c-table-responsive">
 	<thead class="c-table-responsive_thead">
-		<tr class="c-table-responsive__row u-border-none u-color-gray-30 u-font-small u-text-bold u-text-uppercase">
+		<tr class="c-table-responsive__row u-font-small u-text-bold u-text-uppercase">
 			<th class="c-table-responsive__cell" scope="col">Order #</th>
 			<th class="c-table-responsive__cell" scope="col">Order Placed</th>
 			<th class="c-table-responsive__cell" scope="col">Total</th>
@@ -15,17 +15,17 @@
 	</thead>
 	<tbody>
 		<mvt:foreach iterator="order" array="orders">
-			<tr class="c-table-responsive__row u-border-none u-text-bold">
+			<tr class="c-table-responsive__row u-border-none">
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order #">
 					&mvt:order:id;<br>
-					<a class="u-color-gray-30 u-font-small u-text-normal" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvt:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
+					<a class="u-color-gray-600 u-font-small" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
 				</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order Placed">&mvt:order:date_formatted;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Total">&mvt:order:formatted_total;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Status">&mvt:order:order_status;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Shipments">
 					<mvt:foreach iterator="shipment" array="order:shipments">
-						<a class="u-color-gray-50 u-font-small u-text-underline" href="&mvt:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
+						<a class="u-color-gray-50 u-font-small" href="&mvte:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
 					</mvt:foreach>
 				</td>
 			</tr>

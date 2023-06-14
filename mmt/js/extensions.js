@@ -1,459 +1,175 @@
 /**
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |c|o|l|l|a|p|s|i|n|g| |b|r|e|a|d|c|r|u|m|b|s|
- +-+-+-+-+-+-+-+-+-+-+ +-+-+-+-+-+-+-+-+-+-+-+
+ * EXTENSIONS / TABS / A11Y-TABS
  *
- * This extension is a variation on the Priority + navigation pattern where extra links are
- * hidden behind a trigger when they do not fit into the allotted space. With breadcrumbs,
- * we are hiding the links at the start of the list, instead of at the end.
+ * This is an accessible tab solution extension based on guidelines documented
+ * by Heydon Pickering on the Inclusive Components Pattern Library.
+ * https://inclusive-components.design/tabbed-interfaces/
+ *
+ * Version: 10.05.00
  */
 
-(function ($, window) {
-	'use strict';
-
-	var $breadcrumbNavigation = $.hook('collapsing-breadcrumbs');
-	var $triggerArea = $.hook('collapsing-breadcrumbs__trigger-area');
-	var $displayButton = $.hook('collapsing-breadcrumbs__button');
-	var $visibleLinks = $.hook('collapsing-breadcrumbs__list');
-	var $hiddenLinks = $.hook('collapsing-breadcrumbs__group');
-	var numOfItems = 0;
-	var totalSpace = 64;
-	var breakWidths = [];
-	var availableSpace;
-	var numOfVisibleItems;
-	var requiredSpace;
+const tabbedContent = (document => {
+	const publicMethods = {}; // Placeholder for public methods
 
 	/**
-	 * Check the total space required for the breadcrumb links and how many there are.
+	 * Initialize the plugin
+	 * @public
 	 */
-	$visibleLinks.children().each(function () {
-		totalSpace += $(this).outerWidth(true) + (parseInt($visibleLinks.css('padding-left')));
-		numOfItems += 1;
-		breakWidths.push(totalSpace);
-	});
+	publicMethods.init = () => {
+		// Get relevant elements and collections
+		const tabbed = document.querySelector('[data-tab-component]');
+		const tabList = tabbed.querySelector('ul');
+		const tabs = tabList.querySelectorAll('a');
+		const panels = tabbed.querySelectorAll('[id^="tab-"]');
+		let hash = window.location.hash;
+		let targetTab = [...tabs].filter(({href}) => href.includes(hash));
+		let targetPanel = [...panels].filter(({id}) => id === hash.replace('#', ''));
 
-	/**
-	 * Compare the needed space with the available space and move breadcrumbs accordingly.
-	 * @returns {jQuery}
-	 */
-	$.fn.checkNavigationOverflow = function () {
-		// Get instant state
-		availableSpace = $visibleLinks.outerWidth(true) - parseInt($visibleLinks.css('padding-right'));
-		numOfVisibleItems = $visibleLinks.children().length;
-		requiredSpace = breakWidths[numOfVisibleItems - 1];
+		/**
+		 * The tab switching functionality
+		 * @param oldTab
+		 * @param newTab
+		 */
+		const switchTab = function switchTab(oldTab, newTab) {
+			newTab.focus();
+			// Make the active tab focusable by the user (Tab key)
+			newTab.removeAttribute('tabindex');
+			// Set the selected state
+			newTab.setAttribute('aria-selected', 'true');
+			oldTab.removeAttribute('aria-selected');
+			oldTab.setAttribute('tabindex', '-1');
+			/**
+			 * Get the indices of the new and old tabs to find the correct tab
+			 * panels to show and hide
+			 */
+			let index = Array.prototype.indexOf.call(tabs, newTab);
+			let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
 
-		// There is not enough space
-		if (requiredSpace > availableSpace) {
-			$visibleLinks.children('[data-hook="collapsing-breadcrumbs__item"]').first().appendTo($hiddenLinks);
-			numOfVisibleItems -= 1;
-			$breadcrumbNavigation.addClass('is-loaded');
-			this.checkNavigationOverflow();
-		}
-		// There is more than enough space
-		else if (availableSpace > breakWidths[numOfVisibleItems]) {
-			$hiddenLinks.children().last().prependTo($visibleLinks).insertAfter($triggerArea);
-			numOfVisibleItems += 1;
-			$breadcrumbNavigation.addClass('is-loaded');
-			this.checkNavigationOverflow();
-		}
+			panels[oldIndex].hidden = true;
+			panels[index].hidden = false;
+		};
 
-		// Update the button accordingly
-		if (numOfVisibleItems === numOfItems) {
-			$triggerArea.addClass('u-hidden');
-		}
-		else {
-			$triggerArea.removeClass('u-hidden');
-		}
+		// Add the tablist role to the first <ul> in the .tabbed container
+		tabList.setAttribute('role', 'tablist');
 
-		return this;
-	};
+		// Add semantics and remove user focusability for each tab
+		Array.prototype.forEach.call(tabs, (tab, i) => {
+			tab.setAttribute('role', 'tab');
+			tab.setAttribute('id', `tab${i + 1}`);
+			tab.setAttribute('tabindex', '-1');
+			tab.parentNode.setAttribute('role', 'presentation');
 
+			// Handle clicking of tabs for mouse users
+			tab.addEventListener('click', clickEvent => {
+				clickEvent.preventDefault();
+				let currentTab = tabList.querySelector('[aria-selected]');
 
-	/**
-	 * Check for rezise and control button click.
-	 */
-	$.fn.collapsingBreadcrumbs = function () {
-		var initElement = this;
-		var animationTimeout;
+				if (clickEvent.currentTarget !== currentTab) {
+					if (window.getComputedStyle(tabbed, '::before').content.replace(/"/g, '') === 'max') {
+						tabbed.scrollIntoView(true);
+					}
 
-		window.addEventListener('resize', function () {
-			if (animationTimeout) {
-				window.cancelAnimationFrame(animationTimeout);
-			}
-
-			animationTimeout = window.requestAnimationFrame(function () {
-				initElement.checkNavigationOverflow();
-			});
-		}, false);
-
-		$displayButton.on('click', function () {
-			$hiddenLinks.toggleClass('u-hidden');
-		});
-
-		initElement.checkNavigationOverflow();
-	};
-
-	/**
-	 * Initialize the extension.
-	 */
-	if ($breadcrumbNavigation.length > 0) {
-		$breadcrumbNavigation.collapsingBreadcrumbs();
-	}
-
-})(jQuery, window);
-
-/**
- * +-+-+-+-+-+-+
- * |d|i|a|l|o|g|
- * +-+-+-+-+-+-+
- *
- * A modal that is fully keyboard accessible. Keyboard focus will lock to the modal only while open and can be closed
- * by pressing Escape or tabbing to the 'close' button. For non-keyboard navigation, the modal can be closed through
- * clicking on the background.
- *
- * Based on `Accessible modal with tab trap and vanilla JS` by Danielle [https://codepen.io/hidanielle/pen/MyggJJ]
- * Updated version by Matt Zimmermann [https://github.com/influxweb]
- * Version: 1.0.0
- * License: MIT
- */
-
-(function () {
-	'use strict';
-
-	/**
-	 * Create a dialog object, set the target element, and create a list of focusable elements.
-	 * @type {{set: *[], closeTriggers: *[], focused: Element, focusable: string, el: Element, openTriggers: *[], init: function, show: function, hide: function, trap: function, getFocusable: function, getFirstFocusable: function, setInert: function, removeInert: function}}
-	 */
-	let dialog = {
-		set: Array.from(document.querySelectorAll('[data-dialog]')),
-		openTriggers: Array.from(document.querySelectorAll('[data-dialog-trigger]')),
-		closeTriggers: Array.from(document.querySelectorAll('[data-dialog-close]')),
-		focusable: 'a[href], area[href], input:not([disabled]):not([type="hidden"]):not([aria-hidden]), select:not([disabled]):not([aria-hidden]), textarea:not([disabled]):not([aria-hidden]), button:not([disabled]):not([aria-hidden]), object, embed, [tabindex]:not([tabindex^="-"])',
-		el: undefined,
-		focused: undefined,
-		init: function () {},
-		show: function () {},
-		hide: function () {},
-		trap: function () {},
-		getFocusable: function () {},
-		getFirstFocusable: function () {},
-		setInert: function () {},
-		removeInert: function () {}
-	};
-
-
-	/**
-	 * Validates whether a dialog of the given `data-dialog` exists in the DOM
-	 * @param {string} id The data-dialog of the dialog
-	 * @returns {boolean}
-	 */
-	const validateDialogPresence = function validateDialogPresence(id) {
-		if (!document.querySelector('[data-dialog=' + id + ']')) {
-			console.warn("Dialog: \u2757Seems like you have missed %c'".concat(id, "'"), 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data-dialog somewhere in your code. Refer example below to resolve it.');
-			console.warn("%cExample:", 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', "<div class=\"c-dialog\" aria-hidden=\"true\" data-dialog=\"".concat(id, "\"></div>"));
-			return false;
-		}
-	};
-
-
-	/**
-	 * Initialize the dialog, find the focusable children elements, and set up the click handlers.
-	 */
-	dialog.init = function () {
-		dialog.set.forEach(function (dialog) {
-			dialog.setAttribute('aria-hidden', 'true');
-		});
-
-		dialog.openTriggers.forEach(function (trigger) {
-			trigger.addEventListener('click', function (e) {
-				e.preventDefault();
-				let name = this.dataset.dialogTrigger;
-
-				dialog.el = dialog.set.find(function (value) {
-					return value.dataset.dialog === name;
-				});
-				if (validateDialogPresence(name) !== false) {
-					dialog.show();
+					switchTab(currentTab, clickEvent.currentTarget);
 				}
 			});
-		});
 
-		dialog.closeTriggers.forEach(function (trigger) {
-			trigger.addEventListener('click', function (e) {
-				e.preventDefault();
-				dialog.hide();
+			// Handle keydown events for keyboard users
+			tab.addEventListener('keydown', keydownEvent => {
+				if ([37, 39, 40].includes(keydownEvent.which)) {
+					keydownEvent.preventDefault();
+				}
+			}, false);
+
+			// Handle keyup events for keyboard users
+			tab.addEventListener('keyup', keyupEvent => {
+				// Get the index of the current tab in the tabs' node list
+				let index = Array.prototype.indexOf.call(tabs, keyupEvent.currentTarget);
+				/**
+				 * Work out which key the user is pressing and calculate the new
+				 * tab's index where appropriate
+				 * @type {number}
+				 */
+				let dir = keyupEvent.which === 37 ? index - 1 : keyupEvent.which === 39 ? index + 1 : keyupEvent.which === 40 ? 'down' : keyupEvent.shiftKey && keyupEvent.which === 9 ? 'reverse' : null;
+
+				if (dir !== null) {
+					keyupEvent.preventDefault();
+					// If the down key is pressed, move focus to the open panel.
+					if (dir === 'down') {
+						panels[i].focus();
+					}
+					/**
+					 * If the Shift+Tab combination is pressed, remove focus on the
+					 * open panel and return focus to the tab.
+					 */
+					else if (dir === 'reverse') {
+					}
+					// If an arrow key is pressed, switch to the adjacent tab.
+					else if (tabs[dir]) {
+						switchTab(keyupEvent.currentTarget, tabs[dir]);
+					}
+					else {
+						void 0;
+					}
+				}
 			});
 		});
 
 		/**
-		 * Close the open dialog when clicking on the background.
+		 * Add tab panel semantics and hide them all
 		 */
-		document.addEventListener('click', function (clickEvent) {
-			let clickEventTarget = clickEvent.target;
-
-			if (dialog.el) {
-				if (clickEventTarget === dialog.el.firstElementChild) {
-					if (dialog.el.getAttribute('aria-hidden') === 'false') {
-						clickEvent.preventDefault();
-						dialog.hide();
-					}
-				}
-			}
+		Array.prototype.forEach.call(panels, (panel, i) => {
+			panel.setAttribute('role', 'tabpanel');
+			panel.setAttribute('tabindex', '-1');
+			panel.setAttribute('aria-labelledby', tabs[i].id);
+			panel.hidden = true;
 		});
 
-	};
-
-
-	/**
-	 * Capture the current focused element so that you can set focus back to it
-	 * when you close the dialog.
-	 * Add a class to the `body` to style for dialog.
-	 * Hide the rest of the content.
-	 * Set `aria-hidden` to `false`
-	 * Add class to dialog.
-	 * Set focus to first focusable element from list created in init function.
-	 */
-	dialog.show = function () {
-		document.body.appendChild(dialog.el);
-		dialog.setInert();
-
-		document.body.classList.add('has-dialog');
-		dialog.focused = document.activeElement;
-		dialog.el.setAttribute('aria-hidden', 'false');
-
-		// Focus the first focusable item in the dialog.
-		dialog.getFirstFocusable().focus();
-		dialog.el.onkeydown = function (e) {
-			dialog.trap(e);
-		};
-	};
-
-
-	/**
-	 * Remove `body` classes that were added.
-	 * Reset `aria-hidden` values from container.
-	 * Reset `aria-hidden` values on dialog.
-	 * Remove show class from dialog.
-	 * Set focus to previously focused element.
-	 */
-	dialog.hide = function () {
-		document.body.classList.remove('has-dialog');
-		dialog.el.setAttribute('aria-hidden', 'true');
-		dialog.removeInert();
-		dialog.focused.focus();
-	};
-
-
-	/**
-	 * Traps the tab key inside of the context, so the user can't accidentally get stuck behind it.
-	 * Note that this does not work for VoiceOver users who are navigating with the VoiceOver commands, only for default
-	 * tab actions. We would need to implement something like the inert attribute for that (https://github.com/WICG/inert).
-	 *
-	 * If key is `esc`, close the dialog.
-	 * If key is `tab`
-	 * -- Get the current focus.
-	 * -- Get the total focusable items to filter through them later.
-	 * -- Get the index from the focusable items list of the current focused item.
-	 * If key is `shift-tab` (backwards) and you're at the first focusable item, set focus to the last focusable item.
-	 * If not `shift-tab` and the current focused item is the last item, set focus to the first focusable item.
-	 */
-	dialog.trap = function (e) {
-		if (e.which === 27) {
-			dialog.hide();
+		/**
+		 * If the URL contains a tab hash, activate and scroll to the relevant panel.
+		 * Otherwise, initially activate the first tab and reveal the first tab panel.
+		 */
+		if (targetTab.length === 1 && hash.includes('#')) {
+			targetTab[0].removeAttribute('tabindex');
+			targetTab[0].setAttribute('aria-selected', 'true');
+			targetPanel[0].hidden = false;
+			setTimeout(() => {
+				targetTab[0].scrollIntoView({
+					behavior: 'smooth',
+					block: 'center'
+				});
+			}, 250);
 		}
-		if (e.which === 9) {
-			let currentFocus = document.activeElement;
-			let focusableChildren = dialog.getFocusable();
-			let totalOfFocusable = focusableChildren.length;
-			let focusedIndex = focusableChildren.indexOf(currentFocus);
-
-			if (e.shiftKey) {
-				if (focusedIndex === 0) {
-					e.preventDefault();
-					focusableChildren[totalOfFocusable - 1].focus();
-				}
-			}
-			else {
-				if (focusedIndex === totalOfFocusable - 1) {
-					e.preventDefault();
-					focusableChildren[0].focus();
-				}
-			}
+		else {
+			tabs[0].removeAttribute('tabindex');
+			tabs[0].setAttribute('aria-selected', 'true');
+			panels[0].hidden = false;
 		}
 	};
 
-
 	/**
-	 * Get all focusable elements inside of the dialog.
-	 * @returns {Array} Array of focusable elements
+	 * Public APIs
 	 */
-	dialog.getFocusable = function () {
-		return Array.from(dialog.el.querySelectorAll(dialog.focusable));
-	};
+	return publicMethods;
 
-	/**
-	 * Get the first focusable element inside of the dialog.
-	 * @returns {Object} A DOM element
-	 */
-	dialog.getFirstFocusable = function () {
-		let focusable = dialog.getFocusable();
-
-		return focusable[0];
-	};
-
-
-	/**
-	 * Toggles an 'inert' attribute on all direct children of the <body> that are not the element you passed in. The
-	 * element you pass in needs to be a direct child of the <body>.
-	 *
-	 * Most useful when displaying a dialog/dialog/overlay and you need to prevent screen-reader users from escaping the
-	 * dialog to content that is hidden behind the dialog.
-	 *
-	 * This is a basic version of the `inert` concept from WICG. It is based on an alternate idea which is presented here:
-	 * https://github.com/WICG/inert/blob/master/explainer.md#wouldnt-this-be-better-as
-	 * Also see https://github.com/WICG/inert for more information about the inert attribute.
-	 */
-	dialog.setInert = function () {
-		Array.from(document.body.children).forEach(function (child) {
-			if (dialog.set.indexOf(child) === -1 && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
-				child.classList.add('is-inert');
-				child.setAttribute('inert', '');
-				//child.setAttribute('aria-hidden', 'true');
-			}
-		});
-	};
-
-	dialog.removeInert = function () {
-		Array.from(document.body.children).forEach(function (child) {
-			if (dialog.set.indexOf(child) === -1 && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
-				child.classList.remove('is-inert');
-				child.removeAttribute('inert');
-				//child.removeAttribute('aria-hidden');
-			}
-		});
-	};
-
-
-	/**
-	 * This is a helper function we will put into `window` to allow for opening of a specific dialog.
-	 * @param targetDialog
-	 */
-	let openDialog = function (targetDialog) {
-		dialog.el = dialog.set.find(function (value) {
-			return value.dataset.dialog === targetDialog;
-		});
-		if (validateDialogPresence(targetDialog) !== false) {
-			dialog.show();
-		}
-	};
-	window && (window.openDialog = openDialog);
-
-
-	/**
-	 * This is a helper function we will put into `window` to allow for closing of a specific dialog.
-	 */
-	let closeDialog = function () {
-		dialog.hide();
-	};
-	window && (window.closeDialog = closeDialog);
-
-
-	/**
-	 * This is a helper function we will put into `window` to allow for rescanning of the page when
-	 * dynamic content has been added. It will then reinitialize.
-	 */
-	let reloadDialog = function () {
-		dialog.set = Array.from(document.querySelectorAll('[data-dialog]'));
-		dialog.openTriggers = Array.from(document.querySelectorAll('[data-dialog-trigger]'));
-		dialog.closeTriggers = Array.from(document.querySelectorAll('[data-dialog-close]'));
-		dialog.init();
-	};
-	window && (window.reloadDialog = reloadDialog);
-
-
-	/**
-	 * Initialize the dialog.
-	 */
-	dialog.init();
-})();
-
+})(document);
 /**
- +-+-+-+-+-+-+-+-+-+-+-+-+-+
- |f|a|s|t|e|n| |h|e|a|d|e|r|
- +-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * EXTENSIONS / MINI-BASKET / MINI-BASKET
  *
- * This extension is a more refined version of a classic "sticky" header function.
- */
-
-function fastenHeader(position, siteHeader) {
-	'use strict';
-
-	let siteHeaderHeight = siteHeader.offsetHeight;
-
-	if (position > siteHeaderHeight) {
-		document.body.classList.add('x-fasten-header--is-active');
-	}
-	else {
-		document.body.classList.remove('x-fasten-header--is-active');
-	}
-}
-
-if ((sessionStorage.getItem('USER_CAN_HOVER') === null || sessionStorage.getItem('USER_CAN_HOVER') === 'true') && document.querySelector('[data-hook="fasten-header"]')) {
-	const siteHeader = document.querySelector('[data-hook="site-header"]');
-	let animationTimeout;
-
-	fastenHeader(window.pageYOffset || document.documentElement.scrollTop, siteHeader);
-
-	window.addEventListener('scroll', function () {
-		'use strict';
-
-		if (animationTimeout) {
-			window.cancelAnimationFrame(animationTimeout);
-		}
-
-		animationTimeout = window.requestAnimationFrame(function () {
-			fastenHeader(window.pageYOffset || document.documentElement.scrollTop, siteHeader);
-		});
-	}, false);
-}
-
-/**
- * 	Closable Messages
- */
-(function () {
-	'use strict';
-	let closeElements = document.querySelectorAll('[data-hook="message__close"]');
-
-	Array.prototype.forEach.call(closeElements, function (element) {
-		let ux_message_closer = element;
-		let ux_message = ux_message_closer.parentNode;
-
-		ux_message_closer.addEventListener('click', function (event) {
-			event.preventDefault();
-			ux_message.classList.add('u-hidden');
-		}, false);
-	});
-}());
-
-/**
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |m|i|n|i|B|a|s|k|e|t|
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * This is the default, off-canvas, mini-basket functionality of Miva.
  *
- * This is an extension to use the mini-basket functionality of Miva in an
- * off-canvas method.
+ * Version: 10.05.00
  */
 
-const miniBasket = (function (document) {
-	'use strict';
+const miniBasket = (document => {
+	var mbElement, mbContent;
 
-	let mbElement = document.querySelector('[data-hook="mini-basket"]');
-	let mbContent = mbElement.querySelector('[data-hook="mini-basket__content"]');
-	let publicMethods = {}; // Placeholder for public methods
-	let defaults = {
-		closeOnBackgroundClick: true,
-		closeOnEscClick: true
-	};
+	if (!(mbElement = document.querySelector('[data-hook="mini-basket"]')) ||
+		!(mbContent = mbElement.querySelector('[data-hook="mini-basket__content"]')))
+	{
+		return;
+	}
+
+	let publicMethods = {};
 	let openTrigger;
 
 	/**
@@ -462,25 +178,21 @@ const miniBasket = (function (document) {
 	 * @private
 	 * @returns {Object}	Merged values of defaults and options
 	 */
-	let extend = function () {
+	let extend = function (...args) {
 
-		// Variables
 		let extended = {};
 		let deep = false;
 		let i = 0;
-		let length = arguments.length;
+		let length = args.length;
 
-		// Check if a deep merge
-		if (Object.prototype.toString.call(arguments[0]) === '[object Boolean]') {
-			deep = arguments[0];
+		if (Object.prototype.toString.call(args[0]) === '[object Boolean]') {
+			deep = args[0];
 			i++;
 		}
 
-		// Merge the object into the extended object
-		let merge = function (obj) {
+		let merge = obj => {
 			for (let prop in obj) {
 				if (Object.prototype.hasOwnProperty.call(obj, prop)) {
-					// If deep merge and property is an object, merge properties
 					if (deep && Object.prototype.toString.call(obj[prop]) === '[object Object]') {
 						extended[prop] = extend(true, extended[prop], obj[prop]);
 					}
@@ -491,9 +203,8 @@ const miniBasket = (function (document) {
 			}
 		};
 
-		// Loop through each object and conduct a merge
 		for (; i < length; i++) {
-			let obj = arguments[i];
+			let obj = args[i];
 			merge(obj);
 		}
 
@@ -505,23 +216,28 @@ const miniBasket = (function (document) {
 	 * Toggle the visibility of the mini-basket
 	 * @private
 	 */
-	let toggleMenu = function (event, display) {
-		event.preventDefault();
-		event.stopPropagation();
-		if (display === 'open') {
-			mbElement.parentElement.hidden = false;
+	let toggleMenu = (event, display) => {
+		if (mivaJS.miniBasket.use) {
+			event.preventDefault();
+			event.stopPropagation();
+			if (display === 'open') {
+				mbElement.parentElement.hidden = false;
+			}
+
+			setTimeout(() => {
+				document.documentElement.classList.toggle('u-overflow-hidden');
+				mbElement.classList.toggle('x-mini-basket--open');
+				a11yHelper();
+			}, 50);
+
+			if (display === 'close') {
+				setTimeout(() => {
+					mbElement.parentElement.hidden = true;
+				}, 300);
+			}
 		}
-
-		setTimeout(function () {
-			document.documentElement.classList.toggle('u-overflow-hidden');
-			mbElement.classList.toggle('x-mini-basket--open');
-			a11yHelper();
-		}, 50);
-
-		if (display === 'close') {
-			setTimeout(function () {
-				mbElement.parentElement.hidden = true;
-			}, 300);
+		else if (event.target.dataset?.link?.length) {
+			document.location = event.target.dataset.link;
 		}
 	};
 
@@ -529,7 +245,7 @@ const miniBasket = (function (document) {
 	 * Manage focus for accessibility
 	 * @private
 	 */
-	let a11yHelper = function () {
+	let a11yHelper = () => {
 		const FOCUSABLE_ELEMENTS = [
 			'a[href]',
 			'input:not([disabled]):not([type="hidden"]):not([aria-hidden])',
@@ -574,7 +290,7 @@ const miniBasket = (function (document) {
 		if (mbElement.classList.contains('x-mini-basket--open')) {
 			openTrigger = document.activeElement;
 			mbContent.focus();
-			mbContent.addEventListener('keydown', function (keyEvent) {
+			mbContent.addEventListener('keydown', keyEvent => {
 				handleKeyboard(keyEvent);
 			});
 		}
@@ -588,7 +304,7 @@ const miniBasket = (function (document) {
 	 * Toggle the visibility of the mini-basket
 	 * @public
 	 */
-	publicMethods.toggle = function (event, display) {
+	publicMethods.toggle = (event, display) => {
 		toggleMenu(event, display);
 	};
 
@@ -596,35 +312,24 @@ const miniBasket = (function (document) {
 	 * Initialize the plugin
 	 * @public
 	 */
-	publicMethods.init = function (options) {
-		// Merge user options with defaults
-		let settings = extend(defaults, options || {});
-
-		// Element.matches() Polyfill
-		if (!Element.prototype.matches) {
-			Element.prototype.matches = Element.prototype.msMatchesSelector;
-		}
-
+	publicMethods.init = options => {
 		mbElement.parentElement.hidden = true;
 
-		// Open the mini-basket when clicking the trigger
-		document.addEventListener('click', function (event) {
+		document.querySelector('[data-hook="site-header"]').addEventListener('click', event => {
 			if (!event.target.closest('[data-hook~="open-mini-basket"]')) {
 				return;
 			}
 			toggleMenu(event, 'open');
 		}, false);
 
-		// Close the mini-basket when clicking any 'close' triggers
-		document.addEventListener('click', function (event) {
+		document.querySelector('[data-hook="mini-basket"]').addEventListener('click', event => {
 			if (!event.target.closest('[data-hook~="close-mini-basket"]')) {
 				return;
 			}
 			toggleMenu(event, 'close');
 		}, false);
 
-		// If enabled, close the mini-basket when clicking the background
-		if (settings.closeOnBackgroundClick) {
+		if (mivaJS.miniBasket.use && mivaJS.miniBasket.closeOnBackground) {
 			mbElement.addEventListener('click', function (event) {
 				if (event.target === this) {
 					toggleMenu(event, 'close');
@@ -632,13 +337,12 @@ const miniBasket = (function (document) {
 			}, false);
 		}
 
-		// If enabled, close the mini-basket when the `Esc` key is pressed
-		if (settings.closeOnEscClick) {
-			window.addEventListener('keydown', function (event) {
+		if (mivaJS.miniBasket.use && mivaJS.miniBasket.closeOnEsc) {
+			window.addEventListener('keydown', event => {
 				let escKey = (event.key === 'Escape');
 
 				if (event.defaultPrevented) {
-					return; // Do nothing if the event was already processed
+					return;
 				}
 
 				if (!escKey) {
@@ -659,21 +363,370 @@ const miniBasket = (function (document) {
 	 * Public APIs
 	 */
 	return publicMethods;
+})(document);
+/**
+ * 	Closable Messages
+ *
+ * Version: 10.05.00
+ */
+(() => {
+	let closeElements = document.querySelectorAll('[data-hook="message__close"]');
 
-}(document));
+	Array.prototype.forEach.call(closeElements, element => {
+		let ux_message_closer = element;
+		let ux_message = ux_message_closer.parentNode;
 
-(function ($, window, document) {
-	'use strict';
+		ux_message_closer.addEventListener('click', event => {
+			event.preventDefault();
+			ux_message.classList.add('u-hidden');
+		}, false);
+	});
+})();
+/**
+ * EXTENSIONS / FASTEN HEADER / FASTEN HEADER
+ *
+ * This extension is a more refined version of a classic "sticky" header function.
+ *
+ * Version: 10.05.00
+ */
 
-	let touchCapable = 'ontouchstart' in window || window.DocumentTouch && document instanceof DocumentTouch || navigator.maxTouchPoints > 0 || navigator.msMaxTouchPoints > 0;
+function fastenHeader(position, {offsetHeight}) {
+	if (position > offsetHeight) {
+		document.body.classList.add('x-fasten-header--is-active');
+	}
+	else {
+		document.body.classList.remove('x-fasten-header--is-active');
+	}
+}
 
+if (window.matchMedia('(any-hover: hover) and (any-pointer: fine)').matches && _hook('fasten-header')) {
+	const siteHeader = document.querySelector('[data-hook="site-header"]');
+	let animationTimeout;
+
+	fastenHeader(window.scrollY, siteHeader);
+
+	window.addEventListener('scroll', () => {
+		if (animationTimeout) {
+			window.cancelAnimationFrame(animationTimeout);
+		}
+
+		animationTimeout = window.requestAnimationFrame(() => {
+			fastenHeader(window.scrollY, siteHeader);
+		});
+	}, false);
+}
+/**
+ * EXTENSIONS / QUANTIFY / QUANTIFY
+ *
+ * This extension allows for the use of buttons to increase/decrease item
+ * quantities on the product and basket pages. When used on the basket page,
+ * the decrease button becomes a remove button if the quantity is 1.
+ *
+ * Version: 10.05.00
+ */
+
+const quantify = (() => {
+
+	const quantifyAPI = {};
+
+	const allowRemoveUpdate = section => {
+		let quantities = section.querySelectorAll('[data-hook="group-quantity"]');
+
+		function toggleRemove({previousElementSibling}, quantity) {
+			if (parseInt(quantity) > 1) {
+				previousElementSibling.removeAttribute('aria-disabled');
+			}
+			else {
+				previousElementSibling.setAttribute('aria-disabled', 'true');
+			}
+		}
+
+		if (quantities) {
+			for (let quantityLine of quantities) {
+				let updateTimeout = null;
+
+				toggleRemove(quantityLine, quantityLine.value);
+
+				quantityLine.addEventListener('change', function (event) {
+					let input = this;
+
+					clearTimeout(updateTimeout);
+					updateTimeout = setTimeout(() => {
+						toggleRemove(input, input.value);
+						groupSubmit(event, input, section);
+					}, 250);
+				});
+
+				quantityLine.addEventListener('input', function (event) {
+					let input = this;
+
+					clearTimeout(updateTimeout);
+					updateTimeout = setTimeout(() => {
+						toggleRemove(input, input.value);
+						groupSubmit(event, input, section);
+					}, 250);
+				});
+			}
+		}
+	}
+
+	allowRemoveUpdate(document);
+
+	const groupSubmit = ({key, target}, {value}, section) => {
+		if (key !== 8 && key !== 37 && key !== 38 && key !== 39 && key !== 40 && key !== 46 && value !== '') {
+			section.querySelector(`[data-hook="${target.getAttribute('data-group')}"]`).submit();
+		}
+	}
+
+	quantifyAPI.init = section => {
+		const adjusters = section.querySelectorAll('[data-hook="quantify"]');
+
+		if (adjusters) {
+			for (let id = 0; id < adjusters.length; id++) {
+				/**
+				 * This listener prevents the `enter` key from adjusting the `input` value.
+				 */
+				adjusters[id].addEventListener('keydown', keyEvent => {
+					if (keyEvent.target.closest('input')) {
+						if (keyEvent.key === 'Enter') {
+							keyEvent.preventDefault();
+						}
+					}
+				});
+
+				adjusters[id].addEventListener('click', function (event) {
+					if (event.target.closest('button')) {
+						let button = event.target;
+						let inputs = [].filter.call(this.children, sibling => sibling !== button && sibling.closest('input'));
+						let input = inputs[0];
+						let max = input.hasAttribute('data-max') ? parseInt(input.getAttribute('data-max')) : undefined;
+						let min = input.hasAttribute('data-min') ? parseInt(input.getAttribute('data-min')) : 1;
+						let step = input.hasAttribute('data-step') ? parseInt(input.getAttribute('data-step')) : 1;
+						let value = parseInt(input.value);
+						let action = button.getAttribute('data-action');
+						let changed = new Event('change');
+
+						if (isNaN(step)) {
+							step = 1;
+						}
+						event.stopPropagation();
+						event.preventDefault();
+
+						if (action === 'decrement') {
+							if (!isNaN(min)) {
+								if (min < value) {
+									input.value = value - step;
+								}
+								else {
+									input.value = min;
+								}
+							}
+							else {
+								input.value = value > step ? value - step : step;
+							}
+							input.dispatchEvent(changed);
+							allowRemoveUpdate(section);
+						}
+						else if (action === 'increment') {
+							if (max !== undefined && !isNaN(max)) {
+								if (max > value) {
+									input.value = value + step;
+								}
+								else {
+									input.value = max;
+								}
+							}
+							else {
+								input.value = value + step;
+							}
+							input.dispatchEvent(changed);
+							allowRemoveUpdate(section);
+						}
+					}
+				});
+			}
+		}
+	};
+
+	quantifyAPI.restore = section => {
+		allowRemoveUpdate(section);
+		quantifyAPI.init(section);
+	};
+
+	return quantifyAPI;
+})();
+/**
+ * EXTENSIONS / PAYMENT / PAYMENT METHODS
+ *
+ * Payment-method is a lightweight plugin which used to help determine the type
+ * of credit card being used and set, or update, the payment method field for
+ * order submission on the Checkout: Payment Information page in Miva Merchant.
+ *
+ * Version: 10.05.00
+ */
+
+const paymentMethod = (() => {
+	const publicMethods = {};
+
+	/**
+	 * Initialize the plugin
+	 * @public
+	 */
+	publicMethods.detect = (element, callback) => {
+		/**
+		 * Retrieve the value of the input and remove all non-numeric characters
+		 * @type {string}
+		 */
+		let number = String(element.value);
+		let cleanNumber = '';
+
+		for (let charIndex = 0; charIndex < number.length; charIndex++) {
+			if (/^[0-9]+$/.test(number.charAt(charIndex))) {
+				cleanNumber += number.charAt(charIndex);
+			}
+		}
+
+		/**
+		 * Run the modulus 10 algorithm on the input number if it is at least
+		 * equal to the shortest card length.
+		 * https://en.wikipedia.org/wiki/Luhn_algorithm
+		 */
+		let passedMod10;
+
+		if (cleanNumber.length >= 12) {
+			passedMod10 = mod10Validation(cleanNumber);
+		}
+
+		function mod10Validation(number) {
+			let digit;
+			let digits;
+			let i;
+			let len;
+			let odd;
+			let sum;
+
+			odd = true;
+			sum = 0;
+			digits = (`${number}`).split('').reverse();
+
+			for (i = 0, len = digits.length; i < len; i++) {
+				digit = digits[i];
+				digit = parseInt(digit, 10);
+				if ((odd = !odd)) {
+					digit *= 2;
+				}
+				if (digit > 9) {
+					digit -= 9;
+				}
+				sum += digit;
+			}
+
+			return sum % 10 === 0;
+		}
+
+		/**
+		 * Credit card types array including regular expressions for matching.
+		 * @type {[*]}
+		 */
+		let card_types = [
+			{
+				display_name: 'American Express',
+				name: 'american-express',
+				pattern: /^(?:(3[47][0-9]{13}))/,
+				valid_length: [15]
+			},
+			{
+				display_name: 'Diners Club',
+				name: 'diners-club',
+				pattern: /^(?:(3(?:0[0-5]|[68][0-9])[0-9]{11}))/,
+				valid_length: [14]
+			},
+			{
+				display_name: 'JCB',
+				name: 'jcb',
+				pattern: /^(?:((?:2131|1800|35[0-9]{3})[0-9]{11}))/,
+				valid_length: [16]
+			},
+			{
+				display_name: 'Visa',
+				name: 'visa',
+				pattern: /^(?:(4[0-9]{12}(?:[0-9]{3})?))/,
+				valid_length: [16]
+			},
+			{
+				display_name: 'MasterCard',
+				name: 'mastercard',
+				pattern: /^(?:((?:5[1-5]|2[2-7])[0-9]{14}))$/,
+				valid_length: [16]
+			},
+			{
+				display_name: 'Discover',
+				name: 'discover',
+				pattern: /^(?:(6(?:011|5[0-9]{2})[0-9]{12}))/,
+				valid_length: [16]
+			}
+		];
+
+		/**
+		 * Test the input number against mod10 validation.
+		 * If it passes, test the input number against each of the above card types.
+		 * Return the card name to the callback for additional processing.
+		 */
+		for (let i = 0; i < card_types.length; i++) {
+			if (passedMod10 === true) {
+				if (cleanNumber.match(card_types[i].pattern)) {
+					let card = {
+						display: card_types[i].display_name,
+						name: card_types[i].name
+					};
+
+					if (typeof callback === 'function') {
+						callback(card);
+					}
+				}
+			}
+		}
+
+		/**
+		 * Get a value from an array by name.
+		 * @param name
+		 */
+		Array.prototype.findPaymentMethod = function (name) {
+			for (let i = 0, len = this.length; i < len; i++) {
+				if (typeof this[i] !== 'object') {
+					continue;
+				}
+				if (this[i].name === name) {
+					return this[i].value;
+				}
+			}
+		};
+	};
+
+	/**
+	 * Public APIs
+	 */
+	return publicMethods;
+
+})();
+/**
+ * EXTENSIONS / NAVIGATION / TRANSFIGURE NAVIGATION
+ *
+ * This extension is the default, primary navigation layout for Shadows. On larger screens, it
+ * is a horizontal navigation with drop-downs and fly-outs for categories. On smaller screens, it
+ * is off-canvas with internal scrolling.
+ *
+ * Version: 10.05.00
+ */
+
+(($, window, document) => {
 	/**
 	 * Double Tap To Go [http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly]
 	 * By: Osvaldas Valutis [http://www.osvaldas.info]
 	 * License: MIT
 	 */
 	$.fn.doubleTapToGo = function () {
-		if (touchCapable) {
+		if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
 			this.each(function () {
 				let curItem = false;
 
@@ -686,9 +739,9 @@ const miniBasket = (function (document) {
 					}
 				});
 
-				$(document).on('click touchstart MSPointerDown', function (event) {
-					let resetItem = true,
-						parents = $(event.target).parents();
+				$(document).on('click touchstart', ({target}) => {
+					let resetItem = true;
+					let parents = $(target).parents();
 
 					for (let i = 0; i < parents.length; i++) {
 						if (parents[i] === curItem[0]) {
@@ -761,11 +814,11 @@ const miniBasket = (function (document) {
 		let triggerElement = $(this);
 
 		triggerElement.on('mouseenter', function () {
-			let parentElement = $(this),
-				childElement = parentElement.find('ul').first(),
-				grandchildElement = childElement.find('ul').first(),
-				childOffsetWidth = childElement.offset().left + childElement.width(),
-				documentWidth = container ? container.outerWidth() : document.documentElement.clientWidth;
+			let parentElement = $(this);
+			let childElement = parentElement.find('ul').first();
+			let grandchildElement = childElement.find('ul').first();
+			let childOffsetWidth = childElement.offset().left + childElement.width();
+			let documentWidth = container ? container.outerWidth() : document.documentElement.clientWidth;
 
 			if (grandchildElement) {
 				childOffsetWidth = childOffsetWidth + grandchildElement.getRealDimensions().width;
@@ -801,9 +854,9 @@ const miniBasket = (function (document) {
 		let clientPort = document.documentElement.clientWidth;
 		let waitForIt;
 
-		window.addEventListener('resize', function () {
+		window.addEventListener('resize', () => {
 			if (!waitForIt) {
-				waitForIt = setTimeout(function () {
+				waitForIt = setTimeout(() => {
 					waitForIt = null;
 					clientPort = document.documentElement.clientWidth;
 
@@ -831,13 +884,13 @@ const miniBasket = (function (document) {
 			});
 		}
 
-		document.querySelector('[data-hook="open-main-menu"]').addEventListener('click', function (event) {
+		document.querySelector('[data-hook="open-main-menu"]').addEventListener('click', event => {
 			event.preventDefault();
 			document.documentElement.classList.add('has-open-main-menu');
 			navigationExtension.classList.add('is-open');
 		});
 
-		document.querySelector('[data-hook="close-main-menu"]').addEventListener('click', function (event) {
+		document.querySelector('[data-hook="close-main-menu"]').addEventListener('click', event => {
 			event.preventDefault();
 			document.documentElement.classList.remove('has-open-main-menu');
 			navigationExtension.classList.remove('is-open');
@@ -845,21 +898,29 @@ const miniBasket = (function (document) {
 
 		if (clientPort < 960) {
 			showSubnavigation();
+
+			navigationExtension.addEventListener('click', event => {
+				if (event.target === navigationExtension) {
+					event.preventDefault();
+					document.documentElement.classList.remove('has-open-main-menu');
+					navigationExtension.classList.remove('is-open');
+				}
+			});
 		}
 		else {
 			if (!!window.MSInputMethodContext && !!document.documentMode) {
-				topLevelLinks.forEach(function (link) {
+				topLevelLinks.forEach(link => {
 					if (link.nextElementSibling) {
 						link.addEventListener('focus', function () {
 							this.parentElement.classList.add('focus-within');
 						});
-	
+
 						const subMenu = link.nextElementSibling;
 						const subMenuLinks = subMenu.querySelectorAll('a');
 						const lastLinkIndex = subMenuLinks.length - 1;
 						const lastLink = subMenuLinks[lastLinkIndex];
-	
-						lastLink.addEventListener('blur', function () {
+
+						lastLink.addEventListener('blur', () => {
 							link.parentElement.classList.remove('focus-within');
 						});
 					}
@@ -870,314 +931,532 @@ const miniBasket = (function (document) {
 		}
 	};
 })(jQuery, window, document);
-
 /**
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- |q|u|a|n|t|i|f|y|
- +-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+
+ * EXTENSIONS / DIALOG / DIALOG
  *
- * This extension allows for the use of buttons to increase/decrease item
- * quantities on the product and basket pages. When used on the basket page,
- * the decrease button becomes a remove button if the quantity is 1.
+ * A modal that is fully keyboard accessible. Keyboard focus will lock to the modal only while open and can be closed
+ * by pressing Escape or tabbing to the 'close' button. For non-keyboard navigation, the modal can be closed through
+ * clicking on the background.
+ *
+ * Based on `Accessible modal with tab trap and vanilla JS` by Danielle [https://codepen.io/hidanielle/pen/MyggJJ]
+ *
+ * Version: 10.05.00
  */
 
-const quantify = (function () {
-	'use strict';
-
-	const quantifyAPI = {};
-
-	const allowRemoveUpdate = function (section) {
-		let quantities = section.querySelectorAll('[data-hook="group-quantity"]');
-
-		function toggleRemove(input, quantity) {
-			if (parseInt(quantity) > 1) {
-				input.previousElementSibling.classList.remove('is-disabled');
-			}
-			else {
-				input.previousElementSibling.classList.add('is-disabled');
-			}
-		}
-
-		if (quantities) {
-			for (let id = 0; id < quantities.length; id++) {
-				let quantityLine = quantities[id];
-				let updateTimeout = null;
-
-				toggleRemove(quantityLine, quantityLine.value);
-
-				quantityLine.addEventListener('change', function (event) {
-					let input = this;
-
-					clearTimeout(updateTimeout);
-					updateTimeout = setTimeout(function () {
-						toggleRemove(input, input.value);
-						groupSubmit(event, input, section);
-					}, 250);
-				});
-
-				quantityLine.addEventListener('input', function (event) {
-					let input = this;
-
-					clearTimeout(updateTimeout);
-					updateTimeout = setTimeout(function () {
-						toggleRemove(input, input.value);
-						groupSubmit(event, input, section);
-					}, 250);
-				});
-			}
-		}
-	}
-
-	allowRemoveUpdate(document);
-
-	const groupSubmit = function (event, quantity, section) {
-		if (event.key !== 8 && event.key !== 37 && event.key !== 38 && event.key !== 39 && event.key !== 40 && event.key !== 46 && quantity.value !== '') {
-			section.querySelector('[data-hook="' + event.target.getAttribute('data-group') + '"]').submit();
-		}
-	}
-
-	quantifyAPI.init = function (section) {
-		const adjusters = section.querySelectorAll('[data-hook="quantify"]');
-
-		if (adjusters) {
-			for (let id = 0; id < adjusters.length; id++) {
-				/**
-				 * This listener prevents the `enter` key from adjusting the `input` value.
-				 */
-				adjusters[id].addEventListener('keydown', function (keyEvent) {
-					if (keyEvent.target.closest('input')) {
-						if (keyEvent.key === 'Enter') {
-							keyEvent.preventDefault();
-						}
-					}
-				});
-
-				adjusters[id].addEventListener('click', function (event) {
-					if (event.target.closest('button')) {
-						let button = event.target;
-						let inputs = [].filter.call(this.children, function (sibling) {
-							return sibling !== button && sibling.closest('input');
-						});
-						let input = inputs[0];
-						let max = input.hasAttribute('data-max') ? parseInt(input.getAttribute('data-max')) : undefined;
-						let min = input.hasAttribute('data-min') ? parseInt(input.getAttribute('data-min')) : 1;
-						let step = input.hasAttribute('data-step') ? parseInt(input.getAttribute('data-step')) : 1;
-						let value = parseInt(input.value);
-						let action = button.getAttribute('data-action');
-						let changed = new Event('change');
-
-						if (isNaN(step)) {
-							step = 1;
-						}
-						event.stopPropagation();
-						event.preventDefault();
-
-						if (action === 'decrement') {
-							if (!isNaN(min)) {
-								if (min < value) {
-									input.value = value - step;
-								}
-								else {
-									input.value = min;
-								}
-							}
-							else {
-								input.value = value > step ? value - step : step;
-							}
-							input.dispatchEvent(changed);
-							allowRemoveUpdate(section);
-						}
-						else if (action === 'increment') {
-							if (max !== undefined && !isNaN(max)) {
-								if (max > value) {
-									input.value = value + step;
-								}
-								else {
-									input.value = max;
-								}
-							}
-							else {
-								input.value = value + step;
-							}
-							input.dispatchEvent(changed);
-							allowRemoveUpdate(section);
-						}
-					}
-				});
-			}
+(() => {
+	/**
+	 * Create a dialog object, set the target element, and create a list of focusable elements.
+	 * @type {{set: *[], closeTriggers: *[], focused: Element, focusable: string, el: Element, openTriggers: *[], init: function, show: function, hide: function, trap: function, getFocusable: function, getFirstFocusable: function, setInert: function, removeInert: function}}
+	 */
+	let dialog = {
+		set: Array.from(document.querySelectorAll('[data-dialog]')),
+		openTriggers: Array.from(document.querySelectorAll('[data-dialog-trigger]')),
+		closeTriggers: Array.from(document.querySelectorAll('[data-dialog-close]')),
+		focusable: 'a[href], area[href], input:not([disabled]):not([type="hidden"]):not([aria-hidden]), select:not([disabled]):not([aria-hidden]), textarea:not([disabled]):not([aria-hidden]), button:not([disabled]):not([aria-hidden]), object, embed, [tabindex]:not([tabindex^="-"])',
+		el: undefined,
+		focused: undefined,
+		init() {
+		},
+		show() {
+		},
+		hide() {
+		},
+		trap() {
+		},
+		getFocusable() {
+		},
+		getFirstFocusable() {
+		},
+		setInert() {
+		},
+		removeInert() {
 		}
 	};
 
-	quantifyAPI.restore = function (section) {
-		allowRemoveUpdate(section);
-		quantifyAPI.init(section);
-	};
-
-	return quantifyAPI;
-})();
-
-/**
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- * |p|a|y|m|e|n|t| |m|e|t|h|o|d|
- * +-+-+-+-+-+-+-+-+-+-+-+-+-+-+
- *
- * Payment-method is a lightweight plugin which used to help determine the type
- * of credit card being used and set, or update, the payment method field for
- * order submission on the Checkout: Payment Information page in Miva Merchant.
- *
- * Author: Matt Zimmermann [https://github.com/influxweb]
- * Version: 1.0.1
- * License: MIT
- */
-
-const paymentMethod = (function (document) {
-	'use strict';
-
-	const publicMethods = {}; // Placeholder for public methods
 
 	/**
-	 * Initialize the plugin
-	 * @public
+	 * Validates whether a dialog of the given `data-dialog` exists in the DOM
+	 * @param {string} id The data-dialog of the dialog
+	 * @returns {boolean}
 	 */
-	publicMethods.detect = function (element, callback) {
-		/**
-		 * Retrieve the value of the input and remove all non-numeric characters
-		 * @type {string}
-		 */
-		let number = String(element.value);
-		let cleanNumber = '';
-	
-		for (let charIndex = 0; charIndex < number.length; charIndex++) {
-			if (/^[0-9]+$/.test(number.charAt(charIndex))) {
-				cleanNumber += number.charAt(charIndex);
-			}
+	const validateDialogPresence = function validateDialogPresence(id) {
+		if (!document.querySelector(`[data-dialog=${id}]`)) {
+			console.warn("Dialog: \u2757Seems like you have missed %c'".concat(id, "'"), 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data-dialog somewhere in your code. Refer example below to resolve it.');
+			console.warn("%cExample:", 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', "<div class=\"c-dialog\" aria-hidden=\"true\" data-dialog=\"".concat(id, "\"></div>"));
+			return false;
 		}
-	
-		/**
-		 * Run the modulus 10 algorithm on the input number if it is at least
-		 * equal to the shortest card length.
-		 * https://en.wikipedia.org/wiki/Luhn_algorithm
-		 */
-		let passedMod10;
-	
-		if (cleanNumber.length >= 12) {
-			passedMod10 = mod10Validation(cleanNumber);
-		}
-	
-		function mod10Validation(number) {
-			let digit;
-			let digits;
-			let i;
-			let len;
-			let odd;
-			let sum;
-	
-			odd = true;
-			sum = 0;
-			digits = (number + '').split('').reverse();
-	
-			for (i = 0, len = digits.length; i < len; i++) {
-				digit = digits[i];
-				digit = parseInt(digit, 10);
-				if ((odd = !odd)) {
-					digit *= 2;
+	};
+
+
+	/**
+	 * Initialize the dialog, find the focusable children elements, and set up the click handlers.
+	 */
+	dialog.init = () => {
+		dialog.set.forEach(dialog => {
+			dialog.setAttribute('aria-hidden', 'true');
+		});
+
+		dialog.openTriggers.forEach(trigger => {
+			trigger.addEventListener('click', function (e) {
+				e.preventDefault();
+				let name = this.dataset.dialogTrigger;
+
+				dialog.el = dialog.set.find(({dataset}) => dataset.dialog === name);
+				if (validateDialogPresence(name) !== false) {
+					dialog.show();
 				}
-				if (digit > 9) {
-					digit -= 9;
-				}
-				sum += digit;
-			}
-	
-			return sum % 10 === 0;
-		}
-	
+			});
+		});
+
+		dialog.closeTriggers.forEach(trigger => {
+			trigger.addEventListener('click', e => {
+				e.preventDefault();
+				dialog.hide();
+			});
+		});
+
 		/**
-		 * Credit card types array including regular expressions for matching.
-		 * @type {[*]}
+		 * Close the open dialog when clicking on the background.
 		 */
-		let card_types = [
-			{
-				display_name: 'American Express',
-				name: 'american-express',
-				pattern: /^(?:(3[47][0-9]{13}))/,
-				valid_length: [15]
-			},
-			{
-				display_name: 'Diners Club',
-				name: 'diners-club',
-				pattern: /^(?:(3(?:0[0-5]|[68][0-9])[0-9]{11}))/,
-				valid_length: [14]
-			},
-			{
-				display_name: 'JCB',
-				name: 'jcb',
-				pattern: /^(?:((?:2131|1800|35[0-9]{3})[0-9]{11}))/,
-				valid_length: [16]
-			},
-			{
-				display_name: 'Visa',
-				name: 'visa',
-				pattern: /^(?:(4[0-9]{12}(?:[0-9]{3})?))/,
-				valid_length: [16]
-			},
-			{
-				display_name: 'MasterCard',
-				name: 'mastercard',
-				pattern: /^(?:((?:5[1-5]|2[2-7])[0-9]{14}))$/,
-				valid_length: [16]
-			},
-			{
-				display_name: 'Discover',
-				name: 'discover',
-				pattern: /^(?:(6(?:011|5[0-9]{2})[0-9]{12}))/,
-				valid_length: [16]
-			}
-		];
-	
-		/**
-		 * Test the input number against mod10 validation.
-		 * If it passes, test the input number against each of the above card types.
-		 * Return the card name to the callback for additional processing.
-		 */
-		for (let i = 0; i < card_types.length; i++) {
-			if (passedMod10 === true) {
-				if (cleanNumber.match(card_types[i].pattern)) {
-					let card = {
-						display: card_types[i].display_name,
-						name: card_types[i].name
-					};
-	
-					if (typeof callback === 'function') {
-						callback(card);
+		document.addEventListener('click', clickEvent => {
+			let clickEventTarget = clickEvent.target;
+
+			if (dialog.el) {
+				if (clickEventTarget === dialog.el.firstElementChild) {
+					if (dialog.el.getAttribute('aria-hidden') === 'false') {
+						clickEvent.preventDefault();
+						dialog.hide();
 					}
 				}
 			}
-		}
-	
-		/**
-		 * Get a value from an array by name.
-		 * @param name
-		 */
-		Array.prototype.findPaymentMethod = function (name) {
-			for (let i = 0, len = this.length; i < len; i++) {
-				if (typeof this[i] !== 'object') {
-					continue;
-				}
-				if (this[i].name === name) {
-					return this[i].value;
-				}
-			}
+		});
+
+	};
+
+
+	/**
+	 * Capture the current focused element so that you can set focus back to it
+	 * when you close the dialog.
+	 * Add a class to the `body` to style for dialog.
+	 * Hide the rest of the content.
+	 * Set `aria-hidden` to `false`
+	 * Add class to dialog.
+	 * Set focus to first focusable element from list created in init function.
+	 */
+	dialog.show = () => {
+		document.body.appendChild(dialog.el);
+		dialog.setInert();
+
+		document.body.classList.add('has-dialog');
+		dialog.focused = document.activeElement;
+		dialog.el.setAttribute('aria-hidden', 'false');
+
+		// Focus the first focusable item in the dialog.
+		dialog.getFirstFocusable().focus();
+		dialog.el.onkeydown = e => {
+			dialog.trap(e);
 		};
 	};
 
+
 	/**
-	 * Public APIs
+	 * Remove `body` classes that were added.
+	 * Reset `aria-hidden` values from container.
+	 * Reset `aria-hidden` values on dialog.
+	 * Remove show class from dialog.
+	 * Set focus to previously focused element.
 	 */
-	return publicMethods;
+	dialog.hide = () => {
+		document.body.classList.remove('has-dialog');
+		dialog.el.setAttribute('aria-hidden', 'true');
+		dialog.removeInert();
+		dialog.focused.focus();
+	};
 
-}(document));
 
+	/**
+	 * Traps the tab key inside of the context, so the user can't accidentally get stuck behind it.
+	 * Note that this does not work for VoiceOver users who are navigating with the VoiceOver commands, only for default
+	 * tab actions. We would need to implement something like the inert attribute for that (https://github.com/WICG/inert).
+	 *
+	 * If key is `esc`, close the dialog.
+	 * If key is `tab`
+	 * -- Get the current focus.
+	 * -- Get the total focusable items to filter through them later.
+	 * -- Get the index from the focusable items list of the current focused item.
+	 * If key is `shift-tab` (backwards) and you're at the first focusable item, set focus to the last focusable item.
+	 * If not `shift-tab` and the current focused item is the last item, set focus to the first focusable item.
+	 */
+	dialog.trap = e => {
+		if (e.which === 27) {
+			dialog.hide();
+		}
+		if (e.which === 9) {
+			let currentFocus = document.activeElement;
+			let focusableChildren = dialog.getFocusable();
+			let totalOfFocusable = focusableChildren.length;
+			let focusedIndex = focusableChildren.indexOf(currentFocus);
+
+			if (e.shiftKey) {
+				if (focusedIndex === 0) {
+					e.preventDefault();
+					focusableChildren[totalOfFocusable - 1].focus();
+				}
+			}
+			else {
+				if (focusedIndex === totalOfFocusable - 1) {
+					e.preventDefault();
+					focusableChildren[0].focus();
+				}
+			}
+		}
+	};
+
+
+	/**
+	 * Get all focusable elements inside of the dialog.
+	 * @returns {Array} Array of focusable elements
+	 */
+	dialog.getFocusable = () => Array.from(dialog.el.querySelectorAll(dialog.focusable));
+
+	/**
+	 * Get the first focusable element inside of the dialog.
+	 * @returns {Object} A DOM element
+	 */
+	dialog.getFirstFocusable = () => {
+		let focusable = dialog.getFocusable();
+
+		return focusable[0];
+	};
+
+
+	/**
+	 * Toggles an 'inert' attribute on all direct children of the <body> that are not the element you passed in. The
+	 * element you pass in needs to be a direct child of the <body>.
+	 *
+	 * Most useful when displaying a dialog/dialog/overlay and you need to prevent screen-reader users from escaping the
+	 * dialog to content that is hidden behind the dialog.
+	 *
+	 * This is a basic version of the `inert` concept from WICG. It is based on an alternate idea which is presented here:
+	 * https://github.com/WICG/inert/blob/master/explainer.md#wouldnt-this-be-better-as
+	 * Also see https://github.com/WICG/inert for more information about the inert attribute.
+	 */
+	dialog.setInert = () => {
+		Array.from(document.body.children).forEach(child => {
+			if (!dialog.set.includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+				child.classList.add('is-inert');
+				child.setAttribute('inert', '');
+			}
+		});
+	};
+
+	dialog.removeInert = () => {
+		Array.from(document.body.children).forEach(child => {
+			if (!dialog.set.includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+				child.classList.remove('is-inert');
+				child.removeAttribute('inert');
+			}
+		});
+	};
+
+
+	/**
+	 * This is a helper function we will put into `window` to allow for opening of a specific dialog.
+	 * @param targetDialog
+	 */
+	let openDialog = targetDialog => {
+		dialog.el = dialog.set.find(({dataset}) => dataset.dialog === targetDialog);
+		if (validateDialogPresence(targetDialog) !== false) {
+			dialog.show();
+		}
+	};
+	window && (window.openDialog = openDialog);
+
+
+	/**
+	 * This is a helper function we will put into `window` to allow for closing of a specific dialog.
+	 */
+	let closeDialog = () => {
+		dialog.hide();
+	};
+	window && (window.closeDialog = closeDialog);
+
+
+	/**
+	 * This is a helper function we will put into `window` to allow for rescanning of the page when
+	 * dynamic content has been added. It will then reinitialize.
+	 */
+	let reloadDialog = () => {
+		dialog.set = Array.from(document.querySelectorAll('[data-dialog]'));
+		dialog.openTriggers = Array.from(document.querySelectorAll('[data-dialog-trigger]'));
+		dialog.closeTriggers = Array.from(document.querySelectorAll('[data-dialog-close]'));
+		dialog.init();
+	};
+	window && (window.reloadDialog = reloadDialog);
+
+
+	/**
+	 * Initialize the dialog.
+	 */
+	dialog.init();
+})();
 /**
+ * EXTENSIONS / SHOW PASSWORD / SHOW PASSWORD
+ *
+ * This extension allows a user to reveal the password they have typed.
+ *
+ * Version: 10.05.00
+ */
+
+(() => {
+	const passwordInputs = document.querySelectorAll('input[type="password"]');
+	const hideClass = 'u-icon-eye-closed';
+	const hideLabel = 'Hide Password.';
+	const hideText = 'Hide';
+	const showClass = 'u-icon-eye-open';
+	const showLabel = 'Show password as plain text. Warning: this will display your password on the screen.';
+	const showText = 'Show';
+
+	function getPreviousSibling({previousElementSibling}, selector) {
+		let sibling = previousElementSibling;
+
+		if (!selector) {
+			return sibling;
+		}
+
+		while (sibling) {
+			if (sibling.matches(selector)) {
+				return sibling;
+			}
+			sibling = sibling.previousElementSibling;
+		}
+	}
+
+	if (passwordInputs.length > 0) {
+		passwordInputs.forEach(passwordInput => {
+			const toggleButton = document.createElement('button');
+			let findLabel = getPreviousSibling(passwordInput, 'label');
+
+			toggleButton.classList.add('c-button');
+			toggleButton.classList.add('u-bg-transparent');
+			toggleButton.classList.add('x-toggle-password');
+			mivaJS.showPassword.useIcon ? toggleButton.classList.add(showClass) : toggleButton.textContent = showText;
+			if (findLabel && findLabel.classList.contains('u-hide-visually')) {
+				toggleButton.classList.add('x-toggle-password--no-label');
+			}
+			toggleButton.setAttribute('aria-label', showLabel);
+			toggleButton.setAttribute('data-hook', 'toggle-password');
+			toggleButton.type = 'button';
+			passwordInput.parentElement.style.position = 'relative';
+			passwordInput.parentElement.insertBefore(toggleButton, passwordInput.nextSibling);
+		});
+
+		const togglePasswordButtons = document.querySelectorAll('[data-hook="toggle-password"]');
+
+		if (togglePasswordButtons.length > 0) {
+			togglePasswordButtons.forEach(togglePasswordButton => {
+				togglePasswordButton.addEventListener('click', () => {
+					let closestInput = getPreviousSibling(togglePasswordButton, 'input');
+
+					if (closestInput.type === 'password') {
+						closestInput.type = 'text';
+						mivaJS.showPassword.useIcon ? togglePasswordButton.classList.replace(showClass, hideClass) : togglePasswordButton.textContent = hideText;
+						togglePasswordButton.setAttribute('aria-label', hideLabel);
+					}
+					else {
+						closestInput.type = 'password';
+						mivaJS.showPassword.useIcon ? togglePasswordButton.classList.replace(hideClass, showClass) : togglePasswordButton.textContent = showText;
+						togglePasswordButton.setAttribute('aria-label', showLabel);
+					}
+				});
+			});
+		}
+	}
+})();
+/**
+ * EXTENSIONS / SHOW RELATED / A11Y TOGGLE
+ *
+ * An accessible replacement to the checkbox-hack for toggling sections.
+ * https://github.com/edenspiekermann/a11y-toggle
+ *
+ * By: https://kittygiraudel.com/
+ * MIT License: https://github.com/edenspiekermann/a11y-toggle/blob/master/LICENSE
+ */
+
+(() => {
+	const distinct = (value, index, self) => self.indexOf(value) === index;
+
+	let atResizeTimeout;
+	let internalId = 0;
+	let togglesMap = {};
+	let targetsMap = {};
+
+	function $(selector, context) {
+		return Array.prototype.slice.call(
+			(context || document).querySelectorAll(selector)
+		);
+	}
+
+	function getClosestToggle(element) {
+		if (element.closest) {
+			return element.closest('[data-a11y-toggle]');
+		}
+
+		while (element) {
+			if (element.nodeType === 1 && element.hasAttribute('data-a11y-toggle')) {
+				return element;
+			}
+
+			element = element.parentNode;
+		}
+
+		return null;
+	}
+
+	function handleToggle(toggle) {
+		let target = toggle && targetsMap[toggle.getAttribute('aria-controls')];
+
+		if (!target) {
+			return false;
+		}
+
+		let toggles = togglesMap[`#${target.id}`];
+		let isExpanded = target.getAttribute('aria-hidden') === 'false';
+
+		target.setAttribute('aria-hidden', isExpanded);
+		toggles.forEach(toggle => {
+			toggle.setAttribute('aria-expanded', !isExpanded);
+		});
+	}
+
+	let initA11yToggle = context => {
+		togglesMap = $('[data-a11y-toggle]', context).reduce((acc, toggle) => {
+			let selector = `#${toggle.getAttribute('data-a11y-toggle')}`;
+
+			acc[selector] = acc[selector] || [];
+			acc[selector].push(toggle);
+			return acc;
+		}, togglesMap);
+
+		let targets = Object.keys(togglesMap);
+
+		targets.length && $(targets).forEach(target => {
+			let toggles = togglesMap[`#${target.id}`];
+			let isExpanded = target.hasAttribute('data-a11y-toggle-open');
+			let labelledby = [];
+
+			if (toggles[0].offsetWidth > 0 && toggles[0].offsetHeight > 0) {
+				toggles.forEach(toggle => {
+					toggle.id || toggle.setAttribute('id', `a11y-toggle-${internalId++}`);
+					toggle.setAttribute('aria-controls', target.id);
+					toggle.setAttribute('aria-expanded', isExpanded);
+					labelledby.push(toggle.id);
+				});
+				let distinctLabel = labelledby.filter(distinct);
+
+				target.setAttribute('aria-hidden', !isExpanded);
+				target.hasAttribute('aria-labelledby') || target.setAttribute('aria-labelledby', distinctLabel.join(' '));
+				target.setAttribute('role', 'region');
+			}
+			else {
+				toggles.forEach(toggle => {
+					toggle.removeAttribute('id');
+					toggle.removeAttribute('aria-controls');
+					toggle.removeAttribute('aria-expanded');
+				});
+
+				target.removeAttribute('aria-hidden');
+				target.removeAttribute('aria-labelledby');
+				target.removeAttribute('role');
+
+			}
+
+			targetsMap[target.id] = target;
+		});
+	};
+
+	let destroyA11yToggle = () => {
+		let targets = Object.keys(togglesMap);
+
+		targets.length && $(targets).forEach(target => {
+			let toggles = togglesMap[`#${target.id}`];
+
+			toggles.forEach(toggle => {
+				toggle.removeAttribute('id');
+				toggle.removeAttribute('aria-controls');
+				toggle.removeAttribute('aria-expanded');
+			});
+
+			target.removeAttribute('aria-hidden');
+			target.removeAttribute('aria-labelledby');
+			target.removeAttribute('role');
+
+			targetsMap[target.id] = target;
+		});
+	};
+
+	let closeA11yToggle = trigger => {
+		if (trigger) {
+			const thisToggle = document.querySelector(`#${trigger.getAttribute('data-a11y-toggle')}`);
+
+			document.addEventListener('mousedown', event => {
+				if (thisToggle.getAttribute('aria-hidden') === 'false') {
+					if (!thisToggle.contains(event.target) && event.target !== trigger) {
+						trigger.click();
+						event.preventDefault();
+					}
+				}
+			}, false);
+		}
+	};
+
+	/**
+	 * Auto-initialize A11y Toggle when the document is complete.
+	 */
+	if (document.readyState === 'complete') {
+		initA11yToggle();
+	}
+
+	/**
+	 * This will reinitialize A11y Toggle on `resize` to either enable or destroy
+	 * toggles who have their display managed through media queries.
+	 */
+	window.addEventListener('resize', () => {
+		if (atResizeTimeout) {
+			window.cancelAnimationFrame(atResizeTimeout);
+		}
+
+		atResizeTimeout = window.requestAnimationFrame(() => {
+			initA11yToggle();
+		});
+	}, false);
+
+	document.addEventListener('click', event => {
+		let toggle = getClosestToggle(event.target);
+
+		if (toggle && toggle.hasAttribute('data-a11y-toggle')) {
+			event.preventDefault();
+		}
+		handleToggle(toggle);
+	});
+
+	document.addEventListener('keyup', ({key, target}) => {
+		if (key === 'Enter' || key === ' ') {
+			let toggle = getClosestToggle(target);
+
+			if (toggle && toggle.getAttribute('role') === 'button') {
+				handleToggle(toggle);
+			}
+		}
+	});
+
+	window && (window.a11yToggle = initA11yToggle);
+	window && (window.a11yToggleDestroy = destroyA11yToggle);
+	window && (window.a11yToggleClose = closeA11yToggle);
+})();
+/**
+ * EXTENSIONS / PRODUCT LAYOUT / AJAX ADD-TO-CART
+ *
  * When called from a `theme.js` file on a product page, this extension will
  * work with the default page code to add a product to the cart utilizing an
  * AJAX call to the form processor.
@@ -1186,17 +1465,17 @@ const paymentMethod = (function (document) {
  * page was reached and displaying messages accordingly. If the store is also
  * utilizing the `mini-basket` extension, said extension will be triggered for
  * display upon successfully adding a product to the cart.
+ *
+ * Version: 10.05.00
  */
-const addToCart = (function (document) {
-	'use strict';
-
+const addToCart = (document => {
 	const publicMethods = {}; // Placeholder for public methods
 
 	/**
 	 * Initialize the plugin
 	 * @public
 	 */
-	publicMethods.init = function () {
+	publicMethods.init = () => {
 		const purchaseButton = document.querySelector('[data-hook="add-to-cart"]');
 
 		if (!document.body.contains(purchaseButton)) {
@@ -1211,7 +1490,7 @@ const addToCart = (function (document) {
 		const miniBasketAmount = document.querySelectorAll('[data-hook~="mini-basket-amount"]');
 		const requiredFields = purchaseForm.querySelectorAll('[required]');
 
-		purchaseButton.addEventListener('click', function (evt) {
+		purchaseButton.addEventListener('click', evt => {
 			if (purchaseFormActionInput.value !== 'ADPR') {
 				return;
 			}
@@ -1227,57 +1506,35 @@ const addToCart = (function (document) {
 
 			purchaseForm.setAttribute('data-status', 'idle');
 
-			for (let i = 0; i < requiredFields.length; i++) {
-				let field = requiredFields[i];
-
+			for (let field of requiredFields) {
 				field.setCustomValidity('');
 
 				if (!field.validity.valid) {
 					if (field.type === 'checkbox') {
 						field.focus();
-						if (HTMLInputElement.prototype.reportValidity) {
-							field.setCustomValidity('Please check this box if you want to proceed.');
-							field.reportValidity();
-						}
-						else {
-							alert(field.validationMessage);
-						}
+						field.setCustomValidity('Please check this box if you want to proceed.');
+						field.reportValidity();
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
 					else if (field.type === 'radio') {
 						field.focus();
-						if (HTMLInputElement.prototype.reportValidity) {
-							field.setCustomValidity('Please select one of these options.');
-							field.reportValidity();
-						}
-						else {
-							alert(field.validationMessage);
-						}
+						field.setCustomValidity('Please select one of these options.');
+						field.reportValidity();
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
-					else if (field.type.indexOf('select') !== -1) {
+					else if (field.type.includes('select')) {
 						field.focus();
-						if (HTMLInputElement.prototype.reportValidity) {
-							field.setCustomValidity('Please select an item in the list.');
-							field.reportValidity();
-						}
-						else {
-							alert(field.validationMessage);
-						}
+						field.setCustomValidity('Please select an item in the list.');
+						field.reportValidity();
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
 					else if (field.type === 'text' || field.type === 'textarea') {
 						field.focus();
-						if (HTMLInputElement.prototype.reportValidity) {
-							field.setCustomValidity('Please fill out this field.');
-							field.reportValidity();
-						}
-						else {
-							alert(field.validationMessage);
-						}
+						field.setCustomValidity('Please fill out this field.');
+						field.reportValidity();
 						purchaseForm.setAttribute('data-status', 'submitting');
 						break;
 					}
@@ -1298,7 +1555,7 @@ const addToCart = (function (document) {
 				responseMessage.innerHTML = '';
 
 				// Setup our listener to process completed requests
-				request.onreadystatechange = function () {
+				request.onreadystatechange = () => {
 					// Only run if the request is complete
 					if (request.readyState !== 4) {
 						return;
@@ -1316,7 +1573,13 @@ const addToCart = (function (document) {
 
 							if (miniBasketCount) {
 								for (let mbcID = 0; mbcID < miniBasketCount.length; mbcID++) {
+									let miniBasketButton = miniBasketCount[mbcID].parentElement;
+									let miniBasketIcon = miniBasketCount[mbcID].previousElementSibling;
+
 									miniBasketCount[mbcID].textContent = basketCount; // Update mini-basket quantity (display only)
+									if (miniBasketButton && miniBasketButton.matches('[data-hook="open-mini-basket"]')) {
+										miniBasketIcon.classList.add('u-icon-cart-full');
+									}
 								}
 							}
 
@@ -1326,10 +1589,10 @@ const addToCart = (function (document) {
 								}
 							}
 
-							if (typeof miniBasket !== 'undefined' && mivaJS.showMiniBasket === 1) {
+							if (typeof miniBasket !== 'undefined' && mivaJS.miniBasket.use) {
 								document.querySelector('[data-hook="mini-basket"]').innerHTML = response.querySelector('[data-hook="mini-basket"]').innerHTML;
 
-								setTimeout(function () {
+								setTimeout(() => {
 									document.querySelector('[data-hook="open-mini-basket"]').click();
 								}, 100);
 							}
@@ -1347,10 +1610,10 @@ const addToCart = (function (document) {
 							const missingAttributes = [];
 
 							for (let id = 0; id < findRequired.length; id++) {
-								missingAttributes.push(' ' + findRequired[id].title);
+								missingAttributes.push(` ${findRequired[id].title}`);
 							}
 
-							responseMessage.innerHTML = '<div class="x-messages x-messages--warning">All <em class="u-color-red">Required</em> options have not been selected.<br />Please review the following options: <span class="u-color-red">' + missingAttributes + '</span>.</div>';
+							responseMessage.innerHTML = `<div class="x-messages x-messages--warning">All <em class="u-color-red">Required</em> options have not been selected.<br />Please review the following options: <span class="u-color-red">${missingAttributes}</span>.</div>`;
 						}
 						else if (response.body.id === 'js-PLMT') {
 							responseMessage.innerHTML = '<div class="x-messages x-messages--warning">We do not have enough of the combination you have selected.<br />Please adjust your quantity.</div>';
@@ -1397,435 +1660,4 @@ const addToCart = (function (document) {
 	 * Public APIs
 	 */
 	return publicMethods;
-
-}(document));
-
-/**
- * Show Password
- * This extension allows a user to reveal the password they have typed.
- */
-
-(function () {
-	'use strict';
-
-	const passwordInputs = document.querySelectorAll('input[type="password"]');
-	const hideLabel = 'Hide Password.';
-	const hideText = 'Hide';
-	const showLabel = 'Show password as plain text. Warning: this will display your password on the screen.';
-	const showText = 'Show';
-
-	function getPreviousSibling(element, selector) {
-		let sibling = element.previousElementSibling;
-
-		if (!selector) {
-			return sibling;
-		}
-
-		while (sibling) {
-			if (sibling.matches(selector)) {
-				return sibling;
-			}
-			sibling = sibling.previousElementSibling;
-		}
-	}
-
-	if (passwordInputs.length > 0) {
-		passwordInputs.forEach(function (passwordInput) {
-			const toggleButton = document.createElement('button');
-			let findLabel = getPreviousSibling(passwordInput, 'label');
-
-			toggleButton.classList.add('c-button');
-			toggleButton.classList.add('u-bg-transparent');
-			toggleButton.classList.add('x-toggle-password');
-			if (findLabel && findLabel.offsetWidth <= 1) {
-				toggleButton.classList.add('x-toggle-password--no-label');
-			}
-			toggleButton.setAttribute('aria-label', showLabel);
-			toggleButton.setAttribute('data-hook', 'toggle-password');
-			toggleButton.textContent = showText;
-			toggleButton.type = 'button';
-			passwordInput.parentElement.style.position = 'relative';
-			passwordInput.parentElement.insertBefore(toggleButton, passwordInput.nextSibling);
-		});
-
-		const togglePasswordButtons = document.querySelectorAll('[data-hook="toggle-password"]');
-
-		if (togglePasswordButtons.length > 0) {
-			togglePasswordButtons.forEach(function (togglePasswordButton) {
-				togglePasswordButton.addEventListener('click', function () {
-					let closestInput = getPreviousSibling(this, 'input');
-
-					if (closestInput.type === 'password') {
-						closestInput.type = 'text';
-						this.textContent = hideText;
-						this.setAttribute('aria-label', hideLabel);
-					}
-					else {
-						closestInput.type = 'password';
-						this.textContent = showText;
-						this.setAttribute('aria-label', showLabel);
-					}
-
-				});
-			});
-		}
-	}
-}());
-
-/**
- * A11y Toggles
- * An accessible replacement to the checkbox-hack for toggling sections.
- *
- * By: https://hugogiraudel.com/
- * MIT License: https://github.com/edenspiekermann/a11y-toggle/blob/master/LICENSE
- */
-
-(function () {
-	'use strict';
-
-	const distinct = function (value, index, self) {
-		return self.indexOf(value) === index;
-	};
-
-	let atResizeTimeout;
-	let internalId = 0;
-	let togglesMap = {};
-	let targetsMap = {};
-
-	function $(selector, context) {
-		return Array.prototype.slice.call(
-			(context || document).querySelectorAll(selector)
-		);
-	}
-
-	function getClosestToggle(element) {
-		if (element.closest) {
-			return element.closest('[data-a11y-toggle]');
-		}
-
-		while (element) {
-			if (element.nodeType === 1 && element.hasAttribute('data-a11y-toggle')) {
-				return element;
-			}
-
-			element = element.parentNode;
-		}
-
-		return null;
-	}
-
-	function handleToggle(toggle) {
-		let target = toggle && targetsMap[toggle.getAttribute('aria-controls')];
-
-		if (!target) {
-			return false;
-		}
-
-		let toggles = togglesMap['#' + target.id];
-		let isExpanded = target.getAttribute('aria-hidden') === 'false';
-
-		target.setAttribute('aria-hidden', isExpanded);
-		toggles.forEach(function (toggle) {
-			toggle.setAttribute('aria-expanded', !isExpanded);
-		});
-	}
-
-	let initA11yToggle = function (context) {
-		togglesMap = $('[data-a11y-toggle]', context).reduce(function (acc, toggle) {
-			let selector = '#' + toggle.getAttribute('data-a11y-toggle');
-
-			acc[selector] = acc[selector] || [];
-			acc[selector].push(toggle);
-			return acc;
-		}, togglesMap);
-
-		let targets = Object.keys(togglesMap);
-
-		targets.length && $(targets).forEach(function (target) {
-			let toggles = togglesMap['#' + target.id];
-			let isExpanded = target.hasAttribute('data-a11y-toggle-open');
-			let labelledby = [];
-
-			if (toggles[0].offsetWidth > 0 && toggles[0].offsetHeight > 0) {
-				toggles.forEach(function (toggle) {
-					toggle.id || toggle.setAttribute('id', 'a11y-toggle-' + internalId++);
-					toggle.setAttribute('aria-controls', target.id);
-					toggle.setAttribute('aria-expanded', isExpanded);
-					labelledby.push(toggle.id);
-				});
-				let distinctLabel = labelledby.filter(distinct);
-
-				target.setAttribute('aria-hidden', !isExpanded);
-				target.hasAttribute('aria-labelledby') || target.setAttribute('aria-labelledby', distinctLabel.join(' '));
-				target.setAttribute('role', 'region');
-			}
-			else {
-				toggles.forEach(function (toggle) {
-					toggle.removeAttribute('id');
-					toggle.removeAttribute('aria-controls');
-					toggle.removeAttribute('aria-expanded');
-				});
-
-				target.removeAttribute('aria-hidden');
-				target.removeAttribute('aria-labelledby');
-				target.removeAttribute('role');
-
-			}
-
-			targetsMap[target.id] = target;
-		});
-	};
-
-	let destroyA11yToggle = function () {
-		let targets = Object.keys(togglesMap);
-
-		targets.length && $(targets).forEach(function (target) {
-			let toggles = togglesMap['#' + target.id];
-
-			toggles.forEach(function (toggle) {
-				toggle.removeAttribute('id');
-				toggle.removeAttribute('aria-controls');
-				toggle.removeAttribute('aria-expanded');
-			});
-
-			target.removeAttribute('aria-hidden');
-			target.removeAttribute('aria-labelledby');
-			target.removeAttribute('role');
-
-			targetsMap[target.id] = target;
-		});
-	};
-	
-	let closeA11yToggle = function (trigger) {
-		if (trigger) {
-			const thisToggle = document.querySelector('#' + trigger.getAttribute('data-a11y-toggle'));
-			
-			document.addEventListener('mousedown', function (event) {
-				if (thisToggle.getAttribute('aria-hidden') === 'false') {
-					if (!thisToggle.contains(event.target) && event.target !== trigger) {
-						trigger.click();
-						event.preventDefault();
-					}
-				}
-			}, false);
-		}
-	};
-
-	/**
-	 * Auto-initialize A11y Toggle when the document is complete.
-	 */
-	if (document.readyState === 'complete') {
-		initA11yToggle();
-	}
-
-	/**
-	 * This will reinitialize A11y Toggle on `resize` to either enable or destroy
-	 * toggles who have their display managed through media queries.
-	 */
-	window.addEventListener('resize', function () {
-		if (atResizeTimeout) {
-			window.cancelAnimationFrame(atResizeTimeout);
-		}
-
-		atResizeTimeout = window.requestAnimationFrame(function () {
-			initA11yToggle();
-		});
-	}, false);
-
-	document.addEventListener('click', function (event) {
-		let toggle = getClosestToggle(event.target);
-
-		handleToggle(toggle);
-	});
-
-	document.addEventListener('keyup', function (keyupEvent) {
-		if (keyupEvent.key === 'Enter' || keyupEvent.key === ' ') {
-			let toggle = getClosestToggle(keyupEvent.target);
-
-			if (toggle && toggle.getAttribute('role') === 'button') {
-				handleToggle(toggle);
-			}
-		}
-	});
-
-	window && (window.a11yToggle = initA11yToggle);
-	window && (window.a11yToggleDestroy = destroyA11yToggle);
-	window && (window.a11yToggleClose = closeA11yToggle);
-})();
-
-/**
- * EXTENSIONS / TABS / A11Y-TABS
- *
- * This is an accessible tab solution extension based on guidelines documented
- * by Heydon Pickering on the Inclusive Components Pattern Library.
- * https://inclusive-components.design/tabbed-interfaces/
- */
-
-const tabbedContent = (function (document) {
-	'use strict';
-
-	const publicMethods = {}; // Placeholder for public methods
-
-	/**
-	 * Initialize the plugin
-	 * @public
-	 */
-	publicMethods.init = function () {
-		// Get relevant elements and collections
-		const tabbed = document.querySelector('[data-tab-component]');
-		const tabList = tabbed.querySelector('ul');
-		const tabs = tabList.querySelectorAll('a');
-		const panels = tabbed.querySelectorAll('[id^="tab-"]');
-		
-		/**
-		 * This is a basic placeholder for the proposed CSS `:focus-visible`
-		 * pseudo-selector [1] and is based on the WICG polyfill [2]. Once
-		 * standardized, this will be updated.
-		 *
-		 * [1] https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
-		 * [2] https://github.com/WICG/focus-visible
-		 *
-		 * Add the `focus-visible` class to the given element.
-		 * @param {Element} focusedElement
-		 */
-		function addFocusVisibleClass(focusedElement) {
-			if (focusedElement.classList.contains('focus-visible')) {
-				return;
-			}
-			focusedElement.classList.add('focus-visible');
-			focusedElement.setAttribute('data-focus-visible-added', '');
-		}
-		
-		/**
-		 * Remove the `focus-visible` class from the given element.
-		 * @param {Element} focusedElement
-		 */
-		function removeFocusVisibleClass(focusedElement) {
-			if (!focusedElement.hasAttribute('data-focus-visible-added')) {
-				return;
-			}
-			focusedElement.classList.remove('focus-visible');
-			focusedElement.removeAttribute('data-focus-visible-added');
-		}
-		
-		/**
-		 * The tab switching functionality
-		 * @param oldTab
-		 * @param newTab
-		 */
-		const switchTab = function switchTab(oldTab, newTab) {
-			newTab.focus();
-			// Make the active tab focusable by the user (Tab key)
-			newTab.removeAttribute('tabindex');
-			// Set the selected state
-			newTab.setAttribute('aria-selected', 'true');
-			oldTab.removeAttribute('aria-selected');
-			oldTab.setAttribute('tabindex', '-1');
-			/**
-			 * Get the indices of the new and old tabs to find the correct tab
-			 * panels to show and hide
-			 */
-			let index = Array.prototype.indexOf.call(tabs, newTab);
-			let oldIndex = Array.prototype.indexOf.call(tabs, oldTab);
-			
-			panels[oldIndex].hidden = true;
-			panels[index].hidden = false;
-		};
-		
-		// Add the tablist role to the first <ul> in the .tabbed container
-		tabList.setAttribute('role', 'tablist');
-		
-		// Add semantics and remove user focusability for each tab
-		Array.prototype.forEach.call(tabs, function (tab, i) {
-			tab.setAttribute('role', 'tab');
-			tab.setAttribute('id', 'tab' + (i + 1));
-			tab.setAttribute('tabindex', '-1');
-			tab.parentNode.setAttribute('role', 'presentation');
-			
-			// Handle clicking of tabs for mouse users
-			tab.addEventListener('click', function (clickEvent) {
-				clickEvent.preventDefault();
-				let currentTab = tabList.querySelector('[aria-selected]');
-				
-				removeFocusVisibleClass(currentTab);
-				removeFocusVisibleClass(panels[i]);
-				if (clickEvent.currentTarget !== currentTab) {
-					if (window.getComputedStyle(tabbed, '::before').content.replace(/"/g, '') === 'max') {
-						tabbed.scrollIntoView(true);
-					}
-					
-					switchTab(currentTab, clickEvent.currentTarget);
-				}
-			});
-			
-			// Handle keydown events for keyboard users
-			tab.addEventListener('keydown', function (keydownEvent) {
-				if ([37, 39, 40].indexOf(keydownEvent.which) > -1) {
-					keydownEvent.preventDefault();
-				}
-			}, false);
-			
-			// Handle keyup events for keyboard users
-			tab.addEventListener('keyup', function (keyupEvent) {
-				// Get the index of the current tab in the tabs node list
-				let index = Array.prototype.indexOf.call(tabs, keyupEvent.currentTarget);
-				/**
-				 * Work out which key the user is pressing and calculate the new
-				 * tab's index where appropriate
-				 * @type {number}
-				 */
-				let dir = keyupEvent.which === 37 ? index - 1 : keyupEvent.which === 39 ? index + 1 : keyupEvent.which === 40 ? 'down' : keyupEvent.shiftKey && keyupEvent.which === 9 ? 'reverse' : null;
-				
-				if (dir !== null) {
-					keyupEvent.preventDefault();
-					// If the down key is pressed, move focus to the open panel.
-					if (dir === 'down') {
-						panels[i].focus();
-						removeFocusVisibleClass(keyupEvent.currentTarget);
-						addFocusVisibleClass(panels[i]);
-					}
-					/**
-					 * If the Shift+Tab combination is pressed, remove focus on the
-					 * open panel and return focus to the tab.
-					 */
-					else if (dir === 'reverse') {
-						removeFocusVisibleClass(panels[i]);
-						addFocusVisibleClass(keyupEvent.currentTarget);
-					}
-					// If an arrow key is pressed, switch to the adjacent tab.
-					else if (tabs[dir]) {
-						removeFocusVisibleClass(keyupEvent.currentTarget);
-						addFocusVisibleClass(tabs[dir]);
-						switchTab(keyupEvent.currentTarget, tabs[dir]);
-					}
-					else {
-						void 0;
-					}
-				}
-			});
-		});
-		
-		/**
-		 * Add tab panel semantics and hide them all
-		 */
-		Array.prototype.forEach.call(panels, function (panel, i) {
-			panel.setAttribute('role', 'tabpanel');
-			panel.setAttribute('tabindex', '-1');
-			panel.setAttribute('aria-labelledby', tabs[i].id);
-			panel.hidden = true;
-		});
-		
-		/**
-		 * Initially activate the first tab and reveal the first tab panel
-		 */
-		tabs[0].removeAttribute('tabindex');
-		tabs[0].setAttribute('aria-selected', 'true');
-		panels[0].hidden = false;
-	};
-
-	/**
-	 * Public APIs
-	 */
-	return publicMethods;
-
-}(document));
+})(document);

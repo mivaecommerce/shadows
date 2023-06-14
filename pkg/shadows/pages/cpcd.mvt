@@ -21,13 +21,16 @@
 		</div>
 	</section>
 
-	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
-		<div class="o-layout__item u-width-12 u-width-9--l">
-			<p><a class="c-button c-button--huge u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CPCA:secure;">+ Add Credit/Debit Card</a></p>
+	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--m">
+		<div class="o-layout__item u-width-12 u-width-9--m">
+			<div class="o-layout--justify-between o-layout--wrap u-flex">
+				<h1 class="c-heading-delta">&mvt:page:name;</h1>
+				<p><a class="c-button" href="&mvte:urls:CPCA:secure;">Add New Card</a></p>
+			</div>
 			<hr class="c-keyline">
 			<mvt:item name="paymentcards" />
 		</div>
-		<aside class="o-layout__item u-width-12 u-width-3--l">
+		<aside class="o-layout__item u-width-12 u-width-3--m">
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>

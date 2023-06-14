@@ -24,28 +24,29 @@
 	<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
 		<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 			<div class="o-layout__item u-width-12 u-width-9--l">
-				<form class="t-wish-list-search" method="post" action="&mvte:urls:WLST:rr;">
+				<h1 class="c-heading-delta">&mvt:page:name;</h1>
+				<form method="post" action="&mvte:urls:WLST:rr;">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
 						<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
 						<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 						<div class="c-form-list">
-							<div class="c-form-list__item c-form-list__item--full">
+							<div class="c-form-list__item">
 								<mvt:if expr="NOT ISNULL g.WishListSearch">
-									<div class="c-control-group">
-										<a class="c-button c-button--large c-control-group__button u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:WLAD:auto;" title="Create Wish List">Create Wish List</a>
-										<a class="c-button c-button--hollow c-button--large c-control-group__button u-bg-white u-color-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:WLST:auto;" title="My Wish Lists">My Wish Lists</a>
-									</div>
+									<p class="c-form-inline-set">
+										<a class="c-button c-button--small c-button--secondary" href="&mvte:urls:WLAD:auto;">Create Wish List</a>
+										<a class="c-button c-button--small" href="&mvte:urls:WLST:auto;">My Wish Lists</a>
+									</p>
 								<mvt:else>
-									<a class="c-button c-button--large u-bg-gray-50 u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:WLAD:auto;" title="Create Wish List">Create Wish List</a>
+									<p><a class="c-button c-button--secondary" href="&mvte:urls:WLAD:auto;">Create Wish List</a></p>
 								</mvt:if>
 							</div>
 							<div class="c-form-list__item">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="WishListSearch">Find A Wish List</label>
+								<label class="c-form-label u-text-medium is-required" for="WishListSearch">Find A Wish List</label>
 							</div>
-							<div class="c-form-list__item c-control-group u-flex">
-								<input id="WishListSearch" class="c-form-input c-control-group__field u-bg-transparent u-border-none" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-								<button class="c-button c-button--large c-control-group__button u-bg-transparent u-color-gray-50 u-border-none t-wish-list-search__button" type="submit">
+							<div class="c-form-list__item c-form-inline-set">
+								<input id="WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
+								<button class="c-button" type="submit">
 									<span class="u-icon-search" aria-hidden="true"></span>
 									<span class="u-hide-visually">Search</span>
 								</button>
@@ -62,46 +63,54 @@
 			</aside>
 		</section>
 	<mvt:else>
-		<section class="o-layout o-layout--justify-around">
-			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-				<p class="c-heading-charlie u-text-bold u-text-uppercase">Current Customer?</p>
-				<p class="u-color-gray-40 u-font-small">Please sign in to create or access your wish list.</p>
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			</div>
+		</section>
+
+		<section class="o-layout o-layout--justify-center">
+			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
+				<p class="c-heading-foxtrot">Please sign in to create or access your wish list.</p>
 				<form method="post" action="&mvte:urls:WLST:secure;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<input type="hidden" name="Action" value="LOGN" />
 						<div class="c-form-list">
-							<div class="c-form-list__item">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
-								<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label is-required is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+								<input id="l-Customer_LoginEmail" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-required="true">
 							</div>
-							<div class="c-form-list__item">
-								<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
-								<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label is-required is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+								<input id="l-Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
 							</div>
-							<div class="c-form-list__item u-text-right">
-								<mvt:item name="buttons" param="Login" />
+							<div class="c-form-list__item c-form-list__item--full">
+								<p>
+									<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+								</p>
+								<p>
+									<mvt:item name="buttons" param="Login" />
+								</p>
 							</div>
 						</div>
 					</fieldset>
 				</form>
-				<p class="u-font-small"><a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot your password?</a></p>
 				<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 			</div>
-			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
-				<p class="c-heading-charlie u-text-bold u-text-uppercase">Find A Wish List</p>
-				<p class="u-color-gray-40 u-font-small">Search all public wish lists.</p>
+			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
+				<p class="c-heading-foxtrot">Find a Wish List</p>
 				<form class="t-wish-list-search" method="post" action="&mvte:urls:WLST:rr;">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
 						<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
 						<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 						<div class="c-form-list">
-							<div class="c-form-list__item">
-								<label class="c-form-label u-block u-font-tiny u-text-bold u-text-uppercase is-required u-hide-visually" for="l-WishListSearch">Search all public wish lists</label>
-								<div class="c-control-group u-flex">
-									<input id="l-WishListSearch" class="c-form-input c-control-group__field u-bg-transparent u-border-none" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-									<button class="c-button c-button--large c-control-group__button u-bg-transparent u-color-gray-50 u-border-none t-wish-list-search__button" type="submit">
+							<div class="c-form-list__item c-form-list__item--full">
+								<label class="c-form-label u-text-medium is-required" for="l-WishListSearch">Search all public wish lists</label>
+								<div class="c-form-inline-set">
+									<input id="l-WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
+									<button class="c-button" type="submit">
 										<span class="u-icon-search" aria-hidden="true"></span>
 										<span class="u-hide-visually">Search</span>
 									</button>

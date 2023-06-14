@@ -9,48 +9,53 @@
 	<mvt:if expr="l.settings:address_count GT 2">
 		<mvt:foreachstop />
 	</mvt:if>
-	<div class="o-layout o-layout--align-center">
-		<div class="o-layout__item u-width-12 u-width-2--l">
-			<p class="u-text-bold u-text-center--l">&mvte:address:descrip;</p>
-		</div>
-		<div class="o-layout__item u-width-12 u-width-8--s u-width-6--l u-width-8--w">
-			<p class="u-color-gray-30 u-text-bold">
-				<mvt:if expr="NOT ISNULL l.settings:address:fname OR NOT ISNULL l.settings:address:lname">&mvte:address:fname; &mvte:address:lname;<br /></mvt:if>
-				<span class="u-font-small">
-					<mvt:if expr="NOT ISNULL l.settings:address:addr1">&mvte:address:addr1;<br /></mvt:if>
-					<mvt:if expr="NOT ISNULL l.settings:address:addr2">&mvte:address:addr2; <br /></mvt:if>
-					<mvt:if expr="NOT ISNULL l.settings:address:city OR NOT ISNULL l.settings:address:state OR NOT ISNULL l.settings:address:zip">
-						<mvt:if expr="NOT ISNULL l.settings:address:city">&mvte:address:city;</mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:address:city AND NOT ISNULL l.settings:address:state">, </mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:address:state">&mvte:address:state;</mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:address:zip">&mvte:address:zip;</mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:address:cntry"> &nbsp;&mvte:address:cntry;</mvt:if>
-						<br />
-					</mvt:if>
-					<mvt:if expr="l.settings:address:resdntl">Residential Address<br /></mvt:if>
-					<mvt:if expr="NOT ISNULL l.settings:address:phone">Phone: &mvte:address:phone;<br /></mvt:if>
-				</span>
-				<mvt:if expr="l.settings:address:id EQ g.Customer:ship_id AND l.settings:address:id EQ g.Customer:bill_id">
-					<span class="u-color-green u-font-tiny u-text-italic">Default Shipping/Billing Address</span><br />
-				<mvt:else>
-					<mvt:if expr="l.settings:address:id EQ g.Customer:ship_id">
-						<span class="u-color-green u-font-tiny u-text-italic">Default Shipping Address</span><br />
-					</mvt:if>
-					<mvt:if expr="l.settings:address:id EQ g.Customer:bill_id">
-						<span class="u-color-green u-font-tiny u-text-italic">Default Billing Address</span><br />
-					</mvt:if>
+	<div class="o-layout">
+		<div class="o-layout__item u-width-12 u-width-2--l u-width-3--w">
+			<p class="u-text-bold">&mvte:address:descrip;</p>
+			<mvt:if expr="l.settings:address:id EQ g.Customer:ship_id AND l.settings:address:id EQ g.Customer:bill_id">
+				<span class="t-address-book__default-address">Default Shipping/Billing Address</span><br />
+			<mvt:else>
+				<mvt:if expr="l.settings:address:id EQ g.Customer:ship_id">
+					<span class="t-address-book__default-address">Default Shipping Address</span><br />
 				</mvt:if>
+				<mvt:if expr="l.settings:address:id EQ g.Customer:bill_id">
+					<span class="t-address-book__default-address">Default Billing Address</span><br />
+				</mvt:if>
+			</mvt:if>
+		</div>
+		<div class="o-layout__item u-width-12 u-width-8--s u-width-6--l u-width-7--w">
+			<mvt:if expr="NOT ISNULL l.settings:address:fname OR NOT ISNULL l.settings:address:lname">
+				<strong>&mvte:address:fname; &mvte:address:lname;</strong><br />
+			</mvt:if>
+			<span>
+				<mvt:if expr="NOT ISNULL l.settings:address:addr1">&mvte:address:addr1;</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:address:addr2"> &mvte:address:addr2;</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:address:city OR NOT ISNULL l.settings:address:state OR NOT ISNULL l.settings:address:zip">
+					<br />
+					<mvt:if expr="NOT ISNULL l.settings:address:city">&mvte:address:city;</mvt:if><mvt:if expr="NOT ISNULL l.settings:address:city AND NOT ISNULL l.settings:address:state">,</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:state">&mvte:address:state;</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:zip">&mvte:address:zip;</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:address:cntry"> &mvte:address:cntry;</mvt:if>
+					<br />
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:address:phone">Phone: &mvte:address:phone;<br /></mvt:if>
+				<mvt:if expr="l.settings:address:resdntl">Residential Address<br /></mvt:if>
+			</span>
+			<br>
+		</div>
+		<div class="o-layout__item u-width-6 u-width-2--s u-width-1--w">
+			<p class="u-text-center">
+				<a href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:address:id;">Edit</a>
 			</p>
 		</div>
 		<div class="o-layout__item u-width-6 u-width-2--s u-width-1--w">
 			<p class="u-text-center">
-				<a class="u-color-gray-50 u-font-small u-text-bold u-text-underline u-text-uppercase" href="&mvte:urls:CADE:secure_sep;Address_ID=&mvta:address:id;">Edit</a>
-			</p>
-		</div>
-		<div class="o-layout__item u-width-6 u-width-2--s u-width-1--w">
-			<p class="u-text-center">
-				<a class="u-color-gray-50 u-font-small u-text-bold u-text-underline u-text-uppercase" href="#" onclick="if ( confirm( 'Deleting this address cannot be undone.\x0A\x0AContinue?' ) ) MMDynamic_Form_Submit( '&mvtj:urls:_self:secure;', { 'Action': 'DCSA', 'Address_ID': '&mvtj:address:id;', 'CSRF_Token': '&mvtj:global:Basket:csrf_token;' } ); return false;">Delete</a>
+				<mvt:assign name="l.settings:js_encoded_url" value="encodejavascriptstring( l.settings:urls:_self:secure )"/>
+				<mvt:assign name="l.settings:js_encoded_address_id" value="encodejavascriptstring( l.settings:address:id )"/>
+				<mvt:assign name="l.settings:js_encoded_csrf_token" value="encodejavascriptstring( g.Basket:csrf_token )"/>
+				<button class="c-button--as-link" onclick="if ( confirm( 'Deleting this address cannot be undone.\x0A\x0AContinue?' ) ) MMDynamic_Form_Submit( '&mvte:js_encoded_url;', { 'Action': 'DCSA', 'Address_ID': '&mvte:js_encoded_address_id;', 'CSRF_Token': '&mvte:js_encoded_csrf_token;' } ); return false;">Delete</button>
 			</p>
 		</div>
 	</div>
+	<hr class="c-keyline">
 </mvt:foreach>

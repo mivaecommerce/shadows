@@ -21,6 +21,9 @@
     "discount_volume": {
         "template_filename": "prod-discount_volume.mvc"
     },
+    "footer_sequence": {
+        "title": "Page Builder Footer"
+    },
     "hdft": {
         "footer": {
             "template_filename": "prod-footer.mvc"
@@ -28,6 +31,9 @@
         "header": {
             "template_filename": "prod-header.mvc"
         }
+    },
+    "header_sequence": {
+        "title": "Page Builder Header"
     },
     "product_attributes": {
         "template_filename": "prod-product_attributes.mvc"
@@ -72,22 +78,22 @@
         "head": {
             "template_filename": "prod-product_display_imagemachine-head.mvc"
         },
-        "image_height": 640,
+        "image_height": 580,
         "image_size": "B",
-        "image_width": 640,
+        "image_width": 580,
         "legacy_image": "N",
         "main_image": "main_image",
         "preload": 1,
         "thumb_active": 1,
-        "thumb_height": 80,
-        "thumb_width": 80,
+        "thumb_height": 64,
+        "thumb_width": 64,
         "thumbnails": "thumbnails"
     },
     "related_products": {
         "additionalprice": "base",
         "advanced": 1,
-        "b_height": 360,
-        "b_width": 360,
+        "b_height": 384,
+        "b_width": 384,
         "button_add": 1,
         "button_buy": 1,
         "button_wish": 0,

@@ -1,1 +1,1 @@
-<input type="submit" value="Remove" class="button" />
+<input class="c-button" type="submit" value="Remove">

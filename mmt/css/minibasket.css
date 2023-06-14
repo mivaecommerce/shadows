@@ -1,0 +1,63 @@
+
+#global-mini-basket-container
+{
+	display: block;
+	float: right;
+	line-height: 22px;
+	padding: 4px 3px 0px 0px;
+}
+
+#global-mini-basket-hover-content
+{
+	display: none;
+	float: left;
+	z-index:10;
+	position: absolute;
+	min-width: 250px;
+	max-width: 410px;
+	background: #FFF;
+}
+
+#global-mini-basket-hover-content table
+{
+	display: table;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	border: 1px solid #666;
+	background: #FFF;
+}
+
+#global-mini-basket-hover-content table thead th, #global-mini-basket-hover-content table tfoot td
+{
+	color: #FFF;
+	padding: 5px;
+	font-weight: bold;
+	font-size: 13px;
+	background: #666;
+}
+
+#global-mini-basket-hover-content table tbody td
+{
+	padding: 3px 5px;
+	line-height: 14px;
+}
+
+#global-mini-basket-hover-content table tbody tr.on td
+{
+	background: #EEE;
+}
+
+#global-mini-basket-hover-content table thead th a
+{
+	color: #FFF;
+}
+
+.minibasket_backing
+{
+	display: none;
+	position: absolute;
+	left: 0px;
+	top: 0px;
+	width: 100%;
+}
+	

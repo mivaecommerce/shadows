@@ -23,9 +23,9 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<p class="x-messages x-messages--borderless x-messages--with-icon">
-				<span class="x-messages__icon u-icon-info u-color-gray-30" aria-hidden="true">&nbsp;</span>
-				<span>Enter the email address associated with your account.<br><br>If you no longer use the email address associated with your account, please contact customer support.</span>
+			<p class="x-messages x-messages--info x-messages--with-icon">
+				<span class="x-messages__icon u-icon-info" aria-hidden="true"></span>
+				<span>Enter the email address associated with your account.<br>If you no longer use the email address associated with your account, please contact customer support.</span>
 			</p>
 			<br>
 			<form method="post" action="&mvte:urls:ACLN:secure;" autocomplete="off">
@@ -34,10 +34,10 @@
 					<input type="hidden" name="Action" value="EMPW">
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
-							<div class="c-control-group">
-								<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large c-control-group__field" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
-								<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">
+							<label class="c-form-label is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<div class="c-form-inline-set">
+								<input id="l-Customer_LoginEmail" class="c-form-input" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+								<input class="c-button" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">
 							</div>
 						</div>
 					</div>

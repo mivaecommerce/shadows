@@ -1,4 +1,15 @@
 {
+    "flex": {
+        "content": {
+            "component_code": "mmx-text-editor",
+            "item_code": "content",
+            "settings": {
+                "content": {
+                    "value": "<p>We respect your privacy. Therefore we never share or sell your personal information with any third parties. Any information collected through this site is intended to be used for this transaction only. Your personal information is secured via SSL (Secure Socket Layer) Technology.</p>"
+                }
+            }
+        }
+    },
     "hdft": {
         "footer": {
             "template_filename": "prpo-footer.mvc"
@@ -22,5 +33,19 @@
         "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
         "url_delim": "/",
         "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Content",
+                "param": "content"
+            }
+        ],
+        "title": "Sequence"
     }
 }

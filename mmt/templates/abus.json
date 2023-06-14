@@ -1,4 +1,334 @@
 {
+    "flex": {
+        "image-and-text": {
+            "component_code": "mmx-image-and-text",
+            "item_code": "image-and-text",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "text_background": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "left"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "paragraph-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
+                    },
+                    "button": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-2"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes In This Space"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "subheading-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Subheading Goes Here"
+                    }
+                },
+                "image": {
+                    "img": {
+                        "image": "graphics/00000001/placeholder__572x400.png"
+                    },
+                    "size": {
+                        "value": "auto"
+                    }
+                },
+                "layout": {
+                    "content_width": {
+                        "value": 50
+                    },
+                    "image_position": {
+                        "value": "right"
+                    }
+                }
+            }
+        },
+        "image-and-text-2": {
+            "component_code": "mmx-image-and-text",
+            "item_code": "image-and-text-2",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "text_background": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "left"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "paragraph-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
+                    },
+                    "button": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-2"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes In This Space"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "subheading-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Subheading Goes Here"
+                    }
+                },
+                "image": {
+                    "img": {
+                        "image": "graphics/00000001/placeholder__572x400.png"
+                    },
+                    "size": {
+                        "value": "auto"
+                    }
+                },
+                "layout": {
+                    "content_width": {
+                        "value": 50
+                    },
+                    "image_position": {
+                        "value": "left"
+                    }
+                }
+            }
+        },
+        "one-across": {
+            "component_code": "mmx-image-across",
+            "item_code": "one-across",
+            "settings": {
+                "advanced": {
+                    "content_theme": {
+                        "value": "light"
+                    },
+                    "desktop": {
+                        "column_count": {
+                            "value": "auto"
+                        },
+                        "overlay_opacity": {
+                            "value": 0
+                        }
+                    },
+                    "mobile": {
+                        "overflow_behavior": {
+                            "value": "scroll"
+                        }
+                    }
+                },
+                "content_styles": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "body_text_styles": {
+                        "body_style": {
+                            "value": "paragraph-s"
+                        }
+                    },
+                    "content_location": {
+                        "value": "center"
+                    },
+                    "heading_text_styles": {
+                        "heading_style": {
+                            "value": "title-2"
+                        }
+                    }
+                },
+                "heading": {
+                    "settings": {
+                        "enabled": 0
+                    }
+                },
+                "images_group": {
+                    "image_size": {
+                        "value": "s"
+                    },
+                    "images_across": {
+                        "children": [
+                            {
+                                "img": {
+                                    "image": "graphics/00000001/placeholder__1144x240.png"
+                                },
+                                "text": {
+                                    "body": {
+                                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla."
+                                    },
+                                    "heading": {
+                                        "value": "Heading Goes Here"
+                                    },
+                                    "settings": {
+                                        "enabled": 1
+                                    }
+                                }
+                            }
+                        ]
+                    }
+                }
+            }
+        },
+        "text-area": {
+            "component_code": "mmx-text-area",
+            "item_code": "text-area",
+            "settings": {
+                "advanced": {
+                    "desktop": {
+                        "width": {
+                            "value": 80
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "body_style": {
+                                        "value": "paragraph-l"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
+                    },
+                    "button": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-3"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes Here"
+                    }
+                }
+            }
+        },
+        "text-area-2": {
+            "component_code": "mmx-text-area",
+            "item_code": "text-area-2",
+            "settings": {
+                "advanced": {
+                    "desktop": {
+                        "width": {
+                            "value": 80
+                        }
+                    }
+                },
+                "content": {
+                    "align": {
+                        "value": "center"
+                    },
+                    "body": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "body_style": {
+                                        "value": "paragraph-s"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
+                    },
+                    "button": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-2"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Heading Goes Here"
+                    }
+                }
+            }
+        }
+    },
     "hdft": {
         "footer": {
             "template_filename": "abus-footer.mvc"
@@ -22,5 +352,55 @@
         "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
         "url_delim": "/",
         "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "One Across",
+                "param": "one-across"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Text Area",
+                "param": "text-area"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Image and Text",
+                "param": "image-and-text"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Image and Text 2",
+                "param": "image-and-text-2"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Text Area 2",
+                "param": "text-area-2"
+            }
+        ],
+        "title": "Sequence"
     }
 }

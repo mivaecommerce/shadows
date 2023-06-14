@@ -1,123 +1,69 @@
-@charset "UTF-8";
-/* ==========================================================================
-   EXTENSIONS LIST
-   ========================================================================== */
-/* ==========================================================================
-   SETTINGS / COLORS
-   This is where the global colors are set.
-   Overrides should be placed in the 'ui/css/theme.scss' file.
-   ========================================================================== */
-/**
- * Convert a hex value to comma-delimited rgb values
- * @param {Color} $color - hex color
- * @return {Color} - RGB
- * In: #000
- * Out: 0, 0, 0
- */
-/**
- * Slightly lighten a color
- * @param {Color} $color - color to tint
- * @param {Number} $percentage - percentage of `$color` in returned color
- * @return {Color}
- */
-/**
- * Slightly darken  a color
- * @param {Color} $color - color to shade
- * @param {Number} $percentage - percentage of `$color` in returned color
- * @return {Color}
- */
-/**
- * This section sets default theme for the project so the variables exist.
- */
-/**
- * This section sets shading and tinting variables to be used for events,
- * like hover, for the project.
- */
-/* ==========================================================================
-SETTINGS / GLOBAL
-Set all your global CSS variables in this file.
-Overrides should be placed in the 'ui/css/theme.scss' file.
-========================================================================== */
-/* theme settings
-   =========================================== */
-/* root settings
-   =========================================== */
-/* width constraints
-   =========================================== */
-/* typography settings
-   =========================================== */
-/* border settings
-   =========================================== */
-/* breakpoints
-   =========================================== */
-/* miscellaneous
-   =========================================== */
-/* ==========================================================================
-   SETTINGS / TYPOGRAPHY
-   This is where the global typography measurements are set.
-   Overrides should be placed in the 'ui/css/theme.scss' file.
-   ========================================================================== */
-/* Minor Third Font Scale */
-/* Perfect Fourth Font Scale */
-/* Editing below this point is not recommended */
-/* ==========================================================================
-   EXTENSIONS / BREADCRUMBS / COLLAPSING / COLLAPSING BREADCRUMBS
-   ========================================================================== */
-.x-collapsing-breadcrumbs {
-	margin-bottom: 1rem;
-	text-transform: uppercase;
+/* ======================================
+   EXTENSIONS / BREADCRUMBS / BREADCRUMBS
+   ====================================== */
+.x-breadcrumbs {
+	margin-bottom: 1em;
 }
 
-.x-collapsing-breadcrumbs__group,
-.x-collapsing-breadcrumbs__list {
-	max-width: 80rem;
-	margin-right: auto;
+@media (min-width: 60em) {
+	.x-breadcrumbs {
+		margin: 0 auto calc(var(--default-spacing-unit) * 2);
+		max-width: var(--default-content-width);
+		width: 100%;
+	}
+}
+.x-breadcrumbs__list {
+	border-bottom: 0 none;
+	color: var(--gray-600);
+	display: flex;
+	flex-wrap: wrap;
+	font-size: var(--message-one);
+	gap: 1em 0;
+	line-height: inherit;
+	list-style: none;
 	margin-bottom: 0;
 	margin-left: auto;
-	padding-top: 1em;
-	padding-left: 1rem;
-	padding-right: 1rem;
-	font-size: 0.6875rem;
-	line-height: inherit;
-	border-bottom: 0 none;
+	margin-right: auto;
+	max-width: var(--default-wrapper-width);
+	padding-left: var(--default-spacing-unit);
+	padding-right: var(--default-spacing-unit);
+	padding-top: 1rem;
 }
 
-.x-collapsing-breadcrumbs__group {
-	margin-bottom: 0;
-	border-bottom: 0 none;
-}
-
-.x-collapsing-breadcrumbs__list {
-	padding-bottom: 2em;
-	border-bottom: 1px solid #c0c0c0;
-}
-
-.x-collapsing-breadcrumbs__button {
-	padding-top: 0;
-	padding-bottom: 0;
-	font-size: 16px;
-}
-
-.x-collapsing-breadcrumbs__list .o-list-inline__item:not(:last-child) {
+.x-breadcrumbs__item:not(:last-child) {
 	margin-right: 1em;
 }
 
-.x-collapsing-breadcrumbs .o-list-inline__item:not(:last-of-type)::after {
+.x-breadcrumbs__item:not(:last-of-type)::after {
+	border-right: 0.2ch solid currentColor;
+	content: "";
 	display: inline-block;
 	height: 1.75ch;
 	position: relative;
-	top: 0.25ch;
 	right: -0.5em;
-	border-right: 0.2ch solid currentColor;
-	content: '';
+	top: 0.25ch;
 	transform: rotate(15deg);
+}
+
+.x-breadcrumbs a {
+	display: inline-block;
+	text-decoration: none;
+}
+
+.x-breadcrumbs a:is(:active, :focus, :hover) {
+	text-decoration: underline;
+	text-decoration-thickness: 0.1em;
+	text-underline-offset: 0.15em;
+	transition: -webkit-text-decoration ease-in-out 0.3s;
+	transition: text-decoration ease-in-out 0.3s;
+	transition: text-decoration ease-in-out 0.3s, -webkit-text-decoration ease-in-out 0.3s;
 }
 
 /* ==========================================================================
    EXTENSIONS / CATEGORY TREE / CATEGORY TREE
    ========================================================================== */
 .x-category-tree {
-	margin-bottom: 16px;
+	margin-bottom: var(--default-spacing-unit);
 	position: relative;
 }
 
@@ -126,15 +72,15 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-category-tree__label.x-collapsible-content__toggle {
-	min-height: 2em;
-	margin: 0 0 1em;
-	padding: 1em 0;
+	border-bottom: var(--default-border-width) solid var(--gray-400);
 	font-size: 0.75rem;
-	border-bottom: 1px solid #eaeaea;
+	margin: 0 0 1em;
+	min-height: 2em;
+	padding: 1em 0;
 }
 
-.x-category-tree .x-collapsible-content__item[aria-hidden='false'],
-.x-category-tree .x-collapsible-content__item[aria-hidden='false'] .x-category-tree__row {
+.x-category-tree .x-collapsible-content__item[aria-hidden=false],
+.x-category-tree .x-collapsible-content__item[aria-hidden=false] .x-category-tree__row {
 	max-height: 100%;
 }
 
@@ -143,57 +89,87 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-category-tree__heading {
-	font-size: 15px;
+	font-size: var(--title-four);
+	font-weight: var(--font-bold);
+	line-height: calc(var(--title-four) * 1.4);
+	margin-bottom: var(--title-four);
 }
 
-.x-category-tree__row {
-	width: 100%;
-	max-height: 0;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	opacity: 0;
-	overflow: hidden;
-	visibility: hidden;
-	transition: 0.2s ease-in-out;
+.x-category-tree__heading--facets {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
 }
 
-.x-category-tree__link {
-	display: block;
-	padding: 0 0 1rem;
-	font-size: 14px;
-	font-weight: 600;
-	color: #000;
-	letter-spacing: 0;
-	transition: color ease-in-out 0.2s;
+.x-category-tree__heading--facets a {
+	color: var(--gray-600);
+	font-size: var(--default-input-font-size);
+	font-weight: var(--font-regular);
 }
 
-.x-category-tree__link:hover {
+.x-category-tree__heading--facets a > * {
+	display: inline-block;
+	font-size: 0.625rem;
+	margin-right: 0.5em;
 	text-decoration: none;
 }
 
+.x-category-tree__row {
+	list-style: none;
+	margin: 0;
+	max-height: 0;
+	opacity: 0;
+	overflow: hidden;
+	padding: 0;
+	transition: 0.2s ease-in-out;
+	visibility: hidden;
+	width: 100%;
+}
+
+.x-category-tree__link,
+.x-category-tree__link-set {
+	color: var(--gray-600);
+	display: block;
+	font-weight: var(--font-medium);
+	line-height: 2;
+	transition: color ease-in-out 0.2s;
+}
+
+.x-category-tree__link {
+	margin: 1em 0;
+	text-decoration: none;
+}
+
+.x-category-tree__link.u-text-underline {
+	text-decoration: underline;
+}
+
+.x-category-tree__link:is(:focus, :focus-within, :hover),
+.x-category-tree__link--current {
+	text-decoration: underline;
+	text-decoration-thickness: 0.1em;
+	text-underline-offset: 0.2em;
+}
+
+.x-category-tree__link-set {
+	font-size: var(--subheading-small);
+}
+
+.x-category-tree__section-title:not(:first-of-type) {
+	margin-top: 2.5rem;
+}
+
+.x-category-tree__list--level-2 .x-category-tree__link,
+.x-category-tree__list--level-3 .x-category-tree__link {
+	font-size: var(--default-input-font-size);
+}
+
 .x-category-tree__list--level-2 .x-category-tree__link {
-	padding-left: 1.75em;
-	font-size: 13px;
-	color: #595959;
+	padding-left: var(--title-four);
 }
 
 .x-category-tree__list--level-3 .x-category-tree__link {
-	padding-left: 2.75em;
-	font-size: 12px;
-	color: #595959;
-}
-
-.x-category-tree__link--current,
-.x-category-tree__list--level-2 .x-category-tree__link--current,
-.x-category-tree__list--level-3 .x-category-tree__link--current {
-	font-weight: 700;
-	color: #000;
-}
-
-.x-category-tree__link:not(.x-category-tree__link--current):hover {
-	text-decoration: underline;
-	background-color: inherit;
+	padding-left: var(--title-two);
 }
 
 @media (min-width: 60em) {
@@ -203,23 +179,14 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	.x-category-tree__title {
 		display: block;
 	}
-	.x-category-tree__heading {
-		padding-top: 0.25rem;
-	}
 	.x-category-tree__row,
-	.x-category-tree__row.x-collapsible-content__item {
+.x-category-tree__row.x-collapsible-content__item {
 		max-height: none;
 		opacity: 1;
 		overflow: visible;
 		visibility: visible;
 	}
-	.x-category-tree__link:not(.x-category-tree__link--current):hover {
-		text-decoration: none;
-		background-color: #eaeaea;
-		transition: background-color ease-in 0.3s 0.05s;
-	}
 }
-
 /**
  * This section contains the necessary styles when using the built-in search
  * faceting ability of Miva. Since the functional code is generated at run-time,
@@ -234,40 +201,39 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 
 .mm_facet_rangeslider_input_container_low,
 .mm_facet_rangeslider_input_container_high {
-	width: 4em;
+	border-bottom: var(--default-border-width) solid var(--gray-300);
 	height: 2em;
 	position: absolute;
-	top: 0;
 	text-align: center;
-	border-bottom: 1px solid #c0c0c0;
+	top: 0;
+	width: 4em;
 }
 
 .mm_facet_rangeslider_input_container_low {
-	left: 0;
 	border-radius: 0.25em 0 0 0.25em;
+	left: 0;
 }
 
 .mm_facet_rangeslider_input_container_high {
-	right: 0;
 	border-radius: 0 0.25em 0.25em 0;
+	right: 0;
 }
 
 .mm_facet_rangeslider_input_container_low.mm_facet_rangeslider_input_active,
 .mm_facet_rangeslider_input_container_high.mm_facet_rangeslider_input_active {
-	border-color: #3d70b2;
+	border-color: var(--gray-300);
 }
 
 .mm_facet_rangeslider_track_container {
-	height: 2em;
-	position: absolute;
-	top: 0;
-	right: 4em;
-	left: 4em;
-	border-top: 1px solid #c0c0c0;
-	border-bottom: 1px solid #c0c0c0;
+	border-bottom: var(--default-border-width) solid var(--gray-300);
+	border-top: var(--default-border-width) solid var(--gray-300);
 	box-sizing: border-box;
+	height: 2em;
+	left: 4em;
+	position: absolute;
+	right: 4em;
+	top: 0;
 	-webkit-touch-callout: none;
-	-ms-user-select: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
 	        user-select: none;
@@ -275,39 +241,39 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 
 .mm_facet_rangeslider_track {
 	height: 0.25em;
-	position: absolute;
-	top: 50%;
-	right: 0.25em;
 	left: 0.25em;
+	position: absolute;
+	right: 0.25em;
+	top: 50%;
 	transform: translateY(-50%);
 }
 
 .mm_facet_rangeslider_track_background,
 .mm_facet_rangeslider_track_selection {
-	position: absolute;
-	top: 0;
-	right: 0.5em;
+	background: var(--gray-300);
 	bottom: 0;
 	left: 0.5em;
-	background: #c0c0c0;
+	position: absolute;
+	right: 0.5em;
+	top: 0;
 }
 
 .mm_facet_rangeslider_track_selection {
-	background: #6e94c5;
+	background: var(--gray-300);
 }
 
 .mm_facet_rangeslider_track_handle_low,
 .mm_facet_rangeslider_track_handle_high {
-	width: 2em;
-	height: 2em;
-	position: absolute;
-	top: 50%;
-	left: -0.5em;
-	background: #fff;
-	border: 1px solid #c0c0c0;
+	background: var(--white);
+	border: var(--default-border-width) solid var(--gray-300);
 	border-radius: 50%;
 	cursor: pointer;
+	height: 2em;
+	left: -0.5em;
+	position: absolute;
+	top: 50%;
 	transform: translateY(-50%);
+	width: 2em;
 }
 
 .mm_facet_rangeslider.mm_facet_rangeslider_mini {
@@ -316,29 +282,29 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_low {
-	width: 50%;
 	border-radius: 0.25em 0 0 0;
+	width: 50%;
 }
 
 .mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_high {
-	width: 50%;
-	border-radius: 0 0.25em 0 0;
 	border-left: none;
+	border-radius: 0 0.25em 0 0;
+	width: 50%;
 }
 
 .mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_track_container {
-	height: 3em;
-	top: 2em;
-	right: 0;
-	left: 0;
-	border: 1px solid #c0c0c0;
-	border-top: none;
+	border: var(--default-border-width) solid var(--gray-300);
 	border-radius: 0 0 0.25em 0.25em;
+	border-top: none;
+	height: 3em;
+	left: 0;
+	right: 0;
+	top: 2em;
 }
 
 .mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_low.mm_facet_rangeslider_input_active,
 .mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_high.mm_facet_rangeslider_input_active {
-	border-color: #eaeaea;
+	border-color: var(--gray-200);
 	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.15);
 }
 
@@ -351,11 +317,30 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  */
 .x-display-list-filtering {
 	display: flex;
-	flex-wrap: wrap;
+	flex-wrap: nowrap;
+	margin-bottom: var(--default-spacing-unit);
+}
+
+.x-display-list-filtering :is(.x-display-list-filtering__per-page, .x-display-list-filtering__sort-by, .c-form-list__item, .c-form-label, .c-form-select) {
+	color: var(--gray-600);
+	margin-bottom: 0;
 }
 
 .x-display-list-filtering__per-page {
-	margin-right: 32px;
+	margin-right: calc(var(--default-spacing-unit) * 4);
+}
+
+/**
+ * Product List Page Modifications
+ */
+:is(.t-page-ctgy, .t-page-plst, .t-page-srch) :is(.x-display-list-filtering .c-form-select__dropdown) {
+	border: 0 none;
+	color: var(--gray-600);
+	padding: 0;
+}
+
+:is(.t-page-ctgy, .t-page-plst, .t-page-srch) :is(.x-display-list-filtering .c-form-select)::after {
+	right: 0;
 }
 
 /* ==========================================================================
@@ -368,70 +353,67 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * 2. Hero images set via background-image should cover and center.
  */
 .x-hero {
+	background-position: center; /* [2] */
+	background-size: cover; /* [2] */
 	display: block;
-	position: relative;
-	/* [1] */
-	background-position: center;
-	/* [2] */
-	background-size: cover;
-	/* [2] */
+	position: relative; /* [1] */
 }
 
 /**
-	 * The caption overlays at the bottom of a Hero, providing space for additional
-	 * content such as titles or logos.
-	 */
+ * The caption overlays at the bottom of a Hero, providing space for additional
+ * content such as titles or logos.
+ */
 .x-hero__caption {
-	position: absolute;
 	bottom: 0;
-	padding: 16px 0;
-	width: 100%;
+	padding: var(--default-spacing-unit) 0;
+	position: absolute;
 	text-shadow: 0 0 25px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(0, 0, 0, 0.5);
+	width: 100%;
 }
 
 /**
-	 * Hero video needs to be set to `display: block` to avoid spacing issues.
-	 */
+ * Hero video needs to be set to `display: block` to avoid spacing issues.
+ */
 .x-hero__video {
 	display: block;
-	width: 100%;
 	height: 100%;
 	-o-object-fit: fill;
 	   object-fit: fill;
+	width: 100%;
 }
 
 /**
-	 * Hero link inherits the Hero `color` to override anchor element styles.
-	 */
+ * Hero link inherits the Hero `color` to override anchor element styles.
+ */
 .x-hero__link {
 	color: inherit;
 }
 
 /**
-	 * As we cannot set a border property over video, borders are implemented
-	 * using pseudo-elements.
-	 */
+ * As we cannot set a border property over video, borders are implemented
+ * using pseudo-elements.
+ */
 .x-hero--borders::before {
-	display: block;
-	position: absolute;
-	top: 0;
-	right: 0;
+	border: calc(var(--default-spacing-unit) / 4) solid rgba(255, 255, 255, 0.3);
 	bottom: 0;
-	left: 0;
-	border: 4px solid rgba(255, 255, 255, 0.3);
 	content: "";
+	display: block;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 /**
-	 * Make any other content below the Hero overlap upwards.
-	 */
+ * Make any other content below the Hero overlap upwards.
+ */
 .x-hero--overlap {
 	margin-bottom: -10vh;
 }
 
 /**
-	* If hero has overlap modifier, shift caption upwards to compensate.
-	*/
+* If hero has overlap modifier, shift caption upwards to compensate.
+*/
 .x-hero--overlap .x-hero__caption {
 	bottom: 10vh;
 }
@@ -446,11 +428,12 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * credit card used.
  */
 .x-messages {
-	margin-bottom: 16px;
-	padding: 0.75em 1.25em;
+	background-color: var(--gray-200);
+	border: var(--default-border-width) solid var(--gray-500);
+	color: var(--black);
 	font-size: 0.875rem;
-	background-color: #eaeaea;
-	border: 1px solid currentColor;
+	margin-bottom: var(--default-spacing-unit);
+	padding: 0.875em 1.25em;
 }
 
 .x-messages *:last-child {
@@ -462,58 +445,49 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-messages--error {
-	background-color: #fff;
-	color: #ee0020;
+	background-color: var(--red-100);
+	border-color: var(--red-200);
+	color: var(--red-400);
 }
 
 .x-messages--info {
-	background-color: #fff;
-	color: #003b6f;
+	background-color: var(--blue-100);
+	border-color: var(--blue-200);
+	color: var(--blue-400);
 }
 
 .x-messages--success {
-	background-color: #fff;
-	color: #0d8670;
+	background-color: var(--green-100);
+	border-color: var(--green-200);
+	color: var(--green-400);
 }
 
 .x-messages--warning {
-	background-color: #eaeaea;
-	border-color: #f9ed1f;
+	background-color: var(--yellow-100);
+	border-color: var(--yellow-200);
+	color: var(--yellow-400);
 }
 
 /**
  * These classes will help format the message if you are adding an icon.
  */
 .x-messages--with-icon {
-	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	display: flex;
+	gap: 1.25em;
 }
 
 .x-messages__icon {
-	font-size: 3rem;
+	font-size: 2em;
 }
 
 .x-messages__close {
-	position: absolute;
-	top: 50%;
-	right: 0.25rem;
-	margin-top: -1rem;
-	color: #222;
-	font-size: 2rem;
 	line-height: 1;
+	margin-top: -1rem;
+	position: absolute;
+	right: 0.25rem;
 	text-decoration: none;
-	opacity: 0.3;
-}
-
-/*
-	what??? they have an old browser?
-	This can be removed if you do not need to alert for IE < 9.
-*/
-.x-messages--update-browser {
-	width: 100%;
-	position: relative;
-	text-align: center;
+	top: 50%;
 }
 
 /* ==========================================================================
@@ -524,18 +498,41 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * list or data is used.
  */
 .x-pagination {
-	display: flex;
-	max-width: 19rem;
-	margin: 0;
-	align-items: center;
+	margin-bottom: auto var(--default-spacing-unit);
+	max-width: 18rem;
 }
 
 .x-pagination--centered {
-	margin: auto;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .x-pagination--right {
 	margin-left: auto;
+}
+
+.x-pagination__list {
+	align-items: center;
+	display: flex;
+	gap: var(--default-spacing-unit);
+	justify-content: space-between;
+	list-style: none;
+	margin: 0;
+	width: 100%;
+}
+
+.x-pagination__link {
+	border-color: var(--transparent);
+	border-radius: 50%;
+	color: var(--gray-600);
+	height: 3rem;
+	padding: 0;
+	width: 3rem;
+}
+
+.x-pagination .c-form-select {
+	margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -544,80 +541,144 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 /**
  * This is the default product layout for the product page.
  */
+.x-product-layout {
+	margin-bottom: calc(var(--default-spacing-unit) * 2);
+}
+
 @media (min-width: 60em) {
 	.x-product-layout {
-		padding-top: 32px;
+		padding-top: calc(var(--default-spacing-unit) * 2);
 	}
 }
-
 .x-product-layout-images {
+	display: flex;
+	flex-flow: column nowrap;
+	gap: 1.25rem;
 	margin-left: 0;
-	margin-right: 0;
+	min-height: var(--prod-img-y);
 }
 
+@media (min-width: 60em) {
+	.x-product-layout-images {
+		flex-direction: row-reverse;
+		max-height: var(--prod-img-y);
+		min-height: 100%;
+		overflow: hidden;
+		place-content: flex-start flex-end;
+	}
+}
+.x-product-layout-images__figure,
+.x-product-layout-images__picture,
 .x-product-layout-images__image {
-	display: inline-block;
-	margin-bottom: 32px;
+	display: block;
+	margin-bottom: 0;
 }
 
 .x-product-layout-images__thumbnail-image {
-	margin-bottom: 16px;
+	margin-bottom: var(--default-spacing-unit);
+}
+
+.x-product-layout-purchase {
+	margin-bottom: 0;
+}
+
+.x-product-layout-purchase .c-form-list__item {
+	margin-bottom: 0;
+}
+
+.x-product-layout-purchase__sku {
+	display: block;
+	font-size: var(--message-one);
+	font-weight: var(--font-medium);
 }
 
 .x-product-layout-purchase__name {
-	margin-bottom: 32px;
+	margin-bottom: calc(var(--default-spacing-unit) * 1.5);
+}
+
+.x-product-layout-purchase__pricing {
+	margin-bottom: var(--message-one);
 }
 
 .x-product-layout-purchase__pricing-original,
 .x-product-layout-purchase__pricing-current {
-	font-size: 1.125rem;
+	font-size: var(--subheading-small);
 }
 
 .x-product-layout-purchase__pricing-current {
-	font-weight: 700;
+	font-weight: var(--font-medium);
+	padding-right: var(--default-spacing-unit);
 }
 
-.x-product-layout-purchase__pricing-original:not(:empty) {
-	padding-right: 32px;
-	text-decoration: line-through;
+.x-product-layout-purchase__product-discounts {
+	margin-bottom: 2rem;
+}
+
+.x-product-layout-purchase__product-discounts *,
+.x-product-layout-purchase__product-weight,
+.x-product-layout-purchase__product-quantity {
+	font-size: var(--message-one);
+	font-weight: var(--font-medium);
+	line-height: var(--title-four);
+}
+
+.x-product-layout-purchase__product-discounts * {
+	color: var(--red-400);
 }
 
 .x-product-layout-purchase__inventory-message:empty {
 	display: none;
 }
 
-.x-product-layout-purchase__options {
-	display: flex;
-	width: auto;
+.x-product-layout-purchase__options,
+.x-product-layout-purchase__cta {
 	max-width: none;
+	width: auto;
 }
 
+@media (min-width: 75em) {
+	.x-product-layout-purchase__options,
+.x-product-layout-purchase__cta {
+		max-width: 60%;
+		width: 60%;
+	}
+}
 .x-product-layout-purchase__options-attribute {
+	margin-bottom: calc(var(--default-spacing-unit) / 2);
 	width: 100%;
-	margin-bottom: 8px;
-}
-
-.x-product-layout-purchase__options-attribute .c-form-label {
-	font-size: 0.75rem;
 }
 
 .x-product-layout-purchase__swatches {
+	min-height: 5em;
 	padding-top: 3px;
 }
 
 .x-product-layout-purchase__swatches button {
-	padding: 0;
-	border: 0 none;
 	background-color: transparent;
+	border: 0 none;
+	padding: 0;
+}
+
+.x-product-layout-purchase__swatches img {
+	border: var(--default-border-width) solid var(--gray-400);
+	border-radius: 50%;
+	height: 48px;
+	width: 48px;
 }
 
 .x-product-layout-purchase__swatches--active {
-	box-shadow: 0 0 0 2px #eaeaea, 0 0 3px 3px #767676;
+	border-radius: 50%;
+	outline: var(--default-border-width) solid var(--black);
+	outline-offset: 0.25rem;
+}
+
+.x-product-layout-purchase__cta .x-quantify {
+	height: calc(3.75em - var(--default-border-width));
 }
 
 .x-product-description {
-	margin-bottom: 96px;
-	padding-top: 96px;
+	margin-bottom: calc(var(--default-spacing-unit) * 6);
+	padding-top: calc(var(--default-spacing-unit) * 4);
 }
 
 /* ==========================================================================
@@ -628,68 +689,131 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * on the storefront as featured product, the related products section of a 
  * product page, as an auto-suggest feature during checkout, or wherever.
  */
-.x-product-list {
-	margin-bottom: 16px;
+.x-product-list,
+.x-subcategory-list {
+	display: grid;
+	gap: calc(var(--default-spacing-unit) * 2);
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	margin-bottom: var(--default-spacing-unit);
 }
 
+.x-subcategory-list {
+	grid-template-columns: repeat(auto-fit, minmax(0, 6.5rem));
+	justify-content: center;
+}
+
+@media (min-width: 60em) {
+	.x-product-list {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+	.x-subcategory-list {
+		grid-template-columns: repeat(auto-fit, minmax(0, 9.5rem));
+	}
+}
 .x-product-list__heading {
 	margin-bottom: 2em;
 }
 
+.x-product-list__item,
+.x-subcategory-list__item {
+	position: relative;
+}
+
 .x-product-list__item {
-	margin-bottom: 32px;
+	display: flex;
 }
 
-.x-product-list__link {
-	color: #000;
-	transition: ease-in-out 0.3s;
+.x-product-list__figure,
+.x-product-list__figure-caption,
+.x-subcategory-list__figure,
+.x-subcategory-list__figure-caption {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
 }
 
-.x-product-list__link:hover {
-	color: #404040;
+.x-product-list__figure-caption {
+	flex-grow: 1;
+	gap: 1em;
+	justify-content: space-between;
+}
+
+.x-subcategory-list__figure-caption {
+	font-weight: var(--font-medium);
+	text-align: center;
+}
+
+.x-product-list__picture,
+.x-subcategory-list__picture {
+	aspect-ratio: 1;
+	align-items: center;
+	display: flex;
+	justify-content: center;
+	overflow: hidden;
+	width: 100%;
+}
+
+.x-product-list__link,
+.x-subcategory-list__link {
 	text-decoration: none;
 }
 
-.x-product-list__figure {
-	margin: 0;
+.x-product-list__link:hover,
+.x-subcategory-list__link:hover {
+	text-decoration: underline;
 }
 
-.x-product-list__image,
-.x-product-list__name,
+.x-product-list__link::before,
+.x-subcategory-list__link::before {
+	bottom: 0;
+	content: "";
+	cursor: pointer;
+	left: 0;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transition: box-shadow 250ms;
+	z-index: 1;
+}
+
+.x-product-list__name {
+	-webkit-box-orient: vertical;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	overflow: hidden;
+}
+
 .x-product-list__price {
-	display: block;
+	font-size: var(--default-input-font-size);
 }
 
-.x-product-list__image {
-	margin-bottom: 16px;
-}
-
-.x-product-list__name,
-.x-product-list__price {
-	font-weight: 600;
-}
-
-.x-product-list__price {
-	display: inline-block;
-	padding-right: 0.5em;
-	padding-left: 0.5em;
-	color: #767676;
-	font-size: 0.875rem;
-}
-
-.x-product-list__action {
-	padding-top: 16px;
+.x-product-list__price_set {
+	display: inline-flex;
+	gap: 1em;
 }
 
 /**
-	* If you are creating a product carousel, add this class to the element.
-	*/
-.x-product-list--carousel .x-product-list__item {
-	margin-bottom: 0;
-	padding-right: 0.5rem;
-	padding-left: 0.5rem;
+* Modifications for related products.
+*/
+.x-product-list--related {
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
+@media (min-width: 48em) {
+	.x-product-list--related {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+	}
+}
+@media (min-width: 75em) {
+	.x-product-list--related {
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+	}
+}
+@media (min-width: 90em) {
+	.x-product-list--related {
+		grid-template-columns: repeat(5, minmax(0, 1fr));
+	}
+}
 /* ==========================================================================
    EXTENSIONS / SUBSCRIPTIONS / SUBSCRIPTIONS
    ========================================================================== */
@@ -699,51 +823,50 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * you are looking to make changes.
  */
 .miva_datepicker {
+	background-color: var(--white);
+	border: var(--default-border-width) solid var(--gray-400);
 	display: none;
+	padding: var(--default-spacing-unit);
 	position: absolute;
-	padding: 16px;
-	background-color: #fff;
-	border: 1px solid #909090;
 	z-index: 1000;
 }
 
 .miva_datepicker_calendar_container {
 	display: inline-block;
-	width: 214px;
 	position: relative;
-	vertical-align: top;
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
-	    -ms-user-select: none;
 	        user-select: none;
+	vertical-align: top;
+	width: 214px;
 }
 
 .miva_datepicker_calendar_month_selector {
-	display: flex;
 	align-items: center;
+	background-color: var(--gray-400);
+	display: flex;
 	position: relative;
-	background-color: #767676;
 }
 
 .miva_datepicker_calendar_month_selector_next,
 .miva_datepicker_calendar_month_selector_prev {
-	width: 35px;
-	height: 35px;
-	padding: 0;
 	background: 0 -35px no-repeat;
 	border: 0 none;
 	cursor: pointer;
+	height: 35px;
+	padding: 0;
+	width: 35px;
 }
 
 .miva_datepicker_calendar_month_selector_next:hover,
 .miva_datepicker_calendar_month_selector_prev:hover {
-	background-color: #222;
+	background-color: var(--gray-600);
 }
 
 .miva_datepicker_calendar_month_selector_title {
+	color: var(--white);
 	flex-grow: 1;
-	color: #fff;
 	text-align: center;
 }
 
@@ -769,11 +892,11 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 
 .miva_datepicker_calendar_weekday_title {
 	display: inline-block;
-	width: 28px;
+	font-weight: 700;
 	padding: 3px 0;
 	position: absolute;
-	font-weight: 700;
 	text-align: center;
+	width: 28px;
 }
 
 #miva_datepicker_calendar_week_container {
@@ -788,46 +911,46 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .miva_datepicker_calendar_day {
-	display: inline-flex;
 	align-items: center;
+	border: var(--default-border-width) solid var(--gray-400);
+	bottom: 1px;
+	cursor: pointer;
+	display: inline-flex;
+	font-size: 0.75em;
 	justify-content: center;
-	width: 26px;
 	position: absolute;
 	top: 1px;
-	bottom: 1px;
-	font-size: 0.75em;
-	border: 1px solid #909090;
-	cursor: pointer;
+	width: 26px;
 }
 
 .miva_datepicker_calendar_day:hover {
-	background-color: #767676;
-	border-color: #222;
-	color: #fff;
+	background-color: var(--gray-400);
+	border-color: var(--gray-600);
+	color: var(--white);
 }
 
 .miva_datepicker_calendar_day_noselect,
 .miva_datepicker_calendar_day_noselect:hover {
-	background-color: #c0c0c0;
-	border-color: #222;
-	color: #222;
+	background-color: var(--gray-300);
+	border-color: var(--gray-600);
+	color: var(--gray-600);
 }
 
 .miva_datepicker_calendar_day_current {
-	border-color: #222;
-	color: #222;
+	border-color: var(--gray-600);
+	color: var(--gray-600);
 	font-weight: 700;
 }
 
 .miva_datepicker_calendar_day_current:hover {
-	background-color: #222;
-	color: #fff;
+	background-color: var(--gray-600);
+	color: var(--white);
 }
 
 .miva_datepicker_calendar_day_active {
-	background-color: #222;
-	border-color: #767676;
-	color: #fff;
+	background-color: var(--gray-600);
+	border-color: var(--gray-400);
+	color: var(--white);
 	font-weight: 700;
 }
 
@@ -863,65 +986,31 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
    EXTENSIONS / SEARCH-PREVIEW / SEARCH-PREVIEW
    ========================================================================== */
 .x-search-preview {
+	background-color: var(--white);
+	border-radius: 0 0 var(--default-border-radius) var(--default-border-radius);
+	color: var(--gray-600);
 	display: none;
-	width: 100%;
+	flex-direction: column;
+	font-size: var(--default-input-font-size);
+	gap: 1em;
+	list-style: none;
 	margin: 0;
-	padding: 0.75rem 0.5rem;
+	outline: var(--default-border-width) solid var(--gray-400);
+	padding: 0.75rem 1rem;
 	position: absolute;
 	right: 0;
-	list-style: none;
-	background-color: #fff;
-	box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
-	opacity: 0;
-	transition: opacity ease-in-out 0.5s;
+	width: 100%;
 	z-index: 500;
 }
 
 .x-search-preview--open {
-	opacity: 1;
-}
-
-.x-search-preview__entry {
-	display: block;
-}
-
-.x-search-preview__list {
-	padding: 0 0.5rem;
-}
-
-.x-search-preview__line {
 	display: flex;
-	padding: 0.5rem 0;
-	position: relative;
-	align-items: center;
-	font-size: 0.875rem;
-	border-bottom: 1px solid #eaeaea;
-	cursor: pointer;
-}
-
-.x-search-preview__image {
-	width: 4rem;
-	height: 4rem;
-	margin: 0 1em 0 0;
-	overflow: hidden;
-	text-align: center;
 }
 
 .x-search-preview__item {
+	align-items: center;
 	display: flex;
-	flex: 1;
-	justify-content: space-between;
-	text-decoration: none;
-}
-
-.x-search-preview__item--selected {
-	background-color: #eaeaea;
-}
-
-.x-search-preview__search-all {
-	padding: 0.5rem;
-	font-style: italic;
-	cursor: pointer;
+	gap: 1rem;
 }
 
 /**
@@ -930,7 +1019,20 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * these styles do not conform to the tenants used in the rest of the framework.
  */
 .mm_searchfield_menuitem_selected {
-	background-color: #eaeaea;
+	background-color: var(--gray-100);
+}
+
+.x-search-preview__image {
+	height: var(--search-preview-image-y);
+	margin-bottom: 0;
+	overflow: hidden;
+	width: var(--search-preview-image-x);
+}
+
+.x-search-preview__search-all {
+	cursor: pointer;
+	font-style: italic;
+	padding: 0.5rem;
 }
 
 /* ==========================================================================
@@ -941,62 +1043,96 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * off-canvas method.
  */
 .x-mini-basket {
+	background-color: rgba(34, 34, 34, 0.8);
+	bottom: 0;
 	display: flex;
 	justify-content: flex-end;
-	position: fixed;
-	top: 0;
-	right: 0;
-	bottom: 0;
 	left: 0;
-	background-color: rgba(0, 0, 0, 0.5);
-	transform: scaleX(0);
-	transform-origin: right;
+	opacity: 0;
+	position: fixed;
+	right: 0;
+	top: 0;
 	transition: all ease-in-out 0.2s;
 	z-index: 500;
-	opacity: 0;
 }
 
 .x-mini-basket--open {
 	opacity: 1;
-	transform: scaleX(1);
+}
+
+.x-mini-basket__empty-icon {
+	align-items: center;
+	border-radius: 50%;
+	display: inline-flex;
+	height: 4.5rem;
+	justify-content: center;
+	margin-top: 1.875rem;
+	width: 4.5rem;
 }
 
 .x-mini-basket__content {
 	display: flex;
 	flex: 1 1 100%;
 	flex-direction: column;
+	max-width: 25rem;
+	padding: 1rem 0;
 	width: 100vw;
-	max-width: 30rem;
-	padding: 1rem;
 }
 
-.x-mini-basket__header {
+.x-mini-basket__content :is(header, footer),
+.x-mini-basket__list {
+	padding: 0 1rem;
+}
+
+.x-mini-basket__header,
+.x-mini-basket__subtotal {
 	display: flex;
 	justify-content: space-between;
+	padding-bottom: 1.875rem;
+}
+
+.x-mini-basket__subtotal {
+	color: var(--gray-600);
+	font-weight: var(--font-medium);
+	padding-bottom: 1.75rem;
+}
+
+.x-mini-basket__header button {
+	background-color: var(--white);
+	border: 0 none;
+	cursor: pointer;
+	font-size: 0.625rem;
 }
 
 .x-mini-basket__list {
+	flex-grow: 1;
+	margin-bottom: 1rem;
 	overflow-y: auto;
 }
 
 .x-mini-basket__line {
+	border-top: var(--default-border-width) solid var(--gray-400);
 	display: flex;
-	margin-bottom: 2em;
-	font-size: 0.875rem;
 	flex-wrap: wrap;
+	gap: 1.25rem;
+	font-size: 0.875rem;
+	padding: 1.5rem 0;
+}
+
+.x-mini-basket__line:last-of-type {
+	padding: 1rem 0;
 }
 
 .x-mini-basket__image {
-	width: 5rem;
-	height: 5rem;
-	margin: 0 1em 0 0;
+	height: 2.5rem;
 	overflow: hidden;
 	text-align: center;
+	width: 2.5rem;
 }
 
 .x-mini-basket__item {
 	display: flex;
-	flex: 1 1 auto;
+	flex: 1 1 0;
 	flex-direction: column;
 	justify-content: space-between;
 	text-decoration: none;
@@ -1006,38 +1142,42 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	text-decoration: none;
 }
 
-.x-mini-basket__item-name {
+.x-mini-basket__item-name,
+.x-mini-basket__item-attributes {
 	display: block;
-	margin-bottom: 1em;
+	margin-bottom: 1rem;
+}
+
+.x-mini-basket__item-attributes {
+	font-size: var(--message-one);
+	line-height: 1.75;
 }
 
 .x-mini-basket__subscription {
 	flex-basis: 100%;
 }
 
+.x-mini-basket__item-price {
+	color: var(--black);
+}
+
 .x-mini-basket__item-total {
-	display: flex;
 	align-items: center;
+	display: flex;
 	justify-content: space-between;
 }
 
-.x-mini-basket__item-total hr {
-	margin: 0 0.75em;
-	flex-grow: 1;
-}
-
 .x-mini-basket__charges,
-.x-mini-basket__total,
-.x-mini-basket__cta {
+.x-mini-basket__total {
 	display: flex;
-	flex-grow: 1;
+	flex: 1 0 100%;
 	justify-content: space-between;
 }
 
 .x-mini-basket__charges {
 	flex-direction: column;
-	margin-bottom: 1em;
 	font-size: 0.875rem;
+	margin-bottom: 1em;
 }
 
 .x-mini-basket__charge-item {
@@ -1046,11 +1186,13 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-mini-basket__total {
-	margin-bottom: 1em;
+	font-size: var(--subheading-small);
+	font-weight: var(--font-medium);
 }
 
 .x-mini-basket__cta {
-	font-size: 0.875rem;
+	display: grid;
+	gap: 0.5rem 0;
 }
 
 /* ==========================================================================
@@ -1061,21 +1203,40 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * quantities on the product and basket pages. When used on the basket page,
  * the decrease button becomes a remove button if the quantity is 1.
  */
-.x-quantify .c-control-group__button {
-	border-color: #c0c0c0;
+.x-quantify {
+	border: var(--default-border-width) solid var(--gray-400);
+	border-radius: var(--default-border-radius);
+	display: grid;
+	grid-template-columns: 2.5rem 1fr 2.5rem;
+	grid-template-rows: 1fr;
+	height: 2.5rem;
+	width: 7.5rem;
+}
+
+.x-quantify :is(.c-button, .c-form-input) {
+	align-self: stretch;
+	border: 0 none;
+	line-height: normal;
+	margin-bottom: 0;
+	outline-offset: calc(-1 * var(--default-border-width) * 2);
+	padding: 0;
+}
+
+.x-quantify button {
+	color: var(--gray-600);
+	font-size: 0.625rem;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
-	    -ms-user-select: none;
 	        user-select: none;
 }
 
-.x-quantify .c-control-group__button > * {
-	pointer-events: none;
+.x-quantify button[aria-disabled=true] {
+	background-color: var(--white);
+	color: var(--gray-400);
 }
 
-.x-quantify .c-control-group__field {
-	height: auto;
-	border-left-width: 0;
+.x-quantify button > * {
+	pointer-events: none;
 }
 
 /* =====
@@ -1086,193 +1247,160 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
  * by Heydon Pickering on the Inclusive Components Pattern Library.
  * https://inclusive-components.design/tabbed-interfaces/
  */
-/**
- * This is a basic placeholder for the proposed CSS `:focus-visible`
- * pseudo-selector [1] and is based on the WICG polyfill [2]. Once
- * standardized, this will be updated.
- *
- * [1] https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
- * [2] https://github.com/WICG/focus-visible
- *
- * Add the `focus-visible` class to the given element.
- * @param {Element} focusedElement
- */
-[data-tab-component] *:focus:not(.focus-visible) {
-	box-shadow: inset 0 0 0 4px transparent;
+[data-tab-component] *:focus:not(:focus-visible) {
+	box-shadow: inset 0 0 0 4px var(--transparent);
 	outline: none;
 	text-decoration: none;
 }
 
-[data-tab-component] *.focus-visible {
-	box-shadow: inset 0 0 0 4px lightBlue;
+[data-tab-component] *:focus-visible {
+	box-shadow: inset 0 0 0 4px var(--focus);
 	outline: none;
 	text-decoration: none;
 }
 
-[role="tablist"] {
+[data-tab-component] [role=tablist] {
+	display: flex;
+	gap: 1.75rem;
+	justify-content: center;
+	list-style: none;
 	margin: 0;
 	padding: 0;
-	list-style: none;
 }
 
-[role="tablist"] li,
-[role="tab"] {
+[data-tab-component] [role=presentation],
+[data-tab-component] [role=tab] {
 	display: inline-block;
 }
 
-[role="tab"] {
-	padding: 0.5rem 1em calc(0.5rem + 2px);
-	position: relative;
-	top: 2px;
+[data-tab-component] [role=tab] {
+	border-bottom: calc(var(--default-border-width) * 2) solid var(--transparent);
+	font-size: var(--paragraph-large);
+	font-weight: var(--font-medium);
+	padding: 0.5rem;
 	text-decoration: none;
-	border: 2px solid transparent;
-	border-bottom: 0 none;
 }
 
-[role="tab"][aria-selected] {
-	background-color: #fff;
+[data-tab-component] [role=tab][aria-selected] {
 	border-color: currentColor;
 }
 
-[role="tabpanel"] {
-	padding: 1.5rem;
-	border: 2px solid;
+[data-tab-component] [role=tabpanel] {
+	font-size: var(--paragraph-large);
+	margin: auto;
+	max-width: 50rem;
+	padding-top: 2rem;
 }
 
-[role="tabpanel"] * + * {
+[data-tab-component] [role=tabpanel] * + * {
 	margin-top: 0.75rem;
 }
 
 @media (max-width: 40em) {
-	[data-tab-component]::before {
-		display: none;
-		content: "max";
-		visibility: hidden;
-	}
-	[role="tablist"] li,
-	[role="tab"] {
+	[data-tab-component] [role=tablist],
+[data-tab-component] [role=presentation] {
 		display: block;
-		position: static;
 	}
-	[role="tab"] {
-		border: 2px solid currentColor;
+	[data-tab-component] [role=tab] {
+		border-bottom: var(--default-border-width) solid var(--gray-300);
+		color: var(--black);
+		display: flex;
+		justify-content: space-between;
 	}
-	[role="tablist"] li + li a {
+	[data-tab-component] [role=tab][aria-selected] {
+		border-color: var(--gray-300);
+	}
+	[data-tab-component] [role=tablist] li + li a {
 		border-top: 0 !important;
 	}
-	[role="tab"][aria-selected] {
-		position: static;
+	[data-tab-component] [role=tab]::after {
+		content: "+";
+		font-size: 1.25em;
+		line-height: 1;
 	}
-	[role="tab"][aria-selected]::after {
-		content: '\0020⬅';
+	[data-tab-component] [role=tab][aria-selected]::after {
+		content: "-";
 	}
-	[role="tabpanel"] {
-		border-top: 0;
+	[data-tab-component] [role=tabpanel] {
+		border-bottom: var(--default-border-width) solid var(--transparent);
+		padding: 1rem 0.5rem;
 	}
-}
-
-/**
- * This is some basic styling to match that shipped with the flex-tabs extension.
- */
-.x-a11y-tabs {
-	margin-bottom: 1rem;
-}
-
-.x-a11y-tabs__link {
-	border: 0 none;
-	border-bottom: 1px solid #c0c0c0;
-	color: #767676;
-}
-
-.x-a11y-tabs__panel {
-	border: 0 none;
-	border-bottom: 1px solid #c0c0c0;
-}
-
-@media (min-width: 40.1em) {
-	.x-a11y-tabs__list {
-		display: flex;
-		justify-content: center;
-	}
-	.x-a11y-tabs__link {
-		top: auto;
-		border-bottom-color: transparent;
-	}
-	.x-a11y-tabs__link:hover {
-		text-decoration: none;
-	}
-	.x-a11y-tabs__panel {
-		border: 0 none;
+	[data-tab-component] [role=tabpanel]:not([hidden]) {
+		border-color: var(--gray-300);
 	}
 }
-
 /* ==========================================================================
    EXTENSIONS / NAVIGATION / TRANSFIGURE NAVIGATION
    ========================================================================== */
 @media screen and (max-width: 59.9em) {
 	.has-open-main-menu,
-	.has-open-main-menu body {
+.has-open-main-menu body {
 		overflow: hidden;
 	}
 	.x-transfigure-navigation {
-		padding: 0;
-		position: fixed;
-		top: 0;
-		right: 0;
+		backface-visibility: hidden;
+		background-color: var(--transparent);
 		bottom: 0;
 		left: -100vw;
-		-webkit-backface-visibility: hidden;
-		        backface-visibility: hidden;
-		background-color: transparent;
 		opacity: 0;
 		overflow: hidden;
-		transition: all ease-out 0.2s;
+		padding: 0;
+		position: fixed;
+		right: 0;
+		top: 0;
 		transform: scaleX(0);
 		transform-origin: left;
+		transition: all ease-out 0.2s;
 		z-index: -1;
 	}
 	.x-transfigure-navigation.is-open {
+		background: rgba(17, 17, 17, 0.65);
 		left: 0;
-		background: rgba(0, 0, 0, 0.65);
 		opacity: 1;
-		transition: all ease-in 0.2s;
 		transform: scaleX(1);
+		transition: all ease-in 0.2s;
 		z-index: 2;
 	}
 	.x-transfigure-navigation__wrap {
+		background-color: var(--white);
 		max-width: 22.5rem;
 		min-height: 100%;
 		-webkit-overflow-scrolling: touch;
 		overflow-x: hidden;
 		overflow-y: auto;
-		background-color: #fff;
+	}
+	.x-transfigure-navigation__header {
+		padding: 0.5rem;
 	}
 	.x-transfigure-navigation__header .c-button {
-		padding: calc(1em - 1px);
+		align-self: auto;
+		padding: calc(1em - var(--default-border-width));
+		text-decoration: none;
 	}
 	.x-transfigure-navigation__content {
+		font-size: var(--default-font-size);
 		position: relative;
 	}
 	.x-transfigure-navigation__row,
-	.x-transfigure-navigation__row .c-navigation__row,
-	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type {
+.x-transfigure-navigation__row .c-navigation__row,
+.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type {
+		background-color: var(--white);
 		display: block;
+		left: 0;
+		list-style: none;
+		min-height: 100%;
 		position: absolute;
 		top: 0;
-		left: 0;
-		width: 100%;
-		min-height: 100%;
-		background-color: #fff;
-		list-style: none;
 		transition: transform 0.3s;
+		width: 100%;
 	}
 	.x-transfigure-navigation .c-navigation__list {
 		position: static;
 	}
 	.x-transfigure-navigation .c-navigation__list:hover > .c-navigation__row,
-	.x-transfigure-navigation .c-navigation__list.focus-within > .c-navigation__row {
-		display: block;
+.x-transfigure-navigation .c-navigation__list.focus-within > .c-navigation__row {
 		box-shadow: none;
+		display: block;
 	}
 	@supports (will-change: auto) {
 		.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row {
@@ -1281,139 +1409,149 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 		}
 	}
 	.x-transfigure-navigation .c-navigation__link {
-		display: flex;
-		height: 3.75rem;
-		padding: 0 0 0 1rem;
 		align-items: center;
+		backface-visibility: hidden;
+		display: flex;
+		height: 3rem;
 		justify-content: space-between;
-		-webkit-backface-visibility: hidden;
-		        backface-visibility: hidden;
-		border: 0 solid #d0d0d0;
-		border-top-width: 1px;
 		overflow: hidden;
+		padding: 0 0 0 1rem;
 		text-overflow: ellipsis;
 		transform: translateZ(0);
 		transition: all 0.3s;
 		white-space: nowrap;
 	}
 	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link,
-	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
 		padding-left: 1rem;
 	}
-	.x-transfigure-navigation__row .c-navigation__list:first-of-type > .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row .c-navigation__list:first-of-type > .c-navigation__link {
-		/*border-top-width: 0;*/
-	}
 	.x-transfigure-navigation__row .c-navigation__list:last-of-type > .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row .c-navigation__list:last-of-type > .c-navigation__link {
-		border-bottom-width: 1px;
+.x-transfigure-navigation__row .c-navigation__row .c-navigation__list:last-of-type > .c-navigation__link {
+		border-bottom-width: var(--default-border-width);
 	}
 	.x-transfigure-navigation__row.is-hidden,
-	.x-transfigure-navigation__row .c-navigation__row.is-hidden {
+.x-transfigure-navigation__row .c-navigation__row.is-hidden {
 		transform: translateX(100%);
 	}
 	.x-transfigure-navigation__row.is-hidden > .cmp-primary-navigation__title,
-	.x-transfigure-navigation__row.show-next > .cmp-primary-navigation__title,
-	.x-transfigure-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
-	.x-transfigure-navigation__row.show-next > .c-navigation__list > .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
+.x-transfigure-navigation__row.show-next > .cmp-primary-navigation__title,
+.x-transfigure-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
+.x-transfigure-navigation__row.show-next > .c-navigation__list > .c-navigation__link,
+.x-transfigure-navigation__row .c-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
+.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
 		opacity: 0;
 	}
 	.x-transfigure-navigation__row.show-next > .c-navigation__list > .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
+.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
 		transform: translateX(-100%);
 	}
 	.x-transfigure-navigation .c-navigation__link-carat {
 		display: none;
 	}
 	.x-transfigure-navigation .has-child-menu .c-navigation__link-carat {
-		display: inline-flex;
 		align-self: stretch;
+		display: inline-flex;
 	}
 	.x-transfigure-navigation .c-navigation__link-carat > * {
-		display: flex;
-		width: 4rem;
 		align-items: center;
-		justify-content: center;
+		display: flex;
 		font-size: 0.75rem;
+		justify-content: center;
+		width: 4rem;
 	}
 	.x-transfigure-navigation__footer {
-		padding: 1rem;
-		font-size: 0.75rem;
-		list-style: none;
-		border-top: 1px solid #d0d0d0;
+		border-top: var(--default-border-width) solid var(--gray-300);
+		font-size: var(--default-input-font-size);
+		font-weight: var(--font-regular);
+		margin: 1rem 0 0.5rem 1rem;
+		padding: 1rem 0;
+		width: -moz-fit-content;
+		width: fit-content;
 	}
 	.x-transfigure-navigation__footer-link {
-		display: block;
-		padding-top: 1em;
-		padding-bottom: 1em;
-		font-weight: 500;
-		line-height: 2;
+		align-items: center;
+		display: flex;
+		height: 2.5rem;
+		text-decoration: none;
 	}
 }
-
 @media screen and (min-width: 60em) {
+	.x-transfigure-navigation__row {
+		gap: 0.25rem;
+	}
 	.x-transfigure-navigation__row .c-navigation__row {
+		background-color: var(--white);
 		display: none;
-		width: auto;
+		padding: 0.5rem;
 		position: absolute;
 		white-space: nowrap;
+		width: auto;
 		z-index: 100;
 	}
 	.x-transfigure-navigation > .c-navigation__row {
 		display: flex;
 	}
-	.x-transfigure-navigation:hover .c-navigation__list .c-navigation__link {
-		color: #767676;
-		transition: color ease-in 0.1s;
+	.x-transfigure-navigation .c-navigation__link span {
+		position: relative;
 	}
-	.x-transfigure-navigation .c-navigation__link {
-		display: flex;
-		align-items: center;
-		justify-content: space-around;
+	.x-transfigure-navigation .c-navigation__link span:after {
+		background-color: currentColor;
+		bottom: -0.4em;
+		content: "";
+		height: 0.2em;
+		left: 0;
+		position: absolute;
+		transform: scaleX(0);
+		transform-origin: bottom left;
+		transition: transform 0.25s ease-out;
+		width: 100%;
 	}
-	.x-transfigure-navigation .c-navigation__link:focus,
-	.x-transfigure-navigation .c-navigation__link:hover {
-		text-decoration: none;
+	.x-transfigure-navigation .c-navigation__link:is(:focus, :focus-within, :hover) span:after {
+		transform: scaleX(1);
+	}
+	.x-transfigure-navigation .c-navigation__link:is(:target) {
+		text-decoration: underline;
+		text-decoration-thickness: 0.2em;
+		text-underline-offset: 0.4em;
 	}
 	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__list {
 		text-align: left;
 	}
 	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type {
-		top: 0;
 		left: 100%;
+		top: calc(-1em - 0.5rem);
 		z-index: 200;
 	}
 	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link,
-	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
 		justify-content: space-between;
+		padding: 0.5rem 1rem;
 	}
 	.x-transfigure-navigation .c-navigation__list:hover > .c-navigation__row,
-	.x-transfigure-navigation .c-navigation__list.focus-within > .c-navigation__row {
-		display: table;
-		box-shadow: 1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
+.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row {
+		box-shadow: 0 3px 0.5em 0 rgba(0, 0, 0, 0.08);
+		display: flex;
+		gap: 0.25rem;
+		min-width: -moz-fit-content;
+		min-width: fit-content;
+		transform: translateY(calc(1em + var(--default-border-width)));
 	}
-	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__list .c-navigation__link {
-		color: #767676;
-	}
-	.x-transfigure-navigation .c-navigation__list:hover .c-navigation__link {
-		color: #000;
-		transition: color ease-out 0.1s;
-	}
-	@supports (will-change: auto) {
-		.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row {
-			display: table;
-			box-shadow: 1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
-		}
+	.x-transfigure-navigation .c-navigation__list:hover > .c-navigation__row::before,
+.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row::before {
+		content: "";
+		display: block;
+		height: 1em;
+		position: absolute;
+		top: -1em;
+		width: 100%;
 	}
 	.x-transfigure-navigation__row .is-off-screen .c-navigation__row:nth-child(2) .c-navigation__row {
+		box-shadow: -1px 1px 0.25em 0 rgba(17, 17, 17, 0.5);
 		left: auto;
 		right: 100%;
-		box-shadow: -1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
 	}
 	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row .c-navigation__link,
-	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
 		padding-left: 1em;
 	}
 	.x-transfigure-navigation .c-navigation__link-carat {
@@ -1424,15 +1562,13 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 		transform: rotate(0deg);
 	}
 }
-
 .x-transfigure-navigation__content {
-	padding-top: 1em;
 	padding-bottom: 1em;
+	padding-top: 1em;
 }
 
 .x-transfigure-navigation .c-navigation__link {
-	font-weight: 600;
-	color: #434343;
+	text-decoration: none;
 }
 
 .x-transfigure-navigation .c-navigation__link:hover {
@@ -1440,39 +1576,51 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link:hover {
-	background-color: #fff;
-	color: #000;
-	transition: color ease-out 0.1s;
+	background-color: var(--gray-100);
+	border-radius: var(--default-border-radius);
+	text-decoration: none;
+	transition: background-color ease-out 0.1s;
 }
 
 /* ==========================================================================
    EXTENSIONS / FACETS / FACETS
    ========================================================================== */
+.x-facet-set {
+	margin-bottom: var(--default-spacing-unit);
+}
+
 .x-facet-set__trigger {
 	display: none;
 }
 
 .x-facet-set__label.x-collapsible-content__toggle {
-	padding-bottom: 0.5em;
-	font-size: 0.875rem;
-	font-weight: 600;
-	text-transform: uppercase;
+	color: var(--gray-600);
+	font-size: var(--paragraph-large);
+	font-weight: var(--font-medium);
+	margin-bottom: var(--default-spacing-unit);
 }
 
-.x-facet-set__list {
+.x-facet-set__label > * {
+	font-size: 0.625rem;
+}
+
+.x-facet-set__list:not([aria-hidden=true]) {
 	display: block;
 	max-height: 0;
+	margin-bottom: var(--default-spacing-unit);
 	opacity: 0;
-	visibility: hidden;
 	transition-delay: 0.15s, 0s, 0s;
+	visibility: hidden;
 }
 
-.x-facet-set__list.x-collapsible-content__item[aria-hidden='false'] {
+.x-facet-set__list.x-collapsible-content__item[aria-hidden=false] {
 	max-height: 50em;
 }
 
 .x-facet-set .c-form-checkbox {
-	font-size: 14px;
+	font-size: var(--paragraph-small);
+	line-height: 2;
+	margin: 0.5em 0;
 }
 
 /* ==========================================================================
@@ -1484,84 +1632,141 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 
 @media screen and (min-width: 60em) {
 	.x-fasten-header {
-		display: flex;
-		width: 100vw;
-		max-width: none;
-		padding: 0.5rem 1rem;
-		position: fixed;
-		top: 0;
-		font-size: 0.875rem;
-		background-color: #fff;
+		background-color: var(--white);
 		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-		color: #222;
+		color: var(--gray-600);
+		display: flex;
+		font-size: 0.875rem;
+		left: 0;
+		max-width: none;
 		opacity: 0;
-		transform: scaleY(0);
+		padding: 0.5rem 2rem;
+		position: fixed;
+		right: 0;
+		top: 0;
+		transform: translateY(-100%);
 		transform-origin: top;
 		transition: all ease-in-out 0.15s;
 		z-index: 300;
 	}
 	.x-fasten-header--is-active .x-fasten-header {
 		opacity: 1;
-		transform: scaleY(1);
+		transform: translateY(0);
 	}
 	.x-fasten-header__logo-image {
 		max-height: 4rem;
 	}
+	.x-fasten-header__navigation {
+		position: relative;
+	}
+	.x-fasten-header__navigation::before {
+		content: " ";
+		display: block;
+		height: var(--default-input-font-size);
+		width: 100%;
+	}
+	.x-fasten-header__navigation-element {
+		font-size: var(--default-input-font-size);
+		font-weight: var(--font-medium);
+		cursor: pointer;
+		position: absolute;
+		top: -1em;
+	}
+	.x-fasten-header__navigation-element summary {
+		border-radius: var(--default-border-radius);
+		line-height: 1;
+		margin-bottom: 0;
+		padding: 1em 3.5em 1em 1.5em;
+		-webkit-user-select: none;
+		   -moz-user-select: none;
+		        user-select: none;
+		white-space: nowrap;
+	}
+	.x-fasten-header__navigation-element summary::marker {
+		content: "V";
+		font-family: "ReadyTheme Icons", sans-serif;
+		font-size: var(--default-spacing-unit);
+		-webkit-font-smoothing: antialiased;
+		-moz-osx-font-smoothing: grayscale;
+	}
+	.x-fasten-header__navigation-element summary span {
+		padding-left: 1em;
+		position: relative;
+		top: calc(-1 * (var(--default-spacing-unit) - var(--default-input-font-size)) / 2);
+	}
+	.x-fasten-header__navigation-element[open] summary {
+		background-color: var(--gray-100);
+		margin-bottom: calc(0.25rem + var(--default-border-width));
+	}
+	.x-fasten-header__navigation-list {
+		background-color: var(--white);
+		border: var(--default-border-width) solid var(--gray-200);
+		box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.08);
+		list-style: none;
+		margin: 0;
+		padding: 0.5em 1.5em;
+	}
+	.x-fasten-header__navigation-item {
+		padding: 0.5em 0;
+	}
+	.x-fasten-header__navigation-link {
+		display: block;
+		padding: 0.5em 0;
+		text-decoration: none;
+	}
+	.x-fasten-header__navigation-link:hover {
+		text-decoration: underline;
+		text-decoration-thickness: 0.1em;
+		text-underline-offset: 0.15em;
+	}
 }
-
 /* ==========================================================================
    EXTENSIONS / SHOW PASSWORD / SHOW PASSWORD
    ========================================================================== */
 /**
  * This extension allows a user to reveal the password they have typed.
  */
+input[type=password]:invalid + .x-toggle-password {
+	color: var(--gray-400);
+}
+
 .x-toggle-password {
-	width: 8ch;
-	margin-top: -0.125em;
-	padding: calc(0.5em - 1px);
-	position: absolute;
-	top: 50%;
-	right: 2%;
-	color: currentColor;
-	font-size: 0.75em;
-	font-weight: 400;
-	text-decoration: underline;
 	border: 0 none;
 	border-radius: 0;
+	color: var(--gray-600);
+	font-size: 1.5em;
+	margin-top: -0.125em;
+	padding: 0.25em;
+	position: absolute;
+	right: 0.5em;
+	top: calc(50% - 1px);
 }
 
 .x-toggle-password--no-label {
-	margin-top: 0;
-	padding: 0.5em;
+	margin-top: -0.25em;
 	top: 25%;
 }
 
-.x-toggle-password:focus,
-.x-toggle-password:hover {
-	color: #000;
-	text-shadow: 0 0 0 currentColor;
-	outline: 2px solid currentColor;
-}
-
 .x-collapsible-content__toggle {
-	display: flex;
 	align-items: center;
-	justify-content: space-between;
-	width: 100%;
-	padding: 0;
-	color: inherit;
-	font-weight: 700;
-	line-height: normal;
 	background-color: transparent;
 	border: 0 none;
+	color: inherit;
+	display: flex;
+	font-weight: 700;
+	justify-content: space-between;
+	line-height: normal;
+	padding: 0;
+	width: 100%;
 }
 
-.x-collapsible-content__toggle[aria-expanded='true'] [class^="u-icon-"]::before {
+.x-collapsible-content__toggle[aria-expanded=true] [class^=u-icon-]::before {
 	content: attr(data-toggle);
 }
 
-.x-collapsible-content__item[aria-hidden='false'] {
-	max-height: 25vmax;
+.x-collapsible-content__item[aria-hidden=false] {
+	max-height: -moz-fit-content;
+	max-height: fit-content;
 	opacity: 1;
 	overflow: visible;
 	transition: visibility 0s ease, max-height 0.3s ease, opacity 0.3s ease;
@@ -1571,6 +1776,7 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 .x-collapsible-content__item {
 	max-height: 0;
 	opacity: 0;
+	overflow: hidden;
 	visibility: hidden;
 }
 
@@ -1578,7 +1784,7 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
    EXTENSIONS / CONTACT / CONTACT
    ========================================================================== */
 .x-contact-form .is-required span {
-	color: #ee0020;
+	color: var(--red-400);
 }
 
 /**
@@ -1589,18 +1795,17 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 [data-filmstrip] {
-	overflow-x: scroll;
-	overflow-y: hidden;
-	-webkit-overflow-scrolling: touch;
-	-ms-overflow-style: none;
+	overflow: hidden;
+	position: relative;
 	scroll-behavior: smooth;
-	-ms-scroll-snap-type: mandatory;
 	scroll-snap-type: x mandatory;
-	scrollbar-width: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
 }
 
-[data-filmstrip][data-vertical] {
-	-ms-scroll-snap-type: mandatory;
+[data-vertical] [data-filmstrip] {
+	height: 100%;
 	scroll-snap-type: y mandatory;
 }
 
@@ -1609,110 +1814,87 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 [data-filmstrip] ul {
-	display: flex;
 	align-items: center;
-	flex-wrap: nowrap;
+	display: flex;
+	flex-flow: row nowrap;
+	gap: 1rem;
 	margin: 0;
+	width: -moz-max-content;
+	width: max-content;
 }
 
 [data-filmstrip] ul.has-controls {
-	padding-left: 16px;
+	padding: 0 calc(var(--default-spacing-unit) / 2);
 }
 
-[data-filmstrip][data-vertical] ul {
-	width: auto;
-	max-height: 30rem;
+[data-vertical] [data-filmstrip] ul {
 	flex-direction: column;
-	padding-left: 0;
+	height: -moz-max-content;
+	height: max-content;
 }
 
-[data-filmstrip][data-vertical] ul.has-controls {
-	padding-top: 16px;
+[data-vertical] [data-filmstrip] ul.has-controls {
+	padding: calc(var(--default-spacing-unit) / 2) 0;
 }
 
 [data-filmstrip] li {
-	flex: 0 0 auto;
-	margin-right: 16px;
+	height: var(--prod-thumb-y);
 	list-style: none;
 	scroll-snap-align: none;
-	transition: opacity ease-in-out 0.1s;
-}
-
-[data-filmstrip][data-vertical] li {
-	max-width: none;
-	padding-right: 0;
-	padding-bottom: 16px;
+	scroll-snap-stop: always;
+	width: var(--prod-thumb-x);
 }
 
 [data-filmstrip] picture {
+	align-items: center;
 	display: flex;
 	flex-direction: column;
-	align-items: center;
+	height: 100%;
 	justify-content: center;
 	width: 100%;
-	height: 100%;
 }
 
 [data-filmstrip] img {
-	width: 100%;
 	height: auto;
 	max-width: 100%;
-	opacity: 0;
+	width: 100%;
 }
 
-[data-filmstrip] img.is-visible {
-	opacity: 1;
-}
-
-[data-filmstrip-controls] li {
+[data-filmstrip-controls] {
+	align-items: center;
+	display: flex;
+	height: 100%;
+	justify-content: space-between;
+	left: 0;
 	list-style: none;
+	margin: 0;
+	position: absolute;
+	top: 0;
+	width: 100%;
 }
 
 [data-filmstrip-controls] button {
-	width: 3em;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	color: #fff;
-	background-color: #1a1a1a;
-	border: 0 none;
+	border-color: var(--gray-400);
+	border-radius: 50%;
+	height: 3rem;
+	padding: 0;
+	width: 3rem;
 }
 
 [data-filmstrip-controls] button:focus {
-	outline: 3px solid #406c93;
+	outline: 3px solid var(--focus);
 	outline-offset: -3px;
 }
 
-.x-filmstrip-controls__previous {
-	left: 0;
-}
-
-.x-filmstrip-controls__next {
-	right: 0;
-}
-
 [data-filmstrip-controls] button span {
-	display: inline-flex;
-	align-items: center;
-	justify-content: center;
-	width: 2em;
-	height: 2em;
 	pointer-events: none;
 }
 
-[data-vertical] + [data-filmstrip-controls] button {
-	width: 100%;
-	height: 3em;
+[data-vertical] [data-filmstrip-controls] {
+	flex-direction: column;
 }
 
-[data-vertical] + [data-filmstrip-controls] .x-filmstrip-controls__next {
-	top: auto;
-	right: auto;
-	bottom: 0;
-	left: 0;
-}
-
-[data-vertical] + [data-filmstrip-controls] button span {
+[data-vertical] [data-filmstrip-controls] button span {
 	transform: rotate(90deg);
 }
 
@@ -1723,7 +1905,6 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	pointer-events: none;
 	-webkit-user-select: none;
 	   -moz-user-select: none;
-	    -ms-user-select: none;
 	        user-select: none;
 }
 
@@ -1732,116 +1913,84 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 }
 
 .x-photo-viewer {
+	background-color: rgba(0, 0, 0, 0.75);
+	border: 0;
+	clip: rect(0 0 0 0);
 	display: flex;
 	flex-direction: column;
-	width: 1px;
 	height: auto;
+	left: 0;
 	margin: 0;
+	opacity: 0;
+	overflow: hidden;
 	padding: 0;
 	position: absolute;
 	top: 0;
-	left: 0;
-	background-color: rgba(64, 64, 64, 0.95);
-	border: 0;
-	clip: rect(0 0 0 0);
-	opacity: 0;
-	overflow: hidden;
 	transform: scale(0);
 	transition: opacity 0.3s ease, transform 0.2s ease;
 	white-space: nowrap;
+	width: 1px;
 	z-index: 9999;
 }
 
 .x-photo-viewer__visible {
-	width: 100%;
-	height: 100%;
-	position: fixed;
 	clip: auto;
-	opacity: 1;
-	transform: scale(1);
-}
-
-.x-photo-viewer button {
-	display: inline-block;
-	width: 100%;
 	height: 100%;
-	padding: 0.5em 1em;
-	color: #fff;
-	font-family: inherit;
-	font-size: 1em;
-	font-weight: 400;
-	line-height: normal;
-	text-align: center;
-	-webkit-appearance: none;
-	-moz-appearance: none;
-	     appearance: none;
-	background-color: rgba(255, 255, 255, 0.2);
-	border: 0 none;
-	border-radius: 0.125em;
-	transition: color 0.3s ease, background-color 0.3s ease;
-	-webkit-user-select: none;
-	-ms-user-select: none;
-	-moz-user-select: none;
-	     user-select: none;
-	vertical-align: middle;
-}
-
-.x-photo-viewer button:focus,
-.x-photo-viewer button:hover {
-	color: #66d9d9;
-	background-color: #222;
-	outline-color: currentColor;
+	opacity: 1;
+	position: fixed;
+	transform: scale(1);
+	width: 100%;
 }
 
 .x-photo-viewer__header,
 .x-photo-viewer__controls {
+	align-items: center;
+	background-color: var(--black);
+	color: var(--gray-100);
 	display: flex;
 	width: 100%;
-	align-items: center;
-	background-color: #222;
 }
 
 .x-photo-viewer__title {
 	flex: 1;
+	font-size: var(--title-four);
 	margin: 0;
-	padding-left: 2.1em;
-	color: #fff;
-	font-size: 1.25rem;
+	padding-left: 2em;
 	text-align: center;
 	white-space: normal;
 }
 
 .x-photo-viewer__close {
-	width: 2.25em;
 	height: 2.25em;
-	margin: .5em;
-	font-weight: 700;
-	text-align: center;
+	margin: 0.5em;
+	width: 2.25em;
 }
 
 .x-photo-viewer__close button {
+	height: 100%;
 	padding: 0;
+	width: 100%;
 }
 
 .x-photo-viewer__container {
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	width: 100%;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 	padding: 0 1rem;
-	white-space: nowrap;
 	touch-action: manipulation;
+	white-space: nowrap;
+	width: 100%;
 }
 
 .x-photo-viewer__current-image {
-	display: flex;
 	align-items: center;
-	justify-content: center;
-	width: 100%;
+	display: flex;
 	height: 100%;
+	justify-content: center;
 	opacity: 0;
 	transition: opacity ease-in 0.3s 0.3s;
+	width: 100%;
 }
 
 .x-photo-viewer__current-image.is-loaded {
@@ -1856,9 +2005,60 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 .x-photo-viewer__controls {
 	justify-content: space-between;
 	padding: 1em 2em;
-	color: #fff;
 }
 
 .x-photo-viewer__count {
+	font-weight: var(--font-medium);
 	text-align: center;
 }
+
+/* ==========================================================================
+   EXTENSIONS / PAYMENT / PAYMENT CARD
+   ========================================================================== */
+/**
+ * This is the default card layout for the saved payment methods page.
+ */
+.x-payment-card {
+	align-items: baseline;
+	display: grid;
+	font-size: var(--default-input-font-size);
+	gap: var(--default-spacing-unit);
+	grid-template-columns: repeat(2, 1fr);
+	padding: var(--default-spacing-unit);
+}
+
+.x-payment-card__image {
+	display: none;
+}
+
+@media (min-width: 48em) {
+	.x-payment-card {
+		align-items: center;
+		grid-template-columns: 38px repeat(4, 1fr);
+	}
+	.x-payment-card__image {
+		display: block;
+		grid-area: 1/1/2/2;
+	}
+	.x-payment-card__number {
+		grid-area: 1/2/2/3;
+	}
+	.x-payment-card__cardholder {
+		grid-area: 1/3/2/4;
+	}
+	.x-payment-card__expiry {
+		grid-area: 1/4/2/5;
+	}
+	.x-payment-card__actions {
+		grid-area: 1/5/2/6;
+		place-self: center end;
+	}
+}
+.x-payment-card__actions > * {
+	align-items: baseline;
+	gap: 2rem;
+}
+
+/* ==========================================================================
+   EXTENSIONS LIST
+   ========================================================================== */

@@ -3,14 +3,13 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.04.00</Version>
-	<MinimumMerchantVersion>10.03.00</MinimumMerchantVersion>
+	<Version>10.05.00</Version>
+	<MinimumMerchantVersion>10.05.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.04.00</Description>
+	<Description>Shadows ReadyTheme v10.05.00</Description>
 	<Preview_URL />
-	<Preview_Image>logo-min.png</Preview_Image>
+	<Preview_Image>shadows-logo.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v10.04.00</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -28,6 +27,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -36,6 +36,7 @@
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -182,9 +183,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>customfields</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
 				<Item>navbar</Item>
@@ -220,9 +224,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>facets</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -579,9 +586,12 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1089,9 +1099,12 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1393,9 +1406,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>facets</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1448,6 +1464,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1456,6 +1473,7 @@
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -1480,9 +1498,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>discount_volume</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1548,9 +1569,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>facets</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1668,9 +1692,12 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>facets</Item>
+				<Item>flex</Item>
+				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
@@ -1716,6 +1743,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1724,6 +1752,7 @@
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -1771,9 +1800,9 @@
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
-				<Item>content</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1782,6 +1811,7 @@
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2054,6 +2084,122 @@
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_BLANK</Code>
+			<Name>Blank</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>sfnt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sequence</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_STOREFRONT</Code>
+			<Name>Storefront</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>sfnt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sequence</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_LANDING_PAGE_1</Code>
+			<Name>Landing Page #1</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>sfnt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sequence</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_LANDING_PAGE_2</Code>
+			<Name>Landing Page #2</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>sfnt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2400,6 +2546,22 @@
 			<Code>runtimejs</Code>
 			<Module>cmp-mv-runtimejs</Module>
 		</Item>
+		<Item>
+			<Code>flex</Code>
+			<Module>cmp-mv-flex</Module>
+		</Item>
+		<Item>
+			<Code>sequence</Code>
+			<Module>cmp-mv-sequence</Module>
+		</Item>
+		<Item>
+			<Code>header_sequence</Code>
+			<Module>cmp-mv-sequence</Module>
+		</Item>
+		<Item>
+			<Code>footer_sequence</Code>
+			<Module>cmp-mv-sequence</Module>
+		</Item>
 	</RequiredItemList>
 	<Config>
 		<CustomerFields_Update>
@@ -2628,20 +2790,29 @@
 			<Code>customfields</Code>
 			<Name>Custom Fields</Name>
 		</Component>
+		<Component>
+			<Code>cmp-mv-flex</Code>
+			<Name>Flex</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-sequence</Code>
+			<Name>Sequence</Name>
+		</Component>
 	</ComponentList>
 	<Resources>
-		<ResourceGroup_Delete_All />
+		<ResourceGroup_Delete code="head_tag" />
 		<ResourceGroup_Add>
 			<Code>head_tag</Code>
 		</ResourceGroup_Add>
+		<ResourceGroup_Delete code="footer_js" />
 		<ResourceGroup_Add>
 			<Code>footer_js</Code>
 		</ResourceGroup_Add>
+		<ResourceGroup_Delete code="css_list" />
 		<ResourceGroup_Add>
 			<Code>css_list</Code>
 		</ResourceGroup_Add>
-		<JavaScriptResource_Delete_All />
-		<CSSResource_Delete_All />
+		<CSSResource_Delete code="google-fonts" />
 		<CSSResource_Add>
 			<Code>google-fonts</Code>
 			<Type>ExternalFile</Type>
@@ -2653,8 +2824,9 @@
 					<Value>stylesheet</Value>
 				</Attribute>
 			</Attributes>
-			<File_Path>https://fonts.googleapis.com/css?family=Poppins:400,500,700</File_Path>
+			<File_Path><![CDATA[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap]]></File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="preconnect-google-fonts" />
 		<CSSResource_Add>
 			<Code>preconnect-google-fonts</Code>
 			<Type>ExternalFile</Type>
@@ -2670,8 +2842,26 @@
 					<Value />
 				</Attribute>
 			</Attributes>
+			<File_Path>https://fonts.googleapis.com</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>preconnect-gstatic</Code>
+			<Type>ExternalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>preconnect</Value>
+				</Attribute>
+				<Attribute>
+					<Name>crossorigin</Name>
+					<Value />
+				</Attribute>
+			</Attributes>
 			<File_Path>https://fonts.gstatic.com</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="preconnect-google-analytics" />
 		<CSSResource_Add>
 			<Code>preconnect-google-analytics</Code>
 			<Type>ExternalFile</Type>
@@ -2689,6 +2879,7 @@
 			</Attributes>
 			<File_Path>//www.google-analytics.com</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="readytheme-icons" />
 		<CSSResource_Add>
 			<Code>readytheme-icons</Code>
 			<Type>LocalFile</Type>
@@ -2697,6 +2888,7 @@
 			<Attributes />
 			<File_Path>themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="square-payment" />
 		<CSSResource_Add>
 			<Code>square-payment</Code>
 			<Type>InlineCSS</Type>
@@ -2720,37 +2912,35 @@
 	 -->
 	.t-square-payment-form label {
 		display: block;
-		margin-bottom: 0.25em;
 		font-size: 0.75rem;
+		margin-bottom: 0.25em;
 	}
 
-
 	.t-square-payment-form .sq-input {
-		display: block;
-		margin-bottom: 0.5em;
-		width: 100%;
-		font-size: 1rem;
 		background-color: #fff;
 		border: 1px solid #c0c0c0;
 		border-radius: 0.125em;
 		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		display: block;
+		font-size: 1rem;
+		margin-bottom: 0.5em;
 		outline: 0;
 		transition: box-shadow 0.25s ease, border-color 0.25s ease;
+		width: 100%;
 	}
 
-		/* Define how SqPaymentForm iframes should look when they have focus */
-		.t-square-payment-form .sq-input--focus {
-			border-color: #003b6f;
-		}
+	.t-square-payment-form .sq-input--focus {
+		border-color: #003b6f;
+	}
 
-		/* Define how SqPaymentForm iframes should look when they contain invalid values */
-		.t-square-payment-form .sq-input--error {
-			border-color: #f02;
-		}
+	.t-square-payment-form .sq-input--error {
+		border-color: #f02;
+	}
 </mvt:if>
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
+		<CSSResource_Delete code="stylesheet" />
 		<CSSResource_Add>
 			<Code>stylesheet</Code>
 			<Type>CombinedResource</Type>
@@ -2771,6 +2961,7 @@
 				</Attribute>
 			</Attributes>
 		</CSSResource_Add>
+		<CSSResource_Delete code="core" />
 		<CSSResource_Add>
 			<Code>core</Code>
 			<Type>LocalFile</Type>
@@ -2792,6 +2983,7 @@
 			</Attributes>
 			<File_Path>themes/%STORE_ID%/shadows/core.css</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="extensions" />
 		<CSSResource_Add>
 			<Code>extensions</Code>
 			<Type>LocalFile</Type>
@@ -2813,6 +3005,7 @@
 			</Attributes>
 			<File_Path>themes/%STORE_ID%/shadows/extensions.css</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="theme" />
 		<CSSResource_Add>
 			<Code>theme</Code>
 			<Type>LocalFile</Type>
@@ -2834,6 +3027,7 @@
 			</Attributes>
 			<File_Path>themes/%STORE_ID%/shadows/theme.css</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="edit-basket-attributes" />
 		<CSSResource_Add>
 			<Code>edit-basket-attributes</Code>
 			<Type>InlineCSS</Type>
@@ -2849,9 +3043,10 @@
 					<Value>all</Value>
 				</Attribute>
 			</Attributes>
-			<Template>/* ==========================================================================
+			<Template>/* ======================
 				EDIT BASKET ATTRIBUTES
-				========================================================================== */
+				====================== */
+
 				.x-edit-basket-item {
 				background-color: transparent;
 				border: 0 none;
@@ -2922,13 +3117,6 @@
 				}
 				}
 
-				.x-edit-basket-attributes__form .x-quantify {
-				display: inline-grid;
-				gap: 0;
-				grid-template-columns: 3rem 33% 3rem;
-				grid-template-rows: 3rem;
-				}
-
 				.x-edit-basket-attributes__form [data-product-attributes] {
 				display: grid;
 				gap: 1rem;
@@ -2943,6 +3131,7 @@
 		<CSSResourceXGroup_Assign code="square-payment" group_code="head_tag" />
 		<CSSResourceXGroup_Assign code="preconnect-google-analytics" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="preconnect-google-fonts" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="preconnect-gstatic" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="google-fonts" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="combofacets" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="mailchimp" group_code="css_list" />
@@ -2950,6 +3139,7 @@
 		<CSSResourceXGroup_Assign code="edit-basket-attributes" group_code="head_tag" />
 		<CSSResourceXPage_Assign code="square-payment" page_code="OPAY" />
 		<CSSResourceXPage_Assign code="edit-basket-attributes" page_code="BASK" />
+		<JavaScriptResource_Delete code="settings" />
 		<JavaScriptResource_Add>
 			<Code>settings</Code>
 			<Type>InlineScript</Type>
@@ -2958,9 +3148,9 @@
 			<Attributes />
 			<Template><![CDATA[theme_path = '&mvt:global:theme_path;/';
 
-(function (mivaJS) {
+(mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.04.00';
+	mivaJS.ReadyThemeVersion = '10.05.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -2970,15 +3160,21 @@
 
 	/**
 	 * These are options you can use to control some JavaScript function on your site.
-	 * If set to `1`, the item will trigger; to disable, set to `0`.
 	 */
-	mivaJS.showMiniBasket = 1;
-	mivaJS.scrollToMiniBasket = 0;
+	mivaJS.miniBasket = {
+		closeOnBackground: true,
+		closeOnEsc: true,
+		use: true
+	}
+	mivaJS.showPassword = {
+		useIcon: true
+	}
 
-}(window.mivaJS || (window.mivaJS = {})));
+})(window.mivaJS || (window.mivaJS = {}));
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="core" />
 		<JavaScriptResource_Add>
 			<Code>core</Code>
 			<Type>LocalFile</Type>
@@ -2987,6 +3183,7 @@
 			<Attributes />
 			<File_Path>themes/%STORE_ID%/shadows/core.js</File_Path>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="extensions" />
 		<JavaScriptResource_Add>
 			<Code>extensions</Code>
 			<Type>LocalFile</Type>
@@ -2995,6 +3192,7 @@
 			<Attributes />
 			<File_Path>themes/%STORE_ID%/shadows/extensions.js</File_Path>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="theme" />
 		<JavaScriptResource_Add>
 			<Code>theme</Code>
 			<Type>LocalFile</Type>
@@ -3003,14 +3201,7 @@
 			<Attributes />
 			<File_Path>themes/%STORE_ID%/shadows/theme.js</File_Path>
 		</JavaScriptResource_Add>
-		<JavaScriptResource_Add>
-			<Code>polyfills</Code>
-			<Type>LocalFile</Type>
-			<Global>Yes</Global>
-			<Active>Yes</Active>
-			<Attributes />
-			<File_Path>themes/%STORE_ID%/shadows/polyfills.js</File_Path>
-		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="contact" />
 		<JavaScriptResource_Add>
 			<Code>contact</Code>
 			<Type>LocalFile</Type>
@@ -3019,6 +3210,7 @@
 			<Attributes />
 			<File_Path>themes/%STORE_ID%/shadows/extensions/contact/contact.js</File_Path>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="GTM-dataLayer" />
 		<JavaScriptResource_Add>
 			<Code>GTM-dataLayer</Code>
 			<Type>InlineScript</Type>
@@ -3026,7 +3218,7 @@
 			<Active>No</Active>
 			<Attributes />
 			<Template><![CDATA[<mvt:comment><!-- Google Tag Manager - Data Layer --></mvt:comment>
-var dataLayer = dataLayer || [];
+let dataLayer = dataLayer || [];
 <mvt:comment><!-- Page Type Assignment --></mvt:comment>
 <mvt:if expr="l.settings:page:code EQ 'SFNT'">
 	<mvt:assign name="l.settings:dataLayer:pageType" value="'home'" />
@@ -3261,6 +3453,7 @@ dataLayer.push({
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="scripts" />
 		<JavaScriptResource_Add>
 			<Code>scripts</Code>
 			<Type>CombinedResource</Type>
@@ -3268,6 +3461,7 @@ dataLayer.push({
 			<Active>Yes</Active>
 			<Attributes />
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="product-json-ld" />
 		<JavaScriptResource_Add>
 			<Code>product-json-ld</Code>
 			<Type>InlineScript</Type>
@@ -3335,6 +3529,7 @@ dataLayer.push({
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="edit-basket-attributes" />
 		<JavaScriptResource_Add>
 			<Code>edit-basket-attributes</Code>
 			<Type>InlineScript</Type>
@@ -3377,6 +3572,7 @@ dataLayer.push({
 				dialogContent.querySelector('[data-product-image]').src = this.getAttribute('data-product-image');
 				dialogContent.querySelector('[data-product-name]').textContent = this.getAttribute('data-product-name');
 				dialogContent.querySelector('input[name="Quantity"]').value = this.getAttribute('data-product-quantity');
+				dialogContent.querySelector('#price-value').textContent = this.getAttribute('data-product-price');
 				product_attribute_content.innerHTML = '';
 				product_attribute_content.appendChild(product_attribute_template.content.cloneNode(true));
 
@@ -3575,88 +3771,594 @@ dataLayer.push({
 		<JavaScriptResourceXPage_Assign code="contact" page_code="CTUS" />
 		<JavaScriptResourceXPage_Assign code="product-json-ld" page_code="PROD" />
 		<JavaScriptResourceXPage_Assign code="edit-basket-attributes" page_code="BASK" />
+		<CSSResource_Delete code="mmx-base" />
+		<CSSResource_Add>
+			<Code>mmx-base</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-base" />
+		<JavaScriptResource_Add>
+			<Code>mmx-base</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResource_Delete code="mmx-text" />
+		<CSSResource_Add>
+			<Code>mmx-text</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-text" />
+		<JavaScriptResource_Add>
+			<Code>mmx-text</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResource_Delete code="mmx-button" />
+		<CSSResource_Add>
+			<Code>mmx-button</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-button" />
+		<JavaScriptResource_Add>
+			<Code>mmx-button</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<ResourceGroup_Delete code="mmx-hero" />
+		<ResourceGroup_Add>
+			<Code>mmx-hero</Code>
+		</ResourceGroup_Add>
+		<CSSResource_Delete code="mmx-hero" />
+		<CSSResource_Add>
+			<Code>mmx-hero</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-hero" />
+		<JavaScriptResource_Add>
+			<Code>mmx-hero</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResourceXGroup_Assign code="mmx-hero" group_code="mmx-hero" />
+		<JavaScriptResourceXGroup_Assign code="mmx-hero" group_code="mmx-hero" />
+		<ResourceGroup_Delete code="mmx-hero-slider" />
+		<ResourceGroup_Add>
+			<Code>mmx-hero-slider</Code>
+		</ResourceGroup_Add>
+		<CSSResource_Delete code="mmx-hero-slider" />
+		<CSSResource_Add>
+			<Code>mmx-hero-slider</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-hero-slider" />
+		<JavaScriptResource_Add>
+			<Code>mmx-hero-slider</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResourceXGroup_Assign code="mmx-hero-slider" group_code="mmx-hero-slider" />
+		<JavaScriptResourceXGroup_Assign code="mmx-hero-slider" group_code="mmx-hero-slider" />
+		<ResourceGroup_Delete code="mmx-image-across" />
+		<ResourceGroup_Add>
+			<Code>mmx-image-across</Code>
+		</ResourceGroup_Add>
+		<CSSResource_Delete code="mmx-image-across" />
+		<CSSResource_Add>
+			<Code>mmx-image-across</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-image-across" />
+		<JavaScriptResource_Add>
+			<Code>mmx-image-across</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResourceXGroup_Assign code="mmx-image-across" group_code="mmx-image-across" />
+		<JavaScriptResourceXGroup_Assign code="mmx-image-across" group_code="mmx-image-across" />
+		<ResourceGroup_Delete code="mmx-image-and-text" />
+		<ResourceGroup_Add>
+			<Code>mmx-image-and-text</Code>
+		</ResourceGroup_Add>
+		<JavaScriptResource_Delete code="mmx-image-and-text" />
+		<JavaScriptResource_Add>
+			<Code>mmx-image-and-text</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResourceXGroup_Assign code="mmx-image-and-text" group_code="mmx-image-and-text" />
+		<ResourceGroup_Delete code="mmx-text-editor" />
+		<ResourceGroup_Add>
+			<Code>mmx-text-editor</Code>
+		</ResourceGroup_Add>
+		<CSSResource_Delete code="mmx-text-editor" />
+		<CSSResource_Add>
+			<Code>mmx-text-editor</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-text-editor" />
+		<JavaScriptResource_Add>
+			<Code>mmx-text-editor</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResourceXGroup_Assign code="mmx-text-editor" group_code="mmx-text-editor" />
+		<JavaScriptResourceXGroup_Assign code="mmx-text-editor" group_code="mmx-text-editor" />
+		<ResourceGroup_Delete code="mmx-featured-product" />
+		<ResourceGroup_Add>
+			<Code>mmx-featured-product</Code>
+		</ResourceGroup_Add>
+		<CSSResource_Delete code="mmx-featured-product" />
+		<CSSResource_Add>
+			<Code>mmx-featured-product</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<JavaScriptResource_Delete code="mmx-featured-product" />
+		<JavaScriptResource_Add>
+			<Code>mmx-featured-product</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<CSSResourceXGroup_Assign code="mmx-featured-product" group_code="mmx-featured-product" />
+		<JavaScriptResourceXGroup_Assign code="mmx-featured-product"
+			group_code="mmx-featured-product" />
+		<ResourceGroup_Delete code="mmx-video" />
+		<ResourceGroup_Add>
+			<Code>mmx-video</Code>
+		</ResourceGroup_Add>
+		<JavaScriptResource_Delete code="mmx-video" />
+		<JavaScriptResource_Add>
+			<Code>mmx-video</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResourceXGroup_Assign code="mmx-video" group_code="mmx-video" />
+		<ResourceGroup_Delete code="mmx-text-area" />
+		<ResourceGroup_Add>
+			<Code>mmx-text-area</Code>
+		</ResourceGroup_Add>
+		<ResourceGroup_Delete code="mmx-text-banner" />
+		<ResourceGroup_Add>
+			<Code>mmx-text-banner</Code>
+		</ResourceGroup_Add>
+		<ResourceGroup_Delete code="mmx-product-carousel" />
+		<ResourceGroup_Add>
+			<Code>mmx-product-carousel</Code>
+		</ResourceGroup_Add>
+		<JavaScriptResource_Delete code="mmx-product-carousel" />
+		<JavaScriptResource_Add>
+			<Code>mmx-product-carousel</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResourceXGroup_Assign code="mmx-product-carousel"
+			group_code="mmx-product-carousel" />
+		<ResourceGroup_Delete code="mmx-category-carousel" />
+		<ResourceGroup_Add>
+			<Code>mmx-category-carousel</Code>
+		</ResourceGroup_Add>
+		<JavaScriptResource_Delete code="mmx-category-carousel" />
+		<JavaScriptResource_Add>
+			<Code>mmx-category-carousel</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/javascript</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</File_Path>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResourceXGroup_Assign code="mmx-category-carousel"
+			group_code="mmx-category-carousel" />
 	</Resources>
 	<ExternalFiles>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_mastercard.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_invc.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_opay.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_osel.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_discover.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_paypal.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_check.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_amex.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_visa.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/fasten-header-logo.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/img_cvv.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-left_2-min.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-image-min.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-right-min.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/hero-min.png</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/logo-min.png</Name>
+			<Name>/%STORE_BASEHREF%/404.html</Name>
 		</File>
 		<File>
 			<Name>/%STORE_BASEHREF%/robots.txt</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/404.html</Name>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/shadows-logo.png</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</Name>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/catalog-fallback-image__200x200.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/catalog-fallback-image__335x335.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/catalog-fallback-image__720x720.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__1440x580.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__1440x400.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__152x152.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__214x214.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__335x240.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__336x400.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__459x320.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__704x400.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__704x480.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__728x320.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__880x480.jpg</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__1144x240.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/placeholder__572x400.png</Name>
 		</File>
 		<File>
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.css</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.css</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.css</Name>
-		</File>
-		<File>
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/img_cvv.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_amex.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_check.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_discover.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_mastercard.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_paypal.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_visa.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.css</Name>
 		</File>
 		<File>
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.js</Name>
 		</File>
 		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-base/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-base/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-button/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-button/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-hero-slider/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-across/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-image-and-text/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-text-editor/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/styles.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-featured-product/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-video/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-product-carousel/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/mmx/mmx-category-carousel/scripts.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.css</Name>
+		</File>
+		<File>
 			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.js</Name>
 		</File>
 		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/polyfills.js</Name>
-		</File>
-		<File>
-			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</Name>
 		</File>
 	</ExternalFiles>
 </SKINFile>

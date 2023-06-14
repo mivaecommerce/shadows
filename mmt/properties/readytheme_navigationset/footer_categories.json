@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "d58b32864509280ceef6a6419d434b78",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-1.html\" target=\"_self\">Category 1</a>",
             "link_dest": "category_01",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "bbf310d34058f5cecc91e13d6267751b",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-2.html\" target=\"_self\">Category 2</a>",
             "link_dest": "category_02",
             "link_targ": "_self",
@@ -22,7 +22,7 @@
         },
         {
             "active": 1,
-            "id": "863b6b957b2065f3c7b8dfa670e02329",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-3.html\" target=\"_self\">Category 3</a>",
             "link_dest": "category_03",
             "link_targ": "_self",
@@ -32,7 +32,7 @@
         },
         {
             "active": 1,
-            "id": "e2e789cd265c0c5bfa6b49b4b9f4dcf0",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-4.html\" target=\"_self\">Category 4</a>",
             "link_dest": "category_04",
             "link_targ": "_self",
@@ -42,7 +42,7 @@
         },
         {
             "active": 1,
-            "id": "f5a43335c480edb52dd0caf2e359d518",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sale.html\" target=\"_self\">Sale</a>",
             "link_dest": "sale",
             "link_targ": "_self",
@@ -52,7 +52,7 @@
         },
         {
             "active": 1,
-            "id": "31747ab98c3afd105acbd7b9154c578f",
+            "id": "",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/featured-products.html\" target=\"_self\">Featured Products</a>",
             "link_dest": "featured",
             "link_targ": "_self",
