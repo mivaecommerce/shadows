@@ -8,17 +8,16 @@
 <mvt:if expr="g.Action EQ 'RGRP' AND g.quote_item NE '1'">
 	<mvt:assign name="g.Quantity" value="miva_variable_value('Quantity' $ g.Restore_Counter)" />
 	<mvt:assign name="g.Restore_Name" value="miva_variable_value('Restore_Name' $ g.Restore_Counter)" />
-	<mvt:assign name="g.Restore_Link" value="miva_variable_value('Restore_Link' $ g.Restore_Counter)" />
+	<mvt:assign name="g.Restore_Params" value="miva_variable_value('Restore_Params' $ g.Restore_Counter)" />
 	<script>
 		function clickAndDisable(link) {
-			// disable subsequent clicks
 			link.onclick = function (event) {
 				event.preventDefault();
 			}
 		}
 	</script>
 	<div class="x-messages x-messages--info">
-		<strong>&mvte:global:Restore_Name;</strong> has been removed from your cart. <a href="&mvte:global:Restore_Link;" onclick="clickAndDisable(this);">Undo?</a>
+		<strong>&mvte:global:Restore_Name;</strong> has been removed from your cart. <a href="&mvte:urls:BASK:auto_sep;&mvte:global:Restore_Params;" onclick="clickAndDisable(this);">Undo?</a>
 	</div>
 	<mvt:assign name="g.Restore_Counter" value="g.Restore_Counter + 1" />
 </mvt:if>
@@ -52,7 +51,7 @@
 			<tbody>
 				<mvt:assign name="g.basket_subtotal" value="0" />
 				<mvt:foreach iterator="group" array="basket:groups">
-					<mvt:assign name="l.settings:group:restore:link" value="l.settings:urls:BASK:auto_sep $ 'Action=ADPR&Product_Code=' $ l.settings:group:product:code $ '&Quantity=' $ l.settings:group:quantity" />
+					<mvt:assign name="l.settings:group:restore:params" value="'Action=ADPR&Product_Code=' $ encodeattribute( l.settings:group:product:code ) $ '&Quantity=' $ encodeattribute( l.settings:group:quantity )" />
 					<mvt:do file="g.Module_Library_DB" name="l.success" value="AttributeList_Load_Product(l.settings:group:product:id, l.settings:has_attributes)"/>
 					<tr class="c-table-responsive__row">
 						<td class="c-table-responsive__cell" data-label="">
@@ -93,34 +92,34 @@
 											<mvt:assign name="l.settings:group:option_counter" value="l.settings:group:option_counter + 1" />
 											<span class="u-font-small u-flex">
 												<mvt:if expr="l.settings:option:attmpat_id">
-													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:template_code=' $ l.settings:option:attr_code" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:template_code=' $ encodeattribute( l.settings:option:attr_code )" />
 													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_prompt" />
 												<mvt:else>
 													<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_code" />
 												</mvt:if>
 												<mvt:if expr="l.settings:option:option_id">
-													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:opt_code" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:opt_code )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
 													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:opt_code $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data">
-													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
 													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:data $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:data_long" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data_long )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
 													</mvt:if>
 													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ l.settings:attr_ref $ asciichar(34) $ ':' $ asciichar(34) $ l.settings:option:data_long $ asciichar(34) $ ', '" />
 												<mvt:else>
-													<mvt:assign name="l.settings:group:restore:link" value="l.settings:group:restore:link $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:code=' $ l.settings:attr_ref $ '&Product_Attributes[' $ l.settings:group:option_counter $ ']:value=' $ l.settings:option:attr_prompt" />
+													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:code=' $ encodeattribute( l.settings:attr_ref ) $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:attr_prompt )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
 													<mvt:if expr="l.settings:option:subtotal GT 0">
 														<span>&mvt:option:formatted_subtotal;</span>
@@ -173,7 +172,7 @@
 										<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
 										<input type="hidden" name="quote_item" value="&mvt:global:quote_item;">
 										<input type="hidden" name="Restore_Name" value="&mvt:group:name;">
-										<input type="hidden" name="Restore_Link" value="&mvte:group:restore:link;">
+										<input type="hidden" name="Restore_Params" value="&mvte:group:restore:params;">
 										<div class="c-form-list">
 											<div class="c-form-list__item">
 												<label class="u-hide-visually" for="l-quantity-&mvte:group:group_id;">Quantity</label>
@@ -210,7 +209,7 @@
 						
 						<td class="c-table-responsive__cell u-font-small u-text-right">
 							<p>
-								<a class="c-button c-button--hollow c-button--small u-bg-white u-color-gray-30 t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Link=&mvta:group:restore:link;&quote_item=&mvta:global:quote_item;">
+								<a class="c-button c-button--hollow c-button--small u-bg-white u-color-gray-30 t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Params=&mvta:group:restore:params;&quote_item=&mvta:global:quote_item;">
 									<span class="u-icon-cross" aria-hidden="true"></span>
 									<span class="u-hide-visually">Remove &mvt:group:name;</span>
 								</a>

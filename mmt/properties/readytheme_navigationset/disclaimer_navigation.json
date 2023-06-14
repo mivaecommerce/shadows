@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "",
+            "id": "39a4e371490950b8f0a8ab394c6ff1b8",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/privacy-policy.html\" target=\"_self\">Privacy Statement</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "a7de5a79822061d95c2e73dade326d6d",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/shipping-and-return-policy.html\" target=\"_self\">Shipping and Return Policies</a>",
             "link_dest": "SARP",
             "link_targ": "_self",

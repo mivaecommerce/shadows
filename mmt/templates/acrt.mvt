@@ -35,7 +35,7 @@
 					<br>
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
 							<div class="c-control-group">
 								<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large c-control-group__field" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
 								<input class="c-button c-button--large c-control-group__button u-bg-gray-40 u-color-white u-font-small u-text-uppercase" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">

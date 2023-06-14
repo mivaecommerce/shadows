@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "",
+            "id": "6c14b73c021e929dd9eff9aa0082a8dc",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/about-us.html\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "d880029243f94067ec7af39522795de1",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/contact-us.html\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -22,7 +22,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "4701a160f0a27c310f950621d2905334",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html\" target=\"_self\">FAQS</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
@@ -32,7 +32,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "1d486c4cd1911cecb806afd2ab2ec2a4",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/order-history-list.html\" target=\"_self\">Order Status</a>",
             "link_dest": "ORDH",
             "link_targ": "_self",
@@ -42,7 +42,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "bbe24a4ad6fdc83ca47032e23ab66815",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/wish-lists.html\" target=\"_self\">Wish Lists</a>",
             "link_dest": "WLST",
             "link_targ": "_self",
@@ -52,7 +52,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "3e33cc1b277e15d5087cf14bd508b4f6",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/site-map.html\" target=\"_self\">Site Map</a>",
             "link_dest": "SMAP",
             "link_targ": "_self",

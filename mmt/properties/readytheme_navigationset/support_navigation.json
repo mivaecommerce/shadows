@@ -2,7 +2,7 @@
     "items": [
         {
             "active": 1,
-            "id": "",
+            "id": "e3c3079cab0c2ada483d94f194f9181d",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/about-us.html\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
@@ -12,7 +12,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "87d5b2aa0903d7f2460da5544e3b701d",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/contact-us.html\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
@@ -22,7 +22,7 @@
         },
         {
             "active": 1,
-            "id": "",
+            "id": "197fdb7305de0191012c5aa16f03c5c4",
             "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html\" target=\"_self\">Frequent Questions</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",

@@ -31,11 +31,11 @@
 					<input type="hidden" name="Action" value="LOGN" />
 					<div class="c-form-list">
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
 							<input id="l-Customer_LoginEmail" class="c-form-input c-form-input--large" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
 							<input id="l-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">

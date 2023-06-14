@@ -3,14 +3,14 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>2.03.00</Version>
+	<Version>10.04.00</Version>
 	<MinimumMerchantVersion>10.03.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v2.03.00</Description>
+	<Description>Shadows ReadyTheme v10.04.00</Description>
 	<Preview_URL />
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.03.00</Title>
+	<Title>Shadows v10.04.00</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -2960,7 +2960,7 @@
 
 (function (mivaJS) {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '2.03.00';
+	mivaJS.ReadyThemeVersion = '10.04.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
