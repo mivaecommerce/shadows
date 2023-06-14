@@ -6,11 +6,11 @@
 	<Version>2.0</Version>
 	<MinimumMerchantVersion>10.00.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v2.0.0.1</Description>
+	<Description>Shadows ReadyTheme v2.0.0.2</Description>
 	<Preview_URL />
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.0.0.1</Title>
+	<Title>Shadows v2.0.0.2</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -1954,6 +1954,10 @@
 		<Item>
 			<Code>store</Code>
 			<Module>cmp-mv-stdstorefields</Module>
+			<Extensions>
+				<Extension>cmp-cssui-urls</Extension>
+				<Extension>customfields</Extension>
+			</Extensions>
 		</Item>
 		<Item>
 			<Code>product</Code>
@@ -2198,6 +2202,9 @@
 		<Item>
 			<Code>shipment</Code>
 			<Module>cmp-mv-stdshipmentfields</Module>
+			<Extensions>
+				<Extension>customfields</Extension>
+			</Extensions>
 		</Item>
 		<Item>
 			<Code>toe_order_contents</Code>

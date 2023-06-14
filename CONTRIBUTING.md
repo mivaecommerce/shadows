@@ -3,7 +3,7 @@
 ## Steps
 
 - `$ rm -r mmt/ && mkdir mmt`
-- `$ rm -r pkg/shadows && mkdir pkg/shadows`
+- `$ rm -r pkg/ && mkdir pkg`
 - Copy files to `mmt/`
 - Copy files to `pkg/shadows`
 - Copy pkg to `package/shadows.pkg`

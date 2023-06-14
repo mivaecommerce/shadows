@@ -685,6 +685,16 @@
 					findFormInputs(formElement, billPrefix).billing.country.value = getSelectedBillAddress().country;
 					findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedBillAddress().zip;
 				}
+				else {
+					findFormInputs(formElement, billPrefix).billing.comp.value = getSelectedShipAddress().comp;
+					findFormInputs(formElement, billPrefix).billing.addr1.value = getSelectedShipAddress().addr1;
+					findFormInputs(formElement, billPrefix).billing.addr2.value = getSelectedShipAddress().addr2;
+					findFormInputs(formElement, billPrefix).billing.city.value = getSelectedShipAddress().city;
+					findFormInputs(formElement, billPrefix).billing.state.value = getSelectedShipAddress().state;
+					findFormInputs(formElement, billPrefix).billing.stateSelect.value = getSelectedShipAddress().state;
+					findFormInputs(formElement, billPrefix).billing.country.value = getSelectedShipAddress().country;
+					findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedShipAddress().zip;
+				}
 				window.closeDialog();
 				formElement.submit();
 			});
