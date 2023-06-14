@@ -1,7 +1,6 @@
 {
     "code": "mmx-image-across",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-image-across/styles.css",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
@@ -16,6 +15,14 @@
         {
             "name": "rel",
             "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-B5uwk2boQ1iw/Pwx8P4ILMFIusqeYj7LU+h5GvnqRSk= sha384-QJjU/VXDIdQszoDEJvZe2z/wqoEcIy9eZSFJoixvCQ0lu5OafwDSF7VEXXTYjWoo sha512-taXWD6NqnCYSurZZLiWYI8soKALXgw5zGuCoTtu0AY6Hi4ZnxOHrWSTnDnVK0pevGIZMPG3fiQn7f72cAAOpCg=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

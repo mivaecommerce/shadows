@@ -209,8 +209,8 @@
 								<p>
 									<span class="u-text-medium u-block">&mvt:group:formatted_subtotal_comprehensive;</span>
 									<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:group:subtotal_comprehensive" />
-									<mvt:if expr="l.settings:group:subtotal_base_price GT l.settings:group:subtotal">
-										<s class="c-heading--subheading u-block u-color-gray-600">&mvt:group:formatted_subtotal_base_price;</s>
+									<mvt:if expr="l.settings:group:subtotal_base_price_comprehensive GT l.settings:group:subtotal_comprehensive">
+										<s class="c-heading--subheading u-block u-color-gray-600">&mvt:group:formatted_subtotal_base_price_comprehensive;</s>
 									</mvt:if>
 									<mvt:if expr="l.settings:group:upsold">
 										<span class="c-heading--subheading u-block">&nbsp;</span>

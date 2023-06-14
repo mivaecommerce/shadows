@@ -23,3 +23,5 @@
 	-->
 	<mvt:item name="readytheme" param="css" />
 </mvt:comment>
+
+<mvt:item name="head" param="modules" />

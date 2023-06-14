@@ -1,13 +1,20 @@
 {
     "code": "mmx-hero",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-hero/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-DuT3G4IxeC39Z++1DLqZ6eSisgkFiX0mSRHF9lRAMmU= sha384-SrKSK2wlflv5F3X5jbBGc/ZR8rBZI/+bKVDQYxgsTK8XX72VxR/QdMj8uzF4kHne sha512-nGkBab0PplzaVhJ6VjXteeQG6mGwiA8g00FZvmgDkxFPWDywZn3CGFuW/D2Km631t2AZ4ZAxP3EfW6ZhrRxGnw=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

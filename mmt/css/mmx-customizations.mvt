@@ -1,0 +1,20 @@
+/*
+ * This file is used to overwrite MMX Component styles to match your current store’s theme. From here
+ * you can import custom fonts and overwrite CSS variables used within the flex components to customize
+ * button colors, text size, font family, etc. Available CSS Variables can be found in the "mmx-base"
+ * CSS Resource. Ultimately, it is recommended to have a developer go through and fine tune the variables,
+ * CSS properties and fonts for your site.
+ */
+
+/*
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;400&display=swap");
+
+:root {
+	--mmx-font-family-1: 'Poppins', sans-serif;
+	--mmx-color-primary-bg: #AAAAAA;
+}
+
+mmx-image-across {
+	--mmx-color-primary-bg: #CCCCCC;
+}
+*/

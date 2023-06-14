@@ -1,13 +1,20 @@
 {
     "code": "mmx-image-and-text",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-image-and-text/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-d2oUq9XFBucy5Cz0u0hncFOx7exoIde/RrpV0pisNLM= sha384-P9EdMtqdaw7TlQLNfRPEX0Vr4679GCkwEwngGrfZYXihL0hvABq+b12IAH9AxzwR sha512-1gEK8AL7C3dzifXx+1aErlRhHBBc5Hj3/Qb2D6OewG+Xlo5dC3syLjtfACLqsW1C3eKHaYxJ91GW9CM9JGyGew=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

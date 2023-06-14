@@ -1,13 +1,20 @@
 {
     "code": "mmx-text-editor",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-text-editor/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-/zA0+Riiwx8IKIYp8QsoNIenuuvoCpyFFAy/yxnWoX4= sha384-Lu8xisataUPcCwMmWGtM+8jhi57i5Q9vqtiOpoCd0k2bqafrSrtS26qthGD2ISQB sha512-Ync8eVF3cqKGO301GX4SAtQ8Pd7km0HkT+aJGu4Zf3KsAeh2THWrmBwkCXPaCfQoWqiiT/AfeALmEt7pL+zRzA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

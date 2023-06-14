@@ -1,0 +1,17 @@
+{
+    "code": "mmx-customizations",
+    "type": "I",
+    "is_global": false,
+    "active": false,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        }
+    ],
+    "linked_pages": []
+}

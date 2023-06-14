@@ -1,7 +1,6 @@
 {
     "code": "mmx-featured-product",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-featured-product/styles.css",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
@@ -16,6 +15,14 @@
         {
             "name": "rel",
             "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-qPHfrvTYSByAO7zz0QbA5QmZSspJnDsL74PoRGO/71M= sha384-nqkM8p89sG1KAf1+rZINMWb7e/4JjzR0+z893+dGvRYSs3pI1z1Xe6W6BFxf3XjX sha512-5FhrkbFtW7uFptP0CUUTjEXr9PzWKWgnu3ZuFMjD/msU7BEkVLGY9364yXtdS2J30Q4SI44EmkfRVIy0CNWeyQ=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

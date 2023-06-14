@@ -3,7 +3,7 @@
     "type": "L",
     "branchless_filepath": "css/00000001/readytheme.css",
     "is_global": true,
-    "active": true,
+    "active": false,
     "attributes": [
         {
             "name": "type",

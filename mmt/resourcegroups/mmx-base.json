@@ -1,0 +1,9 @@
+{
+    "code": "mmx-base",
+    "linked_js_resources": [
+        "mmx-base"
+    ],
+    "linked_css_resources": [
+        "mmx-base"
+    ]
+}

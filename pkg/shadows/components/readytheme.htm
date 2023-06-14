@@ -64,20 +64,6 @@
 <mvt:if expr="g.Action EQ 'RCPN' AND ISNULL l.settings:messages:error_message_count">
 	<p class="x-messages x-messages--info">Your Promo Code Has Been Removed</p>
 </mvt:if>
-
-<mvt:comment><!-- Account Creation Messages (LOGN) --></mvt:comment>
-<mvt:if expr="l.settings:page:code EQ 'LOGN'">
-	<mvt:if expr="g.registration EQ 0 AND g.iem">
-		<p class="x-messages x-messages--error">
-			<mvt:eval expr="crypto_base64_decode(g.iem)"/>
-		</p>
-	</mvt:if>
-	<mvt:if expr="g.registration EQ 0 AND g.ipm">
-		<p class="x-messages x-messages--error">
-			<mvt:eval expr="crypto_base64_decode(g.ipm)"/>
-		</p>
-	</mvt:if>
-</mvt:if>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-global-messeges</CSS_Class></ContentSection_Add><ContentSection_Delete code="forgot-password"/><ContentSection_Add><Active>true</Active><Code>forgot-password</Code><Name>Forgot Password Modal Dialog</Name><Description/><Template><![CDATA[<div class="c-dialog" data-dialog="forgot-password" aria-hidden="true">
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container" aria-labelledby="forgot-password-title" aria-modal="true" role="dialog">

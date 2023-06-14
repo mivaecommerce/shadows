@@ -1,13 +1,20 @@
 {
     "code": "mmx-button",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-button/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-6QvPKLjbRf/GyRS/XmuhSIAcjVU7/zAuPjpYmeGGQj4= sha384-AJJo551RNkVrPeB8OoNJSKzc3WRMxPPa9s3fNSCo8UyTfaAJH96y918umiATNdTE sha512-jU1ezC9mgyJL64pwUnhEad3dGmJfl52h9INMgTxj7LgQ0tljIeeZS9CMMAf3HxvDHMbBCXFzhW8u1eF5iSuVcw=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

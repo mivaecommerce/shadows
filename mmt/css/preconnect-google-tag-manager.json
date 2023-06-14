@@ -1,0 +1,17 @@
+{
+    "code": "preconnect-google-tag-manager",
+    "type": "E",
+    "filepath": "https://www.googletagmanager.com",
+    "is_global": true,
+    "active": false,
+    "attributes": [
+        {
+            "name": "rel",
+            "value": "preconnect"
+        },
+        {
+            "name": "crossorigin",
+            "value": ""
+        }
+    ]
+}

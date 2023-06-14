@@ -55,17 +55,3 @@
 <mvt:if expr="g.Action EQ 'RCPN' AND ISNULL l.settings:messages:error_message_count">
 	<p class="x-messages x-messages--info">Your Promo Code Has Been Removed</p>
 </mvt:if>
-
-<mvt:comment><!-- Account Creation Messages (LOGN) --></mvt:comment>
-<mvt:if expr="l.settings:page:code EQ 'LOGN'">
-	<mvt:if expr="g.registration EQ 0 AND g.iem">
-		<p class="x-messages x-messages--error">
-			<mvt:eval expr="crypto_base64_decode(g.iem)"/>
-		</p>
-	</mvt:if>
-	<mvt:if expr="g.registration EQ 0 AND g.ipm">
-		<p class="x-messages x-messages--error">
-			<mvt:eval expr="crypto_base64_decode(g.ipm)"/>
-		</p>
-	</mvt:if>
-</mvt:if>

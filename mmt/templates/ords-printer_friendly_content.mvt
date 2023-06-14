@@ -181,8 +181,8 @@
 							<p class="c-heading-delta">
 								<span class="u-text-bold u-block">&mvt:group:formatted_subtotal_comprehensive;</span>
 								<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:group:subtotal_comprehensive" />
-								<mvt:if expr="l.settings:group:subtotal_base_price NE l.settings:group:subtotal">
-									<s class="c-heading--subheading u-block">&mvt:group:formatted_subtotal_base_price;</s>
+								<mvt:if expr="l.settings:group:subtotal_base_price_comprehensive NE l.settings:group:subtotal_comprehensive">
+									<s class="c-heading--subheading u-block">&mvt:group:formatted_subtotal_base_price_comprehensive;</s>
 								<mvt:else>
 									<span class="c-heading--subheading u-block">&nbsp;</span>
 								</mvt:if>

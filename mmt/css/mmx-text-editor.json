@@ -1,7 +1,6 @@
 {
     "code": "mmx-text-editor",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-text-editor/styles.css",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
@@ -16,6 +15,14 @@
         {
             "name": "rel",
             "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-ulzmRH0tuam+X9cG65dQtxv3kCUEGfXWdYXHYZhiBH8= sha384-unulE7NqpkacUJ5unVPTVCaXGgMvhb2uIf5i4FzemU9VoVLKLYVYw6I0VnQKejiy sha512-NHUztRYNh3Ui9ZVRbpHabVLzoVsWSKiZRcxEBCqLKutHTVetrbFTODO3njlFl92iKASCiGTkyZmUNi81b7sPPA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

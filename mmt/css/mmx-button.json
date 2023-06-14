@@ -1,7 +1,6 @@
 {
     "code": "mmx-button",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-button/styles.css",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
@@ -16,6 +15,14 @@
         {
             "name": "rel",
             "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-ZWWVrnJ+bsiDaMRsunhIewIkjdxcDd6R/rCdNcFJ4tc= sha384-UZ3/sdPuNjEZf4JRVItQKz7BYitIHrVTl8TCs/WsHuflHHvlaIlVd30RI/anCrvj sha512-pytViN0rWTPuzvlfn5ISTtIvNz80AGGdpgAxSW6GYRgOmSqOsiwOHL+7ix7h7BPLMsgSouCg/Kt2EuC4yUd74g=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

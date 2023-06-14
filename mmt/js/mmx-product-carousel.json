@@ -1,13 +1,20 @@
 {
     "code": "mmx-product-carousel",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-product-carousel/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-X1E0CInd0vr12rMY/5EDSOMxH/3Yvq5T79vGEGd028I= sha384-3CMp1HWBv5eWXTqMK8q+NTOPbK887IvtyqZXhO9FPyWGp3FWn/+AGI0IR3nNUgZC sha512-t/QXXxVrz9xXQ6Mr2Az+YN6CubNRqXv+rKtcfuW26AM2sW3qp4s5gmUBwvyYO1OQgC4xX7yruGgLmCno5HP+Og=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

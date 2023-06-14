@@ -1,7 +1,6 @@
 {
     "code": "mmx-base",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-base/styles.css",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
@@ -16,6 +15,14 @@
         {
             "name": "rel",
             "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-uQedPlgmwcPMgqrNExwO3hYSh7EURhievEd+HLaK7OY= sha384-mp5OteEjtoCEdz/QMebQE8vpSWoukpgxdDz+DzUl8xn3448yIMCccLddrNoIKLsg sha512-Pfps9VvIww7kAN/YZXOmQ7th7iZ43N4uqaG0PjGlwSqhu9GK40CMmnOC+rgVb69ro0zJlfDOtMVdaS5QOstxaA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []

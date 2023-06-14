@@ -1,233 +1,774 @@
-<mvt:comment><!-- Google Tag Manager - Data Layer --></mvt:comment>
-let dataLayer = dataLayer || [];
-<mvt:comment><!-- Page Type Assignment --></mvt:comment>
-<mvt:if expr="l.settings:page:code EQ 'SFNT'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'home'" />
-<mvt:elseif expr="l.settings:page:code EQ 'SRCH' OR l.settings:page:code EQ 'SEARCH'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'searchresults'" />
-<mvt:elseif expr="l.settings:page:code EQ 'CTGY'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'category'" />
-<mvt:elseif expr="l.settings:page:code EQ 'PROD'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'product'" />
-<mvt:elseif expr="l.settings:page:code CIN 'BASK,ORDL,OCST,OUS1,OUSM,OSEL,OPAY'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'cart'" />
-<mvt:elseif expr="l.settings:page:code EQ 'INVC'">
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'purchase'" />
+var dataLayer = dataLayer || [];
+
+<mvt:assign name="l.settings:currency" value="'USD'" />
+
+<mvt:comment>
+|
+|	Determine Canonical URI & URL
+|
+</mvt:comment>
+<mvt:if expr="g.Screen EQ 'PROD'">
+	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:product:link" />
+<mvt:elseif expr="g.Screen EQ 'CTGY'">
+	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:category:link" />
+<mvt:elseif expr="l.settings:page:code EQ 'SRCH'">
+	<mvt:assign name="l.flags:sep" value="1" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
+	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:data_layer:canonical_url $ 'Search=' $ encodeattribute( g.Search )" />
+<mvt:elseif expr="l.settings:page:code EQ 'NTFD' OR l.settings:page:code EQ 'MNTN'">
+	<mvt:do file="g.Module_Feature_URI_DB" name="l.null" value="URISettings_Load_Cached( l.urisettings )" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="URL_Build_URI( l.urisettings, l.flags, s.request_uri, '' )" />
 <mvt:else>
-	<mvt:assign name="l.settings:dataLayer:pageType" value="'other'" />
+	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.null )" />
 </mvt:if>
+<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_uri" value="URL_To_URI( l.settings:data_layer:canonical_url )" />
 
-<mvt:comment><!-- Checkout Step Assignment --></mvt:comment>
-<mvt:if expr="l.settings:page:code EQ 'BASK'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="1"/>
-<mvt:elseif expr="l.settings:page:code EQ 'ORDL'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="2"/>
-<mvt:elseif expr="l.settings:page:code EQ 'OCST'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="3"/>
-<mvt:elseif expr="g.Screen EQ 'OUSL'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="4"/>
-<mvt:elseif expr="l.settings:page:code EQ 'OSEL'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="5"/>
-<mvt:elseif expr="l.settings:page:code EQ 'OPAY'">
-	<mvt:assign name="l.settings:datalayer:checkout_step" value="6"/>
-</mvt:if>
-
-<mvt:comment><!-- User Email Assignment --></mvt:comment>
-<mvt:if expr="g.customer:bill_email">
-	<mvt:assign name="l.settings:datalayer:userEmail" value="g.customer:bill_email" />
-<mvt:elseif expr="g.basket:bill_email">
-	<mvt:assign name="l.settings:datalayer:userEmail" value="g.basket:bill_email" />
-<mvt:else>
-	<mvt:assign name="l.settings:datalayer:userEmail" value="''" />
-</mvt:if>
-
-<mvt:comment><!-- Basic DataLayer Push --></mvt:comment>
+<mvt:comment>
+|
+|	Core Data Layer Elements
+|
+</mvt:comment>
 dataLayer.push({
-	<mvt:if expr="g.Screen EQ 'NTFD'">
-		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
-		"event": "NTFD",
-	<mvt:elseif expr="g.Screen EQ 'SRCH'">
-		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
-		"searchTerm": "&mvtj:global:Search;",
-		"event": "SRCH",
-	<mvt:else>
-		"canonicalUri": "&mvtj:ga_tracking:url_override_unencoded;",
-	</mvt:if>
-	"requestUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
-	"refererUri": "<mvt:eval expr="encodejavascriptstring( s.http_referer )" />",
-	"pageCode": "&mvtj:page:code;",
-	"pageType": "&mvtj:datalayer:pageType;",
-	"pageName": "&mvtj:datalayer:pageName;",
-	"userId": "&mvtj:global:basket:cust_id;",
-	"userEmail": "&mvtj:datalayer:userEmail;",
-	"basketId": "&mvtj:global:basket:basket_id;",
-	"categoryCode": "&mvtj:global:Category_Code;",
-	"categoryName": "&mvtj:datalayer:categoryName;",
-	"productCode": "&mvtj:product:code;",
-	"checkoutStep": "&mvtj:datalayer:checkout_step;"
+	canonicalUri: '&mvtj:data_layer:canonical_uri;',
+	canonicalUrl: '&mvtj:data_layer:canonical_url;',
+	category: {
+		code: '&mvtj:category:code;',
+		name: '&mvtj:category:name;'
+	},
+	global: {
+		action: '&mvtj:global:Action;',
+		basket: {
+			basketId: '&mvtj:global:Basket:basket_id;',
+			custId: '&mvtj:global:Basket:cust_id;'
+		},
+		categoryCode: '&mvtj:global:Category_Code;',
+		function: '&mvtj:global:Function;',
+		moduleFunction: '&mvtj:global:Module_Function;',
+		productCode: '&mvtj:global:Product_Code;',
+		screen: '&mvtj:global:Screen;',
+		uiException: '&mvtj:global:UI_Exception;'
+	},
+	page: {
+		code: '&mvtj:page:code;',
+		name: '&mvtj:page:name;'
+	},
+	product: {
+		code: '&mvtj:product:code;',
+		name: '&mvtj:product:name;',
+		sku: '&mvtj:product:sku;'
+	}
 });
 
-<mvt:comment><!-- PROD DataLayer Push --></mvt:comment>
-<mvt:if expr="l.settings:page:code EQ 'PROD'">
-	<mvt:if expr="NOT ISNULL l.settings:product:variant">
-		dataLayer.push({
-			"ecommerce": {
-				"detail": {
-					"products": [{
-						"name": "&mvtj:product:variant:name;",
-						"id": "&mvtj:product:variant:code;",
-						"price": "&mvtj:product:variant:price;",
-						"sku": "&mvtj:product:variant:code;",
-						"category": "",
-						"variant": ""
-					}]
-				}
-			},
-			"content_type": "product",
-			"content_ids": "&mvtj:product:variant:code;",
-			"value": "&mvt:product:variant:price;",
-			"currency": "USD"
-		});
-	<mvt:else>
-		dataLayer.push({
-			"ecommerce": {
-				"detail": {
-					"products": [{
-						"name": "&mvtj:product:name;",
-						"id": "&mvtj:product:code;",
-						"price": "&mvtj:product:price;",
-						"sku": "&mvtj:item:sku;",
-						"category": "",
-						"variant": ""
-					}]
-				}
-			},
-			"content_type": "product",
-			"content_ids": "&mvtj:product:code;",
-			"value": "&mvt:product:price;",
-			"currency": "USD"
-		});
-	</mvt:if>
+<mvt:comment>
+|
+|	Identify Forms
+|
+</mvt:comment>
+window.addEventListener('DOMContentLoaded', () => {
+	document.querySelectorAll('form').forEach(form => {
+		if (form.getAttribute('name')?.length) {
+			return;
+		}
+
+		const identifier = form.elements?.Action?.value ?? form.dataset?.hook ?? form.querySelector('legend')?.innerText;
+		if (identifier?.length) {
+			form.name = identifier;
+		}
+	});
+});
+
+<mvt:comment>
+|
+|	Generate Lead
+|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#generate_lead
+|
+</mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'CTUS' AND g.status EQ 'submitted'">
+	dataLayer.push({
+		event: 'generate_lead'
+	});
 </mvt:if>
 
-<mvt:comment><!-- INVC DataLayer Push --></mvt:comment>
+<mvt:comment>
+|
+|	Track Search
+|   https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#search
+|
+</mvt:comment>
+window.addEventListener('DOMContentLoaded', () => {
+	let timeoutId;
+
+	const debouncedSearch = (e) => {
+		clearTimeout(timeoutId);
+
+		timeoutId = setTimeout(() => {
+			const search_term = e?.target?.value;
+
+			if (!search_term?.length) {
+				return;
+			}
+
+			dataLayer.push({
+				event: 'search',
+				search_term
+			});
+		}, 500);
+	};
+
+	const searchInputs = document.querySelectorAll('input[name="Search"]');
+	searchInputs.forEach(input => {
+		input.addEventListener('input', debouncedSearch)
+	});
+});
+
+<mvt:comment>
+|
+|	Track Promotions
+|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#view_promotion
+|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#select_promotion
+|
+</mvt:comment>
+class MMXPromotionTracker {
+	constructor() {
+		window.addEventListener('DOMContentLoaded', () => {
+			this.init();
+		});
+	}
+
+	init() {
+		this.promotions = document.querySelectorAll('[data-flex-item]');
+
+		if (!this.promotions.length) {
+			return;
+		}
+
+		this.promotionObserver = new IntersectionObserver((entries) => {
+			this.observedCallback(entries);
+		}, {threshold: [0.75]});
+
+		this.promotions.forEach((promotion, i) => {
+			this.promotionObserver.observe(promotion);
+
+			promotion.addEventListener('click', (e) => {
+				this.promotionClicked(promotion, e);
+			});
+		});
+	}
+
+	promotionClicked(promotion, e){
+		let clickedLink = false;
+		let products = [];
+		let clickedHero;
+
+		e.composedPath().forEach(item => {
+			if (item.nodeName === 'A' || (item.nodeName === 'MMX-HERO' && item.dataset?.href?.length)) {
+				clickedLink = true;
+			}
+
+			if (item.nodeName === 'MMX-HERO') {
+				clickedHero = item;
+			} else if (item.nodeName === 'MMX-PRODUCT-CAROUSEL') {
+				const clickedProductIndex = [...item.shadowRoot.querySelectorAll('mmx-hero[slot="hero_slide"]')].findIndex(heroSlide => heroSlide === clickedHero);
+				products = [item?.products[clickedProductIndex]];
+			} else if (item.nodeName === 'MMX-FEATURED-PRODUCT') {
+				products = [item?.product];
+			}
+		});
+
+		if (clickedLink) {
+			this.trackPromotion('select_promotion', promotion, products);
+		}
+	};
+
+	trackPromotion(event, item, products = []) {
+		dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+		dataLayer.push({
+			event,
+			ecommerce: {
+				creative_name: item.getAttribute('data-flex-item'),
+				creative_slot: [...this.promotions].findIndex(promotion => promotion === item) + 1,
+				items: this.productsToEcommerceItems(products),
+				promotion_id: item.getAttribute('data-flex-component')
+			}
+		});
+	};
+
+	observedCallback(entries) {
+		entries.forEach((entry, entryIndex) => {
+			if (!entry.isIntersecting) {
+				return;
+			}
+
+			this.trackPromotion('view_promotion', entry.target, entry.target?.products);
+		});
+	};
+
+	productsToEcommerceItems(products = []) {
+		if (!products?.length) {
+			return [];
+		}
+
+		return products.map((item, i) => {
+			return {
+				item_id: item.code,
+				item_name: item.name,
+				item_sku: item?.sku,
+				index: i,
+				price: item.price,
+				discount: item.base_price - item.price,
+				quantity: 1
+			}
+		});
+	}
+}
+
+new MMXPromotionTracker();
+
+
+<mvt:comment>
+|
+|	View Item List
+|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#view_item_list
+|
+</mvt:comment>
+<mvt:assign name="l.data_layer_item" value="''" />
+
+<mvt:if expr="NOT ISNULL l.settings:search_results:products">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'search_results'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Search Results'" />
+	<mvt:assign name="l.settings:item_list_products" value="l.settings:search_results:products" />
+<mvt:elseif expr="NOT ISNULL l.settings:category_listing:products">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'category_listing'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Category Listing'" />
+	<mvt:assign name="l.settings:item_list_products" value="l.settings:category_listing:products" />
+<mvt:elseif expr="NOT ISNULL l.settings:all_products:products">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'all_products'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'All Products'" />
+	<mvt:assign name="l.settings:item_list_products" value="l.settings:all_products:products" />
+<mvt:elseif expr="NOT ISNULL l.settings:related_products:products">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'related_products'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Related Products'" />
+	<mvt:assign name="l.settings:item_list_products" value="l.settings:related_products:products" />
+<mvt:elseif expr="NOT ISNULL l.settings:wishlistitems:items">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'wish_list_items'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Wish List Items'" />
+	<mvt:foreach iterator="item" array="wishlistitems:items">
+		<mvt:assign name="l.settings:item:product:quantity" value="l.settings:item:quantity" />
+		<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:item_list_products, l.settings:item:product, -1 )" />
+	</mvt:foreach>
+<mvt:elseif expr="l.settings:page:code EQ 'ORDS' AND NOT ISNULL l.settings:order:groups">
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'order_status'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Order Status'" />
+	<mvt:assign name="l.settings:item_list_products" value="l.settings:order:groups" />
+</mvt:if>
+
+<mvt:if expr="miva_array_elements(l.settings:item_list_products)">
+	<mvt:assign name="l.data_layer_item:event" value="'view_item_list'" />
+
+	<mvt:foreach iterator="item_list_product" array="item_list_products">
+		<mvt:comment>Determine ecommerce:item details</mvt:comment>
+		<mvt:assign name="l.ecommerce_item" value="''" />
+		<mvt:assign name="l.ecommerce_item:index" value="l.pos1 - 1" />
+		<mvt:assign name="l.ecommerce_item:item_id" value="l.settings:item_list_product:code" />
+		<mvt:assign name="l.ecommerce_item:item_name" value="l.settings:item_list_product:name" />
+		<mvt:assign name="l.ecommerce_item:item_sku" value="l.settings:item_list_product:sku" />
+		<mvt:assign name="l.ecommerce_item:quantity" value="ternary(l.data_layer_item:ecommerce:item_list_id IN 'order_status,wish_list_items', l.settings:item_list_product:quantity, 1)" />
+		<mvt:assign name="l.ecommerce_item:discount" value="miva_ieee754_normalize( 2, l.settings:item_list_product:base_price - l.settings:item_list_product:price )" />
+		<mvt:assign name="l.ecommerce_item:price" value="l.settings:item_list_product:base_price" />
+
+		<mvt:comment>Calculate unit base_price & unit_discount</mvt:comment>
+		<mvt:if expr="l.data_layer_item:ecommerce:item_list_id EQ 'order_status'">
+			<mvt:assign name="l.settings:item_list_product:unit_base_price_comprehensive" value="l.settings:item_list_product:subtotal_base_price_comprehensive / l.settings:item_list_product:quantity" />
+			<mvt:assign name="l.settings:item_list_product:unit_comprehensive" value="l.settings:item_list_product:subtotal_comprehensive / l.settings:item_list_product:quantity" />
+			<mvt:assign name="l.settings:item_list_product:unit_discount_comprehensive" value="miva_ieee754_normalize( 3, l.settings:item_list_product:unit_base_price_comprehensive - l.settings:item_list_product:unit_comprehensive )" />
+			<mvt:assign name="l.ecommerce_item:discount" value="l.settings:item_list_product:unit_discount_comprehensive" />
+			<mvt:assign name="l.ecommerce_item:price" value="l.settings:item_list_product:unit_base_price_comprehensive" />
+		</mvt:if>
+
+		<mvt:comment>Determine item_category</mvt:comment>
+		<mvt:if expr="l.settings:item_list_product:product:cancat_id">
+			<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:item_list_product:product:cancat_id, l.settings:item_list_product:cancat )" />
+			<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:item_list_product:cancat:name" />
+		</mvt:if>
+
+		<mvt:comment>Determine item_variant</mvt:comment>
+		<mvt:if expr="l.settings:item_list_product:option_count">
+			<mvt:foreach iterator="option" array="item_list_product:options">
+				<mvt:if expr="l.settings:option:option_id">
+					<mvt:assign name="l.null" value="miva_array_insert_var( l.ecommerce_item:item_variant, l.settings:option:opt_code, -1 )" />
+				<mvt:elseif expr="ISNULL l.settings:option:data AND ISNULL l.settings:option:data_long">
+					<mvt:assign name="l.null" value="miva_array_insert_var( l.ecommerce_item:item_variant, l.settings:option:attr_code, -1 )" />
+				</mvt:if>
+			</mvt:foreach>
+		</mvt:if>
+		<mvt:assign name="l.ecommerce_item:item_variant" value="miva_joinstring( l.ecommerce_item:item_variant, ', ', 'noempty' )" />
+
+		<mvt:comment>Determine item_brand</mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:item_list_product:customfield_values:customfields:brand">
+			<mvt:assign name="l.ecommerce_item:item_brand" value="l.settings:item_list_product:customfield_values:customfields:brand" />
+		</mvt:if>
+
+		<mvt:comment>Push ecommerce_item to ecommerce:items</mvt:comment>
+		<mvt:assign name="l.null" value="miva_array_insert_var( l.data_layer_item:ecommerce:items, l.ecommerce_item, -1 )" />
+
+	</mvt:foreach>
+
+	dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+	dataLayer.push(<mvt:eval expr="miva_json_encode( l.data_layer_item, 'pretty' )" />);
+
+	class SelectItemTracker {
+		listSelectors = {
+			related_products: [
+				'.x-product-list--related .x-product-list__link',
+				'.t-related-product-list .x-product-list__link',
+				'#js-related-products-carousel [data-mm-linktype="product-list-link"]',
+				'#js-PROD [data-mm-linktype="product-list-link"]',
+				'.cmp-product-list .cmp-product-list__item:not(.cmp-product-list__header)',
+				'[data-hook="related-products"] .mm-card-grid-item__wrapper'
+			],
+			wish_list_items: [
+				'#js-WISH .t-basket__product-details a:not([href*="Edit_Wish"], [href*="Action=RMWL"])',
+				'#js-WISH .basket-product-row a:not([href*="Edit_Wish"], [href*="Action=RMWL"])',
+				'#js-WISH .basket-display__product-row a:not([href*="Edit_Wish"], [href*="Action=RMWL"])'
+			],
+			order_status: [
+				'.t-page-ords .t-basket__product-name',
+				'.t-account-landing__order-list a',
+				'#js-ORDS .basket-product-row a',
+				'.order-summary-display a'
+			]
+		};
+
+		productLists = [
+			'search_results',
+			'category_listing',
+			'all_products'
+		]
+
+		productListLinkSelectors = [
+			'.x-product-list .x-product-list__link',
+			'.cmp-product-list .cmp-product-list__item',
+			'#js-product-list .category-product',
+			'#js-product-list [data-mm-linktype="product-list-link"]',
+			'.product-grid [data-mm-linktype="product-list-link"]'
+		];
+
+		constructor() {
+			window.addEventListener('DOMContentLoaded', () => {
+				this.init();
+			});
+		}
+
+		init() {
+			this.buildProductListLinkSelectors();
+
+			Object.keys(this.listSelectors).forEach(listId => {
+				this.bindListEvents(listId);
+			});
+		}
+
+		buildProductListLinkSelectors() {
+			this.productLists.forEach(productList => {
+				this.listSelectors[productList] = this.productListLinkSelectors;
+			});
+		}
+
+		bindListEvents(listId) {
+			const viewItemListEvent = this.getViewItemListEvent(listId);
+
+			if (!viewItemListEvent) {
+				return;
+			}
+
+			const listSelectors = this.listSelectors[listId];
+			const firstMatchingSelector = listSelectors.find(selector => {
+				return document.querySelector(selector) !== null;
+			});
+			const listItemLinks = document.querySelectorAll(firstMatchingSelector);
+
+			listItemLinks.forEach((listItemLink, index) => {
+				listItemLink.addEventListener('click', () => {
+					this.trackSelectItem(viewItemListEvent, index);
+				});
+			});
+		}
+
+		getViewItemListEvent(list_id) {
+			return window?.dataLayer?.find(item => {
+				return item?.event === 'view_item_list' && item?.ecommerce?.item_list_id === list_id;
+			});
+		}
+
+		trackSelectItem(viewItemListEvent, itemIndex) {
+			const selectedItem = structuredClone(viewItemListEvent?.ecommerce?.items?.[itemIndex]);
+
+			if (typeof selectedItem !== 'object') {
+				return;
+			}
+
+			dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+			dataLayer.push({
+				event: 'select_item',
+				ecommerce: {
+					currency: '&mvtj:currency;',
+					value: selectedItem?.price - selectedItem?.discount,
+					items: [
+						selectedItem
+					]
+				}
+			});
+		}
+	}
+
+	new SelectItemTracker();
+</mvt:if>
+
+<mvt:if expr="g.Screen EQ 'PROD'">
+	<mvt:comment>
+	|
+	|	View Item
+	|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#view_item
+	|
+	</mvt:comment>
+
+	<mvt:assign name="l.settings:product:discount" value="miva_ieee754_normalize(2, l.settings:product:base_price - l.settings:product:price)" />
+	<mvt:assign name="l.settings:breadcrumbs:link_count" value="miva_array_elements( l.settings:breadcrumbs:links )" />
+
+	dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+	dataLayer.push({
+		event: 'view_item',
+		ecommerce: {
+			currency: '&mvtj:currency;',
+			value: '&mvtj:product:price;',
+			items: [
+				{
+					item_id: '&mvtj:product:code;',
+					item_sku: '&mvtj:product:sku;',
+					item_name: '&mvtj:product:name;',
+					price: '&mvtj:product:base_price;',
+					discount: '&mvtj:product:discount;',
+					index: 0,
+					item_brand: '&mvtj:product:customfield_values:customfields:brand;',
+					<mvt:if expr="l.settings:product:cancat_id">
+						<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:product:cancat_id, l.settings:product:cancat )" />
+						item_category: '&mvtj:product:cancat:name;'
+					</mvt:if>
+				}
+			]
+		}
+	});
+
+	<mvt:comment>
+	|
+	|	Add to Cart & Add to Wishlist
+	|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#add_to_cart
+	|	https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#add_to_wishlist
+	|
+	</mvt:comment>
+
+	class ProductTracker {
+
+		options = {
+			additionalPriceSelector: '#price-value-additional, #js-additional-price, #js-price-value-additional',
+			adprButtonSelector: '[data-hook="add-to-cart"], #js-add-to-cart',
+			adprFormSelector: 'form[name="add"], #js-purchase-product',
+			atwlButtonSelector: '[value="Add To Wish List" i], .t-product-layout-purchase__add-to-wish, #add-to-wishlist-wrap, [data-hook="add-to-wish-list"], .product-details__wish-list',
+			priceSelector: '#price-value, #js-price-value'
+		};
+
+		constructor(options = {}) {
+
+			this.options = {
+				...this.options,
+				...options
+			};
+
+			window.addEventListener('DOMContentLoaded', () => {
+				this.init();
+			});
+		}
+
+		init() {
+			this.adprForm = this.options?.adprForm ?? document.querySelector(this.options.adprFormSelector);
+			this.adprButton = this.options?.adprButton ?? document.querySelector(this.options.adprButtonSelector);
+			this.atwlButton = this.options?.atwlButton ?? document.querySelector(this.options.atwlButtonSelector);
+			this.price = this.options?.price ?? document.querySelector(this.options.priceSelector);
+			this.additionalPrice = this.options?.additionalPrice ?? document.querySelector(this.options.additionalPriceSelector);
+
+			if (this.adprForm?.nodeName !== 'FORM') {
+				return;
+			}
+
+			this.listenForAddToCart();
+			this.listenForAddToWishlist()
+		}
+
+		listenForAddToCart() {
+			this.adprForm?.addEventListener('click', (e) => {
+				if (e.target !== this.adprButton) {
+					return;
+				}
+
+				this.trackAddTo('cart');
+			}, { capture: true });
+		}
+
+		listenForAddToWishlist() {
+			this.atwlButton?.addEventListener('click', () => {
+				this.trackAddTo('wishlist');
+			});
+		}
+
+		trackAddTo(event) {
+			const viewItem = dataLayer.find(item => item?.event === 'view_item');
+
+			if (!this.adprForm.checkValidity() || viewItem?.ecommerce?.items?.length !== 1) {
+				return;
+			}
+
+			const dataLayerItem = structuredClone(viewItem);
+
+			const price = this.currencyToNumber(this.price?.innerText ?? 0);
+			const additionalPrice = this.currencyToNumber(this.additionalPrice?.innerText ?? 0);
+			const itemVariant = [...this.adprForm.querySelectorAll('[name*="Product_Attributes"][name*=":value"]:is([type="radio"]:checked, select)')].map(input => input.value).join(', ');
+
+			dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+			dataLayerItem.event = `add_to_${event}`;
+			dataLayerItem.ecommerce.value = price;
+			dataLayerItem.ecommerce.items[0].price = additionalPrice > 0 ? additionalPrice : price;
+			dataLayerItem.ecommerce.items[0].discount = additionalPrice > 0 ? this.currencyToNumber(additionalPrice - price) : 0;
+			dataLayerItem.ecommerce.items[0].quantity = this.adprForm.elements.Quantity.value;
+			dataLayerItem.ecommerce.items[0].item_variant = itemVariant;
+			dataLayer.push(dataLayerItem);
+
+			return dataLayerItem;
+		}
+
+		currencyToNumber(value) {
+			return Number(Number(String(value).replace(/[^\d.-]/g, '')).toFixed(2));
+		}
+	}
+
+	new ProductTracker();
+</mvt:if>
+
+<mvt:comment>
+|
+|	Remove from Cart
+|   https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#remove_from_cart
+|
+</mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'BASK'">
+	class RemoveFromCartTracker {
+		options = {
+			removeFromCartLinksSelector: '.t-basket__product-remove, .basket-product-row .remove-item, .basket-display__product-row__remove-item, [data-hook="remove-item"], .basket-display__product-row__remove-item, .increase-decrease-input[value="1"] ~ .increase-decrease-wrap > .js-decrease-quantity'
+		};
+
+		constructor(options = {}) {
+			this.options = {
+				...this.options,
+				...options
+			};
+
+			window.addEventListener('DOMContentLoaded', () => {
+				this.init();
+			});
+		}
+
+		init() {
+			this.removeFromCartLinks = this.options?.removeFromCartLinks ?? document.querySelectorAll(this.options.removeFromCartLinksSelector);
+
+			this.removeFromCartLinks.forEach((link, index) => {
+				link.addEventListener('click', (e) => {
+					this.trackRemoveFromCart(index);
+				});
+			});
+		}
+
+		trackRemoveFromCart(index) {
+			const viewCartEvent = this.getViewCartEvent();
+			const removedEcommerceItem = structuredClone(viewCartEvent?.ecommerce?.items?.[index]);
+
+			if (typeof removedEcommerceItem !== 'object') {
+				return;
+			}
+
+			dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+			dataLayer.push({
+				event: 'remove_from_cart',
+				ecommerce: {
+					currency: '&mvtj:currency;',
+					value: removedEcommerceItem?.price - removedEcommerceItem?.discount,
+					items: [
+						removedEcommerceItem
+					]
+				}
+			});
+		}
+
+		getViewCartEvent() {
+			return window?.dataLayer?.find(item => {
+				return item?.event === 'view_cart'
+			});
+		}
+	}
+
+	new RemoveFromCartTracker();
+</mvt:if>
+
+<mvt:comment>
+|
+|	Event Context
+|
+</mvt:comment>
+<mvt:if expr="g.Order">
+	<mvt:assign name="l.settings:event_context" value="'Checkout'" />
+<mvt:elseif expr="g.Redeem">
+	<mvt:assign name="l.settings:event_context" value="'Redeem Gift Certificate'" />
+<mvt:elseif expr="g.WishList">
+	<mvt:assign name="l.settings:event_context" value="'Wishlist'" />
+<mvt:else>
+	<mvt:assign name="l.settings:event_context" value="'Default'" />
+</mvt:if>
+
+<mvt:comment>
+|
+|	Sign Up Event
+|   https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#sign_up
+|
+</mvt:comment>
+
+<mvt:assign name="l.data_layer_item" value="''" />
+
+<mvt:comment>Determine sign_up method from g.Action</mvt:comment>
+<mvt:if expr="'ICST' IN g.Action AND NOT g.UI_Exception">
+	dataLayer.push({
+		event: 'sign_up',
+		method: 'Create Customer from &mvtj:event_context;'
+	});
+<mvt:elseif expr="'ICSQ' IN g.Action AND NOT g.UI_Exception">
+	dataLayer.push({
+		event: 'sign_up',
+		method: 'Quick Create Customer from &mvtj:event_context;'
+	});
+</mvt:if>
+
+<mvt:comment>
+|
+|	Login Event
+|   https://developers.google.com/analytics/devguides/collection/ga4/reference/events?client_type=gtm#login
+|
+</mvt:comment>
+
+<mvt:if expr="'LOGN' IN g.Action AND NOT g.UI_Exception">
+	dataLayer.push({
+		event: 'login',
+		method: 'Login through &mvtj:event_context;'
+	});
+</mvt:if>
+
+<mvt:comment>
+|
+|	Basket & Checkout Ecommerce
+|
+</mvt:comment>
+<mvt:assign name="l.data_layer_item" value="''" />
+
+<mvt:comment>Normalize basket/order structure</mvt:comment>
 <mvt:if expr="l.settings:page:code EQ 'INVC'">
-	<mvt:foreach iterator="charge" array="order:charges">
-		<mvt:if expr="l.settings:charge:type EQ 'TAX'">
-			<mvt:assign name="l.settings:gtm:tax" value="l.settings:charge:disp_amt" />
-		<mvt:elseif expr="l.settings:charge:type EQ 'SHIPPING'">
-			<mvt:assign name="l.settings:gtm:shipping" value="l.settings:charge:disp_amt" />
-		</mvt:if>
-	</mvt:foreach>
-	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
-		<mvt:assign name="l.settings:content_ids" value="'['" />
-	</mvt:if>
-	<mvt:foreach iterator="item" array="order:items">
-		<mvt:if expr="POS1 GT 1">
-			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
-		<mvt:else>
-			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
-		</mvt:if>
-	</mvt:foreach>
-	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
-		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	<mvt:assign name="l.settings:basket_or_order" value="l.settings:order" />
+<mvt:else>
+	<mvt:assign name="l.settings:basket_or_order" value="l.settings:basket" />
+</mvt:if>
+
+<mvt:comment>Output core ecommerce data</mvt:comment>
+<mvt:assign name="l.data_layer_item:ecommerce:currency" value="l.settings:currency" />
+<mvt:assign name="l.data_layer_item:ecommerce:value" value="l.settings:basket_or_order:total" />
+
+<mvt:comment>Determine the ecommrce:event</mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'BASK'">
+	<mvt:assign name="l.data_layer_item:event" value="'view_cart'" />
+<mvt:elseif expr="'OCST' IN l.settings:page:code">
+	<mvt:assign name="l.data_layer_item:event" value="'begin_checkout'" />
+<mvt:elseif expr="'OSEL' IN l.settings:page:code">
+	<mvt:assign name="l.data_layer_item:event" value="'add_shipping_info'" />
+<mvt:elseif expr="'OPAY' IN l.settings:page:code">
+	<mvt:assign name="l.data_layer_item:event" value="'add_payment_info'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:payment_type" value="l.settings:payment:desc" />
+<mvt:elseif expr="l.settings:page:code EQ 'INVC'">
+	<mvt:assign name="l.data_layer_item:event" value="'purchase'" />
+	<mvt:assign name="l.data_layer_item:ecommerce:transaction_id" value="l.settings:order:id" />
+</mvt:if>
+
+<mvt:comment>Calculate & prepare ecommerce:items</mvt:comment>
+<mvt:foreach iterator="group" array="basket_or_order:groups">
+	<mvt:comment>Calculate unit base_price & unit_discount</mvt:comment>
+	<mvt:assign name="l.settings:group:unit_base_price_comprehensive" value="l.settings:group:subtotal_base_price_comprehensive / l.settings:group:quantity" />
+	<mvt:assign name="l.settings:group:unit_comprehensive" value="l.settings:group:subtotal_comprehensive / l.settings:group:quantity" />
+	<mvt:assign name="l.settings:group:unit_discount_comprehensive" value="miva_ieee754_normalize( 3, l.settings:group:unit_base_price_comprehensive - l.settings:group:unit_comprehensive )" />
+
+	<mvt:comment>Determine ecommerce:item details</mvt:comment>
+	<mvt:assign name="l.ecommerce_item" value="''" />
+	<mvt:assign name="l.ecommerce_item:discount" value="l.settings:group:unit_discount_comprehensive" />
+	<mvt:assign name="l.ecommerce_item:index" value="l.pos1 - 1" />
+	<mvt:assign name="l.ecommerce_item:item_id" value="l.settings:group:code" />
+	<mvt:assign name="l.ecommerce_item:item_name" value="l.settings:group:name" />
+	<mvt:assign name="l.ecommerce_item:item_sku" value="l.settings:group:sku" />
+	<mvt:assign name="l.ecommerce_item:price" value="l.settings:group:unit_base_price_comprehensive" />
+	<mvt:assign name="l.ecommerce_item:quantity" value="l.settings:group:quantity" />
+
+	<mvt:comment>Determine item_category</mvt:comment>
+	<mvt:if expr="l.settings:group:product:cancat_id">
+		<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:group:product:cancat_id, l.settings:group:cancat )" />
+		<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:group:cancat:name" />
 	</mvt:if>
 
-	dataLayer.push({
-		"event": "invc",
-		"ecommerce": {
-			"purchase": {
-				"actionField": {
-					"id": "&mvtj:order:id;",
-					"revenue": "&mvtj:order:total;",
-					"tax": "&mvtj:gtm:tax;",
-					"shipping": "&mvtj:gtm:shipping;"
-				},
-				"products": [
-				<mvt:foreach iterator="item" array="order:groups">
-					<mvt:if expr="POS1 GT 1">,</mvt:if>
-					{
-						"name": "&mvtj:item:name;",
-						"id": "&mvtj:item:code;",
-						"price": "&mvtj:item:price;",
-						"sku": "&mvtj:item:sku;",
-						<mvt:if expr="miva_array_elements(l.settings:item:options) GT 0">
-							<mvt:assign name="l.settings:item:gtm_variant" value="''" />
-							<mvt:foreach iterator="option" array="item:options">
-								<mvt:if expr="POS2 GT 1">
-									<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ ' ' " />
-								</mvt:if>
-								<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ l.settings:option:opt_code" />
-							</mvt:foreach>
-							<mvt:if expr="l.settings:item:gtm_variant">
-							"variant": "&mvtj:item:gtm_variant;",
-							</mvt:if>
-						</mvt:if>
-						"quantity": &mvtj:item:quantity;
-					},
-				</mvt:foreach>
-				],
-				"coupons": [
-				<mvt:foreach iterator="coupon" array="order:coupons">
-					"&mvtj:coupon:code;",
-				</mvt:foreach>
-				]
-			}
-		},
-		"order_id": "&mvtj:order:id;",
-		"order_total": "&mvtj:order:total;",
-		"content_type": "product",
-		"content_ids": "&mvtj:content_ids;",
-		"value": &mvtj:order:total;,
-		"currency": "USD"
-	});
-
-<mvt:comment><!-- (OTHER)CHECKOUT PAGES DataLayer Push --></mvt:comment>
-<mvt:elseif expr="l.settings:datalayer:checkout_step">
-
-	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
-		<mvt:assign name="l.settings:content_ids" value="'['" />
+	<mvt:comment>Determine item_variant</mvt:comment>
+	<mvt:if expr="l.settings:group:option_count">
+		<mvt:foreach iterator="option" array="group:options">
+			<mvt:if expr="l.settings:option:option_id">
+				<mvt:assign name="l.null" value="miva_array_insert_var( l.ecommerce_item:item_variant, l.settings:option:opt_code, -1 )" />
+			<mvt:elseif expr="ISNULL l.settings:option:data AND ISNULL l.settings:option:data_long">
+				<mvt:assign name="l.null" value="miva_array_insert_var( l.ecommerce_item:item_variant, l.settings:option:attr_code, -1 )" />
+			</mvt:if>
+		</mvt:foreach>
 	</mvt:if>
-	<mvt:foreach iterator="item" array="basket:items">
-		<mvt:if expr="POS1 GT 1">
-			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
-		<mvt:else>
-			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
-		</mvt:if>
+	<mvt:assign name="l.ecommerce_item:item_variant" value="miva_joinstring( l.ecommerce_item:item_variant, ', ', 'noempty' )" />
+
+	<mvt:comment>Determine item_brand</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:group:customfield_values:customfields:brand">
+		<mvt:assign name="l.ecommerce_item:item_brand" value="l.settings:group:customfield_values:customfields:brand" />
+	</mvt:if>
+
+	<mvt:comment>Determine item coupon</mvt:comment>
+	<mvt:foreach iterator="discount" array="group:discounts">
+		<mvt:assign name="l.null" value="miva_array_insert_var( l.ecommerce_item:coupon, l.settings:discount:descrip, -1 )" />
 	</mvt:foreach>
-	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
-		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	<mvt:assign name="l.ecommerce_item:coupon" value="miva_joinstring( l.ecommerce_item:coupon, ', ', 'noempty' )" />
+
+	<mvt:comment>Push ecommerce_item to ecommerce:items</mvt:comment>
+	<mvt:assign name="l.null" value="miva_array_insert_var( l.data_layer_item:ecommerce:items, l.ecommerce_item, -1 )" />
+</mvt:foreach>
+
+<mvt:comment>Determine basket/order coupons</mvt:comment>
+<mvt:foreach iterator="coupon" array="basket_or_order:coupons">
+	<mvt:assign name="l.null" value="miva_array_insert_var( l.coupons, l.settings:coupon:code, -1 )" />
+</mvt:foreach>
+<mvt:assign name="l.data_layer_item:ecommerce:coupon" value="miva_joinstring( l.coupons, ', ', 'noempty' )" />
+
+<mvt:comment>Determine ecommerce tax & shipping info</mvt:comment>
+<mvt:foreach iterator="charge" array="basket_or_order:charges">
+	<mvt:if expr="l.settings:charge:type EQ 'SHIPPING'">
+		<mvt:assign name="l.data_layer_item:ecommerce:shipping" value="l.data_layer_item:ecommerce:shipping + l.settings:charge:amount" />
+		<mvt:assign name="l.null" value="miva_array_insert_var( l.shipping_tiers, l.settings:charge:descrip, -1 )" />
+	<mvt:elseif expr="l.settings:charge:type EQ 'TAX'">
+		<mvt:assign name="l.data_layer_item:ecommerce:tax" value="l.data_layer_item:ecommerce:tax + l.settings:charge:amount" />
 	</mvt:if>
-	dataLayer.push({
-		"event": "checkout",
-		"ecommerce": {
-			"checkout": {
-				"actionField": {
-					"step": &mvt:datalayer:checkout_step;
-				},
-				"products": [
-					<mvt:foreach iterator="item" array="global_minibasket:items">
-						{
-							"name": "&mvtj:item:name;",
-							"id": "&mvtj:item:product:code;",
-							"price": "&mvtj:item:price;",
-							"sku": "&mvtj:item:sku;",
-							"category": "",
-							"variant": "",
-							"quantity": &mvtj:item:quantity;
-						},
-					</mvt:foreach>
-				],
-				"coupons": [
-				<mvt:foreach iterator="coupon" array="global_minibasket:coupons">
-					"&mvtj:coupon:code;",
-				</mvt:foreach>
-				]
-			}
-		},
-		"content_type": "product",
-		"content_ids": "&mvt:content_ids;",
-		"value": "&mvt:basket:total;",
-		"currency": "USD"
-	});
+</mvt:foreach>
+<mvt:assign name="l.data_layer_item:ecommerce:shipping_tier" value="miva_joinstring( l.shipping_tiers, ', ', 'noempty' )" />
+
+<mvt:comment>Output data layer item</mvt:comment>
+<mvt:if expr="NOT ISNULL l.data_layer_item:event">
+	dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+	dataLayer.push(<mvt:eval expr="miva_json_encode( l.data_layer_item, 'pretty' )" />);
 </mvt:if>

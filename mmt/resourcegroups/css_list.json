@@ -2,6 +2,7 @@
     "code": "css_list",
     "linked_js_resources": [],
     "linked_css_resources": [
+        "preconnect-google-tag-manager",
         "preconnect-google-analytics",
         "preconnect-google-fonts",
         "preconnect-gstatic",

@@ -1,6 +1,7 @@
 {
     "code": "head_tag",
     "linked_js_resources": [
+        "GTM-head-tag",
         "GTM-dataLayer"
     ],
     "linked_css_resources": [

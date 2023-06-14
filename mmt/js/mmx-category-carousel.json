@@ -1,13 +1,20 @@
 {
     "code": "mmx-category-carousel",
-    "type": "L",
-    "branchless_filepath": "themes/00000001/shadows/mmx/mmx-category-carousel/scripts.js",
+    "type": "Z",
     "is_global": false,
     "active": true,
     "attributes": [
         {
             "name": "type",
             "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-6/RI0QTCBkL0WkAjmI+v9Krzy3XqpvsMa6JwOi5Ivds= sha384-AfOwOdZEYW7EeVZA/vtRKVhX0AyOgKSOMvorQ9xc+uLW4BLDPfE72iwSu9tacX1E sha512-2eTPM7MHzwubxK+yL1O/MY8O/jIqS44T4rprsGLZzisfNoywXt8r8rPFEWwVsAUnlFlFqXdkOvudLGjzjMWpBw=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
         }
     ],
     "linked_pages": []
