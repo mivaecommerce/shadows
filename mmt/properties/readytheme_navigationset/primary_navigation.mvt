@@ -1,0 +1,69 @@
+<nav class="o-layout__item u-width-12 u-text-bold u-text-uppercase c-navigation x-transfigure-navigation &mvte:global:checkout_hidden;" data-hook="transfigure-navigation">
+	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
+		<header class="x-transfigure-navigation__header u-hidden--l c-control-group">
+			<mvt:if expr="g.Basket:cust_id EQ 0">
+				<a class="c-button c-button--full c-button--large c-control-group__button u-bg-gray-10 u-color-gray-50 u-text-bold u-text-uppercase" href="&mvte:urls:LOGN:secure;"><span class="u-icon-user" aria-hidden="true"></span> Sign In or Register</a>
+			<mvt:else>
+				<a class="c-button c-button--full c-button--large c-control-group__button u-bg-gray-10 u-color-gray-50 u-text-bold u-text-uppercase" href="&mvte:urls:ACLN:secure;"><span class="u-icon-user" aria-hidden="true"></span> My Account</a>
+			</mvt:if>
+			<button class="c-button u-bg-gray-40 u-color-gray-10 u-icon-cross c-control-group__button" data-hook="close-main-menu" aria-label="Close Menu"></button>
+		</header>
+		<div class="x-transfigure-navigation__content">
+			<ul class="c-navigation__row x-transfigure-navigation__row">
+				<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
+					<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+						<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-drop-down has-child-menu'"/>
+						<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right' $ asciichar(34) $ ' aria-hidden=' $ asciichar(34) $ 'true' $ asciichar(34) $ '></span></span>'"/>
+					<mvt:else>
+						<mvt:assign name="l.settings:has:children" value="''"/>
+						<mvt:assign name="l.settings:show:child" value="''"/>
+					</mvt:if>
+					<li class="c-navigation__list &mvt:has:children;">
+						<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">&mvt:navigationitem:name;&mvt:show:child;</a>
+						<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+							<ul class="c-navigation__row is-hidden">
+								<mvt:assign name="l.settings:has:children" value="''"/>
+								<li class="c-navigation__list u-hidden--l" data-hook="show-previous-menu">
+									<span class="c-navigation__link"><span class="u-icon-chevron-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Main Menu</span></span>
+								</li>
+								<mvt:foreach iterator="navigationitem_level2" array="navigationitem:items">
+									<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+										<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-child-menu'"/>
+										<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right' $ asciichar(34) $ '></span></span>'"/>
+									<mvt:else>
+										<mvt:assign name="l.settings:has:children" value="''"/>
+										<mvt:assign name="l.settings:show:child" value="''"/>
+									</mvt:if>
+									<li class="c-navigation__list &mvt:has:children;">
+										<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvt:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;&mvt:show:child;</a>
+										<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+											<ul class="c-navigation__row is-hidden">
+												<li class="c-navigation__list u-hidden--l" data-hook="show-previous-menu">
+													<span class="c-navigation__link"><span class="u-icon-chevron-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Main Menu</span></span>
+												</li>
+												<mvt:foreach iterator="navigationitem_level3" array="navigationitem_level2:items">
+													<li class="c-navigation__list">
+														<a class="c-navigation__link" href="&mvte:navigationitem_level3:url;" target="&mvt:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+													</li>
+												</mvt:foreach>
+												<li class="c-navigation__list u-hidden--l">
+													<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvt:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
+												</li>
+											</ul>
+										</mvt:if>
+									</li>
+								</mvt:foreach>
+								<li class="c-navigation__list u-hidden--l">
+									<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
+								</li>
+							</ul>
+						</mvt:if>
+					</li>
+				</mvt:foreach>
+				<li class="c-navigation__list u-hidden--l u-text-left">
+					<mvt:item name="readytheme" param="navigationset( 'support_navigation' )" />
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

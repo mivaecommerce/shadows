@@ -1,0 +1,10 @@
+{
+    "code": "head_tag",
+    "linked_js_resources": [
+        "GTM-dataLayer",
+        "legacy-browsers"
+    ],
+    "linked_css_resources": [
+        "square-payment"
+    ]
+}

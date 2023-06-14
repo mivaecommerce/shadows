@@ -1,0 +1,74 @@
+{
+    "basket": {
+        "advanced": 1,
+        "applycoupons": 0,
+        "b_height": 80,
+        "b_width": 80,
+        "button_wish": 0,
+        "constrain": "B",
+        "discounts": 1,
+        "editable": 0,
+        "groups": 1,
+        "handling": 1,
+        "imagetypes": [
+            "main"
+        ],
+        "lineitemcoupons": 0,
+        "lineitemdiscounts": 1,
+        "lineitemprice": "base",
+        "redeemgiftcerts": 0,
+        "salestax": 1,
+        "shipping": 1,
+        "splitpayments": 1,
+        "template_filename": "opay-basket.mvc",
+        "template_id": 228
+    },
+    "customer": {
+        "editable": 0,
+        "mode": "order",
+        "prevent_template_auto_update": 1,
+        "template_filename": "opay-customer.mvc",
+        "template_id": 229
+    },
+    "hdft": {
+        "footer": {
+            "template_filename": "opay-footer.mvc",
+            "template_id": 231
+        },
+        "header": {
+            "template_filename": "opay-header.mvc",
+            "template_id": 230
+        }
+    },
+    "mivapay": {
+        "paymentcardfields": {
+            "cardtype_prompt": "Card Type:",
+            "cardtype_prompt_hidden": 0,
+            "mode": "checkout",
+            "storecard_checkedbydefault": 0,
+            "storecard_prompt": "Store This Card For Future Use",
+            "template_filename": "opay-mivapay.mvc",
+            "template_id": 232
+        },
+        "paymentcardfields_css": {
+            "template_filename": "opay-mivapay_css.mvc",
+            "template_id": 233
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    }
+}

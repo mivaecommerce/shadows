@@ -1,0 +1,34 @@
+{
+    "addressfields": {
+        "mode": "customeraddress_add",
+        "prevent_template_auto_update": 1,
+        "template_filename": "cada-addressfields.mvc",
+        "template_id": 271
+    },
+    "hdft": {
+        "footer": {
+            "template_filename": "cada-footer.mvc",
+            "template_id": 273
+        },
+        "header": {
+            "template_filename": "cada-header.mvc",
+            "template_id": 272
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    }
+}

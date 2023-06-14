@@ -1,0 +1,59 @@
+{
+    "basket": {
+        "advanced": 1,
+        "applycoupons": 0,
+        "b_height": 80,
+        "b_width": 80,
+        "button_wish": 0,
+        "constrain": "B",
+        "discounts": 1,
+        "editable": 0,
+        "groups": 1,
+        "handling": 1,
+        "imagetypes": [
+            "main"
+        ],
+        "lineitemcoupons": 0,
+        "lineitemdiscounts": 1,
+        "lineitemprice": "base",
+        "redeemgiftcerts": 1,
+        "salestax": 1,
+        "shipping": 1,
+        "splitpayments": 1,
+        "template_filename": "osel-basket.mvc",
+        "template_id": 235
+    },
+    "customer": {
+        "editable": 0,
+        "mode": "order",
+        "prevent_template_auto_update": 0,
+        "template_filename": "osel-customer.mvc",
+        "template_id": 236
+    },
+    "hdft": {
+        "footer": {
+            "template_filename": "osel-footer.mvc",
+            "template_id": 238
+        },
+        "header": {
+            "template_filename": "osel-header.mvc",
+            "template_id": 237
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    }
+}

@@ -1,0 +1,17 @@
+{
+    "inline_css": {
+        "template_filename": "order_invoice-inline_css.mvc",
+        "template_id": 178
+    },
+    "tbr_order_contents": {
+        "advanced": 0,
+        "b_height": 75,
+        "b_width": 75,
+        "constrain": "B",
+        "groups": 1,
+        "lineitemcoupons": 0,
+        "lineitemdiscounts": 0,
+        "template_filename": "order_invoice-tbr_order_contents.mvc",
+        "template_id": 179
+    }
+}

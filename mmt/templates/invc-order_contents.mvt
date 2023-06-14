@@ -1,0 +1,164 @@
+<br>
+<table class="c-table-responsive">
+	<caption class="u-text-left">
+		<h1 class="c-heading-echo u-text-bold u-text-uppercase">Order Summary</h1>
+	</caption>
+	<thead class="u-text-left u-hide-visually">
+		<tr class="c-table-simple__row">
+			<th class="c-table-simple__cell" scope="col">Product</th>
+			<th class="c-table-simple__cell" scope="col">Quantity</th>
+			<th class="c-table-simple__cell u-text-right" scope="col">Subtotal</th>
+		</tr>
+	</thead>
+	<tbody>
+		<mvt:assign name="g.basket_subtotal" value="0" />
+		<mvt:assign name="g.basket_quantity" value="0" />
+		<mvt:foreach iterator="item" array="order:groups">
+			<tr class="c-table-responsive__row">
+				<td class="c-table-responsive__cell">
+					<div class="o-layout">
+						<div class="o-layout__item u-width-12 u-width-4--m u-width-3--l u-text-center--m">
+							<p><img src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:order_contents:b_width;" height="&mvte:order_contents:b_height;"></p>
+						</div>
+						<div class="o-layout__item u-width-12 u-width-8--m u-width-9--l">
+							<p class="c-heading-echo">
+								<strong>&mvt:item:name;</strong>
+								<mvt:if expr="l.settings:item:upsold">
+									<br><span class="c-heading--subheading">(Special Offer)</span>
+								</mvt:if>
+							</p>
+							<p class="u-color-gray-30">
+								<span class="u-font-small">SKU: &mvt:item:code;</span><br>
+								<mvt:foreach iterator="discount" array="item:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<mvt:if expr="'sale' CIN l.settings:discount:descrip">
+											<mvt:assign name="l.settings:discount:descrip" value="'Savings'"/>
+										<mvt:else>
+											<mvt:assign name="l.settings:discount:descrip" value="l.settings:discount:descrip"/>
+										</mvt:if>
+										<span class="u-font-small u-flex u-color-red">
+											<span class="o-layout--grow">&mvt:discount:descrip;</span>
+											<span>&mvt:discount:formatted_discount;</span>
+										</span>
+									</mvt:if>
+								</mvt:foreach>
+								<mvt:foreach iterator="option" array="item:options">
+									<mvt:if expr="l.settings:option:attr_code EQ 'giftcert'">
+										<mvt:assign name="l.settings:option:attr_prompt" value="'Certificate Code'" />
+									<mvt:else>
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+									</mvt:if>
+									<span class="u-font-small u-flex">
+										<mvt:if expr="l.settings:option:option_id">
+											<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
+											<span>&mvt:option:formatted_subtotal;</span>
+										<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+											<mvt:if expr="( l.settings:option:attr_code EQ 'digitaldownload' ) AND ( NOT ISNULL l.settings:option:digital_download_url )">
+												<a class="o-layout--grow" href="&mvte:option:digital_download_url;" target="_blank">Digital Download</a><br>
+											<mvt:else>
+												<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
+												<span>&mvt:option:formatted_subtotal;</span>
+											</mvt:if>
+										<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+											<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
+											<span>&mvt:option:formatted_subtotal;</span>
+										<mvt:else>
+											<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
+											<span>&mvt:option:formatted_subtotal;</span>
+										</mvt:if>
+									</span>
+									<mvt:foreach iterator="discount" array="option:discounts">
+										<mvt:if expr="l.settings:discount:display">
+											<span class="u-color-red o-layout--grow">&mvt:discount:descrip;</span>
+											<span class="u-color-red">&mvt:discount:formatted_discount;</span>
+										</mvt:if>
+									</mvt:foreach>
+								</mvt:foreach>
+							</p>
+							<mvt:if expr="l.settings:item:subterm_id">
+								<p>Subscription: &mvte:item:subscription:productsubscriptionterm:descrip;</p>
+							</mvt:if>
+						</div>
+					</div>
+				</td>
+				
+				<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-center--m" data-label="Quantity">
+					<mvt:assign name="g.basket_quantity" value="g.basket_quantity + l.settings:item:quantity" />
+					<p class="c-heading-echo u-text-bold">Qty: &mvt:item:quantity;</p>
+				</td>
+				
+				<td class="c-table-responsive__cell u-text-right" data-label="Subtotal">
+					<p class="c-heading-echo">
+						<span class="u-text-bold u-block">&mvt:item:formatted_subtotal_comprehensive;</span>
+						<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:item:subtotal_comprehensive" />
+						<mvt:if expr="l.settings:item:subtotal_base_price NE l.settings:item:subtotal">
+							<s class="c-heading--subheading u-block">&mvt:item:formatted_subtotal_base_price;</s>
+						</mvt:if>
+						<mvt:if expr="l.settings:item:upsold">
+							<span class="c-heading--subheading u-block">&nbsp;</span>
+						</mvt:if>
+					</p>
+				</td>
+			</tr>
+		</mvt:foreach>
+	</tbody>
+</table>
+
+<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, g.basket_subtotal)" />
+<table class="c-table-simple">
+	<tbody class="u-font-small u-text-uppercase u-text-bold">
+		<tr class="c-table-simple__row">
+			<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+				<span>
+					<mvt:if expr="g.basket_quantity GT 1">
+						<span class="u-color-gray-30">Subtotal:</span> &mvte:global:basket_quantity; Items
+					<mvt:else>
+						<span class="u-color-gray-30">Subtotal:</span> &mvte:global:basket_quantity; Item
+					</mvt:if>
+				</span>
+				<span>&mvt:basket:formatted_subtotal;</span>
+			</td>
+		</tr>
+		
+		<mvt:foreach iterator="charge" array="order:charges">
+			<tr class="c-table-simple__row u-color-gray-30">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>&mvt:charge:descrip;</span>
+					<span>&mvt:charge:formatted_disp_amt;</span>
+				</td>
+			</tr>
+		</mvt:foreach>
+
+		<mvt:foreach iterator="coupon" array="order:coupons">
+			<tr class="c-table-simple__row u-color-gray-30">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>&mvt:coupon:code;</span>
+					<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
+						<span>&mvt:coupon:descrip;</span>
+					</mvt:if>
+				</td>
+			</tr>
+		</mvt:foreach>
+		
+		<mvt:foreach iterator="payment" array="order:payments">
+			<tr class="c-table-simple__row u-color-gray-30">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<mvt:if expr="l.settings:payment:type EQ 6">
+						<span>Refund: &mvt:payment:desc;</span>
+						<span>&mvt:payment:formatted_amount;</span>
+					<mvt:else>
+						<span>Payment: &mvt:payment:desc;</span>
+						<span>&mvt:payment:formatted_amount_negative;</span>
+					</mvt:if>
+				</td>
+			</tr>
+		</mvt:foreach>
+		
+		<tr class="c-table-simple__row">
+			<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between c-heading-delta">
+				<span>Grand Total</span>
+				<span>&mvt:order:formatted_total;</span>
+			</td>
+		</tr>
+	</tbody>
+</table>

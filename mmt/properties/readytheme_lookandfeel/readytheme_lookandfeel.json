@@ -1,0 +1,19 @@
+{
+    "bg_horiz": "center",
+    "bg_repeat": "no-repeat",
+    "bg_vert": "center",
+    "limg_alt": "Shadows ReadyTheme",
+    "limg_hght": 0,
+    "limg_size": 0,
+    "limg_wdth": 0,
+    "logo_image": "graphics/00000001/logo-min.png",
+    "logo_type": "image",
+    "s_active": 1,
+    "s_facebook": "https://www.facebook.com/",
+    "s_gplus": "https://plus.google.com/",
+    "s_instgram": "https://www.instagram.com/",
+    "s_twitter": "https://twitter.com/",
+    "tps_active": 0,
+    "tps_text": "<span class=\"o-layout__item\">Place your social sharing code here.</span>",
+    "trs_active": 0
+}

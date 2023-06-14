@@ -1,0 +1,3210 @@
+<SKINFile>
+	<Code>shadows</Code>
+	<UIModuleCode>cssui</UIModuleCode>
+	<RegisterStoreFramework />
+	<Title>Shadows ReadyTheme</Title>
+	<Version>1.0</Version>
+	<MinimumMerchantVersion>9.13.01</MinimumMerchantVersion>
+	<MinimumMivaScriptVersion>5.33</MinimumMivaScriptVersion>
+	<Description>
+		Shadows ReadyTheme by Miva, Inc. v2.0.0
+
+		Shadows is our ReadyTheme Development Framework.
+	</Description>
+	<Preview_URL />
+	<Preview_Image>logo-min.png</Preview_Image>
+	<Provider>Miva, Inc.</Provider>
+	<Title>Shadows v2.0</Title>
+	<Image_Base>/mm5/</Image_Base>
+	<PageList>
+		<Page>
+			<Code>ABUS</Code>
+			<Name>About Us</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>abus.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFAD</Code>
+			<Name>Affiliate Create</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>afad.mvt</Source>
+			<ItemList>
+				<Item>affiliate</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFED</Code>
+			<Name>Affiliate Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>afed.mvt</Source>
+			<ItemList>
+				<Item>affiliate</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFCL</Code>
+			<Name>Affiliate Login</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>afcl.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFPW</Code>
+			<Name>Affiliate Forgot Password</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>afpw.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>BASK</Code>
+			<Name>Basket Contents</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>bask.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>basket</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>customfields</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>shipestimate</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CTGY</Code>
+			<Name>Category Display</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ctgy.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category</Item>
+				<Item>category_listing</Item>
+				<Item>category_title</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>facets</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>prod_ctgy_hdft</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CEML</Code>
+			<Name>Change Email Address</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ceml.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CPWD</Code>
+			<Name>Change Password</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cpwd.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>BSKE</Code>
+			<Name>Checkout: Basket Empty</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>bske.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OCST</Code>
+			<Name>Checkout: Customer Information</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ocst.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>basket</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OMIN</Code>
+			<Name>Checkout: Minimum Purchase Required</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>omin.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OPAY</Code>
+			<Name>Checkout: Payment Information</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>opay.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>basket</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>mivapay</Item>
+				<Item>navbar</Item>
+				<Item>payment</Item>
+				<Item>paymentmethod</Item>
+				<Item>paymentmethods</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>splitpayment</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OSEL</Code>
+			<Name>Checkout: Shipping/Payment Selection</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>osel.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>basket</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentmethods</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>shippingmethods</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OUSM</Code>
+			<Name>Checkout: Upsell Product (Multiple)</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ousm.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>upsale</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OUS1</Code>
+			<Name>Checkout: Upsell Product (Single)</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ous1.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>product_attributes</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>upsale</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WPCK</Code>
+			<Name>Choose Wish List</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wpck.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>customerwishlists</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CTFM</Code>
+			<Name>Contact Form</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ctfm.mvt</Source>
+			<ItemList>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CTUS</Code>
+			<Name>Contact Us</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ctus.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CACT</Code>
+			<Name>Create Customer Account</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cact.mvt</Source>
+			<ItemList>
+				<Item>cssui_links</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ACLN</Code>
+			<Name>Customer Account</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>acln.mvt</Source>
+			<ItemList>
+				<Item>addressbook</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>customerwishlists</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>orderhistory_list</Item>
+				<Item>paymentcards</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ABAL</Code>
+			<Name>Customer Account Balance</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>abal.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customercredithistory</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CABK</Code>
+			<Name>Customer Address Book</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cabk.mvt</Source>
+			<ItemList>
+				<Item>addressbook</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CADA</Code>
+			<Name>Customer Address: Add</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cada.mvt</Source>
+			<ItemList>
+				<Item>addressfields</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CADE</Code>
+			<Name>Customer Address: Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cade.mvt</Source>
+			<ItemList>
+				<Item>addressfields</Item>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ACAD</Code>
+			<Name>Customer Create</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>acad.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ACED</Code>
+			<Name>Customer Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>aced.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LOGN</Code>
+			<Name>Customer Log In</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>logn.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ACRT</Code>
+			<Name>Customer Password Reset</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>acrt.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CPCA</Code>
+			<Name>Customer Payment Card: Add</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cpca.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>mivapay</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CPCE</Code>
+			<Name>Customer Payment Card: Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cpce.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>mivapay</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CPCD</Code>
+			<Name>Customer Payment Cards</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cpcd.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentcards</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CSBE</Code>
+			<Name>Customer Subscription: Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>csbe.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>datepicker</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentcards</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>subscriptionfields</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CSUB</Code>
+			<Name>Customer Subscriptions</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>csub.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>subscriptions</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>FPWD</Code>
+			<Name>Forgot Password</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>fpwd.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>FAQS</Code>
+			<Name>Frequently Asked Questions</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>faqs.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>INVC</Code>
+			<Name>Invoice</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>invc.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>order</Item>
+				<Item>order_contents</Item>
+				<Item>order_customer</Item>
+				<Item>printer_friendly_content</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ORHL</Code>
+			<Name>Lookup Order History</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>orhl.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>MNTN</Code>
+			<Name>Maintenance Mode</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>mntn.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>PATR</Code>
+			<Name>Missing Product Attributes</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>patr.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>attributemachine</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>product_attributes</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>NTFD</Code>
+			<Name>Not Found</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ntfd.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>http_headers</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>OPRC</Code>
+			<Name>Order Already Processed</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>oprc.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ORDH</Code>
+			<Name>Order History List</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ordh.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>orderhistory_list</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ORDS</Code>
+			<Name>Order Status</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ords.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>order</Item>
+				<Item>order_customer</Item>
+				<Item>printer_friendly_content</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+				<Item>view_order</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>ORDL</Code>
+			<Name>Order: Customer Login</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ordl.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CTLG</Code>
+			<Name>Our Catalog</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>ctlg.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>category</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>facets</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>CSTR</Code>
+			<Name>Password Reset</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>cstr.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>PPRS</Code>
+			<Name>PayPal Express Checkout Return Screen</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>No</Secure>
+			<Source>pprs.mvt</Source>
+			<ItemList />
+		</Page>
+		<Page>
+			<Code>PRPO</Code>
+			<Name>Privacy Policy</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>prpo.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>PROD</Code>
+			<Name>Product Display</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>prod.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>attributemachine</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>discount_volume</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>product_attributes</Item>
+				<Item>product_display</Item>
+				<Item>product_display_imagemachine</Item>
+				<Item>prod_ctgy_hdft</Item>
+				<Item>readytheme</Item>
+				<Item>related_products</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>PLMT</Code>
+			<Name>Product Limited Stock</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>plmt.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>PLST</Code>
+			<Name>Product List</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>plst.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>all_products</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>facets</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>POUT</Code>
+			<Name>Product Sold Out</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>pout.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>RGFT</Code>
+			<Name>Redeem Gift Certificate</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>rgft.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>countries</Item>
+				<Item>cssui_links</Item>
+				<Item>customer</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>states</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>GFTL</Code>
+			<Name>Redeem Gift Certificate: Customer Login</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>gftl.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>SRCH</Code>
+			<Name>Search</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>srch.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>facets</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>search_results</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>SERT</Code>
+			<Name>Shipping Estimate Rates</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>sert.mvt</Source>
+			<ItemList>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>shipestimate_rates</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>SARP</Code>
+			<Name>Shipping and Return Policy</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>sarp.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>SMAP</Code>
+			<Name>Site Map</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>smap.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sitemap</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>SFNT</Code>
+			<Name>Storefront</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>sfnt.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>content</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>UATM</Code>
+			<Name>Upsell: Missing Product Attributes (Multiple)</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>uatm.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>upsell_attr_mult</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>UATR</Code>
+			<Name>Upsell: Missing Product Attributes (Single)</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>uatr.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>product_attributes</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tax</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WISH</Code>
+			<Name>Wish List</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wish.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>customerwishlists</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+				<Item>wishlist</Item>
+				<Item>wishlistitems</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WLAD</Code>
+			<Name>Wish List: Add</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wlad.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+				<Item>wishlist</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WLGN</Code>
+			<Name>Wish List: Customer Login</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wlgn.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WLED</Code>
+			<Name>Wish List: Edit</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wled.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+				<Item>wishlist</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>WLST</Code>
+			<Name>Wish Lists</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>wlst.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>messages</Item>
+				<Item>navbar</Item>
+				<Item>paymentsettings</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+				<Item>wishlists</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFFR</Code>
+			<Name>Affiliate Password Reset</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>affr.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>AFRT</Code>
+			<Name>Affiliate Temporary Password</Name>
+			<Title />
+			<UI>Yes</UI>
+			<Secure>Yes</Secure>
+			<Source>afrt.mvt</Source>
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>buttons</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+	</PageList>
+	<RequiredItemList>
+		<Item>
+			<Code>urls</Code>
+			<Module>cmp-cssui-urls</Module>
+		</Item>
+		<Item>
+			<Code>searchfield</Code>
+			<Module>cmp-cssui-searchfield</Module>
+		</Item>
+		<Item>
+			<Code>html_profile</Code>
+			<Module>cmp-cssui-html</Module>
+		</Item>
+		<Item>
+			<Code>prodctgy_meta</Code>
+			<Module>cmp-mv-prodctgy-meta</Module>
+		</Item>
+		<Item>
+			<Code>head</Code>
+			<Module>cmp-cssui-head</Module>
+		</Item>
+		<Item>
+			<Code>store</Code>
+			<Module>cmp-mv-stdstorefields</Module>
+		</Item>
+		<Item>
+			<Code>product</Code>
+			<Module>cmp-mv-stdprodfields</Module>
+		</Item>
+		<Item>
+			<Code>category</Code>
+			<Module>cmp-mv-stdcatfields</Module>
+		</Item>
+		<Item>
+			<Code>messages</Code>
+			<Module>cmp-cssui-messages</Module>
+		</Item>
+		<Item>
+			<Code>cssui_links</Code>
+			<Module>cmp-cssui-links</Module>
+		</Item>
+		<Item>
+			<Code>upsale</Code>
+			<Module>cmp-mv-uslprodfields</Module>
+		</Item>
+		<Item>
+			<Code>shippingmethods</Code>
+			<Module>cmp-mv-shipselect</Module>
+		</Item>
+		<Item>
+			<Code>paymentmethods</Code>
+			<Module>cmp-mv-payselect</Module>
+		</Item>
+		<Item>
+			<Code>paymentmethod</Code>
+			<Module>cmp-mv-paymentmethod</Module>
+		</Item>
+		<Item>
+			<Code>paymentsettings</Code>
+			<Module>cmp-mv-paymentsettings</Module>
+		</Item>
+		<Item>
+			<Code>splitpayment</Code>
+			<Module>cmp-mv-splitpayment</Module>
+		</Item>
+		<Item>
+			<Code>payment</Code>
+			<Module>cmp-mv-paymentfields</Module>
+		</Item>
+		<Item>
+			<Code>tax</Code>
+			<Module>cmp-mv-taxfields</Module>
+		</Item>
+		<Item>
+			<Code>attributemachine</Code>
+			<Module>cmp-mv-attributemachine</Module>
+		</Item>
+		<Item>
+			<Code>product_display_imagemachine</Code>
+			<Module>cmp-mv-imagemachine</Module>
+		</Item>
+		<Item>
+			<Code>order</Code>
+			<Module>cmp-mv-stdorderfields</Module>
+		</Item>
+		<Item>
+			<Code>content</Code>
+			<Module>cmp-mv-content</Module>
+		</Item>
+		<Item>
+			<Code>customerwishlists</Code>
+			<Module>cmp-mv-customerwishlists</Module>
+		</Item>
+		<Item>
+			<Code>states</Code>
+			<Module>cmp-cssui-stateselect</Module>
+		</Item>
+		<Item>
+			<Code>countries</Code>
+			<Module>cmp-cssui-countryselect</Module>
+		</Item>
+		<Item>
+			<Code>category_title</Code>
+			<Module>cmp-cssui-cattitle</Module>
+		</Item>
+		<Item>
+			<Code>datepicker</Code>
+			<Module>cmp-cssui-datepicker</Module>
+		</Item>
+		<Item>
+			<Code>navbar</Code>
+			<Module>cmp-cssui-navbar</Module>
+		</Item>
+		<Item>
+			<Code>facets</Code>
+			<Module>cmp-cssui-prodlist</Module>
+		</Item>
+		<Item>
+			<Code>category_listing</Code>
+			<Module>cmp-cssui-prodlist</Module>
+		</Item>
+		<Item>
+			<Code>all_products</Code>
+			<Module>cmp-cssui-prodlist</Module>
+		</Item>
+		<Item>
+			<Code>related_products</Code>
+			<Module>cmp-cssui-prodlist</Module>
+		</Item>
+		<Item>
+			<Code>search_results</Code>
+			<Module>cmp-cssui-prodlist</Module>
+		</Item>
+		<Item>
+			<Code>product_display</Code>
+			<Module>cmp-cssui-prodlayo</Module>
+		</Item>
+		<Item>
+			<Code>buttons</Code>
+			<Module>cmp-cssui-buttons</Module>
+		</Item>
+		<Item>
+			<Code>customerlink</Code>
+			<Module>cmp-cssui-custlink</Module>
+		</Item>
+		<Item>
+			<Code>affiliatelink</Code>
+			<Module>cmp-cssui-afflink</Module>
+		</Item>
+		<Item>
+			<Code>product_attributes</Code>
+			<Module>cmp-cssui-attributes</Module>
+		</Item>
+		<Item>
+			<Code>basket</Code>
+			<Module>cmp-cssui-basket</Module>
+		</Item>
+		<Item>
+			<Code>customer</Code>
+			<Module>cmp-cssui-custfields</Module>
+		</Item>
+		<Item>
+			<Code>customercredithistory</Code>
+			<Module>cmp-cssui-customercredithistory</Module>
+		</Item>
+		<Item>
+			<Code>affiliate</Code>
+			<Module>cmp-cssui-afae</Module>
+		</Item>
+		<Item>
+			<Code>sitemap</Code>
+			<Module>cmp-cssui-sitemap</Module>
+		</Item>
+		<Item>
+			<Code>upsell_attr_mult</Code>
+			<Module>cmp-cssui-uslmltplattr</Module>
+		</Item>
+		<Item>
+			<Code>prod_ctgy_hdft</Code>
+			<Module>cmp-cssui-pchdft</Module>
+		</Item>
+		<Item>
+			<Code>order_customer</Code>
+			<Module>cmp-cssui-invc-custfields</Module>
+		</Item>
+		<Item>
+			<Code>order_contents</Code>
+			<Module>cmp-cssui-invc-order</Module>
+		</Item>
+		<Item>
+			<Code>orderhistory_list</Code>
+			<Module>cmp-cssui-orderlist</Module>
+		</Item>
+		<Item>
+			<Code>view_order</Code>
+			<Module>cmp-cssui-vieworder</Module>
+		</Item>
+		<Item>
+			<Code>hdft</Code>
+			<Module>cmp-cssui-hdft</Module>
+		</Item>
+		<Item>
+			<Code>breadcrumbs</Code>
+			<Module>cmp-cssui-breadcrumbs</Module>
+		</Item>
+		<Item>
+			<Code>category_tree</Code>
+			<Module>cmp-cssui-cattree</Module>
+		</Item>
+		<Item>
+			<Code>mivapay</Code>
+			<Module>cmp-cssui-mivapay</Module>
+		</Item>
+		<Item>
+			<Code>paymentcards</Code>
+			<Module>cmp-cssui-paymentcards</Module>
+		</Item>
+		<Item>
+			<Code>subscriptions</Code>
+			<Module>cmp-cssui-subscriptions</Module>
+		</Item>
+		<Item>
+			<Code>subscriptionfields</Code>
+			<Module>cmp-cssui-subscriptionfields</Module>
+		</Item>
+		<Item>
+			<Code>wishlists</Code>
+			<Module>cmp-cssui-wishlists</Module>
+		</Item>
+		<Item>
+			<Code>wishlistitems</Code>
+			<Module>cmp-cssui-wishlistitems</Module>
+		</Item>
+		<Item>
+			<Code>wishlist</Code>
+			<Module>cmp-cssui-wishlistfields</Module>
+		</Item>
+		<Item>
+			<Code>http_headers</Code>
+			<Module>cmp-mv-http-headers</Module>
+		</Item>
+		<Item>
+			<Code>giftcertificate</Code>
+			<Module>cmp-mv-stdgiftcertificatefields</Module>
+		</Item>
+		<Item>
+			<Code>digitaldownload</Code>
+			<Module>cmp-mv-stddigitaldownloadfields</Module>
+		</Item>
+		<Item>
+			<Code>addressbook</Code>
+			<Module>cmp-cssui-addressbook</Module>
+		</Item>
+		<Item>
+			<Code>addressfields</Code>
+			<Module>cmp-cssui-addressfields</Module>
+		</Item>
+		<Item>
+			<Code>backorder</Code>
+			<Module>cmp-mv-stdorderitemfields</Module>
+		</Item>
+		<Item>
+			<Code>return</Code>
+			<Module>cmp-mv-stdreturnfields</Module>
+		</Item>
+		<Item>
+			<Code>shipment</Code>
+			<Module>cmp-mv-stdshipmentfields</Module>
+		</Item>
+		<Item>
+			<Code>toe_order_contents</Code>
+			<Module>templateorderemails</Module>
+		</Item>
+		<Item>
+			<Code>toe_basket_contents</Code>
+			<Module>templateorderemails</Module>
+		</Item>
+		<Item>
+			<Code>toe_subscription_fields</Code>
+			<Module>templateorderemails</Module>
+		</Item>
+		<Item>
+			<Code>toe_subscriptions</Code>
+			<Module>templateorderemails</Module>
+		</Item>
+		<Item>
+			<Code>admin_order</Code>
+			<Module>cmp-mv-adminorderfields</Module>
+		</Item>
+		<Item>
+			<Code>tbr_order_contents</Code>
+			<Module>templatebatchreports</Module>
+		</Item>
+		<Item>
+			<Code>inline_css</Code>
+			<Module>cmp-mv-content</Module>
+		</Item>
+		<Item>
+			<Code>global_minibasket</Code>
+			<Module>cmp-mv-minibask</Module>
+		</Item>
+		<Item>
+			<Code>readytheme</Code>
+			<Module>readytheme</Module>
+		</Item>
+		<Item>
+			<Code>shipestimate_rates</Code>
+			<Module>cmp-mv-shipestimate</Module>
+		</Item>
+		<Item>
+			<Code>shipestimate</Code>
+			<Module>cmp-mv-shipestimate</Module>
+		</Item>
+		<Item>
+			<Code>tokenlist</Code>
+			<Module>tokenlist</Module>
+		</Item>
+		<Item>
+			<Code>discount_volume</Code>
+			<Module>discount_volume</Module>
+		</Item>
+		<Item>
+			<Code>printer_friendly_content</Code>
+			<Module>cmp-mv-content</Module>
+		</Item>
+		<Item>
+			<Code>customfields</Code>
+			<Module>customfields</Module>
+		</Item>
+	</RequiredItemList>
+	<Config>
+		<CustomerFields_Update>
+			<Shipping>Defaults</Shipping>
+			<Billing>Optional</Billing>
+			<Primary>Shipping</Primary>
+			<FirstName>Required</FirstName>
+			<LastName>Required</LastName>
+			<Email>Required</Email>
+			<Phone>Required</Phone>
+			<Fax>Optional</Fax>
+			<Company>Optional</Company>
+			<Address>Required</Address>
+			<Address2>Optional</Address2>
+			<City>Required</City>
+			<State>Required</State>
+			<Zip>Required</Zip>
+			<Country>Required</Country>
+		</CustomerFields_Update>
+	</Config>
+	<ComponentList>
+		<Component>
+			<Code>cmp-mv-attributemachine</Code>
+			<Name>Attribute Machine</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-afae</Code>
+			<Name>CSSUI Affiliate Add/Edit</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-afflink</Code>
+			<Name>CSSUI Affiliate Sign-in Link</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-basket</Code>
+			<Name>CSSUI Basket Contents</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-buttons</Code>
+			<Name>CSSUI Buttons</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-cattitle</Code>
+			<Name>CSSUI Category Title</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-cattree</Code>
+			<Name>CSSUI Category Tree</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-customercredithistory</Code>
+			<Name>CSSUI Customer Credit History</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-custfields</Code>
+			<Name>CSSUI Customer Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-custlink</Code>
+			<Name>CSSUI Customer Sign-in Link</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-head</Code>
+			<Name>CSSUI HEAD Tag Content</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-html</Code>
+			<Name>CSSUI HTML Profile</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-hdft</Code>
+			<Name><![CDATA[CSSUI Headers & Footers]]></Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-invc-custfields</Code>
+			<Name>CSSUI Invoice Customer Information</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-invc-order</Code>
+			<Name>CSSUI Invoice Order Contents</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-mivapay</Code>
+			<Name>CSSUI MivaPay</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-navbar</Code>
+			<Name>CSSUI Navigation Bar</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-orderlist</Code>
+			<Name>CSSUI Order History List</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-attributes</Code>
+			<Name>CSSUI Product Attributes</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-prodlayo</Code>
+			<Name>CSSUI Product Display Layout</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-prodlist</Code>
+			<Name>CSSUI Product List</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-pchdft</Code>
+			<Name><![CDATA[CSSUI Product/Category Header & Footer]]></Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-searchfield</Code>
+			<Name>CSSUI Search Field</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-sitemap</Code>
+			<Name>CSSUI Sitemap</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-breadcrumbs</Code>
+			<Name>CSSUI Smart Breadcrumbs</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-subscriptionfields</Code>
+			<Name>CSSUI Subscription Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-subscriptions</Code>
+			<Name>CSSUI Subscriptions</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-vieworder</Code>
+			<Name>CSSUI View Order</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-wishlistfields</Code>
+			<Name>CSSUI Wish List Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-wishlistitems</Code>
+			<Name>CSSUI Wish List Items</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-wishlists</Code>
+			<Name>CSSUI Wish Lists</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-content</Code>
+			<Name>Content</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-addressbook</Code>
+			<Name>Customer Address Book</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-addressfields</Code>
+			<Name>Customer Address Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-paymentcards</Code>
+			<Name>Customer Payment Cards</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-datepicker</Code>
+			<Name>Date Picker</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-imagemachine</Code>
+			<Name>Image Machine</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-minibask</Code>
+			<Name>Mini-Basket</Name>
+		</Component>
+		<Component>
+			<Code>readytheme</Code>
+			<Name>ReadyTheme</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-shipestimate</Code>
+			<Name>Shipping Estimate</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-stdorderitemfields</Code>
+			<Name>Standard Order Item Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-stdreturnfields</Code>
+			<Name>Standard Return Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-mv-stdshipmentfields</Code>
+			<Name>Standard Shipment Fields</Name>
+		</Component>
+		<Component>
+			<Code>cmp-cssui-messages</Code>
+			<Name>Standard Validation/Error/Informational Messages</Name>
+		</Component>
+		<Component>
+			<Code>templatebatchreports</Code>
+			<Name>Template Based Batch Reports</Name>
+		</Component>
+		<Component>
+			<Code>templateorderemails</Code>
+			<Name>Template Based Emails</Name>
+		</Component>
+		<Component>
+			<Code>discount_volume</Code>
+			<Name>Volume Pricing</Name>
+		</Component>
+		<Component>
+			<Code>customfields</Code>
+			<Name>Custom Fields</Name>
+		</Component>
+	</ComponentList>
+	<Resources>
+		<ResourceGroup_Delete_All />
+		<ResourceGroup_Add>
+			<Code>head_tag</Code>
+		</ResourceGroup_Add>
+		<ResourceGroup_Add>
+			<Code>footer_js</Code>
+		</ResourceGroup_Add>
+		<ResourceGroup_Add>
+			<Code>css_list</Code>
+		</ResourceGroup_Add>
+		<JavaScriptResource_Delete_All />
+		<CSSResource_Delete_All />
+		<CSSResource_Add>
+			<Code>google-fonts</Code>
+			<Type>ExternalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>https://fonts.googleapis.com/css?family=Poppins:400,500,700</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>preconnect-google-fonts</Code>
+			<Type>ExternalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>preconnect</Value>
+				</Attribute>
+				<Attribute>
+					<Name>crossorigin</Name>
+					<Value />
+				</Attribute>
+			</Attributes>
+			<File_Path>https://fonts.gstatic.com</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>preconnect-google-analytics</Code>
+			<Type>ExternalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>preconnect</Value>
+				</Attribute>
+				<Attribute>
+					<Name>crossorigin</Name>
+					<Value />
+				</Attribute>
+			</Attributes>
+			<File_Path>//www.google-analytics.com</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>readytheme-icons</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>No</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>square-payment</Code>
+			<Type>InlineCSS</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+			</Attributes>
+			<Template><![CDATA[<mvt:if expr="'square' CIN g.PaymentMethod">
+	<!--
+	/**
+	 * These styles help make the Square payment fields look more like the other input fields associated with the ReadyTheme.
+	 */
+	 -->
+	.t-square-payment-form label {
+		display: block;
+		margin-bottom: 0.25em;
+		font-size: 0.75rem;
+	}
+
+
+	.t-square-payment-form .sq-input {
+		display: block;
+		margin-bottom: 0.5em;
+		width: 100%;
+		font-size: 1rem;
+		background-color: #fff;
+		border: 1px solid #c0c0c0;
+		border-radius: 0.125em;
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0.2);
+		outline: 0;
+		transition: box-shadow 0.25s ease, border-color 0.25s ease;
+	}
+
+		/* Define how SqPaymentForm iframes should look when they have focus */
+		.t-square-payment-form .sq-input--focus {
+			border-color: #003b6f;
+		}
+
+		/* Define how SqPaymentForm iframes should look when they contain invalid values */
+		.t-square-payment-form .sq-input--error {
+			border-color: #f02;
+		}
+</mvt:if>
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>stylesheet</Code>
+			<Type>CombinedResource</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>core</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/core.css</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>extensions</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/extensions.css</File_Path>
+		</CSSResource_Add>
+		<CSSResource_Add>
+			<Code>theme</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>text/css</Value>
+				</Attribute>
+				<Attribute>
+					<Name>media</Name>
+					<Value>all</Value>
+				</Attribute>
+				<Attribute>
+					<Name>rel</Name>
+					<Value>stylesheet</Value>
+				</Attribute>
+			</Attributes>
+			<File_Path>themes/%STORE_ID%/shadows/theme.css</File_Path>
+		</CSSResource_Add>
+		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="core" />
+		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="extensions" />
+		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="theme" />
+		<CSSResourceXGroup_Assign code="square-payment" group_code="head_tag" />
+		<CSSResourceXGroup_Assign code="preconnect-google-analytics" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="preconnect-google-fonts" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="google-fonts" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="combofacets" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="mailchimp" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="stylesheet" group_code="css_list" />
+		<CSSResourceXPage_Assign code="square-payment" page_code="OPAY" />
+		<JavaScriptResource_Add>
+			<Code>settings</Code>
+			<Type>InlineScript</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<Template><![CDATA[theme_path = '&mvt:global:theme_path;/';
+
+(function (mivaJS) {
+	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
+	mivaJS.ReadyThemeVersion = '2.0.0';
+	mivaJS.Store_Code = '&mvtj:global:store:code;';
+	mivaJS.Product_Code = '&mvtj:product:code;';
+	mivaJS.Category_Code = '&mvtj:category:code;';
+	mivaJS.Customer_Login = '&mvtj:global:customer:login;';
+	mivaJS.Page = '&mvtj:page:code;';
+	mivaJS.Screen = '&mvtj:global:screen;';
+
+	/**
+	 * These are options you can use to control some JavaScript function on your site.
+	 * If set to `1`, the item will trigger; to disable, set to `0`.
+	 */
+	mivaJS.showMiniBasket = 1;
+	mivaJS.scrollToMiniBasket = 0;
+
+}(window.mivaJS || (window.mivaJS = {})));
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>core</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/core.js</File_Path>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>extensions</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/extensions.js</File_Path>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>theme</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/theme.js</File_Path>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>polyfills</Code>
+			<Type>LocalFile</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/polyfills.js</File_Path>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>contact</Code>
+			<Type>LocalFile</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<File_Path>themes/%STORE_ID%/shadows/extensions/contact/contact.js</File_Path>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>GTM-dataLayer</Code>
+			<Type>InlineScript</Type>
+			<Global>Yes</Global>
+			<Active>No</Active>
+			<Attributes />
+			<Template><![CDATA[<mvt:comment><!-- Google Tag Manager - Data Layer --></mvt:comment>
+var dataLayer = dataLayer || [];
+<mvt:comment><!-- Page Type Assignment --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'SFNT'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'home'" />
+<mvt:elseif expr="l.settings:page:code EQ 'SRCH' OR l.settings:page:code EQ 'SEARCH'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'searchresults'" />
+<mvt:elseif expr="l.settings:page:code EQ 'CTGY'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'category'" />
+<mvt:elseif expr="l.settings:page:code EQ 'PROD'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'product'" />
+<mvt:elseif expr="l.settings:page:code CIN 'BASK,ORDL,OCST,OUS1,OUSM,OSEL,OPAY'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'cart'" />
+<mvt:elseif expr="l.settings:page:code EQ 'INVC'">
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'purchase'" />
+<mvt:else>
+	<mvt:assign name="l.settings:dataLayer:pageType" value="'other'" />
+</mvt:if>
+
+<mvt:comment><!-- Checkout Step Assignment --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'BASK'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="1"/>
+<mvt:elseif expr="l.settings:page:code EQ 'ORDL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="2"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OCST'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="3"/>
+<mvt:elseif expr="g.Screen EQ 'OUSL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="4"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OSEL'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="5"/>
+<mvt:elseif expr="l.settings:page:code EQ 'OPAY'">
+	<mvt:assign name="l.settings:datalayer:checkout_step" value="6"/>
+</mvt:if>
+
+<mvt:comment><!-- User Email Assignment --></mvt:comment>
+<mvt:if expr="g.customer:bill_email">
+	<mvt:assign name="l.settings:datalayer:userEmail" value="g.customer:bill_email" />
+<mvt:elseif expr="g.basket:bill_email">
+	<mvt:assign name="l.settings:datalayer:userEmail" value="g.basket:bill_email" />
+<mvt:else>
+	<mvt:assign name="l.settings:datalayer:userEmail" value="''" />
+</mvt:if>
+
+<mvt:comment><!-- Basic DataLayer Push --></mvt:comment>
+dataLayer.push({
+	<mvt:if expr="g.Screen EQ 'NTFD'">
+		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+		"event": "NTFD",
+	<mvt:elseif expr="g.Screen EQ 'SRCH'">
+		"canonicalUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+		"searchTerm": "&mvtj:global:Search;",
+		"event": "SRCH",
+	<mvt:else>
+		"canonicalUri": "&mvtj:ga_tracking:url_override_unencoded;",
+	</mvt:if>
+	"requestUri": "<mvt:eval expr="encodejavascriptstring( s.request_uri )" />",
+	"refererUri": "<mvt:eval expr="encodejavascriptstring( s.http_referer )" />",
+	"pageCode": "&mvtj:page:code;",
+	"pageType": "&mvtj:datalayer:pageType;",
+	"pageName": "&mvtj:datalayer:pageName;",
+	"userId": "&mvtj:global:basket:cust_id;",
+	"userEmail": "&mvtj:datalayer:userEmail;",
+	"basketId": "&mvtj:global:basket:basket_id;",
+	"categoryCode": "&mvtj:global:Category_Code;",
+	"categoryName": "&mvtj:datalayer:categoryName;",
+	"productCode": "&mvtj:product:code;",
+	"checkoutStep": "&mvtj:datalayer:checkout_step;"
+});
+
+<mvt:comment><!-- PROD DataLayer Push --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'PROD'">
+	<mvt:if expr="NOT ISNULL l.settings:product:variant">
+		dataLayer.push({
+			"ecommerce": {
+				"detail": {
+					"products": [{
+						"name": "&mvtj:product:variant:name;",
+						"id": "&mvtj:product:variant:code;",
+						"price": "&mvtj:product:variant:price;",
+						"sku": "&mvtj:product:variant:code;",
+						"category": "",
+						"variant": ""
+					}]
+				}
+			},
+			"content_type": "product",
+			"content_ids": "&mvtj:product:variant:code;",
+			"value": "&mvt:product:variant:price;",
+			"currency": "USD"
+		});
+	<mvt:else>
+		dataLayer.push({
+			"ecommerce": {
+				"detail": {
+					"products": [{
+						"name": "&mvtj:product:name;",
+						"id": "&mvtj:product:code;",
+						"price": "&mvtj:product:price;",
+						"sku": "&mvtj:item:sku;",
+						"category": "",
+						"variant": ""
+					}]
+				}
+			},
+			"content_type": "product",
+			"content_ids": "&mvtj:product:code;",
+			"value": "&mvt:product:price;",
+			"currency": "USD"
+		});
+	</mvt:if>
+</mvt:if>
+
+<mvt:comment><!-- INVC DataLayer Push --></mvt:comment>
+<mvt:if expr="l.settings:page:code EQ 'INVC'">
+	<mvt:foreach iterator="charge" array="order:charges">
+		<mvt:if expr="l.settings:charge:type EQ 'TAX'">
+			<mvt:assign name="l.settings:gtm:tax" value="l.settings:charge:disp_amt" />
+		<mvt:elseif expr="l.settings:charge:type EQ 'SHIPPING'">
+			<mvt:assign name="l.settings:gtm:shipping" value="l.settings:charge:disp_amt" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="'['" />
+	</mvt:if>
+	<mvt:foreach iterator="item" array="order:items">
+		<mvt:if expr="POS1 GT 1">
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		<mvt:else>
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:order:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	</mvt:if>
+
+	dataLayer.push({
+		"event": "invc",
+		"ecommerce": {
+			"purchase": {
+				"actionField": {
+					"id": "&mvtj:order:id;",
+					"revenue": "&mvtj:order:total;",
+					"tax": "&mvtj:gtm:tax;",
+					"shipping": "&mvtj:gtm:shipping;"
+				},
+				"products": [
+				<mvt:foreach iterator="item" array="order:groups">
+					<mvt:if expr="POS1 GT 1">,</mvt:if>
+					{
+						"name": "&mvtj:item:name;",
+						"id": "&mvtj:item:code;",
+						"price": "&mvtj:item:price;",
+						"sku": "&mvtj:item:sku;",
+						<mvt:if expr="miva_array_elements(l.settings:item:options) GT 0">
+							<mvt:assign name="l.settings:item:gtm_variant" value="''" />
+							<mvt:foreach iterator="option" array="item:options">
+								<mvt:if expr="POS2 GT 1">
+									<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ ' ' " />
+								</mvt:if>
+								<mvt:assign name="l.settings:item:gtm_variant" value="l.settings:item:gtm_variant $ l.settings:option:opt_code" />
+							</mvt:foreach>
+							<mvt:if expr="l.settings:item:gtm_variant">
+							"variant": "&mvtj:item:gtm_variant;",
+							</mvt:if>
+						</mvt:if>
+						"quantity": &mvtj:item:quantity;
+					},
+				</mvt:foreach>
+				],
+				"coupons": [
+				<mvt:foreach iterator="coupon" array="order:coupons">
+					"&mvtj:coupon:code;",
+				</mvt:foreach>
+				]
+			}
+		},
+		"order_id": "&mvtj:order:id;",
+		"order_total": "&mvtj:order:total;",
+		"content_type": "product",
+		"content_ids": "&mvtj:content_ids;",
+		"value": &mvtj:order:total;,
+		"currency": "USD"
+	});
+
+<mvt:comment><!-- (OTHER)CHECKOUT PAGES DataLayer Push --></mvt:comment>
+<mvt:elseif expr="l.settings:datalayer:checkout_step">
+
+	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="'['" />
+	</mvt:if>
+	<mvt:foreach iterator="item" array="basket:items">
+		<mvt:if expr="POS1 GT 1">
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ',' $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		<mvt:else>
+			<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ asciichar(39) $ encodejavascriptstring( l.settings:item:code ) $ asciichar(39)" />
+		</mvt:if>
+	</mvt:foreach>
+	<mvt:if expr="miva_array_elements(l.settings:basket:items) GT 1">
+		<mvt:assign name="l.settings:content_ids" value="l.settings:content_ids $ ']'" />
+	</mvt:if>
+	dataLayer.push({
+		"event": "checkout",
+		"ecommerce": {
+			"checkout": {
+				"actionField": {
+					"step": &mvt:datalayer:checkout_step;
+				},
+				"products": [
+					<mvt:foreach iterator="item" array="global_minibasket:items">
+						{
+							"name": "&mvtj:item:name;",
+							"id": "&mvtj:item:product:code;",
+							"price": "&mvtj:item:price;",
+							"sku": "&mvtj:item:sku;",
+							"category": "",
+							"variant": "",
+							"quantity": &mvtj:item:quantity;
+						},
+					</mvt:foreach>
+				],
+				"coupons": [
+				<mvt:foreach iterator="coupon" array="global_minibasket:coupons">
+					"&mvtj:coupon:code;",
+				</mvt:foreach>
+				]
+			}
+		},
+		"content_type": "product",
+		"content_ids": "&mvt:content_ids;",
+		"value": "&mvt:basket:total;",
+		"currency": "USD"
+	});
+</mvt:if>
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>scripts</Code>
+			<Type>CombinedResource</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>product-json-ld</Code>
+			<Type>InlineScript</Type>
+			<Global>No</Global>
+			<Active>Yes</Active>
+			<Attributes>
+				<Attribute>
+					<Name>type</Name>
+					<Value>application/ld+json</Value>
+				</Attribute>
+			</Attributes>
+			<Template><![CDATA[<mvt:assign name="l.settings:product:stripped_descrip" value="miva_html_strip(l.settings:product:descrip, '')"/>
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"name": "&mvtj:product:name;",
+	"image": "&mvt:global:socialImage;",
+	"description": "&mvtj:product:stripped_descrip;",
+	<mvt:if expr="NOT ISNULL l.settings:product:sku">
+		"sku": "&mvtj:product:sku;",
+		"mpn": "&mvtj:product:sku;",
+	<mvt:else>
+		"sku": "&mvtj:product:code;",
+		"mpn": "&mvtj:product:code;",
+	</mvt:if>
+	"category": "&mvtj:category:name;",
+	"brand": {
+		"@type": "Thing",
+		<mvt:if expr="NOT ISNULL l.settings:product:customfield_values:customfields:brand">
+			"name": "&mvtj:product:customfield_values:customfields:brand;"
+		<mvt:else>
+			"name": "&mvtj:global:store:name;"
+		</mvt:if>
+	},
+	"offers": {
+		"@type": "Offer",
+		"url": "&mvtj:product:link;",
+		<mvt:if expr="NOT ISNULL l.settings:product:sku">
+			"sku": "&mvtj:product:sku;",
+		<mvt:else>
+			"sku": "&mvtj:product:code;",
+		</mvt:if>
+		"name": "&mvtj:product:name;",
+		"description": "&mvtj:product:stripped_descrip;",
+		"seller": "&mvtj:global:store:name;",
+		"itemCondition": "new",
+		<mvt:if expr="l.settings:attributemachine:product:inv_level">
+			<mvt:assign name="l.availability_inv_level" value="l.settings:attributemachine:product:inv_level"/>
+			<mvt:do name="l.formatted_variant_price" file="g.Module_Root $ g.Store:currncy_mod:module" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:attributemachine:product:price )" />
+			"price": "&mvtj:attributemachine:product:price;",
+		<mvt:else>
+			<mvt:assign name="l.availability_inv_level" value="l.settings:product:inv_level"/>
+			"price": "&mvtj:product:price;",
+		</mvt:if>
+		<mvt:if expr="l.availability_inv_level EQ 'low'">
+			"availability": "http://schema.org/LimitedAvailability",
+		<mvt:elseif expr="l.availability_inv_level EQ 'out'">
+			"availability": "http://schema.org/OutOfStock",
+		<mvt:else>
+			"availability": "http://schema.org/InStock",
+		</mvt:if>
+		"priceCurrency": "USD"
+	}
+}
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptResource_Add>
+			<Code>legacy-browsers</Code>
+			<Type>InlineScript</Type>
+			<Global>Yes</Global>
+			<Active>Yes</Active>
+			<Attributes />
+			<Template><![CDATA[<mvt:do name="l.success" file="g.Module_Feature_TUI_DB" value="Runtime_JavaScriptResource_Load_Code('polyfills', l.settings:scriptresource)" />
+<mvt:if expr="l.settings:scriptresource:active EQ 1">
+	if (!!window.MSInputMethodContext && !!document.documentMode) {
+		(function () {
+			var polyfill = document.createElement('script');
+
+			polyfill.type = 'text/javascript';
+			polyfill.async = true;
+			polyfill.src = '&mvte:scriptresource:file;';
+			document.head.appendChild(polyfill);
+		})();
+	}
+</mvt:if>
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
+		<JavaScriptCombinedResourceXResource_Assign combined_code="scripts" resource_code="core" />
+		<JavaScriptCombinedResourceXResource_Assign combined_code="scripts"
+			resource_code="extensions" />
+		<JavaScriptCombinedResourceXResource_Assign combined_code="scripts" resource_code="theme" />
+		<JavaScriptResourceXGroup_Assign code="GTM-dataLayer" group_code="head_tag" />
+		<JavaScriptResourceXGroup_Assign code="runtimecombofacets" group_code="head_tag" />
+		<JavaScriptResourceXGroup_Assign code="mailchimp" group_code="head_tag" />
+		<JavaScriptResourceXGroup_Assign code="legacy-browsers" group_code="head_tag" />
+		<JavaScriptResourceXGroup_Assign code="settings" group_code="footer_js" />
+		<JavaScriptResourceXGroup_Assign code="scripts" group_code="footer_js" />
+		<JavaScriptResourceXGroup_Assign code="contact" group_code="footer_js" />
+		<JavaScriptResourceXGroup_Assign code="product-json-ld" group_code="footer_js" />
+		<JavaScriptResourceXPage_Assign code="contact" page_code="CTUS" />
+		<JavaScriptResourceXPage_Assign code="product-json-ld" page_code="PROD" />
+	</Resources>
+	<ExternalFiles>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_mastercard.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_invc.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_opay.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_ppal_osel.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_discover.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_paypal.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_check.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_amex.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/logo_visa.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/fasten-header-logo.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core/images/img_cvv.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-left_2-min.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-image-min.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/promo-right-min.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/hero-min.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/graphics/%STORE_ID%/logo-min.png</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/robots.txt</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/404.html</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.css</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/core.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/theme.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/polyfills.js</Name>
+		</File>
+		<File>
+			<Name>/%STORE_BASEHREF%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
+		</File>
+	</ExternalFiles>
+</SKINFile>

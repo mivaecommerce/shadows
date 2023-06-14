@@ -1,0 +1,43 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "ordh-footer.mvc",
+            "template_id": 348
+        },
+        "header": {
+            "template_filename": "ordh-header.mvc",
+            "template_id": 347
+        }
+    },
+    "orderhistory_list": {
+        "advanced": 1,
+        "default_sort": "OrdDtDesc",
+        "invoice": 1,
+        "order_date": 1,
+        "order_total": 1,
+        "paginate": 1,
+        "per_page": 12,
+        "products_bought": 1,
+        "quantity_bought": 1,
+        "status": 1,
+        "template_filename": "ordh-orderhistory_list.mvc",
+        "template_id": 349,
+        "tracking": 1
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    }
+}

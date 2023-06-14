@@ -1,0 +1,102 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:category:page_title">
+		<title>&mvt:category:page_title;</title>
+	<mvt:elseif expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:category:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+	
+	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l o-layout--wide">
+		<div class="o-layout__item u-width-12 u-width-9--l">
+			<mvt:if expr="NOT ISNULL l.settings:category_title:image">
+				<section class="o-layout u-hidden u-flex--l">
+					<div class="o-layout__item">
+						<div class="x-hero" title="&mvte:category:name;">
+							<img src="&mvte:category_title:image;" alt="&mvte:category:name;" loading="lazy">
+						</div>
+						<br>
+					</div>
+				</section>
+			</mvt:if>
+	
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<mvt:item name="hdft" param="header" />
+				</div>
+			</section>
+			
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<mvt:item name="prod_ctgy_hdft" param="ctgy_header" />
+				</div>
+			</section>
+
+			<mvt:foreach array="cattree_categories" iterator="category_children">
+				<mvt:if expr="l.settings:category_children:parent_id EQ l.settings:category:id">
+					<mvt:assign name="l.null" value="miva_array_insert(l.settings:subcategories, l.settings:category_children, -1)" />
+				</mvt:if>
+			</mvt:foreach>
+			<mvt:assign name="l.settings:subcategory_count" value="miva_array_elements(l.settings:subcategories)" />
+			<mvt:if expr="l.settings:subcategories GT 0">
+				<section class="o-layout u-grids-2 u-grids-3--l x-product-list">
+					<mvt:foreach iterator="subcategory" array="subcategories">
+						<div class="o-layout__item u-text-center x-product-list__item">
+							<a class="u-block x-product-list__link" href="&mvte:subcategory:link;">
+								<figure class="x-product-list__figure">
+									<mvt:if expr="l.settings:subcategory:image">
+										<img class="x-product-list__image" src="&mvte:subcategory:image;" alt="&mvte:subcategory:name;" loading="lazy">
+									</mvt:if>
+									<figcaption>
+										<strong class="x-product-list__name u-text-uppercase">&mvte:subcategory:name;</strong>
+									</figcaption>
+								</figure>
+							</a>
+						</div>
+					</mvt:foreach>
+				</section>
+			<mvt:else>
+				<mvt:item name="category_listing" />
+			</mvt:if>
+			
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<mvt:item name="prod_ctgy_hdft" param="ctgy_footer" />
+				</div>
+			</section>
+			
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<mvt:item name="hdft" param="footer" />
+				</div>
+			</section>
+		</div>
+		<aside class="o-layout__item u-width-12 u-width-3--l">
+			<section class="o-layout u-hidden--l">
+				<div class="o-layout__item">
+					<p class="c-heading-delta u-text-bold u-text-center u-text-uppercase">&mvte:category:name;</p>
+					<mvt:if expr="NOT ISNULL l.settings:category_title:image">
+						<div class="x-hero" title="&mvte:category:name;">
+							<img src="&mvte:category_title:image;" alt="&mvte:category:name;" loading="lazy">
+						</div>
+						<br>
+					</mvt:if>
+				</div>
+			</section>
+			<mvt:item name="category_tree" />
+			<mvt:item name="facets" />
+		</aside>
+		
+	</section>
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

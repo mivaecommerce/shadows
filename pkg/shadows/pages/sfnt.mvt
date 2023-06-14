@@ -1,0 +1,95 @@
+<mvt:item name="html_profile" />
+<head itemscope itemtype="http://schema.org/WebSite">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;" />
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title itemprop="name">&mvt:page:title;</title>
+	<mvt:else>
+		<title itemprop="name">&mvt:store:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+		</div>
+	</section>
+
+	<mvt:item name="readytheme" param="Load_Image('storefront_hero_image', g.storefront_hero_image)" />
+	<mvt:if expr="g.storefront_hero_image:active">
+		<mvt:if expr="g.storefront_hero_image:link_type NE 'N'">
+			<mvt:if expr="g.storefront_hero_image:link_type EQ 'G'">
+				<mvt:do file="g.Module_Feature_TUI_DB" name="l.success" value="Page_Load_Code( g.storefront_hero_image:link_dest, l.settings:rt_g )" />
+				<mvt:do file="g.Module_Feature_URI_UT" name="g.storefront_hero_image:uri" value="Store_Page_URL(l.settings:rt_g, NULL)" />
+			<mvt:elseif expr="g.storefront_hero_image:link_type EQ 'C'">
+				<mvt:do file="g.Module_Library_DB" name="l.success" value="Category_Load_Code( g.storefront_hero_image:link_dest, l.settings:rt_c )" />
+				<mvt:do file="g.Module_Feature_URI_UT" name="g.storefront_hero_image:uri" value="Store_Category_URL(l.settings:rt_c, NULL)" />
+			<mvt:elseif expr="g.storefront_hero_image:link_type EQ 'P'">
+				<mvt:do file="g.Module_Library_DB" name="l.success" value="Product_Load_Code( g.storefront_hero_image:link_dest, l.settings:rt_p )" />
+				<mvt:do file="g.Module_Feature_URI_UT" name="g.storefront_hero_image:uri" value="Store_Product_URL(l.settings:rt_p, NULL)" />
+			<mvt:elseif expr="g.storefront_hero_image:link_type EQ 'U'">
+				<mvt:assign name="g.storefront_hero_image:uri" value="g.storefront_hero_image:link_dest" />
+			<mvt:else>
+				<mvt:assign name="g.storefront_hero_image:uri" value="NULL" />
+			</mvt:if>
+		<mvt:else>
+			<mvt:assign name="g.storefront_hero_image:uri" value="NULL" />
+		</mvt:if>
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+				<mvt:if expr="g.storefront_hero_image:link_dest">
+					<a class="x-hero" href="&mvt:global:storefront_hero_image:uri;" target="&mvt:global:storefront_hero_image:link_targ;">
+						<img src="&mvte:global:storefront_hero_image:image;" alt="&mvte:global:storefront_hero_image:image_alt;" loading="lazy">
+					</a>
+				<mvt:else>
+					<span class="x-hero">
+						<mvt:item name="readytheme" param="image( 'storefront_hero_image' )" />
+					</span>
+				</mvt:if>
+			</div>
+		</section>
+		<br>
+	</mvt:if>
+	
+	<mvt:item name="readytheme" param="contentsection( 'storefront_about_us' )" />
+
+	<mvt:item name="readytheme" param="Load_Image('storefront_promo_large', g.storefront_promo_large)" />
+	<mvt:if expr="g.storefront_promo_large:image">
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<mvt:item name="readytheme" param="image( 'storefront_promo_large' )" />
+			</div>
+		</section>
+		<br>
+	</mvt:if>
+
+	<mvt:item name="readytheme" param="Load_Image('storefront_promo_small_01', g.storefront_promo_small_01)" />
+	<mvt:item name="readytheme" param="Load_Image('storefront_promo_small_02', g.storefront_promo_small_02)" />
+	<mvt:if expr="g.storefront_promo_small_01:image OR g.storefront_promo_small_02:image">
+		<section class="o-layout u-grids-1 u-grids-2--m">
+			<p class="o-layout__item">
+				<mvt:item name="readytheme" param="image( 'storefront_promo_small_01' )" />
+			</p>
+			<p class="o-layout__item">
+				<mvt:item name="readytheme" param="image( 'storefront_promo_small_02' )" />
+			</p>
+		</section>
+		<br>
+	</mvt:if>
+	
+	<mvt:item name="readytheme" param="Load_ProductListing('featured_products', g.featured_products_test )" />
+	<mvt:item name="readytheme" param="productlisting( 'featured_products' )" />
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

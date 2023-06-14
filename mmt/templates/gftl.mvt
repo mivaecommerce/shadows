@@ -1,0 +1,92 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+			<p class="u-text-bold u-text-center">You must have a customer account to redeem a gift certificate.</p>
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--justify-around">
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
+			<p class="c-heading-delta u-text-uppercase">Welcome Back</p>
+			<form method="post" action="&mvte:urls:RGFT:secure;" autocomplete="off">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<input type="hidden" name="Action" value="LOGN" />
+					<div class="c-form-list">
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-small u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
+							<input id="l-Customer_LoginEmail" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-small u-text-bold u-text-uppercase is-required &mvt:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<input id="l-Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="current-password" required>
+						</div>
+						<div class="c-form-list__item u-text-right">
+							<mvt:item name="buttons" param="Login" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<p class="u-font-small"><a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot your password?</a></p>
+		</div>
+		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
+			<p class="c-heading-delta u-text-uppercase">New Customers</p>
+			<form class="o-layout" method="post" action="&mvte:urls:CACT:secure;">
+				<fieldset class="o-layout__item">
+					<legend>Customer Log In</legend>
+					<input type="hidden" name="current_location" value="&mvte:urls:RGFT:secure_sep;">
+					<input type="hidden" name="Redeem" value="1">
+					<div class="c-form-list">
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_fname">First Name</label>
+							<input id="register_fname" class="c-form-input c-form-input--large" type="text" name="register_fname" value="" autocomplete="given-name" required aria-required="true">
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_lname">Last Name</label>
+							<input id="register_lname" class="c-form-input c-form-input--large" type="text" name="register_lname" autocomplete="family-name" required aria-required="true">
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_email">Email Address</label>
+							<input id="register_email" class="c-form-input c-form-input--large" type="email" name="register_email" value="&mvte:global:register_email;" autocomplete="email" required aria-required="true">
+						</div>
+						<div class="c-form-list__item">
+							<label class="c-form-label u-font-tiny u-text-bold u-text-uppercase is-required" for="register_password">Password</label>
+							<input id="register_password" class="c-form-input c-form-input--large" type="password" name="register_password" autocomplete="new-password" required aria-required="true">
+						</div>
+						<div class="c-form-list__item u-text-right">
+							<input class="c-button c-button--full c-button--hollow c-button--huge u-bg-white u-color-gray-50 u-font-small u-text-bold u-text-uppercase" type="submit" value="Create My Account">
+						</div>
+					</div>
+				</fieldset>
+			</form>
+			<br>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+			<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

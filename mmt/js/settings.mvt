@@ -1,0 +1,20 @@
+theme_path = '&mvt:global:theme_path;/';
+
+(function (mivaJS) {
+	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
+	mivaJS.ReadyThemeVersion = '2.0.0';
+	mivaJS.Store_Code = '&mvtj:global:store:code;';
+	mivaJS.Product_Code = '&mvtj:product:code;';
+	mivaJS.Category_Code = '&mvtj:category:code;';
+	mivaJS.Customer_Login = '&mvtj:global:customer:login;';
+	mivaJS.Page = '&mvtj:page:code;';
+	mivaJS.Screen = '&mvtj:global:screen;';
+
+	/**
+	 * These are options you can use to control some JavaScript function on your site.
+	 * If set to `1`, the item will trigger; to disable, set to `0`.
+	 */
+	mivaJS.showMiniBasket = 1;
+	mivaJS.scrollToMiniBasket = 0;
+
+}(window.mivaJS || (window.mivaJS = {})));

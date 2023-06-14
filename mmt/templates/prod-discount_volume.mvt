@@ -1,0 +1,26 @@
+<mvt:if expr="NOT ISNULL l.settings:discount_volume:table">
+	<div class="c-form-list__item x-product-layout-purchase__volume-pricing">
+		<table class="o-table o-table--fixed c-table-simple">
+			<tr class="c-table-simple__row">
+				<th class="c-table-simple__cell">Quantity</th>
+				<th class="c-table-simple__cell">Price</th>
+			</tr>
+			<mvt:foreach iterator="entry" array="discount_volume:table">
+				<tr class="c-table-simple__row">
+					<td class="c-table-simple__cell">
+						<mvt:if expr="l.settings:entry:low EQ l.settings:entry:high">
+							&mvte:entry:low;
+						<mvt:elseif expr="l.settings:entry:high">
+							&mvte:entry:low;-&mvte:entry:high;
+						<mvt:else>
+							&mvte:entry:low;+
+						</mvt:if>
+					</td>
+					<td class="c-table-simple__cell">
+						&mvt:entry:formatted_price;
+					</td>
+				</tr>
+			</mvt:foreach>
+		</table>
+	</div>
+</mvt:if>

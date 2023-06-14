@@ -1,0 +1,206 @@
+<table class="c-table-simple t-checkout-basket-summary__product-summary">
+	<thead>
+		<tr class="c-table-simple__row">
+			<td class="c-table-simple__cell u-flex o-layout--justify-between o-layout--align-baseline">
+				<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
+					<span class="c-heading-echo u-text-bold u-text-uppercase">Your Cart: &mvte:global_minibasket:basket_count; Items</span>
+				<mvt:else>
+					<span class="c-heading-echo u-text-bold u-text-uppercase">Your Cart: &mvte:global_minibasket:basket_count; Item</span>
+				</mvt:if>
+				<a class="u-font-small u-color-black" href="&mvte:urls:BASK:auto;">Edit Cart</a>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<mvt:assign name="g.basket_subtotal" value="0" />
+		<mvt:foreach iterator="group" array="basket:groups">
+			<tr class="c-table-simple__row">
+				<td class="c-table-simple__cell u-flex">
+					<p class="t-checkout-basket-summary__image">
+						<mvt:if expr="ISNULL l.settings:group:imagetypes:main">
+							&nbsp;
+						<mvt:else>
+							<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" title="&mvte:group:name;">
+						</mvt:if>
+					</p>
+					<div class="u-font-small">
+						<p>
+							<strong>&mvt:group:name;</strong><br />
+							<mvt:if expr="l.settings:group:upsold">
+								(Special Offer)<br />
+							</mvt:if>
+							<span class="u-font-small">
+								<span>SKU: &mvt:group:code;</span><br>
+								<mvt:foreach iterator="discount" array="group:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<mvt:if expr="'sale' CIN l.settings:discount:descrip">
+											<mvt:assign name="l.settings:discount:descrip" value="'Savings'"/>
+										<mvt:else>
+											<mvt:assign name="l.settings:discount:descrip" value="l.settings:discount:descrip"/>
+										</mvt:if>
+										<span class="u-color-red">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</span><br>
+									</mvt:if>
+								</mvt:foreach>
+								<mvt:foreach iterator="option" array="group:options">
+									<mvt:if expr="l.settings:option:option_id">
+										<span>&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span><br>
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										<span>&mvt:option:attr_prompt;: &mvt:option:data;</span><br>
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_logn">
+										<span>&mvt:option:attr_prompt;: &mvt:option:data_logn;</span><br>
+									<mvt:else>
+										<span>&mvt:option:attr_prompt;</span><br>
+									</mvt:if>
+									<mvt:foreach iterator="discount" array="option:discounts">
+										<mvt:if expr="l.settings:discount:display">
+											<span>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</span><br>
+										</mvt:if>
+									</mvt:foreach>
+								</mvt:foreach>
+								Qty: &mvt:group:quantity;
+							</span>
+						</p>
+						<ul class="o-list-inline">
+							<li class="o-list-inline__item u-text-bold">&mvt:group:formatted_subtotal_comprehensive;</li>
+							<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:group:subtotal_comprehensive" />
+							<mvt:if expr="l.settings:group:subtotal_base_price NE l.settings:group:subtotal">
+								<li class="o-list-inline__item"><s>&mvt:group:formatted_subtotal_base_price;</s></li>
+							</mvt:if>
+						</ul>
+					</div>
+				</td>
+			</tr>
+		</mvt:foreach>
+	</tbody>
+</table>
+
+<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, g.basket_subtotal)" />
+<table class="c-table-simple u-text-bold">
+	<thead>
+		<tr class="c-table-simple__row">
+			<td class="c-table-simple__cell c-table-simple__cell--standard">
+				<span class="c-heading-echo u-text-uppercase">Order Summary</span>
+			</td>
+		</tr>
+	</thead>
+	<tbody>
+		<tr class="c-table-simple__row u-font-small">
+			<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+				<span>
+					<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
+						Subtotal: &mvte:global_minibasket:basket_count; Items
+					<mvt:else>
+						Subtotal: &mvte:global_minibasket:basket_count; Item
+					</mvt:if>
+				</span>
+				<span>&mvt:basket:formatted_subtotal;</span>
+			</td>
+		</tr>
+		
+		<mvt:foreach iterator="charge" array="basket:charges">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>&mvt:charge:descrip;</span>
+					<span>&mvt:charge:formatted_disp_amt;</span>
+				</td>
+			</tr>
+		</mvt:foreach>
+
+		<mvt:foreach iterator="coupon" array="basket:coupons">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>&mvt:coupon:code;</span>
+					<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
+						<span>&mvt:coupon:descrip;</span>
+					</mvt:if>
+				</td>
+			</tr>
+		</mvt:foreach>
+		
+		<tr class="c-table-simple__row">
+			<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between c-heading-echo u-text-uppercase">
+				<span>Total</span>
+				<span>&mvt:basket:formatted_total;</span>
+			</td>
+		</tr>
+
+		<mvt:foreach iterator="split" array="splitpayment:splits">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>Pending Payment: &mvt:split:desc;</span>
+					<span>&mvt:split:formatted_amount_negative;</span>
+				</td>
+			</tr>
+		</mvt:foreach>
+		
+		<mvt:if expr="( NOT ISNULL l.settings:splitpayment:remaining ) AND ( l.settings:splitpayment:remaining NE l.settings:basket:total )">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+					<span>Total Remaining</span>
+					<span>&mvt:splitpayment:formatted_remaining;</span>
+				</td>
+			</tr>
+		</mvt:if>
+		
+		<mvt:if expr="l.settings:basket:applycoupons">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard x-collapsible-content">
+					<button class="u-flex o-layout--justify-between o-layout--align-center u-text-bold u-text-uppercase x-collapsible-content__toggle" data-a11y-toggle="basket-coupon-form-toggle" type="button">
+						<span>Add Promo Code</span>
+						<span class="u-icon-add" data-toggle="<" aria-hidden="true"></span>
+					</button>
+					<form id="basket-coupon-form-toggle" class="t-basket_coupon-form x-collapsible-content__item" data-hook="basket__coupon-form" method="post" action="&mvte:urls:_self:auto;">
+						<fieldset>
+							<legend>Add Promo Code</legend>
+							<input type="hidden" name="Action" value="ACPN" />
+							<div class="c-form-list">
+								<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
+									<label class="u-hide-visually" for="Coupon_Code">Add Promo Code</label>
+									<input id="Coupon_Code" class="c-form-input c-control-group__field u-text-regular" type="text" name="Coupon_Code" placeholder="Enter Promo Code" required>
+									<input class="c-button c-control-group__button u-bg-gray-50 u-border-none u-text-uppercase" data-hook="basket__coupon-form-submit" type="submit" value="Apply">
+								</div>
+							</div>
+						</fieldset>
+					</form>
+				</td>
+			</tr>
+		</mvt:if>
+		
+		<mvt:if expr="l.settings:basket:redeemgiftcerts">
+			<tr class="c-table-simple__row u-font-small">
+				<td class="c-table-simple__cell c-table-simple__cell--standard t-checkout-basket-summary__promo-form">
+					<mvt:if expr="g.Basket:cust_id EQ 0">
+						<a class="u-color-gray-50" href="&mvte:urls:GFTL:auto;">Redeem Gift Certificate</a>
+					<mvt:else>
+						<button class="u-flex o-layout--justify-between o-layout--align-center u-text-bold u-text-uppercase x-collapsible-content__toggle" data-a11y-toggle="basket-credit-form-toggle" type="button">
+							<span>Redeem Gift Certificate</span>
+							<span class="u-icon-add" data-toggle="<" aria-hidden="true"></span>
+						</button>
+						<form id="basket-credit-form-toggle" class="t-basket_coupon-form x-collapsible-content__item" method="post" action="&mvte:urls:_self:auto;">
+							<fieldset>
+								<legend>Redeem Gift Certificate</legend>
+								<input type="hidden" name="Action" value="RDGC" />
+								<div class="c-form-list">
+									<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
+										<label class="u-hide-visually" for="GiftCertificate_Code">Redeem Gift Certificate</label>
+										<input id="GiftCertificate_Code" class="c-form-input c-control-group__field u-text-regular" type="text" name="GiftCertificate_Code" placeholder="Enter Certificate Code" required>
+										<input class="c-button c-control-group__button u-bg-gray-50 u-border-none u-text-uppercase" type="submit" value="Apply">
+									</div>
+								</div>
+							</fieldset>
+						</form>
+					</mvt:if>
+				</td>
+			</tr>
+		</mvt:if>
+		
+		<tr>
+			<td>
+				<br>
+				<div class="u-font-small">
+					<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>

@@ -1,0 +1,57 @@
+{
+    "descrip": "This is the side navigation for all static content pages.",
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/about-us.html\" target=\"_self\">About Us</a>",
+            "link_dest": "ABUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "About Us",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/about-us.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/contact-us.html\" target=\"_self\">Contact Us</a>",
+            "link_dest": "CTUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Contact Us",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/contact-us.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html\" target=\"_self\">Frequently Asked Questions</a>",
+            "link_dest": "FAQS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Frequently Asked Questions",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/privacy-policy.html\" target=\"_self\">Privacy Policy</a>",
+            "link_dest": "PRPO",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Privacy Policy",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/privacy-policy.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/shipping-and-return-policy.html\" target=\"_self\">Shipping &amp; Return Policy</a>",
+            "link_dest": "SARP",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Shipping & Return Policy",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/shipping-and-return-policy.html"
+        }
+    ],
+    "layout": "S",
+    "name": "Static Page Navigation"
+}

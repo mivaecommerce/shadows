@@ -1,0 +1,53 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "ords-footer.mvc",
+            "template_id": 352
+        },
+        "header": {
+            "template_filename": "ords-header.mvc",
+            "template_id": 351
+        }
+    },
+    "order_customer": {
+        "prevent_template_auto_update": 1,
+        "template_filename": "ords-order_customer.mvc",
+        "template_id": 353
+    },
+    "printer_friendly_content": {
+        "template_filename": "ords-printer_friendly_content.mvc",
+        "template_id": 354
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    },
+    "view_order": {
+        "advanced": 1,
+        "b_height": 128,
+        "b_width": 128,
+        "constrain": "B",
+        "groups": 1,
+        "imagetypes": [
+            "main"
+        ],
+        "lineitemcoupons": 1,
+        "lineitemdiscounts": 1,
+        "lineitemprice": "base",
+        "payments": 1,
+        "template_filename": "ords-view_order.mvc",
+        "template_id": 355
+    }
+}

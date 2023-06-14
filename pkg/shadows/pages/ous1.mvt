@@ -1,0 +1,112 @@
+<mvt:item name="html_profile" />
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<base href="&mvt:global:basehref;">
+	<mvt:if expr="NOT ISNULL l.settings:page:title">
+		<title>&mvt:page:title;</title>
+	<mvt:else>
+		<title>&mvt:store:name;: &mvt:page:name;</title>
+	</mvt:if>
+	<mvt:item name="head" param="css_list" />
+	<mvt:item name="head" param="head_tag" />
+</head>
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+	<mvt:item name="hdft" param="global_header" />
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="header" />
+			<br>
+			<h1 class="c-heading-charlie u-text-bold u-text-uppercase u-text-center">Special Offer</h1>
+			<h2 class="c-heading-bravo u-text-center">
+				Save &mvt:upsale:formatted_upsell_savings;<br>
+				<span class="c-heading--subheading">Offer valid for this order only</span>
+			</h2>
+		</div>
+	</section>
+
+	<section class="o-layout o-layout--wide">
+		<div class="o-layout__item u-width-12 u-width-6--m">
+			<mvt:do name="l.success" file="g.Module_Library_DB" value="ProductImage_Load_Type(l.settings:upsale:id, 1, l.settings:imagetype)" />
+			<mvt:do name="l.success" file="g.Module_Library_DB" value="Image_Load_ID(l.settings:imagetype:image_id, l.settings:imagedata)" />
+			<mvt:assign name="g.socialImage" value="g.baseurl $ l.settings:imagedata:image" />
+			<mvt:if expr="NOT ISNULL l.settings:imagedata:image">
+				<div class="o-layout o-layout--wide">
+					<picture class="o-layout__item u-width-6--m">
+						<img class="u-block" src="&mvte:imagedata:image;" alt="&mvte:upsale:name;" loading="lazy" width="&mvte:imagedata:image:width;" height="&mvte:imagedata:image:height;">
+						<br>
+					</picture>
+					<div class="o-layout__item u-width-6--m">
+						<h4 class="c-heading-delta">&mvt:upsale:name;</h4>
+						<p>
+							Code: &mvt:upsale:code;<br>
+							Regular Price: &mvt:upsale:formatted_price;<br>
+							Special Price: &mvt:upsale:formatted_upsell_price;<br>
+							You Save: &mvt:upsale:formatted_upsell_savings;<br>
+							Shipping Weight: &mvt:upsale:weight; &mvt:store:wtunits;
+						</p>
+						<div>&mvt:upsale:desc;</div>
+						<br>
+					</div>
+				</div>
+			<mvt:else>
+				<h4 class="c-heading-delta">&mvt:upsale:name;</h4>
+				<p>
+					Code: &mvt:upsale:code;<br>
+					Regular Price: &mvt:upsale:formatted_price;<br>
+					Special Price: &mvt:upsale:formatted_upsell_price;<br>
+					You Save: &mvt:upsale:formatted_upsell_savings;<br>
+					Shipping Weight: &mvt:upsale:weight; &mvt:store:wtunits;
+				</p>
+				<div>&mvt:upsale:desc;</div>
+				<br>
+			</mvt:if>
+		</div>
+		<div class="o-layout__item u-width-12 u-width-6--m">
+			<form method="post" action="&mvte:urls:OSEL:secure;">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<input type="hidden" name="Action" value="AUPR" />
+					<input type="hidden" name="Product_Code" value="&mvte:upsale:code;" />
+					<mvt:if expr="g.BasketPaymentGateway EQ 1">
+						<input type="hidden" name="BasketPaymentGateway" value="1" />
+					</mvt:if>
+					<mvt:item name="tax" />
+					<div class="c-form-list">
+						<div class="c-form-list__item x-product-layout-purchase__options">
+							<mvt:item name="product_attributes" param="upsale:id" />
+						</div>
+						<div class="c-form-list__item c-form-list__item--full u-text-center">
+							<mvt:item name="buttons" param="AddToOrder" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+
+			<form method="post" action="&mvte:urls:OSEL:secure;">
+				<fieldset>
+					<legend>&mvt:page:name;</legend>
+					<mvt:if expr="g.BasketPaymentGateway EQ 1">
+						<input type="hidden" name="BasketPaymentGateway" value="1" />
+					</mvt:if>
+					<mvt:item name="tax" />
+					<div class="c-form-list">
+						<div class="c-form-list__item c-form-list__item--full u-text-center">
+							<mvt:item name="buttons" param="DoNotAddToOrder" />
+						</div>
+					</div>
+				</fieldset>
+			</form>
+		</div>
+	</section>
+	
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+
+	<mvt:item name="hdft" param="global_footer" />
+</body>
+</html>

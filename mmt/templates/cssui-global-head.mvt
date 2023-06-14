@@ -1,0 +1,25 @@
+<mvt:if expr="'CTGY' CIN l.settings:page:code">
+	<link rel="canonical" href="&mvte:category:link;" itemprop="url">
+<mvt:elseif expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
+	<link rel="canonical" href="&mvt:product:link;" itemprop="url">
+<mvt:else>
+	<link rel="canonical" href="&mvte:urls:_self:auto;" itemprop="url">
+</mvt:if>
+<mvt:if expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
+    <mvt:item name="prodctgy_meta" param="prod" />
+<mvt:elseif expr="'CTGY' CIN l.settings:page:code AND l.settings:category:metafield_count GT 0">
+    <mvt:item name="prodctgy_meta" param="ctgy" />
+<mvt:else>
+	<mvt:if expr="l.settings:page_metafield_count GT 0">
+		<mvt:item name="prodctgy_meta" param="page" />
+	<mvt:else>
+		<mvt:item name="prodctgy_meta" param="global" />
+	</mvt:if>
+</mvt:if>
+<mvt:comment>
+	<!--
+		This item outputs a single body style to control the default font, background color, and/or background image
+		if you have set them under ReadyTheme Settings.
+	-->
+	<mvt:item name="readytheme" param="css" />
+</mvt:comment>

@@ -1,0 +1,33 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "smap-footer.mvc",
+            "template_id": 404
+        },
+        "header": {
+            "template_filename": "smap-header.mvc",
+            "template_id": 403
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    },
+    "sitemap": {
+        "advanced": 1,
+        "template_filename": "smap-sitemap.mvc",
+        "template_id": 405
+    }
+}

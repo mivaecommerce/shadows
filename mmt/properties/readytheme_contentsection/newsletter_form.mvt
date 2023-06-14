@@ -1,0 +1,13 @@
+<form class="t-newsletter-form x-collapsible-content" aria-labelledby="newsletter-form-label">
+	<h5 id="newsletter-form-label" class="c-menu__title u-text-uppercase">Join Our Newsletter</h5>
+	<button class="x-collapsible-content__toggle u-text-uppercase" data-a11y-toggle="newsletter-form" type="button">Join Our Newsletter <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<fieldset id="newsletter-form" class="x-collapsible-content__item">
+		<legend>Join Our Newsletter</legend>
+		<div class="c-form__item">
+			<div class="c-control-group c-control-group--rounded">
+				<input class="c-form-input c-control-group__field u-bg-white u-border-none t-newsletter-form__input" type="email" name="email" value="" placeholder="Enter your email" aria-label="Enter your email">
+				<button class="c-button c-control-group__button u-bg-white u-color-black u-icon-arrow-right u-border-none" aria-label="Submit to join our newsletter"></button>
+			</div>
+		</div>
+	</fieldset>
+</form>

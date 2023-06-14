@@ -1,0 +1,66 @@
+{
+    "items": [
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/about-us.html\" target=\"_self\">About Us</a>",
+            "link_dest": "ABUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "About Us",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/about-us.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/contact-us.html\" target=\"_self\">Contact Us</a>",
+            "link_dest": "CTUS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Contact Us",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/contact-us.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html\" target=\"_self\">FAQS</a>",
+            "link_dest": "FAQS",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "FAQS",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/frequently-asked-questions.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/order-history-list.html\" target=\"_self\">Order Status</a>",
+            "link_dest": "ORDH",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Order Status",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/order-history-list.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/wish-lists.html\" target=\"_self\">Wish Lists</a>",
+            "link_dest": "WLST",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Wish Lists",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/wish-lists.html"
+        },
+        {
+            "active": 1,
+            "id": "",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/site-map.html\" target=\"_self\">Site Map</a>",
+            "link_dest": "SMAP",
+            "link_targ": "_self",
+            "link_type": "G",
+            "name": "Site Map",
+            "url": "https://dev-test-ssoule01.coolcommerce.net/site-map.html"
+        }
+    ],
+    "layout": "S",
+    "name": "Global Footer Quick Links"
+}

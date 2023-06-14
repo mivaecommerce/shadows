@@ -1,0 +1,53 @@
+<mvt:assign name="l.settings:product:stripped_descrip" value="miva_html_strip(l.settings:product:descrip, '')"/>
+{
+	"@context": "http://schema.org",
+	"@type": "Product",
+	"name": "&mvtj:product:name;",
+	"image": "&mvt:global:socialImage;",
+	"description": "&mvtj:product:stripped_descrip;",
+	<mvt:if expr="NOT ISNULL l.settings:product:sku">
+		"sku": "&mvtj:product:sku;",
+		"mpn": "&mvtj:product:sku;",
+	<mvt:else>
+		"sku": "&mvtj:product:code;",
+		"mpn": "&mvtj:product:code;",
+	</mvt:if>
+	"category": "&mvtj:category:name;",
+	"brand": {
+		"@type": "Thing",
+		<mvt:if expr="NOT ISNULL l.settings:product:customfield_values:customfields:brand">
+			"name": "&mvtj:product:customfield_values:customfields:brand;"
+		<mvt:else>
+			"name": "&mvtj:global:store:name;"
+		</mvt:if>
+	},
+	"offers": {
+		"@type": "Offer",
+		"url": "&mvtj:product:link;",
+		<mvt:if expr="NOT ISNULL l.settings:product:sku">
+			"sku": "&mvtj:product:sku;",
+		<mvt:else>
+			"sku": "&mvtj:product:code;",
+		</mvt:if>
+		"name": "&mvtj:product:name;",
+		"description": "&mvtj:product:stripped_descrip;",
+		"seller": "&mvtj:global:store:name;",
+		"itemCondition": "new",
+		<mvt:if expr="l.settings:attributemachine:product:inv_level">
+			<mvt:assign name="l.availability_inv_level" value="l.settings:attributemachine:product:inv_level"/>
+			<mvt:do name="l.formatted_variant_price" file="g.Module_Root $ g.Store:currncy_mod:module" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:attributemachine:product:price )" />
+			"price": "&mvtj:attributemachine:product:price;",
+		<mvt:else>
+			<mvt:assign name="l.availability_inv_level" value="l.settings:product:inv_level"/>
+			"price": "&mvtj:product:price;",
+		</mvt:if>
+		<mvt:if expr="l.availability_inv_level EQ 'low'">
+			"availability": "http://schema.org/LimitedAvailability",
+		<mvt:elseif expr="l.availability_inv_level EQ 'out'">
+			"availability": "http://schema.org/OutOfStock",
+		<mvt:else>
+			"availability": "http://schema.org/InStock",
+		</mvt:if>
+		"priceCurrency": "USD"
+	}
+}

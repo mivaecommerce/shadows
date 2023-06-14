@@ -1,0 +1,87 @@
+AttributeMachine.prototype.Generate_Discount = function (discount) {
+	let discount_div;
+
+	discount_div = document.createElement('div');
+	discount_div.innerHTML = discount.descrip + ': ' + discount.formatted_discount;
+
+	return discount_div;
+};
+
+AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
+	let swatch_container = document.querySelector('#&mvt:attributemachine:swatch_element_id;');
+	let swatch = document.createElement('li');
+	let swatchButton = document.createElement('button');
+	let img = document.createElement('img');
+
+	img.src = option.image;
+	img.setAttribute('alt', option.prompt);
+	img.setAttribute('loading', 'lazy');
+	swatchButton.setAttribute('type', 'button');
+	swatchButton.setAttribute('aria-label', option.prompt);
+	swatchButton.appendChild(img);
+	swatch.classList.add('o-list-inline__item');
+	swatch.setAttribute('data-code', option.code);
+	swatch.setAttribute('data-color', option.prompt);
+	swatch.appendChild(swatchButton);
+
+	setTimeout(function () {
+		if (swatch_container) {
+			let swatch_element = swatch_container.querySelector('ul');
+			let swatch_select = document.querySelector('[data-hook="attribute-swatch-select"]');
+			let swatch_selected = swatch_select.options[swatch_select.selectedIndex].text;
+			let swatch_name_element = document.querySelector('[data-hook="attribute-swatch-name"]');
+			let swatchElements = swatch_element.querySelectorAll('li');
+
+			swatch_element.removeAttribute('style');
+			swatch_element.classList.add('o-list-inline');
+			/**
+			 * Adds the selected swatch name to the label.
+			 */
+			swatch_name_element.textContent = swatch_selected;
+
+			/**
+			 * Adds an active class to the selected swatch.
+			 */
+			swatchElements.forEach(function (swatchElement) {
+				let swatchColor = swatchElement.getAttribute('data-code');
+				let swatchImage = swatchElement.querySelector('button');
+
+				if (swatchColor === swatch_select.options[swatch_select.selectedIndex].value) {
+					swatchImage.classList.add('x-product-layout-purchase__swatches--active');
+				}
+			});
+		}
+	}, 0);
+
+	return swatch;
+};
+
+AttributeMachine.prototype.Swatch_Click = function(input, attribute, option) {
+	let swatch_name_element = document.querySelector('[data-hook="attribute-swatch-name"]');
+	let i;
+	let swatchElements = input.machine.swatches.childNodes[0].childNodes;
+
+	for (i = 0; i < input.select.options.length; i++) {
+		if (input.select.options[i].value === option.code) {
+			input.select.selectedIndex = i;
+		}
+	}
+
+	if (attribute.inventory) {
+		this.Attribute_Changed(input);
+	}
+
+	swatch_name_element.innerHTML = option.prompt;
+
+	/**
+	 * Adds focus back to the selected swatch.
+	 */
+	swatchElements.forEach(function (swatchElement) {
+		let swatchColor = swatchElement.getAttribute('data-code');
+		let swatchImage = swatchElement.querySelector('button');
+
+		if (swatchColor === input.select.options[input.select.selectedIndex].value) {
+			swatchImage.focus();
+		}
+	});
+};

@@ -1,0 +1,1822 @@
+@charset "UTF-8";
+/* ==========================================================================
+   EXTENSIONS LIST
+   ========================================================================== */
+/* ==========================================================================
+   SETTINGS / COLORS
+   This is where the global colors are set.
+   Overrides should be placed in the 'ui/css/theme.scss' file.
+   ========================================================================== */
+/**
+ * Convert a hex value to comma-delimited rgb values
+ * @param {Color} $color - hex color
+ * @return {Color} - RGB
+ * In: #000
+ * Out: 0, 0, 0
+ */
+/**
+ * Slightly lighten a color
+ * @param {Color} $color - color to tint
+ * @param {Number} $percentage - percentage of `$color` in returned color
+ * @return {Color}
+ */
+/**
+ * Slightly darken  a color
+ * @param {Color} $color - color to shade
+ * @param {Number} $percentage - percentage of `$color` in returned color
+ * @return {Color}
+ */
+/**
+ * This section sets default theme for the project so the variables exist.
+ */
+/**
+ * This section sets shading and tinting variables to be used for events,
+ * like hover, for the project.
+ */
+/* ==========================================================================
+SETTINGS / GLOBAL
+Set all your global CSS variables in this file.
+Overrides should be placed in the 'ui/css/theme.scss' file.
+========================================================================== */
+/* theme settings
+   =========================================== */
+/* root settings
+   =========================================== */
+/* width constraints
+   =========================================== */
+/* typography settings
+   =========================================== */
+/* border settings
+   =========================================== */
+/* breakpoints
+   =========================================== */
+/* miscellaneous
+   =========================================== */
+/* ==========================================================================
+   SETTINGS / TYPOGRAPHY
+   This is where the global typography measurements are set.
+   Overrides should be placed in the 'ui/css/theme.scss' file.
+   ========================================================================== */
+/* Minor Third Font Scale */
+/* Perfect Fourth Font Scale */
+/* Editing below this point is not recommended */
+/* ==========================================================================
+   EXTENSIONS / BREADCRUMBS / COLLAPSING / COLLAPSING BREADCRUMBS
+   ========================================================================== */
+.x-collapsing-breadcrumbs {
+	margin-bottom: 1rem;
+	text-transform: uppercase;
+}
+
+.x-collapsing-breadcrumbs__group,
+.x-collapsing-breadcrumbs__list {
+	max-width: 80rem;
+	margin-right: auto;
+	margin-bottom: 0;
+	margin-left: auto;
+	padding-top: 1em;
+	padding-left: 1rem;
+	padding-right: 1rem;
+	font-size: 0.6875rem;
+	line-height: inherit;
+	border-bottom: 0 none;
+}
+
+.x-collapsing-breadcrumbs__group {
+	margin-bottom: 0;
+	border-bottom: 0 none;
+}
+
+.x-collapsing-breadcrumbs__list {
+	padding-bottom: 2em;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.x-collapsing-breadcrumbs__button {
+	padding-top: 0;
+	padding-bottom: 0;
+	font-size: 16px;
+}
+
+.x-collapsing-breadcrumbs__list .o-list-inline__item:not(:last-child) {
+	margin-right: 1em;
+}
+
+.x-collapsing-breadcrumbs .o-list-inline__item:not(:last-of-type)::after {
+	display: inline-block;
+	height: 1.75ch;
+	position: relative;
+	top: 0.25ch;
+	right: -0.5em;
+	border-right: 0.2ch solid currentColor;
+	content: '';
+	transform: rotate(15deg);
+}
+
+/* ==========================================================================
+   EXTENSIONS / CATEGORY TREE / CATEGORY TREE
+   ========================================================================== */
+.x-category-tree {
+	margin-bottom: 16px;
+	position: relative;
+}
+
+.x-category-tree__trigger {
+	display: none;
+}
+
+.x-category-tree__label.x-collapsible-content__toggle {
+	min-height: 2em;
+	margin: 0 0 1em;
+	padding: 1em 0;
+	font-size: 0.75rem;
+	border-bottom: 1px solid #eaeaea;
+}
+
+.x-category-tree .x-collapsible-content__item[aria-hidden='false'],
+.x-category-tree .x-collapsible-content__item[aria-hidden='false'] .x-category-tree__row {
+	max-height: 100%;
+}
+
+.x-category-tree__title {
+	display: none;
+}
+
+.x-category-tree__heading {
+	font-size: 15px;
+}
+
+.x-category-tree__row {
+	width: 100%;
+	max-height: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+	opacity: 0;
+	overflow: hidden;
+	visibility: hidden;
+	transition: 0.2s ease-in-out;
+}
+
+.x-category-tree__link {
+	display: block;
+	padding: 0 0 1rem;
+	font-size: 14px;
+	font-weight: 600;
+	color: #000;
+	letter-spacing: 0;
+	transition: color ease-in-out 0.2s;
+}
+
+.x-category-tree__link:hover {
+	text-decoration: none;
+}
+
+.x-category-tree__list--level-2 .x-category-tree__link {
+	padding-left: 1.75em;
+	font-size: 13px;
+	color: #595959;
+}
+
+.x-category-tree__list--level-3 .x-category-tree__link {
+	padding-left: 2.75em;
+	font-size: 12px;
+	color: #595959;
+}
+
+.x-category-tree__link--current,
+.x-category-tree__list--level-2 .x-category-tree__link--current,
+.x-category-tree__list--level-3 .x-category-tree__link--current {
+	font-weight: 700;
+	color: #000;
+}
+
+.x-category-tree__link:not(.x-category-tree__link--current):hover {
+	text-decoration: underline;
+	background-color: inherit;
+}
+
+@media (min-width: 60em) {
+	.x-category-tree__label.x-collapsible-content__toggle {
+		display: none;
+	}
+	.x-category-tree__title {
+		display: block;
+	}
+	.x-category-tree__heading {
+		padding-top: 0.25rem;
+	}
+	.x-category-tree__row,
+	.x-category-tree__row.x-collapsible-content__item {
+		max-height: none;
+		opacity: 1;
+		overflow: visible;
+		visibility: visible;
+	}
+	.x-category-tree__link:not(.x-category-tree__link--current):hover {
+		text-decoration: none;
+		background-color: #eaeaea;
+		transition: background-color ease-in 0.3s 0.05s;
+	}
+}
+
+/**
+ * This section contains the necessary styles when using the built-in search
+ * faceting ability of Miva. Since the functional code is generated at run-time,
+ * these styles do not conform to the tenants used in the rest of the framework.
+ */
+.mm_facet_rangeslider {
+	display: block;
+	height: 2em;
+	margin: 0.25em;
+	position: relative;
+}
+
+.mm_facet_rangeslider_input_container_low,
+.mm_facet_rangeslider_input_container_high {
+	width: 4em;
+	height: 2em;
+	position: absolute;
+	top: 0;
+	text-align: center;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+.mm_facet_rangeslider_input_container_low {
+	left: 0;
+	border-radius: 0.25em 0 0 0.25em;
+}
+
+.mm_facet_rangeslider_input_container_high {
+	right: 0;
+	border-radius: 0 0.25em 0.25em 0;
+}
+
+.mm_facet_rangeslider_input_container_low.mm_facet_rangeslider_input_active,
+.mm_facet_rangeslider_input_container_high.mm_facet_rangeslider_input_active {
+	border-color: #3d70b2;
+}
+
+.mm_facet_rangeslider_track_container {
+	height: 2em;
+	position: absolute;
+	top: 0;
+	right: 4em;
+	left: 4em;
+	border-top: 1px solid #c0c0c0;
+	border-bottom: 1px solid #c0c0c0;
+	box-sizing: border-box;
+	-webkit-touch-callout: none;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+}
+
+.mm_facet_rangeslider_track {
+	height: 0.25em;
+	position: absolute;
+	top: 50%;
+	right: 0.25em;
+	left: 0.25em;
+	transform: translateY(-50%);
+}
+
+.mm_facet_rangeslider_track_background,
+.mm_facet_rangeslider_track_selection {
+	position: absolute;
+	top: 0;
+	right: 0.5em;
+	bottom: 0;
+	left: 0.5em;
+	background: #c0c0c0;
+}
+
+.mm_facet_rangeslider_track_selection {
+	background: #6e94c5;
+}
+
+.mm_facet_rangeslider_track_handle_low,
+.mm_facet_rangeslider_track_handle_high {
+	width: 2em;
+	height: 2em;
+	position: absolute;
+	top: 50%;
+	left: -0.5em;
+	background: #fff;
+	border: 1px solid #c0c0c0;
+	border-radius: 50%;
+	cursor: pointer;
+	transform: translateY(-50%);
+}
+
+.mm_facet_rangeslider.mm_facet_rangeslider_mini {
+	height: 6em;
+	margin: 0;
+}
+
+.mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_low {
+	width: 50%;
+	border-radius: 0.25em 0 0 0;
+}
+
+.mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_high {
+	width: 50%;
+	border-radius: 0 0.25em 0 0;
+	border-left: none;
+}
+
+.mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_track_container {
+	height: 3em;
+	top: 2em;
+	right: 0;
+	left: 0;
+	border: 1px solid #c0c0c0;
+	border-top: none;
+	border-radius: 0 0 0.25em 0.25em;
+}
+
+.mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_low.mm_facet_rangeslider_input_active,
+.mm_facet_rangeslider.mm_facet_rangeslider_mini .mm_facet_rangeslider_input_container_high.mm_facet_rangeslider_input_active {
+	border-color: #eaeaea;
+	box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.15);
+}
+
+/* ==========================================================================
+   EXTENSIONS / DISPLAY LIST FILTERING / DISPLAY LIST FILTERING
+   ========================================================================== */
+/**
+ * Display list filtering is for use in product list filtering as well as any
+ * place a batch list or sortable data is used.
+ */
+.x-display-list-filtering {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.x-display-list-filtering__per-page {
+	margin-right: 32px;
+}
+
+/* ==========================================================================
+   EXTENSIONS / HERO
+   ========================================================================== */
+/**
+ * The Hero component provides a dominant piece of media to a page
+ *
+ * 1. Allows for absolute positioning of borders and content.
+ * 2. Hero images set via background-image should cover and center.
+ */
+.x-hero {
+	display: block;
+	position: relative;
+	/* [1] */
+	background-position: center;
+	/* [2] */
+	background-size: cover;
+	/* [2] */
+}
+
+/**
+	 * The caption overlays at the bottom of a Hero, providing space for additional
+	 * content such as titles or logos.
+	 */
+.x-hero__caption {
+	position: absolute;
+	bottom: 0;
+	padding: 16px 0;
+	width: 100%;
+	text-shadow: 0 0 25px rgba(0, 0, 0, 0.25), 1px 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/**
+	 * Hero video needs to be set to `display: block` to avoid spacing issues.
+	 */
+.x-hero__video {
+	display: block;
+	width: 100%;
+	height: 100%;
+	-o-object-fit: fill;
+	   object-fit: fill;
+}
+
+/**
+	 * Hero link inherits the Hero `color` to override anchor element styles.
+	 */
+.x-hero__link {
+	color: inherit;
+}
+
+/**
+	 * As we cannot set a border property over video, borders are implemented
+	 * using pseudo-elements.
+	 */
+.x-hero--borders::before {
+	display: block;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	border: 4px solid rgba(255, 255, 255, 0.3);
+	content: "";
+}
+
+/**
+	 * Make any other content below the Hero overlap upwards.
+	 */
+.x-hero--overlap {
+	margin-bottom: -10vh;
+}
+
+/**
+	* If hero has overlap modifier, shift caption upwards to compensate.
+	*/
+.x-hero--overlap .x-hero__caption {
+	bottom: 10vh;
+}
+
+/* ==========================================================================
+   EXTENSIONS / MESSAGES
+   ========================================================================== */
+/**
+ * Messages are block elements used to display information to the visitor about
+ * their current session. Typically these are informational or error messages
+ * such as you would see on a checkout page if there was an error with the
+ * credit card used.
+ */
+.x-messages {
+	margin-bottom: 16px;
+	padding: 0.75em 1.25em;
+	font-size: 0.875rem;
+	background-color: #eaeaea;
+	border: 1px solid currentColor;
+}
+
+.x-messages *:last-child {
+	margin-bottom: 0;
+}
+
+.x-messages--borderless {
+	border: 0 none;
+}
+
+.x-messages--error {
+	background-color: #fff;
+	color: #ee0020;
+}
+
+.x-messages--info {
+	background-color: #fff;
+	color: #003b6f;
+}
+
+.x-messages--success {
+	background-color: #fff;
+	color: #0d8670;
+}
+
+.x-messages--warning {
+	background-color: #eaeaea;
+	border-color: #f9ed1f;
+}
+
+/**
+ * These classes will help format the message if you are adding an icon.
+ */
+.x-messages--with-icon {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.x-messages__icon {
+	font-size: 3rem;
+}
+
+.x-messages__close {
+	position: absolute;
+	top: 50%;
+	right: 0.25rem;
+	margin-top: -1rem;
+	color: #222;
+	font-size: 2rem;
+	line-height: 1;
+	text-decoration: none;
+	opacity: 0.3;
+}
+
+/*
+	what??? they have an old browser?
+	This can be removed if you do not need to alert for IE < 9.
+*/
+.x-messages--update-browser {
+	width: 100%;
+	position: relative;
+	text-align: center;
+}
+
+/* ==========================================================================
+   EXTENSIONS / PAGINATION
+   ========================================================================== */
+/**
+ * Pagination is for use in product list as well as any place a pageable batch
+ * list or data is used.
+ */
+.x-pagination {
+	display: flex;
+	max-width: 19rem;
+	margin: 0;
+	align-items: center;
+}
+
+.x-pagination--centered {
+	margin: auto;
+}
+
+.x-pagination--right {
+	margin-left: auto;
+}
+
+/* ==========================================================================
+   EXTENSIONS / PRODUCT LAYOUT / PRODUCT LAYOUT
+   ========================================================================== */
+/**
+ * This is the default product layout for the product page.
+ */
+@media (min-width: 60em) {
+	.x-product-layout {
+		padding-top: 32px;
+	}
+}
+
+.x-product-layout-images {
+	margin-left: 0;
+	margin-right: 0;
+}
+
+.x-product-layout-images__image {
+	display: inline-block;
+	margin-bottom: 32px;
+}
+
+.x-product-layout-images__thumbnail-image {
+	margin-bottom: 16px;
+}
+
+.x-product-layout-purchase__name {
+	margin-bottom: 32px;
+}
+
+.x-product-layout-purchase__pricing-original,
+.x-product-layout-purchase__pricing-current {
+	font-size: 1.125rem;
+	font-weight: 500;
+}
+
+.x-product-layout-purchase .is-required {
+	font-weight: 500;
+}
+
+.x-product-layout-purchase__pricing-original:not(:empty) {
+	padding-right: 32px;
+	text-decoration: line-through;
+}
+
+.x-product-layout-purchase__options {
+	display: flex;
+	width: auto;
+	max-width: none;
+}
+
+.x-product-layout-purchase__options-attribute {
+	width: 100%;
+	margin-bottom: 8px;
+}
+
+.x-product-layout-purchase__options-attribute .c-form-label {
+	font-size: 0.75rem;
+}
+
+.x-product-layout-purchase__swatches {
+	padding-top: 3px;
+}
+
+.x-product-layout-purchase__swatches button {
+	padding: 0;
+	border: 0 none;
+	background-color: transparent;
+}
+
+.x-product-layout-purchase__swatches--active {
+	box-shadow: 0 0 0 2px #eaeaea, 0 0 3px 3px #767676;
+}
+
+.x-product-description {
+	margin-bottom: 96px;
+	padding-top: 96px;
+}
+
+/* ==========================================================================
+   EXTENSIONS / PRODUCT LISTS / PRODUCT LISTS
+   ========================================================================== */
+/**
+ * Product lists are used in many spots throughout the store. They can be found 
+ * on the storefront as featured product, the related products section of a 
+ * product page, as an auto-suggest feature during checkout, or wherever.
+ */
+.x-product-list {
+	margin-bottom: 16px;
+}
+
+.x-product-list__heading {
+	margin-bottom: 2em;
+}
+
+.x-product-list__item {
+	margin-bottom: 32px;
+}
+
+.x-product-list__link {
+	color: #000;
+	transition: ease-in-out 0.3s;
+}
+
+.x-product-list__link:hover {
+	color: #404040;
+	text-decoration: none;
+}
+
+.x-product-list__figure {
+	margin: 0;
+}
+
+.x-product-list__image,
+.x-product-list__name,
+.x-product-list__price {
+	display: block;
+}
+
+.x-product-list__image {
+	margin-bottom: 16px;
+}
+
+.x-product-list__name,
+.x-product-list__price {
+	font-weight: 600;
+}
+
+.x-product-list__price {
+	display: inline-block;
+	padding-right: 0.5em;
+	padding-left: 0.5em;
+	color: #767676;
+	font-size: 0.875rem;
+}
+
+.x-product-list__action {
+	padding-top: 16px;
+}
+
+/**
+	* If you are creating a product carousel, add this class to the element.
+	*/
+.x-product-list--carousel .x-product-list__item {
+	margin-bottom: 0;
+	padding-right: 0.5rem;
+	padding-left: 0.5rem;
+}
+
+/* ==========================================================================
+   EXTENSIONS / SUBSCRIPTIONS / SUBSCRIPTIONS
+   ========================================================================== */
+/**
+ * When using the subscription function of Miva, this is the default styling
+ * used for the date picker. You can update the styles in your theme file if
+ * you are looking to make changes.
+ */
+.miva_datepicker {
+	display: none;
+	position: absolute;
+	padding: 16px;
+	background-color: #fff;
+	border: 1px solid #909090;
+	z-index: 1000;
+}
+
+.miva_datepicker_calendar_container {
+	display: inline-block;
+	width: 214px;
+	position: relative;
+	vertical-align: top;
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+.miva_datepicker_calendar_month_selector {
+	display: flex;
+	align-items: center;
+	position: relative;
+	background-color: #767676;
+}
+
+.miva_datepicker_calendar_month_selector_next,
+.miva_datepicker_calendar_month_selector_prev {
+	width: 35px;
+	height: 35px;
+	padding: 0;
+	background: 0 -35px no-repeat;
+	border: 0 none;
+	cursor: pointer;
+}
+
+.miva_datepicker_calendar_month_selector_next:hover,
+.miva_datepicker_calendar_month_selector_prev:hover {
+	background-color: #222;
+}
+
+.miva_datepicker_calendar_month_selector_title {
+	flex-grow: 1;
+	color: #fff;
+	text-align: center;
+}
+
+.miva_datepicker_calendar_month_selector_title_month {
+	display: inline-block;
+}
+
+.miva_datepicker_calendar_month_selector_title_year {
+	display: inline-block;
+	margin-left: 0.25em;
+}
+
+.miva_datepicker_cancel {
+	display: inline-block;
+	margin-top: 0.75em;
+}
+
+.miva_datepicker_calendar_weekday_container {
+	height: 34px;
+	margin: 2px;
+	position: relative;
+}
+
+.miva_datepicker_calendar_weekday_title {
+	display: inline-block;
+	width: 28px;
+	padding: 3px 0;
+	position: absolute;
+	font-weight: 700;
+	text-align: center;
+}
+
+#miva_datepicker_calendar_week_container {
+	margin: 2px;
+	position: relative;
+}
+
+.miva_datepicker_calendar_week {
+	display: block;
+	height: 30px;
+	position: relative;
+}
+
+.miva_datepicker_calendar_day {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 26px;
+	position: absolute;
+	top: 1px;
+	bottom: 1px;
+	font-size: 0.75em;
+	border: 1px solid #909090;
+	cursor: pointer;
+}
+
+.miva_datepicker_calendar_day:hover {
+	background-color: #767676;
+	border-color: #222;
+	color: #fff;
+}
+
+.miva_datepicker_calendar_day_noselect,
+.miva_datepicker_calendar_day_noselect:hover {
+	background-color: #c0c0c0;
+	border-color: #222;
+	color: #222;
+}
+
+.miva_datepicker_calendar_day_current {
+	border-color: #222;
+	color: #222;
+	font-weight: 700;
+}
+
+.miva_datepicker_calendar_day_current:hover {
+	background-color: #222;
+	color: #fff;
+}
+
+.miva_datepicker_calendar_day_active {
+	background-color: #222;
+	border-color: #767676;
+	color: #fff;
+	font-weight: 700;
+}
+
+.miva_datepicker_calendar_day_0 {
+	left: 1px;
+}
+
+.miva_datepicker_calendar_day_1 {
+	left: 31px;
+}
+
+.miva_datepicker_calendar_day_2 {
+	left: 61px;
+}
+
+.miva_datepicker_calendar_day_3 {
+	left: 91px;
+}
+
+.miva_datepicker_calendar_day_4 {
+	left: 121px;
+}
+
+.miva_datepicker_calendar_day_5 {
+	left: 151px;
+}
+
+.miva_datepicker_calendar_day_6 {
+	left: 181px;
+}
+
+/* ==========================================================================
+   EXTENSIONS / SEARCH-PREVIEW / SEARCH-PREVIEW
+   ========================================================================== */
+.x-search-preview {
+	display: none;
+	width: 100%;
+	margin: 0;
+	padding: 0.75rem 0.5rem;
+	position: absolute;
+	right: 0;
+	list-style: none;
+	background-color: #fff;
+	box-shadow: 0 2px 4px 1px rgba(0, 0, 0, 0.25);
+	opacity: 0;
+	transition: opacity ease-in-out 0.5s;
+	z-index: 500;
+}
+
+.x-search-preview--open {
+	opacity: 1;
+}
+
+.x-search-preview__entry {
+	display: block;
+}
+
+.x-search-preview__list {
+	padding: 0 0.5rem;
+}
+
+.x-search-preview__line {
+	display: flex;
+	padding: 0.5rem 0;
+	position: relative;
+	align-items: center;
+	font-size: 0.875rem;
+	border-bottom: 1px solid #eaeaea;
+	cursor: pointer;
+}
+
+.x-search-preview__image {
+	width: 4rem;
+	height: 4rem;
+	margin: 0 1em 0 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.x-search-preview__item {
+	display: flex;
+	flex: 1;
+	justify-content: space-between;
+	text-decoration: none;
+}
+
+.x-search-preview__item--selected {
+	background-color: #eaeaea;
+}
+
+.x-search-preview__search-all {
+	padding: 0.5rem;
+	font-style: italic;
+	cursor: pointer;
+}
+
+/**
+ * This section contains the necessary styles when using the built-in search
+ * preview ability of Miva. Since the functional code is generated at run-time,
+ * these styles do not conform to the tenants used in the rest of the framework.
+ */
+.mm_searchfield_menuitem_selected {
+	background-color: #eaeaea;
+}
+
+/* ==========================================================================
+   EXTENSIONS / MINI-BASKET / MINI-BASKET
+   ========================================================================== */
+/**
+ * This is an extension to use the mini-basket functionality of Miva in an
+ * off-canvas method.
+ */
+.x-mini-basket {
+	display: flex;
+	justify-content: flex-end;
+	position: fixed;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: rgba(0, 0, 0, 0.5);
+	transform: scaleX(0);
+	transform-origin: right;
+	transition: all ease-in-out 0.2s;
+	z-index: 500;
+	opacity: 0;
+}
+
+.x-mini-basket--open {
+	opacity: 1;
+	transform: scaleX(1);
+}
+
+.x-mini-basket__content {
+	display: flex;
+	flex: 1 1 100%;
+	flex-direction: column;
+	width: 100vw;
+	max-width: 30rem;
+	padding: 1rem;
+}
+
+.x-mini-basket__header {
+	display: flex;
+	justify-content: space-between;
+}
+
+.x-mini-basket__list {
+	overflow-y: auto;
+}
+
+.x-mini-basket__line {
+	display: flex;
+	margin-bottom: 2em;
+	font-size: 0.875rem;
+	flex-wrap: wrap;
+}
+
+.x-mini-basket__image {
+	width: 5rem;
+	height: 5rem;
+	margin: 0 1em 0 0;
+	overflow: hidden;
+	text-align: center;
+}
+
+.x-mini-basket__item {
+	display: flex;
+	flex: 1 1 auto;
+	flex-direction: column;
+	justify-content: space-between;
+	text-decoration: none;
+}
+
+.x-mini-basket__item:hover {
+	text-decoration: none;
+}
+
+.x-mini-basket__item-name {
+	display: block;
+	margin-bottom: 1em;
+}
+
+.x-mini-basket__subscription {
+	flex-basis: 100%;
+}
+
+.x-mini-basket__item-total {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.x-mini-basket__item-total hr {
+	margin: 0 0.75em;
+	flex-grow: 1;
+}
+
+.x-mini-basket__charges,
+.x-mini-basket__total,
+.x-mini-basket__cta {
+	display: flex;
+	flex-grow: 1;
+	justify-content: space-between;
+}
+
+.x-mini-basket__charges {
+	flex-direction: column;
+	margin-bottom: 1em;
+	font-size: 0.875rem;
+}
+
+.x-mini-basket__charge-item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.x-mini-basket__total {
+	margin-bottom: 1em;
+}
+
+.x-mini-basket__cta {
+	font-size: 0.875rem;
+}
+
+/* ==========================================================================
+   EXTENSIONS / QUANTIFY / QUANTIFY
+   ========================================================================== */
+/**
+ * This extension allows for the use of buttons to increase/decrease item
+ * quantities on the product and basket pages. When used on the basket page,
+ * the decrease button becomes a remove button if the quantity is 1.
+ */
+.x-quantify .c-control-group__button {
+	border-color: #c0c0c0;
+	-ms-user-select: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	        user-select: none;
+}
+
+.x-quantify .c-control-group__field {
+	height: auto;
+	border-left-width: 0;
+}
+
+/* =====
+   EXTENSIONS / TABS / A11Y-TABS
+   ===== */
+/**
+ * This is an accessible tab solution extension based on guidelines documented
+ * by Heydon Pickering on the Inclusive Components Pattern Library.
+ * https://inclusive-components.design/tabbed-interfaces/
+ */
+/**
+ * This is a basic placeholder for the proposed CSS `:focus-visible`
+ * pseudo-selector [1] and is based on the WICG polyfill [2]. Once
+ * standardized, this will be updated.
+ *
+ * [1] https://drafts.csswg.org/selectors-4/#the-focus-visible-pseudo
+ * [2] https://github.com/WICG/focus-visible
+ *
+ * Add the `focus-visible` class to the given element.
+ * @param {Element} focusedElement
+ */
+[data-tab-component] *:focus:not(.focus-visible) {
+	box-shadow: inset 0 0 0 4px transparent;
+	outline: none;
+	text-decoration: none;
+}
+
+[data-tab-component] *.focus-visible {
+	box-shadow: inset 0 0 0 4px lightBlue;
+	outline: none;
+	text-decoration: none;
+}
+
+[role="tablist"] {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+[role="tablist"] li,
+[role="tab"] {
+	display: inline-block;
+}
+
+[role="tab"] {
+	padding: 0.5rem 1em calc(0.5rem + 2px);
+	position: relative;
+	top: 2px;
+	text-decoration: none;
+	border: 2px solid transparent;
+	border-bottom: 0 none;
+}
+
+[role="tab"][aria-selected] {
+	background-color: #fff;
+	border-color: currentColor;
+}
+
+[role="tabpanel"] {
+	padding: 1.5rem;
+	border: 2px solid;
+}
+
+[role="tabpanel"] * + * {
+	margin-top: 0.75rem;
+}
+
+@media (max-width: 40em) {
+	[data-tab-component]::before {
+		display: none;
+		content: "max";
+		visibility: hidden;
+	}
+	[role="tablist"] li,
+	[role="tab"] {
+		display: block;
+		position: static;
+	}
+	[role="tab"] {
+		border: 2px solid currentColor;
+	}
+	[role="tablist"] li + li a {
+		border-top: 0 !important;
+	}
+	[role="tab"][aria-selected] {
+		position: static;
+	}
+	[role="tab"][aria-selected]::after {
+		content: '\0020⬅';
+	}
+	[role="tabpanel"] {
+		border-top: 0;
+	}
+}
+
+/**
+ * This is some basic styling to match that shipped with the flex-tabs extension.
+ */
+.x-a11y-tabs {
+	margin-bottom: 1rem;
+}
+
+.x-a11y-tabs__link {
+	border: 0 none;
+	border-bottom: 1px solid #c0c0c0;
+	color: #767676;
+}
+
+.x-a11y-tabs__panel {
+	border: 0 none;
+	border-bottom: 1px solid #c0c0c0;
+}
+
+@media (min-width: 40.1em) {
+	.x-a11y-tabs__list {
+		display: flex;
+		justify-content: center;
+	}
+	.x-a11y-tabs__link {
+		top: auto;
+		border-bottom-color: transparent;
+	}
+	.x-a11y-tabs__link:hover {
+		text-decoration: none;
+	}
+	.x-a11y-tabs__panel {
+		border: 0 none;
+	}
+}
+
+/* ==========================================================================
+   EXTENSIONS / NAVIGATION / TRANSFIGURE NAVIGATION
+   ========================================================================== */
+@media screen and (max-width: 59.9em) {
+	.has-open-main-menu,
+	.has-open-main-menu body {
+		overflow: hidden;
+	}
+	.x-transfigure-navigation {
+		padding: 0;
+		position: fixed;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: -100vw;
+		-webkit-backface-visibility: hidden;
+		        backface-visibility: hidden;
+		background-color: transparent;
+		opacity: 0;
+		overflow: hidden;
+		transition: all ease-out 0.2s;
+		transform: scaleX(0);
+		transform-origin: left;
+		z-index: -1;
+	}
+	.x-transfigure-navigation.is-open {
+		left: 0;
+		background: rgba(0, 0, 0, 0.65);
+		opacity: 1;
+		transition: all ease-in 0.2s;
+		transform: scaleX(1);
+		z-index: 2;
+	}
+	.x-transfigure-navigation__wrap {
+		max-width: 22.5rem;
+		min-height: 100%;
+		-webkit-overflow-scrolling: touch;
+		overflow-x: hidden;
+		overflow-y: auto;
+		background-color: #fff;
+	}
+	.x-transfigure-navigation__header .c-button {
+		padding: calc(1em - 1px);
+	}
+	.x-transfigure-navigation__content {
+		position: relative;
+	}
+	.x-transfigure-navigation__row,
+	.x-transfigure-navigation__row .c-navigation__row,
+	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type {
+		display: block;
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		min-height: 100%;
+		background-color: #fff;
+		list-style: none;
+		transition: transform 0.3s;
+	}
+	.x-transfigure-navigation .c-navigation__list {
+		position: static;
+	}
+	.x-transfigure-navigation .c-navigation__list:hover > .c-navigation__row,
+	.x-transfigure-navigation .c-navigation__list.focus-within > .c-navigation__row {
+		display: block;
+		box-shadow: none;
+	}
+	@supports (will-change: auto) {
+		.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row {
+			display: block;
+			box-shadow: none;
+		}
+	}
+	.x-transfigure-navigation .c-navigation__link {
+		display: flex;
+		height: 3.75rem;
+		padding: 0 0 0 1rem;
+		align-items: center;
+		justify-content: space-between;
+		-webkit-backface-visibility: hidden;
+		        backface-visibility: hidden;
+		border: 0 solid #d0d0d0;
+		border-top-width: 1px;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		transform: translateZ(0);
+		transition: all 0.3s;
+		white-space: nowrap;
+	}
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link,
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+		padding-left: 1rem;
+	}
+	.x-transfigure-navigation__row .c-navigation__list:first-of-type > .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row .c-navigation__list:first-of-type > .c-navigation__link {
+		/*border-top-width: 0;*/
+	}
+	.x-transfigure-navigation__row .c-navigation__list:last-of-type > .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row .c-navigation__list:last-of-type > .c-navigation__link {
+		border-bottom-width: 1px;
+	}
+	.x-transfigure-navigation__row.is-hidden,
+	.x-transfigure-navigation__row .c-navigation__row.is-hidden {
+		transform: translateX(100%);
+	}
+	.x-transfigure-navigation__row.is-hidden > .cmp-primary-navigation__title,
+	.x-transfigure-navigation__row.show-next > .cmp-primary-navigation__title,
+	.x-transfigure-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
+	.x-transfigure-navigation__row.show-next > .c-navigation__list > .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row.is-hidden > .c-navigation__list > .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
+		opacity: 0;
+	}
+	.x-transfigure-navigation__row.show-next > .c-navigation__list > .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row.show-next > .c-navigation__list > .c-navigation__link {
+		transform: translateX(-100%);
+	}
+	.x-transfigure-navigation .c-navigation__link-carat {
+		display: none;
+	}
+	.x-transfigure-navigation .has-child-menu .c-navigation__link-carat {
+		display: inline-flex;
+		align-self: stretch;
+	}
+	.x-transfigure-navigation .c-navigation__link-carat > * {
+		display: flex;
+		width: 4rem;
+		align-items: center;
+		justify-content: center;
+		font-size: 0.75rem;
+	}
+	.x-transfigure-navigation__footer {
+		padding: 1rem;
+		font-size: 0.75rem;
+		list-style: none;
+		border-top: 1px solid #d0d0d0;
+	}
+	.x-transfigure-navigation__footer-link {
+		display: block;
+		padding-top: 1em;
+		padding-bottom: 1em;
+		font-weight: 500;
+		line-height: 2;
+	}
+}
+
+@media screen and (min-width: 60em) {
+	.x-transfigure-navigation__row .c-navigation__row {
+		display: none;
+		width: auto;
+		position: absolute;
+		white-space: nowrap;
+		z-index: 100;
+	}
+	.x-transfigure-navigation > .c-navigation__row {
+		display: flex;
+	}
+	.x-transfigure-navigation:hover .c-navigation__list .c-navigation__link {
+		color: #767676;
+		transition: color ease-in 0.1s;
+	}
+	.x-transfigure-navigation .c-navigation__link {
+		display: flex;
+		align-items: center;
+		justify-content: space-around;
+	}
+	.x-transfigure-navigation .c-navigation__link:focus,
+	.x-transfigure-navigation .c-navigation__link:hover {
+		text-decoration: none;
+	}
+	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__list {
+		text-align: left;
+	}
+	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type {
+		top: 0;
+		left: 100%;
+		z-index: 200;
+	}
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link,
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+		justify-content: space-between;
+	}
+	.x-transfigure-navigation .c-navigation__list:hover > .c-navigation__row,
+	.x-transfigure-navigation .c-navigation__list.focus-within > .c-navigation__row {
+		display: table;
+		box-shadow: 1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
+	}
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__list .c-navigation__link {
+		color: #767676;
+	}
+	.x-transfigure-navigation .c-navigation__list:hover .c-navigation__link {
+		color: #000;
+		transition: color ease-out 0.1s;
+	}
+	@supports (will-change: auto) {
+		.x-transfigure-navigation .c-navigation__list:focus-within > .c-navigation__row {
+			display: table;
+			box-shadow: 1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
+		}
+	}
+	.x-transfigure-navigation__row .is-off-screen .c-navigation__row:nth-child(2) .c-navigation__row {
+		left: auto;
+		right: 100%;
+		box-shadow: -1px 1px 0.25em 0 rgba(0, 0, 0, 0.5);
+	}
+	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row .c-navigation__link,
+	.x-transfigure-navigation__row .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+		padding-left: 1em;
+	}
+	.x-transfigure-navigation .c-navigation__link-carat {
+		font-size: 0.5em;
+		transform: rotate(90deg);
+	}
+	.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link-carat {
+		transform: rotate(0deg);
+	}
+}
+
+.x-transfigure-navigation__content {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.x-transfigure-navigation .c-navigation__link {
+	font-weight: 600;
+	color: #434343;
+}
+
+.x-transfigure-navigation .c-navigation__link:hover {
+	box-shadow: none;
+}
+
+.x-transfigure-navigation .c-navigation__row:nth-child(2) .c-navigation__link:hover {
+	background-color: #fff;
+	color: #000;
+	transition: color ease-out 0.1s;
+}
+
+/* ==========================================================================
+   EXTENSIONS / FACETS / FACETS
+   ========================================================================== */
+.x-facet-set__trigger {
+	display: none;
+}
+
+.x-facet-set__label.x-collapsible-content__toggle {
+	padding-bottom: 0.5em;
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-transform: uppercase;
+}
+
+.x-facet-set__list {
+	display: block;
+	max-height: 0;
+	opacity: 0;
+	visibility: hidden;
+	transition-delay: 0.15s, 0s, 0s;
+}
+
+.x-facet-set__list.x-collapsible-content__item[aria-hidden='false'] {
+	max-height: 50em;
+}
+
+.x-facet-set .c-form-checkbox {
+	font-size: 14px;
+}
+
+/* ==========================================================================
+   EXTENSIONS / FASTEN HEADER / FASTEN HEADER
+   ========================================================================== */
+.x-fasten-header {
+	display: none;
+}
+
+@media screen and (min-width: 60em) {
+	.x-fasten-header {
+		display: flex;
+		width: 100vw;
+		max-width: none;
+		padding: 0.5rem 1rem;
+		position: fixed;
+		top: 0;
+		font-size: 0.875rem;
+		background-color: #fff;
+		box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+		color: #222;
+		opacity: 0;
+		transform: scaleY(0);
+		transform-origin: top;
+		transition: all ease-in-out 0.15s;
+		z-index: 300;
+	}
+	.x-fasten-header--is-active .x-fasten-header {
+		opacity: 1;
+		transform: scaleY(1);
+	}
+	.x-fasten-header__logo-image {
+		max-height: 4rem;
+	}
+}
+
+.x-collapsible-content__toggle {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	padding: 0;
+	color: inherit;
+	font-weight: 700;
+	line-height: normal;
+	background-color: transparent;
+	border: 0 none;
+}
+
+.x-collapsible-content__toggle[aria-expanded='true'] [class^="u-icon-"]::before {
+	content: attr(data-toggle);
+}
+
+.x-collapsible-content__item[aria-hidden='false'] {
+	max-height: 25vmax;
+	opacity: 1;
+	overflow: visible;
+	transition: visibility 0s ease, max-height 0.3s ease, opacity 0.3s ease;
+	visibility: visible;
+}
+
+.x-collapsible-content__item {
+	max-height: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+
+/* ==========================================================================
+   EXTENSIONS / CONTACT / CONTACT
+   ========================================================================== */
+.x-contact-form .is-required span {
+	color: #ee0020;
+}
+
+/**
+	Thumbnail Filmstrip
+ */
+[data-filmstrip-wrapper] {
+	position: relative;
+}
+
+[data-filmstrip] {
+	overflow-x: scroll;
+	overflow-y: hidden;
+	-webkit-overflow-scrolling: touch;
+	-ms-overflow-style: none;
+	scroll-behavior: smooth;
+	-ms-scroll-snap-type: mandatory;
+	scroll-snap-type: x mandatory;
+	scrollbar-width: none;
+}
+
+[data-filmstrip][data-vertical] {
+	-ms-scroll-snap-type: mandatory;
+	scroll-snap-type: y mandatory;
+}
+
+[data-filmstrip]::-webkit-scrollbar {
+	display: none;
+}
+
+[data-filmstrip] ul {
+	display: flex;
+	align-items: center;
+	flex-wrap: nowrap;
+	margin: 0;
+}
+
+[data-filmstrip] ul.has-controls {
+	padding-left: 16px;
+}
+
+[data-filmstrip][data-vertical] ul {
+	width: auto;
+	max-height: 30rem;
+	flex-direction: column;
+	padding-left: 0;
+}
+
+[data-filmstrip][data-vertical] ul.has-controls {
+	padding-top: 16px;
+}
+
+[data-filmstrip] li {
+	flex: 0 0 auto;
+	padding-right: 16px;
+	list-style: none;
+	scroll-snap-align: none;
+	transition: opacity ease-in-out 0.1s;
+}
+
+[data-filmstrip][data-vertical] li {
+	max-width: none;
+	padding-right: 0;
+	padding-bottom: 16px;
+}
+
+[data-filmstrip] picture {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+}
+
+[data-filmstrip] img {
+	width: 100%;
+	height: auto;
+	max-width: 100%;
+	opacity: 0;
+}
+
+[data-filmstrip] img.is-visible {
+	opacity: 1;
+}
+
+[data-filmstrip-controls] li {
+	list-style: none;
+}
+
+[data-filmstrip-controls] button {
+	width: 3em;
+	height: 100%;
+	position: absolute;
+	top: 0;
+	color: #fff;
+	background-color: #1a1a1a;
+	border: 0 none;
+}
+
+[data-filmstrip-controls] button:focus {
+	outline: 3px solid #406c93;
+	outline-offset: -3px;
+}
+
+.x-filmstrip-controls__previous {
+	left: 0;
+}
+
+.x-filmstrip-controls__next {
+	right: 0;
+}
+
+[data-filmstrip-controls] button span {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 2em;
+	height: 2em;
+	pointer-events: none;
+}
+
+[data-vertical] + [data-filmstrip-controls] button {
+	width: 100%;
+	height: 3em;
+}
+
+[data-vertical] + [data-filmstrip-controls] .x-filmstrip-controls__next {
+	top: auto;
+	right: auto;
+	bottom: 0;
+	left: 0;
+}
+
+[data-vertical] + [data-filmstrip-controls] button span {
+	transform: rotate(90deg);
+}
+
+/**
+	Modal Photo Viewer
+ */
+.is-inert {
+	pointer-events: none;
+	-webkit-user-select: none;
+	   -moz-user-select: none;
+	    -ms-user-select: none;
+	        user-select: none;
+}
+
+.has-photo-viewer {
+	overflow: hidden;
+}
+
+.x-photo-viewer {
+	display: flex;
+	flex-direction: column;
+	width: 1px;
+	height: auto;
+	margin: 0;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-color: rgba(64, 64, 64, 0.95);
+	border: 0;
+	clip: rect(0 0 0 0);
+	opacity: 0;
+	overflow: hidden;
+	transform: scale(0);
+	transition: opacity 0.3s ease, transform 0.2s ease;
+	white-space: nowrap;
+	z-index: 9999;
+}
+
+.x-photo-viewer__visible {
+	width: 100%;
+	height: 100%;
+	position: fixed;
+	clip: auto;
+	opacity: 1;
+	transform: scale(1);
+}
+
+.x-photo-viewer button {
+	display: inline-block;
+	width: 100%;
+	height: 100%;
+	padding: 0.5em 1em;
+	color: #fff;
+	font-family: inherit;
+	font-size: 1em;
+	font-weight: 400;
+	line-height: normal;
+	text-align: center;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	     appearance: none;
+	background-color: rgba(255, 255, 255, 0.2);
+	border: 0 none;
+	border-radius: 0.125em;
+	transition: color 0.3s ease, background-color 0.3s ease;
+	-webkit-user-select: none;
+	-ms-user-select: none;
+	-moz-user-select: none;
+	     user-select: none;
+	vertical-align: middle;
+}
+
+.x-photo-viewer button:focus,
+.x-photo-viewer button:hover {
+	color: #66d9d9;
+	background-color: #222;
+	outline-color: currentColor;
+}
+
+.x-photo-viewer__header,
+.x-photo-viewer__controls {
+	display: flex;
+	width: 100%;
+	align-items: center;
+	background-color: #222;
+}
+
+.x-photo-viewer__title {
+	flex-grow: 1;
+	margin: 0;
+	padding-left: 2.1em;
+	color: #fff;
+	font-size: 1.25rem;
+	text-align: center;
+}
+
+.x-photo-viewer__close {
+	width: 2.25em;
+	height: 2.25em;
+	margin: .5em;
+	font-weight: 700;
+	text-align: center;
+}
+
+.x-photo-viewer__close button {
+	padding: 0;
+}
+
+.x-photo-viewer__container {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	padding: 0 1rem;
+	white-space: nowrap;
+	touch-action: manipulation;
+}
+
+.x-photo-viewer__current-image {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity ease-in 0.3s 0.3s;
+}
+
+.x-photo-viewer__current-image.is-loaded {
+	opacity: 1;
+	transition: opacity 0.3s ease-out;
+}
+
+.x-photo-viewer__current-image img {
+	max-height: 80vh;
+}
+
+.x-photo-viewer__controls {
+	justify-content: space-between;
+	padding: 1em 2em;
+	color: #fff;
+}
+
+.x-photo-viewer__count {
+	text-align: center;
+}

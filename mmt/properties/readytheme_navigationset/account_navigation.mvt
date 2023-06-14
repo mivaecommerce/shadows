@@ -1,0 +1,54 @@
+<mvt:if expr="g.Basket:cust_id GT 0 AND g.Customer_Session_Verified">
+	<section class="x-category-tree x-collapsible-content t-account-landing-section">
+		<button class="x-collapsible-content__toggle u-text-bold u-text-uppercase" data-a11y-toggle="&mvte:readytheme:code;" type="button">Account Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<div class="x-category-tree__title">
+			<a class="c-button c-button--full c-button--huge u-bg-gray-10 u-color-black u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:ACLN:auto;" title="My Account">
+				<span class="c-heading-echo">Account Links</span>
+			</a>
+		</div>
+
+		<ul id="&mvte:readytheme:code;" class="u-text-bold x-category-tree__row x-collapsible-content__item t-account-landing-section__content">
+			<mvt:foreach array="readytheme:navigationitems" iterator="navigationitem">
+				<li class="x-category-tree__list x-category-tree__list--level-1">
+					<mvt:if expr="l.settings:navigationitem:url">
+						<a class="x-category-tree__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+					<mvt:else>
+						<span class="x-category-tree__link u-text-uppercase">&mvt:navigationitem:name;</span>
+					</mvt:if>
+				</li>
+				<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+						<mvt:foreach array="navigationitem:items" iterator="navigationitem_level2">
+							<li class="x-category-tree__list x-category-tree__list--level-2">
+								<a class="x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvt:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
+							</li>
+							<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+								<mvt:foreach array="navigationitem_level2:items" iterator="navigationitem_level3">
+									<li class="x-category-tree__list x-category-tree__list--level-3">
+										<a class="x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvt:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+									</li>
+								</mvt:foreach>
+							</mvt:if>
+						</mvt:foreach>
+				</mvt:if>
+			</mvt:foreach>
+			<li class="x-category-tree__list x-category-tree__list--level-1">
+				<a class="x-category-tree__link u-text-uppercase" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Out">Log Out</a>
+			</li>
+		</ul>
+	</section>
+	<section class="x-category-tree t-account-landing-section">
+		<a class="c-button c-button--full c-button--huge u-bg-gray-10 u-color-black u-font-small u-text-bold u-text-uppercase" href="&mvte:urls:CTUS:auto;" title="Contact Us">
+			<span class="c-heading-echo">Customer Support</span>
+		</a>
+		<ul class="u-text-bold x-category-tree__row t-account-landing-section__content">
+			<li class="x-category-tree__list x-category-tree__list--level-1">
+				<span class="x-category-tree__link">
+					<span class="u-text-uppercase">Need Help?</span><br>
+					<span class="u-color-gray-30 u-text-uppercase">Contact Customer Service:</span><br>
+					<span class="u-font-small">Call &mvt:global:store:phone;</span>
+				</span>
+			</li>
+		</ul>
+	</section>
+	<!-- end .x-category-tree -->
+</mvt:if>

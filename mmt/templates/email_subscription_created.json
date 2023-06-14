@@ -1,0 +1,25 @@
+{
+    "toe_subscriptions": {
+        "advanced": 0,
+        "b_height": 200,
+        "b_width": 200,
+        "constrain": "B",
+        "display": {
+            "discounts": 1,
+            "handling": 1,
+            "salestax": 1,
+            "shipping": 1
+        },
+        "groups": 1,
+        "image": "main",
+        "imagetypes": [
+            "main"
+        ],
+        "lineitemcoupons": 0,
+        "lineitemdiscounts": 0,
+        "payments": 1,
+        "price": "base",
+        "template_filename": "email_subscription_created-toe_subscriptions.mvc",
+        "template_id": 132
+    }
+}

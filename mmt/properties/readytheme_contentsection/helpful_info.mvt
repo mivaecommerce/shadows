@@ -1,0 +1,10 @@
+<p class="u-text-bold u-text-uppercase">Helpful Info</p>
+<p class="u-color-gray-40 u-text-regular">
+	<strong>We can help you along the way.</strong><br>
+	Give us a call or email.
+</p>
+<p>
+	<strong>&mvt:global:store:email;</strong><br>
+	<strong>&mvt:global:store:phone;</strong><br>
+	<span class="u-color-gray-40 u-font-small">M-F 8:30 am - 5:30 pn PST</span>
+</p>

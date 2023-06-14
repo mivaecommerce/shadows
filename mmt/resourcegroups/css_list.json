@@ -1,0 +1,10 @@
+{
+    "code": "css_list",
+    "linked_js_resources": [],
+    "linked_css_resources": [
+        "preconnect-google-analytics",
+        "preconnect-google-fonts",
+        "google-fonts",
+        "stylesheet"
+    ]
+}

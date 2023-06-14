@@ -1,0 +1,20 @@
+{
+    "toe_subscriptions": {
+        "advanced": 0,
+        "b_height": 75,
+        "b_width": 75,
+        "constrain": "B",
+        "display": {
+            "discounts": 1,
+            "handling": 1,
+            "salestax": 1,
+            "shipping": 1
+        },
+        "groups": 1,
+        "lineitemcoupons": 0,
+        "lineitemdiscounts": 0,
+        "payments": 1,
+        "template_filename": "email_subscription_reminder-toe_subscriptions.mvc",
+        "template_id": 150
+    }
+}

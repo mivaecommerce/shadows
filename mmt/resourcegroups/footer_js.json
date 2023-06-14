@@ -1,0 +1,10 @@
+{
+    "code": "footer_js",
+    "linked_js_resources": [
+        "settings",
+        "scripts",
+        "contact",
+        "product-json-ld"
+    ],
+    "linked_css_resources": []
+}

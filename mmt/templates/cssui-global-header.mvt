@@ -1,0 +1,156 @@
+<mvt:item name="readytheme" param="contentsection( 'mini_basket' )" />
+<header class="o-wrapper o-wrapper--full o-wrapper--flush t-site-header" data-hook="site-header">
+	<mvt:item name="readytheme" param="contentsection( 'fasten_header' )" />
+	<mvt:item name="navbar" />
+	<section class="o-wrapper t-site-header__masthead">
+		<div class="o-layout o-layout--align-center">
+			<div class="o-layout__item u-width-2 u-width-1--m u-hidden--l &mvte:global:checkout_hidden;">
+				<button class="c-button c-button--flush c-button--full c-button--hollow u-bg-transparent u-border-none u-color-gray-50 u-font-huge u-icon-menu" data-hook="open-main-menu" aria-label="Open Menu"></button>
+			</div>
+			
+			<mvt:if expr="l.settings:page:code EQ 'SFNT'">
+				<h1 class="o-layout__item u-width-8 u-width-10--m u-width-4--l u-width-5--w u-text-center u-text-left--l t-site-header__logo">
+					<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;">
+						<mvt:if expr="l.settings:readytheme:logo_type EQ 'text'">
+							<div class="t-site-header__store-name">&mvt:readytheme:logo_name;</div>
+							<small class="t-site-header__store-tagline">&mvt:readytheme:logo_tagline;</small>
+						<mvt:elseif expr="l.settings:readytheme:logo_type EQ 'image'">
+							<img src="&mvte:readytheme:logo_image;" alt="&mvte:readytheme:logo_alt;" loading="lazy" width="&mvte:readytheme:logo_image_width;" height="&mvte:readytheme:logo_image_height;">
+						</mvt:if>
+					</a>
+				</h1>
+			<mvt:else>
+				<div class="o-layout__item u-width-8 u-width-10--m u-width-4--l u-width-5--w u-text-center u-text-left--l t-site-header__logo">
+					<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;">
+						<mvt:if expr="l.settings:readytheme:logo_type EQ 'text'">
+							<div class="t-site-header__store-name">&mvt:readytheme:logo_name;</div>
+							<small class="t-site-header__store-tagline">&mvt:readytheme:logo_tagline;</small>
+						<mvt:elseif expr="l.settings:readytheme:logo_type EQ 'image'">
+							<img src="&mvte:readytheme:logo_image;" alt="&mvte:readytheme:logo_alt;" loading="lazy" width="&mvte:readytheme:logo_image_width;" height="&mvte:readytheme:logo_image_height;">
+						</mvt:if>
+					</a>
+				</div>
+			</mvt:if>
+
+			<div class="o-layout__item u-width-2 u-width-1--m u-hidden--l &mvte:global:checkout_hidden;">
+				<a class="u-icon-cart-empty u-color-gray-50 t-site-header__basket-link--mobile" data-hook="open-mini-basket" href="&mvte:urls:BASK:auto;" aria-label="Open Mini-Basket">
+					<span class="u-bg-gray-50 u-color-gray-10 u-font-primary t-site-header__basket-link-quantity--mobile" data-hook="mini-basket-count ">&mvte:global_minibasket:basket_count;</span>
+				</a>
+			</div>
+			
+			<div class="o-layout__item u-width-12 u-width-4--l &mvte:global:checkout_hidden;" itemscope itemtype="http://schema.org/WebSite">
+				<meta itemprop="url" content="//&mvt:global:domain:name;/"/>
+				<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+					<fieldset>
+						<legend>Product Search</legend>
+						<div class="c-form-list">
+							<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
+								<meta itemprop="target" content="&mvte:urls:SRCH:auto;?q={Search}"/>
+								<input class="c-form-input c-control-group__field u-bg-transparent u-border-none" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required itemprop="query-input" aria-label="Product Search">
+								<button class="c-button c-button--large c-control-group__button u-bg-transparent u-color-gray-50 u-icon-search u-border-none" type="submit" aria-label="Perform Product Search"></button>
+							</div>
+						</div>
+					</fieldset>
+
+					<ul class="x-search-preview" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview" role="listbox"></ul>
+				</form>
+			</div>
+
+			<div class="o-layout__item u-hidden u-flex--l u-width-4--l u-width-3--w t-site-header__masthead-links &mvte:global:checkout_hidden;">
+				<mvt:item name="customerlink" />
+				<mvt:item name="readytheme" param="contentsection( 'global_account' )" />
+				<button class="u-color-gray-50 u-text-uppercase t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket">
+					<span class="u-icon-cart-empty" data-hook="open-mini-basket" aria-hidden="true"></span> Cart
+					<span class="u-bg-gray-50 u-color-white t-site-header__basket-link-quantity" data-hook="open-mini-basket mini-basket-count">&mvte:global_minibasket:basket_count;</span>
+				</button>
+			</div>
+			
+			<div class="o-layout__item u-width-12 u-width-8--l u-width-7--w u-hidden &mvte:global:checkout_shown;">
+				<br class="u-hidden--m">
+				<span class="c-heading-echo u-block u-text-bold u-text-center u-text-right--l u-text-uppercase u-color-gray-30"><span class="u-icon-secure" aria-hidden="true"></span> Secure Checkout</span>
+			</div>
+		</div>
+
+	</section>
+</header>
+<!-- end t-site-header -->
+
+<div class="o-wrapper o-wrapper--full o-wrapper--flush t-site-navigation &mvte:global:checkout_hidden;">
+	<div class="o-layout o-layout--align-center o-layout--flush o-layout--justify-center t-site-navigation__wrap">
+		<mvt:item name="readytheme" param="navigationset( 'primary_navigation' )" />
+	</div>
+</div>
+<!-- end t-site-navigation -->
+
+<mvt:if expr="(l.settings:page:code NE 'SFNT' AND l.settings:page:code NE 'ACLN' AND l.settings:page:code NE 'BASK' AND l.settings:page:code NE 'ORDL' AND l.settings:page:code NE 'OCST' AND l.settings:page:code NE 'OUS1' AND l.settings:page:code NE 'OUSM' AND l.settings:page:code NE 'UATM' AND l.settings:page:code NE 'UATR' AND l.settings:page:code NE 'OSEL' AND l.settings:page:code NE 'OPAY') AND (ISNULL g.Customer_Temporary_Password)">
+	<mvt:item name="breadcrumbs" />
+</mvt:if>
+
+<main class="o-wrapper t-main-content-element">
+	<mvt:if expr="l.settings:page:code NE 'SFNT' AND l.settings:page:code NE 'BASK'">
+		<mvt:if expr="l.settings:page:code EQ 'ORDL' OR l.settings:page:code EQ 'OCST' OR l.settings:page:code EQ 'OUS1' OR l.settings:page:code EQ 'OUSM' OR l.settings:page:code EQ 'UATM' OR l.settings:page:code EQ 'UATR' OR l.settings:page:code EQ 'OSEL' OR l.settings:page:code EQ 'OPAY' OR ('AMAZONPAY' CIN l.settings:page:code)">
+		<mvt:elseif expr="l.settings:page:code EQ 'ORDS' OR l.settings:page:code EQ 'INVC'">
+			<section class="o-layout u-bg-gray-50">
+				<div class="o-layout__item">
+					<br>
+					<br>
+					<div class="o-layout__item u-bg-gray-50 u-color-white">Thank you for your order, &mvte:order:ship_fname;!</div>
+					<p class="o-layout__item c-heading-delta u-bg-gray-50 u-color-white u-text-uppercase u-text-bold">Confirmation #&mvt:order:id;</p>
+					<p class="o-layout__item u-font-small u-bg-gray-50 u-color-white">
+						<button class="c-button c-button--clear c-button--flush u-bg-transparent u-color-white u-text-uppercase" data-hook="print-invoice"><span class="u-icon-print u-color-white" aria-hidden="true"></span> Print Receipt</button>
+					</p>
+					<br>
+				</div>
+			</section>
+		<mvt:elseif expr="l.settings:page:code EQ 'ACLN'">
+			<section class="o-layout u-bg-gray-10">
+				<div class="o-layout__item">
+					<br>
+					<br>
+					<h1 class="c-heading-delta o-layout__item u-text-bold u-text-center u-text-uppercase">
+						&mvt:page:name;<br><br>
+						<a class="c-button c-button--hollow c-button--large c-heading--subheading u-bg-transparent u-color-gray-40 u-text-uppercase" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Me Out">Log Me Out</a>
+					</h1>
+					<br>
+				</div>
+			</section>
+			<br>
+		<mvt:elseif expr="g.Customer_Temporary_Password">
+		<mvt:elseif expr="'CTGY' CIN l.settings:page:code">
+		<mvt:elseif expr="l.settings:page:code EQ 'LOGN'">
+		<mvt:elseif expr="l.settings:page:code EQ 'PLST'">
+		<mvt:elseif expr="l.settings:page:code EQ 'SRCH'">
+		<mvt:elseif expr="l.settings:page:code EQ 'FPWD'">
+		<mvt:elseif expr="l.settings:page:code EQ 'CLTG'">
+		<mvt:elseif expr="l.settings:page:code EQ 'PROD'">
+		<mvt:elseif expr="l.settings:page:code EQ 'CSBE'">
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<h1 class="c-heading-delta u-text-bold u-text-uppercase">
+						Edit Subscription<br>
+						<span class="c-heading--subheading">&mvte:subscriptionfields:productsubscriptionterm:descrip;</span>
+					</h1>
+					<hr class="c-keyline">
+				</div>
+			</section>
+		<mvt:elseif expr="l.settings:page:code NE 'ABUS' AND l.settings:page:code NE 'CTUS' AND l.settings:page:code NE 'FAQS' AND l.settings:page:code NE 'PRPO' AND l.settings:page:code NE 'SARP'">
+			<section class="o-layout">
+				<div class="o-layout__item">
+					<h1 class="c-heading-delta u-text-bold u-text-uppercase">&mvt:page:name;</h1>
+					<hr class="c-keyline">
+				</div>
+			</section>
+		</mvt:if>
+	</mvt:if>
+
+	<mvt:if expr="g.Maintenance_Warning_Message">
+		<section class="o-layout">
+			<div class="o-layout__item">
+				<div class="x-messages x-messages--info">
+					<span class="u-icon-info"> </span>
+					&mvt:global:Maintenance_Warning_Message;
+				</div>
+			</div>
+		</section>
+		<!-- end g.Maintenance_Warning_Message -->
+	</mvt:if>

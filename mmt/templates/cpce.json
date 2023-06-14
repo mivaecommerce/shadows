@@ -1,0 +1,43 @@
+{
+    "hdft": {
+        "footer": {
+            "template_filename": "cpce-footer.mvc",
+            "template_id": 299
+        },
+        "header": {
+            "template_filename": "cpce-header.mvc",
+            "template_id": 298
+        }
+    },
+    "mivapay": {
+        "paymentcardfields": {
+            "cardtype_prompt": "Card Type:",
+            "cardtype_prompt_hidden": 0,
+            "mode": "paymentcard_edit",
+            "storecard_checkedbydefault": 0,
+            "storecard_prompt": "Store This Card For Future Use",
+            "template_filename": "cpce-mivapay.mvc",
+            "template_id": 300
+        },
+        "paymentcardfields_css": {
+            "template_filename": "cpce-mivapay_css.mvc",
+            "template_id": 301
+        }
+    },
+    "seo_settings": {
+        "cat_lit": "category",
+        "cat_lit_choice": "category",
+        "plit_in_bc": 0,
+        "prod_lit": "product",
+        "prod_lit_choice": "product",
+        "sc_always": 0,
+        "sf_active": 0,
+        "sl_active": 0,
+        "sm_active": 1,
+        "suffix": "html",
+        "suffix_choice": "html",
+        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "url_delim": "/",
+        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+    }
+}

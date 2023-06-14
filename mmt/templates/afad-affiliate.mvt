@@ -1,0 +1,175 @@
+<section class="o-layout o-layout--justify-center">
+	<div class="o-layout__item u-width-12 u-width-9--m">
+		<form method="post" action="&mvte:urls:AFAE:secure;">
+			<fieldset>
+				<legend>&mvt:page:name;</legend>
+				<input type="hidden" name="Action" value="IAFL" />
+				<input type="hidden" name="NewAccount" value="1" />
+
+				<p class="c-heading-delta">Log In Information</p>
+				<div class="c-form-list o-layout">
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_Code_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Code">Login</label>
+						<input id="l-Affiliate_Code" class="c-form-input c-form-input--large" data-hook="Affiliate_Code" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_LostPass_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_LostPass_Email">Email Lost Password To</label>
+						<input id="l-Affiliate_LostPass_Email" class="c-form-input c-form-input--large" data-hook="Affiliate_LostPass_Email" type="email" name="Affiliate_LostPass_Email" value="&mvte:global:Affiliate_LostPass_Email;" autocomplete="email" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_Password_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Password">Password</label>
+						<input id="l-Affiliate_Password" class="c-form-input c-form-input--large" type="password" name="Affiliate_Password" value="&mvte:global:Affiliate_Password;" autocomplete="new-password" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_VerfiyPassword_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_VerifyPassword">Confirm Password</label>
+						<input id="l-Affiliate_VerifyPassword" class="c-form-input c-form-input--large" type="password" name="Affiliate_VerifyPassword" value="&mvte:global:Affiliate_VerifyPassword;" autocomplete="new-password" required>
+					</div>
+				</div>
+				<hr class="c-keyline">
+
+				<p class="c-heading-delta">Affiliate Info</p>
+				<div class="c-form-list o-layout">
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_SiteName_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_SiteName">Site Name</label>
+						<input id="l-Affiliate_SiteName" class="c-form-input c-form-input--large" type="text" name="Affiliate_SiteName" value="&mvte:global:Affiliate_SiteName;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-6--m &mvte:global:Affiliate_SiteURL_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_SiteURL">Site URL</label>
+						<input id="l-Affiliate_SiteURL" class="c-form-input c-form-input--large" type="url" name="Affiliate_SiteURL" value="&mvte:global:Affiliate_SiteURL;" required>
+					</div>
+				</div>
+				<hr class="c-keyline">
+				
+				<p class="c-heading-delta">Contact Info</p>
+				<div class="c-form-list o-layout">
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_ContactName_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_ContactName">Name</label>
+						<input id="l-Affiliate_ContactName" class="c-form-input c-form-input--large" type="text" name="Affiliate_ContactName" value="&mvte:global:Affiliate_ContactName;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_Company_Row;">
+						<label class="c-form-label u-text-italic" for="l-Affiliate_Company">Company (Optional)</label>
+						<input id="l-Affiliate_Company" class="c-form-input c-form-input--large" type="text" name="Affiliate_Company" value="&mvte:global:Affiliate_Company;">
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_Phone_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Phone">Phone</label>
+						<input id="l-Affiliate_Phone" class="c-form-input c-form-input--large" type="text" name="Affiliate_Phone" value="&mvte:global:Affiliate_Phone;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Affiliate_Email_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Email">Email</label>
+						<input id="l-Affiliate_Email" class="c-form-input c-form-input--large" type="email" name="Affiliate_Email" value="&mvte:global:Affiliate_Email;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_Fax_Row;">
+						<label class="c-form-label u-font-small u-text-italic" for="l-Affiliate_Fax">Fax (Optional)</label>
+						<input id="l-Affiliate_Fax" class="c-form-input c-form-input--large" type="text" name="Affiliate_Fax" value="&mvte:global:Affiliate_Fax;">
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Affiliate_Address_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Address">Address</label>
+						<input id="l-Affiliate_Address" class="c-form-input c-form-input--large" type="text" name="Affiliate_Address" value="&mvte:global:Affiliate_Address;" required>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_City_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_City">City</label>
+						<input id="l-Affiliate_City" class="c-form-input c-form-input--large" type="text" name="Affiliate_City" value="&mvte:global:Affiliate_City;" required>
+					</div>
+					
+					<mvt:do file="g.Module_Library_DB" name="l.state_datalist_count" value="StateList_Load_All(l.state_datalist)"/>
+					<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
+					<mvt:if expr="g.States_Empty">
+						<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_State_Row;">
+							<label class="c-form-label u-font-small u-text-bold is-required" for="Affiliate_State">State/Province</label>
+							<input id="Affiliate_State" class="c-form-input c-form-input--large" type="text" name="Affiliate_State" value="&mvte:global:Affiliate_State;" required>
+						</div>
+					<mvt:else>
+						<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_State_Row;">
+							<label class="c-form-label u-font-small u-text-bold is-required" for="Affiliate_StateSelect">State/Province</label>
+							<input name="Customer_ShipState" type="hidden" value="&mvte:global:Customer_ShipState;">
+							<input id="Affiliate_StateSelect" class="c-form-input c-form-input--large" data-datalist list="ShipStateDatalist" name="Affiliate_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Affiliate_StateSelect;" required>
+							<datalist id="ShipStateDatalist">
+								<mvt:foreach array="global:StateDatalist" iterator="StateData">
+									<option value="&mvt:StateData:code;">&mvt:StateData:name;</option>
+								</mvt:foreach>
+							</datalist>
+						</div>
+					</mvt:if>
+
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown c-form-input--large" data-mvt-id="Affiliate_Country" data-mvt-autocomplete="country">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="Affiliate_Country">Country</label>
+						<div class="c-form-select">
+							<mvt:item name="countries" param="Affiliate_Country" />
+						</div>
+					</div>
+					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_Zip_Row;">
+						<label class="c-form-label u-font-small u-text-bold is-required" for="l-Affiliate_Zip">Zip/Postal Code</label>
+						<input class="c-form-input c-form-input--large" id="l-Affiliate_Zip" type="text" name="Affiliate_Zip" value="&mvte:global:Affiliate_Zip;" required>
+					</div>
+				</div>
+				
+				<mvt:if expr="NOT ISNULL g.AffiliateOptions:terms">
+					<hr class="c-keyline">
+					<p class="c-heading-delta">Terms &amp; Conditions</p>
+					<div class="c-form-list o-layout">
+						<div class="c-form-list__item o-layout__item &mvte:global:AffiliateOptions_Row;">
+							<div>&mvt:global:AffiliateOptions:terms;</div>
+						</div>
+					</div>
+				</mvt:if>
+				
+				<div class="c-form-list">
+					<div class="c-form-list__item c-form-list__item--full u-text-right">
+						<mvt:item name="buttons" param="Save" />
+					</div>
+				</div>
+			</fieldset>
+		</form>
+	</div>
+</section>
+<script>
+	(function () {
+		'use strict';
+
+		/**
+		 * This function is an enhancement to the `datalist` State/Province and Country replacement.
+		 * Since a customer can type a value in the input, this will check if the entered value
+		 * matches one of the output values or text entries. If so, it passes the value back to
+		 * ensure proper functionality with shipping modules, i.e. 2 letter abbreviations for
+		 * US and Canada. Otherwise, it the entry is used as typed.
+		 * @type {NodeListOf<Element>}
+		 */
+
+		let datalist = document.querySelectorAll('[data-datalist]');
+
+		function checkOption(entry, list) {
+			let datalist = document.querySelector('#' + list);
+			let datalistOptions = datalist.querySelectorAll('option');
+			let value = '';
+
+			for (let i = 0; i < datalistOptions.length; i++) {
+				let option = datalistOptions[i];
+
+				if (entry.toLowerCase() === option.value.toLowerCase() || entry.toLowerCase() === option.text.toLowerCase()) {
+					value = option.value;
+				}
+			}
+
+			return value;
+		}
+
+		if (datalist.length > 0) {
+			for (let i = 0; i < datalist.length; i++) {
+				let list = datalist[i];
+
+				list.addEventListener('blur', function () {
+					let thisDatalist = list.getAttribute('list');
+					let checkValue = checkOption(list.value, thisDatalist);
+
+					if (checkValue) {
+						list.value = checkValue;
+						list.previousElementSibling.value = checkValue;
+					}
+					else {
+						list.previousElementSibling.value = list.value;
+					}
+				});
+			}
+		}
+	}());
+</script>

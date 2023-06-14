@@ -1,0 +1,31 @@
+<section class="o-layout x-product-list t-featured-products">
+	<mvt:do name="l.result" file="g.Module_Library_DB" value="Category_Load_Code(l.settings:readytheme:productlisting:prod_cat, l.settings:product_list_category)" />
+	<mvt:assign name="l.uri:store_id" value="g.Store:id" />
+	<mvt:assign name="l.uri:screen" value="''" />
+	<mvt:assign name="l.uri:page_id" value="0" />
+	<mvt:assign name="l.uri:cat_id" value="l.settings:product_list_category:id" />
+	<mvt:assign name="l.uri:product_id" value="0" />
+	<mvt:do file="g.Module_Feature_URI_DB" name="l.have_uri" value="URI_Load_Item_Canonical(l.uri, l.settings:canonical_uri)" />
+	<mvt:comment>
+		The above code will load the category code used to pull the category name and then load the cannonical URI.
+	</mvt:comment>
+	<h4 class="o-layout__item u-width-12 c-heading-delta u-text-bold u-text-center u-text-uppercase x-product-list__heading">&mvt:product_list_category:name;</h4>
+	<mvt:foreach iterator="product" array="readytheme:products">
+		<div class="o-layout__item u-width-6 u-width-3--m u-text-center x-product-list__item">
+			<a class="u-block x-product-list__link" href="&mvte:product:link;" title="&mvte:product:name;">
+				<img class="x-product-list__image" src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:readytheme:productlisting:b_width;" height="&mvte:readytheme:productlisting:b_height;">
+				<strong class="x-product-list__name">&mvte:product:name;</strong>
+				<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+					<span class="x-product-list__price u-color-gray-30"><s>&mvt:product:formatted_base_price;</s></span>
+					<span class="x-product-list__price u-color-red">&mvt:product:formatted_price;</span>
+				<mvt:else>
+					<span class="x-product-list__price">&mvt:product:formatted_price;</span>
+				</mvt:if>
+			</a>
+		</div>
+	</mvt:foreach>
+	<p class="o-layout__item u-width-12 u-text-center x-product-list__action">
+		<a class="c-button c-button--huge u-bg-gray-50 u-color-white u-font-small u-text-bold u-text-uppercase" href="&mvt:canonical_uri:uri;">Shop All</a>
+	</p>
+</section>
+<br>

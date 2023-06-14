@@ -1,0 +1,13 @@
+{
+    "code": "google-fonts",
+    "type": "E",
+    "filepath": "https://fonts.googleapis.com/css?family=Poppins:400,500,700",
+    "is_global": true,
+    "active": true,
+    "attributes": [
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        }
+    ]
+}

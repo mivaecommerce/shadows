@@ -1,0 +1,178 @@
+<section class="o-layout o-layout--wide u-grids-1 u-grids-2--m x-product-layout">
+	<div class="o-layout__item u-text-center x-product-layout-images" data-PhotoGallery role="group">
+		<figure>
+			<a data-photograph href="#" aria-label="Open larger &mvte:product:name; images">
+				<picture>
+					<img id="main_image" class="x-product-layout-images__image" src="graphics/en-US/cssui/blank.gif" alt="&mvte:product:name;" loading="lazy" width="&mvte:product_display_imagemachine:image_width;" height="&mvte:product_display_imagemachine:image_height;">
+				</picture>
+			</a>
+		</figure>
+		<section class="x-filmstrip-wrapper" data-filmstrip-wrapper>
+			<div class="x-filmstrip" data-filmstrip aria-describedby="filmstrip-heading" aria-label="Thumbnail Filmstrip" role="region" tabindex="0">
+				<h3 id="filmstrip-heading" class="x-filmstrip__heading u-hide-visually">Thumbnail Filmstrip of &mvte:product:name; Images</h3>
+				<ul id="thumbnails" class="x-filmstrip__list"></ul>
+			</div>
+		</section>
+		<mvt:item name="product_display_imagemachine" param="body_deferred:product:id"/>
+	</div>
+	<!-- end .x-product-layout-images -->
+	
+	<form class="o-layout__item x-product-layout-purchase" data-hook="purchase" action="&mvte:urls:BASK:auto;" method="post" name="add">
+		<input type="hidden" name="Old_Screen" value="&mvte:global:Screen;" />
+		<input type="hidden" name="Old_Search" value="&mvte:global:Search;" />
+		<input type="hidden" name="Action" value="ADPR" />
+		<input type="hidden" name="Product_Code" value="&mvte:product:code;" />
+		<input type="hidden" name="Category_Code" value="&mvte:global:category_code;" />
+		<input type="hidden" name="Offset" value="&mvte:global:Offset;" />
+		<input type="hidden" name="AllOffset" value="&mvte:global:AllOffset;" />
+		<input type="hidden" name="CatListingOffset" value="&mvte:global:CatListingOffset;" />
+		<input type="hidden" name="RelatedOffset" value="&mvte:global:RelatedOffset;" />
+		<input type="hidden" name="SearchOffset" value="&mvte:global:SearchOffset;" />
+		<mvt:comment>
+			<!--
+				This `fieldset` element has been commented out due to a potential bug in the attribute machine
+				JavaScript which can cause the form functions to not load properly in Internet Explorer and Edge.
+			-->
+		<fieldset>
+		</mvt:comment>
+			<legend>Purchase &mvt:product:name;</legend>
+			<div class="c-form-list">
+				<div class="c-form-list__item c-form-list__item--full">
+					<h1 class="c-heading-delta u-text-bold x-product-layout-purchase__name">
+						<span class="u-color-gray-30 c-heading--subheading x-product-layout-purchase__sku">SKU: &mvt:product:code;</span><br>
+						<span itemprop="name">&mvt:product:name;</span>
+					</h1>
+				</div>
+				<div class="c-form-list__item c-form-list__item--full">
+					<p class="u-flex x-product-layout-purchase__pricing u-color-gray-40">
+						<s id="price-value-additional" class="c-heading-delta x-product-layout-purchase__pricing-original"><mvt:if expr="l.settings:product:base_price GT l.settings:product:price">&mvt:product:formatted_base_price;</mvt:if></s>
+						<span class="c-heading-delta x-product-layout-purchase__pricing-current">
+							<span id="price-value" itemprop="price" content="&mvt:product:price;">&mvt:product:formatted_price;</span>
+						</span>
+					</p>
+					<div id="product-discounts" class="x-product-layout-purchase__product-discounts u-font-small">
+						<mvt:foreach iterator="discount" array="product:discounts">
+							<mvt:if expr="l.settings:discount:display">
+								<p class="x-product-layout-purchase__product-discounts">
+									&mvt:discount:descrip;: <strong>&mvt:discount:formatted_discount;</strong>
+								</p>
+							</mvt:if>
+						</mvt:foreach>
+					</div>
+					<mvt:comment>
+						<!-- If you would like to display the product weight, uncomment this section. -->
+						<mvt:if expr="l.settings:product:weight NE 0">
+							<p class="x-product-layout-purchase__product-weight u-font-small">
+								Shipping Weight: <strong>&mvt:product:weight;</strong> &mvt:store:wtunits;
+							</p>
+						</mvt:if>
+					</mvt:comment>
+					
+					<mvt:if expr="l.settings:product:inv_active OR l.settings:attributemachine:product:inv_active">
+						<div id="inventory-message" class="x-product-layout-purchase__inventory-message">
+							<link itemprop="availability" href="http://schema.org/&mvt:product:inv_short;">
+							<div class="x-messages x-messages--info">&mvt:product:inv_long;</div>
+						</div>
+					</mvt:if>
+					
+					<mvt:comment>
+						<!-- If you would like to display the product quantity in basket, uncomment this section. -->
+						<p class="x-product-layout-purchase__product-quantity u-font-tiny">
+							Quantity in Basket:&nbsp;
+							<mvt:if expr="l.settings:product:quantity EQ 0">
+								<em>None</em>
+							<mvt:else>
+								<strong>&mvt:product:quantity;</strong>
+							</mvt:if>
+						</p>
+					</mvt:comment>
+					
+				</div>
+				<mvt:item name="discount_volume" param="product:id" />
+				<div class="o-layout c-form-list__item u-grids-1 u-grids-2--m x-product-layout-purchase__options u-color-gray-40">
+					<mvt:item name="product_attributes" param="product:id" />
+				</div>
+				<div class="c-form-list__item c-form-list__item--full x-product-layout-purchase__cta">
+					<div class="x-product-layout-purchase__message" data-hook="purchase-message"></div>
+					<div class="o-layout">
+						<mvt:if expr="l.settings:subscription:enabled AND l.settings:subscription:mandatory">
+							<mvt:if expr="l.settings:product:inv_level NE 'out'">
+								<div class="o-layout__item u-width-12 u-width-4--m x-product-layout-purchase__options-quantity">
+									<label class="c-form-label u-text-bold u-font-small u-color-gray-40 is-required" for="l-quantity">Qty</label>
+									<div class="x-quantify c-control-group t-quantify u-font-small" data-hook="quantify">
+										<button class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-subtract" data-action="decrement" aria-label="Decrease Quantity"></button>
+										<input id="l-quantity" class="c-form-input c-control-group__field u-text-center u-color-gray-40" type="text" inputmode="decimal" name="Quantity" value="1">
+										<button class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-add" data-action="increment" aria-label="Increase Quantity"></button>
+									</div>
+								</div>
+								<p class="o-layout__item u-width-12 u-width-8--m">
+									<br>
+									<mvt:item name="buttons" param="AddToBasket"/>
+								</p>
+							</mvt:if>
+						<mvt:else>
+							<div class="o-layout__item u-width-12 u-width-4--m x-product-layout-purchase__options-quantity">
+								<label class="c-form-label u-text-bold u-font-small u-color-gray-40 is-required" for="l-quantity">Qty</label>
+								<div class="x-quantify c-control-group t-quantify u-font-small" data-hook="quantify">
+									<button class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-subtract" data-action="decrement" aria-label="Decrease Quantity"></button>
+									<input id="l-quantity" class="c-form-input c-control-group__field u-text-center u-color-gray-40" type="text" inputmode="decimal" name="Quantity" value="1">
+									<button class="c-button c-control-group__button u-bg-white u-color-gray-40 u-icon-add" data-action="increment" aria-label="Increase Quantity"></button>
+								</div>
+							</div>
+							<div class="o-layout__item u-width-12 u-width-8--m">
+								<span class="c-form-label u-font-small">&nbsp;</span>
+								<mvt:if expr="l.settings:product:inv_level NE 'out'">
+									<span onclick="document.forms.add.action = '&mvtj:urls:BASK:auto;'; document.forms.add.elements.Action.value = 'ADPR';">
+										<mvt:item name="buttons" param="AddToBasket"/>
+									</span>
+									<br>
+								</mvt:if>
+								<span class="o-layout" data-mmnodisable="true">
+									<span class="o-layout__item" onclick="document.forms.add.action = '&mvtj:urls:WISH:secure;'; document.forms.add.elements.Action.value = 'ATWL';">
+										<mvt:item name="buttons" param="AddToWishList"/>
+										<mvt:item name="readytheme" param="thirdpartysharing" />
+									</span>
+								</span>
+								<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+							</div>
+						</mvt:if>
+					</div>
+				</div>
+			</div>
+		<mvt:comment>
+		</fieldset>
+		</mvt:comment>
+	</form>
+</section>
+
+<section class="o-layout x-product-description">
+	<div class="o-layout__item">
+		<div class="x-a11y-tabs" data-tab-component>
+			<mvt:item name="customfields" param="Read_Product_ID(l.settings:product:id, '', l.settings:product:tabs)" />
+			<ul class="x-a11y-tabs__list">
+				<li class="x-a11y-tabs__item">
+					<a class="x-a11y-tabs__link" href="#tab-description">Description</a>
+				</li>
+				<mvt:foreach iterator="tab" array="product:tabs">
+					<mvt:if expr="'tabs_' CIN l.settings:tab:code AND NOT ISNULL l.settings:tab:value">
+						<li class="x-a11y-tabs__item">
+							<a class="x-a11y-tabs__link" href="#tab-&mvte:tab:code;">&mvte:tab:name;</a>
+						</li>
+					</mvt:if>
+				</mvt:foreach>
+			</ul>
+			<section id="tab-description" class="x-a11y-tabs__panel" itemprop="description">
+				<h2>Description</h2>
+				&mvt:product:descrip;
+			</section>
+			<mvt:foreach iterator="tab" array="product:tabs">
+				<mvt:if expr="'tabs_' CIN l.settings:tab:code AND NOT ISNULL l.settings:tab:value">
+					<section id="tab-&mvte:tab:code;" class="x-a11y-tabs__panel">
+						<h2>&mvte:tab:name;</h2>
+						&mvt:tab:value;
+					</section>
+				</mvt:if>
+			</mvt:foreach>
+		</div>
+	</div>
+</section>

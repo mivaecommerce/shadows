@@ -1,0 +1,29 @@
+<section class="o-layout">
+	<div class="o-layout__item">
+		<hr class="c-keyline">
+		<br>
+		<h4 class="c-heading-delta u-text-bold u-text-center u-text-uppercase">Related Products</h4>
+	</div>
+</section>
+<br>
+<section class="o-layout u-grids-2 u-grids-3--l u-grids-4--xl x-product-list">
+	<mvt:foreach iterator="product" array="related_products:products">
+		<div class="o-layout__item u-text-center x-product-list__item">
+			<a class="u-block x-product-list__link" href="&mvte:product:link;" title="&mvte:product:name;">
+				<figure class="x-product-list__figure">
+					<img class="x-product-list__image" src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:related_products:b_width;" height="&mvte:related_products:b_height;">
+					<figcaption>
+						<strong class="x-product-list__name">&mvte:product:name;</strong>
+						<mvt:if expr="l.settings:product:base_price GT l.settings:product:price">
+							<span class="x-product-list__price u-color-gray-30"><s>&mvt:product:formatted_base_price;</s></span>
+							<span class="x-product-list__price u-color-red">&mvt:product:formatted_price;</span>
+						<mvt:else>
+							<span class="x-product-list__price">&mvt:product:formatted_price;</span>
+						</mvt:if>
+					</figcaption>
+				</figure>
+			</a>
+		</div>
+	</mvt:foreach>
+</section>
+<!-- end .x-product-list -->

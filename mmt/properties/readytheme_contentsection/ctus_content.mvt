@@ -1,0 +1,8 @@
+<p><strong>We're Here To Help</strong><br />Your satisfaction is important to us! Use the form to email us your questions about products, online orders, store experiences and more.</p>
+<p><strong>Order Questions:</strong><br />If you need help or have any other questions concerning your orders, please call customer support at: <a href="tel:+1<mvt:eval expr="glosub(g.store:phone, '.', '')" />">&mvt:global:store:phone;</a>.</p>
+<address itemscope itemtype="http://schema.org/LocalBusiness">
+	<strong itemprop="name">&mvt:global:store:company;</strong><br>
+	&mvt:global:store:address;<br>
+	&mvt:global:store:city;, &mvt:global:store:state; &mvt:global:store:zip; &mvt:global:store:country;<br>
+	Customer Service: <span itemprop="telephone"><a href="tel:+1<mvt:eval expr="glosub(g.store:phone, '.', '')" />">&mvt:global:store:phone;</a></span>
+</address>

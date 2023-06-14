@@ -1,0 +1,40 @@
+{
+    "active": 1,
+    "additionalprice": "base",
+    "advanced": 1,
+    "b_height": 360,
+    "b_width": 360,
+    "button_add": 1,
+    "button_buy": 1,
+    "col_num": 2,
+    "constrain": "B",
+    "default_sort": "disp_order",
+    "descrip": "Standard product list for featured products.",
+    "displaydiscounts": 1,
+    "field_code": 1,
+    "field_desc": 0,
+    "field_name": 1,
+    "field_price": 1,
+    "field_sku": 0,
+    "field_weight": 0,
+    "fields_custom": [
+        {
+            "code": "main",
+            "module": "productimagecustomfields"
+        }
+    ],
+    "format": "X",
+    "image": "T",
+    "imagetypes": [
+        "main"
+    ],
+    "invmsg": "L",
+    "linkexcludecat": 1,
+    "name": "Storefront: Featured Products",
+    "per_page": 4,
+    "predictdiscounts": 1,
+    "price": "sale",
+    "prod_cat": "featured",
+    "prod_disp": "C",
+    "reverse_default_disp_order": 0
+}
