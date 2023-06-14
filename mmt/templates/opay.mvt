@@ -66,7 +66,7 @@
 		</script>
 	</mvt:if>
 </head>
-<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvt:global:pageClass;">
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
 
 	<section class="o-layout">
