@@ -17,26 +17,21 @@
         "price_element_id": "price-value",
         "swatch_element_id": "swatches",
         "template_filename": "prod-attributemachine.mvc",
-        "template_id": 370,
         "weight_element_id": "product-weight-value"
     },
     "discount_volume": {
-        "template_filename": "prod-discount_volume.mvc",
-        "template_id": 371
+        "template_filename": "prod-discount_volume.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "prod-footer.mvc",
-            "template_id": 373
+            "template_filename": "prod-footer.mvc"
         },
         "header": {
-            "template_filename": "prod-header.mvc",
-            "template_id": 372
+            "template_filename": "prod-header.mvc"
         }
     },
     "product_attributes": {
-        "template_filename": "prod-product_attributes.mvc",
-        "template_id": 374
+        "template_filename": "prod-product_attributes.mvc"
     },
     "product_display": {
         "additionalprice": "base",
@@ -64,8 +59,7 @@
         "invmsg": "L",
         "predictdiscounts": 1,
         "price": "sale",
-        "template_filename": "prod-product_display.mvc",
-        "template_id": 375
+        "template_filename": "prod-product_display.mvc"
     },
     "product_display_imagemachine": {
         "closeup_active": 1,
@@ -77,8 +71,7 @@
         "closeup_width": 960,
         "enabled": 1,
         "head": {
-            "template_filename": "prod-product_display_imagemachine-head.mvc",
-            "template_id": 376
+            "template_filename": "prod-product_display_imagemachine-head.mvc"
         },
         "image_height": 640,
         "image_size": "B",
@@ -131,11 +124,11 @@
             "new": 1,
             "old": 1,
             "price": 1,
+            "relevance": 0,
             "switch": 0,
             "updated": 0
         },
-        "template_filename": "prod-related_products.mvc",
-        "template_id": 377
+        "template_filename": "prod-related_products.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

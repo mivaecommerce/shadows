@@ -3,17 +3,14 @@
         "editable": 1,
         "mode": "customer_add",
         "prevent_template_auto_update": 1,
-        "template_filename": "acad-customer.mvc",
-        "template_id": 279
+        "template_filename": "acad-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "acad-footer.mvc",
-            "template_id": 281
+            "template_filename": "acad-footer.mvc"
         },
         "header": {
-            "template_filename": "acad-header.mvc",
-            "template_id": 280
+            "template_filename": "acad-header.mvc"
         }
     },
     "seo_settings": {

@@ -20,17 +20,14 @@
         "salestax": 1,
         "shipping": 1,
         "splitpayments": 0,
-        "template_filename": "bask-basket.mvc",
-        "template_id": 202
+        "template_filename": "bask-basket.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "bask-footer.mvc",
-            "template_id": 204
+            "template_filename": "bask-footer.mvc"
         },
         "header": {
-            "template_filename": "bask-header.mvc",
-            "template_id": 203
+            "template_filename": "bask-header.mvc"
         }
     },
     "seo_settings": {
@@ -69,7 +66,6 @@
         "ship_phone": 0,
         "ship_state": 1,
         "ship_zip": 1,
-        "template_filename": "bask-shipestimate.mvc",
-        "template_id": 205
+        "template_filename": "bask-shipestimate.mvc"
     }
 }

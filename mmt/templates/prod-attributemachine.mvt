@@ -67,10 +67,7 @@ AttributeMachine.prototype.Swatch_Click = function(input, attribute, option) {
 		}
 	}
 
-	if (attribute.inventory) {
-		this.Attribute_Changed(input);
-	}
-
+	this.Attribute_Changed(input);
 	swatch_name_element.innerHTML = option.prompt;
 
 	/**
@@ -94,7 +91,7 @@ MivaEvents.SubscribeToEvent('variant_changed', function (data) {
 const Update_Volume_Pricing = function (priceData) {
 	const volumePricingContainer = document.querySelector('[data-volume-pricing]');
 
-	if (priceData.success === 1) {
+	if (priceData.success === 1 && priceData.data.length > 0) {
 		volumePricingContainer.innerHTML = [
 			'<table class="o-table o-table--fixed c-table-simple">',
 			'<thead>',

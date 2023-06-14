@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "orhl-footer.mvc",
-            "template_id": 331
+            "template_filename": "orhl-footer.mvc"
         },
         "header": {
-            "template_filename": "orhl-header.mvc",
-            "template_id": 330
+            "template_filename": "orhl-header.mvc"
         }
     },
     "seo_settings": {

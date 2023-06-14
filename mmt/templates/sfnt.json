@@ -1,16 +1,13 @@
 {
     "content": {
-        "template_filename": "sfnt-content.mvc",
-        "template_id": 407
+        "template_filename": "sfnt-content.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "sfnt-footer.mvc",
-            "template_id": 409
+            "template_filename": "sfnt-footer.mvc"
         },
         "header": {
-            "template_filename": "sfnt-header.mvc",
-            "template_id": 408
+            "template_filename": "sfnt-header.mvc"
         }
     },
     "seo_settings": {

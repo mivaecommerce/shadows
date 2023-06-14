@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "csub-footer.mvc",
-            "template_id": 315
+            "template_filename": "csub-footer.mvc"
         },
         "header": {
-            "template_filename": "csub-header.mvc",
-            "template_id": 314
+            "template_filename": "csub-header.mvc"
         }
     },
     "seo_settings": {
@@ -75,7 +73,6 @@
             "termrem": 0,
             "total": 0
         },
-        "template_filename": "csub-subscriptions.mvc",
-        "template_id": 316
+        "template_filename": "csub-subscriptions.mvc"
     }
 }

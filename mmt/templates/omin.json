@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "omin-footer.mvc",
-            "template_id": 226
+            "template_filename": "omin-footer.mvc"
         },
         "header": {
-            "template_filename": "omin-header.mvc",
-            "template_id": 225
+            "template_filename": "omin-header.mvc"
         }
     },
     "seo_settings": {

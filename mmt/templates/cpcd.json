@@ -1,18 +1,15 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "cpcd-footer.mvc",
-            "template_id": 304
+            "template_filename": "cpcd-footer.mvc"
         },
         "header": {
-            "template_filename": "cpcd-header.mvc",
-            "template_id": 303
+            "template_filename": "cpcd-header.mvc"
         }
     },
     "paymentcards": {
         "mode": "paymentcard_list",
-        "template_filename": "cpcd-paymentcards.mvc",
-        "template_id": 305
+        "template_filename": "cpcd-paymentcards.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

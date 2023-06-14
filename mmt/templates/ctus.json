@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ctus-footer.mvc",
-            "template_id": 252
+            "template_filename": "ctus-footer.mvc"
         },
         "header": {
-            "template_filename": "ctus-header.mvc",
-            "template_id": 251
+            "template_filename": "ctus-header.mvc"
         }
     },
     "seo_settings": {

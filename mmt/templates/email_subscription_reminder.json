@@ -14,7 +14,6 @@
         "lineitemcoupons": 0,
         "lineitemdiscounts": 0,
         "payments": 1,
-        "template_filename": "email_subscription_reminder-toe_subscriptions.mvc",
-        "template_id": 150
+        "template_filename": "email_subscription_reminder-toe_subscriptions.mvc"
     }
 }

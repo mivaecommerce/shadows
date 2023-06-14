@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "oprc-footer.mvc",
-            "template_id": 345
+            "template_filename": "oprc-footer.mvc"
         },
         "header": {
-            "template_filename": "oprc-header.mvc",
-            "template_id": 344
+            "template_filename": "oprc-header.mvc"
         }
     },
     "seo_settings": {

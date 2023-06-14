@@ -32,18 +32,17 @@
             "new": 1,
             "old": 1,
             "price": 1,
+            "relevance": 0,
             "switch": 1,
             "updated": 0
         }
     },
     "hdft": {
         "footer": {
-            "template_filename": "srch-footer.mvc",
-            "template_id": 397
+            "template_filename": "srch-footer.mvc"
         },
         "header": {
-            "template_filename": "srch-header.mvc",
-            "template_id": 396
+            "template_filename": "srch-header.mvc"
         }
     },
     "search_results": {
@@ -86,11 +85,11 @@
             "new": 1,
             "old": 1,
             "price": 1,
+            "relevance": 0,
             "switch": 1,
             "updated": 0
         },
-        "template_filename": "srch-search_results.mvc",
-        "template_id": 398
+        "template_filename": "srch-search_results.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

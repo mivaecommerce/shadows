@@ -1,16 +1,13 @@
 {
     "affiliate": {
-        "template_filename": "afad-affiliate.mvc",
-        "template_id": 188
+        "template_filename": "afad-affiliate.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "afad-footer.mvc",
-            "template_id": 190
+            "template_filename": "afad-footer.mvc"
         },
         "header": {
-            "template_filename": "afad-header.mvc",
-            "template_id": 189
+            "template_filename": "afad-header.mvc"
         }
     },
     "seo_settings": {

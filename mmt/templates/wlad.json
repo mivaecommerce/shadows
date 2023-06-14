@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "wlad-footer.mvc",
-            "template_id": 424
+            "template_filename": "wlad-footer.mvc"
         },
         "header": {
-            "template_filename": "wlad-header.mvc",
-            "template_id": 423
+            "template_filename": "wlad-header.mvc"
         }
     },
     "seo_settings": {
@@ -27,7 +25,6 @@
     },
     "wishlist": {
         "mode": "wishlist_add",
-        "template_filename": "wlad-wishlist.mvc",
-        "template_id": 425
+        "template_filename": "wlad-wishlist.mvc"
     }
 }

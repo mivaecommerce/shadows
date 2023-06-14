@@ -440,14 +440,14 @@
 							</mvt:foreach>
 						</div>
 						<div class="o-layout__item">
-							<mvt:assign name="l.settings:address_count" value="1" />
+							<mvt:assign name="l.settings:address_count" value="1"/>
 							<mvt:foreach array="addressArray" iterator="address">
 								<mvt:if expr="l.settings:address:validated">
 									<label class="c-form-checkbox">
-										<input class="c-form-checkbox__input" type="radio" name="ShipValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_resdntl="&mvte:address:resdntl;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" aria-describedby="address-&mvt:address_count;">
-										<span class="c-form-checkbox__caption u-text-bold">Verified&nbsp;<span class="u-hide-visually">Shipping&nbsp;</span>Address <span class="u-hide-visually">&mvt:address_count;</span></span>
+										<input class="c-form-checkbox__input" type="radio" name="ShipValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_resdntl="&mvte:address:resdntl;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" aria-describedby="address-&mvte:address_count;">
+										<span class="c-form-checkbox__caption u-text-bold">Verified&nbsp;<span class="u-hide-visually">Shipping&nbsp;</span>Address <span class="u-hide-visually">&mvte:address_count;</span></span>
 									</label>
-									<p id="address-&mvt:address_count;" class="u-font-small">
+									<p id="address-&mvte:address_count;" class="u-font-small">
 										<mvt:if expr="NOT ISNULL l.settings:address:comp">
 											&mvte:address:comp;<br>
 										</mvt:if>
@@ -467,7 +467,7 @@
 										</mvt:if>
 									</p>
 									<hr class="c-keyline c-keyline--small">
-									<mvt:assign name="l.settings:address_count" value="l.settings:address_count + 1" />
+									<mvt:assign name="l.settings:address_count" value="l.settings:address_count + 1"/>
 								</mvt:if>
 							</mvt:foreach>
 						</div>
@@ -509,14 +509,14 @@
 									</mvt:foreach>
 								</div>
 								<div class="o-layout__item">
-									<mvt:assign name="l.settings:bill_address_count" value="0" />
+									<mvt:assign name="l.settings:bill_address_count" value="0"/>
 									<mvt:foreach array="customer:validated_bill_addresses" iterator="address">
 										<mvt:if expr="l.settings:address:validated">
 											<label class="c-form-checkbox">
-												<input class="c-form-checkbox__input" type="radio" name="BillValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" aria-describedby="bill-address-&mvt:bill_address_count;">
-												<span class="c-form-checkbox__caption u-text-bold">Verified&nbsp;<span class="u-hide-visually">Billing&nbsp;</span>Address <span class="u-hide-visually">&mvt:address_count;</span></span>
+												<input class="c-form-checkbox__input" type="radio" name="BillValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" aria-describedby="bill-address-&mvte:bill_address_count;">
+												<span class="c-form-checkbox__caption u-text-bold">Verified&nbsp;<span class="u-hide-visually">Billing&nbsp;</span>Address <span class="u-hide-visually">&mvte:address_count;</span></span>
 											</label>
-											<p id="bill-address-&mvt:bill_address_count;" class="u-font-small">
+											<p id="bill-address-&mvte:bill_address_count;" class="u-font-small">
 												<mvt:if expr="NOT ISNULL l.settings:address:comp">
 													&mvte:address:comp;<br>
 												</mvt:if>
@@ -533,7 +533,7 @@
 												</mvt:if>
 											</p>
 											<hr class="c-keyline c-keyline--small">
-											<mvt:assign name="l.settings:bill_address_count" value="l.settings:bill_address_count + 1" />
+											<mvt:assign name="l.settings:bill_address_count" value="l.settings:bill_address_count + 1"/>
 										</mvt:if>
 									</mvt:foreach>
 								</div>
@@ -552,7 +552,7 @@
 	<script>
 		(function () {
 			'use strict';
-	
+
 			const billAddresses = document.querySelectorAll('[name="BillValidatedSelector"]');
 			const cancel = document.querySelector('[data-edit-address]');
 			const dialogElement = document.querySelector('[data-dialog="address-validation"]');
@@ -562,7 +562,7 @@
 			const update = document.querySelector('[data-update-address]');
 			let billPrefix;
 			let shipPrefix;
-	
+
 			if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ORDR')) {
 				billPrefix = 'Bill';
 				shipPrefix = 'Ship';
@@ -572,13 +572,13 @@
 				shipPrefix = 'Customer_Ship';
 			}
 			else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICSA' || formElement.elements.Action.value === 'UCSA')) {
+				billPrefix = null;
 				shipPrefix = 'Address_';
 			}
-		
+
 			function findFormInputs(form, prefix) {
 				return {
 					billing: {
-						comp: form.elements[prefix + 'Company'],
 						addr1: form.elements[prefix + 'Address1'],
 						addr2: form.elements[prefix + 'Address2'],
 						city: form.elements[prefix + 'City'],
@@ -589,7 +589,6 @@
 						validated: form.elements[prefix + 'Validated']
 					},
 					shipping: {
-						comp: form.elements[prefix + 'Company'],
 						addr1: form.elements[prefix + 'Address1'],
 						addr2: form.elements[prefix + 'Address2'],
 						city: form.elements[prefix + 'City'],
@@ -601,40 +600,38 @@
 					}
 				};
 			}
-	
-			function getSelectedShipAddress(){
+
+			function getSelectedShipAddress() {
 				for (let i = 0; i < shipAddresses.length; i++) {
 					if (shipAddresses[i].checked) {
 						return {
-							comp: typeof shipAddresses[i].getAttribute('data-mm_address_comp') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_comp') : '',
 							addr1: typeof shipAddresses[i].getAttribute('data-mm_address_addr1') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_addr1') : '',
 							addr2: typeof shipAddresses[i].getAttribute('data-mm_address_addr2') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_addr2') : '',
 							city: typeof shipAddresses[i].getAttribute('data-mm_address_city') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_city') : '',
 							state: typeof shipAddresses[i].getAttribute('data-mm_address_state') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_state') : '',
-							country: typeof shipAddresses[i].getAttribute('data-mm_address_comp') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_country') : '',
-							zip: typeof shipAddresses[i].getAttribute('data-mm_address_country') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_zip') : ''
+							country: typeof shipAddresses[i].getAttribute('data-mm_address_country') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_country') : '',
+							zip: typeof shipAddresses[i].getAttribute('data-mm_address_zip') === 'string' ? shipAddresses[i].getAttribute('data-mm_address_zip') : ''
 						};
 					}
 				}
 			}
-	
-			function getSelectedBillAddress(){
+
+			function getSelectedBillAddress() {
 				for (let i = 0; i < billAddresses.length; i++) {
 					if (billAddresses[i].checked) {
 						return {
-							comp: typeof billAddresses[i].getAttribute('data-mm_address_comp') === 'string' ? billAddresses[i].getAttribute('data-mm_address_comp') : '',
 							addr1: typeof billAddresses[i].getAttribute('data-mm_address_addr1') === 'string' ? billAddresses[i].getAttribute('data-mm_address_addr1') : '',
 							addr2: typeof billAddresses[i].getAttribute('data-mm_address_addr2') === 'string' ? billAddresses[i].getAttribute('data-mm_address_addr2') : '',
 							city: typeof billAddresses[i].getAttribute('data-mm_address_city') === 'string' ? billAddresses[i].getAttribute('data-mm_address_city') : '',
 							state: typeof billAddresses[i].getAttribute('data-mm_address_state') === 'string' ? billAddresses[i].getAttribute('data-mm_address_state') : '',
-							country: typeof billAddresses[i].getAttribute('data-mm_address_comp') === 'string' ? billAddresses[i].getAttribute('data-mm_address_country') : '',
-							zip: typeof billAddresses[i].getAttribute('data-mm_address_country') === 'string' ? billAddresses[i].getAttribute('data-mm_address_zip') : ''
+							country: typeof billAddresses[i].getAttribute('data-mm_address_country') === 'string' ? billAddresses[i].getAttribute('data-mm_address_country') : '',
+							zip: typeof billAddresses[i].getAttribute('data-mm_address_zip') === 'string' ? billAddresses[i].getAttribute('data-mm_address_zip') : ''
 						};
 					}
 				}
 			}
-	
-			function setFirstSuggestion(){
+
+			function setFirstSuggestion() {
 				for (let i = 0; i < shipAddresses.length; i++) {
 					if (shipAddresses.length === 1) {
 						shipAddresses[0].checked = true;
@@ -643,7 +640,7 @@
 						shipAddresses[1].checked = true;
 					}
 				}
-				
+
 				if (showBilling !== null) {
 					for (let i = 0; i < billAddresses.length; i++) {
 						if (billAddresses.length === 1) {
@@ -655,7 +652,7 @@
 					}
 				}
 			}
-	
+
 			cancel.addEventListener('click', function (clickEvent) {
 				clickEvent.preventDefault();
 				findFormInputs(formElement, shipPrefix).shipping.validated.value = 0;
@@ -664,10 +661,9 @@
 				}
 				window.closeDialog();
 			});
-	
+
 			update.addEventListener('click', function (clickEvent) {
 				clickEvent.preventDefault();
-				findFormInputs(formElement, shipPrefix).shipping.comp.value = getSelectedShipAddress().comp;
 				findFormInputs(formElement, shipPrefix).shipping.addr1.value = getSelectedShipAddress().addr1;
 				findFormInputs(formElement, shipPrefix).shipping.addr2.value = getSelectedShipAddress().addr2;
 				findFormInputs(formElement, shipPrefix).shipping.city.value = getSelectedShipAddress().city;
@@ -675,25 +671,25 @@
 				findFormInputs(formElement, shipPrefix).shipping.stateSelect.value = getSelectedShipAddress().state;
 				findFormInputs(formElement, shipPrefix).shipping.country.value = getSelectedShipAddress().country;
 				findFormInputs(formElement, shipPrefix).shipping.zip.value = getSelectedShipAddress().zip;
-				if (showBilling !== null) {
-					findFormInputs(formElement, billPrefix).billing.comp.value = getSelectedBillAddress().comp;
-					findFormInputs(formElement, billPrefix).billing.addr1.value = getSelectedBillAddress().addr1;
-					findFormInputs(formElement, billPrefix).billing.addr2.value = getSelectedBillAddress().addr2;
-					findFormInputs(formElement, billPrefix).billing.city.value = getSelectedBillAddress().city;
-					findFormInputs(formElement, billPrefix).billing.state.value = getSelectedBillAddress().state;
-					findFormInputs(formElement, billPrefix).billing.stateSelect.value = getSelectedBillAddress().state;
-					findFormInputs(formElement, billPrefix).billing.country.value = getSelectedBillAddress().country;
-					findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedBillAddress().zip;
-				}
-				else {
-					findFormInputs(formElement, billPrefix).billing.comp.value = getSelectedShipAddress().comp;
-					findFormInputs(formElement, billPrefix).billing.addr1.value = getSelectedShipAddress().addr1;
-					findFormInputs(formElement, billPrefix).billing.addr2.value = getSelectedShipAddress().addr2;
-					findFormInputs(formElement, billPrefix).billing.city.value = getSelectedShipAddress().city;
-					findFormInputs(formElement, billPrefix).billing.state.value = getSelectedShipAddress().state;
-					findFormInputs(formElement, billPrefix).billing.stateSelect.value = getSelectedShipAddress().state;
-					findFormInputs(formElement, billPrefix).billing.country.value = getSelectedShipAddress().country;
-					findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedShipAddress().zip;
+				if (billPrefix !== null) {
+					if (showBilling !== null) {
+						findFormInputs(formElement, billPrefix).billing.addr1.value = getSelectedBillAddress().addr1;
+						findFormInputs(formElement, billPrefix).billing.addr2.value = getSelectedBillAddress().addr2;
+						findFormInputs(formElement, billPrefix).billing.city.value = getSelectedBillAddress().city;
+						findFormInputs(formElement, billPrefix).billing.state.value = getSelectedBillAddress().state;
+						findFormInputs(formElement, billPrefix).billing.stateSelect.value = getSelectedBillAddress().state;
+						findFormInputs(formElement, billPrefix).billing.country.value = getSelectedBillAddress().country;
+						findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedBillAddress().zip;
+					}
+					else {
+						findFormInputs(formElement, billPrefix).billing.addr1.value = getSelectedShipAddress().addr1;
+						findFormInputs(formElement, billPrefix).billing.addr2.value = getSelectedShipAddress().addr2;
+						findFormInputs(formElement, billPrefix).billing.city.value = getSelectedShipAddress().city;
+						findFormInputs(formElement, billPrefix).billing.state.value = getSelectedShipAddress().state;
+						findFormInputs(formElement, billPrefix).billing.stateSelect.value = getSelectedShipAddress().state;
+						findFormInputs(formElement, billPrefix).billing.country.value = getSelectedShipAddress().country;
+						findFormInputs(formElement, billPrefix).billing.zip.value = getSelectedShipAddress().zip;
+					}
 				}
 				window.closeDialog();
 				formElement.submit();
@@ -720,7 +716,7 @@
 			 */
 			document.addEventListener('click', function (clickEvent) {
 				let clickEventTarget = clickEvent.target;
-				
+
 				if (dialogElement) {
 					if (clickEventTarget === dialogElement.firstElementChild) {
 						if (dialogElement.getAttribute('aria-hidden') === 'false') {
@@ -1129,7 +1125,7 @@
 	</section>
 	<!-- end .x-category-tree -->
 </mvt:if>
-]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Single Column</Layout><Items><Item><Active>true</Active><Name>Personal Information</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Information</Name><Link type="Page" target="_self">ACED</Link></Item><Item><Active>true</Active><Name>Change Email</Name><Link type="Page" target="_self">CEML</Link></Item><Item><Active>true</Active><Name>Change Password</Name><Link type="Page" target="_self">CPWD</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Payments Options</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Cards</Name><Link type="Page" target="_self">CPCD</Link></Item><Item><Active>true</Active><Name>Add New Card</Name><Link type="Page" target="_self">CPCA</Link></Item></SubItems></Item><Item><Active>true</Active><Name>My Orders</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Order History</Name><Link type="Page" target="_self">ORDH</Link></Item><Item><Active>true</Active><Name>Manage Subscriptions</Name><Link type="Page" target="_self">CSUB</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Customer Credit</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Check Your Balance</Name><Link type="Page" target="_self">ABAL</Link></Item><Item><Active>true</Active><Name>Redeem Gift Certificate</Name><Link type="Page" target="_self">RGFT</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Address Book</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Addresses</Name><Link type="Page" target="_self">CABK</Link></Item><Item><Active>true</Active><Name>Add New Address</Name><Link type="Page" target="_self">CADA</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Wish Lists</Name><Link type="Page" target="_self">WLST</Link></Item><Item><Active>false</Active><Name>Affiliate Information</Name><Link type="Page" target="_self">AFED</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="disclaimer_navigation"/><NavigationSet_Add><Code>disclaimer_navigation</Code><Name>Global Footer Disclaimer Navigation</Name><Description/><Template><![CDATA[<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
+]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Single Column</Layout><Items><Item><Active>true</Active><Name>Personal Information</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Information</Name><Link type="Page" target="_self">ACED</Link></Item><Item><Active>true</Active><Name>Change Email</Name><Link type="Page" target="_self">CEML</Link></Item><Item><Active>true</Active><Name>Change Password</Name><Link type="Page" target="_self">CPWD</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Payment Options</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Cards</Name><Link type="Page" target="_self">CPCD</Link></Item><Item><Active>true</Active><Name>Add New Card</Name><Link type="Page" target="_self">CPCA</Link></Item></SubItems></Item><Item><Active>true</Active><Name>My Orders</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Order History</Name><Link type="Page" target="_self">ORDH</Link></Item><Item><Active>true</Active><Name>Manage Subscriptions</Name><Link type="Page" target="_self">CSUB</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Customer Credit</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Check Your Balance</Name><Link type="Page" target="_self">ABAL</Link></Item><Item><Active>true</Active><Name>Redeem Gift Certificate</Name><Link type="Page" target="_self">RGFT</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Address Book</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Addresses</Name><Link type="Page" target="_self">CABK</Link></Item><Item><Active>true</Active><Name>Add New Address</Name><Link type="Page" target="_self">CADA</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Wish Lists</Name><Link type="Page" target="_self">WLST</Link></Item><Item><Active>false</Active><Name>Affiliate Information</Name><Link type="Page" target="_self">AFED</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="disclaimer_navigation"/><NavigationSet_Add><Code>disclaimer_navigation</Code><Name>Global Footer Disclaimer Navigation</Name><Description/><Template><![CDATA[<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
 	<section class="o-layout u-grids-1 u-grids-2--m u-grids-3--l u-text-center--m u-text-uppercase t-site-footer__disclaimer">
 		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 			<p class="o-layout__item">

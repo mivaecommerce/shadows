@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "invc-footer.mvc",
-            "template_id": 325
+            "template_filename": "invc-footer.mvc"
         },
         "header": {
-            "template_filename": "invc-header.mvc",
-            "template_id": 324
+            "template_filename": "invc-header.mvc"
         }
     },
     "order_contents": {
@@ -22,17 +20,14 @@
         "lineitemdiscounts": 1,
         "lineitemprice": "base",
         "payments": 1,
-        "template_filename": "invc-order_contents.mvc",
-        "template_id": 326
+        "template_filename": "invc-order_contents.mvc"
     },
     "order_customer": {
         "prevent_template_auto_update": 1,
-        "template_filename": "invc-order_customer.mvc",
-        "template_id": 327
+        "template_filename": "invc-order_customer.mvc"
     },
     "printer_friendly_content": {
-        "template_filename": "invc-printer_friendly_content.mvc",
-        "template_id": 328
+        "template_filename": "invc-printer_friendly_content.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

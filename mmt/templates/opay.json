@@ -20,24 +20,20 @@
         "salestax": 1,
         "shipping": 1,
         "splitpayments": 1,
-        "template_filename": "opay-basket.mvc",
-        "template_id": 228
+        "template_filename": "opay-basket.mvc"
     },
     "customer": {
         "editable": 0,
         "mode": "order",
         "prevent_template_auto_update": 1,
-        "template_filename": "opay-customer.mvc",
-        "template_id": 229
+        "template_filename": "opay-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "opay-footer.mvc",
-            "template_id": 231
+            "template_filename": "opay-footer.mvc"
         },
         "header": {
-            "template_filename": "opay-header.mvc",
-            "template_id": 230
+            "template_filename": "opay-header.mvc"
         }
     },
     "mivapay": {
@@ -47,12 +43,10 @@
             "mode": "checkout",
             "storecard_checkedbydefault": 0,
             "storecard_prompt": "Store This Card For Future Use",
-            "template_filename": "opay-mivapay.mvc",
-            "template_id": 232
+            "template_filename": "opay-mivapay.mvc"
         },
         "paymentcardfields_css": {
-            "template_filename": "opay-mivapay_css.mvc",
-            "template_id": 233
+            "template_filename": "opay-mivapay_css.mvc"
         }
     },
     "seo_settings": {

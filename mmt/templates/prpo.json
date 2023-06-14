@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "prpo-footer.mvc",
-            "template_id": 368
+            "template_filename": "prpo-footer.mvc"
         },
         "header": {
-            "template_filename": "prpo-header.mvc",
-            "template_id": 367
+            "template_filename": "prpo-header.mvc"
         }
     },
     "seo_settings": {

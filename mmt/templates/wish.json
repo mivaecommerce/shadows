@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "wish-footer.mvc",
-            "template_id": 419
+            "template_filename": "wish-footer.mvc"
         },
         "header": {
-            "template_filename": "wish-header.mvc",
-            "template_id": 418
+            "template_filename": "wish-header.mvc"
         }
     },
     "seo_settings": {
@@ -27,8 +25,7 @@
     },
     "wishlist": {
         "mode": "tokens_only_nodisplay",
-        "template_filename": "wish-wishlist.mvc",
-        "template_id": 420
+        "template_filename": "wish-wishlist.mvc"
     },
     "wishlistitems": {
         "additionalprice": "base",
@@ -63,7 +60,6 @@
             "price": 0,
             "switch": 0
         },
-        "template_filename": "wish-wishlistitems.mvc",
-        "template_id": 421
+        "template_filename": "wish-wishlistitems.mvc"
     }
 }

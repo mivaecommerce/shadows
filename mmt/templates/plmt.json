@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "plmt-footer.mvc",
-            "template_id": 380
+            "template_filename": "plmt-footer.mvc"
         },
         "header": {
-            "template_filename": "plmt-header.mvc",
-            "template_id": 379
+            "template_filename": "plmt-header.mvc"
         }
     },
     "seo_settings": {

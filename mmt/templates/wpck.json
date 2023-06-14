@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "wpck-footer.mvc",
-            "template_id": 248
+            "template_filename": "wpck-footer.mvc"
         },
         "header": {
-            "template_filename": "wpck-header.mvc",
-            "template_id": 247
+            "template_filename": "wpck-header.mvc"
         }
     },
     "seo_settings": {

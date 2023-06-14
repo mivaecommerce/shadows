@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ntfd-footer.mvc",
-            "template_id": 342
+            "template_filename": "ntfd-footer.mvc"
         },
         "header": {
-            "template_filename": "ntfd-header.mvc",
-            "template_id": 341
+            "template_filename": "ntfd-header.mvc"
         }
     },
     "http_headers": [

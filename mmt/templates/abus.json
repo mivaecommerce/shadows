@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "abus-footer.mvc",
-            "template_id": 186
+            "template_filename": "abus-footer.mvc"
         },
         "header": {
-            "template_filename": "abus-header.mvc",
-            "template_id": 185
+            "template_filename": "abus-header.mvc"
         }
     },
     "seo_settings": {

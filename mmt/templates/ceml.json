@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ceml-footer.mvc",
-            "template_id": 212
+            "template_filename": "ceml-footer.mvc"
         },
         "header": {
-            "template_filename": "ceml-header.mvc",
-            "template_id": 211
+            "template_filename": "ceml-header.mvc"
         }
     },
     "seo_settings": {

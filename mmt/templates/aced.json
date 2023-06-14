@@ -3,17 +3,14 @@
         "editable": 1,
         "mode": "customer_edit",
         "prevent_template_auto_update": 1,
-        "template_filename": "aced-customer.mvc",
-        "template_id": 283
+        "template_filename": "aced-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "aced-footer.mvc",
-            "template_id": 285
+            "template_filename": "aced-footer.mvc"
         },
         "header": {
-            "template_filename": "aced-header.mvc",
-            "template_id": 284
+            "template_filename": "aced-header.mvc"
         }
     },
     "seo_settings": {

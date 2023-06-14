@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "uatm-footer.mvc",
-            "template_id": 412
+            "template_filename": "uatm-footer.mvc"
         },
         "header": {
-            "template_filename": "uatm-header.mvc",
-            "template_id": 411
+            "template_filename": "uatm-header.mvc"
         }
     },
     "seo_settings": {

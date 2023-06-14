@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "cpwd-footer.mvc",
-            "template_id": 215
+            "template_filename": "cpwd-footer.mvc"
         },
         "header": {
-            "template_filename": "cpwd-header.mvc",
-            "template_id": 214
+            "template_filename": "cpwd-header.mvc"
         }
     },
     "seo_settings": {

@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "wlgn-footer.mvc",
-            "template_id": 428
+            "template_filename": "wlgn-footer.mvc"
         },
         "header": {
-            "template_filename": "wlgn-header.mvc",
-            "template_id": 427
+            "template_filename": "wlgn-header.mvc"
         }
     },
     "seo_settings": {

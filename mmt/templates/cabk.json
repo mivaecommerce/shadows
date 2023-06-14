@@ -1,17 +1,14 @@
 {
     "addressbook": {
         "prevent_template_auto_update": 1,
-        "template_filename": "cabk-addressbook.mvc",
-        "template_id": 267
+        "template_filename": "cabk-addressbook.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "cabk-footer.mvc",
-            "template_id": 269
+            "template_filename": "cabk-footer.mvc"
         },
         "header": {
-            "template_filename": "cabk-header.mvc",
-            "template_id": 268
+            "template_filename": "cabk-header.mvc"
         }
     },
     "seo_settings": {

@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "afrt-footer.mvc",
-            "template_id": 442
+            "template_filename": "afrt-footer.mvc"
         },
         "header": {
-            "template_filename": "afrt-header.mvc",
-            "template_id": 441
+            "template_filename": "afrt-header.mvc"
         }
     },
     "seo_settings": {

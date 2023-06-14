@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "mntn-footer.mvc",
-            "template_id": 334
+            "template_filename": "mntn-footer.mvc"
         },
         "header": {
-            "template_filename": "mntn-header.mvc",
-            "template_id": 333
+            "template_filename": "mntn-header.mvc"
         }
     },
     "seo_settings": {

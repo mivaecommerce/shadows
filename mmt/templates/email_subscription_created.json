@@ -19,7 +19,6 @@
         "lineitemdiscounts": 0,
         "payments": 1,
         "price": "base",
-        "template_filename": "email_subscription_created-toe_subscriptions.mvc",
-        "template_id": 132
+        "template_filename": "email_subscription_created-toe_subscriptions.mvc"
     }
 }

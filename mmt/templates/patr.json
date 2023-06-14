@@ -10,22 +10,18 @@
         "predictdiscounts": 0,
         "preload": 1,
         "price": "base",
-        "template_filename": "patr-attributemachine.mvc",
-        "template_id": 336
+        "template_filename": "patr-attributemachine.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "patr-footer.mvc",
-            "template_id": 338
+            "template_filename": "patr-footer.mvc"
         },
         "header": {
-            "template_filename": "patr-header.mvc",
-            "template_id": 337
+            "template_filename": "patr-header.mvc"
         }
     },
     "product_attributes": {
-        "template_filename": "patr-product_attributes.mvc",
-        "template_id": 339
+        "template_filename": "patr-product_attributes.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

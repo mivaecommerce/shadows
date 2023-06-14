@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "sarp-footer.mvc",
-            "template_id": 401
+            "template_filename": "sarp-footer.mvc"
         },
         "header": {
-            "template_filename": "sarp-header.mvc",
-            "template_id": 400
+            "template_filename": "sarp-header.mvc"
         }
     },
     "seo_settings": {

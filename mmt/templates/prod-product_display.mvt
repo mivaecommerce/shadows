@@ -62,12 +62,7 @@
 						</mvt:if>
 					</mvt:comment>
 					
-					<mvt:if expr="l.settings:product:inv_active OR l.settings:attributemachine:product:inv_active">
-						<div id="inventory-message" class="x-product-layout-purchase__inventory-message">
-							<link itemprop="availability" href="http://schema.org/&mvt:product:inv_short;">
-							<div class="x-messages x-messages--info">&mvt:product:inv_long;</div>
-						</div>
-					</mvt:if>
+					<div id="inventory-message" class="x-messages x-messages--info x-product-layout-purchase__inventory-message">&mvt:product:inv_long;</div>
 					
 					<mvt:comment>
 						<!-- If you would like to display the product quantity in basket, uncomment this section. -->

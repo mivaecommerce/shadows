@@ -2,17 +2,14 @@
     "addressfields": {
         "mode": "customeraddress_add",
         "prevent_template_auto_update": 1,
-        "template_filename": "cada-addressfields.mvc",
-        "template_id": 271
+        "template_filename": "cada-addressfields.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "cada-footer.mvc",
-            "template_id": 273
+            "template_filename": "cada-footer.mvc"
         },
         "header": {
-            "template_filename": "cada-header.mvc",
-            "template_id": 272
+            "template_filename": "cada-header.mvc"
         }
     },
     "seo_settings": {

@@ -2,17 +2,14 @@
     "addressfields": {
         "mode": "customeraddress_edit",
         "prevent_template_auto_update": 1,
-        "template_filename": "cade-addressfields.mvc",
-        "template_id": 275
+        "template_filename": "cade-addressfields.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "cade-footer.mvc",
-            "template_id": 277
+            "template_filename": "cade-footer.mvc"
         },
         "header": {
-            "template_filename": "cade-header.mvc",
-            "template_id": 276
+            "template_filename": "cade-header.mvc"
         }
     },
     "seo_settings": {

@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "logn-footer.mvc",
-            "template_id": 288
+            "template_filename": "logn-footer.mvc"
         },
         "header": {
-            "template_filename": "logn-header.mvc",
-            "template_id": 287
+            "template_filename": "logn-header.mvc"
         }
     },
     "seo_settings": {

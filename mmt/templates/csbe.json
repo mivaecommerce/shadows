@@ -3,27 +3,22 @@
         "editable": 0,
         "mode": "tokens_only_nodisplay",
         "prevent_template_auto_update": 0,
-        "template_filename": "csbe-customer.mvc",
-        "template_id": 307
+        "template_filename": "csbe-customer.mvc"
     },
     "datepicker": {
-        "template_filename": "csbe-datepicker.mvc",
-        "template_id": 308
+        "template_filename": "csbe-datepicker.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "csbe-footer.mvc",
-            "template_id": 310
+            "template_filename": "csbe-footer.mvc"
         },
         "header": {
-            "template_filename": "csbe-header.mvc",
-            "template_id": 309
+            "template_filename": "csbe-header.mvc"
         }
     },
     "paymentcards": {
         "mode": "tokens_only_nodisplay",
-        "template_filename": "csbe-paymentcards.mvc",
-        "template_id": 311
+        "template_filename": "csbe-paymentcards.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -55,7 +50,6 @@
             "main"
         ],
         "mode": "subscription_edit",
-        "template_filename": "csbe-subscriptionfields.mvc",
-        "template_id": 312
+        "template_filename": "csbe-subscriptionfields.mvc"
     }
 }

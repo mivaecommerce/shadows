@@ -1,16 +1,13 @@
 {
     "affiliate": {
-        "template_filename": "afed-affiliate.mvc",
-        "template_id": 192
+        "template_filename": "afed-affiliate.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "afed-footer.mvc",
-            "template_id": 194
+            "template_filename": "afed-footer.mvc"
         },
         "header": {
-            "template_filename": "afed-header.mvc",
-            "template_id": 193
+            "template_filename": "afed-header.mvc"
         }
     },
     "seo_settings": {

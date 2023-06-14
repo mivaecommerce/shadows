@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ousm-footer.mvc",
-            "template_id": 241
+            "template_filename": "ousm-footer.mvc"
         },
         "header": {
-            "template_filename": "ousm-header.mvc",
-            "template_id": 240
+            "template_filename": "ousm-header.mvc"
         }
     },
     "seo_settings": {

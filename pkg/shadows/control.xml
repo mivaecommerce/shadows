@@ -3,14 +3,14 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>2.00.05</Version>
-	<MinimumMerchantVersion>10.00.04</MinimumMerchantVersion>
+	<Version>2.01.00</Version>
+	<MinimumMerchantVersion>10.01.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.34</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v2.00.05</Description>
+	<Description>Shadows ReadyTheme v2.01.00</Description>
 	<Preview_URL />
 	<Preview_Image>logo-min.png</Preview_Image>
 	<Provider>Miva, Inc.</Provider>
-	<Title>Shadows v2.00.05</Title>
+	<Title>Shadows v2.01.00</Title>
 	<Image_Base>/mm5/</Image_Base>
 	<PageList>
 		<Page>
@@ -20,6 +20,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>abus.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -46,6 +48,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>afad.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliate</Item>
 				<Item>affiliatelink</Item>
@@ -76,6 +80,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>afed.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliate</Item>
 				<Item>affiliatelink</Item>
@@ -106,6 +112,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>afcl.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -133,6 +141,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>afpw.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -161,6 +171,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>bask.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>basket</Item>
@@ -191,6 +203,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ctgy.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -223,6 +237,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ceml.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -251,6 +267,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cpwd.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -279,6 +297,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>bske.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -305,6 +325,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ocst.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>basket</Item>
@@ -336,6 +358,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>omin.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -362,6 +386,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>opay.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>basket</Item>
@@ -399,6 +425,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>osel.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>basket</Item>
@@ -431,6 +459,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ousm.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -459,6 +489,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ous1.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -488,6 +520,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wpck.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -516,6 +550,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ctfm.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>urls</Item>
 			</ItemList>
@@ -527,6 +563,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ctus.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -553,6 +591,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>acln.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>addressbook</Item>
 				<Item>affiliatelink</Item>
@@ -588,6 +628,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>abal.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -621,6 +663,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cabk.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>addressbook</Item>
 				<Item>affiliatelink</Item>
@@ -650,6 +694,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cada.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>addressfields</Item>
 				<Item>affiliatelink</Item>
@@ -681,6 +727,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cade.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>addressfields</Item>
 				<Item>affiliatelink</Item>
@@ -712,6 +760,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>acad.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -743,6 +793,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>aced.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -775,6 +827,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>logn.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -802,6 +856,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>acrt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -827,6 +883,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cpca.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -856,6 +914,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cpce.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -885,6 +945,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cpcd.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -914,6 +976,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>csbe.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -949,6 +1013,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>csub.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -978,6 +1044,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>fpwd.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1005,6 +1073,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>faqs.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1031,6 +1101,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>invc.mvt</Source>
+			<Cache>Never</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1063,6 +1135,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>orhl.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1090,6 +1164,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>mntn.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1116,6 +1192,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>patr.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>attributemachine</Item>
@@ -1146,6 +1224,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ntfd.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1175,6 +1255,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>oprc.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1200,6 +1282,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ordh.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1229,6 +1313,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ords.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1261,6 +1347,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ordl.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1287,6 +1375,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>ctlg.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1314,6 +1404,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>cstr.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1340,6 +1432,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>prpo.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1366,6 +1460,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>prod.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>attributemachine</Item>
@@ -1404,6 +1500,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>plmt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1431,6 +1529,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>plst.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>all_products</Item>
@@ -1460,6 +1560,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>pout.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1487,6 +1589,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>rgft.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1519,6 +1623,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>gftl.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1545,6 +1651,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>srch.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1573,6 +1681,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>sert.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>head</Item>
 				<Item>html_profile</Item>
@@ -1590,6 +1700,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>sarp.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1616,6 +1728,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>smap.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1644,6 +1758,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>sfnt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1670,6 +1786,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>uatm.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1699,6 +1817,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>uatr.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1729,6 +1849,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wish.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1760,6 +1882,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wlad.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1789,6 +1913,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wlgn.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1816,6 +1942,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wled.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1845,6 +1973,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>wlst.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
@@ -1874,6 +2004,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>affr.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -1899,6 +2031,8 @@
 			<UI>Yes</UI>
 			<Secure>Yes</Secure>
 			<Source>afrt.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>buttons</Item>
@@ -2273,6 +2407,15 @@
 			<Zip>Required</Zip>
 			<Country>Required</Country>
 		</CustomerFields_Update>
+		<CacheSettings_Update>
+			<Settings>
+				<Parameter name="utm_medium" mode="ignore" />
+				<Parameter name="utm_source" mode="ignore" />
+				<Parameter name="utm_campaign" mode="ignore" />
+				<Parameter name="utm_term" mode="ignore" />
+				<Parameter name="utm_content" mode="ignore" />
+			</Settings>
+		</CacheSettings_Update>
 	</Config>
 	<ComponentList>
 		<Component>
@@ -2698,7 +2841,7 @@
 
 (function (mivaJS) {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '2.00.05';
+	mivaJS.ReadyThemeVersion = '2.01.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

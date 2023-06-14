@@ -582,6 +582,10 @@ Overrides should be placed in the 'ui/css/theme.scss' file.
 	text-decoration: line-through;
 }
 
+.x-product-layout-purchase__inventory-message:empty {
+	display: none;
+}
+
 .x-product-layout-purchase__options {
 	display: flex;
 	width: auto;

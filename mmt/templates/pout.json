@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "pout-footer.mvc",
-            "template_id": 387
+            "template_filename": "pout-footer.mvc"
         },
         "header": {
-            "template_filename": "pout-header.mvc",
-            "template_id": 386
+            "template_filename": "pout-header.mvc"
         }
     },
     "seo_settings": {

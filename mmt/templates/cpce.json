@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "cpce-footer.mvc",
-            "template_id": 299
+            "template_filename": "cpce-footer.mvc"
         },
         "header": {
-            "template_filename": "cpce-header.mvc",
-            "template_id": 298
+            "template_filename": "cpce-header.mvc"
         }
     },
     "mivapay": {
@@ -16,12 +14,10 @@
             "mode": "paymentcard_edit",
             "storecard_checkedbydefault": 0,
             "storecard_prompt": "Store This Card For Future Use",
-            "template_filename": "cpce-mivapay.mvc",
-            "template_id": 300
+            "template_filename": "cpce-mivapay.mvc"
         },
         "paymentcardfields_css": {
-            "template_filename": "cpce-mivapay_css.mvc",
-            "template_id": 301
+            "template_filename": "cpce-mivapay_css.mvc"
         }
     },
     "seo_settings": {

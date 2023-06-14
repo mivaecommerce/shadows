@@ -1,17 +1,14 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "uatr-footer.mvc",
-            "template_id": 415
+            "template_filename": "uatr-footer.mvc"
         },
         "header": {
-            "template_filename": "uatr-header.mvc",
-            "template_id": 414
+            "template_filename": "uatr-header.mvc"
         }
     },
     "product_attributes": {
-        "template_filename": "uatr-product_attributes.mvc",
-        "template_id": 416
+        "template_filename": "uatr-product_attributes.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",

@@ -20,24 +20,20 @@
         "salestax": 1,
         "shipping": 1,
         "splitpayments": 0,
-        "template_filename": "ocst-basket.mvc",
-        "template_id": 220
+        "template_filename": "ocst-basket.mvc"
     },
     "customer": {
         "editable": 1,
         "mode": "order",
         "prevent_template_auto_update": 1,
-        "template_filename": "ocst-customer.mvc",
-        "template_id": 221
+        "template_filename": "ocst-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "ocst-footer.mvc",
-            "template_id": 223
+            "template_filename": "ocst-footer.mvc"
         },
         "header": {
-            "template_filename": "ocst-header.mvc",
-            "template_id": 222
+            "template_filename": "ocst-header.mvc"
         }
     },
     "seo_settings": {

@@ -1,27 +1,33 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ordh-footer.mvc",
-            "template_id": 348
+            "template_filename": "ordh-footer.mvc"
         },
         "header": {
-            "template_filename": "ordh-header.mvc",
-            "template_id": 347
+            "template_filename": "ordh-header.mvc"
         }
     },
     "orderhistory_list": {
         "advanced": 1,
         "default_sort": "OrdDtDesc",
         "invoice": 1,
+        "items_per_page_filter": 1,
         "order_date": 1,
         "order_total": 1,
+        "page_disp_count": 3,
         "paginate": 1,
         "per_page": 12,
         "products_bought": 1,
         "quantity_bought": 1,
+        "sort_by": {
+            "invoice": 1,
+            "order_date": 1,
+            "order_total": 1,
+            "status": 1,
+            "switch": 1
+        },
         "status": 1,
         "template_filename": "ordh-orderhistory_list.mvc",
-        "template_id": 349,
         "tracking": 1
     },
     "seo_settings": {

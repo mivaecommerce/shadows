@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "bske-footer.mvc",
-            "template_id": 218
+            "template_filename": "bske-footer.mvc"
         },
         "header": {
-            "template_filename": "bske-header.mvc",
-            "template_id": 217
+            "template_filename": "bske-header.mvc"
         }
     },
     "seo_settings": {

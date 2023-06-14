@@ -1,22 +1,18 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "ords-footer.mvc",
-            "template_id": 352
+            "template_filename": "ords-footer.mvc"
         },
         "header": {
-            "template_filename": "ords-header.mvc",
-            "template_id": 351
+            "template_filename": "ords-header.mvc"
         }
     },
     "order_customer": {
         "prevent_template_auto_update": 1,
-        "template_filename": "ords-order_customer.mvc",
-        "template_id": 353
+        "template_filename": "ords-order_customer.mvc"
     },
     "printer_friendly_content": {
-        "template_filename": "ords-printer_friendly_content.mvc",
-        "template_id": 354
+        "template_filename": "ords-printer_friendly_content.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -47,7 +43,6 @@
         "lineitemdiscounts": 1,
         "lineitemprice": "base",
         "payments": 1,
-        "template_filename": "ords-view_order.mvc",
-        "template_id": 355
+        "template_filename": "ords-view_order.mvc"
     }
 }

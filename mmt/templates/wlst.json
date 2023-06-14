@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "wlst-footer.mvc",
-            "template_id": 435
+            "template_filename": "wlst-footer.mvc"
         },
         "header": {
-            "template_filename": "wlst-header.mvc",
-            "template_id": 434
+            "template_filename": "wlst-header.mvc"
         }
     },
     "seo_settings": {
@@ -41,7 +39,6 @@
             "switch": 1,
             "title": 1
         },
-        "template_filename": "wlst-wishlists.mvc",
-        "template_id": 436
+        "template_filename": "wlst-wishlists.mvc"
     }
 }

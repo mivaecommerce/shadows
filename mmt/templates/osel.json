@@ -20,24 +20,20 @@
         "salestax": 1,
         "shipping": 1,
         "splitpayments": 1,
-        "template_filename": "osel-basket.mvc",
-        "template_id": 235
+        "template_filename": "osel-basket.mvc"
     },
     "customer": {
         "editable": 0,
         "mode": "order",
         "prevent_template_auto_update": 0,
-        "template_filename": "osel-customer.mvc",
-        "template_id": 236
+        "template_filename": "osel-customer.mvc"
     },
     "hdft": {
         "footer": {
-            "template_filename": "osel-footer.mvc",
-            "template_id": 238
+            "template_filename": "osel-footer.mvc"
         },
         "header": {
-            "template_filename": "osel-header.mvc",
-            "template_id": 237
+            "template_filename": "osel-header.mvc"
         }
     },
     "seo_settings": {

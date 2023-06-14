@@ -1,12 +1,10 @@
 {
     "hdft": {
         "footer": {
-            "template_filename": "smap-footer.mvc",
-            "template_id": 404
+            "template_filename": "smap-footer.mvc"
         },
         "header": {
-            "template_filename": "smap-header.mvc",
-            "template_id": 403
+            "template_filename": "smap-header.mvc"
         }
     },
     "seo_settings": {
@@ -26,8 +24,6 @@
         "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
     },
     "sitemap": {
-        "advanced": 1,
-        "template_filename": "smap-sitemap.mvc",
-        "template_id": 405
+        "template_filename": "smap-sitemap.mvc"
     }
 }

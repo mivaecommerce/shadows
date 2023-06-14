@@ -14,7 +14,6 @@
         "lineitemcoupons": 0,
         "lineitemdiscounts": 0,
         "payments": 1,
-        "template_filename": "email_abandoned_basket-toe_basket_contents.mvc",
-        "template_id": 107
+        "template_filename": "email_abandoned_basket-toe_basket_contents.mvc"
     }
 }
