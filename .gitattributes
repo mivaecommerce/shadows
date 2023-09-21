@@ -1,0 +1,5 @@
+# Declare Github Syntax Highlighting for various file types
+# https://github.com/github-linguist/linguist/blob/master/lib/linguist/languages.yml
+mmt/css/*.mvt linguist-language=CSS
+mmt/js/*.mvt linguist-language=JavaScript
+mmt/**/*.mvt linguist-language=XML
