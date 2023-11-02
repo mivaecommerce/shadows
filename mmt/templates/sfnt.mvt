@@ -1,12 +1,12 @@
 <mvt:item name="html_profile" />
-<head itemscope itemtype="http://schema.org/WebSite">
+<head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="&mvt:global:basehref;" />
+	<base href="&mvte:global:basehref;" />
 	<mvt:if expr="NOT ISNULL l.settings:page:title">
-		<title itemprop="name">&mvt:page:title;</title>
+		<title>&mvt:page:title;</title>
 	<mvt:else>
-		<title itemprop="name">&mvt:store:name;</title>
+		<title>&mvt:store:name;</title>
 	</mvt:if>
 	<mvt:item name="head" param="css_list" />
 	<mvt:item name="head" param="head_tag" />

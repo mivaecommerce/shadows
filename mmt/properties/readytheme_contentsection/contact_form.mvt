@@ -69,7 +69,7 @@
 				</div>
 			</div>
 			<div class="c-form-list__item">
-				<button class="c-button c-button--full" data-hook="contact-form__submit" type="submit" name="submit" disabled>Submit</button>
+				<button class="c-button c-button--full" data-hook="contact-form__submit" type="submit" disabled>Submit</button>
 			</div>
 		</div>
 	</fieldset>

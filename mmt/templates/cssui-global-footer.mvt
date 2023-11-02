@@ -16,49 +16,45 @@
 						<nav class="x-collapsible-content t-global-footer-social" aria-labelledby="social_active-label">
 							<p id="social_active-label" class="c-menu__title">Connect With Us</p>
 							<button class="x-collapsible-content__toggle" data-a11y-toggle="social_active" type="button">Connect With Us <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
-							<ul id="social_active" class="x-collapsible-content__item t-global-footer-social__list" itemscope itemtype="http://schema.org/Organization">
-								<link itemprop="url" href="//&mvte:global:domain:name;/">
-								<mvt:if expr="l.settings:readytheme:logo_type EQ 'image'">
-									<link itemprop="logo" href="&mvte:readytheme:logo_image;" />
-								</mvt:if>
+							<ul id="social_active" class="x-collapsible-content__item t-global-footer-social__list">
 								<mvt:if expr="l.settings:readytheme:social_facebook">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-facebook" href="&mvt:readytheme:social_facebook;" aria-label="Facebook" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-facebook" href="&mvt:readytheme:social_facebook;" aria-label="Facebook" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_twitter">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-twitter" href="&mvt:readytheme:social_twitter;" aria-label="Twitter" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-twitter" href="&mvt:readytheme:social_twitter;" aria-label="Twitter" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_instagram">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-instagram" href="&mvt:readytheme:social_instagram;" aria-label="Instagram" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-instagram" href="&mvt:readytheme:social_instagram;" aria-label="Instagram" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_googleplus">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-google" href="&mvt:readytheme:social_googleplus;" aria-label="Google+" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-google" href="&mvt:readytheme:social_googleplus;" aria-label="Google+" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_youtube">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-youtube" href="&mvt:readytheme:social_youtube;" aria-label="YouTube" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-youtube" href="&mvt:readytheme:social_youtube;" aria-label="YouTube" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_vimeo">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-vimeo" href="&mvt:readytheme:social_vimeo;" aria-label="Vimeo" rel="noreferrer" target="_blank" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-vimeo" href="&mvt:readytheme:social_vimeo;" aria-label="Vimeo" rel="noreferrer" target="_blank"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_pinterest">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-pinterest" href="&mvt:readytheme:social_pinterest;" aria-label="Pinterest" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-pinterest" href="&mvt:readytheme:social_pinterest;" aria-label="Pinterest" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_flickr">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-flickr" href="&mvt:readytheme:social_flickr;" aria-label="Flickr" target="_blank" rel="noreferrer" itemprop="sameAs"></a>
+										<a class="t-global-footer-social__link u-icon-flickr" href="&mvt:readytheme:social_flickr;" aria-label="Flickr" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 							</ul>

@@ -17,4 +17,11 @@
 mmx-image-across {
 	--mmx-color-primary-bg: #CCCCCC;
 }
+
+mmx-button::part(button),
+mmx-hero::part(button__inner),
+mmx-product-carousel::part(button__inner),
+mmx-featured-product::part(button__inner) {
+	text-transform: uppercase;
+}
 */

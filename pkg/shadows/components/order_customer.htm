@@ -87,39 +87,41 @@
 	<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
 </div>
 ]]></Template><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ORDS"><Item code="order_customer"><Template><![CDATA[<div class="t-checkout-customer-summary">
-	<p class="c-heading--subheading--x-small u-color-black">Shipping To</p>
-	<p class="u-font-small">
-		<mvt:if expr="NOT ISNULL l.settings:order:ship_fname OR NOT ISNULL l.settings:order:ship_lname">
-			&mvte:order:ship_fname; &mvte:order:ship_lname;<br>
-		</mvt:if>
-		<span>
-			<mvt:if expr="NOT ISNULL l.settings:order:ship_comp">
-				&mvte:order:ship_comp;<br>
+	<mvt:if expr="g.Customer_Session_Verified EQ 1">
+		<p class="c-heading--subheading--x-small u-color-black">Shipping To</p>
+		<p class="u-font-small">
+			<mvt:if expr="NOT ISNULL l.settings:order:ship_fname OR NOT ISNULL l.settings:order:ship_lname">
+				&mvte:order:ship_fname; &mvte:order:ship_lname;<br>
 			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:order:ship_addr1 OR NOT ISNULL l.settings:order:ship_addr2 OR NOT ISNULL l.settings:order:ship_city OR NOT ISNULL l.settings:order:ship_state OR NOT ISNULL l.settings:order:ship_zip OR NOT ISNULL l.settings:order:ship_cntry OR NOT ISNULL l.settings:order:ship_res">
-				&mvte:order:ship_addr1;<br>
-				<mvt:if expr="NOT ISNULL l.settings:order:ship_addr2">
-					&mvte:order:ship_addr2;<br>
+			<span>
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_comp">
+					&mvte:order:ship_comp;<br>
 				</mvt:if>
-				<mvt:if expr="(NOT ISNULL l.settings:order:ship_city) AND (NOT ISNULL l.settings:order:ship_state)">
-					&mvte:order:ship_city;, &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
-				<mvt:else>
-					&mvte:order:ship_city; &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_addr1 OR NOT ISNULL l.settings:order:ship_addr2 OR NOT ISNULL l.settings:order:ship_city OR NOT ISNULL l.settings:order:ship_state OR NOT ISNULL l.settings:order:ship_zip OR NOT ISNULL l.settings:order:ship_cntry OR NOT ISNULL l.settings:order:ship_res">
+					&mvte:order:ship_addr1;<br>
+					<mvt:if expr="NOT ISNULL l.settings:order:ship_addr2">
+						&mvte:order:ship_addr2;<br>
+					</mvt:if>
+					<mvt:if expr="(NOT ISNULL l.settings:order:ship_city) AND (NOT ISNULL l.settings:order:ship_state)">
+						&mvte:order:ship_city;, &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
+					<mvt:else>
+						&mvte:order:ship_city; &mvte:order:ship_state;	&mvte:order:ship_zip; &mvte:order:ship_cntry;
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:order:ship_res">
+						<br>Residential Address
+					</mvt:if>
 				</mvt:if>
-				<mvt:if expr="NOT ISNULL l.settings:order:ship_res">
-					<br>Residential Address
+				<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_phone">
+					<br>&mvte:order:ship_phone;
 				</mvt:if>
-			</mvt:if>
-			<br>
-			<mvt:if expr="NOT ISNULL l.settings:order:ship_phone">
-				<br>&mvte:order:ship_phone;
-			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:order:ship_email">
-				<br>&mvte:order:ship_email;
-			</mvt:if>
-		</span>
-	</p>
-	<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:ship_email">
+					<br>&mvte:order:ship_email;
+				</mvt:if>
+			</span>
+		</p>
+		<br>
+	</mvt:if>
 	<p class="c-heading--subheading--x-small u-color-black">Shipping Method</p>
 	<p class="u-font-small">
 		<mvt:foreach iterator="charge" array="order:charges">
@@ -135,41 +137,44 @@
 		<p class="u-font-small">&mvte:order_instructions;</p>
 		<br>
 	</mvt:if>
-	<p class="c-heading--subheading--x-small u-color-black">Billing To</p>
-	<p class="u-font-small">
-		<mvt:if expr="NOT ISNULL l.settings:order:bill_fname OR NOT ISNULL l.settings:order:bill_lname">
-			&mvte:order:bill_fname; &mvte:order:bill_lname;<br>
-		</mvt:if>
-		<span>
-			<mvt:if expr="NOT ISNULL l.settings:order:bill_comp">
-				&mvte:order:bill_comp;<br>
+	<mvt:if expr="g.Customer_Session_Verified EQ 1">
+		<p class="c-heading--subheading--x-small u-color-black">Billing To</p>
+		<p class="u-font-small">
+			<mvt:if expr="NOT ISNULL l.settings:order:bill_fname OR NOT ISNULL l.settings:order:bill_lname">
+				&mvte:order:bill_fname; &mvte:order:bill_lname;<br>
 			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:order:bill_addr1 OR NOT ISNULL l.settings:order:bill_addr2 OR NOT ISNULL l.settings:order:bill_city OR NOT ISNULL l.settings:order:bill_state OR NOT ISNULL l.settings:order:bill_zip OR NOT ISNULL l.settings:order:bill_cntry OR NOT ISNULL l.settings:order:bill_res">
-				&mvte:order:bill_addr1;<br>
-				<mvt:if expr="NOT ISNULL l.settings:order:bill_addr2">
-					&mvte:order:bill_addr2;<br>
+			<span>
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_comp">
+					&mvte:order:bill_comp;<br>
 				</mvt:if>
-				<mvt:if expr="(NOT ISNULL l.settings:order:bill_city) AND (NOT ISNULL l.settings:order:bill_state)">
-					&mvte:order:bill_city;, &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
-				<mvt:else>
-					&mvte:order:bill_city; &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_addr1 OR NOT ISNULL l.settings:order:bill_addr2 OR NOT ISNULL l.settings:order:bill_city OR NOT ISNULL l.settings:order:bill_state OR NOT ISNULL l.settings:order:bill_zip OR NOT ISNULL l.settings:order:bill_cntry OR NOT ISNULL l.settings:order:bill_res">
+					&mvte:order:bill_addr1;<br>
+					<mvt:if expr="NOT ISNULL l.settings:order:bill_addr2">
+						&mvte:order:bill_addr2;<br>
+					</mvt:if>
+					<mvt:if expr="(NOT ISNULL l.settings:order:bill_city) AND (NOT ISNULL l.settings:order:bill_state)">
+						&mvte:order:bill_city;, &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
+					<mvt:else>
+						&mvte:order:bill_city; &mvte:order:bill_state;	&mvte:order:bill_zip; &mvte:order:bill_cntry;
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:order:bill_res">
+						<br>Residential Address
+					</mvt:if>
 				</mvt:if>
-				<mvt:if expr="NOT ISNULL l.settings:order:bill_res">
-					<br>Residential Address
+				<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_phone">
+					<br>&mvte:order:bill_phone;
 				</mvt:if>
-			</mvt:if>
-			<br>
-			<mvt:if expr="NOT ISNULL l.settings:order:bill_phone">
-				<br>&mvte:order:bill_phone;
-			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:order:bill_email">
-				<br>&mvte:order:bill_email;
-			</mvt:if>
-		</span>
-	</p>
-	<br>
+				<mvt:if expr="NOT ISNULL l.settings:order:bill_email">
+					<br>&mvte:order:bill_email;
+				</mvt:if>
+			</span>
+		</p>
+		<br>
+	</mvt:if>
 	<p class="c-heading--subheading--x-small u-color-black">Payment Method</p>
 	<p class="u-font-small">&mvte:payment:desc;</p>
 	<br>
 	<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
-</div>]]></Template><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+</div>
+]]></Template><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

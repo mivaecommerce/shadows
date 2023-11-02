@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="&mvt:global:basehref;">
+	<base href="&mvte:global:basehref;">
 	<mvt:if expr="NOT ISNULL l.settings:page:title">
 		<title>&mvt:page:title;</title>
 	<mvt:else>
@@ -56,21 +56,21 @@
 			</form>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">Find your order by the billing email and zip/postal code.</p>
-			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off">
+			<p class="c-heading-foxtrot">Find your order</p>
+			<form method="post" action="&mvte:urls:ORDS:secure;" autocomplete="off">
 				<fieldset>
-					<legend>&mvt:page:name; By Email and Zip Code</legend>
+					<legend>&mvt:page:name;</legend>
 					<div class="c-form-list">
+						<div class="c-form-list__item c-form-list__item--full">
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Order_ID">Order #</label>
+							<input id="l-Order_ID" class="c-form-input" type="number" name="Order_ID" value="&mvte:global:Order_ID;" inputmode="numeric" min="1" step="1" required>
+						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Order_BillEmail">Billing Email</label>
 							<input id="l-Order_BillEmail" class="c-form-input" type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Order_BillZip">Billing Zip/Postal Code</label>
-							<input id="l-Order_BillZip" class="c-form-input" type="text" name="Order_BillZip" required>
-						</div>
-						<div class="c-form-list__item c-form-list__item--full">
-							<input class="c-button c-button--secondary c-button--full" type="submit" value="Find Orders">
+							<input class="c-button c-button--secondary c-button--full" type="submit" value="Find Order">
 						</div>
 					</div>
 				</fieldset>

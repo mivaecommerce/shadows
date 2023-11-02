@@ -1,36 +1,13 @@
 <Module code="cmp-cssui-breadcrumbs" feature="component"><MaxCatNameLength>0</MaxCatNameLength><MaxProdNameLength>0</MaxProdNameLength><MaxCatDisplay>0</MaxCatDisplay><Template><![CDATA[<nav class="x-breadcrumbs" aria-label="Breadcrumb">
-	<ul class="x-breadcrumbs__list" itemscope itemtype="https://schema.org/BreadcrumbList">
-		<li class="x-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-			<a href="&mvte:breadcrumbs:homelink;" itemprop="item">
-				<span itemprop="name">Home</span>
-			</a>
-			<meta itemprop="position" content="1" />
+	<ul class="x-breadcrumbs__list">
+		<li class="x-breadcrumbs__item">
+			<a href="&mvte:breadcrumbs:homelink;">Home</a>
 		</li>
-		<mvt:assign name="l.settings:breadcrumb:position" value="1"/>
 		<mvt:foreach iterator="cats" array="breadcrumbs:links">
-			<mvt:assign name="l.settings:breadcrumb:position" value="l.settings:breadcrumb:position + 1"/>
-			<mvt:if expr="l.settings:cats:name EQ '...'">
-				<li class="x-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-					<a href="&mvte:cats:link;" itemprop="item">
-						<span itemprop="name">&mvt:cats:name;</span>
-					</a>
-					<meta itemprop="position" content="&mvte:breadcrumb:position;" />
-				</li>
-			<mvt:elseif expr="l.settings:cats:code EQ l.settings:breadcrumbs:current_item:code">
-				<li class="x-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-					<a href="&mvte:cats:link;" aria-current="page" itemprop="item">
-						<span itemprop="name">&mvt:cats:name;</span>
-					</a>
-					<meta itemprop="position" content="&mvte:breadcrumb:position;" />
-				</li>
-			<mvt:else>
-				<li class="x-breadcrumbs__item" itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
-					<a href="&mvte:cats:link;" itemprop="item">
-						<span itemprop="name">&mvt:cats:name;</span>
-					</a>
-					<meta itemprop="position" content="&mvte:breadcrumb:position;" />
-				</li>
-			</mvt:if>
+			<mvt:assign name="l.settings:cats:html:attr:aria_current" value="ternary( l.settings:cats:code EQ l.settings:breadcrumbs:current_item:code, 'aria-current=\"page\"', '' )" />
+			<li class="x-breadcrumbs__item" &mvt:cats:html:attr:aria_current;>
+				<a href="&mvte:cats:link;">&mvt:cats:name;</a>
+			</li>
 		</mvt:foreach>
 	</ul>
 	<!-- end .x-breadcrumbs -->

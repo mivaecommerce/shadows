@@ -143,8 +143,13 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 																<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
-																	Thank you for shopping with us. Below you will find a link to download your digital file. This link is available for immediate download.
+																	<mvt:if expr="l.settings:digitaldownload_count GT 1">
+																		Thank you for shopping with us. Below you will find links to download your digital files. The links are available for immediate download.
+																	<mvt:else>
+																		Thank you for shopping with us. Below you will find a link to download your digital file. This link is available for immediate download.
+																	</mvt:if>
 																</div>
+
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 															</td>
@@ -180,75 +185,55 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 															</td>
-														</tr>
-														<tr>
-															<td valign="top">
+															<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+															<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3;">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:product:name;</em></div>
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-															</td>
-															<td valign="top" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-															<td valign="top">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:formatted_expiration;</em></div>
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-															</td>
-															<td valign="top" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-															<td valign="top">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:formatted_max_downloads;</em></div>
+																<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Download Link</strong></div>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 															</td>
 														</tr>
+														<mvt:foreach iterator="digitaldownload" array="digitaldownloads">
+															<tr>
+																<td valign="top">
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																	<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:product:name;</em></div>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																</td>
+																<td valign="top" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+																<td valign="top">
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																	<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:formatted_expiration;</em></div>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																</td>
+																<td valign="top" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+																<td valign="top">
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																	<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>&mvte:digitaldownload:formatted_max_downloads;</em></div>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																</td>
+																<td valign="top" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+																<td valign="top">
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																	<div class="text-btn" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
+																		<a href="&mvte:digitaldownload:url;" target="_blank" class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><span class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><em>Download</em></span></a>
+																	</div>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+
+																</td>
+															</tr>
+														</mvt:foreach>
 													</table>
 													<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
 													<!-- END Table -->
-
-													<!-- Button -->
-													<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f2f3f4">
-														<tr>
-															<td align="center">
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																<table border="0" cellspacing="0" cellpadding="0">
-																	<tr>
-																		<td align="center" bgcolor="#2a68ce">
-																			<table border="0" cellspacing="0" cellpadding="0">
-																				<tr>
-																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="55">
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="12" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																					</td>
-																					<td bgcolor="#2a68ce">
-																						<div class="text-btn" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:22px; text-align:center">
-																							<a href="&mvte:digitaldownload:url;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Begin Your Download</span></a>
-																						</div>
-																					</td>
-																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="55"></td>
-																				</tr>
-																			</table>
-																		</td>
-																	</tr>
-																</table>
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-
-															</td>
-														</tr>
-													</table>
-													<!-- END Button -->
 												</td>
 											</tr>
 										</table>

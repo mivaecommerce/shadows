@@ -4,7 +4,7 @@
         "settings",
         "scripts",
         "contact",
-        "product-json-ld",
+        "json-ld",
         "edit-basket-attributes"
     ],
     "linked_css_resources": []

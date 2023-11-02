@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <title>&mvte:page:name;</title>
-<base href="&mvt:global:basehref;" />
+<base href="&mvte:global:basehref;" />
 <style type="text/css"><mvt:item name="inline_css" /></style>
 </head>
 <body>

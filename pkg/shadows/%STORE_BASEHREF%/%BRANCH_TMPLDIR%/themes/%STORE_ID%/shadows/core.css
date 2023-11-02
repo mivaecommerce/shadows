@@ -96,10 +96,8 @@ Sections
 */
 :where(h1) {
 	font-size: 2em;
-	-webkit-margin-after: 0.67em;
-	        margin-block-end: 0.67em;
-	-webkit-margin-before: 0.67em;
-	        margin-block-start: 0.67em;
+	margin-block-end: 0.67em;
+	margin-block-start: 0.67em;
 }
 
 /*
@@ -110,10 +108,8 @@ Grouping content
 * Remove the margin on nested lists in Chrome, Edge, and Safari.
 */
 :where(dl, ol, ul) :where(dl, ol, ul) {
-	-webkit-margin-after: 0;
-	        margin-block-end: 0;
-	-webkit-margin-before: 0;
-	        margin-block-start: 0;
+	margin-block-end: 0;
+	margin-block-start: 0;
 }
 
 /**
@@ -3179,7 +3175,7 @@ small {
 	font-family: "ReadyTheme Icons";
 	font-style: normal;
 	font-weight: normal;
-	src: url("themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff") format("woff");
+	src: url("%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/ui/css/ReadyThemeIcons.woff") format("woff");
 }
 [class^=u-icon-],
 [class*=" u-icon-"],
