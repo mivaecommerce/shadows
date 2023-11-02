@@ -1,9 +1,9 @@
 <mvt:if expr="'CTGY' CIN l.settings:page:code">
-	<link rel="canonical" href="&mvte:category:link;" itemprop="url">
+	<link rel="canonical" href="&mvte:category:link;">
 <mvt:elseif expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
-	<link rel="canonical" href="&mvt:product:link;" itemprop="url">
+	<link rel="canonical" href="&mvt:product:link;">
 <mvt:else>
-	<link rel="canonical" href="&mvte:urls:_self:auto;" itemprop="url">
+	<link rel="canonical" href="&mvte:urls:_self:auto;">
 </mvt:if>
 <mvt:if expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
     <mvt:item name="prodctgy_meta" param="prod" />

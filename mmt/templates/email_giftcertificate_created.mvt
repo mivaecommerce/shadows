@@ -144,7 +144,11 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
 																<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
-																	Thank you for shopping with us. To redeem your gift certificate, please log into your account and copy and paste the code below.
+																	<mvt:if expr="l.settings:giftcertificate_count GT 1">
+																		Thank you for shopping with us. To redeem your gift certificates, please log into your account and copy and paste the codes below.
+																	<mvt:else>
+																		Thank you for shopping with us. To redeem your gift certificate, please log into your account and copy and paste the code below.
+																	</mvt:if>
 																</div>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
@@ -154,97 +158,102 @@
 													<!-- END Message -->
 
 													<!-- Certificate -->
-													<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f2f3f4">
-														<tr>
-															<td>
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="45" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+													<mvt:foreach iterator="giftcertificate" array="giftcertificates">
+														<mvt:if expr="POS1 GT 1">
+															<div style="height:5px; width:100%; min-width:100%"></div>
+														</mvt:if>
+														<table width="100%" border="0" cellspacing="0" cellpadding="0" bgcolor="#f2f3f4">
+															<tr>
+																<td>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="45" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																	<tr>
-																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="290">
-																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																				<tr>
-																					<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
-																					<td>
-																						<div class="text-large" style="color:#303748; font-family:Arial, sans-serif; min-width:auto !important; font-size:36px; line-height:44px; text-align:left"><strong>&mvt:giftcertificate:formatted_amount;</strong></div>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																		<tr>
+																			<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="290">
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
+																						<td>
+																							<div class="text-large" style="color:#303748; font-family:Arial, sans-serif; min-width:auto !important; font-size:36px; line-height:44px; text-align:left"><strong>&mvt:giftcertificate:formatted_amount;</strong></div>
 
-																						<mvt:if expr="NOT ISNULL l.settings:giftcertificate:description">
-																							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="5" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																							<mvt:if expr="NOT ISNULL l.settings:giftcertificate:description">
+																								<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="5" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																							<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
-																								--
-																								<br />
-																								Message:
-																								<br />
-																								<em>&mvte:giftcertificate:description;</em>
-																							</div>
+																								<div class="text" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
+																									--
+																									<br />
+																									Message:
+																									<br />
+																									<em>&mvte:giftcertificate:description;</em>
+																								</div>
+																								<div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
+																							</mvt:if>
+																						</td>
+																						<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
+																					</tr>
+																				</table>
+																			</th>
+																			<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="1" bgcolor="#e3e3e3">
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-1"></div>
+	</td>
+																					</tr>
+																				</table>
+																			</th>
+																			<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0">
+																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																					<tr>
+																						<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
+																						<td>
 																							<div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
-																						</mvt:if>
-																					</td>
-																					<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
-																				</tr>
-																			</table>
-																		</th>
-																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="1" bgcolor="#e3e3e3">
-																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-1"></div>
-</td>
-																				</tr>
-																			</table>
-																		</th>
-																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0">
-																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																				<tr>
-																					<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
-																					<td>
-																						<div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
 
-																						<div class="text-center" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center"><strong>Gift Certificate Code:</strong></div>
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																							<div class="text-center" style="color:#1a2026; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center"><strong>Gift Certificate Code:</strong></div>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="10" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																						<div class="h1-center" style="color:#2a68ce; font-family:Arial, sans-serif; min-width:auto !important; font-size:30px; line-height:34px; text-align:center">
-																							<a href="&mvte:urls:RGFT:secure;" target="_blank" class="link" style="color:#2a68ce; text-decoration:none"><span class="link" style="color:#2a68ce; text-decoration:none">&mvte:giftcertificate:code;</span></a>
-																						</div>
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																							<div class="h1-center" style="color:#2a68ce; font-family:Arial, sans-serif; min-width:auto !important; font-size:30px; line-height:34px; text-align:center">
+																								<a href="&mvte:urls:RGFT:secure;" target="_blank" class="link" style="color:#2a68ce; text-decoration:none"><span class="link" style="color:#2a68ce; text-decoration:none">&mvte:giftcertificate:code;</span></a>
+																							</div>
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																						<!-- Button -->
-																						<table width="100%" border="0" cellspacing="0" cellpadding="0">
-																							<tr>
-																								<td align="center" bgcolor="#2a68ce">
-																									<table border="0" cellspacing="0" cellpadding="0">
-																										<tr>
-																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="20">
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																							<!-- Button -->
+																							<table width="100%" border="0" cellspacing="0" cellpadding="0">
+																								<tr>
+																									<td align="center" bgcolor="#2a68ce">
+																										<table border="0" cellspacing="0" cellpadding="0">
+																											<tr>
+																												<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="20">
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																												<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="12" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																													<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="12" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																											</td>
-																											<td bgcolor="#2a68ce">
-																												<div class="text-btn" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:22px; text-align:center">
-																													<a href="&mvte:urls:RGFT:secure;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Login To Redeem</span></a>
-																												</div>
-																											</td>
-																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
-																										</tr>
-																									</table>
-																								</td>
-																							</tr>
-																						</table>
-																						<!-- END Button -->
-																						
-																					</td>
-																					<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
-																				</tr>
-																			</table>
-																		</th>
-																	</tr>
-																</table>
-																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="45" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+																												</td>
+																												<td bgcolor="#2a68ce">
+																													<div class="text-btn" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:22px; text-align:center">
+																														<a href="&mvte:urls:RGFT:secure;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Login To Redeem</span></a>
+																													</div>
+																												</td>
+																												<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="20"></td>
+																											</tr>
+																										</table>
+																									</td>
+																								</tr>
+																							</table>
+																							<!-- END Button -->
+																							
+																						</td>
+																						<td class="content-spacing" style="font-size:0pt; line-height:0pt; text-align:left" width="30"></td>
+																					</tr>
+																				</table>
+																			</th>
+																		</tr>
+																	</table>
+																	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="45" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-															</td>
-														</tr>
-													</table>
+																</td>
+															</tr>
+														</table>
+													</mvt:foreach>
 													<!-- END Certificate -->
 												</td>
 											</tr>

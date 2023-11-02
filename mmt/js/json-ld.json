@@ -1,0 +1,12 @@
+{
+    "code": "json-ld",
+    "type": "I",
+    "is_global": true,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "application/ld+json"
+        }
+    ]
+}

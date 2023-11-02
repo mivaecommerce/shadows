@@ -36,13 +36,13 @@
 					<div class="c-form-list__item c-form-list__item--full">
 						<h1 class="c-heading-echo x-product-layout-purchase__name">
 							<span class="u-color-gray-600 x-product-layout-purchase__sku">SKU: &mvte:product:code;</span>
-							<span itemprop="name">&mvt:product:name;</span>
+							<span>&mvt:product:name;</span>
 						</h1>
 					</div>
 					<div class="c-form-list__item">
 						<div class="x-product-layout-purchase__pricing">
 							<span class="x-product-layout-purchase__pricing-current">
-								<span id="price-value" itemprop="price" content="&mvte:product:price;">&mvt:product:formatted_price;</span>
+								<span id="price-value">&mvt:product:formatted_price;</span>
 							</span>
 							<s id="price-value-additional" class="u-color-gray-500 x-product-layout-purchase__pricing-original"><mvt:if expr="l.settings:product:base_price GT l.settings:product:price">&mvt:product:formatted_base_price;</mvt:if></s>
 						</div>
@@ -61,7 +61,7 @@
 								</div>
 							</mvt:if>
 						</mvt:comment>
-						
+
 						<mvt:comment>
 							<!-- If you would like to display the product quantity in basket, uncomment this section. -->
 							<div class="x-product-layout-purchase__product-quantity">
@@ -73,7 +73,7 @@
 								</mvt:if>
 							</div>
 						</mvt:comment>
-						
+
 						<div id="inventory-message" class="x-messages x-messages--info x-product-layout-purchase__inventory-message">&mvt:product:inv_long;</div>
 					</div>
 					<mvt:item name="discount_volume" param="product:id" />
@@ -149,7 +149,7 @@
 					</mvt:if>
 				</mvt:foreach>
 			</ul>
-			<section id="tab-description" class="x-a11y-tabs__panel" itemprop="description">
+			<section id="tab-description" class="x-a11y-tabs__panel">
 				&mvt:product:descrip;
 			</section>
 			<mvt:foreach iterator="tab" array="product:tabs">

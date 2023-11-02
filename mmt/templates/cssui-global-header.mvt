@@ -31,16 +31,14 @@
 				</a>
 			</div>
 
-			<div class="o-layout__item u-width-12 u-width-3--l t-site-header__search &mvte:global:Session:shadows:checkout_hidden;" data-hook="site-header__search" itemscope itemtype="http://schema.org/WebSite">
-				<meta itemprop="url" content="//&mvt:global:domain:name;/"/>
-				<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+			<div class="o-layout__item u-width-12 u-width-3--l t-site-header__search &mvte:global:Session:shadows:checkout_hidden;" data-hook="site-header__search">
+				<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;">
 					<fieldset>
 						<legend>Product Search</legend>
 						<div class="c-form-list">
 							<div class="c-form-list__item c-form-list__item--full c-control-group u-flex">
-								<meta itemprop="target" content="&mvte:urls:SRCH:auto;?q={Search}"/>
 								<span class="u-bg-white u-color-gray-50 u-icon-search t-site-header__search-icon" aria-hidden="true"></span>
-								<input class="c-form-input c-control-group__field u-bg-transparent u-border-none t-site-header__search-field" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required itemprop="query-input" aria-label="Product Search">
+								<input class="c-form-input c-control-group__field u-bg-transparent u-border-none t-site-header__search-field" data-mm_searchfield="Yes" data-mm_searchfield_id="x-search-preview" type="search" name="Search" value="&mvte:global:Search;" placeholder="Search" autocomplete="off" required aria-label="Product Search">
 								<button class="c-button c-control-group__button u-bg-transparent u-color-gray-50 u-border-none u-icon-search t-site-header__search-button" type="submit" aria-label="Search"></button>
 							</div>
 						</div>

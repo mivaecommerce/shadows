@@ -2,7 +2,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<base href="&mvt:global:basehref;">
+	<base href="&mvte:global:basehref;">
 	<mvt:if expr="NOT ISNULL l.settings:category:page_title">
 		<title>&mvt:category:page_title;</title>
 	<mvt:elseif expr="NOT ISNULL l.settings:page:title">
