@@ -1,0 +1,133 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:assign name="l.settings:instance:advanced:desktop:background_color:color:output_value" value="ternary(l.settings:instance:advanced:desktop:background_color:settings:enabled, l.settings:instance:advanced:desktop:background_color:color:value, '')" />
+<mvt:assign name="l.settings:instance:advanced:mobile:background_color:color:output_value" value="ternary(l.settings:instance:advanced:mobile:background_color:settings:enabled, l.settings:instance:advanced:mobile:background_color:color:value, '')" />
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-image-across
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-columns="&mvte:instance:advanced:desktop:column_count:value;"
+	data-overflow="&mvte:instance:advanced:mobile:overflow_behavior:value;"
+	data-size="&mvte:instance:images_group:image_size:value;"
+>
+
+	<mvt:comment>Render Section Heading</mvt:comment>
+	<mvt:if expr="l.settings:instance:heading:settings:enabled">
+		<mvt:if expr="ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value OR l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value EQ 'default'">
+			<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value" value="'title-1'" />
+		</mvt:if>
+		<mmx-text
+			slot="title"
+			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
+			data-align="&mvte:instance:heading:heading_align:value;"
+			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
+		>
+			&mvte:instance:heading:heading_text:value;
+		</mmx-text>
+	</mvt:if>
+
+	<mvt:foreach iterator="image_across" array="instance:images_group:images_across:children">
+		<mvt:if expr="ISNULL l.settings:image_across:img:image">
+			<mvt:assign name="l.settings:image_across:img:image" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/placeholder__459x320.jpg'" />
+		</mvt:if>
+
+		<mvt:comment>Render Hero</mvt:comment>
+		<mmx-hero
+			slot="image"
+			data-href="&mvte:image_across:link:url;"
+
+			data-align="&mvte:instance:content_styles:align:value;"
+			data-content-location="&mvte:instance:content_styles:content_location:value;"
+
+			data-overlay-bg="color"
+			data-overlay-bg-color="rgba(0, 0, 0, &mvte:instance:advanced:desktop:overlay_opacity:value;%)"
+			data-content-bg-color--mobile="&mvte:instance:advanced:mobile:background_color:color:output_value;"
+			data-content-bg-color--desktop="&mvte:instance:advanced:desktop:background_color:color:output_value;"
+			data-content-theme="&mvte:instance:advanced:content_theme:value;"
+			data-overflow="&mvte:instance:advanced:mobile:overflow_behavior:value;"
+		>
+			<mvt:comment>Slotted Image</mvt:comment>
+			<picture slot="image">
+				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:mobile">
+					<mvt:assign name="l.settings:image_across:img:responsive_images:mobile" value="glosub( l.settings:image_across:img:responsive_images:mobile, ' ', '%20' )" />
+					<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:image_across:img:responsive_images:mobile;">
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:tablet">
+					<mvt:assign name="l.settings:image_across:img:responsive_images:tablet" value="glosub( l.settings:image_across:img:responsive_images:tablet, ' ', '%20' )" />
+					<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:image_across:img:responsive_images:tablet;">
+				</mvt:if>
+				<img src="&mvte:image_across:img:image;" alt="&mvte:image_across:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+			</picture>
+
+			<mvt:comment>Slotted Content</mvt:comment>
+			<mvt:if expr="l.settings:image_across:text:settings:enabled">
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:subheading:value">
+					<mmx-text
+						slot="subheading"
+						data-style="&mvte:instance:content_styles:subheading_text_styles:subheading_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:subheading_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:subheading_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:subheading_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:subheading_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:subheading:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:heading:value">
+					<mmx-text
+						slot="heading"
+						data-style="&mvte:instance:content_styles:heading_text_styles:heading_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:heading_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:heading_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:heading_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:heading_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:heading:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:body:value">
+					<mmx-text
+						slot="body"
+						data-style="&mvte:instance:content_styles:body_text_styles:body_style:value;"
+						style="
+							font-family: &mvte:instance:content_styles:body_text_styles:font_family;;
+							font-size: &mvte:instance:content_styles:body_text_styles:font_size;px;
+							font-weight: &mvte:instance:content_styles:body_text_styles:font_weight;;
+							color: &mvte:instance:content_styles:body_text_styles:font_color;;
+						"
+					>
+						&mvte:image_across:text:body:value;
+					</mmx-text>
+				</mvt:if>
+
+				<mvt:if expr="NOT ISNULL l.settings:image_across:text:button:value">
+					<mmx-button
+						slot="button"
+						data-style="&mvte:instance:content_styles:button_styles:button_style:value;"
+						data-size="&mvte:instance:content_styles:button_styles:button_size:value;"
+					>
+						&mvte:image_across:text:button:value;
+					</mmx-button>
+				</mvt:if>
+			</mvt:if>
+		</mmx-hero>
+	</mvt:foreach>
+</mmx-image-across>

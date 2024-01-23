@@ -1,0 +1,9 @@
+<mmx-text-editor
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+>
+	&mvt:instance:content:value;
+</mmx-text-editor>

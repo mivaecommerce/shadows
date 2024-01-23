@@ -1,0 +1,81 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Determine Component Attribute Values</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:instance:background:img:image">
+	<mvt:assign name="l.settings:instance:background:color:value" value="''" />
+</mvt:if>
+
+<mvt:if expr="l.settings:instance:background:color:value">
+	<mvt:assign name="l.settings:overlay_bg" value="'color'" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-hero
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	data-align="&mvte:instance:content:align:value;"
+	data-content-location="center"
+	data-content-layout="&mvte:instance:text_layout:value;"
+	data-content-theme="&mvte:instance:advanced:content_theme:value;"
+	data-overlay-bg-color="&mvte:instance:background:color:value;"
+	data-overlay-bg="&mvte:overlay_bg;"
+	data-size="content"
+	data-padding="&mvte:instance:banner_size:value;"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+>
+	<mvt:comment>Slotted Image</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:background:img:image">
+		<picture slot="image">
+			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:mobile" value="glosub( l.settings:instance:background:img:responsive_images:mobile, ' ', '%20' )" />
+				<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:instance:background:img:responsive_images:mobile;">
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:tablet" value="glosub( l.settings:instance:background:img:responsive_images:tablet, ' ', '%20' )" />
+				<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:instance:background:img:responsive_images:tablet;">
+			</mvt:if>
+			<img src="&mvte:instance:background:img:image;" alt="&mvte:instance:background:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+		</picture>
+	</mvt:if>
+
+	<mvt:comment>Slotted Content</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
+		<mmx-text
+			slot="heading"
+			data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
+			style="&mvte:instance:content:heading:textsettings:styles:normal;"
+			data-chars-per-line="none"
+		>
+			&mvte:instance:content:heading:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
+		<mmx-text
+			slot="body"
+			data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+			style="&mvte:instance:content:body:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:body:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="l.settings:instance:content:button:settings:enabled AND NOT ISNULL l.settings:instance:content:button:button_text:value">
+		<mmx-button
+			slot="button"
+			data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
+			data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
+			href="&mvte:instance:content:button:button_link:url;"
+		>
+			&mvte:instance:content:button:button_text:value;
+		</mmx-button>
+	</mvt:if>
+</mmx-hero>

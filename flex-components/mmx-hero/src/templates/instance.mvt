@@ -1,0 +1,76 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-hero
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	data-init="script"
+>
+	<mvt:comment>Init Script</mvt:comment>
+	<script type="application/json">
+		<mvt:eval expr="miva_json_encode( l.settings:instance, '')" />
+	</script>
+
+	<mvt:comment>Slotted Image</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:image:img:image">
+		<picture slot="image">
+			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:mobile" value="glosub( l.settings:instance:image:img:responsive_images:mobile, ' ', '%20' )" />
+				<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:instance:image:img:responsive_images:mobile;">
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:image:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:image:img:responsive_images:tablet" value="glosub( l.settings:instance:image:img:responsive_images:tablet, ' ', '%20' )" />
+				<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:instance:image:img:responsive_images:tablet;">
+			</mvt:if>
+			<img src="&mvte:instance:image:img:image;" alt="&mvte:instance:image:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+		</picture>
+	</mvt:if>
+
+	<mvt:comment>Slotted Content</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:value">
+		<mmx-text
+			slot="subheading"
+			data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
+			style="&mvte:instance:content:subheading:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:subheading:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
+		<mmx-text
+			slot="heading"
+			data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
+			style="&mvte:instance:content:heading:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:heading:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
+		<mmx-text
+			slot="body"
+			data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+			style="&mvte:instance:content:body:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:body:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:button:value">
+		<mmx-button
+			slot="button"
+			data-style="&mvte:instance:content:button:textsettings:fields:normal:button_style:value;"
+			data-size="&mvte:instance:content:button:textsettings:fields:normal:button_size:value;"
+		>
+			&mvte:instance:content:button:value;
+		</mmx-button>
+	</mvt:if>
+</mmx-hero>

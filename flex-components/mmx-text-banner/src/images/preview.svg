@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="224" viewBox="0 0 1600 224">
+  <g id="Text_Banner" data-name="Text Banner" transform="translate(0 -4630)">
+    <g id="Text_Banner-2" data-name="Text Banner" transform="translate(0 3242)">
+      <rect id="Rectangle_3233" data-name="Rectangle 3233" width="1440" height="144" rx="16" transform="translate(80 1428)" fill="#cfd2d6"/>
+      <g id="Group_6146" data-name="Group 6146" transform="translate(227 -141)">
+        <text id="Text_Banner_Heading" data-name="Text Banner Heading" transform="translate(65 1648)" fill="#494a53" font-size="32" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="0">Text Banner Heading</tspan></text>
+        <g id="Group_6578" data-name="Group 6578" transform="translate(961 1617)">
+          <g id="Primary_Button_CTA" data-name="Primary Button CTA">
+            <rect id="Rectangle_3062" data-name="Rectangle 3062" width="120" height="48" rx="4" fill="#494a53"/>
+          </g>
+          <rect id="Rectangle_3476" data-name="Rectangle 3476" width="64" height="10" rx="5" transform="translate(28 19)" fill="#fff"/>
+        </g>
+        <rect id="Rectangle_3494" data-name="Rectangle 3494" width="450" height="10" rx="5" transform="translate(451 1621)" fill="#969da8"/>
+        <rect id="Rectangle_3495" data-name="Rectangle 3495" width="416" height="10" rx="5" transform="translate(451 1643)" fill="#969da8"/>
+      </g>
+    </g>
+    <rect id="Rectangle_3506" data-name="Rectangle 3506" width="1600" height="224" transform="translate(0 4630)" fill="none"/>
+  </g>
+</svg>

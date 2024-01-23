@@ -1,0 +1,106 @@
+{
+	"code": "mmx-text-editor",
+	"name": "Rich Text Editor",
+	"type": "component",
+	"version": "10.08.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-text-editor",
+	"category": "text-editor",
+	"properties": [
+		{
+			"code": "content",
+			"prompt": "Content",
+			"type": "texteditor"
+		}
+	],
+	"advanced_properties": [
+		{
+			"code": "spacing",
+			"prompt": "Spacing",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"defaults": {
+		"content": {
+			"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
+		}
+	},
+	"initialization_template": "src/templates/init.mvt",
+	"instance_template": "src/templates/instance.mvt",
+	"preview": "src/images/preview.svg",
+	"scripts": [
+		{
+			"filepath": "src\/js\/mmx-text-editor.js",
+			"resource_code": "mmx-text-editor",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-\/zA0+Riiwx8IKIYp8QsoNIenuuvoCpyFFAy\/yxnWoX4\u003D sha384-Lu8xisataUPcCwMmWGtM+8jhi57i5Q9vqtiOpoCd0k2bqafrSrtS26qthGD2ISQB sha512-Ync8eVF3cqKGO301GX4SAtQ8Pd7km0HkT+aJGu4Zf3KsAeh2THWrmBwkCXPaCfQoWqiiT\/AfeALmEt7pL+zRzA\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src\/css\/mmx-text-editor.css",
+			"resource_code": "mmx-text-editor",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-ulzmRH0tuam+X9cG65dQtxv3kCUEGfXWdYXHYZhiBH8\u003D sha384-unulE7NqpkacUJ5unVPTVCaXGgMvhb2uIf5i4FzemU9VoVLKLYVYw6I0VnQKejiy sha512-NHUztRYNh3Ui9ZVRbpHabVLzoVsWSKiZRcxEBCqLKutHTVetrbFTODO3njlFl92iKASCiGTkyZmUNi81b7sPPA\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "\u003D10.08.00"
+	}
+}

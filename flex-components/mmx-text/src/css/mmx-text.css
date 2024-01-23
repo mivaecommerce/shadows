@@ -1,0 +1,280 @@
+/* ==========================================================================
+   MMX / TEXT
+   ========================================================================== */
+
+
+.mmx-text {
+	padding: 0;
+	margin: 0 0 var(--mmx-text-margin-bottom) 0;
+	text-align: var(--mmx-text__text-align, unset);
+}
+
+.mmx-text__inner {
+	display: inline-block;
+	max-width: var(--mmx-text__inner--max-width, auto);
+}
+
+/* Typography Styles: Base
+   =========================================== */
+.type-display-1,
+.type-display-2,
+.type-display-3,
+.type-title-1,
+.type-title-2,
+.type-title-3,
+.type-title-4,
+.type-subheading-l,
+.type-subheading-s,
+.type-subheading-xs,
+.type-paragraph-l,
+.type-paragraph-s,
+.type-paragraph-xs,
+.type-call-to-action,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	display: block;
+	padding: 0;
+	margin: 0 0 var(--mmx-text-margin-bottom) 0;
+}
+
+
+
+/* Typography Styles: Mobile First
+   =========================================== */
+.type-display-1 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-2-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-display-2,
+h1 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-2-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-display-3,
+h2 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-3-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-title-1,
+h3 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-3-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-title-2,
+h4 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-3-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-title-3,
+h5 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-4-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-title-4,
+h6 {
+	color: var(--mmx-heading-color);
+	font: var(--mmx-title-4-font);
+	text-transform: var(--mmx-heading-case);
+}
+
+.type-subheading-l {
+	color: var(--mmx-subheading-color);
+	font: var(--mmx-paragraph-l-font);
+	text-transform: var(--mmx-subheading-case);
+}
+
+.type-subheading-s {
+	color: var(--mmx-subheading-color);
+	font: var(--mmx-paragraph-l-font);
+	text-transform: var(--mmx-subheading-case);
+}
+
+.type-subheading-xs {
+	color: var(--mmx-subheading-color);
+	font: var(--mmx-paragraph-l-font);
+	text-transform: var(--mmx-subheading-case);
+}
+
+.type-paragraph-l {
+	color: var(--mmx-paragraph-color);
+	font: var(--mmx-paragraph-s-font);
+	text-transform: var(--mmx-paragraph-case);
+}
+
+.type-paragraph-s {
+	color: var(--mmx-paragraph-color);
+	font: var(--mmx-paragraph-s-font);
+	text-transform: var(--mmx-paragraph-case);
+}
+
+.type-paragraph-xs {
+	color: var(--mmx-paragraph-color);
+	font: var(--mmx-paragraph-xs-font);
+	text-transform: var(--mmx-paragraph-case);
+}
+
+.type-call-to-action {
+	color: var(--mmx-call-to-action-color);
+	font: var(--mmx-call-to-action-font);
+	text-transform: var(--mmx-call-to-action-case);
+}
+
+.type-product-name {
+	color: var(--mmx-product-name-color);
+	font: var(--mmx-product-name-font);
+	text-transform: var(--mmx-product-name-case);
+}
+
+.type-product-price {
+	color: var(--mmx-product-price-color);
+	font: var(--mmx-product-price-font);
+	text-transform: var(--mmx-product-price-case);
+}
+
+.type-product-additional-price {
+	color: var(--mmx-product-additional-price-color);
+	font: var(--mmx-product-additional-price-font);
+	text-decoration: line-through;
+	text-transform: var(--mmx-product-additional-price-case);
+}
+
+
+/* Typography Styles: Small Breakpoint [40em = 640px]
+   =========================================== */
+@media screen and (min-width: 40em) {
+	.type-display-1 {
+		font: var(--mmx-title-1-font);
+	}
+
+	.type-display-2,
+	h1 {
+		font: var(--mmx-title-1-font);
+	}
+
+	.type-display-3,
+	h2 {
+		font: var(--mmx-title-2-font);
+	}
+
+	.type-title-1,
+	h3 {
+		font: var(--mmx-title-3-font);
+	}
+
+	.type-title-2,
+	h4 {
+		font: var(--mmx-title-3-font);
+	}
+
+	.type-title-3,
+	h5 {
+		font: var(--mmx-title-4-font);
+	}
+
+	.type-title-4,
+	h6 {
+		font: var(--mmx-title-4-font);
+	}
+
+	.type-subheading-l {
+		font: var(--mmx-subheading-s-font);
+	}
+
+	.type-subheading-s {
+		font: var(--mmx-paragraph-l-font);
+	}
+
+	.type-subheading-xs {
+		font: var(--mmx-paragraph-l-font);
+	}
+
+	.type-paragraph-l {
+		font: var(--mmx-paragraph-s-font);
+	}
+
+	.type-paragraph-s {
+		font: var(--mmx-paragraph-s-font);
+	}
+
+	.type-paragraph-xs {
+		font: var(--mmx-paragraph-xs-font);
+	}
+}
+
+/* Typography Styles: Large Breakpoint [60em = 960px]
+   =========================================== */
+@media screen and (min-width: 60em) {
+	.type-display-1 {
+		font: var(--mmx-display-1-font);
+	}
+
+	.type-display-2,
+	h1 {
+		font: var(--mmx-display-2-font);
+	}
+
+	.type-display-3,
+	h2 {
+		font: var(--mmx-display-3-font);
+	}
+
+	.type-title-1,
+	h3 {
+		font: var(--mmx-title-1-font);
+	}
+
+	.type-title-2,
+	h4 {
+		font: var(--mmx-title-2-font);
+	}
+
+	.type-title-3,
+	h5 {
+		font: var(--mmx-title-3-font);
+	}
+
+	.type-title-4,
+	h6 {
+		font: var(--mmx-title-4-font);
+	}
+
+	.type-subheading-l {
+		font: var(--mmx-subheading-l-font);
+	}
+
+	.type-subheading-s {
+		font: var(--mmx-subheading-s-font);
+	}
+
+	.type-subheading-xs {
+		font: var(--mmx-subheading-xs-font);
+	}
+
+	.type-paragraph-l {
+		font: var(--mmx-paragraph-l-font);
+	}
+
+	.type-paragraph-s {
+		font: var(--mmx-paragraph-s-font);
+	}
+
+	.type-paragraph-xs {
+		font: var(--mmx-paragraph-xs-font);
+	}
+}

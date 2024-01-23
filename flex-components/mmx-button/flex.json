@@ -1,0 +1,59 @@
+{
+	"code": "mmx-button",
+	"name": "MMX Button",
+	"type": "library",
+	"version": "10.08.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-button",
+	"scripts": [
+		{
+			"filepath": "src\/js\/mmx-button.js",
+			"resource_code": "mmx-button",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-6QvPKLjbRf\/GyRS\/XmuhSIAcjVU7\/zAuPjpYmeGGQj4\u003D sha384-AJJo551RNkVrPeB8OoNJSKzc3WRMxPPa9s3fNSCo8UyTfaAJH96y918umiATNdTE sha512-jU1ezC9mgyJL64pwUnhEad3dGmJfl52h9INMgTxj7LgQ0tljIeeZS9CMMAf3HxvDHMbBCXFzhW8u1eF5iSuVcw\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src\/css\/mmx-button.css",
+			"resource_code": "mmx-button",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-ZWWVrnJ+bsiDaMRsunhIewIkjdxcDd6R\/rCdNcFJ4tc\u003D sha384-UZ3\/sdPuNjEZf4JRVItQKz7BYitIHrVTl8TCs\/WsHuflHHvlaIlVd30RI\/anCrvj sha512-pytViN0rWTPuzvlfn5ISTtIvNz80AGGdpgAxSW6GYRgOmSqOsiwOHL+7ix7h7BPLMsgSouCg\/Kt2EuC4yUd74g\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "\u003D10.08.00"
+	}
+}

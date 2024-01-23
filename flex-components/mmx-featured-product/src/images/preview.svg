@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="720" viewBox="0 0 1600 720">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_3173" data-name="Rectangle 3173" width="200" height="200" fill="#bbbec3"/>
+    </clipPath>
+  </defs>
+  <g id="Featured_Product" data-name="Featured Product" transform="translate(0 -2895)">
+    <g id="Featured_Product-2" data-name="Featured Product" transform="translate(110 -463)">
+      <rect id="Rectangle_3232" data-name="Rectangle 3232" width="640" height="640" rx="16" transform="translate(80 3398)" fill="#cfd2d6"/>
+      <g id="Group_6141" data-name="Group 6141" transform="translate(300 3618)">
+        <g id="Group_6082" data-name="Group 6082" clip-path="url(#clip-path)">
+          <path id="Path_5614" data-name="Path 5614" d="M185.24,0H14.507A14.691,14.691,0,0,0,0,14.566V185.457A14.638,14.638,0,0,0,14.52,200l170.921-.051A14.686,14.686,0,0,0,200,185.384V14.544A14.784,14.784,0,0,0,185.24,0M14.545,192.251a6.981,6.981,0,0,1-6.97-6.939V176.1l49.5-49.55,65.673,65.7Zm177.573-6.436a6.977,6.977,0,0,1-6.994,6.411H133.435L83.951,142.674l47.891-47.891,60.292,60.306Zm.047-42.024L134.58,86.506a3.839,3.839,0,0,0-5.4,0l-50.6,50.551L60,118.493a3.792,3.792,0,0,0-5.346,0L7.575,165.334V16.523l-.248-.165.227-2.478A6.9,6.9,0,0,1,14.577,7.6H185.385a6.748,6.748,0,0,1,6.777,6.561l0,.131Z" fill="#bbbec3"/>
+          <path id="Path_5615" data-name="Path 5615" d="M66.448,28.164h-.042A28.6,28.6,0,0,0,37.827,56.817l0,1.342A28.64,28.64,0,1,0,66.448,28.164m.563,50.79c-.211.006-.423.008-.634.008A22.607,22.607,0,0,1,43.8,56.932V56.9c-.008-.389-.007-.777,0-1.136a22.619,22.619,0,1,1,23.21,23.184" transform="translate(7.282 5.433)" fill="#bbbec3"/>
+        </g>
+      </g>
+      <g id="Group_6553" data-name="Group 6553" transform="translate(-41 -4)">
+        <text id="Featured_Product_Name" data-name="Featured Product Name" transform="translate(880 3594)" fill="#494a53" font-size="40" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="0">Featured Product Name</tspan></text>
+        <text id="_39.99" data-name="$39.99" transform="translate(880 3659)" fill="#494a53" font-size="24" font-family="Helvetica"><tspan x="0" y="0">$39.99</tspan></text>
+        <text id="_59.99" data-name="$59.99" transform="translate(980 3659)" fill="#969da8" font-size="24" font-family="Helvetica" text-decoration="line-through"><tspan x="0" y="0">$59.99</tspan></text>
+        <g id="Rectangle_3070" data-name="Rectangle 3070" transform="translate(880 3719)" fill="#fff" stroke="#cfd2d6" stroke-width="2">
+          <rect width="414" height="58" rx="4" stroke="none"/>
+          <rect x="1" y="1" width="412" height="56" rx="3" fill="none"/>
+        </g>
+        <g id="Left-arrow" transform="translate(1260 3751) rotate(-90)">
+          <path id="Icons-07" d="M1.456,0,0,1.44,6.576,8l6.576-6.56L11.7,0,6.576,5.12Z" transform="translate(8) rotate(90)" fill="#494a53"/>
+        </g>
+        <rect id="Rectangle_3475" data-name="Rectangle 3475" width="120" height="10" rx="5" transform="translate(880 3533)" fill="#969da8"/>
+        <g id="Group_6573" data-name="Group 6573" transform="translate(0 41)">
+          <g id="Primary_Button_CTA" data-name="Primary Button CTA" transform="translate(880 3862)">
+            <rect id="Rectangle_3062" data-name="Rectangle 3062" width="120" height="48" rx="4" fill="#494a53"/>
+          </g>
+          <rect id="Rectangle_3476" data-name="Rectangle 3476" width="64" height="10" rx="5" transform="translate(908 3881)" fill="#fff"/>
+        </g>
+        <rect id="Rectangle_3477" data-name="Rectangle 3477" width="80" height="10" rx="5" transform="translate(880 3697)" fill="#969da8"/>
+        <rect id="Rectangle_3478" data-name="Rectangle 3478" width="140" height="10" rx="5" transform="translate(897 3743)" fill="#969da8"/>
+        <rect id="Rectangle_3479" data-name="Rectangle 3479" width="450" height="10" rx="5" transform="translate(880 3825)" fill="#969da8"/>
+        <rect id="Rectangle_3480" data-name="Rectangle 3480" width="416" height="10" rx="5" transform="translate(880 3847)" fill="#969da8"/>
+        <rect id="Rectangle_3481" data-name="Rectangle 3481" width="240" height="10" rx="5" transform="translate(880 3869)" fill="#969da8"/>
+      </g>
+    </g>
+    <rect id="Rectangle_3503" data-name="Rectangle 3503" width="1600" height="720" transform="translate(0 2895)" fill="none"/>
+  </g>
+</svg>

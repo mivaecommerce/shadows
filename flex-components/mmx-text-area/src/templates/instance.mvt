@@ -1,0 +1,62 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-hero
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-align="&mvte:instance:content:align:value;"
+	data-content-width="&mvte:instance:advanced:desktop:width:value;"
+	data-content-location="center"
+	data-content-layout="text-area"
+	data-size="content"
+>
+	<mvt:comment>Slotted Content</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:value">
+		<mmx-text
+			slot="subheading"
+			data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
+			style="&mvte:instance:content:subheading:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:subheading:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
+		<mmx-text
+			slot="heading"
+			data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
+			style="&mvte:instance:content:heading:textsettings:styles:normal;"
+		>
+			&mvte:instance:content:heading:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
+		<mmx-text
+			slot="body"
+			data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+			style="&mvte:instance:content:body:textsettings:styles:normal;"
+		>
+			&mvt:instance:content:body:value;
+		</mmx-text>
+	</mvt:if>
+	<mvt:if expr="l.settings:instance:content:button:settings:enabled AND NOT ISNULL l.settings:instance:content:button:button_text:value">
+		<mmx-button
+			slot="button"
+			data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
+			data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
+			href="&mvte:instance:content:button:button_link:url;"
+		>
+			&mvte:instance:content:button:button_text:value;
+		</mmx-button>
+	</mvt:if>
+</mmx-hero>

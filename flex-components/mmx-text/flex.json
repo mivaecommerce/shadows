@@ -1,0 +1,59 @@
+{
+	"code": "mmx-text",
+	"name": "MMX Text",
+	"type": "library",
+	"version": "10.08.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-text",
+	"scripts": [
+		{
+			"filepath": "src\/js\/mmx-text.js",
+			"resource_code": "mmx-text",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-+HO+mRLLvr0XJWUUySDFiudLvHY5Q3FF7qKE3\/T3Amc\u003D sha384-w03ipFaiYGd5A0M7aP5lBTMufmSKmZGjROPZa4faV5GF6q+hd1e9hwpfvUN5TsaK sha512-GwcT0oDRgSv+OCNp5sVH0b6+zLWP07G3AzGRucMFGbyvRpbui0OF\/iWksoSh+in68wZ3bvQRho+Bl3X40jib9Q\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src\/css\/mmx-text.css",
+			"resource_code": "mmx-text",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-vNHpWOGTPqTd4TXu\/oDn\/ZKRm7gf0RGU4J5qbVioz1E\u003D sha384-ZlfWt8Mfu+vN20PDEIFCwPBbmT6OI7CMXFQ0dJhFm7Dftxf0YIxsHPyqC3iBzH8Y sha512-OurVUTqczEOeoybQPSn5YEGbrIToyPuZi1BuwflAi1H4HnoGoO+jnHZB\/WDHfiGCd1Hn7RjSLVayz2WxGRQCQw\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "\u003D10.08.00"
+	}
+}

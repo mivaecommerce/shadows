@@ -1,0 +1,23 @@
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="css:mmx-customizations" />
+
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+	<mvt:item name="head" param="css:mmx-featured-product" />
+</template>
+
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'ajax.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'runtime.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'MivaEvents.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'AttributeMachine.js' )" />
+
+<mvt:item name="head" param="js:mmx-base" />
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="js:mmx-hero" />
+<mvt:item name="head" param="js:mmx-hero-slider" />
+<mvt:item name="head" param="js:mmx-featured-product" />

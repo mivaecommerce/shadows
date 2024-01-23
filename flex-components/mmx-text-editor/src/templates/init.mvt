@@ -1,0 +1,9 @@
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="css:mmx-customizations" />
+
+<template class="mmx-resources">
+	<mvt:item name="head" param="css:mmx-text-editor" />
+</template>
+
+<mvt:item name="head" param="js:mmx-base" />
+<mvt:item name="head" param="js:mmx-text-editor" />
