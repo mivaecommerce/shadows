@@ -1,0 +1,74 @@
+<mvt:comment>Determine Component Attribute Values</mvt:comment>
+<mvt:assign name="l.settings:instance:data:content_bg_color__desktop" value="ternary(l.settings:instance:advanced:desktop:background_color:settings:enabled, l.settings:instance:advanced:desktop:background_color:color:value, '')" />
+<mvt:assign name="l.settings:instance:data:content_bg_color__mobile" value="ternary(l.settings:instance:advanced:mobile:background_color:settings:enabled, l.settings:instance:advanced:mobile:background_color:color:value, '')" />
+
+<mvt:if expr="l.settings:instance:size EQ 'dimensions'">
+	<mvt:assign name="l.settings:size" value="l.settings:instance:advanced:controls:width:value $ 'x' $ l.settings:instance:advanced:controls:height:value" />
+<mvt:else>
+	<mvt:assign name="l.settings:size" value="l.settings:instance:size:value" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-video
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-video="&mvte:instance:video:value;"
+	data-controls="&mvte:instance:advanced:controls:controls:value;"
+	data-autoplay="&mvte:instance:advanced:controls:autoplay:value;"
+	data-muted="&mvte:instance:advanced:controls:muted:value;"
+	data-loop="&mvte:instance:advanced:controls:loop:value;"
+	data-start="&mvte:instance:advanced:controls:start:value;"
+	data-size="&mvte:size;"
+	data-content-location="&mvte:instance:content:content_location:value;"
+	data-align="&mvte:instance:content:align:value;"
+	data-content-bg-color--desktop="&mvte:instance:data:content_bg_color__desktop;"
+	data-content-bg-color--mobile="&mvte:instance:data:content_bg_color__mobile;"
+	data-overlay-bg="opacity"
+	data-overlay-bg-opacity="&mvte:instance:advanced:desktop:overlay_opacity:value;"
+	data-content-theme="&mvte:instance:advanced:content_theme:value;"
+>
+	<mvt:comment>Slotted Content</mvt:comment>
+	<mvt:if expr="l.settings:instance:content:settings:enabled">
+		<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:value">
+			<mmx-text
+				slot="subheading"
+				data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
+				style="&mvte:instance:content:subheading:textsettings:styles:normal;"
+			>
+				&mvte:instance:content:subheading:value;
+			</mmx-text>
+		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
+			<mmx-text
+				slot="heading"
+				data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
+				data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
+				style="&mvte:instance:content:heading:textsettings:styles:normal;"
+			>
+				&mvte:instance:content:heading:value;
+			</mmx-text>
+		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
+			<mmx-text
+				slot="body"
+				data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+				style="&mvte:instance:content:body:textsettings:styles:normal;"
+			>
+				&mvte:instance:content:body:value;
+			</mmx-text>
+		</mvt:if>
+		<mvt:if expr="l.settings:instance:content:button:settings:enabled AND NOT ISNULL l.settings:instance:content:button:button_text:value">
+			<mmx-button
+				slot="button"
+				data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
+				data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
+				href="&mvte:instance:content:button:button_link:url;"
+			>
+				&mvte:instance:content:button:button_text:value;
+			</mmx-button>
+		</mvt:if>
+	</mvt:if>
+</mmx-video>

@@ -1,0 +1,539 @@
+/* ==========================================================================
+   MMX / BASE
+   ========================================================================== */
+
+/* Design System Variables
+   =========================================== */
+:root {
+
+	/**
+	 * Base Colors
+	 */
+	--mmx-color-blue-01: #3A58FC;
+	--mmx-color-blue-02: #8FBBE6;
+	--mmx-color-blue-03: #F3F9FE;
+	--mmx-color-blue-04: #2E669E;
+	--mmx-color-grey-01: #F5F5F5;
+	--mmx-color-grey-02: #EAEAEA;
+	--mmx-color-grey-03: #DDDDDD;
+	--mmx-color-grey-04: #CCCCCC;
+	--mmx-color-grey-05: #767676;
+	--mmx-color-grey-06: #575A5D;
+	--mmx-color-black: #111111;
+	--mmx-color-white: #FFFFFF;
+
+
+	/**
+	 * Feedback Colors > Error
+	 */
+	--mmx-color-red-001: #B13138;
+		--mmx-color-error-text: var(--mmx-color-red-001);
+	--mmx-color-red-002: #F9C4C7;
+		--mmx-color-error-border: var(--mmx-color-red-002);
+	--mmx-color-red-003: #FBE3E3;
+		--mmx-color-error-background: var(--mmx-color-red-003);
+
+
+	/**
+	 * Feedback Colors > Warning
+	 */
+	--mmx-color-yellow-001: #65602E;
+		--mmx-color-warning-text: var(--mmx-color-yellow-001);
+	--mmx-color-yellow-002: #E6E086;
+		--mmx-color-warning-border: var(--mmx-color-yellow-002);
+	--mmx-color-yellow-003: #F8F8E1;
+		--mmx-color-warning-background: var(--mmx-color-yellow-003);
+
+
+	/**
+	 * Feedback Colors > Success
+	 */
+	--mmx-color-green-001: #0A7448;
+		--mmx-color-success-text: var(--mmx-color-green-001);
+	--mmx-color-green-002: #BBE1D3;
+		--mmx-color-success-border: var(--mmx-color-green-002);
+	--mmx-color-green-003: #DAF5EB;
+		--mmx-color-success-background: var(--mmx-color-green-003);
+
+
+	/**
+	 * Feedback Colors > General/Info
+	 */
+	--mmx-color-blue-001: #0C5298;
+		--mmx-color-info-text: var(--mmx-color-blue-001);
+	--mmx-color-blue-002: #8FBBE6;
+		--mmx-color-info-border: var(--mmx-color-blue-002);
+	--mmx-color-blue-003: #F3F9FE;
+		--mmx-color-info-background: var(--mmx-color-blue-003);
+
+
+	/**
+	 * Fonts
+	 */
+	--mmx-font-family-1: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
+	--mmx-text-margin-bottom: 0.3em;
+
+
+	/**
+	 * Font-Weights
+	 */
+	--mmx-font-weight-ultrathin: 100;
+	--mmx-font-weight-light: 200;
+	--mmx-font-weight-book: 300;
+	--mmx-font-weight-normal: 400;
+	--mmx-font-weight-medium: 500;
+	--mmx-font-weight-semibold: 600;
+	--mmx-font-weight-bold: 700;
+	--mmx-font-weight-black: 900;
+
+
+	/**
+	 * Typography > Headings > Base
+	 */
+	--mmx-heading-case: none;
+	--mmx-heading-color: var(--mmx-color-headings);
+	--mmx-heading-font-family: var(--mmx-font-family-1);
+	--mmx-heading-spacing: 0;
+	--mmx-heading-style: normal;
+	--mmx-heading-weight: var(--mmx-font-weight-bold);
+
+
+	/**
+	 * Typography > Headings > Display One
+	 */
+	--mmx-display-1-style: var(--mmx-heading-style);
+	--mmx-display-1-weight: var(--mmx-heading-weight);
+	--mmx-display-1-case: var(--mmx-heading-case);
+	--mmx-display-1-spacing: var(--mmx-heading-spacing);
+	--mmx-display-1-color: var(--mmx-heading-color);
+	--mmx-display-1-line-height: calc(84 / 76);
+	--mmx-display-1-size: 76px;
+	--mmx-display-1-font: var(--mmx-display-1-style) var(--mmx-display-1-weight) var(--mmx-display-1-size) / var(--mmx-display-1-line-height) var(--mmx-display-1-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Display Two
+	 */
+	--mmx-display-2-style: var(--mmx-heading-style);
+	--mmx-display-2-weight: var(--mmx-heading-weight);
+	--mmx-display-2-case: var(--mmx-heading-case);
+	--mmx-display-2-spacing: var(--mmx-heading-spacing);
+	--mmx-display-2-color: var(--mmx-heading-color);
+	--mmx-display-2-line-height: calc(68 / 60);
+	--mmx-display-2-size: 60px;
+	--mmx-display-2-font: var(--mmx-display-2-style) var(--mmx-display-2-weight) var(--mmx-display-2-size) / var(--mmx-display-2-line-height) var(--mmx-display-2-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Display Three
+	 */
+	--mmx-display-3-style: var(--mmx-heading-style);
+	--mmx-display-3-weight: var(--mmx-heading-weight);
+	--mmx-display-3-case: var(--mmx-heading-case);
+	--mmx-display-3-spacing: var(--mmx-heading-spacing);
+	--mmx-display-3-color: var(--mmx-heading-color);
+	--mmx-display-3-line-height: calc(56 / 48);
+	--mmx-display-3-size: 48px;
+	--mmx-display-3-font: var(--mmx-display-3-style) var(--mmx-display-3-weight) var(--mmx-display-3-size) / var(--mmx-display-3-line-height) var(--mmx-display-3-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title One
+	 */
+	--mmx-title-1-style: var(--mmx-heading-style);
+	--mmx-title-1-weight: var(--mmx-heading-weight);
+	--mmx-title-1-case: var(--mmx-heading-case);
+	--mmx-title-1-spacing: var(--mmx-heading-spacing);
+	--mmx-title-1-color: var(--mmx-heading-color);
+	--mmx-title-1-line-height: calc(48 / 40);
+	--mmx-title-1-size: 40px;
+	--mmx-title-1-font: var(--mmx-title-1-style) var(--mmx-title-1-weight) var(--mmx-title-1-size) / var(--mmx-title-1-line-height) var(--mmx-title-1-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Two
+	 */
+	--mmx-title-2-style: var(--mmx-heading-style);
+	--mmx-title-2-weight: var(--mmx-heading-weight);
+	--mmx-title-2-case: var(--mmx-heading-case);
+	--mmx-title-2-spacing: var(--mmx-heading-spacing);
+	--mmx-title-2-color: var(--mmx-heading-color);
+	--mmx-title-2-line-height: calc(40 / 32);
+	--mmx-title-2-size: 32px;
+	--mmx-title-2-font: var(--mmx-title-2-style) var(--mmx-title-2-weight) var(--mmx-title-2-size) / var(--mmx-title-2-line-height) var(--mmx-title-2-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Three
+	 */
+	--mmx-title-3-style: var(--mmx-heading-style);
+	--mmx-title-3-weight: var(--mmx-heading-weight);
+	--mmx-title-3-case: var(--mmx-heading-case);
+	--mmx-title-3-spacing: var(--mmx-heading-spacing);
+	--mmx-title-3-color: var(--mmx-heading-color);
+	--mmx-title-3-line-height: calc(32 / 24);
+	--mmx-title-3-size: 24px;
+	--mmx-title-3-font: var(--mmx-title-3-style) var(--mmx-title-3-weight) var(--mmx-title-3-size) / var(--mmx-title-3-line-height) var(--mmx-title-3-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Headings > Title Four
+	 */
+	--mmx-title-4-style: var(--mmx-heading-style);
+	--mmx-title-4-weight: var(--mmx-heading-weight);
+	--mmx-title-4-case: var(--mmx-heading-case);
+	--mmx-title-4-spacing: var(--mmx-heading-spacing);
+	--mmx-title-4-color: var(--mmx-heading-color);
+	--mmx-title-4-line-height: calc(28 / 20);
+	--mmx-title-4-size: 20px;
+	--mmx-title-4-font: var(--mmx-title-4-style) var(--mmx-title-4-weight) var(--mmx-title-4-size) / var(--mmx-title-4-line-height) var(--mmx-title-4-font-family, var(--mmx-heading-font-family));
+
+
+	/**
+	 * Typography > Subheadings > Base
+	 */
+	--mmx-subheading-font-family: var(--mmx-heading-font-family);
+	--mmx-subheading-style: normal;
+	--mmx-subheading-weight: var(--mmx-font-weight-book);
+	--mmx-subheading-case: none;
+	--mmx-subheading-spacing: 0;
+	--mmx-subheading-color: var(--mmx-color-subheadings);
+
+
+	/**
+	 * Typography > Subheadings > Large
+	 */
+	--mmx-subheading-l-font-family: var(--mmx-subheading-font-family);
+	--mmx-subheading-l-style: var(--mmx-subheading-style);
+	--mmx-subheading-l-weight: var(--mmx-subheading-weight);
+	--mmx-subheading-l-case: var(--mmx-subheading-case);
+	--mmx-subheading-l-spacing: var(--mmx-subheading-spacing);
+	--mmx-subheading-l-color: var(--mmx-subheading-color);
+	--mmx-subheading-l-line-height: calc(28 / 20);
+	--mmx-subheading-l-size: 20px;
+	--mmx-subheading-l-font: var(--mmx-subheading-l-style) var(--mmx-subheading-l-weight) var(--mmx-subheading-l-size) / var(--mmx-subheading-l-line-height) var(--mmx-subheading-l-font-family);
+
+
+	/**
+	 * Typography > Subheadings > Small
+	 */
+	--mmx-subheading-s-font-family: var(--mmx-subheading-font-family);
+	--mmx-subheading-s-style: var(--mmx-subheading-style);
+	--mmx-subheading-s-weight: var(--mmx-subheading-weight);
+	--mmx-subheading-s-case: var(--mmx-subheading-case);
+	--mmx-subheading-s-spacing: var(--mmx-subheading-spacing);
+	--mmx-subheading-s-color: var(--mmx-subheading-color);
+	--mmx-subheading-s-line-height: calc(24 / 18);
+	--mmx-subheading-s-size: 18px;
+	--mmx-subheading-s-font: var(--mmx-subheading-s-style) var(--mmx-subheading-s-weight) var(--mmx-subheading-s-size) / var(--mmx-subheading-s-line-height) var(--mmx-subheading-s-font-family);
+
+
+	/**
+	 * Typography > Subheadings > X-Small
+	 */
+	--mmx-subheading-xs-font-family: var(--mmx-subheading-font-family);
+	--mmx-subheading-xs-style: var(--mmx-subheading-style);
+	--mmx-subheading-xs-weight: var(--mmx-subheading-weight);
+	--mmx-subheading-xs-case: var(--mmx-subheading-case);
+	--mmx-subheading-xs-spacing: var(--mmx-subheading-spacing);
+	--mmx-subheading-xs-color: var(--mmx-subheading-color);
+	--mmx-subheading-xs-line-height: calc(24 / 16);
+	--mmx-subheading-xs-size: 16px;
+	--mmx-subheading-xs-font: var(--mmx-subheading-xs-style) var(--mmx-subheading-xs-weight) var(--mmx-subheading-xs-size) / var(--mmx-subheading-xs-line-height) var(--mmx-subheading-xs-font-family);
+
+
+	/**
+	 * Typography > Paragraph > Base
+	 */
+	--mmx-paragraph-font-family: var(--mmx-font-family-1);
+	--mmx-paragraph-style: normal;
+	--mmx-paragraph-weight: var(--mmx-font-weight-normal);
+	--mmx-paragraph-case: none;
+	--mmx-paragraph-spacing: 0;
+	--mmx-paragraph-color: var(--mmx-color-body-copy);
+
+
+	/**
+	 * Typography > Paragraph > Large
+	 */
+	--mmx-paragraph-l-font-family: var(--mmx-paragraph-font-family);
+	--mmx-paragraph-l-style: var(--mmx-paragraph-style);
+	--mmx-paragraph-l-weight: var(--mmx-paragraph-weight);
+	--mmx-paragraph-l-case: var(--mmx-paragraph-case);
+	--mmx-paragraph-l-spacing: var(--mmx-paragraph-spacing);
+	--mmx-paragraph-l-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-l-line-height: calc(24 / 16);
+	--mmx-paragraph-l-size: 16px;
+	--mmx-paragraph-l-font: var(--mmx-paragraph-l-style) var(--mmx-paragraph-l-weight) var(--mmx-paragraph-l-size) / var(--mmx-paragraph-l-line-height) var(--mmx-paragraph-l-font-family);
+
+
+	/**
+	 * Typography > Paragraph > Small
+	 */
+	--mmx-paragraph-s-font-family: var(--mmx-paragraph-font-family);
+	--mmx-paragraph-s-style: var(--mmx-paragraph-style);
+	--mmx-paragraph-s-weight: var(--mmx-paragraph-weight);
+	--mmx-paragraph-s-case: var(--mmx-paragraph-case);
+	--mmx-paragraph-s-spacing: var(--mmx-paragraph-spacing);
+	--mmx-paragraph-s-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-s-line-height: calc(20 / 14);
+	--mmx-paragraph-s-size: 14px;
+	--mmx-paragraph-s-font: var(--mmx-paragraph-s-style) var(--mmx-paragraph-s-weight) var(--mmx-paragraph-s-size) / var(--mmx-paragraph-s-line-height) var(--mmx-paragraph-s-font-family);
+
+
+	/**
+	 * Typography > Paragraph > X-Small
+	 */
+	--mmx-paragraph-xs-font-family: var(--mmx-paragraph-font-family);
+	--mmx-paragraph-xs-style: var(--mmx-paragraph-style);
+	--mmx-paragraph-xs-weight: var(--mmx-paragraph-weight);
+	--mmx-paragraph-xs-case: var(--mmx-paragraph-case);
+	--mmx-paragraph-xs-spacing: var(--mmx-paragraph-spacing);
+	--mmx-paragraph-xs-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-xs-line-height: calc(18 / 12);
+	--mmx-paragraph-xs-size: 12px;
+	--mmx-paragraph-xs-font: var(--mmx-paragraph-xs-style) var(--mmx-paragraph-xs-weight) var(--mmx-paragraph-xs-size) / var(--mmx-paragraph-xs-line-height) var(--mmx-paragraph-xs-font-family);
+
+
+	/**
+	 * Typography > Call to Action
+	 */
+	--mmx-call-to-action-font-family: var(--mmx-font-family-1);
+	--mmx-call-to-action-style: normal;
+	--mmx-call-to-action-weight: var(--mmx-font-weight-medium);
+	--mmx-call-to-action-case: none;
+	--mmx-call-to-action-spacing: 0;
+	--mmx-call-to-action-color: var(--mmx-color-black);
+	--mmx-call-to-action-line-height: calc(18 / 13);
+	--mmx-call-to-action-size: 13px;
+	--mmx-call-to-action-font: var(--mmx-call-to-action-style) var(--mmx-call-to-action-weight) var(--mmx-call-to-action-size) / var(--mmx-call-to-action-line-height) var(--mmx-call-to-action-font-family);
+
+	/**
+	 * Typography > Product Name
+	 */
+	--mmx-product-name-font-family: var(--mmx-font-family-1);
+	--mmx-product-name-style: normal;
+	--mmx-product-name-weight: var(--mmx-font-weight-normal);
+	--mmx-product-name-case: none;
+	--mmx-product-name-spacing: 0;
+	--mmx-product-name-color: var(--mmx-color-black);
+	--mmx-product-name-line-height: calc(20 / 14);
+	--mmx-product-name-size: 14px;
+	--mmx-product-name-font: var(--mmx-product-name-style) var(--mmx-product-name-weight) var(--mmx-product-name-size) / var(--mmx-product-name-line-height) var(--mmx-product-name-font-family);
+
+	/**
+	 * Typography > Product Price
+	 */
+	--mmx-product-price-font-family: var(--mmx-font-family-1);
+	--mmx-product-price-style: normal;
+	--mmx-product-price-weight: var(--mmx-font-weight-semibold);
+	--mmx-product-price-case: none;
+	--mmx-product-price-spacing: 0;
+	--mmx-product-price-color: var(--mmx-color-black);
+	--mmx-product-price-line-height: calc(20 / 13);
+	--mmx-product-price-size: 13px;
+	--mmx-product-price-font: var(--mmx-product-price-style) var(--mmx-product-price-weight) var(--mmx-product-price-size) / var(--mmx-product-price-line-height) var(--mmx-product-price-font-family);
+
+	/**
+	 * Typography > Product Additional Price
+	 */
+	--mmx-product-additional-price-font-family: var(--mmx-font-family-1);
+	--mmx-product-additional-price-style: normal;
+	--mmx-product-additional-price-weight: var(--mmx-font-weight-medium);
+	--mmx-product-additional-price-case: none;
+	--mmx-product-additional-price-spacing: 0;
+	--mmx-product-additional-price-color: var(--mmx-color-grey-05);
+	--mmx-product-additional-price-line-height: calc(20 / 13);
+	--mmx-product-additional-price-size: 13px;
+	--mmx-product-additional-price-font: var(--mmx-product-additional-price-style) var(--mmx-product-additional-price-weight) var(--mmx-product-additional-price-size) / var(--mmx-product-additional-price-line-height) var(--mmx-product-additional-price-font-family);
+
+
+	/**
+	 * Spacing
+	 */
+	--mmx-spacing-xs: 4px;
+	--mmx-spacing-s: 8px;
+	--mmx-spacing-m: 16px;
+	--mmx-spacing-l: 32px;
+	--mmx-spacing-xl: 64px;
+	--mmx-spacing-sequence: 40px;
+}
+
+
+
+/* Light Theme Variables
+   =========================================== */
+:root,
+.mmx-theme--light {
+	--mmx-color-primary-bg: var(--mmx-color-black);
+	--mmx-color-primary-text: var(--mmx-color-white);
+	--mmx-color-primary-disabled-text: var(--mmx-color-white);
+	--mmx-color-headings: var(--mmx-color-black);
+	--mmx-color-nav-links: var(--mmx-color-black);
+	--mmx-color-form-labels: var(--mmx-color-black);
+	--mmx-color-icons: var(--mmx-color-black);
+	--mmx-color-focus: var(--mmx-color-blue-01);
+	--mmx-color-text--medium: var(--mmx-color-grey-06);
+	--mmx-color-captions: var(--mmx-color-grey-06);
+	--mmx-color-body-copy: var(--mmx-color-grey-06);
+	--mmx-color-text-link: var(--mmx-color-grey-06);
+	--mmx-color-subheadings: var(--mmx-color-grey-06);
+	--mmx-color-input-border--active: var(--mmx-color-grey-06);
+	--mmx-color-text--light: var(--mmx-color-grey-05);
+	--mmx-color-active-filters: var(--mmx-color-grey-05);
+	--mmx-color-default-wishlist-state: var(--mmx-color-grey-05);
+	--mmx-color-disabled: var(--mmx-color-grey-04);
+	--mmx-color-progress--empty: var(--mmx-color-grey-04);
+	--mmx-color-divider: var(--mmx-color-grey-03);
+	--mmx-color-input-border: var(--mmx-color-grey-03);
+	--mmx-color-slider-bar: var(--mmx-color-grey-03);
+	--mmx-color-background: var(--mmx-color-grey-02);
+	--mmx-color-form-field-fill: var(--mmx-color-grey-02);
+	--mmx-color-background--light: var(--mmx-color-grey-01);
+	--mmx-color-form-field-fill--light: var(--mmx-color-grey-01);
+	--mmx-color-dark-focus: #8CB1E1;
+	--mmx-color-secondary-link: #575A5D;
+}
+
+
+
+/* Dark Theme Variables
+   =========================================== */
+.mmx-theme--dark {
+	--mmx-color-primary-bg: var(--mmx-color-white);
+	--mmx-color-primary-text: var(--mmx-color-black);
+	--mmx-color-primary-disabled-text: var(--mmx-color-white);
+	--mmx-color-secondary-disabled-text: #767676;
+	--mmx-color-secondary-disabled-border: #898989;
+	--mmx-heading-color: var(--mmx-color-white);
+	--mmx-color-body-copy: var(--mmx-color-white);
+	--mmx-paragraph-color: var(--mmx-color-body-copy);
+	--mmx-subheading-color: var(--mmx-color-white);
+	--mmx-display-1-color: var(--mmx-heading-color);
+	--mmx-display-2-color: var(--mmx-heading-color);
+	--mmx-display-3-color: var(--mmx-heading-color);
+	--mmx-call-to-action-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-l-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-s-color: var(--mmx-paragraph-color);
+	--mmx-paragraph-xs-color: var(--mmx-paragraph-color);
+	--mmx-subheading-l-color: var(--mmx-subheading-color);
+	--mmx-subheading-s-color: var(--mmx-subheading-color);
+	--mmx-subheading-xs-color: var(--mmx-subheading-color);
+	--mmx-title-1-color: var(--mmx-heading-color);
+	--mmx-title-2-color: var(--mmx-heading-color);
+	--mmx-title-3-color: var(--mmx-heading-color);
+	--mmx-title-4-color: var(--mmx-heading-color);
+	--mmx-color-focus: var(--mmx-color-dark-focus);
+	--mmx-color-secondary-link: var(--mmx-color-white);
+}
+
+@media (min-width: 60em) {
+	.mmx-theme--dark--l {
+		--mmx-color-primary-bg: var(--mmx-color-white);
+		--mmx-color-primary-text: var(--mmx-color-black);
+		--mmx-color-primary-disabled-text: var(--mmx-color-white);
+		--mmx-color-secondary-disabled-text: #767676;
+		--mmx-color-secondary-disabled-border: #898989;
+		--mmx-heading-color: var(--mmx-color-white);
+		--mmx-color-body-copy: var(--mmx-color-white);
+		--mmx-paragraph-color: var(--mmx-color-body-copy);
+		--mmx-subheading-color: var(--mmx-color-white);
+		--mmx-display-1-color: var(--mmx-heading-color);
+		--mmx-display-2-color: var(--mmx-heading-color);
+		--mmx-display-3-color: var(--mmx-heading-color);
+		--mmx-call-to-action-color: var(--mmx-paragraph-color);
+		--mmx-paragraph-l-color: var(--mmx-paragraph-color);
+		--mmx-paragraph-s-color: var(--mmx-paragraph-color);
+		--mmx-paragraph-xs-color: var(--mmx-paragraph-color);
+		--mmx-subheading-l-color: var(--mmx-subheading-color);
+		--mmx-subheading-s-color: var(--mmx-subheading-color);
+		--mmx-subheading-xs-color: var(--mmx-subheading-color);
+		--mmx-title-1-color: var(--mmx-heading-color);
+		--mmx-title-2-color: var(--mmx-heading-color);
+		--mmx-title-3-color: var(--mmx-heading-color);
+		--mmx-title-4-color: var(--mmx-heading-color);
+		--mmx-color-focus: var(--mmx-color-dark-focus);
+		--mmx-color-secondary-link: var(--mmx-color-white);
+	}
+}
+
+
+
+/* mmx-wrapper
+   =========================================== */
+:host *,
+:host *::after,
+:host *::before,
+.mmx-wrapper *,
+.mmx-wrapper *::after,
+.mmx-wrapper *::before {
+	box-sizing: border-box;
+}
+
+.mmx-wrapper {
+	display: inline-block;
+	margin-bottom: var(--mmx-spacing-sequence);
+	margin-top: 0;
+	width: 100%;
+}
+
+.mmx-wrapper ~ .mmx-wrapper {
+	margin-top: var(--mmx-spacing-sequence);
+	margin-bottom: var(--mmx-spacing-sequence);
+}
+
+
+/* Web Components
+   =========================================== */
+
+/**
+ * Avoid initial FOUC
+ */
+mmx-button:not(:defined),
+mmx-category-carousel:not(:defined),
+mmx-example:not(:defined),
+mmx-featured-product:not(:defined),
+mmx-hero-slider:not(:defined),
+mmx-hero:not(:defined),
+mmx-image-across:not(:defined),
+mmx-product-carousel:not(:defined),
+mmx-text-editor:not(:defined),
+mmx-text:not(:defined) {
+	visibility: hidden;
+}
+
+/**
+ * Display
+ */
+mmx-category-carousel,
+mmx-featured-product,
+mmx-hero-slider,
+mmx-image-across,
+mmx-product-carousel,
+mmx-text-editor,
+mmx-text {
+	display: block;
+}
+
+mmx-button {
+	display: inline-block;
+}
+
+mmx-hero-slider mmx-hero[slot="hero_slide"] {
+	display: var(--mmx-hero__display, inline-block);
+}
+
+/**
+ * Host Document Styles for Web Component Light DOM
+ */
+mmx-hero picture[slot="image"] > img,
+mmx-image-and-text picture[slot="image"] > img {
+	max-width: inherit;
+	user-select: inherit;
+	pointer-events: inherit;
+	object-position: inherit;
+	height: inherit;
+	width: inherit;
+	object-fit: inherit;
+	aspect-ratio: inherit;
+}

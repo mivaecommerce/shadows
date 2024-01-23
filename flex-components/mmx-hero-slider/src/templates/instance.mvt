@@ -1,0 +1,102 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-hero-slider
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-delay="&mvte:instance:advanced:controls:delay:value;"
+	data-autoplay="&mvte:instance:advanced:controls:autoplay:value;"
+	data-pause-on-hover="&mvte:instance:advanced:controls:pause_on_hover:value;"
+	data-size="&mvte:instance:slides:image_size:value;"
+>
+	<mvt:foreach iterator="hero_image" array="instance:slides:hero_images:children">
+		<mvt:comment>Generate optional Hero attribute</mvt:comment>
+		<mvt:assign name="l.settings:instance_optional_attributes_encoded" value="''" />
+
+		<mvt:if expr="l.settings:instance:advanced:mobile:background_color:settings:enabled">
+			<mvt:assign name="l.settings:instance_optional_attributes_encoded" value="l.settings:instance_optional_attributes_encoded $ ' data-content-bg-color--mobile=\"' $ encodeentities( l.settings:instance:advanced:mobile:background_color:color:value ) $ '\"'" />
+		</mvt:if>
+
+		<mvt:if expr="l.settings:instance:advanced:desktop:background_color:settings:enabled">
+			<mvt:assign name="l.settings:instance_optional_attributes_encoded" value="l.settings:instance_optional_attributes_encoded $ ' data-content-bg-color--desktop=\"' $ encodeentities( l.settings:instance:advanced:desktop:background_color:color:value ) $ '\"'" />
+		</mvt:if>
+
+		<mvt:comment>Render Hero</mvt:comment>
+		<mmx-hero
+			slot="hero_slide"
+
+			data-href="&mvte:hero_image:link:url;"
+			data-align="&mvte:hero_image:content:align:value;"
+			data-content-width="&mvte:instance:advanced:desktop:container_width:value;"
+			data-content-location="&mvte:hero_image:content:content_location:value;"
+			data-overlay-bg="color"
+			data-overlay-bg-color="rgba(0, 0, 0, &mvte:instance:advanced:desktop:overlay_opacity:value;%)"
+
+			&mvt:instance_optional_attributes_encoded;
+		>
+			<mvt:comment>Slotted Image</mvt:comment>
+			<picture slot="image">
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_images:mobile">
+					<mvt:assign name="l.settings:hero_image:image:img:responsive_images:mobile" value="glosub( l.settings:hero_image:image:img:responsive_images:mobile, ' ', '%20' )" />
+					<source media="(max-width: 39.999em)" srcset="&mvte:hero_image:image:img:responsive_images:mobile;">
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_images:tablet">
+					<mvt:assign name="l.settings:hero_image:image:img:responsive_images:tablet" value="glosub( l.settings:hero_image:image:img:responsive_images:tablet, ' ', '%20' )" />
+					<source media="(max-width: 59.999em)" srcset="&mvte:hero_image:image:img:responsive_images:tablet;">
+				</mvt:if>
+				<img src="&mvte:hero_image:image:img:image;" alt="&mvte:hero_image:image:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+			</picture>
+
+			<mvt:comment>Slotted Content</mvt:comment>
+			<mvt:if expr="l.settings:hero_image:content:settings:enabled">
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:subheading:value">
+					<mmx-text
+						slot="subheading"
+						data-style="&mvte:hero_image:content:subheading:textsettings:fields:normal:subheading_style;"
+						style="&mvte:hero_image:content:subheading:textsettings:styles:normal;"
+					>
+						&mvte:hero_image:content:subheading:value;
+					</mmx-text>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:heading:value">
+					<mmx-text
+						slot="heading"
+						data-style="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_style;"
+						data-tag="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_tag;"
+						style="&mvte:hero_image:content:heading:textsettings:styles:normal;"
+					>
+						&mvte:hero_image:content:heading:value;
+					</mmx-text>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:body:value">
+					<mmx-text
+						slot="body"
+						data-style="&mvte:hero_image:content:body:textsettings:fields:normal:body_style;"
+						style="&mvte:hero_image:content:body:textsettings:styles:normal;"
+					>
+						&mvte:hero_image:content:body:value;
+					</mmx-text>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:button:value">
+					<mmx-button
+						slot="button"
+						data-style="&mvte:hero_image:content:button:textsettings:fields:normal:button_style;"
+						data-size="&mvte:hero_image:content:button:textsettings:fields:normal:button_size;"
+					>
+						&mvte:hero_image:content:button:value;
+					</mmx-button>
+				</mvt:if>
+			</mvt:if>
+		</mmx-hero>
+	</mvt:foreach>
+</mmx-hero-slider>

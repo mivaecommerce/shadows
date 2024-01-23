@@ -1,0 +1,17 @@
+<mvt:assign name="l.settings:instance:fallback_product_image_default" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__720x720.jpg'" />
+<mvt:assign name="l.settings:instance:fallback_product_image_mobile" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__335x335.jpg'" />
+
+<mmx-featured-product
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-bask-url="&mvte:urls:BASK:auto;"
+	data-init="script"
+>
+	<mvt:comment>Init Script</mvt:comment>
+	<script type="application/json">
+		<mvt:eval expr="miva_json_encode( l.settings:instance, '')" />
+	</script>
+</mmx-featured-product>

@@ -5,7 +5,10 @@
 - Cleanup
 	- `$ rm -r mmt/ && mkdir mmt`
 	- `$ rm -r pkg/ && mkdir pkg`
+	- `$ rm -r flex-components/ && mkdir flex-components`
 - Setup
+	- Copy flex-components to `flex-components/`
+	- Format the `flex.json` files in the `flex-components/` folders
 	- Copy files to `mmt/`
 	- Copy pkg to `pkg/shadows.pkg`
 	- Extract files to `pkg/shadows`

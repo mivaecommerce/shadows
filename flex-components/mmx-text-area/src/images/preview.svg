@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1600" height="455" viewBox="0 0 1600 455">
+  <g id="Text_Area" data-name="Text Area" transform="translate(0 -3615)">
+    <g id="Group_6585" data-name="Group 6585">
+      <g id="Text_Area-2" data-name="Text Area" transform="translate(108 -542)">
+        <text id="Text_Area_Heading" data-name="Text Area Heading" transform="translate(82 4258)" fill="#494a53" font-size="40" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="0">Text Area Heading</tspan></text>
+        <rect id="Rectangle_3482" data-name="Rectangle 3482" width="200" height="10" rx="5" transform="translate(82 4197)" fill="#969da8"/>
+        <g id="Group_6575" data-name="Group 6575" transform="translate(82 4300)">
+          <rect id="Rectangle_3483" data-name="Rectangle 3483" width="1168" height="10" rx="5" fill="#969da8"/>
+          <rect id="Rectangle_3484" data-name="Rectangle 3484" width="1148" height="10" rx="5" transform="translate(0 26)" fill="#969da8"/>
+          <rect id="Rectangle_3485" data-name="Rectangle 3485" width="1220" height="10" rx="5" transform="translate(0 52)" fill="#969da8"/>
+          <rect id="Rectangle_3486" data-name="Rectangle 3486" width="1200" height="10" rx="5" transform="translate(0 78)" fill="#969da8"/>
+          <rect id="Rectangle_3487" data-name="Rectangle 3487" width="1200" height="10" rx="5" transform="translate(0 104)" fill="#969da8"/>
+          <rect id="Rectangle_3488" data-name="Rectangle 3488" width="1192" height="10" rx="5" transform="translate(0 138)" fill="#969da8"/>
+          <rect id="Rectangle_3489" data-name="Rectangle 3489" width="1192" height="10" rx="5" transform="translate(0 164)" fill="#969da8"/>
+        </g>
+        <rect id="Rectangle_3490" data-name="Rectangle 3490" width="358" height="10" rx="5" transform="translate(82 4490)" fill="#969da8"/>
+        <g id="Group_6574" data-name="Group 6574" transform="translate(82 4524)">
+          <g id="Primary_Button_CTA" data-name="Primary Button CTA">
+            <rect id="Rectangle_3062" data-name="Rectangle 3062" width="120" height="48" rx="4" fill="#494a53"/>
+          </g>
+          <rect id="Rectangle_3476" data-name="Rectangle 3476" width="64" height="10" rx="5" transform="translate(28 19)" fill="#fff"/>
+        </g>
+      </g>
+      <rect id="Rectangle_3504" data-name="Rectangle 3504" width="1600" height="455" transform="translate(0 3615)" fill="none"/>
+    </g>
+  </g>
+</svg>
