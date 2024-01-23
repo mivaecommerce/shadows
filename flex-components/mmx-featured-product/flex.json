@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.08.00",
+	"version": "10.08.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -820,6 +820,16 @@
 					"type": "checkbox"
 				},
 				{
+					"code": "sku",
+					"prompt": "Display Product SKU",
+					"type": "checkbox"
+				},
+				{
+					"code": "code",
+					"prompt": "Display Product Code",
+					"type": "checkbox"
+				},
+				{
 					"can_disable": 1,
 					"code": "button",
 					"prompt": "Add to Cart Button",
@@ -913,6 +923,9 @@
 						"enabled": 1
 					}
 				},
+				"code": {
+					"value": 0
+				},
 				"discount": {
 					"value": 1
 				},
@@ -924,6 +937,9 @@
 				},
 				"multiple_images": {
 					"value": 1
+				},
+				"sku": {
+					"value": 0
 				}
 			}
 		},
@@ -986,7 +1002,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-gVCuxAjX+VmwP7U\/\/HaNGisMhHqmtOXbuR5c6\/o4uN8\u003D sha384-lS01fU0uwwwwyDVYq6Z5bh8kC74Cchk84vz0Z+Cch+HB8n\/gzZ0VSH25iY6qBq1I sha512-Fq6CiMhMWcmwGtk4edj6daUQqwvGdhGJKv0XCh5F2NFAb9YujPtK\/P9vDK60UJoltjvE9ao\/tH3xzJdpdognWg\u003D\u003D"
+					"value": "sha256-frK40ljsVg2kL19lqXMZKF0etA2ZA02G2lf+NV2eqx8\u003D sha384-PkAokLKw9HQpOtZ97El6J9+CTSiF6fmxZYpvyjHAoXAzgJNT4p6Gyzy64mOvdc9D sha512-\/vM2BriGhO0WMkXPaIuMvZyER8oTUC8nnv\/3QW+a+NrML6x4jSMf7WW3YwV8ZAgK89uHyX3vp19hxv0m9AR\/YQ\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -1014,7 +1030,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-qPHfrvTYSByAO7zz0QbA5QmZSspJnDsL74PoRGO\/71M\u003D sha384-nqkM8p89sG1KAf1+rZINMWb7e\/4JjzR0+z893+dGvRYSs3pI1z1Xe6W6BFxf3XjX sha512-5FhrkbFtW7uFptP0CUUTjEXr9PzWKWgnu3ZuFMjD\/msU7BEkVLGY9364yXtdS2J30Q4SI44EmkfRVIy0CNWeyQ\u003D\u003D"
+					"value": "sha256-kRKMKUU4G8J0DcRG\/TscQNv48Jx11CG+Cnd2WiSj0Go\u003D sha384-VuthJQMmHnDSpN1cx2Hm+OxoKbPIZXC2X7ipY+YfVGx5L10AxjadLAo+Xf0bSJf2 sha512-Fz+RAx2WObXbFtzts3H8W5Sux4yKr2gqA1tMkY8tRBbvB+Flh418jUgqbARJkdNH0eKi\/EzWfJzW\/7hrHHUncQ\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -1024,10 +1040,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.00",
-		"mmx-button": "\u003D10.08.00",
-		"mmx-hero": "\u003D10.08.00",
-		"mmx-hero-slider": "\u003D10.08.00",
-		"mmx-text": "\u003D10.08.00"
+		"mmx-base": "\u003D10.08.02",
+		"mmx-button": "\u003D10.08.02",
+		"mmx-hero": "\u003D10.08.02",
+		"mmx-hero-slider": "\u003D10.08.02",
+		"mmx-text": "\u003D10.08.02"
 	}
 }

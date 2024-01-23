@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.08.00",
+	"version": "10.08.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -556,7 +556,7 @@
 					"prompt": "Image Dimensions",
 					"required": 1,
 					"type": "text",
-					"validation_message": "Enter the pixel dimensions that the image shoud be cropped to \u0028ex. 300x300\u0029",
+					"validation_message": "Enter the pixel dimensions that the image should be cropped to \u0028ex. 300x300\u0029",
 					"validation_pattern": "\\d+x\\d+"
 				},
 				{
@@ -607,6 +607,7 @@
 						{
 							"code": "adpr_text",
 							"prompt": "Add to Cart Text",
+							"required": 1,
 							"textsettings": {
 								"fields": [
 									{
@@ -787,7 +788,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-OiokAFqIXU+PD8jtCY\/D8hPC8N2iRfH\/xMAWl4D4te8\u003D sha384-+iHxTL5ISOWvKqSsNupUD5uM9fkF3HIiDMXtJYKwvjV9Mf2pCEEW4XvJaRBv5+B4 sha512-CSAsPd\/XWd1skN7cDTclBlgTdH91bf2vaa93troH5G4l6oyMImPsQmPCP8f33SI\/7zbA0c5NHsNdd4TB51hYxQ\u003D\u003D"
+					"value": "sha256-5TAxGmgKY21enDUKU3IjeqFYTlquW+XJXKIsvc9QGx0\u003D sha384-stD+5ZnQQo5Lt4wMxYcOLewQnTmmsaBCp0sgQCpsm7zijG7FIsjYPssBOOopTcVD sha512-Z1so3DIxSkerS2XO06V0ohA6qTOfaRJpeBsnCbeGYusvESf9p7AaGqLVIuaGvj9vB1smsfRdkNDP2RKkkWWnLA\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -797,10 +798,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.00",
-		"mmx-button": "\u003D10.08.00",
-		"mmx-hero": "\u003D10.08.00",
-		"mmx-hero-slider": "\u003D10.08.00",
-		"mmx-text": "\u003D10.08.00"
+		"mmx-base": "\u003D10.08.02",
+		"mmx-button": "\u003D10.08.02",
+		"mmx-hero": "\u003D10.08.02",
+		"mmx-hero-slider": "\u003D10.08.02",
+		"mmx-text": "\u003D10.08.02"
 	}
 }

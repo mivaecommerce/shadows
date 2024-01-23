@@ -75,7 +75,6 @@ class MMX_Text extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-text'];
 	hideOnEmpty = true;
 

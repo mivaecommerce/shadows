@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "10.08.00",
+	"version": "10.08.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -1140,7 +1140,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-bWrMW1pKk+2FJ2pwm\/\/\/z\/G\/7JyqobWdn1pnqbSj750\u003D sha384-zCt039IU7bBQoXRbPIpfIU9tHzA638N6\/ei77EgEKQ0ntyhvZj3FKQB342KEqIJQ sha512-Kk6JLbtG1LC46V4guxs8W0d1i4U+HT0wkTfb5pOwrrXtQPDMSYLqhjEFDt53RXWptEhvoBPTQo3SgFgGtaxD0A\u003D\u003D"
+					"value": "sha256-Fokb2DJjgSwiZHebL0O3cbfFuXSz3RnPbciYFKTYY\/I\u003D sha384-qaGM3IpFxCr5TKoES2TKiCMGMEMAzFlaUkKp3eF3hEm6ngY0SrDHH3AdeMtwj+m\/ sha512-aiKCBYmKuuVGa1mnDxKmx6acEi8+VaWAWbseW4GhbHQ\/yvsEOHlTsJivaZf0aviJORHAFXmem4IV0IYhY1rBEw\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -1178,8 +1178,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.00",
-		"mmx-button": "\u003D10.08.00",
-		"mmx-text": "\u003D10.08.00"
+		"mmx-base": "\u003D10.08.02",
+		"mmx-button": "\u003D10.08.02",
+		"mmx-text": "\u003D10.08.02"
 	}
 }

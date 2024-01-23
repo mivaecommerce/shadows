@@ -1,0 +1,28 @@
+{
+	"code": "mmx-csv",
+	"name": "MMX CSV",
+	"type": "library",
+	"version": "10.08.02",
+	"managed": true,
+	"resourcegroup_code": "mmx-csv",
+	"scripts": [
+		{
+			"filepath": "src\/js\/mmx-csv.js",
+			"resource_code": "mmx-csv",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text\/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-1+jmC5jDetmv8+0yACMwRGSaN3uaBJQLYBCB2hyOHNU\u003D sha384-fORvVVhpOA\/j+Jainwe50qeEAQbYxlU\/VxLHxmNi8d5W3VINctdjX2WlcwjRrOb0 sha512-fFEEp3\/BMM1uvGZ\/k88q3Y02NOxclMZSmrqQHWgWUS89fwSA5ItWMf+ZOVRAtOY3mZa18AJo4cG7Fo7\/hgcrtw\u003D\u003D"
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	]
+}

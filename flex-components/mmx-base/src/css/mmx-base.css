@@ -498,7 +498,9 @@ mmx-hero:not(:defined),
 mmx-image-across:not(:defined),
 mmx-product-carousel:not(:defined),
 mmx-text-editor:not(:defined),
-mmx-text:not(:defined) {
+mmx-text:not(:defined),
+mmx-quick-order:not(:defined),
+mmx-icon:not(:defined) {
 	visibility: hidden;
 }
 
@@ -511,11 +513,13 @@ mmx-hero-slider,
 mmx-image-across,
 mmx-product-carousel,
 mmx-text-editor,
-mmx-text {
+mmx-text,
+mmx-quick-order {
 	display: block;
 }
 
-mmx-button {
+mmx-button,
+mmx-icon {
 	display: inline-block;
 }
 

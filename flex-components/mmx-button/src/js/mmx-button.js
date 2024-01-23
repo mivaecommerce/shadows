@@ -25,7 +25,6 @@ class MMX_Button extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-button'];
 	hideOnEmpty = true;
 
