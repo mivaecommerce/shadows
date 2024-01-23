@@ -2,7 +2,7 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.08.00",
+	"version": "10.08.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
@@ -63,7 +63,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-\/zA0+Riiwx8IKIYp8QsoNIenuuvoCpyFFAy\/yxnWoX4\u003D sha384-Lu8xisataUPcCwMmWGtM+8jhi57i5Q9vqtiOpoCd0k2bqafrSrtS26qthGD2ISQB sha512-Ync8eVF3cqKGO301GX4SAtQ8Pd7km0HkT+aJGu4Zf3KsAeh2THWrmBwkCXPaCfQoWqiiT\/AfeALmEt7pL+zRzA\u003D\u003D"
+					"value": "sha256-5Ow+IsFkbqqtzaKt5q\/\/tiQQ9rT+31HGSRX9AxAJp88\u003D sha384-LF5mF0DEfHeJpiB4mEAgS1xgHhYu9\/5ulhHs6h0sJs9YvVox0M5bvsap94mNvYhm sha512-mveEqInAge8WBTMfnXdsTm9dt9+1nzX4vDLEjEYfmDdadzApjtP5QxyfvycXG7V0PR4H5ZuQ9JK7R1JwnGTp0Q\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -101,6 +101,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.00"
+		"mmx-base": "\u003D10.08.02"
 	}
 }

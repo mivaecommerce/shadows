@@ -57,7 +57,6 @@ class MMX_ImageAcross extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-image-across'];
 
 	constructor() {

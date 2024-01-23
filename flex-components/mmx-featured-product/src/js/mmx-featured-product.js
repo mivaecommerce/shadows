@@ -91,6 +91,22 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'show-product-sku': {
+				isBoolean: true,
+				default: false
+			},
+			'product-sku-style': {
+				allowAny: true,
+				default: 'paragraph-xs'
+			},
+			'show-product-code': {
+				isBoolean: true,
+				default: false
+			},
+			'product-code-style': {
+				allowAny: true,
+				default: 'paragraph-xs'
+			},
 			subheading: {
 				allowAny: true,
 				default: null
@@ -211,8 +227,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-hero-slider', 'mmx-featured-product'];
+	#buttonEnabled = true;
+	renderUniquely = true;
 
 	constructor() {
 		super();
@@ -220,7 +237,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	attributeChanged(name, oldValue, newValue) {
-		if (name === 'data-product-code') {
+		if (name === 'data-product-code' && newValue !== oldValue) {
 			this.loadProduct();
 		}
 	}
@@ -229,6 +246,11 @@ class MMX_FeaturedProduct extends MMX_Element {
 		const product_code = this.getPropValue('product-code');
 
 		if (MMX.valueIsEmpty(product_code)) {
+			return;
+		}
+
+		if (String(product_code) === String(this?.product?.code)) {
+			this.productLoaded(this.product);
 			return;
 		}
 
@@ -251,45 +273,78 @@ class MMX_FeaturedProduct extends MMX_Element {
 			}
 		})
 		.then(response => {
-			var image, index, image_type, product_image;
-
-			if (response?.data?.data?.length === 1) {
-				this.product	= response.data.data[ 0 ];
-				this.images		= new Array();
-
-				if (!this.product?.images?.length) {
-					if (this.getPropValue('fallback-product-image-default')?.length || this.getPropValue('fallback-product-image-mobile')?.length) {
-						product_image			= new Object();
-						product_image.mobile	= this.getPropValue('fallback-product-image-mobile');
-						product_image.default	= this.getPropValue('fallback-product-image-default') || product_image.mobile;
-
-						this.images.push(product_image);
-					}
-				}
-				else {
-					image_type = this.getPropValue('image-type');
-
-					if (!MMX.valueIsEmpty(image_type) && (index = this.product?.images.findIndex(image => image.code === image_type)) !== -1) {
-						this.product.images.splice(0, 0, this.product.images.splice(index, 1)[0]);
-					}
-
-					for (image of this.product.images) {
-						product_image			= new Object();
-						product_image.mobile	= image?.sizes?.[this.getPropValue('mobile-image-size')]?.url || product_image.default;
-						product_image.default	= image?.sizes?.[this.getPropValue('desktop-image-size')]?.url || image?.sizes?.['original']?.url;
-
-						this.images.push(product_image);
-
-						if (!this.getPropValue('multiple-images')) {
-							break;
-						}
-					}
-				}
-			}
-
-			this.forceUpdate();
+			this.productLoaded(response?.data?.data?.at(0));
 		})
 		.catch(response => {});
+	}
+
+	clearProduct() {
+		this.clearProductData();
+		this.removeAttribute('data-product-code');
+	}
+
+	clearProductData() {
+		this.product = null;
+		this.images = null;
+		this.variant_id = null;
+	}
+
+	isProductLoaded() {
+		return MMX.variableType(this.product) === 'object' && Array.isArray(this.images);
+	}
+
+	setProduct(product) {
+		if (MMX.variableType(product) !== 'object') {
+			this.clearProduct();
+			return;
+		}
+
+		this.setProductData(product);
+		this.setAttribute('data-product-code', product.code);
+	}
+
+	setProductData(product) {
+		var image, index, image_type, product_image;
+
+		if (MMX.variableType(product) !== 'object') {
+			this.clearProduct();
+			return;
+		}
+
+		this.product	= product;
+		this.images		= new Array();
+		this.variant_id = null;
+
+		if (!this.product?.images?.length) {
+			if (this.getPropValue('fallback-product-image-default')?.length || this.getPropValue('fallback-product-image-mobile')?.length) {
+				this.images.push(this.fallbackProductImage());
+			}
+		}
+		else {
+			image_type = this.getPropValue('image-type');
+
+			if (!MMX.valueIsEmpty(image_type) && (index = this.product.images.findIndex(image => image.code === image_type)) > 0) {
+				this.product.images.splice(0, 0, this.product.images.splice(index, 1)[0]);
+			}
+
+			for (image of this.product.images) {
+				product_image			= new Object();
+				product_image.mobile	= image?.sizes?.[this.getPropValue('mobile-image-size')]?.url || product_image.default;
+				product_image.default	= image?.sizes?.[this.getPropValue('desktop-image-size')]?.url || image?.sizes?.['original']?.url;
+
+				this.images.push(product_image);
+
+				if (!this.getPropValue('multiple-images')) {
+					break;
+				}
+			}
+		}
+	}
+
+	productLoaded(product) {
+		this.setProductData(product);
+		this.forceUpdate();
+		this.dispatchEvent(new CustomEvent('product:load'));
 	}
 
 	getDefaultFilters() {
@@ -317,7 +372,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'descrip',
 			'attributes',
 			'subscriptionterms',
-			'subscriptionsettings'
+			'subscriptionsettings',
+			'inventory'
 		];
 	}
 
@@ -333,7 +389,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 	//
 
 	render() {
-		if (!this.product)
+		if (!this.isProductLoaded())
 		{
 			return '';
 		}
@@ -347,16 +403,64 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	afterRender() {
-		if (!this.product)
+		if (!this.isProductLoaded())
 		{
 			return;
 		}
 
-		this.initializeAttributeMachine();
+		this.initializeAttributeMachine({
+			success: 1,
+			data: this.product.attributes
+		});
 		this.initializeImageManager();
+		this.bindMivaEvents();
+	}
+
+	bindMivaEvents() {
+		if (typeof window.MivaEvents?.SubscribeToEvent !== 'function') {
+			return;
+		}
+
+		['variant_changed', 'price_changed'].forEach(event => {
+			MivaEvents.SubscribeToEvent(event, (productData) => {
+				this.dispatchEvent(new CustomEvent(event, {
+					detail: {
+						productData
+					}
+				}));
+			});
+		});
 	}
 
 	renderProductImages() {
+		return this.getPropValue('multiple-images') ? this.renderProductImageSlider() : this.renderProductImageStandalone();
+	}
+
+	renderProductImageStandalone() {
+		const dimensions = this.getPropValue('desktop-image-size').split('x');
+		const width = MMX.coerceNumber(dimensions.at(0));
+		const height = MMX.coerceNumber(dimensions.at(1));
+		const image = Array.isArray(this.images) && this.images.length ? this.images.at(0) : this.fallbackProductImage();
+
+		return /*html*/`
+			<style>
+				.mmx-featured-product__image-slider--standalone img {
+					width: 100%;
+					height: auto;
+					aspect-ratio: ${width} / ${height};
+					object-fit: ${this.getPropValue('image-fit')};
+					object-position: top;
+				}
+			</style>
+			<div part="image-slider" class="mmx-featured-product__image-slider mmx-featured-product__image-slider--standalone">
+				<a part="image-slide" href="${MMX.encodeEntities(this.product.url)}">
+					${this.renderProductImagePictureTag(image)}
+				</a>
+			</div>
+		`;
+	}
+
+	renderProductImageSlider() {
 		return /*html*/`
 			<mmx-hero-slider
 				part="image-slider"
@@ -366,7 +470,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 				data-nav-position="under"
 				data-nav-style="minimal"
 			>
-				${this.images?.map(image => this.renderProductImage(image)).join('')}
+				${this.images?.map(image => this.renderProductImage(image)).join('') ?? ''}
 			</mmx-hero-slider>
 		`;
 	}
@@ -375,6 +479,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<mmx-hero
 				slot="hero_slide"
+				part="image-slide"
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(this.product.url)}"
 			>
@@ -384,6 +489,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductImagePictureTag(image) {
+		if (typeof image?.default !== 'string') {
+			return '';
+		}
+
 		return /*html*/`
 			<picture slot="image">
 				${this.renderProductMobileImage(image)}
@@ -410,6 +519,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 					<input name="Product_Code" type="hidden" value="${MMX.encodeEntities(this.getPropValue('product-code'))}" />
 					<input name="Quantity" type="hidden" value="1" />
 					${this.renderProductContentSubheading()}
+					${this.renderProductCode()}
+					${this.renderProductSku()}
 					<mmx-text
 						part="product-name"
 						class="mmx-featured-product__product-name-text"
@@ -419,8 +530,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 					>
 						${this.product.name}
 					</mmx-text>
-					<div class="mmx-featured-product__pricing-discounts">
-						<div class="mmx-featured-product__pricing">
+					<div part="pricing-discounts" class="mmx-featured-product__pricing-discounts">
+						<div part="pricing" class="mmx-featured-product__pricing">
 							<div part="current-price" id="price-value" class="mmx-featured-product__current-price">${this.product.formatted_price}</div>
 							${this.renderProductContentOriginalPricing()}
 						</div>
@@ -454,6 +565,38 @@ class MMX_FeaturedProduct extends MMX_Element {
 		`;
 	}
 
+	renderProductCode() {
+		if (!this.getPropValue('show-product-code')) {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-text
+				part="product-code"
+				class="mmx-featured-product__product-code-text"
+				data-style="${MMX.encodeEntities(this.getPropValue('product-code-style'))}"
+			>
+				Code: ${this.product.code}
+			</mmx-text>
+		`;
+	}
+
+	renderProductSku() {
+		if (!this.getPropValue('show-product-sku') || !this.product.sku.length) {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-text
+				part="product-sku"
+				class="mmx-featured-product__product-sku-text"
+				data-style="${MMX.encodeEntities(this.getPropValue('product-sku-style'))}"
+			>
+				SKU: ${this.product.sku}
+			</mmx-text>
+		`;
+	}
+
 	renderProductContentOriginalPricing() {
 		if (!this.getPropValue('discount') || this.product.base_price <= this.product.price) {
 			return '';
@@ -470,7 +613,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		}
 
 		return /*html*/`
-			<div id="discount" class="mmx-featured-product__discounts">${this.product.discounts?.map(discount => this.renderProductContentDiscount(discount)).join('') || ''}</div>
+			<div id="discount" part="discounts" class="mmx-featured-product__discounts">${this.product.discounts?.map(discount => this.renderProductContentDiscount(discount)).join('') || ''}</div>
 		`;
 	}
 
@@ -482,17 +625,29 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	renderProductContentInventoryMessage() {
 		return /*html*/`
-			<div part="inventory-message" id="inv-message" class="mmx-featured-product__product-inventory_message"></div>
+			<div part="inventory-message" id="inv-message" class="mmx-featured-product__product-inventory_message">${this.product.inv_active ? this.product.inv_short : ''}</div>
 		`;
 	}
 
+	get productHasAttributes() {
+		return this.product?.attributes?.length > 0;
+	}
+
+	get productHasSubscription() {
+		return this.product?.subscriptionsettings?.enabled === true && this.product?.subscriptionterms?.length > 0;
+	}
+
+	get shouldRenderAttributes() {
+		return this.productHasAttributes || this.productHasSubscription;
+	}
+
 	renderProductContentAttributes() {
-		if (!this.product.attributes?.length && (!this.product.subscriptionsettings?.enabled || !this.product.subscriptionterms?.length)) {
+		if (!this.shouldRenderAttributes) {
 			return '';
 		}
 
 		return /*html*/`
-			<div class="mmx-featured-product__product-attributes">
+			<div part="product-attributes" class="mmx-featured-product__product-attributes">
 				${this.product.attributes.map((attribute, index) => this.renderProductContentAttribute(attribute, index + 1, null)).join('')}
 				${this.renderProductContentAttributeSubscription()}
 			</div>
@@ -528,9 +683,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<input id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="text" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="" placeholder="" />
+				<input id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="text" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(attribute.value ?? '')}" placeholder="" ${required} />
 			</div>
 		`;
 	}
@@ -541,9 +696,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${MMX.encodeEntities(required)}></textarea>
+				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${required}>${attribute.value ?? ''}</textarea>
 			</div>
 		`;
 	}
@@ -553,25 +708,34 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<span class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</span>
 				${attribute.options.map(option => this.renderProductContentAttributeRadioOption(attribute, index, option)).join('')}
 			</div>
 		`;
 	}
 
+	shouldSelectAttributeOption(attribute, option) {
+		if (typeof attribute.value === 'undefined' && attribute.default_id === option.id) {
+			return true;
+		} else if (attribute.value === option.code) {
+			return true;
+		}
+		return false;
+	}
+
 	renderProductContentAttributeRadioOption(attribute, index, option) {
 		var encoded_image_template;
 
 		const required	= attribute.required ? 'required' : '';
-		const checked	= attribute.default_id === option.id ? 'checked' : '';
+		const checked	= this.shouldSelectAttributeOption(attribute, option) ? 'checked' : '';
 
 		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
 
 		return /*html*/`
 			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio" title="${MMX.encodeEntities(option.prompt)}">
-				<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" type="radio" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(option.code)}" ${MMX.encodeEntities(checked)} ${MMX.encodeEntities(required)}>
+				<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" type="radio" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(option.code)}" ${checked} ${required}>
 				<span class="mmx-featured-product__product-attribute-checkbox__caption">${encoded_image_template}</span>
 			</label>
 		`;
@@ -583,10 +747,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
 				<div class="mmx-featured-product__product-attribute-select">
-					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${MMX.encodeEntities(required)}>
+					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
 						${attribute.options.map(option => this.renderProductContentAttributeSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
@@ -596,7 +760,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	renderProductContentAttributeSelectOption(attribute, index, option) {
 		var encoded_image_template;
-		const selected = attribute.default_id === option.id ? 'selected' : '';
+		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
 
 		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
@@ -614,10 +778,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}:&nbsp;<span data-hook="attribute-swatch-name"></span></label>
 				<div class="mmx-featured-product__product-attribute-select mmx-featured-product__product-attribute-select__swatch">
-					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${MMX.encodeEntities(required)}>
+					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
 						${attribute.options.map(option => this.renderProductContentAttributeSwatchSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
@@ -628,7 +792,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	renderProductContentAttributeSwatchSelectOption(attribute, index, option) {
 		var encoded_image_template;
-		const selected = attribute.default_id === option.id ? 'selected' : '';
+		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
 
 		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
@@ -643,15 +807,16 @@ class MMX_FeaturedProduct extends MMX_Element {
 	renderProductContentAttributeCheckbox(attribute, index, template) {
 		var encoded_image_template;
 		const required = attribute.required ? 'required' : '';
+		const checked  = MMX.isTruthy(attribute.value) ? 'checked' : '';
 
 		if (attribute.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(attribute.image)}" alt="${MMX.encodeEntities(attribute.prompt)}" loading="lazy" />`;
 		else							encoded_image_template = `${attribute.prompt} ${attribute.price ? attribute.formatted_price : ''}`;
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-checkbox" title="${MMX.encodeEntities(attribute.prompt)}">
-					<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="checkbox" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${MMX.encodeEntities(required)}>
+					<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="checkbox" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required} ${checked}>
 					<span class="mmx-featured-product__product-attribute-checkbox__caption">${encoded_image_template}</span>
 				</label>
 			</div>
@@ -665,7 +830,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContentAttributeSubscription() {
-		if (!this.product.subscriptionsettings?.enabled || !this.product.subscriptionterms?.length) {
+		if (!this.productHasSubscription) {
 			return '';
 		}
 
@@ -675,7 +840,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return /*html*/`
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="l-subscription" title="Subscribe">Select Subscription</label>
 				<div class="mmx-featured-product__product-attribute-select">
-					<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${MMX.encodeEntities(required)}>
+					<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
 						${this.product.subscriptionterms.map(term => this.renderProductContentAttributeSubscriptionOption(term)).join('')}
 					</select>
 				</div>
@@ -685,7 +850,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="l-subscription" title="Subscribe">Select Subscription</label>
 			<div class="mmx-featured-product__product-attribute-select">
-				<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${MMX.encodeEntities(required)}>
+				<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
 					<option value="0">One Time Purchase</option>
 					${this.product.subscriptionterms.map(term => this.renderProductContentAttributeSubscriptionOption(term)).join('')}
 				</select>
@@ -694,8 +859,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContentAttributeSubscriptionOption(term) {
+		const selected = MMX.isTruthy(term.selected) ? 'selected' : '';
 		return /*html*/`
-			<option value="${MMX.encodeEntities(term.id)}">${MMX.encodeEntities(term.descrip)}</option>
+			<option value="${MMX.encodeEntities(term.id)}" ${selected}>${MMX.encodeEntities(term.descrip)}</option>
 		`;
 	}
 
@@ -731,8 +897,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return '';
 		}
 
+		if (this.product.inv_active && this.product.inv_level === 'out') {
+			return '';
+		}
+
 		return /*html*/`
-			<div class="mmx-featured-product__product-add-to-cart">
+			<div part="product-add-to-cart" class="mmx-featured-product__product-add-to-cart">
 				<mmx-button
 					part="button"
 					exportparts="button: button__inner"
@@ -775,12 +945,63 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	//
+	// Form
+	//
+
+	get #form() {
+		return this.shadowRoot.querySelector('.mmx-featured-product__product-content > form');
+	}
+
+	get formValidity() {
+		const hasValidAttributes = this.checkFormValidity();
+
+		return {
+			valid: this.#canPurchase && hasValidAttributes,
+			canPurchase: this.#canPurchase,
+			hasValidAttributes
+		};
+	}
+
+	get #canPurchase() {
+		if (!this.product) {
+			return false;
+		}
+
+		if (this.productHasAttributes) {
+			return this.#buttonEnabled;
+		}
+
+		const outofStock = this.product.inv_active && this.product.inv_level === 'out';
+		return !outofStock;
+	}
+
+	checkFormValidity() {
+		return this?.#form?.checkValidity() ?? false;
+	}
+
+	reportFormValidity() {
+		return this?.#form?.reportValidity() ?? false;
+	}
+
+	get formData () {
+		return new FormData(this.#form || undefined);
+	}
+
+	get inventoryMessage() {
+		return this.shadowRoot.getElementById('inv-message')?.textContent?.trim() ?? '';
+	}
+
+	//
 	// Attribute Machine
 	//
 
-	initializeAttributeMachine() {
+	initializeAttributeMachine(attributes, possible) {
 		const self = this;
 		var discount, product_data, attributemachine;
+
+		if (!this.shouldRenderAttributes) {
+			return;
+		}
 
 		discount = this.getPropValue('discount');
 
@@ -812,7 +1033,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		this.initializeAttributeMachine_OverwriteSwatchClick(attributemachine);
 		this.initializeAttributeMachine_OverwriteEnableDisablePurchaseButtons(attributemachine);
 
-		attributemachine.Initialize(null, null);
+		attributemachine.Initialize(attributes, possible);
 	}
 
 	initializeAttributeMachine_OverwriteGenerateDiscount(attributemachine) {
@@ -823,6 +1044,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 			discount_div			= document.createElement( 'div' );
 			discount_div.innerHTML	= discount.descrip + ': ' + discount.formatted_discount;
+			discount_div.part       = 'discount';
 
 			return discount_div;
 		};
@@ -918,6 +1140,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			this.Attribute_Changed(input);
 
 			input?.machine?.swatches?.childNodes?.[0]?.childNodes?.forEach(function(swatchElement) {
+				var swatch_color, element_swatch_image;
+
 				element_swatch_image	= swatchElement.querySelector('button');
 				swatch_color			= swatchElement.getAttribute('data-code');
 
@@ -933,12 +1157,14 @@ class MMX_FeaturedProduct extends MMX_Element {
 		var button;
 
 		attributemachine.Disable_Purchase_Buttons = function() {
+			self.#buttonEnabled = false;
 			if (button = self.getButton()) {
 				button.disabled = true;
 			}
 		};
 
 		attributemachine.Enable_Purchase_Buttons = function() {
+			self.#buttonEnabled = true;
 			if (button = self.getButton()) {
 				button.disabled = false;
 			}
@@ -979,19 +1205,22 @@ class MMX_FeaturedProduct extends MMX_Element {
 		.catch(response => {});
 	}
 
+	fallbackProductImage() {
+		const image   = new Object();
+		image.mobile  = this.getPropValue('fallback-product-image-mobile');
+		image.default = this.getPropValue('fallback-product-image-default') || image.mobile;
+		return image;
+	}
+
 	onInitializeImageManager(images) {
-		var i, i_len, image, index, template, image_type, picture_dom, product_image, elementlist_hero, element_hero_slider;
+		var i, i_len, image, index, template, image_type, picture_dom, product_image, slides, slider;
 
 		this.images = new Array();
 
 		image_type = this.getPropValue('image-type');
 
 		if (!images?.length) {
-			product_image			= new Object();
-			product_image.mobile	= this.getPropValue('fallback-product-image-mobile');
-			product_image.default	= this.getPropValue('fallback-product-image-default') || product_image.mobile;
-
-			this.images.push(product_image);
+			this.images.push(this.fallbackProductImage());
 		}
 		else {
 			if (!MMX.valueIsEmpty(image_type) && (index = images.findIndex(image => image.type_code === image_type)) !== -1) {
@@ -1014,28 +1243,28 @@ class MMX_FeaturedProduct extends MMX_Element {
 		}
 
 		//
-		// Avoid reflow of the mmx-hero-slider/mmx-hero by replacing just the picture tag when a
+		// Avoid reflow of the slider/slide by replacing just the picture tag when a
 		// slide already exists, inserting a new one if we have more new images, or removing if
 		// we have leftover old images. This ensures the selection state remains consistent.
 		//
 
-		if (element_hero_slider = this.shadowRoot.querySelector('mmx-hero-slider')) {
-			elementlist_hero = element_hero_slider.querySelectorAll('mmx-hero');
+		if (slider = this.shadowRoot.querySelector('[part="image-slider"]')) {
+			slides = slider.querySelectorAll('[part="image-slide"]');
 
 			for ([index, image] of this.images.entries()) {
-				if (elementlist_hero[index]) {
-					elementlist_hero[index].innerHTML = this.renderProductImagePictureTag(image);
+				if (slides[index]) {
+					slides[index].innerHTML = this.renderProductImagePictureTag(image);
 				}
 				else {
 					template			= document.createElement('template');
 					template.innerHTML	= this.renderProductImage(image);
 
-					element_hero_slider.appendChild(template.content.cloneNode(true));
+					slider.appendChild(template.content.cloneNode(true));
 				}
 			}
 
-			for (i = index + 1, i_len = elementlist_hero.length; i < i_len; i++) {
-				elementlist_hero[ i ].remove();
+			for (i = index + 1, i_len = slides.length; i < i_len; i++) {
+				slides[ i ].remove();
 			}
 
 			return;
@@ -1045,9 +1274,6 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	onDataChange() {
-		this.product	= null;
-		this.images		= null;
-
 		this.setSpacing(this.data?.advanced?.spacing);
 
 		MMX.setElementAttributes(this, {
@@ -1056,6 +1282,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-image-fit': this.data?.advanced?.product?.image_fit?.value,
 			'data-multiple-images': this.data?.advanced?.product?.multiple_images?.value,
 			'data-discount': this.data?.advanced?.product?.discount?.value,
+			'data-show-product-sku': this.data?.advanced?.product?.sku?.value,
+			'data-show-product-code': this.data?.advanced?.product?.code?.value,
 			'data-product-code': this.data?.product?.product?.product_code,
 			'data-product-name-style': this.data?.text?.product_name?.product_name_style?.value,
 			'data-product-name-tag': this.data?.advanced?.product?.product_name_tag?.value,

@@ -12,7 +12,6 @@ class MMX_TextEditor extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-text-editor'];
 
 	constructor() {

@@ -264,15 +264,18 @@
 /* Form Elements State Modifiers
    =========================================== */
 .mmx-featured-product__product-attribute-input:disabled,
+.mmx-featured-product__product-attribute-textarea:disabled,
 .mmx-featured-product__product-attribute-select__dropdown:disabled,
 .mmx-featured-product__product-attribute-checkbox__input:disabled,
 .mmx-featured-product__product-attribute-input[aria-disabled="true"],
+.mmx-featured-product__product-attribute-textarea[aria-disabled="true"],
 .mmx-featured-product__product-attribute-select__dropdown[aria-disabled="true"],
 .mmx-featured-product__product-attribute-checkbox__input[aria-disabled="true"] {
 	background-color: var(--mmx-color-grey-01);
 }
 
 .mmx-featured-product__product-attribute-input:focus:not(:focus-visible),
+.mmx-featured-product__product-attribute-textarea:focus:not(:focus-visible),
 .mmx-featured-product__product-attribute-select__dropdown:focus:not(:focus-visible),
 .mmx-featured-product__product-attribute-checkbox:focus:not(:focus-visible),
 .mmx-featured-product__product-attribute-checkbox__input:focus:not(:focus-visible) {
@@ -280,9 +283,10 @@
 }
 
 .mmx-featured-product__product-attribute-input:focus-visible,
+.mmx-featured-product__product-attribute-textarea:focus-visible,
 .mmx-featured-product__product-attribute-select__dropdown:focus-visible,
 .mmx-featured-product__product-attribute-checkbox:focus-within {
-	outline: calc(1px * 2) solid var(--mmx-color-blue-01);
+	outline: 2px solid var(--mmx-color-focus);
 	outline-offset: 1px;
 	transition: none;
 }
@@ -322,6 +326,12 @@
 .mmx-featured-product__product-attribute-swatch__swatches--active {
 	border-radius: 50%;
 	outline: 1px solid var(--mmx-color-black);
+	outline-offset: 0.25rem;
+}
+
+.mmx-featured-product__product-attribute-swatch__swatches button:focus-visible {
+	border-radius: 50%;
+	outline: 2px solid var(--mmx-color-focus);
 	outline-offset: 0.25rem;
 }
 

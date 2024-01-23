@@ -44,7 +44,6 @@ class MMX_ProductCarousel extends MMX_Element {
 		}
 	};
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-text', 'mmx-button', 'mmx-hero', 'mmx-hero-slider'];
 
 	products = [];

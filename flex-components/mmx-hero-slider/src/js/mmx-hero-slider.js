@@ -91,7 +91,6 @@ class MMX_HeroSlider extends MMX_Element {
 		};
 	}
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-hero-slider'];
 
 	constructor() {
@@ -477,6 +476,11 @@ class MMX_HeroSlider extends MMX_Element {
 
 		// Don't move if we don't have slides
 		if (state.slideCount === 0) {
+			return;
+		}
+
+		// No need to move if we can't see the slider or we will not see the slide (mainly for onload of uncached CSS)
+		if (this.clientWidth === 0 || state.slideWidth === '0px')  {
 			return;
 		}
 

@@ -31,7 +31,6 @@ class MMX_CategoryCarousel extends MMX_Element {
 		}
 	};
 
-	themeResourcePattern = /family=Inter/i;
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-hero-slider'];
 	loadedCategories = {};
 
