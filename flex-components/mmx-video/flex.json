@@ -2,7 +2,7 @@
 	"code": "mmx-video",
 	"name": "Video",
 	"type": "component",
-	"version": "10.08.02",
+	"version": "10.08.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-video",
 	"category": "video",
@@ -1191,9 +1191,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.02",
-		"mmx-button": "\u003D10.08.02",
-		"mmx-hero": "\u003D10.08.02",
-		"mmx-text": "\u003D10.08.02"
+		"mmx-base": "\u003D10.08.03",
+		"mmx-button": "\u003D10.08.03",
+		"mmx-hero": "\u003D10.08.03",
+		"mmx-text": "\u003D10.08.03"
 	}
 }
