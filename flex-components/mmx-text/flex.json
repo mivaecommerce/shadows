@@ -2,7 +2,7 @@
 	"code": "mmx-text",
 	"name": "MMX Text",
 	"type": "library",
-	"version": "10.08.02",
+	"version": "10.08.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-text",
 	"scripts": [
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.02"
+		"mmx-base": "\u003D10.08.03"
 	}
 }

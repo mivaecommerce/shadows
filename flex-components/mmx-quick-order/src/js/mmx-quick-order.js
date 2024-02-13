@@ -144,6 +144,7 @@ class MMX_QuickOrder extends MMX_Element {
 	loadedProducts = new Map();
 	maxCountForLoadQuery = 30;
 	maxAdpmCount = 100;
+	#selectingSearchResult = false;
 
 	constructor() {
 		super();
@@ -1067,10 +1068,10 @@ class MMX_QuickOrder extends MMX_Element {
 			return;
 		}
 
-		setTimeout(() => {
+		if (!this.#selectingSearchResult) {
 			this.hideRowSearchResultsContainer(row);
 			this.updateRowStatusMessage(row);
-		}, 100);
+		}
 	}
 
 	onRowKeydown(row, e) {
@@ -1364,8 +1365,19 @@ class MMX_QuickOrder extends MMX_Element {
 
 	bindRowSearchResultsEvents(row) {
 		this.searchResults(row).forEach(searchResult => {
-			searchResult.addEventListener('click', () => {
+			searchResult.addEventListener('mousedown', () => {
+				this.#selectingSearchResult = true;
+			});
+
+			searchResult.addEventListener('mouseup', () => {
 				this.onSearchResultSelected(searchResult);
+				this.#selectingSearchResult = false;
+			});
+
+			searchResult.addEventListener('keyup', (e) => {
+				if (['Enter', ' '].includes(e.key)){
+					this.onSearchResultSelected(searchResult);
+				}
 			});
 		});
 	}

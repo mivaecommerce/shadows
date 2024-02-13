@@ -2,7 +2,7 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "10.08.02",
+	"version": "10.08.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
@@ -54,18 +54,18 @@
 		}
 	],
 	"conflicts": {
-		"mmx-category-carousel": "\u003C10.08.02",
-		"mmx-featured-product": "\u003C10.08.02",
-		"mmx-hero": "\u003C10.08.02",
-		"mmx-hero-slider": "\u003C10.08.02",
-		"mmx-icons": "\u003C10.08.02",
-		"mmx-image-across": "\u003C10.08.02",
-		"mmx-image-and-text": "\u003C10.08.02",
-		"mmx-product-carousel": "\u003C10.08.02",
-		"mmx-quick-order": "\u003C10.08.02",
-		"mmx-text-area": "\u003C10.08.02",
-		"mmx-text-banner": "\u003C10.08.02",
-		"mmx-text-editor": "\u003C10.08.02",
-		"mmx-video": "\u003C10.08.02"
+		"mmx-category-carousel": "\u003C10.08.03",
+		"mmx-featured-product": "\u003C10.08.03",
+		"mmx-hero": "\u003C10.08.03",
+		"mmx-hero-slider": "\u003C10.08.03",
+		"mmx-icons": "\u003C10.08.03",
+		"mmx-image-across": "\u003C10.08.03",
+		"mmx-image-and-text": "\u003C10.08.03",
+		"mmx-product-carousel": "\u003C10.08.03",
+		"mmx-quick-order": "\u003C10.08.03",
+		"mmx-text-area": "\u003C10.08.03",
+		"mmx-text-banner": "\u003C10.08.03",
+		"mmx-text-editor": "\u003C10.08.03",
+		"mmx-video": "\u003C10.08.03"
 	}
 }

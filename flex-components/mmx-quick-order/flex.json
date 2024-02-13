@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.08.02",
+	"version": "10.08.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -2375,7 +2375,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-AE5F84ZznLraC6J8m+u46nqFPJauYp321sD9Zayr5+E\u003D sha384-ni1lyUZpd42WOUrGYaAGSLWTHRF1ZbHM3PtE9BoyUaIIGR9D7vPwDxNCKv2yExq0 sha512-OxSXUaLqyxfmVbvB0ZcJc5zhtmqrh7Y\/EjI96bSkwFyCRz8skFcu7xZS7Ik8OvvP6Sf+doaPP2pTOSbHiXq2gg\u003D\u003D"
+					"value": "sha256-HL2X0I5xWSfr6AMd6J8Vtvd0ywz852g9ww7OcqC\/lxg\u003D sha384-IaXn5o7WTc2rInMazkVKHY41vVdf\/Wuu231B2B1pLSIOWL99TONbuusQTEXSGquc sha512-V63M9GtQgmTFX3W+hT7AQLpxEKK4vjsjAuvkLuaati+YPnXrDIWK0\/hFQdBUqxsr9Ku\/2+5b2QGdP6tL4eaP5w\u003D\u003D"
 				},
 				{
 					"name": "crossorigin",
@@ -2413,10 +2413,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.02",
-		"mmx-button": "\u003D10.08.02",
-		"mmx-csv": "\u003D10.08.02",
-		"mmx-icons": "\u003D10.08.02",
-		"mmx-text": "\u003D10.08.02"
+		"mmx-base": "\u003D10.08.03",
+		"mmx-button": "\u003D10.08.03",
+		"mmx-csv": "\u003D10.08.03",
+		"mmx-icons": "\u003D10.08.03",
+		"mmx-text": "\u003D10.08.03"
 	}
 }
