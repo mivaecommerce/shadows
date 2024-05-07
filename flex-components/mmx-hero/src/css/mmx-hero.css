@@ -487,6 +487,11 @@ slot + slot[name="button"],
 }
 
 /* Specific Padding */
+.mmx-hero--padding-none {
+	--mmx-hero__content-margin: 0;
+	--mmx-hero__content-padding: 0;
+}
+
 .mmx-hero--padding-s {
 	--mmx-hero__content-margin: 0;
 	--mmx-hero__content-padding: 1% 4%;

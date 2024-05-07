@@ -2,7 +2,7 @@
 	"code": "mmx-image-and-text",
 	"name": "Image and Text",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-and-text",
 	"category": "image-text",
@@ -315,7 +315,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -571,7 +571,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -786,7 +786,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -918,7 +918,7 @@
 			"properties": [
 				{
 					"code": "color",
-					"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+					"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 					"prompt": "Color",
 					"style": "color",
 					"type": "color"
@@ -1023,7 +1023,7 @@
 		},
 		"image": {
 			"img": {
-				"image": "graphics\/00000001\/placeholder__880x480.jpg"
+				"image": "graphics/00000001/placeholder__880x480.jpg"
 			},
 			"size": {
 				"value": "auto"
@@ -1047,16 +1047,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-image-and-text.js",
+			"filepath": "src/js/mmx-image-and-text.js",
 			"resource_code": "mmx-image-and-text",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-d2oUq9XFBucy5Cz0u0hncFOx7exoIde\/RrpV0pisNLM\u003D sha384-P9EdMtqdaw7TlQLNfRPEX0Vr4679GCkwEwngGrfZYXihL0hvABq+b12IAH9AxzwR sha512-1gEK8AL7C3dzifXx+1aErlRhHBBc5Hj3\/Qb2D6OewG+Xlo5dC3syLjtfACLqsW1C3eKHaYxJ91GW9CM9JGyGew\u003D\u003D"
+					"value": "sha256-d2oUq9XFBucy5Cz0u0hncFOx7exoIde/RrpV0pisNLM= sha384-P9EdMtqdaw7TlQLNfRPEX0Vr4679GCkwEwngGrfZYXihL0hvABq+b12IAH9AxzwR sha512-1gEK8AL7C3dzifXx+1aErlRhHBBc5Hj3/Qb2D6OewG+Xlo5dC3syLjtfACLqsW1C3eKHaYxJ91GW9CM9JGyGew=="
 				},
 				{
 					"name": "crossorigin",
@@ -1066,9 +1066,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -331,7 +331,7 @@
 											},
 											{
 												"code": "font_color",
-												"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+												"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 												"prompt": "Font Color",
 												"pseudoclasses": [
 													"normal"
@@ -587,7 +587,7 @@
 											},
 											{
 												"code": "font_color",
-												"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+												"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 												"prompt": "Font Color",
 												"pseudoclasses": [
 													"normal"
@@ -802,7 +802,7 @@
 											},
 											{
 												"code": "font_color",
-												"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+												"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 												"prompt": "Font Color",
 												"pseudoclasses": [
 													"normal"
@@ -954,7 +954,7 @@
 						},
 						"image": {
 							"img": {
-								"image": "graphics\/00000001\/placeholder__1440x580.jpg"
+								"image": "graphics/00000001/placeholder__1440x580.jpg"
 							},
 							"size": {
 								"value": "auto"
@@ -1016,7 +1016,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1032,32 +1032,32 @@
 							"value": "auto"
 						},
 						{
-							"text": "20\u0025",
-							"value": "20\u0025"
+							"text": "20%",
+							"value": "20%"
 						},
 						{
-							"text": "30\u0025",
-							"value": "30\u0025"
+							"text": "30%",
+							"value": "30%"
 						},
 						{
-							"text": "40\u0025",
-							"value": "40\u0025"
+							"text": "40%",
+							"value": "40%"
 						},
 						{
-							"text": "50\u0025",
-							"value": "50\u0025"
+							"text": "50%",
+							"value": "50%"
 						},
 						{
-							"text": "60\u0025",
-							"value": "60\u0025"
+							"text": "60%",
+							"value": "60%"
 						},
 						{
-							"text": "70\u0025",
-							"value": "70\u0025"
+							"text": "70%",
+							"value": "70%"
 						},
 						{
-							"text": "80\u0025",
-							"value": "80\u0025"
+							"text": "80%",
+							"value": "80%"
 						}
 					],
 					"prompt": "Text Container Width",
@@ -1065,7 +1065,7 @@
 				},
 				{
 					"code": "overlay_opacity",
-					"label": "\u0025",
+					"label": "%",
 					"precision": -1,
 					"prompt": "Image Shader Overlay",
 					"range_high": 100,
@@ -1087,7 +1087,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1141,14 +1141,14 @@
 			"desktop": {
 				"background_color": {
 					"color": {
-						"value": "\u0023FFFFFF"
+						"value": "#FFFFFF"
 					},
 					"settings": {
 						"enabled": 1
 					}
 				},
 				"container_width": {
-					"value": "40\u0025"
+					"value": "40%"
 				},
 				"overlay_opacity": {
 					"value": 0
@@ -1233,7 +1233,7 @@
 						},
 						"image": {
 							"img": {
-								"image": "graphics\/00000001\/placeholder__1440x580.jpg"
+								"image": "graphics/00000001/placeholder__1440x580.jpg"
 							},
 							"size": {
 								"value": "auto"
@@ -1312,7 +1312,7 @@
 						},
 						"image": {
 							"img": {
-								"image": "graphics\/00000001\/placeholder__1440x580.jpg"
+								"image": "graphics/00000001/placeholder__1440x580.jpg"
 							},
 							"size": {
 								"value": "auto"
@@ -1391,7 +1391,7 @@
 						},
 						"image": {
 							"img": {
-								"image": "graphics\/00000001\/placeholder__1440x580.jpg"
+								"image": "graphics/00000001/placeholder__1440x580.jpg"
 							},
 							"size": {
 								"value": "auto"
@@ -1414,16 +1414,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-hero-slider.js",
+			"filepath": "src/js/mmx-hero-slider.js",
 			"resource_code": "mmx-hero-slider",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-cV4vTrbWpzHa2h4cB3Xu5\/wjRGKcVD+zjTW4GfCWz7Y\u003D sha384-RqkgzwJOlyl4UyuB\/tKcmBGsixk3gqnd4IHoTeerjMpVACpkoa5K2H+6BwAxxQzE sha512-ieS53r6NBGBaS9Ro\/PbhtdTrkVDEww9zno41O8fDOrvCrijwqUHoVIHbBCZJY9AgVLtEGrCRS9943TM2DQ3+ag\u003D\u003D"
+					"value": "sha256-cV4vTrbWpzHa2h4cB3Xu5/wjRGKcVD+zjTW4GfCWz7Y= sha384-RqkgzwJOlyl4UyuB/tKcmBGsixk3gqnd4IHoTeerjMpVACpkoa5K2H+6BwAxxQzE sha512-ieS53r6NBGBaS9Ro/PbhtdTrkVDEww9zno41O8fDOrvCrijwqUHoVIHbBCZJY9AgVLtEGrCRS9943TM2DQ3+ag=="
 				},
 				{
 					"name": "crossorigin",
@@ -1434,12 +1434,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-hero-slider.css",
+			"filepath": "src/css/mmx-hero-slider.css",
 			"resource_code": "mmx-hero-slider",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -1451,7 +1451,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-jT3Z7BdshDmH\/MOzzYIEZBKzFMW3IfHM\/PUdQbJzVas\u003D sha384-1daHizkz4H1XbT4qHCky+Kt9P311MsEzd9blUT5LlsFVILY1vMLJKNGaDxwOKwIK sha512-GXy8r9kCVO7Alch7IyEf67VzWLxYSxxQRHSdqas48ejb6KrYj8u5ssqo1b+v\/b3cZzZ+eLhkpodA4Lg4tClCdg\u003D\u003D"
+					"value": "sha256-jT3Z7BdshDmH/MOzzYIEZBKzFMW3IfHM/PUdQbJzVas= sha384-1daHizkz4H1XbT4qHCky+Kt9P311MsEzd9blUT5LlsFVILY1vMLJKNGaDxwOKwIK sha512-GXy8r9kCVO7Alch7IyEf67VzWLxYSxxQRHSdqas48ejb6KrYj8u5ssqo1b+v/b3cZzZ+eLhkpodA4Lg4tClCdg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1461,9 +1461,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

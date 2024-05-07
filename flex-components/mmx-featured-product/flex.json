@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -245,7 +245,7 @@
 						},
 						{
 							"code": "font_color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -263,7 +263,7 @@
 					"properties": [
 						{
 							"code": "text",
-							"prompt": "Subheading \u0028Ex. SKU or Brand\u0029",
+							"prompt": "Subheading (Ex. SKU or Brand)",
 							"textsettings": {
 								"fields": [
 									{
@@ -461,7 +461,7 @@
 									},
 									{
 										"code": "font_color",
-										"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+										"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 										"prompt": "Font Color",
 										"pseudoclasses": [
 											"normal"
@@ -676,7 +676,7 @@
 						},
 						{
 							"code": "font_color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -973,7 +973,7 @@
 						"fields": {
 							"normal": {
 								"font_color": {
-									"value": "\u0023575A5D"
+									"value": "#575A5D"
 								},
 								"font_size": {
 									"value": 12
@@ -993,16 +993,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-featured-product.js",
+			"filepath": "src/js/mmx-featured-product.js",
 			"resource_code": "mmx-featured-product",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-frK40ljsVg2kL19lqXMZKF0etA2ZA02G2lf+NV2eqx8\u003D sha384-PkAokLKw9HQpOtZ97El6J9+CTSiF6fmxZYpvyjHAoXAzgJNT4p6Gyzy64mOvdc9D sha512-\/vM2BriGhO0WMkXPaIuMvZyER8oTUC8nnv\/3QW+a+NrML6x4jSMf7WW3YwV8ZAgK89uHyX3vp19hxv0m9AR\/YQ\u003D\u003D"
+					"value": "sha256-iKnQo44iEJGGB9QKqYlY+/cxUWDl3bxL6zG8e0Ff8FE= sha384-OSIMRCafwAXx/Zd9B6VjxzQeiX/boJndkydWv64eSvkHz3JTGH/6rpVuh7OmXl+G sha512-7Pi7ETT2yFNeXWDIu9tUUikopav7Rlp3Uik3uf6L35zRybLihblFhFp6Y7rUClwZeVbCwlzFJ22mNlBZblZ5tA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1013,12 +1013,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-featured-product.css",
+			"filepath": "src/css/mmx-featured-product.css",
 			"resource_code": "mmx-featured-product",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -1030,7 +1030,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-kRKMKUU4G8J0DcRG\/TscQNv48Jx11CG+Cnd2WiSj0Go\u003D sha384-VuthJQMmHnDSpN1cx2Hm+OxoKbPIZXC2X7ipY+YfVGx5L10AxjadLAo+Xf0bSJf2 sha512-Fz+RAx2WObXbFtzts3H8W5Sux4yKr2gqA1tMkY8tRBbvB+Flh418jUgqbARJkdNH0eKi\/EzWfJzW\/7hrHHUncQ\u003D\u003D"
+					"value": "sha256-kRKMKUU4G8J0DcRG/TscQNv48Jx11CG+Cnd2WiSj0Go= sha384-VuthJQMmHnDSpN1cx2Hm+OxoKbPIZXC2X7ipY+YfVGx5L10AxjadLAo+Xf0bSJf2 sha512-Fz+RAx2WObXbFtzts3H8W5Sux4yKr2gqA1tMkY8tRBbvB+Flh418jUgqbARJkdNH0eKi/EzWfJzW/7hrHHUncQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1040,10 +1040,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-hero-slider": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-hero-slider": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

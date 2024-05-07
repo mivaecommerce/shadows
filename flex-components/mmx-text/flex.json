@@ -2,21 +2,21 @@
 	"code": "mmx-text",
 	"name": "MMX Text",
 	"type": "library",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-text.js",
+			"filepath": "src/js/mmx-text.js",
 			"resource_code": "mmx-text",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-w7kiXfBLFpPqfBmB1BC\/zFbFSk\/Xant4HeFpuM1Slzs\u003D sha384-JOaT5iqsO9JyA7xUxbYeHp6BjYGjVG6HPmDwoU+08BTfarbO2L+pzNTOgUI4\/ltk sha512-CZHYTJR7oy3tTub54qxyCKpf9diiTZwuP8IfojHwPQ31XD3F9pH8o+7x2JKUmwklws7y4HNOSO2PgJf7LRX3yw\u003D\u003D"
+					"value": "sha256-w7kiXfBLFpPqfBmB1BC/zFbFSk/Xant4HeFpuM1Slzs= sha384-JOaT5iqsO9JyA7xUxbYeHp6BjYGjVG6HPmDwoU+08BTfarbO2L+pzNTOgUI4/ltk sha512-CZHYTJR7oy3tTub54qxyCKpf9diiTZwuP8IfojHwPQ31XD3F9pH8o+7x2JKUmwklws7y4HNOSO2PgJf7LRX3yw=="
 				},
 				{
 					"name": "crossorigin",
@@ -27,12 +27,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-text.css",
+			"filepath": "src/css/mmx-text.css",
 			"resource_code": "mmx-text",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-vNHpWOGTPqTd4TXu\/oDn\/ZKRm7gf0RGU4J5qbVioz1E\u003D sha384-ZlfWt8Mfu+vN20PDEIFCwPBbmT6OI7CMXFQ0dJhFm7Dftxf0YIxsHPyqC3iBzH8Y sha512-OurVUTqczEOeoybQPSn5YEGbrIToyPuZi1BuwflAi1H4HnoGoO+jnHZB\/WDHfiGCd1Hn7RjSLVayz2WxGRQCQw\u003D\u003D"
+					"value": "sha256-vNHpWOGTPqTd4TXu/oDn/ZKRm7gf0RGU4J5qbVioz1E= sha384-ZlfWt8Mfu+vN20PDEIFCwPBbmT6OI7CMXFQ0dJhFm7Dftxf0YIxsHPyqC3iBzH8Y sha512-OurVUTqczEOeoybQPSn5YEGbrIToyPuZi1BuwflAi1H4HnoGoO+jnHZB/WDHfiGCd1Hn7RjSLVayz2WxGRQCQw=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03"
+		"mmx-base": "=10.09.00"
 	}
 }

@@ -222,7 +222,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			},
 			'bask-url': {
 				allowAny: true,
-				default: `/mm5/merchant.mvc?${!MMX.valueIsEmpty(window?.Store_Code) ? 'Store_Code=' + encodeURIComponent(Store_Code) + '&' : ''}Screen=BASK`
+				default: MMX.longMerchantUrl({Screen: 'BASK'})
 			}
 		};
 	}

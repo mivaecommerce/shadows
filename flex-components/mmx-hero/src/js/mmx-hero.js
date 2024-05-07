@@ -76,6 +76,7 @@ class MMX_Hero extends MMX_Element {
 			padding: {
 				options: [
 					'auto',
+					'none',
 					's',
 					'm',
 					'l'

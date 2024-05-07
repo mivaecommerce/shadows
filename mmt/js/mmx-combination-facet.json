@@ -1,0 +1,21 @@
+{
+    "code": "mmx-combination-facet",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-IOyKMUhHDPhXHh3DQn09V6cfKXYxPeH4yiu6BG/HoVM= sha384-6r/QnjGtpJMT4LY0j7x4XVRAKmEQh6De+SmLgQ0G+RN2h+0BtA68eiWs5bSYE2aY sha512-+k3ElkVgjAMxgpIfs1xZ+4D2sdwkSydn06kDdNmQLKocq21PM8ADNxXoFKloq9K/G42VOAHDKo+ziCF6WUVGMg=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}
