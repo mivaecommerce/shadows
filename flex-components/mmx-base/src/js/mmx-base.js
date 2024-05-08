@@ -333,6 +333,42 @@ MMX.fetchForm = (form, fetchOptions = {}) => {
 	});
 };
 
+MMX.longMerchantUrl = (searchParams = {}, {merchantUrl, storeCode = window.Store_Code} = {}) => {
+	let url;
+
+	if (typeof merchantUrl !== 'string') {
+		if (typeof window.json_url === 'string') {
+			merchantUrl = window.json_url.replace('json.mvc', 'merchant.mvc');
+		} else {
+			return;
+		}
+	}
+
+	try {
+		url = new URL(merchantUrl);
+	}
+	catch (error) {
+		throw new TypeError(`${error.message} when parsing 'merchantUrl'`);
+	}
+
+	if (MMX.variableType(searchParams) !== 'object') {
+		throw new TypeError("'searchParams' must be an 'Object'");
+	}
+
+	if (['string', 'number'].includes(typeof storeCode) && !('Store_Code' in searchParams)) {
+		searchParams = {
+			Store_Code: storeCode,
+			...searchParams
+		};
+	}
+
+	Object.entries(searchParams).forEach(([key, value]) => {
+		url.searchParams.append(key, value);
+	});
+
+	return url.toString();
+};
+
 class MMX_Element extends HTMLElement {
 
 	themeResourcePattern;

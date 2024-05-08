@@ -4,7 +4,7 @@ class MMX_QuickOrder extends MMX_Element {
 		return {
 			'bask-url': {
 				allowAny: true,
-				default: `/mm5/merchant.mvc?${!MMX.valueIsEmpty(window?.Store_Code) ? 'Store_Code=' + encodeURIComponent(Store_Code) + '&' : ''}Screen=BASK`
+				default: MMX.longMerchantUrl({Screen: 'BASK'})
 			},
 			'add-row-style': {
 				allowAny: true,
@@ -152,18 +152,16 @@ class MMX_QuickOrder extends MMX_Element {
 	}
 
 	styles() {
-		const imageWidth = MMX.coerceNumber(this.getPropValue('image-dimensions').split?.('x').at(0));
+		const dimensions = this.getPropValue('image-dimensions');
+		const imageWidth = MMX.coerceNumber(dimensions?.split?.('x').at(0));
+		const imageHeight = MMX.coerceNumber(dimensions?.split?.('x').at(1));
+
 		return /*css*/`
-			slot[name="title"]::slotted(*) {
-				margin: 0 auto 3%;
-			}
-
-			.mmx-quick-order__search-result-image {
-				max-width: ${imageWidth}px;
-			}
-
-			mmx-featured-product::part(image-slider) {
-				flex-basis: calc(var(--mmx-spacing-s) + ${imageWidth}px);
+			:host {
+				--mmx-quick-order__image-width: ${imageWidth}px;
+				--mmx-quick-order__image-height: ${imageHeight}px;
+				--mmx-quick-order__image-fit: ${this.getPropValue('image-fit')};
+				--mmx-quick-order__image-aspect-ratio: ${imageWidth} / ${imageHeight};
 			}
 
 			${this.stylesForShowImage()}
@@ -1068,7 +1066,7 @@ class MMX_QuickOrder extends MMX_Element {
 			return;
 		}
 
-		if (!this.#selectingSearchResult) {
+		if(!this.#selectingSearchResult) {
 			this.hideRowSearchResultsContainer(row);
 			this.updateRowStatusMessage(row);
 		}

@@ -3167,7 +3167,7 @@ small {
    UTILITIES / ICONS
    ========================================================================== */
 /**
- * This contains the "@font-face" call needed to add the ReadyTheme Icons Font 
+ * This contains the "@font-face" call needed to add the ReadyTheme Icons Font
  * package to your site.
  */
 @font-face {
@@ -3498,6 +3498,10 @@ small {
 
 .u-icon-twitter:before {
 	content: "L";
+}
+
+.u-icon-twitter-x:before {
+	content: "\e904";
 }
 
 .u-icon-youtube:before {

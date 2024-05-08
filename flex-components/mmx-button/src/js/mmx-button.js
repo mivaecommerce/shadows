@@ -71,7 +71,9 @@ class MMX_Button extends MMX_Element {
 
 		if (form) {
 			form.addEventListener('submit', MMX_Button.eventSubmitClickForm, false);
-			form.dispatchEvent(new Event('submit', { cancelable: true }));
+			if (form.reportValidity()) {
+				form.dispatchEvent(new Event('submit', { cancelable: true }));
+			}
 		}
 	}
 

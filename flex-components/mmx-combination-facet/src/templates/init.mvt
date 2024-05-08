@@ -1,0 +1,29 @@
+<mvt:comment>mmx-base</mvt:comment>
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="js:mmx-base" />
+
+<mvt:comment>mmx-customizations</mvt:comment>
+<mvt:item name="head" param="css:mmx-customizations" />
+
+<template class="mmx-resources">
+	<mvt:comment>mmx libraries</mvt:comment>
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+
+	<mvt:comment>mmx-hero</mvt:comment>
+	<mvt:item name="head" param="css:mmx-hero" />
+
+	<mvt:comment>mmx-combination-facet</mvt:comment>
+	<mvt:item name="head" param="css:mmx-combination-facet" />
+</template>
+
+<mvt:comment>mmx libraries</mvt:comment>
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+
+<mvt:comment>mmx-hero</mvt:comment>
+<mvt:item name="head" param="js:mmx-hero" />
+
+<mvt:comment>mmx-combination-facet</mvt:comment>
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
+<mvt:item name="head" param="js:mmx-combination-facet" />

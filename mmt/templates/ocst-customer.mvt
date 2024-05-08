@@ -8,6 +8,7 @@
 </mvt:if>
 
 <mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 
 <mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
 	<mvt:assign name="l.settings:shipping_required" value="'required aria-required=' $ asciichar(34) $ 'true' $ asciichar(34)"/>
@@ -87,7 +88,7 @@
 				<p><span class="u-text-bold">Welcome back &mvte:global:customer:ship_fname;!</span> Not you? <a href="&mvte:urls:OCST:secure_sep;Action=LOGO">Log Out</a>.</p>
 			</mvt:if>
 		</div>
-		
+
 		<section id="shipping_fields">
 			<mvt:if expr="NOT ISNULL l.settings:customer:validated_ship_addresses">
 				<input type="hidden" name="ShipValidated" value="1" />
@@ -197,7 +198,7 @@
 			</div>
 			<br>
 		</section>
-		
+
 		<div class="c-form-list">
 			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Billing Information</p>
 			<p class="c-form-list__item" id="billing_controls">
@@ -207,7 +208,7 @@
 				</label>
 			</p>
 		</div>
-		
+
 		<br>
 		<section id="billing_fields">
 			<mvt:if expr="NOT ISNULL l.settings:customer:validated_bill_addresses">
@@ -266,12 +267,12 @@
 					<input id="BillFax" class="c-form-input" type="tel" name="BillFax" value="&mvte:global:BillFax;" aria-describedby="BillingInformation BillFax_label">
 				</div>
 				-->
-				<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:BillAddress1_Row;">
+				<div class="c-form-list__item o-layout__item u-width-12--m &mvte:global:BillAddress1_Row;">
 					<label id="BillAddress1_label" class="c-form-label u-text-medium is-required" for="BillAddress1">Address</label>
 					<input id="BillAddress1" class="c-form-input" type="text" name="BillAddress1" value="&mvte:global:BillAddress1;" &mvte:billing_required; aria-describedby="BillingInformation BillAddress1_label" autocomplete="address-line1">
 				</div>
-				<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:BillAddress2_Row;">
-					<mvt:if expr="NOT ISNULL g.ShipAddress2">
+				<div class="c-form-list__item o-layout__item u-width-12--m &mvte:global:BillAddress2_Row;">
+					<mvt:if expr="NOT ISNULL g.BillAddress2">
 						<label id="BillAddress2_label" class="c-form-label u-font-small u-text-italic" for="BillAddress2">Address 2</label>
 						<input id="BillAddress2" class="c-form-input" type="text" name="BillAddress2" value="&mvte:global:BillAddress2;" aria-describedby="BillingInformation BillAddress2_label" autocomplete="address-line2">
 					<mvt:else>
@@ -286,7 +287,7 @@
 					<label id="BillCity_label" class="c-form-label u-text-medium is-required" for="BillCity">City</label>
 					<input id="BillCity" class="c-form-input" type="text" name="BillCity" value="&mvte:global:BillCity;" &mvte:billing_required; aria-describedby="BillingInformation BillCity_label" autocomplete="address-level2">
 				</div>
-				
+
 				<mvt:if expr="g.States_Empty">
 					<div class="c-form-list__item o-layout__item u-width-3--m &mvte:global:BillState_Row;">
 						<label id="BillState_label" class="c-form-label u-text-medium is-required" for="BillState">State/Province</label>
@@ -304,7 +305,7 @@
 						</datalist>
 					</div>
 				</mvt:if>
-				
+
 				<div class="c-form-list__item o-layout__item u-width-3--m &mvte:global:BillCountry_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="BillCountry" data-mvt-describedby="BillingInformation BillCountry_label" data-mvt-autocomplete="country">
 					<label id="BillCountry_label" class="c-form-label u-text-medium is-required" for="BillCountry">Country</label>
 					<div class="c-form-select">
@@ -354,7 +355,7 @@
 				</p>
 			</mvt:if>
 		</div>
-		
+
 		<mvt:if expr="l.settings:customer:match">
 			<mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
 				<script>document.getElementById('billing_to_show').checked = true;</script>
@@ -362,11 +363,11 @@
 				<script>document.getElementById('shipping_to_show').checked = true;</script>
 			</mvt:if>
 		</mvt:if>
-		
+
 		<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified AND l.settings:customer:address_count">
 			<script>
 				let MvCustomerAddresses = [];
-	
+
 				<mvt:foreach iterator="address" array="customer:addresses">
 					MvCustomerAddresses[<mvt:eval expr="int( l.settings:address:id )" />] = {
 						"id": <mvt:eval expr="int( l.settings:address:id )" />,
@@ -389,7 +390,7 @@
 				</mvt:foreach>
 			</script>
 		</mvt:if>
-		
+
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--m">
 				<input class="c-button c-button--full-small" type="submit" value="Continue to Shipping">

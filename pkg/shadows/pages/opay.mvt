@@ -138,6 +138,19 @@
 									</div>
 								</div>
 							</div>
+						<mvt:elseif expr="g.PaymentMethod EQ 'amazonpayv2:'">
+							<div class="t-payment-form t-amazonpayv2">
+								<div class="t-payment-form__heading">
+									<span class="u-text-medium">
+										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
+										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+									</span>
+									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+								</div>
+								<div class="t-payment-form__fields">
+									When you click the button below, you will be temporarily redirected to the Amazon Pay site to sign in and confirm your payment. You will then be returned to &mvte:store:name;.
+								</div>
+							</div>
 						<mvt:elseif expr="g.PaymentMethod EQ 'paypalcp:paypal'">
 							<div class="t-payment-form t-paypalcp">
 								<div class="t-payment-form__heading">
@@ -461,6 +474,8 @@
 										</span>
 									<mvt:elseif expr="'square' CIN g.PaymentMethod">
 										<mvt:comment>No button here. Button displays above</mvt:comment>
+									<mvt:elseif expr="'amazonpayv2:' CIN g.PaymentMethod">
+										<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 									<mvt:elseif expr="'brain' CIN g.PaymentMethod">
 										<input class="c-button c-button--full-small" type="submit" value="Place Order">
 									<mvt:else>

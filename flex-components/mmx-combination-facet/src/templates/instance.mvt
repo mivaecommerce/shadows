@@ -1,0 +1,128 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Overlay Background Color/Type</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:instance:background:img:image">
+	<mvt:assign name="l.settings:instance:background:overlay_bg" value="'opacity'" />
+<mvt:elseif expr="NOT ISNULL l.settings:instance:background:background_color:value">
+	<mvt:assign name="l.settings:instance:background:overlay_bg" value="'color'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:background:overlay_bg" value="''" />
+</mvt:if>
+
+<mvt:comment>Hero Padding</mvt:comment>
+<mvt:assign name="l.settings:instance:hero_padding" value="ternary( ISNULL l.settings:instance:background:img:image AND ISNULL l.settings:instance:background:background_color:value, 'none', 'auto' )" />
+
+<mvt:comment>Determine Submit Destination URL</mvt:comment>
+<mvt:if expr="ISNULL l.settings:instance:controls:submit_destination:url AND NOT ISNULL l.settings:urls:_self:auto_sep">
+	<mvt:assign name="l.settings:instance:controls:submit_destination:url" value="l.settings:urls:_self:auto_sep" />
+
+	<mvt:if expr="g.Screen NE 'PROD'">
+		<mvt:comment>Optionally, Append Product List Parameters</mvt:comment>
+		<mvt:assign name="l.null" value="miva_splitstring( 'Search, Sort_By, Per_Page', ',', l.settings:instance:controls:submit_destination:params, 'trim' )" />
+		<mvt:foreach iterator="param" array="instance:controls:submit_destination:params">
+			<mvt:assign name="l.param_value" value="miva_variable_value( 'g.' $ l.settings:param )" />
+			<mvt:if expr="NOT ISNULL l.param_value">
+				<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:param, l.param_value )" />
+			</mvt:if>
+		</mvt:foreach>
+
+		<mvt:comment>Optionally, Append Applied Facets to URL</mvt:comment>
+		<mvt:foreach iterator="applied_facet" array="facets:applied_facets">
+			<mvt:foreach iterator="input_value" array="applied_facet:input_values">
+				<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:applied_facet:code, l.settings:input_value)" />
+			</mvt:foreach>
+		</mvt:foreach>
+	</mvt:if>
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-hero
+	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	class="mmx-wrapper"
+	data-content-location="center"
+	data-content-layout="text-area"
+	data-size="content"
+	data-content-width="100%"
+	data-overlay-bg="&mvte:instance:background:overlay_bg;"
+	data-overlay-bg-color="&mvte:instance:background:background_color:value;"
+	data-overlay-bg-opacity="&mvte:instance:background:overlay_opacity:value;"
+	data-content-theme="&mvte:instance:advanced:content_theme:value;"
+	data-padding="&mvte:instance:hero_padding;"
+>
+	<mvt:comment>Slotted Image</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:background:img:image">
+		<picture slot="image">
+			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:mobile" value="glosub( l.settings:instance:background:img:responsive_images:mobile, ' ', '%20' )" />
+				<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:instance:background:img:responsive_images:mobile;">
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:background:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:background:img:responsive_images:tablet" value="glosub( l.settings:instance:background:img:responsive_images:tablet, ' ', '%20' )" />
+				<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:instance:background:img:responsive_images:tablet;">
+			</mvt:if>
+			<img src="&mvte:instance:background:img:image;" alt="&mvte:instance:background:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+		</picture>
+	</mvt:if>
+
+	<mvt:comment>Render Combination Facet</mvt:comment>
+	<mmx-combination-facet
+		slot="content"
+		data-init="script"
+	>
+		<mvt:comment>Init Script</mvt:comment>
+		<script type="application/json">
+			<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
+		</script>
+
+		<mvt:comment>Slotted Content</mvt:comment>
+		<mvt:if expr="l.settings:instance:content:settings:enabled">
+			<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:value">
+				<mvt:if expr="ISNULL l.settings:instance:content:subheading:textsettings:fields:normal:subheading_style:value OR l.settings:instance:content:subheading:textsettings:fields:normal:subheading_style:value EQ 'default'">
+					<mvt:assign name="l.settings:instance:content:subheading:textsettings:fields:normal:subheading_style:value" value="'subheading-s'" />
+				</mvt:if>
+				<mmx-text
+					slot="title"
+					data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
+					style="&mvte:instance:content:subheading:textsettings:styles:normal;"
+				>
+					&mvte:instance:content:subheading:value;
+				</mmx-text>
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
+				<mvt:if expr="ISNULL l.settings:instance:content:heading:textsettings:fields:normal:heading_style:value OR l.settings:instance:content:heading:textsettings:fields:normal:heading_style:value EQ 'default'">
+					<mvt:assign name="l.settings:instance:content:heading:textsettings:fields:normal:heading_style:value" value="'display-3'" />
+				</mvt:if>
+				<mmx-text
+					slot="title"
+					data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
+					data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
+					style="&mvte:instance:content:heading:textsettings:styles:normal;"
+				>
+					&mvte:instance:content:heading:value;
+				</mmx-text>
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
+				<mvt:if expr="ISNULL l.settings:instance:content:body:textsettings:fields:normal:body_style:value OR l.settings:instance:content:body:textsettings:fields:normal:body_style:value EQ 'default'">
+					<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:body_style:value" value="'paragraph-s'" />
+				</mvt:if>
+				<mmx-text
+					slot="title"
+					data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+					style="&mvte:instance:content:body:textsettings:styles:normal;"
+				>
+					&mvte:instance:content:body:value;
+				</mmx-text>
+			</mvt:if>
+		</mvt:if>
+	</mmx-combination-facet>
+</mmx-hero>

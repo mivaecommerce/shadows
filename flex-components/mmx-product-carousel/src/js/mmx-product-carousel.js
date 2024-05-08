@@ -282,7 +282,7 @@ class MMX_ProductCarousel extends MMX_Element {
 	}
 
 	getBaskUrl() {
-		return this.getPropValue('bask-url') ?? `/mm5/merchant.mvc?${!MMX.valueIsEmpty(window?.Store_Code) ? 'Store_Code=' + window.Store_Code + '&' : ''}Screen=BASK`;
+		return this.getPropValue('bask-url') ?? MMX.longMerchantUrl({Screen: 'BASK'});
 	}
 
 	buttonUrl(product, quantity = 1) {

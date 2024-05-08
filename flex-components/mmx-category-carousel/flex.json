@@ -2,7 +2,7 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
@@ -237,7 +237,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -651,7 +651,7 @@
 						},
 						{
 							"code": "font_color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Font Color",
 							"style": "color",
 							"type": "color"
@@ -861,16 +861,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-category-carousel.js",
+			"filepath": "src/js/mmx-category-carousel.js",
 			"resource_code": "mmx-category-carousel",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-THAr7hmpYVcjtmxqDLzXrA0mNhfFyjg2AKofAqUL+8M\u003D sha384-2CHPs+zIDixCyM5CsiYm8YHgUdsS87dnnQX6piHeKpwctnml6B+0LpLd\/FPc7ufP sha512-cEJqzGlkr3XOyvmBAKN9GI3AXbjMSDihGbtYsyNNsXsKzybaDDbWaIPUBLOm\/XgnLqWUapvQRtYhE10rLdhO+g\u003D\u003D"
+					"value": "sha256-THAr7hmpYVcjtmxqDLzXrA0mNhfFyjg2AKofAqUL+8M= sha384-2CHPs+zIDixCyM5CsiYm8YHgUdsS87dnnQX6piHeKpwctnml6B+0LpLd/FPc7ufP sha512-cEJqzGlkr3XOyvmBAKN9GI3AXbjMSDihGbtYsyNNsXsKzybaDDbWaIPUBLOm/XgnLqWUapvQRtYhE10rLdhO+g=="
 				},
 				{
 					"name": "crossorigin",
@@ -880,10 +880,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-hero-slider": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-hero-slider": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

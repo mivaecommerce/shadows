@@ -2,7 +2,7 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
@@ -54,16 +54,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-text-editor.js",
+			"filepath": "src/js/mmx-text-editor.js",
 			"resource_code": "mmx-text-editor",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-5Ow+IsFkbqqtzaKt5q\/\/tiQQ9rT+31HGSRX9AxAJp88\u003D sha384-LF5mF0DEfHeJpiB4mEAgS1xgHhYu9\/5ulhHs6h0sJs9YvVox0M5bvsap94mNvYhm sha512-mveEqInAge8WBTMfnXdsTm9dt9+1nzX4vDLEjEYfmDdadzApjtP5QxyfvycXG7V0PR4H5ZuQ9JK7R1JwnGTp0Q\u003D\u003D"
+					"value": "sha256-5Ow+IsFkbqqtzaKt5q//tiQQ9rT+31HGSRX9AxAJp88= sha384-LF5mF0DEfHeJpiB4mEAgS1xgHhYu9/5ulhHs6h0sJs9YvVox0M5bvsap94mNvYhm sha512-mveEqInAge8WBTMfnXdsTm9dt9+1nzX4vDLEjEYfmDdadzApjtP5QxyfvycXG7V0PR4H5ZuQ9JK7R1JwnGTp0Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -74,12 +74,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-text-editor.css",
+			"filepath": "src/css/mmx-text-editor.css",
 			"resource_code": "mmx-text-editor",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -91,7 +91,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ulzmRH0tuam+X9cG65dQtxv3kCUEGfXWdYXHYZhiBH8\u003D sha384-unulE7NqpkacUJ5unVPTVCaXGgMvhb2uIf5i4FzemU9VoVLKLYVYw6I0VnQKejiy sha512-NHUztRYNh3Ui9ZVRbpHabVLzoVsWSKiZRcxEBCqLKutHTVetrbFTODO3njlFl92iKASCiGTkyZmUNi81b7sPPA\u003D\u003D"
+					"value": "sha256-ulzmRH0tuam+X9cG65dQtxv3kCUEGfXWdYXHYZhiBH8= sha384-unulE7NqpkacUJ5unVPTVCaXGgMvhb2uIf5i4FzemU9VoVLKLYVYw6I0VnQKejiy sha512-NHUztRYNh3Ui9ZVRbpHabVLzoVsWSKiZRcxEBCqLKutHTVetrbFTODO3njlFl92iKASCiGTkyZmUNi81b7sPPA=="
 				},
 				{
 					"name": "crossorigin",
@@ -101,6 +101,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03"
+		"mmx-base": "=10.09.00"
 	}
 }

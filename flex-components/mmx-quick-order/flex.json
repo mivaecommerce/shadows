@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -237,7 +237,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -503,7 +503,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -759,7 +759,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -974,7 +974,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -1271,7 +1271,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -1527,7 +1527,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -1742,7 +1742,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -2155,7 +2155,7 @@
 									"prompt": "Image Dimensions",
 									"required": 1,
 									"type": "text",
-									"validation_message": "Enter the pixel dimensions that the image should be cropped to \u0028ex. 100x100\u0029",
+									"validation_message": "Enter the pixel dimensions that the image should be cropped to (ex. 100x100)",
 									"validation_pattern": "\\d+x\\d+"
 								},
 								{
@@ -2323,7 +2323,7 @@
 		},
 		"bulk": {
 			"body": {
-				"value": "Copy \u0026 paste or type out a list of products \u0026 quantities to load into the quick-add."
+				"value": "Copy & paste or type out a list of products & quantities to load into the quick-add."
 			},
 			"button": {
 				"value": "Load Products"
@@ -2337,7 +2337,7 @@
 		},
 		"csv": {
 			"body": {
-				"value": "Upload a CSV file with the product-codes \u0026 quantities you\u0027d like to import."
+				"value": "Upload a CSV file with the product-codes & quantities you'd like to import."
 			},
 			"button": {
 				"value": "Load Products"
@@ -2366,16 +2366,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-quick-order.js",
+			"filepath": "src/js/mmx-quick-order.js",
 			"resource_code": "mmx-quick-order",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-HL2X0I5xWSfr6AMd6J8Vtvd0ywz852g9ww7OcqC\/lxg\u003D sha384-IaXn5o7WTc2rInMazkVKHY41vVdf\/Wuu231B2B1pLSIOWL99TONbuusQTEXSGquc sha512-V63M9GtQgmTFX3W+hT7AQLpxEKK4vjsjAuvkLuaati+YPnXrDIWK0\/hFQdBUqxsr9Ku\/2+5b2QGdP6tL4eaP5w\u003D\u003D"
+					"value": "sha256-glO+jqdEy/P+Vx2GF78YJaZvhlURKt8JxNxg5A9Ukok= sha384-PXA3f42SbYCnS2t55B+5zI2ZDT97Ydhqrvt8agw5gFDg/V9JZ+MsRQnqeC/qp7hs sha512-eP6D52R0I0n7QpV7T8SS7xIeObOB9dYht9rmhxNAAZeQP3DLrgG/8raQ6CS4E63wuUdScQt7qS6vt6C1G4mTRg=="
 				},
 				{
 					"name": "crossorigin",
@@ -2386,12 +2386,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-quick-order.css",
+			"filepath": "src/css/mmx-quick-order.css",
 			"resource_code": "mmx-quick-order",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -2403,7 +2403,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ITUJnK4GnqgAa0FgwzO+KC6OoybQfkXzY2S\/PLQRSQ4\u003D sha384-4MPS\/x9ayJGsmZr9saWCffX1pQR5iLu0ye9EQkIaDan5nfgvEs1Ys45rVmk6KfSX sha512-4AE\/Uop6EMkv71MvKYtnsXXJ2ld8nj9T05WYeq88dLzAUPzXKSJKyuJnvAL29jojPAJaAh7gdjNPdr3LhxUgqA\u003D\u003D"
+					"value": "sha256-pVTGTatIxL8LF/NvAh85lfXInrDwXqNQG/uqJD2OBpw= sha384-WqFVBv1/q0cd/QMPst/xgTsaXGbz2C8Z7Su1+ux3aXo/li1LHmCQ8rBLWVlhkIlg sha512-RODJvbBI+juY+pvx9v5Y5DRtIVBSvb/Q+2mi/Q81VZTFtqxkkS3eoIWaxTlfS6KSbHcIUqTbO8w0FdUp0JuUMQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -2413,10 +2413,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-csv": "\u003D10.08.03",
-		"mmx-icons": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-csv": "=10.09.00",
+		"mmx-icons": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

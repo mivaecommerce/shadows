@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -312,7 +312,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -568,7 +568,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -783,7 +783,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -912,7 +912,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -928,32 +928,32 @@
 							"value": "auto"
 						},
 						{
-							"text": "20\u0025",
-							"value": "20\u0025"
+							"text": "20%",
+							"value": "20%"
 						},
 						{
-							"text": "30\u0025",
-							"value": "30\u0025"
+							"text": "30%",
+							"value": "30%"
 						},
 						{
-							"text": "40\u0025",
-							"value": "40\u0025"
+							"text": "40%",
+							"value": "40%"
 						},
 						{
-							"text": "50\u0025",
-							"value": "50\u0025"
+							"text": "50%",
+							"value": "50%"
 						},
 						{
-							"text": "60\u0025",
-							"value": "60\u0025"
+							"text": "60%",
+							"value": "60%"
 						},
 						{
-							"text": "70\u0025",
-							"value": "70\u0025"
+							"text": "70%",
+							"value": "70%"
 						},
 						{
-							"text": "80\u0025",
-							"value": "80\u0025"
+							"text": "80%",
+							"value": "80%"
 						}
 					],
 					"prompt": "Text Container Width",
@@ -961,7 +961,7 @@
 				},
 				{
 					"code": "overlay_opacity",
-					"label": "\u0025",
+					"label": "%",
 					"precision": -1,
 					"prompt": "Image Shader Overlay",
 					"range_high": 100,
@@ -984,7 +984,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1003,11 +1003,11 @@
 					"value": "light"
 				},
 				{
-					"text": "Dark \u0028Always\u0029",
+					"text": "Dark (Always)",
 					"value": "dark"
 				},
 				{
-					"text": "Dark \u0028Desktop Only\u0029",
+					"text": "Dark (Desktop Only)",
 					"value": "dark--l"
 				},
 				{
@@ -1027,14 +1027,14 @@
 			"desktop": {
 				"background_color": {
 					"color": {
-						"value": "\u0023FFFFFF"
+						"value": "#FFFFFF"
 					},
 					"settings": {
 						"enabled": 1
 					}
 				},
 				"container_width": {
-					"value": "40\u0025"
+					"value": "40%"
 				},
 				"overlay_opacity": {
 					"value": 0
@@ -1043,7 +1043,7 @@
 			"mobile": {
 				"background_color": {
 					"color": {
-						"value": "\u0023FFFFFF"
+						"value": "#FFFFFF"
 					},
 					"settings": {
 						"enabled": 0
@@ -1115,7 +1115,7 @@
 		},
 		"image": {
 			"img": {
-				"image": "graphics\/00000001\/placeholder__1440x580.jpg"
+				"image": "graphics/00000001/placeholder__1440x580.jpg"
 			},
 			"size": {
 				"value": "auto"
@@ -1131,16 +1131,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-hero.js",
+			"filepath": "src/js/mmx-hero.js",
 			"resource_code": "mmx-hero",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Fokb2DJjgSwiZHebL0O3cbfFuXSz3RnPbciYFKTYY\/I\u003D sha384-qaGM3IpFxCr5TKoES2TKiCMGMEMAzFlaUkKp3eF3hEm6ngY0SrDHH3AdeMtwj+m\/ sha512-aiKCBYmKuuVGa1mnDxKmx6acEi8+VaWAWbseW4GhbHQ\/yvsEOHlTsJivaZf0aviJORHAFXmem4IV0IYhY1rBEw\u003D\u003D"
+					"value": "sha256-KpM/dwN5ezFhxPo2l625jHUFl4iLfXLkinJ7p6XiYxc= sha384-oQXxtpw65JC1t9okHb6L8f94V2+Ecw6AnZLnss8nvV0GA3NlGc7rzt+uCv5OlemS sha512-dBEVKdXpa4Hy8ExqWK2t7yg/ftAWqJ+nLrJATGX1MxZ6gCLK+WNpbEZ/a9qk/MWQYUOiADViXA9yeinUUdBpAQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1151,12 +1151,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-hero.css",
+			"filepath": "src/css/mmx-hero.css",
 			"resource_code": "mmx-hero",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -1168,7 +1168,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-\/\/BnesgCqRNv4DUDbikNOX+aj\/MhrZtUqg+cN4TU1GQ\u003D sha384-43nVPJmZHViX+0gnEMCYRW8ghT9dn5kJqmmcYG2qMseOr26EfNssVUllrGcEa+Rk sha512-YQbSaC102nw8AzM4vfgVEsX14a63J1kEZuMt9J8UyLbDU+lopSrOU12j+6yusf713mn8r0UCbMmU5D9SWwYcpg\u003D\u003D"
+					"value": "sha256-BK/cp4ddb9h644akUdFzDG6Gm0Z586Qfv+CVLwpAqZg= sha384-qmejU5hhUHT92Vzt7T5jKBdQgweOSM+ap0GQGtQKyFZB/LLQsJVLmHhjJ+4D3yF3 sha512-bhxu/xz+U5dKj3yPeW1JEu1zNzt0KciW8SMLZnR1tkc0NVhzMbJIrSotDpK+U2V6e9rLhWhBmOjEz+Rt/0F9Qg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1178,8 +1178,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

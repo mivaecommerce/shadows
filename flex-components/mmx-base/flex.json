@@ -2,21 +2,21 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-base.js",
+			"filepath": "src/js/mmx-base.js",
 			"resource_code": "mmx-base",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-p4bKekJ+o1lb0M+Y2NgeU0BOV1YatdRBT\/U7zkIvcpA\u003D sha384-fbiM2dm6IYlkv\/fAqnboyTtCZjpTsc8RbEppUMym2dfyjaSnokGnN93Vqe0mr9KK sha512-qAke0SK6\/kdFz+zFLSGpg+Ejq9PMgFpfAkpJAp0U+x7jkwkdc+N4pS4g6wnMVTwPwOWMde38SjZawcL7OwuY9Q\u003D\u003D"
+					"value": "sha256-g4kAjKQFStgUQFL3jxiLW1dGUNeMM1bH8ejITrEQXqE= sha384-4M1/iYL9WXzB3rXDRJ9/MTlfJEBwor7Ay1BjO0e/FCrJ4WtZAMhVxWh4HuygqhR5 sha512-hiYcSK7OoK3P/1AzBemovaKQsHkjkDyekSZmtUn684bWjNb4T/irT+QAe+tFTHS+RTkQIbDVOeZRSCOsuU2vSg=="
 				},
 				{
 					"name": "crossorigin",
@@ -27,12 +27,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-base.css",
+			"filepath": "src/css/mmx-base.css",
 			"resource_code": "mmx-base",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-3GZXTKhqpnJxxWMAK8wqR7qxEkEsh0jmfZE3kMBh+Bc\u003D sha384-x3ETnA\/wGcPUk5a\/F1KHiq2ntBmd0KMI\/SaMeKp8WHzp4y2JtCzmzeM87eOdNtGl sha512-va9CZf40p44y0BBWk\/KdBSQnyZr7vQ7dLyJrnu0bm5b3Q9TWyRQUN\/mJJU6e+KdzdHUFmMylHHBdhqFWIv0Auw\u003D\u003D"
+					"value": "sha256-Z/B2RQnai+W38nFN5Wzdd+z4XpkUXVOzpUNTb2BORjU= sha384-MCnGcu++kK1KwW21kvlj+VNw/PvrOgkAXUpCOw+Zdgv7GjZA75ZVDKnJwkFzWKGC sha512-4/0CC/0nNQJ33wEepzEB35wz6etof/gLF0kwuGjDoR8ROBzKpJGpJJMasUUwEJYFETI+o2ZHar3N/6+53CZMZA=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,18 +54,18 @@
 		}
 	],
 	"conflicts": {
-		"mmx-category-carousel": "\u003C10.08.03",
-		"mmx-featured-product": "\u003C10.08.03",
-		"mmx-hero": "\u003C10.08.03",
-		"mmx-hero-slider": "\u003C10.08.03",
-		"mmx-icons": "\u003C10.08.03",
-		"mmx-image-across": "\u003C10.08.03",
-		"mmx-image-and-text": "\u003C10.08.03",
-		"mmx-product-carousel": "\u003C10.08.03",
-		"mmx-quick-order": "\u003C10.08.03",
-		"mmx-text-area": "\u003C10.08.03",
-		"mmx-text-banner": "\u003C10.08.03",
-		"mmx-text-editor": "\u003C10.08.03",
-		"mmx-video": "\u003C10.08.03"
+		"mmx-category-carousel": "<10.09.00",
+		"mmx-featured-product": "<10.09.00",
+		"mmx-hero": "<10.09.00",
+		"mmx-hero-slider": "<10.09.00",
+		"mmx-icons": "<10.09.00",
+		"mmx-image-across": "<10.09.00",
+		"mmx-image-and-text": "<10.09.00",
+		"mmx-product-carousel": "<10.09.00",
+		"mmx-quick-order": "<10.09.00",
+		"mmx-text-area": "<10.09.00",
+		"mmx-text-banner": "<10.09.00",
+		"mmx-text-editor": "<10.09.00",
+		"mmx-video": "<10.09.00"
 	}
 }

@@ -2,21 +2,21 @@
 	"code": "mmx-button",
 	"name": "MMX Button",
 	"type": "library",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-button",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-button.js",
+			"filepath": "src/js/mmx-button.js",
 			"resource_code": "mmx-button",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-5BfpsXIi021uAy0M+xosLw6aikFsg+1C4dP12rm4CF0\u003D sha384-7In\/ThJ5nktFrDwKDlICI45+ofJ70yRN9e4XRMs14lKOFgIxqGA2Xx3u5ys67i71 sha512-x\/3+F2fEK5r3Bx0UZaNx20DDc2vXUVD2kLYQNgLrR5hsAOOMUJFwSRPZ9obY0bt\/dUQ9kT6fckh+41mAAfFppA\u003D\u003D"
+					"value": "sha256-n9DZqcqhTJB2tHqkYRVtfXoiHUeIpI3ON/frbfpYx9Q= sha384-nGLe9VwY831F5d6oa0p1q1m2kwO5GUsmoLxJxxzpVu9+Lesfph7iK+a2aA8cK8S5 sha512-iQID9SU/mfe458wRlisPI9pJ7pHAub7hEISQtC0v79LJ5KZT+iHX7i4k5wZOO917IWpy+49klYkZPllm+Oy9Mg=="
 				},
 				{
 					"name": "crossorigin",
@@ -27,12 +27,12 @@
 	],
 	"styles": [
 		{
-			"filepath": "src\/css\/mmx-button.css",
+			"filepath": "src/css/mmx-button.css",
 			"resource_code": "mmx-button",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/css"
+					"value": "text/css"
 				},
 				{
 					"name": "media",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ZWWVrnJ+bsiDaMRsunhIewIkjdxcDd6R\/rCdNcFJ4tc\u003D sha384-UZ3\/sdPuNjEZf4JRVItQKz7BYitIHrVTl8TCs\/WsHuflHHvlaIlVd30RI\/anCrvj sha512-pytViN0rWTPuzvlfn5ISTtIvNz80AGGdpgAxSW6GYRgOmSqOsiwOHL+7ix7h7BPLMsgSouCg\/Kt2EuC4yUd74g\u003D\u003D"
+					"value": "sha256-ZWWVrnJ+bsiDaMRsunhIewIkjdxcDd6R/rCdNcFJ4tc= sha384-UZ3/sdPuNjEZf4JRVItQKz7BYitIHrVTl8TCs/WsHuflHHvlaIlVd30RI/anCrvj sha512-pytViN0rWTPuzvlfn5ISTtIvNz80AGGdpgAxSW6GYRgOmSqOsiwOHL+7ix7h7BPLMsgSouCg/Kt2EuC4yUd74g=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03"
+		"mmx-base": "=10.09.00"
 	}
 }

@@ -385,7 +385,6 @@
 	--mmx-color-disabled: var(--mmx-color-grey-04);
 	--mmx-color-progress--empty: var(--mmx-color-grey-04);
 	--mmx-color-divider: var(--mmx-color-grey-03);
-	--mmx-color-input-border: var(--mmx-color-grey-03);
 	--mmx-color-slider-bar: var(--mmx-color-grey-03);
 	--mmx-color-background: var(--mmx-color-grey-02);
 	--mmx-color-form-field-fill: var(--mmx-color-grey-02);
@@ -393,6 +392,10 @@
 	--mmx-color-form-field-fill--light: var(--mmx-color-grey-01);
 	--mmx-color-dark-focus: #8CB1E1;
 	--mmx-color-secondary-link: #575A5D;
+	--mmx-color-input-border: var(--mmx-color-grey-03);
+	--mmx-color-input-background: var(--mmx-color-white);
+	--mmx-color-input-color: var(--mmx-color-body-copy);
+	--mmx-color-input-background--disabled: var(--mmx-color-input-background);
 }
 
 
@@ -425,6 +428,10 @@
 	--mmx-title-4-color: var(--mmx-heading-color);
 	--mmx-color-focus: var(--mmx-color-dark-focus);
 	--mmx-color-secondary-link: var(--mmx-color-white);
+	--mmx-color-input-border: rgba(255, 255, 255, 0.15);
+	--mmx-color-input-background: rgba(255, 255, 255, 0.1);
+	--mmx-color-input-color: var(--mmx-color-body-copy);
+	--mmx-color-input-background--disabled: var(--mmx-color-input-background);
 }
 
 @media (min-width: 60em) {
@@ -454,6 +461,10 @@
 		--mmx-title-4-color: var(--mmx-heading-color);
 		--mmx-color-focus: var(--mmx-color-dark-focus);
 		--mmx-color-secondary-link: var(--mmx-color-white);
+		--mmx-color-input-border: rgba(255, 255, 255, 0.15);
+		--mmx-color-input-background: rgba(255, 255, 255, 0.1);
+		--mmx-color-input-color: var(--mmx-color-body-copy);
+		--mmx-color-input-background--disabled: var(--mmx-color-input-background);
 	}
 }
 
@@ -500,7 +511,8 @@ mmx-product-carousel:not(:defined),
 mmx-text-editor:not(:defined),
 mmx-text:not(:defined),
 mmx-quick-order:not(:defined),
-mmx-icon:not(:defined) {
+mmx-icon:not(:defined),
+mmx-combination-facet:not(:defined) {
 	visibility: hidden;
 }
 
@@ -514,7 +526,8 @@ mmx-image-across,
 mmx-product-carousel,
 mmx-text-editor,
 mmx-text,
-mmx-quick-order {
+mmx-quick-order,
+mmx-combination-facet {
 	display: block;
 }
 

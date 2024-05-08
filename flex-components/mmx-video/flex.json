@@ -2,14 +2,14 @@
 	"code": "mmx-video",
 	"name": "Video",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-video",
 	"category": "video",
 	"properties": [
 		{
 			"code": "video",
-			"prompt": "Video URL \u0028YouTube or Vimeo\u0029",
+			"prompt": "Video URL (YouTube or Vimeo)",
 			"required": 1,
 			"text_type": "URL",
 			"type": "text"
@@ -30,19 +30,19 @@
 					"value": "l"
 				},
 				{
-					"text": "16\/9",
-					"value": "16\/9"
+					"text": "16/9",
+					"value": "16/9"
 				},
 				{
-					"text": "4\/3",
-					"value": "4\/3"
+					"text": "4/3",
+					"value": "4/3"
 				},
 				{
-					"text": "3\/2",
-					"value": "3\/2"
+					"text": "3/2",
+					"value": "3/2"
 				},
 				{
-					"text": "Specific Width \u0026 Height \u0028See Advanced\u0029",
+					"text": "Specific Width & Height (See Advanced)",
 					"value": "dimensions"
 				}
 			],
@@ -302,7 +302,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -558,7 +558,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -773,7 +773,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -927,7 +927,7 @@
 				},
 				{
 					"code": "muted",
-					"prompt": "Muted\u003F",
+					"prompt": "Muted?",
 					"type": "checkbox"
 				},
 				{
@@ -966,7 +966,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -976,7 +976,7 @@
 				},
 				{
 					"code": "overlay_opacity",
-					"label": "\u0025",
+					"label": "%",
 					"precision": -1,
 					"prompt": "Video Shader Overlay",
 					"range_high": 100,
@@ -998,7 +998,7 @@
 					"properties": [
 						{
 							"code": "color",
-							"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1017,11 +1017,11 @@
 					"value": "light"
 				},
 				{
-					"text": "Dark \u0028Always\u0029",
+					"text": "Dark (Always)",
 					"value": "dark"
 				},
 				{
-					"text": "Dark \u0028Desktop Only\u0029",
+					"text": "Dark (Desktop Only)",
 					"value": "dark--l"
 				},
 				{
@@ -1064,14 +1064,14 @@
 			"desktop": {
 				"background_color": {
 					"color": {
-						"value": "\u0023FFFFFF"
+						"value": "#FFFFFF"
 					},
 					"settings": {
 						"enabled": 0
 					}
 				},
 				"container_width": {
-					"value": "40\u0025"
+					"value": "40%"
 				},
 				"overlay_opacity": {
 					"value": 0
@@ -1080,7 +1080,7 @@
 			"mobile": {
 				"background_color": {
 					"color": {
-						"value": "\u0023FFFFFF"
+						"value": "#FFFFFF"
 					},
 					"settings": {
 						"enabled": 1
@@ -1161,10 +1161,10 @@
 			}
 		},
 		"size": {
-			"value": "16\/9"
+			"value": "16/9"
 		},
 		"video": {
-			"value": "https:\/\/vimeo.com\/759640679"
+			"value": "https://vimeo.com/759640679"
 		}
 	},
 	"initialization_template": "src/templates/init.mvt",
@@ -1172,16 +1172,16 @@
 	"preview": "src/images/preview.svg",
 	"scripts": [
 		{
-			"filepath": "src\/js\/mmx-video.js",
+			"filepath": "src/js/mmx-video.js",
 			"resource_code": "mmx-video",
 			"attributes": [
 				{
 					"name": "type",
-					"value": "text\/javascript"
+					"value": "text/javascript"
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-bHILCNskcr+hHdoiZ9LXnJdKXaaDnok8OzBkyZUjxPo\u003D sha384-2X\/ZlkWS7x6QGbqW8A4Skm06Ts\/vAD5xHsHDWYqk2xy2YYn4E8Qs1qgqt6VxbGru sha512-A1IMf7YC+LzwWxTCyWg3axigv5FHsvOLUO00\/wn15iUhxFktn+RjjRK1zzFxi9iBEegeUj8LXKRHMUkIi62d2g\u003D\u003D"
+					"value": "sha256-bHILCNskcr+hHdoiZ9LXnJdKXaaDnok8OzBkyZUjxPo= sha384-2X/ZlkWS7x6QGbqW8A4Skm06Ts/vAD5xHsHDWYqk2xy2YYn4E8Qs1qgqt6VxbGru sha512-A1IMf7YC+LzwWxTCyWg3axigv5FHsvOLUO00/wn15iUhxFktn+RjjRK1zzFxi9iBEegeUj8LXKRHMUkIi62d2g=="
 				},
 				{
 					"name": "crossorigin",
@@ -1191,9 +1191,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }

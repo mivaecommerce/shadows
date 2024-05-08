@@ -2,7 +2,7 @@
 	"code": "mmx-text-area",
 	"name": "Text Area",
 	"type": "component",
-	"version": "10.08.03",
+	"version": "10.09.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-area",
 	"category": "text-area",
@@ -236,7 +236,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -492,7 +492,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -707,7 +707,7 @@
 							},
 							{
 								"code": "font_color",
-								"placeholder": "\u0023000000, rgba\u00280,0,0,0\u0029, hsl\u00280,0,0\u0029",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 								"prompt": "Font Color",
 								"pseudoclasses": [
 									"normal"
@@ -843,7 +843,7 @@
 			"properties": [
 				{
 					"code": "width",
-					"label": "\u0025",
+					"label": "%",
 					"precision": -1,
 					"prompt": "Width",
 					"range_high": 100,
@@ -933,9 +933,9 @@
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"depends": {
-		"mmx-base": "\u003D10.08.03",
-		"mmx-button": "\u003D10.08.03",
-		"mmx-hero": "\u003D10.08.03",
-		"mmx-text": "\u003D10.08.03"
+		"mmx-base": "=10.09.00",
+		"mmx-button": "=10.09.00",
+		"mmx-hero": "=10.09.00",
+		"mmx-text": "=10.09.00"
 	}
 }
