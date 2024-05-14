@@ -4,3 +4,4 @@ mmt/css/*.mvt linguist-language=CSS
 mmt/js/*.mvt linguist-language=JavaScript
 mmt/properties/*.mvt linguist-language=XML
 mmt/templates/*.mvt linguist-language=XML
+flex-components/**/*.mvt linguist-language=XML
