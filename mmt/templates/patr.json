@@ -9,6 +9,7 @@
         "missing_text_msg": "<br>A value must be entered for <b>%attribute_prompt%</b>.",
         "preload": 1,
         "price": "base",
+        "swatch_element_id": "swatches",
         "template_filename": "patr-attributemachine.mvc"
     },
     "hdft": {

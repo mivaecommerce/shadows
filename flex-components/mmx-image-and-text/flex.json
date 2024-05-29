@@ -2,7 +2,7 @@
 	"code": "mmx-image-and-text",
 	"name": "Image and Text",
 	"type": "component",
-	"version": "10.09.00",
+	"version": "10.09.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-and-text",
 	"category": "image-text",
@@ -1066,9 +1066,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.00",
-		"mmx-button": "=10.09.00",
-		"mmx-hero": "=10.09.00",
-		"mmx-text": "=10.09.00"
+		"mmx-base": "=10.09.01",
+		"mmx-button": "=10.09.01",
+		"mmx-hero": "=10.09.01",
+		"mmx-text": "=10.09.01"
 	}
 }

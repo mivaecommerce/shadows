@@ -8,6 +8,7 @@
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
+	<mvt:assign name="l.settings:attributemachine:swatch_element_id" value="ternary( ISNULL l.settings:attributemachine:swatch_element_id, 'swatches', l.settings:attributemachine:swatch_element_id )" />
 	let swatch_container = document.querySelector('#&mvt:attributemachine:swatch_element_id;');
 	let swatch = document.createElement('li');
 	let swatchButton = document.createElement('button');
@@ -134,7 +135,7 @@ const Update_Volume_Pricing = function (priceData) {
 		volumePricingContainer.innerHTML = '';
 	}
 };
-]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="attributemachine"><Enabled>Yes</Enabled><InitialAttributeState>Preload</InitialAttributeState><DependencyResolution>First</DependencyResolution><InventoryElement/><InventoryMessage>Short</InventoryMessage><PriceElement/><AdditionalPriceElement/><WeightElement/><DiscountElement/><PriceDisplay>Base</PriceDisplay><AdditionalPriceDisplay>None</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>No</PredictDiscounts><SwatchElement/><InvalidAttributeCombinationMessage>Please select a valid combination of attributes.</InvalidAttributeCombinationMessage><MissingTextFieldValueMessage><![CDATA[<br>A value must be entered for <b>%attribute_prompt%</b>.]]></MissingTextFieldValueMessage><MissingRadioSelectionMessage><![CDATA[<br>An option must be selected for <b>%attribute_prompt%</b>.]]></MissingRadioSelectionMessage><Template><![CDATA[AttributeMachine.prototype.Generate_Discount = function (discount) {
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="attributemachine"><Enabled>Yes</Enabled><InitialAttributeState>Preload</InitialAttributeState><DependencyResolution>First</DependencyResolution><InventoryElement/><InventoryMessage>Short</InventoryMessage><PriceElement/><AdditionalPriceElement/><WeightElement/><DiscountElement/><PriceDisplay>Base</PriceDisplay><AdditionalPriceDisplay>None</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>No</PredictDiscounts><SwatchElement>swatches</SwatchElement><InvalidAttributeCombinationMessage>Please select a valid combination of attributes.</InvalidAttributeCombinationMessage><MissingTextFieldValueMessage><![CDATA[<br>A value must be entered for <b>%attribute_prompt%</b>.]]></MissingTextFieldValueMessage><MissingRadioSelectionMessage><![CDATA[<br>An option must be selected for <b>%attribute_prompt%</b>.]]></MissingRadioSelectionMessage><Template><![CDATA[AttributeMachine.prototype.Generate_Discount = function (discount) {
 	let discount_div;
 
 	discount_div = document.createElement('div');
@@ -144,6 +145,7 @@ const Update_Volume_Pricing = function (priceData) {
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
+	<mvt:assign name="l.settings:attributemachine:swatch_element_id" value="ternary( ISNULL l.settings:attributemachine:swatch_element_id, 'swatches', l.settings:attributemachine:swatch_element_id )" />
 	let swatch_container = document.querySelector('#&mvt:attributemachine:swatch_element_id;');
 	let swatch = document.createElement('li');
 	let swatchButton = document.createElement('button');

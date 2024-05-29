@@ -8,6 +8,7 @@ AttributeMachine.prototype.Generate_Discount = function (discount) {
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
+	<mvt:assign name="l.settings:attributemachine:swatch_element_id" value="ternary( ISNULL l.settings:attributemachine:swatch_element_id, 'swatches', l.settings:attributemachine:swatch_element_id )" />
 	let swatch_container = document.querySelector('#&mvt:attributemachine:swatch_element_id;');
 	let swatch = document.createElement('li');
 	let swatchButton = document.createElement('button');

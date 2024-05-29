@@ -1,13 +1,4 @@
 <mvt:if expr="l.settings:search_results:products_on_page_count GT 1">
-	<mvt:assign name="g.facet_listings" value="''"/>
-	<mvt:foreach iterator="facet" array="facets:facets">
-		<mvt:foreach iterator="facet_value" array="facet:values">
-			<mvt:if expr="l.settings:facet_value:selected">
-				<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;"/>
-				<mvt:assign name="g.facet_listings" value="'&' $ l.settings::facet:code $ '=' $ l.settings::facet_value:value"/>
-			</mvt:if>
-		</mvt:foreach>
-	</mvt:foreach>
 	<section class="o-layout--align-bottom o-layout--justify-between o-layout--wrap u-flex--l u-hidden">
 		<p class="u-color-gray-600">&mvte:search_results:total_prod_count; Items</p>
 		<div class="x-display-list-filtering">
@@ -155,7 +146,7 @@
 			<mvt:if expr="l.settings:search_results:page_links:current_page NE 1">
 				<mvt:assign name="l.settings:prev_page" value="l.settings:search_results:page_links:current_page - 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
+					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:search_results:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>

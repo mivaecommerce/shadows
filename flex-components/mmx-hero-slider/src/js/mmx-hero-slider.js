@@ -246,7 +246,7 @@ class MMX_HeroSlider extends MMX_Element {
 	finishSwipe(e) {
 		e.stopImmediatePropagation();
 
-		const swipeTheshold = 20;
+		const swipeThreshold = 20;
 
 		if (this.startX === null) {
 			return;
@@ -257,7 +257,7 @@ class MMX_HeroSlider extends MMX_Element {
 		const swipeDistance = this.startX - finishX;
 		this.startX = null;
 
-		if (Math.abs(swipeDistance) < swipeTheshold) {
+		if (Math.abs(swipeDistance) < swipeThreshold) {
 			return;
 		}
 
@@ -358,7 +358,7 @@ class MMX_HeroSlider extends MMX_Element {
 		if (!this.getPropValue('autoplay') || this.#autoplay_focus || this.#autoplay_mouseover) {
 			this.stopAutoplay();
 		}
-	};
+	}
 
 	stopAutoplay() {
 		if (!this.#autoplay_running) {
@@ -367,13 +367,13 @@ class MMX_HeroSlider extends MMX_Element {
 
 		this.#autoplay_running = false;
 		clearInterval(this.#interval_id);
-	};
+	}
 
 	requestStartAutoplay() {
 		if (this.getPropValue('autoplay') && !this.#autoplay_focus && !this.#autoplay_mouseover) {
 			this.startAutoplay();
 		}
-	};
+	}
 
 	startAutoplay() {
 		if (this.#autoplay_running) {
@@ -384,7 +384,7 @@ class MMX_HeroSlider extends MMX_Element {
 		this.#interval_id		= setInterval(() => {
 			this.moveToNext();
 		}, this.getDelayInMilliseconds());
-	};
+	}
 
 	getDelayInMilliseconds() {
 		return this.getPropValue('delay') * 1000;

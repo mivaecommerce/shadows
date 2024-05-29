@@ -47,6 +47,16 @@ MMX.coerceNumber = (value, fallback = 0) => {
 	return isNaN(value) ? fallback : Number(value);
 };
 
+MMX.normalizeCode = (value) => {
+	const valueType = MMX.variableType(value);
+
+	if (['string', 'number', 'boolean'].includes(valueType)) {
+		return String(value).trim();
+	}
+
+	return '';
+};
+
 MMX.valueIsEmpty = (value) => {
 	if (value === null)											return true;
 	else if (typeof value === 'object')							return Object.keys(value).length === 0 && value.constructor === Object;
@@ -439,7 +449,11 @@ class MMX_Element extends HTMLElement {
 	}
 
 	static get observedAttributes() {
-		if (typeof this.props === 'undefined') {
+		return this.propsToAttributeNames;
+	}
+
+	static get propsToAttributeNames() {
+		if (typeof this.props !== 'object') {
 			return [];
 		}
 

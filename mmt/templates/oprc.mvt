@@ -22,10 +22,12 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
+			<h1 class="c-heading-delta">&mvt:page:name;</h1>
 			<p class="x-messages x-messages--warning">Your order has already been processed. Please do not reload this page.</p>
+			<a class="c-button" href="&mvte:urls:SFNT:auto;">Return to the Storefront</a>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

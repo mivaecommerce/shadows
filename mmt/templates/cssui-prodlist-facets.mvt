@@ -7,10 +7,6 @@
 			<mvt:elseif expr="NOT ISNULL g.Product_Code AND toupper( g.Screen ) NE 'PROD'">
 				<mvt:assign name="l.settings:clear_facets:product" value="'&Product_Code=' $ encodeattribute(g.Product_Code)"/>
 			</mvt:if>
-			<mvt:item name="urls" param="hidden_params:_self:auto" />
-			<input type="hidden" name="Search" value="&mvte:global:Search;" />
-			<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
-			<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 			<mvt:assign name="l.settings:clear_facets" value="l.settings:urls:_self:auto_sep $ 'Search=' $ encodeattribute(g.Search) $ l.settings:clear_facets:category $ l.settings:clear_facets:product"/>
 			<p id="searchFacets-label" class="x-category-tree__heading x-category-tree__heading--facets">
 				Filters
@@ -22,15 +18,6 @@
 		</div>
 		<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="searchFacets" type="button">Filters <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<div id="searchFacets" class="x-category-tree__row x-collapsible-content__item">
-			<mvt:assign name="g.facet_listings" value="''"/>
-			<mvt:foreach iterator="facet" array="facets:facets">
-				<mvt:foreach iterator="facet_value" array="facet:values">
-					<mvt:if expr="l.settings:facet_value:selected">
-						<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;"/>
-						<mvt:assign name="g.facet_listings" value="'&' $ l.settings::facet:code $ '=' $ l.settings::facet_value:value"/>
-					</mvt:if>
-				</mvt:foreach>
-			</mvt:foreach>
 			<section class="u-hidden--l">
 				<div class="x-display-list-filtering t-display-list-filtering">
 					<form class="x-display-list-filtering__per-page" method="get" action="&mvte:urls:_self:auto_noparams;">
@@ -157,9 +144,10 @@
 					<input type="hidden" name="Per_Page" value="&mvte:global:Per_Page;" />
 					<div class="c-form-list x-facets">
 						<mvt:foreach iterator="facet" array="facets:facets">
-							<div class="c-form-list__item x-facet-set">
-								<button class="x-collapsible-content__toggle x-facet-set__label" data-a11y-toggle="facet-set__&mvte:facet:code;" type="button">&mvt:facet:name; <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
-								<div id="facet-set__&mvte:facet:code;" class="c-form-list__item x-facet-set__list x-collapsible-content__item" data-a11y-toggle-open>
+							<mvt:assign name="l.settings:facet:html:a11y_toggle_id" value="'facet-set__' $ l.pos1" />
+							<div class="c-form-list__item x-facet-set" data-facet-code="&mvte:facet:code;">
+								<button class="x-collapsible-content__toggle x-facet-set__label" data-a11y-toggle="&mvte:facet:html:a11y_toggle_id;" type="button">&mvt:facet:name; <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+								<div id="&mvte:facet:html:a11y_toggle_id;" class="c-form-list__item x-facet-set__list x-collapsible-content__item" data-a11y-toggle-open>
 									<mvt:if expr="l.settings:facet:type EQ 'radio'">
 										<mvt:foreach iterator="facet_value" array="facet:values">
 											<mvt:if expr="l.settings:facet_value:selected">

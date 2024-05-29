@@ -9,7 +9,7 @@
             "main"
         ],
         "lineitemdiscounts": 0,
-        "price": "base",
+        "lineitemprice": "base",
         "template_filename": "email_subscription_outofstock-toe_subscriptions.mvc"
     }
 }

@@ -151,7 +151,7 @@ class MMX_Button extends MMX_Element {
 	//
 
 	static get observedAttributes() {
-		return ['disabled', ...MMX_Element.observedAttributes];
+		return ['disabled', ...this.propsToAttributeNames];
 	}
 
 	attributeChanged(name, oldValue, newValue) {

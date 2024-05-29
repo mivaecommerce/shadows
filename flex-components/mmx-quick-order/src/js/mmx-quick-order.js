@@ -428,7 +428,7 @@ class MMX_QuickOrder extends MMX_Element {
 		this.bindCsvEvents();
 	}
 
-	// Utitlites
+	// Utilities
 	first(array = []){
 		return Array.from(array ?? []).at(0);
 	}
@@ -1518,7 +1518,7 @@ class MMX_QuickOrder extends MMX_Element {
 		const updatedProduct = MMX.copy(product);
 
 		updatedProduct?.attributes?.map(attribute => {
-			attribute.value = attributeValues?.[attribute.code] ?? '';
+			attribute.value = attributeValues?.[attribute.code];
 			return attribute;
 		});
 

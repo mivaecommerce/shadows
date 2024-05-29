@@ -30,8 +30,10 @@
 	<meta property="og:description" content="&mvte:global:socialText;">
 	<meta property="og:locale" content="en_US">
 	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:site" content="@TWITTER_ACCOUNT">
-	<meta name="twitter:creator" content="@TWITTER_ACCOUNT">
+	<mvt:comment>
+		<meta name="twitter:site" content="@TWITTER_ACCOUNT">
+		<meta name="twitter:creator" content="@TWITTER_ACCOUNT">
+	</mvt:comment>
 	<meta name="twitter:url" content="&mvt:global:socialURL;">
 	<meta name="twitter:title" content="&mvte:product:name;">
 	<meta name="twitter:description" content="&mvte:global:socialText;">

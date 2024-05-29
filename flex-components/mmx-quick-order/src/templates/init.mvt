@@ -6,7 +6,7 @@
 <mvt:item name="head" param="css:mmx-customizations" />
 
 <template class="mmx-resources">
-	<mvt:comment>mmx librarires</mvt:comment>
+	<mvt:comment>mmx libraries</mvt:comment>
 	<mvt:item name="head" param="css:mmx-text" />
 	<mvt:item name="head" param="css:mmx-button" />
 
@@ -19,7 +19,7 @@
 	<mvt:item name="head" param="css:mmx-quick-order" />
 </template>
 
-<mvt:comment>mmx librarires</mvt:comment>
+<mvt:comment>mmx libraries</mvt:comment>
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-icons" />

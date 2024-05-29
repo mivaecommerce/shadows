@@ -598,12 +598,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContentOriginalPricing() {
-		if (!this.getPropValue('discount') || this.product.base_price <= this.product.price) {
+		if (!this.getPropValue('discount')) {
 			return '';
 		}
 
 		return /*html*/`
-			<s part="original-price" id="price-value-additional" class="mmx-featured-product__original-price">${this.product.formatted_base_price}</s>
+			<s part="original-price" id="price-value-additional" class="mmx-featured-product__original-price">${this.product.base_price > this.product.price ? this.product.formatted_base_price : ''}</s>
 		`;
 	}
 
@@ -971,16 +971,16 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return this.#buttonEnabled;
 		}
 
-		const outofStock = this.product.inv_active && this.product.inv_level === 'out';
-		return !outofStock;
+		const outOfStock = this.product.inv_active && this.product.inv_level === 'out';
+		return !outOfStock;
 	}
 
 	checkFormValidity() {
-		return this?.#form?.checkValidity() ?? false;
+		return this.#form?.checkValidity() ?? false;
 	}
 
 	reportFormValidity() {
-		return this?.#form?.reportValidity() ?? false;
+		return this.#form?.reportValidity() ?? false;
 	}
 
 	get formData () {

@@ -57,9 +57,11 @@
 					</mvt:foreach>
 					<div class="c-form-list">
 						<div class="c-form-list__item">
-							<mvt:do name="l.return" file="g.Module_Library_DB" value="Product_Load_Code(g.Product_Code, l.settings:wish:product)" />
 							<mvt:if expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'ATWL\'' )">
-								<label class="c-form-label" for="WishList_ID">Add Product "&mvte:wish:product:name;" to wish list&hellip;</label>
+								<mvt:do name="l.return" file="g.Module_Library_DB" value="Runtime_Product_Load_Code(g.Product_Code, l.settings:wish:product)" />
+								<mvt:if expr="NOT ISNULL l.settings:wish:product">
+									<label class="c-form-label" for="WishList_ID">Add Product "&mvte:wish:product:name;" to wish list&hellip;</label>
+								</mvt:if>
 							<mvt:elseif expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'MAWL\'' )">
 								<label class="c-form-label" for="WishList_ID">Move all items in basket to wish list&hellip;</label>
 							<mvt:elseif expr="miva_array_search( l.settings:parsed_actions, 1, l.action, 'l.action EQ \'MPWL\'' )">
@@ -90,7 +92,7 @@
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

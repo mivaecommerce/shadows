@@ -1,13 +1,4 @@
 <mvt:if expr="l.settings:all_products:products_on_page_count GT 1">
-	<mvt:assign name="g.facet_listings" value="''"/>
-	<mvt:foreach iterator="facet" array="facets:facets">
-		<mvt:foreach iterator="facet_value" array="facet:values">
-			<mvt:if expr="l.settings:facet_value:selected">
-				<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;"/>
-				<mvt:assign name="g.facet_listings" value="'&' $ l.settings::facet:code $ '=' $ l.settings::facet_value:value"/>
-			</mvt:if>
-		</mvt:foreach>
-	</mvt:foreach>
 	<section class="u-hidden u-flex--l o-layout--align-bottom o-layout--justify-between o-layout--wrap">
 		<p class="u-color-gray-600">&mvte:all_products:total_prod_count; Items</p>
 		<div class="x-display-list-filtering">
