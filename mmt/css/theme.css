@@ -459,7 +459,8 @@
     =========================================== */
 /* Basket Page
     =========================================== */
-.t-page-bask {
+.t-page-bask,
+.t-page-bske {
 	background-color: var(--gray-100);
 }
 
@@ -680,7 +681,8 @@
 }
 
 @media (max-width: 47.999em) {
-	.t-page-bask .t-main-content-element {
+	.t-page-bask .t-main-content-element,
+	.t-page-bske .t-main-content-element {
 		padding-left: 0;
 		padding-right: 0;
 	}
@@ -737,10 +739,12 @@
 	padding-top: 0;
 }
 
-@media (max-width: 47.999em) {
+@media (max-width: 59.999em) {
 	:is(.t-page-invc, .t-page-logn, .t-page-ordl, .t-page-ords, .t-page-ocst, .t-page-osel, .t-page-opay) .t-main-content-element {
 		padding: 1rem 0 0;
 	}
+}
+@media (max-width: 47.999em) {
 	.t-logn-block {
 		margin: 2rem 2rem 0;
 		padding: 0 0 0 var(--default-spacing-unit);
@@ -1056,7 +1060,7 @@
 	padding-bottom: 1rem;
 }
 
-@media (min-width: 48em) {
+@media (min-width: 60em) {
 	.t-account-landing-section .x-collapsible-content__toggle {
 		display: none;
 	}

@@ -57,6 +57,7 @@
 			data-content-bg-color--desktop="&mvte:instance:advanced:desktop:background_color:color:output_value;"
 			data-content-theme="&mvte:instance:advanced:content_theme:value;"
 			data-overflow="&mvte:instance:advanced:mobile:overflow_behavior:value;"
+			data-fit="&mvte:instance:images_group:image_fit:value;"
 		>
 			<mvt:comment>Slotted Image</mvt:comment>
 			<picture slot="image">

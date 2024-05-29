@@ -1,4 +1,15 @@
 <mvt:foreach iterator="subscription" array="subscriptions">
+<!-- Item Image -->
+<mvt:if expr="NOT ISNULL l.settings:subscription:items[1]:imagetypes:main">
+	<div class="hide-for-mobile"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+</div>
+	<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center"><a href="&mvte:subscription:items[1]:link;" target="_blank"><img src="&mvte:global:basehref;&mvte:subscription:items[1]:imagetypes:main;" border="0" alt="&mvte:subscription:items[1]:name;" /></a></div>
+	<div class="hide-for-mobile"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+</div>
+	<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
+</mvt:if>
+<!-- END Item Image -->
+
 <!-- Table -->
 <table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
@@ -81,6 +92,9 @@
 						<td valign="top" style="&mvte:item_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left"></td>
 						<td valign="top" style="&mvte:item_padding;">
 							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
+								<mvt:if expr="l.settings:item:base_price NE l.settings:item:price">
+									<strike>&mvt:item:formatted_base_price;</strike>
+								</mvt:if>
 								&mvt:item:formatted_price;
 							</div>
 						</td>
@@ -88,6 +102,9 @@
 						<td valign="top" style="&mvte:item_padding;">
 							<div class="text-1-right" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
 								
+								<mvt:if expr="l.settings:item:subtotal_base_price NE l.settings:item:subtotal">
+									<strike>&mvt:item:formatted_subtotal_base_price;</strike>
+								</mvt:if>
 								&mvt:item:formatted_subtotal;
 							</div>
 						</td>
@@ -125,7 +142,10 @@
 							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left"></td>
 							<td valign="top" style="&mvte:option_padding;">
 								<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-									<mvt:if expr="l.settings:option:price">
+									<mvt:if expr="l.settings:option:base_price OR l.settings:option:price">
+										<mvt:if expr="l.settings:option:base_price NE l.settings:option:price">
+											<strike>&mvt:option:formatted_base_price;</strike>
+										</mvt:if>
 										&mvt:option:formatted_price;
 									<mvt:else>
 										&nbsp;
@@ -135,7 +155,10 @@
 							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
 							<td valign="top" style="&mvte:option_padding;">
 								<div class="text-1-right" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-									<mvt:if expr="l.settings:option:subtotal">
+									<mvt:if expr="l.settings:option:subtotal_base_price OR l.settings:option:subtotal">
+										<mvt:if expr="l.settings:option:subtotal_base_price NE l.settings:option:subtotal">
+											<strike>&mvt:option:formatted_subtotal_base_price;</strike>
+										</mvt:if>
 										&mvt:option:formatted_subtotal;
 									<mvt:else>
 										&nbsp;

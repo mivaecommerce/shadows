@@ -7,6 +7,12 @@
             "template_filename": "invc-header.mvc"
         }
     },
+    "http_headers": [
+        {
+            "name": "Cache-Control",
+            "value": "no-store"
+        }
+    ],
     "order_contents": {
         "advanced": 1,
         "b_height": 128,

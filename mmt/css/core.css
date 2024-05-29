@@ -1376,11 +1376,6 @@ small {
 	top: 0;
 }
 
-.c-dialog__overlay,
-.c-dialog__container {
-	will-change: transform;
-}
-
 .c-dialog__container {
 	background-color: var(--white);
 	border-radius: 0.75rem;

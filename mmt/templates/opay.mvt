@@ -16,11 +16,11 @@
 			    const balance_amount = document.querySelector('[data-hook="payment-balance-amount"]');
 			    const amount = document.querySelector('[data-hook="payment-amount"]');
 			    const additional = document.querySelector('[data-hook="payment-additional"]');
-			
+
 			    if (amountType === 'total') {
 			        amount.disabled = true;
 			        additional.classList.add('u-hidden');
-			
+
 			        if (balance_amount) {
 			            balance_amount.disabled = true;
 			        }
@@ -28,7 +28,7 @@
 			    else if (amountType === 'balance') {
 			        amount.disabled = true;
 			        additional.classList.remove('u-hidden');
-			
+
 			        if (balance_amount) {
 			            balance_amount.disabled = false;
 			        }
@@ -36,7 +36,7 @@
 			    else if (amountType === 'partial') {
 			        amount.disabled = false;
 			        additional.classList.remove('u-hidden');
-			
+
 			        if (balance_amount) {
 			            balance_amount.disabled = true;
 			        }
@@ -72,7 +72,9 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
-			<mvt:item name="customfields" param="Write_Basket('order_instructions', g.order_instructions)"/>
+			<mvt:if expr="g.Previous_Screen EQ 'OSEL'">
+				<mvt:item name="customfields" param="Write_Basket('order_instructions', g.order_instructions)"/>
+			</mvt:if>
 			<mvt:item name="customfields" param="Read_Basket('order_instructions', g.order_instructions)"/>
 		</div>
 	</section>
@@ -88,7 +90,7 @@
 				<mvt:else>
 					<mvt:assign name="l.settings:url" value="l.settings:urls:INVC:secure" />
 				</mvt:if>
-				
+
 				<form data-hook="opay-form" method="post" action="&mvte:url;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
@@ -208,7 +210,7 @@
 														<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What's This? <span class="u-icon-question" aria-hidden="true"></span></button>
 													</span>
 												</div>
-		
+
 												<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
 													<div class="c-dialog__overlay" tabindex="-1">
 														<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
@@ -274,7 +276,7 @@
 													(() => {
 														let thisFunction = document.querySelector('#&mvte:field:code;-script');
 														let ccCvv = thisFunction.previousElementSibling;
-													
+
 														ccCvv.setAttribute('inputmode', 'numeric');
 														ccCvv.setAttribute('pattern', '[0-9]*');
 													})();
@@ -293,14 +295,14 @@
 														(() => {
 															let thisFunction = document.querySelector('#&mvte:field:code;-script');
 															let ccCvv = thisFunction.previousElementSibling;
-														
+
 															ccCvv.setAttribute('inputmode', 'numeric');
 															ccCvv.setAttribute('pattern', '[0-9]*');
 														})();
 													</script>
 												</div>
 												<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What's This?</button>
-		
+
 												<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
 													<div class="c-dialog__overlay" tabindex="-1">
 														<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
@@ -317,7 +319,7 @@
 														</div>
 													</div>
 												</div>
-												
+
 											</div>
 										<mvt:elseif expr="'fname' CIN l.settings:field:code">
 											<div class="t-payment-form__field-set t-payment-form__field-fname" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-given-name">
@@ -351,7 +353,7 @@
 								</div>
 							</div>
 						</mvt:if>
-						
+
 						<mvt:if expr="l.settings:payment:capabilities:split">
 							<hr class="c-keyline">
 							<div class="c-form-list u-text-uppercase">
@@ -360,21 +362,21 @@
 								<mvt:else>
 									<p class="c-heading-foxtrot">Payment Amount</p>
 								</mvt:if>
-		
+
 								<div class="c-form-list__item">
 									<mvt:if expr="( NOT l.settings:payment:capabilities:balance ) OR ( l.settings:payment:balance GE l.settings:splitpayment:remaining )">
 										<mvt:if expr="NOT g.UI_Exception">
 											<mvt:assign name="g.AmountType" value="'total'" />
 											<mvt:assign name="g.Amount" value="l.settings:splitpayment:remaining ROUND 2" />
 										</mvt:if>
-									
+
 										<label class="c-form-checkbox c-form-checkbox--radio">
 											<mvt:if expr="g.AmountType EQ 'total'">
 												<input class="c-form-checkbox__input" type="radio" name="AmountType" value="total" onclick="AmountType_Changed( this.value );" checked>
 											<mvt:else>
 												<input class="c-form-checkbox__input" type="radio" name="AmountType" value="total" onclick="AmountType_Changed( this.value );">
 											</mvt:if>
-										
+
 											<mvt:if expr="NOT ISNULL l.settings:payment:split_data">
 												<span class="c-form-checkbox__caption">Remaining Order Total (&mvt:payment:formatted_remaining;)</span>
 											<mvt:else>
@@ -386,7 +388,7 @@
 											<mvt:assign name="g.AmountType" value="'balance'" />
 											<mvt:assign name="g.Amount" value="l.settings:payment:balance ROUND 2" />
 										</mvt:if>
-	
+
 										<label class="c-form-checkbox c-form-checkbox--radio">
 											<mvt:if expr="g.AmountType EQ 'balance'">
 												<input data-hook="payment-balance-amount" type="hidden" name="Amount" value="&mvte:payment:balance;">
@@ -411,7 +413,7 @@
 									</label>
 								</div>
 							</div>
-		
+
 							<mvt:if expr="g.AmountType EQ 'total'">
 								<mvt:assign name="l.settings:display" value="'u-hidden'" />
 							<mvt:else>
@@ -452,7 +454,7 @@
 								</div>
 							</section>
 						</mvt:if>
-						
+
 						<div class="c-form-list">
 							<div class="c-form-list__item c-form-list__item--full">
 								<div class="t-payment-cta">
@@ -462,7 +464,7 @@
 											    if (MivaPay && (typeof MivaPay.Submit === 'function')) {
 											        MivaPay.Submit(() => {
 											            let form;
-											
+
 											            form = document.querySelector('[data-hook="opay-form"]');
 											            form.submit();
 											        });
@@ -502,7 +504,7 @@
 			<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

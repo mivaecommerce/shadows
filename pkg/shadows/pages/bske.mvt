@@ -20,22 +20,23 @@
 		</div>
 	</section>
 
-	<section class="o-layout t-basket__product-contents">
+	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
-			<script>
-				function continueShopping(link) {
-					if (sessionStorage.getItem('continue_url')) {
-						link.href = sessionStorage.getItem('continue_url');
+			<div class="t-basket__product-contents">
+				<script>
+					function continueShopping(link) {
+						if (sessionStorage.getItem('continue_url')) {
+							link.href = sessionStorage.getItem('continue_url');
+						}
 					}
-				}
-			</script>
-			<div class="x-messages x-messages--info">
-				<strong>Your shopping cart is currently empty.</strong> <a href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
+				</script>
+				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
+				<p>Your shopping cart is currently empty.</p>
+				<a class="c-button" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
 			</div>
 		</div>
 	</section>
-	
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.09.00",
+	"version": "10.09.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -1423,7 +1423,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-cV4vTrbWpzHa2h4cB3Xu5/wjRGKcVD+zjTW4GfCWz7Y= sha384-RqkgzwJOlyl4UyuB/tKcmBGsixk3gqnd4IHoTeerjMpVACpkoa5K2H+6BwAxxQzE sha512-ieS53r6NBGBaS9Ro/PbhtdTrkVDEww9zno41O8fDOrvCrijwqUHoVIHbBCZJY9AgVLtEGrCRS9943TM2DQ3+ag=="
+					"value": "sha256-2Ixh7TFi8hHZ9KpR1HQWUn6ZYJytXcdU88PPOAcXrok= sha384-pxHH354fOcjmO4LJ9fe6chzPWAaB3N+pXM8i6nlbCzxyD5zWaD72pO6fPvNrDT20 sha512-+OvjEy06qLEhRWMwOF1n7+Psaz8qCpElUAt8aJOEEN92+75/c59DuMKe2Jmh90+2JghxW99HO5xiVc2J/97sDA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1451,7 +1451,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-jT3Z7BdshDmH/MOzzYIEZBKzFMW3IfHM/PUdQbJzVas= sha384-1daHizkz4H1XbT4qHCky+Kt9P311MsEzd9blUT5LlsFVILY1vMLJKNGaDxwOKwIK sha512-GXy8r9kCVO7Alch7IyEf67VzWLxYSxxQRHSdqas48ejb6KrYj8u5ssqo1b+v/b3cZzZ+eLhkpodA4Lg4tClCdg=="
+					"value": "sha256-Qds7sMThnlLO+ncwACEklEtJf9bj/1ObxSgR+JkjSyE= sha384-t3Snuv6SrEwHv0qiDv9y1LDjdorZJZNNecBhFdtqoCpv/Spm0hKzn9SUaav7/cOm sha512-t4fO5x/FShAQFQU1IXm3AHYEFiBum71E4xMUVzuBiYAyFfwJYgTnT5tTPXDm9Yf1Po7Xj+sEUH/Jb+YtQbX2UA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1461,9 +1461,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.00",
-		"mmx-button": "=10.09.00",
-		"mmx-hero": "=10.09.00",
-		"mmx-text": "=10.09.00"
+		"mmx-base": "=10.09.01",
+		"mmx-button": "=10.09.01",
+		"mmx-hero": "=10.09.01",
+		"mmx-text": "=10.09.01"
 	}
 }

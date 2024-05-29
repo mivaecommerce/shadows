@@ -2,7 +2,7 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "10.09.00",
+	"version": "10.09.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
@@ -318,6 +318,33 @@
 						}
 					],
 					"prompt": "Image Height",
+					"type": "select"
+				},
+				{
+					"code": "image_fit",
+					"options": [
+						{
+							"text": "Cover",
+							"value": "cover"
+						},
+						{
+							"text": "Contain",
+							"value": "contain"
+						},
+						{
+							"text": "Fill",
+							"value": "fill"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						},
+						{
+							"text": "Scale Down",
+							"value": "scale-down"
+						}
+					],
+					"prompt": "Image Fit",
 					"type": "select"
 				},
 				{
@@ -1379,6 +1406,9 @@
 			}
 		},
 		"images_group": {
+			"image_fit": {
+				"value": "cover"
+			},
 			"image_size": {
 				"value": "auto"
 			},
@@ -1512,9 +1542,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.00",
-		"mmx-button": "=10.09.00",
-		"mmx-hero": "=10.09.00",
-		"mmx-text": "=10.09.00"
+		"mmx-base": "=10.09.01",
+		"mmx-button": "=10.09.01",
+		"mmx-hero": "=10.09.01",
+		"mmx-text": "=10.09.01"
 	}
 }

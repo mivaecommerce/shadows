@@ -14,22 +14,22 @@
 			</mvt:if>
 		</a>
 	</div>
-	
+
 	<div class="o-layout__item u-width-3 u-width-2--xl x-fasten-header__navigation">
 		<details class="x-fasten-header__navigation-element" tabindex="-1">
 			<summary tabindex="-1"><span>Shop Categories</span></summary>
 			<nav>
-				<mvt:do name="l.result" file="g.Module_Library_DB" value="CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
+				<mvt:do name="l.result" file="g.Module_Library_DB" value="Runtime_CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
 				<ul class="x-fasten-header__navigation-list">
-					<mvt:assign name="l.settings:parent_count" value="0"/>
 					<mvt:foreach iterator="parent" array="parent_categories">
-						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
-						<mvt:assign name="l.settings:parent_count" value="l.settings:parent_count + 1"/>
-						<mvt:if expr="l.settings:parent_count LE 5">
-							<li class="x-fasten-header__navigation-item">
-								<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
-							</li>
+						<mvt:if expr="l.pos1 GT 5">
+							<mvt:foreachstop />
 						</mvt:if>
+
+						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
+						<li class="x-fasten-header__navigation-item">
+							<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
+						</li>
 					</mvt:foreach>
 					<mvt:if expr="miva_array_elements(l.settings:parent_categories) GT 5">
 						<li class="x-fasten-header__navigation-item">
@@ -40,7 +40,7 @@
 			</nav>
 		</details>
 	</div>
-	
+
 	<div class="o-layout__item u-width-4">
 		<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;">
 			<fieldset>

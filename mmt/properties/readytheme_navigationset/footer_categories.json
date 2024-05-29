@@ -2,63 +2,99 @@
     "items": [
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01\" target=\"_self\">Category 1</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-1.html\" target=\"_self\">Category 1</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01\" target=\"_self\">Category 1</a>",
             "link_dest": "category_01",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Category 1",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/category-1.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_01"
         },
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02\" target=\"_self\">Category 2</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-2.html\" target=\"_self\">Category 2</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02\" target=\"_self\">Category 2</a>",
             "link_dest": "category_02",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Category 2",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/category-2.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_02"
         },
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03\" target=\"_self\">Category 3</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-3.html\" target=\"_self\">Category 3</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03\" target=\"_self\">Category 3</a>",
             "link_dest": "category_03",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Category 3",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/category-3.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_03"
         },
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04\" target=\"_self\">Category 4</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/category-4.html\" target=\"_self\">Category 4</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04\" target=\"_self\">Category 4</a>",
             "link_dest": "category_04",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Category 4",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/category-4.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=category_04"
         },
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale\" target=\"_self\">Sale</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/sale.html\" target=\"_self\">Sale</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale\" target=\"_self\">Sale</a>",
             "link_dest": "sale",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Sale",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/sale.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=sale"
         },
         {
             "active": 1,
+            "branch_data": {
+                "1": {
+                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured\" target=\"_self\">Featured Products</a>",
+                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured"
+                }
+            },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/featured-products.html\" target=\"_self\">Featured Products</a>",
+            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured\" target=\"_self\">Featured Products</a>",
             "link_dest": "featured",
             "link_targ": "_self",
             "link_type": "C",
             "name": "Featured Products",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/featured-products.html"
+            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTGY&Category_Code=featured"
         }
     ],
     "layout": "S",

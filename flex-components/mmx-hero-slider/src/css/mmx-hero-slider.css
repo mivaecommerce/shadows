@@ -235,7 +235,8 @@
 	display: inline-block;
 	margin-left: 16px;
 	width: 10px;
-	height: 12px;
+	height: 10px;
+	padding: 0;
 	border-radius: 50%;
 	cursor: pointer;
 	outline: none;

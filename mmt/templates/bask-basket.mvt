@@ -1,24 +1,20 @@
-<mvt:if expr="(g.Action EQ 'RGRP' AND g.quote_item NE '1') OR l.settings:basket:empty">
-	<section class="o-layout t-basket__product-contents">
+<mvt:if expr="g.Action EQ 'RGRP' AND g.quote_item NE '1'">
+	<script>
+		function clickAndDisable(link) {
+			link.onclick = event => {
+				event.preventDefault();
+			}
+		}
+	</script>
+	<div class="x-messages x-messages--info">
+		<strong>&mvte:global:Restore_Name;</strong> has been removed from your cart. <a href="&mvte:urls:BASK:auto_sep;&mvte:global:Restore_Params;" onclick="clickAndDisable(this);">Undo?</a>
+	</div>
+</mvt:if>
+
+<mvt:if expr="l.settings:basket:empty">
+	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
-			<mvt:if expr="g.Action EQ 'RGRP' AND g.quote_item NE '1'">
-				<mvt:assign name="g.Quantity" value="miva_variable_value('Quantity' $ g.Restore_Counter)" />
-				<mvt:assign name="g.Restore_Name" value="miva_variable_value('Restore_Name' $ g.Restore_Counter)" />
-				<mvt:assign name="g.Restore_Params" value="miva_variable_value('Restore_Params' $ g.Restore_Counter)" />
-				<script>
-					function clickAndDisable(link) {
-						link.onclick = event => {
-							event.preventDefault();
-						}
-					}
-				</script>
-				<div class="x-messages x-messages--info">
-					<strong>&mvte:global:Restore_Name;</strong> has been removed from your cart. <a href="&mvte:urls:BASK:auto_sep;&mvte:global:Restore_Params;" onclick="clickAndDisable(this);">Undo?</a>
-				</div>
-				<mvt:assign name="g.Restore_Counter" value="g.Restore_Counter + 1" />
-			</mvt:if>
-	
-			<mvt:if expr="l.settings:basket:empty">
+			<div class="t-basket__product-contents">
 				<script>
 					function continueShopping(link) {
 						if (sessionStorage.getItem('continue_url')) {
@@ -26,13 +22,13 @@
 						}
 					}
 				</script>
-				<div class="x-messages x-messages--info">
-					<strong>Your shopping cart is currently empty.</strong> <a href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
-				</div>
-				<mvt:exit />
-			</mvt:if>
+				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
+				<p>Your shopping cart is currently empty.</p>
+				<a class="c-button" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
+			</div>
 		</div>
 	</section>
+	<mvt:exit />
 </mvt:if>
 
 <section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvte:global_minibasket:basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;">
@@ -165,7 +161,7 @@
 									</mvt:if>
 								</div>
 							</td>
-							
+
 							<td class="t-basket__product-qty" data-label="Quantity">
 								<mvt:if expr="l.settings:group:upsold">
 									<p>&mvt:group:quantity;</p>
@@ -204,7 +200,7 @@
 									</form>
 								</mvt:if>
 							</td>
-							
+
 							<td class="u-text-right t-basket__product-price" data-label="Subtotal">
 								<p>
 									<span class="u-text-medium u-block">&mvt:group:formatted_subtotal_comprehensive;</span>
@@ -221,14 +217,14 @@
 								<span class="t-basket__product-edit-save">
 									<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(125)" />
 									<mvt:assign name="l.settings:group:selectedAttributes" value="glosub(l.settings:group:selectedAttributes, ', ' $ asciichar(125), asciichar(125))" />
-									
+
 										<mvt:if expr="l.settings:group:product:productsubscriptionsettings:enabled OR miva_array_elements(l.settings:loaded_product_attributes) GT 0">
 											<button class="x-edit-basket-item" data-edit-basket-item data-basket-group="&mvte:group:group_id;" data-product-code="&mvte:group:code;" data-product-image="&mvte:group:imagetypes:main;" data-product-name="&mvte:group:name;" data-product-quantity="&mvte:group:quantity;" data-product-price="&mvte:group:formatted_subtotal_comprehensive;" data-selected-attributes="&mvte:group:selectedAttributes;" data-selected-subscription="&mvte:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
 										<template>
 											<mvt:item name="product_attributes" param="group:product_id" />
 										</template>
 									</mvt:if>
-									
+
 									<mvt:if expr="l.settings:group:product:id AND (NOT l.settings:group:product:productsubscriptionsettings:enabled OR NOT l.settings:group:product:productsubscriptionsettings:mandatory)">
 										<a class="t-basket__product-save" href="&mvte:urls:WISH:secure_sep;Action=MPWL&Group_ID=&mvta:group:group_id;">Save for Later</a>
 									</mvt:if>
@@ -239,14 +235,14 @@
 					</mvt:foreach>
 				</tbody>
 			</table>
-			
+
 			<div class="t-basket__additional-product-actions">
 				<a href="&mvte:urls:BASK:secure_sep;Action=CBSK" onclick="return confirm('Are you sure you would like to delete your entire cart?')">Clear Cart</a>
 				<a href="&mvte:urls:WISH:secure_sep;Action=MAWL">Save for Later</a>
 			</div>
 		</div>
 	</div>
-	
+
 	<aside class="o-layout__item u-width-12 u-width-4--l u-width-3--w">
 		<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, g.basket_subtotal)" />
 		<div class="t-basket__order-summary">
@@ -271,7 +267,7 @@
 							<span class="u-color-black">&mvt:basket:formatted_subtotal;</span>
 						</td>
 					</tr>
-	
+
 					<tr class="c-table-simple__row u-color-gray-600">
 						<td class="c-table-simple__cell u-flex o-layout--justify-between">
 							<span>Shipping</span>
@@ -280,7 +276,7 @@
 							</span>
 						</td>
 					</tr>
-					
+
 					<mvt:foreach iterator="charge" array="basket:charges">
 						<tr class="c-table-simple__row">
 							<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -289,7 +285,7 @@
 							</td>
 						</tr>
 					</mvt:foreach>
-					
+
 					<mvt:foreach iterator="coupon" array="basket:coupons">
 						<tr class="c-table-simple__row u-color-gray-600">
 							<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -311,7 +307,7 @@
 							</td>
 						</tr>
 					</mvt:foreach>
-					
+
 					<tr class="c-table-simple__row u-color-gray-600">
 						<td class="c-table-simple__cell">
 							<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
@@ -348,14 +344,14 @@
 							</form>
 						</td>
 					</tr>
-					
+
 					<tr class="c-table-simple__row u-color-black t-basket__order-total">
 						<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
 							<span>Total</span>
 							<span>&mvt:basket:formatted_total;</span>
 						</td>
 					</tr>
-				
+
 					<tr>
 						<td>
 							<br>
@@ -376,7 +372,7 @@
 			</table>
 		</div>
 		<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
-		
+
 		<mvt:item name="shipestimate" />
 	</aside>
 </section>

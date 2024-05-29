@@ -34,7 +34,7 @@
 		<div class="o-layout__item u-width-12 u-width-9--l">
 			<div class="o-layout">
 				<div class="o-layout__item u-width-12 u-width-6--m">
-					<section class="t-account-landing-section">
+					<section class="o-layout t-account-landing-section">
 						<div class="o-layout__item u-width-12">
 							<div class="o-layout o-layout--align-center">
 								<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Personal Information</span>
@@ -67,10 +67,10 @@
 						</div>
 					</section>
 				</div>
-				
+
 				<mvt:if expr="l.settings:paymentsettings:mivapay:enabled">
 					<div class="o-layout__item u-width-12 u-width-6--m">
-						<section class="t-account-landing-section">
+						<section class="o-layout t-account-landing-section">
 							<div class="o-layout__item u-width-12">
 								<div class="o-layout o-layout--align-center">
 									<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Payment Options</span>
@@ -90,8 +90,8 @@
 					</div>
 				</mvt:if>
 			</div>
-			
-			<section class="t-account-landing-section">
+
+			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
 						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Order History</span>
@@ -108,8 +108,8 @@
 					<mvt:item name="orderhistory_list" />
 				</div>
 			</section>
-			
-			<section class="t-account-landing-section">
+
+			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
 						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Customer Credit</span>
@@ -154,8 +154,8 @@
 					</form>
 				</div>
 			</section>
-			
-			<section class="t-account-landing-section">
+
+			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
 						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Address Book</span>
@@ -172,8 +172,8 @@
 					<mvt:item name="addressbook" />
 				</div>
 			</section>
-			
-			<section class="t-account-landing-section">
+
+			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
 						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Wish Lists</span>
@@ -215,13 +215,13 @@
 					</mvt:if>
 				</div>
 			</section>
-			
+
 		</div>
 		<aside class="o-layout__item u-width-12 u-width-3--l">
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

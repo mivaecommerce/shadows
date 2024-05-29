@@ -26,12 +26,13 @@
 				<mvt:item name="readytheme" param="contentsection( 'checkout_steps' )" />
 				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
-	
+
 				<form class="t-osel-form" method="post" action="&mvte:urls:OPAY:secure;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<mvt:item name="tax" />
 						<input type="hidden" name="Action" value="SHIP,PSHP,CTAX" />
+						<input type="hidden" name="Previous_Screen" value="OSEL" />
 						<p class="c-heading-foxtrot">Shipping Method</p>
 						<div class="c-form-list t-shipping-methods">
 							<mvt:if expr="ISNULL l.settings:shippingmethods">
@@ -186,7 +187,7 @@
 			<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

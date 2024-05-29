@@ -407,7 +407,7 @@ class MMX_Hero extends MMX_Element {
 			return 'ratio';
 		}
 
-		// Handle width & height dimentions
+		// Handle width & height dimensions
 		const dimensions = this.getSizeDimensions();
 		if (dimensions?.width > 0 && dimensions?.height > 0) {
 			return 'dimensions';
@@ -543,8 +543,8 @@ class MMX_Hero extends MMX_Element {
 		const size = this.getPropValue('size');
 
 		if (sizeMethod === 'preset') {
-			const apsectRatio = this.sizeToRatioMap[size];
-			const [width, height] = apsectRatio.split(' / ');
+			const aspectRatio = this.sizeToRatioMap[size];
+			const [width, height] = aspectRatio.split(' / ');
 			return this.getIframeObjectFitStylesSizeIsPreset(width, height);
 		}
 

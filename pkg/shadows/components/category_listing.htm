@@ -1,13 +1,4 @@
 <Page_Update code="CTGY"><Item code="category_listing"><Mode>Category</Mode><NoCategoryCodeInLinks>Yes</NoCategoryCodeInLinks><ImageMachineEnabled>No</ImageMachineEnabled><ProductsPerPage>12</ProductsPerPage><PageCountNumber>3</PageCountNumber><ItemsPerPage>Yes</ItemsPerPage><SortBySwitch>Yes</SortBySwitch><SortByName>No</SortByName><SortByCode>No</SortByCode><SortByBest>Yes</SortByBest><SortByPrice>Yes</SortByPrice><SortByNew>Yes</SortByNew><SortByRelevance>No</SortByRelevance><DefaultSort>disp_order</DefaultSort><ReverseDefaultDisplayOrder>false</ReverseDefaultDisplayOrder><Fields><Name/><Code/><Price/></Fields><PriceDisplay>Sale</PriceDisplay><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>Yes</PredictDiscounts><Template><![CDATA[<mvt:if expr="l.settings:category_listing:products_on_page_count GT 1">
-	<mvt:assign name="g.facet_listings" value="''"/>
-	<mvt:foreach iterator="facet" array="facets:facets">
-		<mvt:foreach iterator="facet_value" array="facet:values">
-			<mvt:if expr="l.settings:facet_value:selected">
-				<input type="hidden" name="&mvte:facet:code;" value="&mvte:facet_value:value;"/>
-				<mvt:assign name="g.facet_listings" value="'&' $ l.settings::facet:code $ '=' $ l.settings::facet_value:value"/>
-			</mvt:if>
-		</mvt:foreach>
-	</mvt:foreach>
 	<section class="o-layout--align-bottom o-layout--justify-between o-layout--wrap u-flex--l u-hidden">
 		<p class="u-color-gray-600">&mvte:category_listing:total_prod_count; Items</p>
 		<div class="x-display-list-filtering">

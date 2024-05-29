@@ -131,9 +131,9 @@ class MMX_CategoryCarousel extends MMX_Element {
 	}
 
 	renderCategories() {
-		const chilren = MMX.copy(this?.data?.category_group?.categories?.children || []);
+		const children = MMX.copy(this?.data?.category_group?.categories?.children || []);
 
-		if (!chilren?.length){
+		if (!children?.length){
 			return '';
 		}
 
@@ -152,7 +152,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				data-nav-position="${this.getPropValue('nav-position')}"
 				data-wrap="${this.getPropValue('wrap')}"
 			>
-				${chilren.map(child => this.renderCategory(child)).join('')}
+				${children.map(child => this.renderCategory(child)).join('')}
 			</mmx-hero-slider>
 		`;
 	}

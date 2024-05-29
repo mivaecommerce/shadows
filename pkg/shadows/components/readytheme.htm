@@ -64,7 +64,7 @@
 <mvt:if expr="g.Action EQ 'RCPN' AND ISNULL l.settings:messages:error_message_count">
 	<p class="x-messages x-messages--info">Your Promo Code Has Been Removed</p>
 </mvt:if>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-global-messeges</CSS_Class></ContentSection_Add><ContentSection_Delete code="forgot-password"/><ContentSection_Add><Active>true</Active><Code>forgot-password</Code><Name>Forgot Password Modal Dialog</Name><Description/><Template><![CDATA[<div class="c-dialog" data-dialog="forgot-password" aria-hidden="true">
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-global-messages</CSS_Class></ContentSection_Add><ContentSection_Delete code="forgot-password"/><ContentSection_Add><Active>true</Active><Code>forgot-password</Code><Name>Forgot Password Modal Dialog</Name><Description/><Template><![CDATA[<div class="c-dialog" data-dialog="forgot-password" aria-hidden="true">
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container" aria-labelledby="forgot-password-title" aria-modal="true" role="dialog">
 			<header class="c-dialog__header">
@@ -789,22 +789,22 @@
 			</mvt:if>
 		</a>
 	</div>
-	
+
 	<div class="o-layout__item u-width-3 u-width-2--xl x-fasten-header__navigation">
 		<details class="x-fasten-header__navigation-element" tabindex="-1">
 			<summary tabindex="-1"><span>Shop Categories</span></summary>
 			<nav>
-				<mvt:do name="l.result" file="g.Module_Library_DB" value="CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
+				<mvt:do name="l.result" file="g.Module_Library_DB" value="Runtime_CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
 				<ul class="x-fasten-header__navigation-list">
-					<mvt:assign name="l.settings:parent_count" value="0"/>
 					<mvt:foreach iterator="parent" array="parent_categories">
-						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
-						<mvt:assign name="l.settings:parent_count" value="l.settings:parent_count + 1"/>
-						<mvt:if expr="l.settings:parent_count LE 5">
-							<li class="x-fasten-header__navigation-item">
-								<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
-							</li>
+						<mvt:if expr="l.pos1 GT 5">
+							<mvt:foreachstop />
 						</mvt:if>
+
+						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
+						<li class="x-fasten-header__navigation-item">
+							<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
+						</li>
 					</mvt:foreach>
 					<mvt:if expr="miva_array_elements(l.settings:parent_categories) GT 5">
 						<li class="x-fasten-header__navigation-item">
@@ -815,7 +815,7 @@
 			</nav>
 		</details>
 	</div>
-	
+
 	<div class="o-layout__item u-width-4">
 		<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;">
 			<fieldset>
@@ -996,7 +996,7 @@
 		</mvt:if>
 	</p>
 </section>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt>Shadows ReadyTheme</Alt><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt>Shadows ReadyTheme</Alt></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12 &mvte:global:Session:shadows:checkout_hidden;" data-hook="transfigure-navigation">
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12 &mvte:global:Session:shadows:checkout_hidden;" data-hook="transfigure-navigation">
 	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
 		<header class="x-transfigure-navigation__header o-layout--justify-between u-flex u-hidden--l" hidden>
 			<mvt:if expr="g.Basket:cust_id EQ 0">

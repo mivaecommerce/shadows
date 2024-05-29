@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.09.00",
+	"version": "10.09.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -1002,7 +1002,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-iKnQo44iEJGGB9QKqYlY+/cxUWDl3bxL6zG8e0Ff8FE= sha384-OSIMRCafwAXx/Zd9B6VjxzQeiX/boJndkydWv64eSvkHz3JTGH/6rpVuh7OmXl+G sha512-7Pi7ETT2yFNeXWDIu9tUUikopav7Rlp3Uik3uf6L35zRybLihblFhFp6Y7rUClwZeVbCwlzFJ22mNlBZblZ5tA=="
+					"value": "sha256-lORsFTp0S0a6j4rgI1WPLHbLT6KP8vtDFsBKoTzCCBg= sha384-XZcpr6xUgbw6z0Z0Ap2xD9712QsegI72zk98gT+EM9aGiXQGbbY2PcPdgGfjd2sq sha512-OcAuhVypdr0kaAx5iZoSNxrYtqoCQUU+9q+/eLmsB8J0QigSom1IFzlosIh33oDouXzDJX7ie0EM7gl6CEVAkA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1040,10 +1040,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.00",
-		"mmx-button": "=10.09.00",
-		"mmx-hero": "=10.09.00",
-		"mmx-hero-slider": "=10.09.00",
-		"mmx-text": "=10.09.00"
+		"mmx-base": "=10.09.01",
+		"mmx-button": "=10.09.01",
+		"mmx-hero": "=10.09.01",
+		"mmx-hero-slider": "=10.09.01",
+		"mmx-text": "=10.09.01"
 	}
 }

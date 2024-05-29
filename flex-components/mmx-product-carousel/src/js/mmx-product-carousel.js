@@ -162,7 +162,7 @@ class MMX_ProductCarousel extends MMX_Element {
 		.then(response => {
 			// Sort products by manual sort order
 			response.data.data.sort((a, b) => {
-				return productCodes.indexOf(a?.code) - productCodes.indexOf(b?.code);
+				return productCodes.indexOf(MMX.normalizeCode(a?.code)) - productCodes.indexOf(MMX.normalizeCode(b?.code));
 			});
 
 			this.products.unshift(...response.data.data);
@@ -179,7 +179,7 @@ class MMX_ProductCarousel extends MMX_Element {
 		}
 
 		return products.reduce((codes, product) => {
-			const code = product?.product?.code;
+			const code = MMX.normalizeCode(product?.product?.code);
 			if (!MMX.valueIsEmpty(code) && codes.indexOf(code) === -1) {
 				codes.push(code);
 			}
