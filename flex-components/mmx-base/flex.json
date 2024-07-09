@@ -2,7 +2,7 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "10.09.01",
+	"version": "10.09.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
@@ -54,18 +54,18 @@
 		}
 	],
 	"conflicts": {
-		"mmx-category-carousel": "<10.09.01",
-		"mmx-featured-product": "<10.09.01",
-		"mmx-hero": "<10.09.01",
-		"mmx-hero-slider": "<10.09.01",
-		"mmx-icons": "<10.09.01",
-		"mmx-image-across": "<10.09.01",
-		"mmx-image-and-text": "<10.09.01",
-		"mmx-product-carousel": "<10.09.01",
-		"mmx-quick-order": "<10.09.01",
-		"mmx-text-area": "<10.09.01",
-		"mmx-text-banner": "<10.09.01",
-		"mmx-text-editor": "<10.09.01",
-		"mmx-video": "<10.09.01"
+		"mmx-category-carousel": "<10.09.02",
+		"mmx-featured-product": "<10.09.02",
+		"mmx-hero": "<10.09.02",
+		"mmx-hero-slider": "<10.09.02",
+		"mmx-icons": "<10.09.02",
+		"mmx-image-across": "<10.09.02",
+		"mmx-image-and-text": "<10.09.02",
+		"mmx-product-carousel": "<10.09.02",
+		"mmx-quick-order": "<10.09.02",
+		"mmx-text-area": "<10.09.02",
+		"mmx-text-banner": "<10.09.02",
+		"mmx-text-editor": "<10.09.02",
+		"mmx-video": "<10.09.02"
 	}
 }

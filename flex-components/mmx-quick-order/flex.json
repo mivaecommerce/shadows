@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.09.01",
+	"version": "10.09.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -2413,10 +2413,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.01",
-		"mmx-button": "=10.09.01",
-		"mmx-csv": "=10.09.01",
-		"mmx-icons": "=10.09.01",
-		"mmx-text": "=10.09.01"
+		"mmx-base": "=10.09.02",
+		"mmx-button": "=10.09.02",
+		"mmx-csv": "=10.09.02",
+		"mmx-icons": "=10.09.02",
+		"mmx-text": "=10.09.02"
 	}
 }

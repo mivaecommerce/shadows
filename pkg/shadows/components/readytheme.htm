@@ -756,6 +756,9 @@
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="mini_basket"/><ContentSection_Add><Active>true</Active><Code>mini_basket</Code><Name>Extension: Global Mini-Basket</Name><Description/><Template><![CDATA[<mvt:item name="global_minibasket" />]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="helpful_info"/><ContentSection_Add><Active>true</Active><Code>helpful_info</Code><Name>Helpful Info</Name><Description>This section appears on the basket and checkout pages.</Description><Template><![CDATA[<p class="c-heading--subheading--small">Need Help?</p>
 <p class="u-color-gray-600"><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
 <p class="u-color-gray-600"><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
+<mvt:if expr="g.Basket:basket_id GT 0">
+	<p class="u-color-gray-600"><span class="u-icon-cart-empty" aria-hidden="true"></span>Basket ID: &mvte:global:Basket:basket_id;</p>
+</mvt:if>
 <p class="u-color-gray-600"><span class="u-icon-document" aria-hidden="true"></span><a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp">Shipping & Return Policy</a></p>
 
 <div class="c-dialog" data-dialog="sarp" aria-hidden="true">

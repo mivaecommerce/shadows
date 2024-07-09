@@ -254,26 +254,18 @@ class MMX_CombinationFacet extends MMX_Element {
 		return this.shadowRoot.querySelector('.mmx-combination-facet__form');
 	}
 
-	#formIsValid() {
-		return this.#allRequiredDropdownsHaveValues();
-	}
-
 	#onFormSubmit(e) {
+		e.preventDefault();
+
 		if (this.#hasAppliedValues()) {
-			e.preventDefault();
 			this.#clearCookie();
 			return;
 		}
 
-		this.submitForm(e);
+		this.submitForm();
 	}
 
-	submitForm(e) {
-		if (!this.#formIsValid()) {
-			e?.preventDefault();
-			return;
-		}
-
+	submitForm() {
 		this.#setCookie();
 	}
 
@@ -361,10 +353,6 @@ class MMX_CombinationFacet extends MMX_Element {
 
 	#allDropdownsHaveValues() {
 		return this.#allDropdownValues().length === this.#fieldCount();
-	}
-
-	#allRequiredDropdownsHaveValues() {
-		return this.#allDropdownValues().length >= this.#fieldCount() - this.#optionalDropdownCount();
 	}
 
 	#allDropdownValues() {
@@ -472,7 +460,7 @@ class MMX_CombinationFacet extends MMX_Element {
 		.then(response => {
 			this.#afterLoadAppliedValues(response.data);
 		})
-		.catch(response => {}) ;
+		.catch(response => {});
 	}
 
 	#afterLoadAppliedValues(appliedValues) {
@@ -524,7 +512,7 @@ class MMX_CombinationFacet extends MMX_Element {
 		.then(response => {
 			this.#afterLoadFieldValues(response.data, fieldIndex);
 		})
-		.catch(response => {}) ;
+		.catch(response => {});
 	}
 
 	#afterLoadFieldValues(values, fieldIndex) {
@@ -597,7 +585,7 @@ class MMX_CombinationFacet extends MMX_Element {
 		.then(() => {
 			this.#afterSetCookie();
 		})
-		.catch(response => {}) ;
+		.catch(response => {});
 	}
 
 	#afterSetCookie() {
@@ -617,7 +605,7 @@ class MMX_CombinationFacet extends MMX_Element {
 		.then(() => {
 			this.#afterClearCookie();
 		})
-		.catch(response => {}) ;
+		.catch(response => {});
 	}
 
 	#afterClearCookie() {

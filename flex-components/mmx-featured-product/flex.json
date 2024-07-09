@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.09.01",
+	"version": "10.09.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -1040,10 +1040,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.01",
-		"mmx-button": "=10.09.01",
-		"mmx-hero": "=10.09.01",
-		"mmx-hero-slider": "=10.09.01",
-		"mmx-text": "=10.09.01"
+		"mmx-base": "=10.09.02",
+		"mmx-button": "=10.09.02",
+		"mmx-hero": "=10.09.02",
+		"mmx-hero-slider": "=10.09.02",
+		"mmx-text": "=10.09.02"
 	}
 }
