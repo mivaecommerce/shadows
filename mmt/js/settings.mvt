@@ -2,7 +2,7 @@ theme_path = '&mvt:global:theme_path;/';
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.09.01';
+	mivaJS.ReadyThemeVersion = '10.09.02';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

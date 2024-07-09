@@ -2,7 +2,7 @@
 	"code": "mmx-combination-facet",
 	"name": "Combination Facet",
 	"type": "component",
-	"version": "10.09.01",
+	"version": "10.09.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-combination-facet",
 	"category": "combination-facet",
@@ -1507,7 +1507,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-IOyKMUhHDPhXHh3DQn09V6cfKXYxPeH4yiu6BG/HoVM= sha384-6r/QnjGtpJMT4LY0j7x4XVRAKmEQh6De+SmLgQ0G+RN2h+0BtA68eiWs5bSYE2aY sha512-+k3ElkVgjAMxgpIfs1xZ+4D2sdwkSydn06kDdNmQLKocq21PM8ADNxXoFKloq9K/G42VOAHDKo+ziCF6WUVGMg=="
+					"value": "sha256-OGQweJ271dz99CKIm9CSB41tYSUVhQM3ytjS0Ub1//4= sha384-UwTf9LE0tYVIJO7Y/MAjEVDxC1GG66ExG9BCMkr3W+F+4kBCowCFnPqTney8wA0h sha512-PFXt+8SIiq/LPJYp/x/FvThZ+DFwZhPqxnykOGEwrMWyvZmKivN1h6C/Ei/fvNz1+5cmFqhmd6bRKVANFhOCuw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1545,9 +1545,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.01",
-		"mmx-button": "=10.09.01",
-		"mmx-hero": "=10.09.01",
-		"mmx-text": "=10.09.01"
+		"mmx-base": "=10.09.02",
+		"mmx-button": "=10.09.02",
+		"mmx-hero": "=10.09.02",
+		"mmx-text": "=10.09.02"
 	}
 }
