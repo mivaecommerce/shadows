@@ -2,10 +2,12 @@
 	"code": "mmx-video",
 	"name": "Video",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-video",
 	"category": "video",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "video",
@@ -74,6 +76,7 @@
 							"value": "center-right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Content Placement",
 					"type": "selector"
 				},
@@ -96,11 +99,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": "[slot=\"heading\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -357,6 +362,7 @@
 				},
 				{
 					"code": "subheading",
+					"preview_property_selector": "[slot=\"subheading\"]",
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
@@ -572,6 +578,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": "[slot=\"body\"]",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -792,6 +800,7 @@
 					"properties": [
 						{
 							"code": "button_text",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Text",
 							"textsettings": {
 								"fields": [
@@ -863,7 +872,9 @@
 						},
 						{
 							"code": "button_link",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Link",
+							"supports_new_tab": 1,
 							"type": "link"
 						}
 					],
@@ -967,6 +978,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -978,6 +990,7 @@
 					"code": "overlay_opacity",
 					"label": "%",
 					"precision": -1,
+					"preview_property_selector": ":scope > [slot=\"image\"]",
 					"prompt": "Video Shader Overlay",
 					"range_high": 100,
 					"range_low": 0,
@@ -999,6 +1012,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1093,15 +1107,7 @@
 				"value": "center"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 			},
 			"button": {
@@ -1191,9 +1197,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

@@ -1,0 +1,59 @@
+{
+	"code": "mmx-messages",
+	"name": "MMX Messages",
+	"type": "library",
+	"version": "10.10.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-messages",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-messages.js",
+			"resource_code": "mmx-messages",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-VvEc5Wxa5pagvRy6Fbp8gydURxUxRqVW/+JAXf+qQrw= sha384-inA3iPo+COS9bDXl5FjVzymaeJNKxEZIRfpUiIkKWXQDZfV9jF3NUdNvJ5tDff9b sha512-HndSmwwHqHSk621nrYi+/Q9dVIYXOt3XWoUC8uQMwSK/Eo+PNg1xvm0KuCz2KExj4ZmOl4qF2xbxL1QWlI2fHQ=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-messages.css",
+			"resource_code": "mmx-messages",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-CRMy+UHdNdLCzoTQCKnCvFAHhXvhi4E+CcYvD5zgUpI= sha384-PQg/MEPfAq4YgUjAzCrbVNvhyQxw3G8OrovkuFHbDN5QQJ1DTnsPjr0NhMlyLdHu sha512-ylCPRnLlnxT2jp/73BIxoeebkWpfA7b9i10qy3AZ4FRDqg2IKxLBNkK4uXfgDWxB6q0z/ucsBk7d5hNgS42MIw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.10.00"
+	}
+}

@@ -8,9 +8,18 @@
 	<mvt:assign name="l.settings:size" value="l.settings:instance:size:value" />
 </mvt:if>
 
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-video
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	class="mmx-wrapper"
@@ -55,17 +64,24 @@
 			<mmx-text
 				slot="body"
 				data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+				data-source="&mvte:instance:content:body:source;"
 				style="&mvte:instance:content:body:textsettings:styles:normal;"
 			>
-				&mvte:instance:content:body:value;
+				<mvt:if expr="l.settings:instance:content:body:source EQ 'markdown'">
+					&mvt:instance:content:body:value;
+				<mvt:else>
+					&mvte:instance:content:body:value;
+				</mvt:if>
 			</mmx-text>
 		</mvt:if>
 		<mvt:if expr="l.settings:instance:content:button:settings:enabled AND NOT ISNULL l.settings:instance:content:button:button_text:value">
+			<mvt:assign name="l.settings:instance:content:button:button_link:html:attr:target" value="ternary( l.settings:instance:content:button:button_link:new_tab, '_blank', '' )" />
 			<mmx-button
 				slot="button"
 				data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
 				data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
 				href="&mvte:instance:content:button:button_link:url;"
+				target="&mvte:instance:content:button:button_link:html:attr:target;"
 			>
 				&mvte:instance:content:button:button_text:value;
 			</mmx-button>

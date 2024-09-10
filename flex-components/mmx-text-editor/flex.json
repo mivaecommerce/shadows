@@ -2,13 +2,16 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "content",
+			"preview_property_selector": ":shadow [part~=\"content\"]",
 			"prompt": "Content",
 			"type": "texteditor"
 		}
@@ -101,6 +104,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02"
+		"mmx-base": "=10.10.00"
 	}
 }

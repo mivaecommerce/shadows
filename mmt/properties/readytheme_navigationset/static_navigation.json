@@ -5,81 +5,81 @@
             "active": 1,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
             "link_type": "G",
             "name": "About Us",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
         },
         {
             "active": 1,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
             "link_type": "G",
             "name": "Contact Us",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
         },
         {
             "active": 1,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequently Asked Questions</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequently Asked Questions</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequently Asked Questions</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">Frequently Asked Questions</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
             "link_type": "G",
             "name": "Frequently Asked Questions",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
         },
         {
             "active": 1,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
             "link_type": "G",
             "name": "Privacy Policy",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
         },
         {
             "active": 1,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp; Return Policy</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp; Return Policy</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp; Return Policy</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp; Return Policy</a>",
             "link_dest": "SARP",
             "link_targ": "_self",
             "link_type": "G",
             "name": "Shipping & Return Policy",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
         }
     ],
     "layout": "S",

@@ -1,6 +1,183 @@
 {
-    "footer_sequence": {
-        "title": "Page Builder Footer"
+    "flex": {
+        "contact-form": {
+            "component_code": "mmx-contact-form",
+            "item_code": "contact-form",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
+                "advanced": {
+                    "spacing": {
+                        "top": {
+                            "value": 0
+                        }
+                    }
+                },
+                "form": {
+                    "fields": {
+                        "children": [
+                            {
+                                "column_span": {
+                                    "value": 1
+                                },
+                                "description": {
+                                    "source": "markdown"
+                                },
+                                "is_required": {
+                                    "value": 1
+                                },
+                                "label": {
+                                    "value": "Your name"
+                                },
+                                "pattern_validation": {
+                                    "visible": 1
+                                },
+                                "placeholder": {
+                                    "visible": 1
+                                },
+                                "type": {
+                                    "value": "input:text"
+                                }
+                            },
+                            {
+                                "column_span": {
+                                    "value": 1
+                                },
+                                "description": {
+                                    "source": "markdown"
+                                },
+                                "is_required": {
+                                    "value": 1
+                                },
+                                "label": {
+                                    "value": "Your email address"
+                                },
+                                "pattern_validation": {
+                                    "visible": 1
+                                },
+                                "placeholder": {
+                                    "value": "example@email.com",
+                                    "visible": 1
+                                },
+                                "type": {
+                                    "value": "input:email"
+                                }
+                            },
+                            {
+                                "column_span": {
+                                    "value": 1
+                                },
+                                "description": {
+                                    "source": "markdown"
+                                },
+                                "is_required": {
+                                    "value": 1
+                                },
+                                "label": {
+                                    "value": "Subject"
+                                },
+                                "pattern_validation": {
+                                    "visible": 1
+                                },
+                                "placeholder": {
+                                    "visible": 1
+                                },
+                                "type": {
+                                    "value": "input:text"
+                                }
+                            },
+                            {
+                                "column_span": {
+                                    "value": 1
+                                },
+                                "description": {
+                                    "source": "markdown"
+                                },
+                                "is_required": {
+                                    "value": 1
+                                },
+                                "label": {
+                                    "value": "Message"
+                                },
+                                "pattern_validation": {
+                                    "visible": 1
+                                },
+                                "placeholder": {
+                                    "value": "Type your message here...",
+                                    "visible": 1
+                                },
+                                "type": {
+                                    "value": "textarea"
+                                }
+                            }
+                        ]
+                    },
+                    "header": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "layout": {
+                        "columns": {
+                            "value": 1
+                        },
+                        "position": {
+                            "value": "center-left"
+                        },
+                        "size": {
+                            "value": "m"
+                        },
+                        "width": {
+                            "value": 50
+                        }
+                    },
+                    "messages": {
+                        "missing_required_fields": {
+                            "source": "markdown",
+                            "value": "We noticed some missing information. Please fill out the following required fields:"
+                        },
+                        "send_email_failure": {
+                            "source": "markdown",
+                            "value": "There was problem submitting your information. Please use another method to attempt to contact us."
+                        },
+                        "send_email_success": {
+                            "source": "markdown",
+                            "value": "Thank you for your form submission! We've received your information and will be in touch shortly."
+                        }
+                    },
+                    "submit": {
+                        "button": {
+                            "value": "Submit"
+                        },
+                        "button_align": {
+                            "value": "right"
+                        }
+                    }
+                }
+            }
+        },
+        "text-editor": {
+            "component_code": "mmx-text-editor",
+            "item_code": "text-editor",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
+                "advanced": {
+                    "spacing": {
+                        "bottom": {
+                            "value": 0
+                        }
+                    }
+                },
+                "content": {
+                    "value": "<p><strong>We're Here To Help</strong><br />Your satisfaction is important to us! Use the form to email us your questions about products, online orders, store experiences and more.</p><p><strong>Order Questions:</strong><br />If you need help or have any other questions concerning your orders, please call customer support.</p>"
+                }
+            }
+        }
     },
     "hdft": {
         "footer": {
@@ -9,9 +186,6 @@
         "header": {
             "template_filename": "ctus-header.mvc"
         }
-    },
-    "header_sequence": {
-        "title": "Page Builder Header"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -25,8 +199,31 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Text Area",
+                "param": "text-editor"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Contact Form",
+                "param": "contact-form"
+            }
+        ],
+        "title": "Sequence"
     }
 }

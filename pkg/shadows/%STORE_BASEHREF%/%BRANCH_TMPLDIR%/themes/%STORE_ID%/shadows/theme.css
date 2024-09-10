@@ -297,6 +297,16 @@
 		border-bottom: var(--default-border-width) solid var(--gray-200);
 	}
 }
+/* Global Sequences
+     =========================================== */
+.t-global-sequence {
+	max-width: var(--default-content-width);
+}
+
+.t-fragment__global-header .mmx-wrapper:last-child {
+	margin-bottom: 0;
+}
+
 /* Main Element
      =========================================== */
 .t-main-content-element {
@@ -1093,21 +1103,6 @@
 	padding-left: 0;
 	padding-right: 0;
 	padding-top: calc(var(--default-spacing-unit) * 2);
-}
-
-/* FAQ Page
-=========== */
-.t-faq-content {
-	display: grid;
-	gap: var(--default-spacing-unit) calc(var(--default-spacing-unit) * 2);
-	grid-template-columns: repeat(2, 1fr);
-	place-items: flex-start stretch;
-}
-
-.t-faq-content details {
-	border: var(--default-border-width) solid var(--gray-400);
-	border-radius: calc(var(--default-border-radius) * 2);
-	padding: var(--default-spacing-unit) var(--default-spacing-unit) 0;
 }
 
 /* Site Map Page

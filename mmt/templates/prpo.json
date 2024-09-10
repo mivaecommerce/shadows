@@ -4,6 +4,10 @@
             "component_code": "mmx-text-editor",
             "item_code": "content",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "content": {
                     "value": "<p>We respect your privacy. Therefore we never share or sell your personal information with any third parties. Any information collected through this site is intended to be used for this transaction only. Your personal information is secured via SSL (Secure Socket Layer) Technology.</p>"
                 }
@@ -30,9 +34,9 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     },
     "sequence": {
         "sequence": [

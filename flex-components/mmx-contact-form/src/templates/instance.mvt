@@ -1,0 +1,477 @@
+<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
+<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
+	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
+	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+</mvt:if>
+
+<mvt:comment>Prepare Form</mvt:comment>
+<mvt:assign name="l.settings:instance:form:html:attr:name" value="tolower( glosub( slugify( l.settings:instance_item:item_code ), '-', '_' ) )" />
+
+<mvt:comment>Handle Form Submission</mvt:comment>
+<mvt:assign name="l.settings:instance:submission" value="''" />
+<mvt:assign name="l.void" value="miva_splitstring( g.Action, ',', l.settings:instance:submission:actions, 'trim,upper,noempty' )" />
+<mvt:assign name="l.settings:instance:submission:has_action" value="miva_array_search( l.settings:instance:submission:actions, 1, l.action, 'l.action EQ \'MMX_CONTACT_FORM_SUBMITTED\'' )" />
+<mvt:assign name="l.settings:instance:submission:values" value="miva_variable_value( 'g.' $ l.settings:instance:form:html:attr:name $ ':fields' )" />
+<mvt:assign name="l.settings:instance:submission:was_submitted" value="l.settings:instance:submission:has_action AND NOT ISNULL l.settings:instance:submission:values AND NOT g.UI_Exception" />
+
+<mvt:comment>Set Form Field Helpers</mvt:comment>
+<mvt:foreach iterator="field" array="instance:form:fields:children">
+	<mvt:assign name="l.settings:field:type:control" value="gettoken( l.settings:field:type:value, ':', 1 )" />
+	<mvt:assign name="l.settings:field:type:control_type" value="gettoken( l.settings:field:type:value, ':', 2 )" />
+
+	<mvt:assign name="l.settings:field:html" value="''" />
+	<mvt:assign name="l.settings:field:html:attr:name" value="l.settings:instance:form:html:attr:name $ ':fields[' $ l.pos1 $ ']'" />
+	<mvt:assign name="l.settings:field:html:attr:id" value="l.settings:instance:form:html:attr:name $ '__field-' $ l.pos1" />
+
+	<mvt:assign name="l.settings:field:html:class:required" value="ternary( l.settings:field:is_required:value, 'mmx-form-label--required', '' )" />
+	<mvt:assign name="l.settings:field:html:attr:required" value="ternary( l.settings:field:is_required:value, 'required', '' )" />
+
+	<mvt:assign name="l.settings:field:html:attr:style" value="ternary( l.settings:field:column_span:value GT 0, 'style=\"grid-column: span ' $ int(l.settings:field:column_span:value) $ ';\"', '' )" />
+
+	<mvt:comment>Text Validation</mvt:comment>
+	<mvt:if expr="l.settings:field:pattern_validation:visible">
+		<mvt:assign name="l.settings:field:html:attr:pattern" value="ternary( NOT ISNULL l.settings:field:pattern_validation:pattern:value, 'pattern=\"' $ encodeentities( l.settings:field:pattern_validation:pattern:value ) $ '\"', '' )" />
+		<mvt:assign name="l.settings:field:html:attr:dataPatternMismatch" value="ternary( NOT ISNULL l.settings:field:pattern_validation:message:value, 'data-pattern-mismatch=\"' $ encodeentities( l.settings:field:pattern_validation:message:value ) $ '\"', '' )" />
+
+	<mvt:comment>Phone Validation</mvt:comment>
+	<mvt:elseif expr="l.settings:field:phone_validation:visible">
+		<mvt:if expr="l.settings:field:phone_validation:preset_pattern:value EQ 'default' OR ISNULL l.settings:field:phone_validation:preset_pattern:value">
+			<mvt:assign name="l.settings:field:phone_validation:pattern:value" value="'^[0-9 x\+\/\(\)\-\.]+$'" />
+			<mvt:assign name="l.settings:field:phone_validation:message:value" value="'You must only provide numbers, spaces, or the following characters: +()-/.x'" />
+		<mvt:elseif expr="l.settings:field:phone_validation:preset_pattern:value EQ '000-000-0000'">
+			<mvt:assign name="l.settings:field:phone_validation:pattern:value" value="'\d{3}-\d{3}-\d{4}'" />
+			<mvt:assign name="l.settings:field:phone_validation:message:value" value="'You must provide the \"' $ l.settings:field:label:value $ '\" in the following format: ' $ l.settings:field:phone_validation:preset_pattern:value" />
+			<mvt:if expr="ISNULL l.settings:field:placeholder:value">
+				<mvt:assign name="l.settings:field:placeholder:value" value="l.settings:field:phone_validation:preset_pattern:value" />
+			</mvt:if>
+		<mvt:elseif expr="l.settings:field:phone_validation:preset_pattern:value EQ '1 (000) 000-0000 x000'">
+			<mvt:assign name="l.settings:field:phone_validation:pattern:value" value="'(\d+)?\s?\(\d{3}\) \d{3}-\d{4}(\s?x\s?\d+)?'" />
+			<mvt:assign name="l.settings:field:phone_validation:message:value" value="'You must provide the \"' $ l.settings:field:label:value $ '\" in the following format: ' $ l.settings:field:phone_validation:preset_pattern:value" />
+			<mvt:if expr="ISNULL l.settings:field:placeholder:value">
+				<mvt:assign name="l.settings:field:placeholder:value" value="l.settings:field:phone_validation:preset_pattern:value" />
+			</mvt:if>
+		<mvt:elseif expr="l.settings:field:phone_validation:preset_pattern:value EQ 'custom' AND NOT ISNULL l.settings:field:phone_validation:custom_pattern:value">
+			<mvt:assign name="l.settings:field:phone_validation:pattern:value" value="l.settings:field:phone_validation:custom_pattern:value" />
+			<mvt:assign name="l.settings:field:phone_validation:message:value" value="l.settings:field:phone_validation:custom_message:value" />
+		<mvt:elseif expr="l.settings:field:phone_validation:preset_pattern:value EQ 'none'">
+			<mvt:assign name="l.settings:field:phone_validation:pattern:value" value="''" />
+			<mvt:assign name="l.settings:field:phone_validation:message:value" value="''" />
+		</mvt:if>
+
+		<mvt:assign name="l.settings:field:html:attr:pattern" value="ternary( NOT ISNULL l.settings:field:phone_validation:pattern:value, 'pattern=\"' $ encodeentities( l.settings:field:phone_validation:pattern:value ) $ '\"', '' )" />
+		<mvt:assign name="l.settings:field:html:attr:dataPatternMismatch" value="ternary( NOT ISNULL l.settings:field:phone_validation:message:value, 'data-pattern-mismatch=\"' $ encodeentities( l.settings:field:phone_validation:message:value ) $ '\"', '' )" />
+
+	<mvt:comment>Number Validation</mvt:comment>
+	<mvt:elseif expr="l.settings:field:number_validation:visible">
+		<mvt:assign name="l.settings:field:html:attr:min" value="ternary( NOT ISNULL l.settings:field:number_validation:min:value, 'min=\"' $ encodeentities( l.settings:field:number_validation:min:value ) $ '\"', '' )" />
+		<mvt:assign name="l.settings:field:html:attr:max" value="ternary( NOT ISNULL l.settings:field:number_validation:max:value, 'max=\"' $ encodeentities( l.settings:field:number_validation:max:value ) $ '\"', '' )" />
+		<mvt:assign name="l.settings:field:html:attr:step" value="ternary( NOT ISNULL l.settings:field:number_validation:step:value, 'step=\"' $ encodeentities( l.settings:field:number_validation:step:value ) $ '\"', '' )" />
+	</mvt:if>
+
+	<mvt:assign name="l.settings:field:submission:value" value="miva_variable_value( 'l.settings:instance:submission:values[' $ l.pos1 $ ']' )" />
+	<mvt:if expr="l.settings:instance:submission:was_submitted">
+		<mvt:if expr="NOT l.settings:field:is_required:value">
+			<mvt:assign name="l.settings:field:submission:validity:is_valid" value="1" />
+		<mvt:elseif expr="l.settings:field:type:control EQ 'checkboxes'">
+			<mvt:assign name="l.settings:field:submission:validity:is_valid" value="ternary( miva_array_elements( l.settings:field:submission:value ) EQ miva_array_elements( l.settings:field:options:children ), 1, 0 )" />
+		<mvt:else>
+			<mvt:assign name="l.settings:field:submission:validity:is_valid" value="ternary( NOT ISNULL l.settings:field:submission:value, 1, 0 )" />
+		</mvt:if>
+		<mvt:assign name="l.settings:field:html:class:error" value="ternary( l.settings:field:submission:validity:is_valid, '', 'mmx-form-field--error' )" />
+		<mvt:if expr="NOT l.settings:field:submission:validity:is_valid">
+			<mvt:assign name="l.settings:instance:submission:missing_required_field_count" value="miva_array_insert_ref( l.settings:instance:submission:missing_required_fields, l.settings:field, -1 )" />
+		</mvt:if>
+	</mvt:if>
+</mvt:foreach>
+
+<mvt:comment>Validate & Process Form Submission</mvt:comment>
+<mvt:if expr="l.settings:instance:submission:was_submitted">
+	<mvt:if expr="l.settings:instance:submission:missing_required_field_count GT 0">
+		<mvt:assign name="l.settings:instance:submission:status" value="'missing_required_fields'" />
+	<mvt:else>
+		<mvt:comment>Set Email Helpers</mvt:comment>
+		<mvt:assign name="l.settings:instance:submission:email:name" value="ternary( NOT ISNULL l.settings:instance:heading:heading_text:value, l.settings:instance:heading:heading_text:value, l.settings:sequence_item:name )" />
+		<mvt:assign name="l.settings:instance:submission:email:subject" value="ternary( NOT ISNULL l.settings:instance:email:subject:value, l.settings:instance:email:subject:value, 'Form Submission for \"' $ l.settings:instance:submission:email:name $ '\" from \"' $ g.Store:name $ '\"')" />
+		<mvt:assign name="l.settings:instance:submission:email:headers" value="'Content-type: text/html; charset=' $ g.Store:charset" />
+		<mvt:assign name="l.settings:instance:submission:email:from" value="g.Store:email" />
+
+		<mvt:comment>Email To</mvt:comment>
+		<mvt:foreach iterator="recipient" array="instance:email:to:children">
+			<mvt:if expr="NOT ISNULL l.settings:recipient:email:value">
+				<mvt:assign name="l.void" value="miva_array_insert_var( l.settings:instance:submission:email:to, l.settings:recipient:email:value, -1 )" />
+			</mvt:if>
+		</mvt:foreach>
+		<mvt:if expr="NOT miva_array_elements( l.settings:instance:submission:email:to )">
+			<mvt:assign name="l.settings:instance:submission:email:to" value="g.Store:email" />
+		</mvt:if>
+
+		<mvt:comment>Email CC</mvt:comment>
+		<mvt:foreach iterator="recipient" array="instance:email:cc:children">
+			<mvt:if expr="NOT ISNULL l.settings:recipient:email:value">
+				<mvt:assign name="l.void" value="miva_array_insert_var( l.settings:instance:submission:email:cc, l.settings:recipient:email:value, -1 )" />
+			</mvt:if>
+		</mvt:foreach>
+
+		<mvt:comment>Email BCC</mvt:comment>
+		<mvt:foreach iterator="recipient" array="instance:email:bcc:children">
+			<mvt:if expr="NOT ISNULL l.settings:recipient:email:value">
+				<mvt:assign name="l.void" value="miva_array_insert_var( l.settings:instance:submission:email:bcc, l.settings:recipient:email:value, -1 )" />
+			</mvt:if>
+		</mvt:foreach>
+
+		<mvt:comment>Email Message</mvt:comment>
+		<mvt:capture variable="l.settings:instance:submission:email:message">
+			<div style="font-family: sans-serif;">
+				<h1>&mvte:instance:submission:email:name;</h1>
+				<p>A form was submitted from your "&mvte:global:Store:name;" store on the page <a href="&mvte:urls:_self:auto;">&mvte:page:name;</a> with the following information:</p>
+				<mvt:foreach iterator="field" array="instance:form:fields:children">
+					<p>
+						<div style="font-weight: bold;">&mvte:field:label:value;</div>
+						<mvt:if expr="miva_array_elements( l.settings:field:submission:value ) EQ 0">
+							<div><mvt:eval expr="glosub( encodeentities( l.settings:field:submission:value ), asciichar( 13 ) $ asciichar( 10 ), '<br />' )" /></div>
+						<mvt:else>
+							<ul>
+								<mvt:foreach iterator="value" array="field:submission:value">
+									<mvt:if expr="ISNULL l.settings:value">
+										<mvt:foreachcontinue />
+									</mvt:if>
+									<li>&mvte:value;</li>
+								</mvt:foreach>
+							</ul>
+						</mvt:if>
+					</p>
+				</div>
+			</mvt:foreach>
+		</mvt:capture>
+
+		<mvt:comment>Send Email</mvt:comment>
+		<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:submission:email:sent_sucessfully" value="v9_SendEmail( l.settings:instance:submission:email )" />
+
+		<mvt:if expr="NOT l.settings:instance:submission:email:sent_sucessfully">
+			<mvt:assign name="l.settings:instance:submission:status" value="'send_email_failure'" />
+		<mvt:else>
+			<mvt:assign name="g.status" value="'submitted'" />
+			<mvt:assign name="l.settings:instance:submission:status" value="'send_email_success'" />
+			<mvt:comment>Clear the submitted values</mvt:comment>
+			<mvt:foreach iterator="field" array="instance:form:fields:children">
+				<mvt:assign name="l.settings:field:submission" value="''" />
+			</mvt:foreach>
+		</mvt:if>
+	</mvt:if>
+</mvt:if>
+
+<mvt:comment>Background Type</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:image">
+	<mvt:assign name="l.settings:instance:form:background:overlay_bg" value="'opacity'" />
+<mvt:elseif expr="NOT ISNULL l.settings:instance:form:background:background_color:value">
+	<mvt:assign name="l.settings:instance:form:background:overlay_bg" value="'color'" />
+<mvt:else>
+	<mvt:assign name="l.settings:instance:form:background:overlay_bg" value="''" />
+</mvt:if>
+
+<mvt:comment>Background Padding</mvt:comment>
+<mvt:assign name="l.settings:instance:hero_padding" value="ternary( ISNULL l.settings:instance:form:background:img:image AND ISNULL l.settings:instance:form:background:background_color:value, 'none', 'auto' )" />
+
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
+<mvt:comment>Component</mvt:comment>
+<mmx-hero
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	class="mmx-wrapper"
+	data-content-location="&mvte:instance:form:layout:position:value;"
+	data-content-layout="text-area"
+	data-size="content"
+	data-content-width="&mvte:instance:form:layout:width:value;"
+	data-overlay-bg="&mvte:instance:form:background:overlay_bg;"
+	data-overlay-bg-color="&mvte:instance:form:background:background_color:value;"
+	data-overlay-bg-opacity="&mvte:instance:form:background:overlay_opacity:value;"
+	data-content-theme="&mvte:instance:advanced:content_theme:value;"
+	data-padding="&mvte:instance:hero_padding;"
+>
+	<mvt:comment>Background Image</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:image">
+		<picture slot="image">
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_images:mobile">
+				<mvt:assign name="l.settings:instance:form:background:img:responsive_images:mobile" value="glosub( l.settings:instance:form:background:img:responsive_images:mobile, ' ', '%20' )" />
+				<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:instance:form:background:img:responsive_images:mobile;">
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_images:tablet">
+				<mvt:assign name="l.settings:instance:form:background:img:responsive_images:tablet" value="glosub( l.settings:instance:form:background:img:responsive_images:tablet, ' ', '%20' )" />
+				<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:instance:form:background:img:responsive_images:tablet;">
+			</mvt:if>
+			<img src="&mvte:instance:form:background:img:image;" alt="&mvte:instance:form:background:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+		</picture>
+	</mvt:if>
+
+	<mvt:comment>Form</mvt:comment>
+	<form
+		slot="content"
+		method="POST"
+		action="&mvte:urls:_self:auto;"
+		data-mmx-form-validator
+		class="mmx-form mmx-form--size-&mvte:instance:form:layout:size:value;"
+		style="padding-top: &mvte:instance:advanced:padding:top:value;px; padding-bottom: &mvte:instance:advanced:padding:bottom:value;px;"
+	>
+		<input type="hidden" name="Action" value="MMX_CONTACT_FORM_SUBMITTED" />
+
+		<mvt:comment>Form Header</mvt:comment>
+		<mvt:if expr="l.settings:instance:form:header:settings:enabled">
+			<div class="mmx-form-header">
+				<mvt:if expr="NOT ISNULL l.settings:instance:form:header:subheading:value">
+					<mvt:if expr="ISNULL l.settings:instance:form:header:subheading:textsettings:fields:normal:subheading_style:value OR l.settings:instance:form:header:subheading:textsettings:fields:normal:subheading_style:value EQ 'default'">
+						<mvt:assign name="l.settings:instance:form:header:subheading:textsettings:fields:normal:subheading_style:value" value="'subheading-s'" />
+					</mvt:if>
+					<mmx-text
+						class="mmx-form-header__subheading"
+						data-style="&mvte:instance:form:header:subheading:textsettings:fields:normal:subheading_style:value;"
+						data-align="&mvte:instance:form:header:align:value;"
+						style="&mvte:instance:form:header:subheading:textsettings:styles:normal;"
+					>
+						&mvte:instance:form:header:subheading:value;
+					</mmx-text>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:instance:form:header:heading:value">
+					<mvt:if expr="ISNULL l.settings:instance:form:header:heading:textsettings:fields:normal:heading_style:value OR l.settings:instance:form:header:heading:textsettings:fields:normal:heading_style:value EQ 'default'">
+						<mvt:assign name="l.settings:instance:form:header:heading:textsettings:fields:normal:heading_style:value" value="'display-3'" />
+					</mvt:if>
+					<mmx-text
+						class="mmx-form-header__heading"
+						data-style="&mvte:instance:form:header:heading:textsettings:fields:normal:heading_style:value;"
+						data-align="&mvte:instance:form:header:align:value;"
+						data-tag="&mvte:instance:form:header:heading:textsettings:fields:normal:heading_tag:value;"
+						style="&mvte:instance:form:header:heading:textsettings:styles:normal;"
+					>
+						&mvte:instance:form:header:heading:value;
+					</mmx-text>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:instance:form:header:body:value">
+					<mvt:if expr="l.settings:instance:form:header:body:textsettings:fields:normal:body_style:value EQ 'default'">
+						<mvt:assign name="l.settings:instance:form:header:body:textsettings:fields:normal:body_style:value" value="''" />
+					</mvt:if>
+					<mmx-text
+						class="mmx-form-header__body"
+						data-style="&mvte:instance:form:header:body:textsettings:fields:normal:body_style:value;"
+						data-align="&mvte:instance:form:header:align:value;"
+						data-source="&mvte:instance:form:header:body:source;"
+						style="&mvte:instance:form:header:body:textsettings:styles:normal;"
+					>
+						<mvt:if expr="l.settings:instance:form:header:body:source EQ 'markdown'">
+							&mvt:instance:form:header:body:value;
+						<mvt:else>
+							&mvte:instance:form:header:body:value;
+						</mvt:if>
+					</mmx-text>
+				</mvt:if>
+			</div>
+		</mvt:if>
+
+		<mvt:comment>Form Submission Message</mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:submission:status">
+			<mvt:if expr="l.settings:instance:submission:status EQ 'send_email_success'">
+				<mmx-message data-style="success">
+					<mvt:if expr="l.settings:instance:form:messages:send_email_success:source EQ 'markdown'">
+						&mvt:instance:form:messages:send_email_success:value;
+					<mvt:else>
+						&mvte:instance:form:messages:send_email_success:value;
+					</mvt:if>
+				</mmx-message>
+			<mvt:elseif expr="l.settings:instance:submission:status EQ 'send_email_failure'">
+				<mmx-message data-style="error">
+					<mvt:if expr="l.settings:instance:form:messages:send_email_failure:source EQ 'markdown'">
+						&mvt:instance:form:messages:send_email_failure:value;
+					<mvt:else>
+						&mvte:instance:form:messages:send_email_failure:value;
+					</mvt:if>
+				</mmx-message>
+			<mvt:elseif expr="l.settings:instance:submission:status EQ 'missing_required_fields'">
+				<mmx-message data-style="error" data-align="left">
+					<p>
+						<mvt:if expr="l.settings:instance:form:messages:missing_required_fields:source EQ 'markdown'">
+							&mvt:instance:form:messages:missing_required_fields:value;
+						<mvt:else>
+							&mvte:instance:form:messages:missing_required_fields:value;
+						</mvt:if>
+					</p>
+					<ul>
+						<mvt:foreach iterator="missing_required_field" array="instance:submission:missing_required_fields">
+							<li><label for="&mvte:missing_required_field:html:attr:id;">&mvte:missing_required_field:label:value;</label></li>
+						</mvt:foreach>
+					</ul>
+				</mmx-message>
+			</mvt:if>
+		</mvt:if>
+
+		<div class="mmx-form-fields" style="--mmx-form-fields__column-count: &mvte:instance:form:layout:columns:value;">
+			<mvt:comment>Form Fields</mvt:comment>
+			<mvt:foreach iterator="field" array="instance:form:fields:children">
+
+				<mvt:comment>Field</mvt:comment>
+				<div class="mmx-form-field &mvte:field:html:class:error;" &mvt:field:html:attr:style;>
+
+					<mvt:comment>Field Label</mvt:comment>
+					<label
+						class="mmx-form-label &mvte:field:html:class:required;"
+						for="&mvte:field:html:attr:id;"
+					>
+						&mvte:field:label:value;
+					</label>
+
+					<mvt:comment>Field: Input</mvt:comment>
+					<mvt:if expr="l.settings:field:type:control EQ 'input'">
+						<mvt:assign name="l.settings:field:html:attr:type" value="ternary( NOT ISNULL l.settings:field:type:control_type, l.settings:field:type:control_type, 'text' )" />
+						<input
+							type="&mvte:field:html:attr:type;"
+							class="mmx-form-input mmx-form-control"
+							name="&mvte:field:html:attr:name;"
+							id="&mvte:field:html:attr:id;"
+							placeholder="&mvte:field:placeholder:value;"
+							value="&mvte:field:submission:value;"
+							&mvt:field:html:attr:pattern;
+							&mvt:field:html:attr:dataPatternMismatch;
+							&mvt:field:html:attr:min;
+							&mvt:field:html:attr:max;
+							&mvt:field:html:attr:step;
+							&mvte:field:html:attr:required;
+						>
+
+					<mvt:comment>Field: Text Area</mvt:comment>
+					<mvt:elseif expr="l.settings:field:type:control EQ 'textarea'">
+						<textarea
+							class="mmx-form-textarea mmx-form-control"
+							name="&mvte:field:html:attr:name;"
+							id="&mvte:field:html:attr:id;"
+							data-mmx-form-input-auto-height
+							placeholder="&mvte:field:placeholder:value;"
+							&mvte:field:html:attr:required;
+						>&mvte:field:submission:value;</textarea>
+
+					<mvt:comment>Field: Datalist</mvt:comment>
+					<mvt:elseif expr="l.settings:field:type:control EQ 'datalist'">
+						<mvt:assign name="l.settings:field:html:attr:list" value="l.settings:field:html:attr:id $ '-list'" />
+						<input
+							type="text"
+							class="mmx-form-input mmx-form-control"
+							name="&mvte:field:html:attr:name;"
+							id="&mvte:field:html:attr:id;"
+							list="&mvte:field:html:attr:list;"
+							placeholder="&mvte:field:placeholder:value;"
+							value="&mvte:field:submission:value;"
+							&mvte:field:html:attr:required;
+						>
+						<datalist id="&mvte:field:html:attr:list;">
+							<mvt:foreach iterator="option" array="field:options:children">
+								<option>&mvte:option:value;</option>
+							</mvt:foreach>
+						</datalist>
+
+					<mvt:comment>Field: Select</mvt:comment>
+					<mvt:elseif expr="l.settings:field:type:control EQ 'select'">
+						<div class="mmx-form-select mmx-form-control">
+							<select
+								class="mmx-form-select__dropdown"
+								name="&mvte:field:html:attr:name;"
+								id="&mvte:field:html:attr:id;"
+								&mvte:field:html:attr:required;
+							>
+								<option value="">&lt;Select One&gt;</option>
+								<mvt:foreach iterator="option" array="field:options:children">
+									<mvt:assign name="l.settings:option:html:attr:selected" value="ternary( l.settings:field:submission:value EQ l.settings:option:value, 'selected', '' )" />
+									<option &mvte:option:html:attr:selected;>&mvte:option:value;</option>
+								</mvt:foreach>
+							</select>
+						</div>
+
+					<mvt:comment>Field: Radio</mvt:comment>
+					<mvt:elseif expr="l.settings:field:type:control EQ 'radio'">
+						<fieldset class="mmx-form-fieldset mmx-form-control">
+							<mvt:foreach iterator="option" array="field:options:children">
+								<mvt:assign name="l.settings:option:html:attr:id" value="ternary( l.pos2 EQ 1, 'id=\"' $ l.settings:field:html:attr:id $ '\"', '' )" />
+								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( l.settings:field:submission:value EQ l.settings:option:value, 'checked', '' )" />
+								<label class="mmx-form-radio">
+									<input
+										type="radio"
+										class="mmx-form-radio__input"
+										name="&mvte:field:html:attr:name;"
+										value="&mvte:option:value;"
+										&mvt:option:html:attr:id;
+										&mvte:field:html:attr:required;
+										&mvte:option:html:attr:checked;
+									/>
+									<span class="mmx-form-caption">
+										&mvte:option:value;
+									</span>
+								</label>
+							</mvt:foreach>
+						</fieldset>
+
+					<mvt:comment>Field: Checkboxes</mvt:comment>
+					<mvt:elseif expr="l.settings:field:type:control EQ 'checkboxes'">
+						<fieldset class="mmx-form-fieldset mmx-form-control">
+							<mvt:foreach iterator="option" array="field:options:children">
+								<mvt:assign name="l.settings:option:html:attr:id" value="ternary( l.pos2 EQ 1, 'id=\"' $ l.settings:field:html:attr:id $ '\"', '' )" />
+								<mvt:assign name="l.settings:option:html:attr:name" value="l.settings:field:html:attr:name $ '[' $ l.pos2 $ ']'" />
+								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( miva_array_find( l.settings:option:value, l.settings:field:submission:value, 1 ) , 'checked', '' )" />
+								<label class="mmx-form-checkbox">
+									<input
+										type="checkbox"
+										class="mmx-form-checkbox__input"
+										name="&mvte:option:html:attr:name;"
+										value="&mvte:option:value;"
+										&mvt:option:html:attr:id;
+										&mvte:field:html:attr:required;
+										&mvte:option:html:attr:checked;
+									/>
+									<span class="mmx-form-caption">
+										&mvte:option:value;
+									</span>
+								</label>
+							</mvt:foreach>
+						</fieldset>
+					</mvt:if>
+
+					<mvt:comment>Field: Description</mvt:comment>
+					<mvt:if expr="NOT ISNULL l.settings:field:description:value">
+						<mmx-text
+							class="mmx-form-field-description"
+							data-source="&mvte:field:description:source;"
+						>
+							<mvt:if expr="l.settings:field:description:source EQ 'markdown'">
+								&mvt:field:description:value;
+							<mvt:else>
+								&mvte:field:description:value;
+							</mvt:if>
+						</mmx-text>
+					</mvt:if>
+				</div>
+			</mvt:foreach>
+		</div>
+
+		<mvt:comment>Form Button</mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:form:submit:button:value">
+			<div class="mmx-form-footer" style="text-align: &mvte:instance:form:submit:button_align:value;">
+				<mmx-button
+					class="mmx-form-submit-button"
+					data-type="submit"
+					data-style="&mvte:instance:form:submit:button:textsettings:fields:normal:button_style:value;"
+					data-size="&mvte:instance:form:submit:button:textsettings:fields:normal:button_size:value;"
+					data-width="full"
+				>
+					&mvte:instance:form:submit:button:value;
+				</mmx-button>
+			</div>
+		</mvt:if>
+	</form>
+</mmx-hero>

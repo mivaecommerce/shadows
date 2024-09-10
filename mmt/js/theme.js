@@ -71,6 +71,32 @@ const themeFunctionality = {
 			}
 		})();
 
+		/**
+		 * Continue Shopping
+		 */
+		const continueShopping = () => {
+			const isListingPage = ['CTLG', 'CTGY', 'PLST', 'SRCH'].includes(mivaJS.Screen);
+			const isValidPROD = mivaJS.Screen === 'PROD' && !['MNTN', 'NTFD', 'PATR', 'PLMT', 'POUT'].includes(mivaJS.Page)
+			const shouldSaveContinueShopping = isListingPage || isValidPROD;
+			const links = document.querySelectorAll('[data-hook="continue-shopping"]');
+
+			if(shouldSaveContinueShopping) {
+				sessionStorage.setItem('continue_url', window.location.href);
+			}
+
+			links.forEach(link => {
+				link.addEventListener('click', () => {
+					const continueUrl = sessionStorage.getItem('continue_url');
+
+					if (!continueUrl) {
+						return;
+					}
+
+					link.href = continueUrl;
+				});
+			});
+		};
+		continueShopping();
 	},
 	init() {
 		/**

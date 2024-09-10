@@ -117,6 +117,7 @@ class MMX_HeroSlider extends MMX_Element {
 		});
 
 		this.makeShadow();
+		this.bindRevealElement();
 	}
 
 	connected() {
@@ -526,6 +527,20 @@ class MMX_HeroSlider extends MMX_Element {
 		return position;
 	}
 
+	moveToSlideElement(desiredSlide) {
+		if (!desiredSlide) {
+			return;
+		}
+
+		const slideIndex = this.slideElements().findIndex(slide => {
+			return slide === desiredSlide;
+		});
+
+		if (slideIndex >= 0) {
+			this.moveToSlide(slideIndex);
+		}
+	}
+
 	getSliderState() {
 		const state = {};
 
@@ -847,6 +862,11 @@ class MMX_HeroSlider extends MMX_Element {
 				element.style.height = maxHeight > 0 ? maxHeight + 'px' : '';
 			});
 		});
+	}
+
+	revealElement(element) {
+		const slide = MMX.closestElement('[slot="hero_slide"]', element);
+		this.moveToSlideElement(slide);
 	}
 }
 

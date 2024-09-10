@@ -1,0 +1,25 @@
+<mvt:comment>mmx-base</mvt:comment>
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="js:mmx-base" />
+
+<template class="mmx-resources">
+	<mvt:comment>mmx libraries</mvt:comment>
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-messages" />
+	<mvt:item name="head" param="css:mmx-hero" />
+</template>
+
+<mvt:comment>mmx libraries</mvt:comment>
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="js:mmx-icons" />
+<mvt:item name="head" param="js:mmx-messages" />
+<mvt:item name="head" param="js:mmx-hero" />
+
+<mvt:comment>mmx forms</mvt:comment>
+<mvt:item name="head" param="css:mmx-forms" />
+<mvt:item name="head" param="js:mmx-forms" />
+
+<mvt:comment>mmx-customizations</mvt:comment>
+<mvt:item name="head" param="css:mmx-customizations" />

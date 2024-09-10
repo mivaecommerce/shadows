@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1600" height="626" viewBox="0 0 1600 626">
+  <g id="Components_3" data-name="Components – 3">
+    <rect width="1600" height="626" fill="#ffffff"/>
+    <g id="Text_Area" data-name="Text Area" transform="translate(0 -3615)">
+      <g id="Group_6585" data-name="Group 6585">
+        <rect id="Rectangle_3504" data-name="Rectangle 3504" width="1600" height="626" transform="translate(0 3615)" fill="none"/>
+        <g id="Text_Area-2" data-name="Text Area" transform="translate(108 -542)">
+          <text id="Contact_Form" data-name="Contact Form" transform="translate(692 4236)" fill="#494a53" font-size="40" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="-130" y="0">Contact Form</tspan></text>
+          <g id="Group_6574" data-name="Group 6574" transform="translate(82 4308)">
+            <g id="Rectangle_3062" data-name="Rectangle 3062" fill="none" stroke="#969da8" stroke-width="3">
+              <rect width="1220" height="60" rx="4" stroke="none"/>
+              <rect x="1.5" y="1.5" width="1217" height="57" rx="2.5" fill="none"/>
+            </g>
+            <rect id="Rectangle_3616" data-name="Rectangle 3616" width="240" height="10" rx="5" transform="translate(0 -26)" fill="#969da8"/>
+          </g>
+          <g id="Group_6821" data-name="Group 6821" transform="translate(82 4426)">
+            <g id="Rectangle_3062-2" data-name="Rectangle 3062" fill="none" stroke="#969da8" stroke-width="3">
+              <rect width="1220" height="60" rx="4" stroke="none"/>
+              <rect x="1.5" y="1.5" width="1217" height="57" rx="2.5" fill="none"/>
+            </g>
+            <rect id="Rectangle_3616-2" data-name="Rectangle 3616" width="156" height="10" rx="5" transform="translate(0 -26)" fill="#969da8"/>
+          </g>
+          <g id="Group_6822" data-name="Group 6822" transform="translate(82 4544)">
+            <g id="Rectangle_3062-3" data-name="Rectangle 3062" fill="none" stroke="#969da8" stroke-width="3">
+              <rect width="1220" height="121" rx="4" stroke="none"/>
+              <rect x="1.5" y="1.5" width="1217" height="118" rx="2.5" fill="none"/>
+            </g>
+            <rect id="Rectangle_3616-3" data-name="Rectangle 3616" width="337" height="10" rx="5" transform="translate(0 -26)" fill="#969da8"/>
+          </g>
+          <g id="Group_6820" data-name="Group 6820" transform="translate(1182 4697)">
+            <g id="Primary_Button_CTA" data-name="Primary Button CTA" transform="translate(0 -2)">
+              <rect id="Rectangle_3062-4" data-name="Rectangle 3062" width="120" height="48" rx="4" fill="#494a53"/>
+            </g>
+            <rect id="Rectangle_3476" data-name="Rectangle 3476" width="64" height="10" rx="5" transform="translate(28 19)" fill="#fff"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

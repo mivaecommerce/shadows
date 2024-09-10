@@ -1,4 +1,5 @@
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'MivaEvents.js' )" />
 
 <mvt:item name="head" param="css:mmx-base" />
 <mvt:item name="head" param="css:mmx-customizations" />

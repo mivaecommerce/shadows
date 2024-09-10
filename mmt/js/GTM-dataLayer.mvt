@@ -1,6 +1,6 @@
 <mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.1.0
+Version: 1.2.0
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -161,6 +161,7 @@ class MMXPromotionTracker {
 	}
 
 	init() {
+		this.#bindEvents();
 		this.promotions = document.querySelectorAll('[data-flex-item]');
 
 		if (!this.promotions.length) {
@@ -262,6 +263,39 @@ class MMXPromotionTracker {
 				price: item.price,
 				discount: item.base_price - item.price,
 				quantity: 1
+			}
+		});
+	}
+
+	#bindEvents() {
+		document.addEventListener('view_item_list', (e) => this.#onViewItemList(e), {capture: true});
+		document.addEventListener('select_item', (e) => this.#onSelectItem(e), {capture: true});
+	}
+
+	#onViewItemList(e) {
+		clearEcommerceDataLayer();
+		dataLayer.push({
+			event: 'view_item_list',
+			ecommerce: {
+				item_list_id: e.detail?.item_list_id,
+				item_list_name: e.detail?.item_list_name,
+				items: this.productsToEcommerceItems(e.detail?.products)
+			}
+		});
+	}
+
+	#onSelectItem(e) {
+		clearEcommerceDataLayer();
+		dataLayer.push({
+			event: 'select_item',
+			ecommerce: {
+				currency: '&mvtj:currency;',
+				value: e.detail?.products?.reduce((value, product) => {
+					return value += product?.price ?? 0;
+				}, 0),
+				item_list_id: e.detail?.item_list_id,
+				item_list_name: e.detail?.item_list_name,
+				items: this.productsToEcommerceItems(e.detail?.products)
 			}
 		});
 	}

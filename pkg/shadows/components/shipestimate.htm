@@ -14,7 +14,6 @@
 								<label class="c-form-label" for="shipestimate_state_select" title="State">State</label>
 								<div class="c-form-select">
 									<select id="shipestimate_state_select" class="c-form-select__dropdown" name="ShipEstimate:ship_state_select">
-										<mvt:do file="g.Module_Library_DB" name="l.count" value="StateList_Load_All( l.settings:states )" />
 										<mvt:foreach iterator="state" array="states">
 											<mvt:do file="g.Module_Library_Utilities" name="l.void" value="DrawOption_Encode( l.settings:state:code, g.ShipEstimate:ship_state_select, l.settings:state:name )" />
 										</mvt:foreach>
@@ -37,7 +36,6 @@
 								<label class="c-form-label" for="shipestimate_cntry" title="Country">Country</label>
 								<div class="c-form-select">
 									<select id="shipestimate_cntry" class="c-form-select__dropdown" name="ShipEstimate:ship_cntry">
-										<mvt:do file="g.Module_Library_DB" name="l.count" value="StoreCountryList_Load_All( l.settings:countries )" />
 										<mvt:foreach iterator="country" array="countries">
 											<mvt:do file="g.Module_Library_Utilities" name="l.void" value="DrawOption_Encode( l.settings:country:alpha, g.ShipEstimate:ship_cntry, l.settings:country:name )" />
 										</mvt:foreach>

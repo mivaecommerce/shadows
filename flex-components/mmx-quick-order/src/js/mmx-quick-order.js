@@ -280,7 +280,7 @@ class MMX_QuickOrder extends MMX_Element {
 				${this.renderTextProperty(this?.data?.bulk?.body, {
 					prefix: 'body_',
 					className: 'mmx-quick-order__dialog-body',
-					defaultStyle: 'paragraph-s'
+					defaultStyle: ''
 				})}
 				<textarea class="mmx-quick-order__bulk-textarea" part="bulk-textarea" placeholder="${MMX.encodeEntities(this.csvArrayToString(this.exampleRows))}" required></textarea>
 				${this.renderButtonProperty(this?.data?.bulk?.button, {
@@ -328,7 +328,7 @@ class MMX_QuickOrder extends MMX_Element {
 				${this.renderTextProperty(this?.data?.csv?.body, {
 					prefix: 'body_',
 					className: 'mmx-quick-order__dialog-body',
-					defaultStyle: 'paragraph-s'
+					defaultStyle: ''
 				})}
 				<input class="mmx-quick-order__csv-file" part="csv-file" type="file" accept=".csv, .tsv, .txt" multiple required>
 				${this.renderCsvExampleLink()}

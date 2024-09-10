@@ -1794,13 +1794,6 @@ input[type=password]:invalid + .x-toggle-password {
 	visibility: hidden;
 }
 
-/* ==========================================================================
-   EXTENSIONS / CONTACT / CONTACT
-   ========================================================================== */
-.x-contact-form .is-required span {
-	color: var(--red-400);
-}
-
 /**
 	Thumbnail Filmstrip
  */

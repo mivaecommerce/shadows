@@ -1,6 +1,15 @@
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-product-carousel
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"

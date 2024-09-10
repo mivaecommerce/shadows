@@ -1,0 +1,44 @@
+<mvt:comment>mmx-base</mvt:comment>
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="js:mmx-base" />
+
+<template class="mmx-resources">
+	<mvt:comment>mmx libraries</mvt:comment>
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-messages" />
+	<mvt:item name="head" param="css:mmx-forms" />
+	<mvt:item name="head" param="css:mmx-product-list" />
+	<mvt:item name="head" param="css:mmx-card" />
+</template>
+
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'MivaEvents.js' )" />
+
+<mvt:comment>MMCurrencyFormatter</mvt:comment>
+<mvt:if expr="g.Store:currncy_mod:api_ver GE 9.07">
+	<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.using_custom_currency_formatter" value="CurrencyModule_Output_CurrencyFormat_JavaScript( g.Store:currncy_mod )" />
+</mvt:if>
+
+<mvt:if expr="l.using_custom_currency_formatter">
+	<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'runtime_ui.js' )" />
+<mvt:else>
+	<script>
+		function MMCurrencyFormatter(value, show_whole_numbers_only) {
+			return show_whole_numbers_only ? parseInt(MMX.coerceNumber(value, 0), 10) : MMX.coerceNumber(value, 0);
+		}
+	</script>
+</mvt:if>
+
+<mvt:comment>mmx libraries</mvt:comment>
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="js:mmx-icons" />
+<mvt:item name="head" param="js:mmx-messages" />
+<mvt:item name="head" param="js:mmx-forms" />
+<mvt:item name="head" param="js:mmx-product-list" />
+<mvt:item name="head" param="js:mmx-card" />
+<mvt:item name="head" param="css:mmx-accordion" />
+<mvt:item name="head" param="js:mmx-accordion" />
+
+<mvt:comment>mmx-customizations</mvt:comment>
+<mvt:item name="head" param="css:mmx-customizations" />

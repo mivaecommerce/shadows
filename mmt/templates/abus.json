@@ -4,6 +4,10 @@
             "component_code": "mmx-image-and-text",
             "item_code": "image-and-text",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -19,15 +23,7 @@
                         "value": "left"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "heading_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -85,6 +81,10 @@
             "component_code": "mmx-image-and-text",
             "item_code": "image-and-text-2",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -100,15 +100,7 @@
                         "value": "left"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "heading_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -166,6 +158,10 @@
             "component_code": "mmx-image-across",
             "item_code": "one-across",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -198,11 +194,6 @@
                     "align": {
                         "value": "center"
                     },
-                    "body_text_styles": {
-                        "body_style": {
-                            "value": "paragraph-s"
-                        }
-                    },
                     "content_location": {
                         "value": "center"
                     },
@@ -229,6 +220,7 @@
                                 },
                                 "text": {
                                     "body": {
+                                        "source": "markdown",
                                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla."
                                     },
                                     "heading": {
@@ -248,6 +240,10 @@
             "component_code": "mmx-text-area",
             "item_code": "text-area",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "desktop": {
                         "width": {
@@ -260,15 +256,7 @@
                         "value": "center"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-l"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -295,6 +283,10 @@
             "component_code": "mmx-text-area",
             "item_code": "text-area-2",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "desktop": {
                         "width": {
@@ -307,15 +299,7 @@
                         "value": "center"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -359,9 +343,9 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     },
     "sequence": {
         "sequence": [

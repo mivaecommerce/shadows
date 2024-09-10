@@ -2,14 +2,18 @@
 	"code": "mmx-image-and-text",
 	"name": "Image and Text",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-and-text",
 	"category": "image-text",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "link",
+			"preview_property_selector": ":shadow [part~=\"wrapper\"]",
 			"prompt": "Link",
+			"supports_new_tab": 1,
 			"type": "link"
 		},
 		{
@@ -28,12 +32,14 @@
 							"value": "left"
 						}
 					],
+					"preview_property_selector": ":scope > [slot=\"image\"]",
 					"prompt": "Image Position",
 					"type": "selector"
 				},
 				{
 					"breaks": 9,
 					"code": "content_width",
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Column Width Distribution",
 					"type": "distributedslider"
 				}
@@ -46,6 +52,7 @@
 			"properties": [
 				{
 					"code": "img",
+					"preview_property_selector": ":scope > [slot=\"image\"]",
 					"prompt": "Image",
 					"responsive_images": [
 						{
@@ -79,6 +86,7 @@
 							"value": "l"
 						}
 					],
+					"preview_property_selector": ":scope > [slot=\"image\"]",
 					"prompt": "Image Height",
 					"type": "select"
 				}
@@ -109,11 +117,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": "[slot=\"heading\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -370,6 +380,7 @@
 				},
 				{
 					"code": "subheading",
+					"preview_property_selector": "[slot=\"subheading\"]",
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
@@ -585,6 +596,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": "[slot=\"body\"]",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -805,6 +818,7 @@
 					"properties": [
 						{
 							"code": "button_text",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Text",
 							"textsettings": {
 								"fields": [
@@ -919,6 +933,7 @@
 				{
 					"code": "color",
 					"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Color",
 					"style": "color",
 					"type": "color"
@@ -962,15 +977,7 @@
 				"value": "left"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo."
 			},
 			"button": {
@@ -1056,7 +1063,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-d2oUq9XFBucy5Cz0u0hncFOx7exoIde/RrpV0pisNLM= sha384-P9EdMtqdaw7TlQLNfRPEX0Vr4679GCkwEwngGrfZYXihL0hvABq+b12IAH9AxzwR sha512-1gEK8AL7C3dzifXx+1aErlRhHBBc5Hj3/Qb2D6OewG+Xlo5dC3syLjtfACLqsW1C3eKHaYxJ91GW9CM9JGyGew=="
+					"value": "sha256-/fVJoylgVJSl9lTnS8PwG8offaHIz6fla8Yr2cMJ77Q= sha384-FAWgsGF26Ua4vm+RgJnzXgXNpq3r1hamrWss4NG8PDNK0GDaS4rBNsYo9HpZE3K7 sha512-vFdVXVxzi40q4fnXaIWFCiKMaw14WtYIqwo9Cpr8pcnTtTJ6/Q7iW9VrnN7k9fnTqWgAIakbgrm45Ug3HshOAg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1066,9 +1073,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

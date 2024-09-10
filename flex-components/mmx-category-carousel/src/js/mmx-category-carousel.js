@@ -37,6 +37,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 	constructor() {
 		super();
 		this.makeShadow();
+		this.bindRevealElement();
 	}
 
 	render() {
@@ -232,6 +233,14 @@ class MMX_CategoryCarousel extends MMX_Element {
 				<img src="${child.image.url}" alt="${child.image?.custom_image?.image?.alt ?? ''}" ${this.getLoadingAttributeString()}>
 			</picture>
 		`;
+	}
+
+	slider() {
+		return this.shadowRoot.querySelector('[part~="slider"]');
+	}
+
+	revealElement(element) {
+		this.slider()?.revealElement(element);
 	}
 }
 

@@ -1,0 +1,140 @@
+<mvt:if expr="NOT miva_array_elements( l.settings:instance:accordion:details:children )">
+	<mvt:exit />
+</mvt:if>
+
+<mvt:if expr="NOT l.settings:instance:styles:border:settings:enabled">
+	<mvt:assign name="l.settings:instance:styles:border:location:value" value="''" />
+	<mvt:assign name="l.settings:instance:styles:border:color:value" value="''" />
+	<mvt:assign name="l.settings:instance:styles:border:radius:value" value="''" />
+	<mvt:assign name="l.settings:instance:styles:border:width:value" value="''" />
+</mvt:if>
+
+<mvt:if expr="ISNULL l.settings:instance:styles:icon:location:value OR NOT l.settings:instance:styles:icon:settings:enabled">
+	<mvt:assign name="l.settings:instance:styles:icon:location:value" value="'none'" />
+</mvt:if>
+
+<mvt:if expr="l.settings:instance:styles:icon:set:value EQ 'chevrons'">
+	<mvt:assign name="l.settings:instance:styles:icon:closed:value" value="'chevron-down'" />
+	<mvt:assign name="l.settings:instance:styles:icon:open:value" value="'chevron-up'" />
+<mvt:elseif expr="l.settings:instance:styles:icon:set:value EQ 'triangles'">
+	<mvt:assign name="l.settings:instance:styles:icon:closed:value" value="'triangle-down'" />
+	<mvt:assign name="l.settings:instance:styles:icon:open:value" value="'triangle-up'" />
+<mvt:elseif expr="l.settings:instance:styles:icon:set:value EQ 'plus_minus'">
+	<mvt:assign name="l.settings:instance:styles:icon:closed:value" value="'add'" />
+	<mvt:assign name="l.settings:instance:styles:icon:open:value" value="'subtract'" />
+</mvt:if>
+
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-accordion
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	class="mmx-wrapper"
+	data-border-location="&mvte:instance:styles:border:location:value;"
+	data-icon-location="&mvte:instance:styles:icon:location:value;"
+	style="
+		margin-top: &mvte:instance:advanced:spacing:top:value;px;
+		margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;
+		--mmx-accordion__spacing: &mvte:instance:styles:accordion:spacing:value;rem;
+		--mmx-accordion__border-width-amount: &mvte:instance:styles:border:width:value;;
+		--mmx-accordion__border-radius-amount: &mvte:instance:styles:border:radius:value;;
+		--mmx-accordion__border-color: &mvte:instance:styles:border:color:value;;
+	"
+>
+	<mvt:comment>Render Section Heading</mvt:comment>
+	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
+		<mvt:if expr="ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value OR l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value EQ 'default'">
+			<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value" value="'title-1'" />
+		</mvt:if>
+		<mmx-text
+			slot="title"
+			class="mmx-accordion__title"
+			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
+			data-align="&mvte:instance:heading:heading_align:value;"
+			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
+		>
+			&mvte:instance:heading:heading_text:value;
+		</mmx-text>
+	</mvt:if>
+
+	<mvt:comment>Render Details</mvt:comment>
+	<mvt:if expr="ISNULL l.settings:instance:styles:heading:style:value OR l.settings:instance:styles:heading:style:value EQ 'default'">
+		<mvt:assign name="l.settings:instance:styles:heading:style:value" value="'subheading-l'" />
+	</mvt:if>
+	<mvt:assign name="l.settings:instance:advanced:settings:open_amount:html:name" value="ternary( l.settings:instance:advanced:settings:open_amount:value EQ 'one', l.settings:instance_item:item_code, '' )" />
+	<mvt:foreach iterator="detail" array="instance:accordion:details:children">
+		<mvt:if expr="ISNULL l.settings:detail:heading:value">
+			<mvt:foreachcontinue />
+		</mvt:if>
+		<mvt:assign name="l.settings:detail:html:open" value="ternary( l.settings:instance:advanced:settings:initial_display:value EQ 'expand_all' OR l.settings:detail:is_expanded:value, 'open', '' )" />
+		<details
+			slot="details"
+			class="mmx-accordion__details"
+			name="&mvte:instance:advanced:settings:open_amount:html:name;"
+			&mvte:detail:html:open;
+		>
+			<summary class="mmx-accordion__heading">
+				<mvt:if expr="l.settings:instance:styles:icon:location:value NE 'none'">
+					<mvt:if expr="NOT ISNULL l.settings:instance:styles:icon:closed:value">
+						<mmx-icon
+							class="mmx-accordion__heading-icon-closed"
+							data-color="&mvte:instance:styles:heading:font_color:value;"
+							data-name="&mvte:instance:styles:icon:closed:value;"
+						></mmx-icon>
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:instance:styles:icon:open:value">
+						<mmx-icon
+							class="mmx-accordion__heading-icon-open"
+							data-color="&mvte:instance:styles:heading:font_color:value;"
+							data-name="&mvte:instance:styles:icon:open:value;"
+						></mmx-icon>
+					</mvt:if>
+				</mvt:if>
+				<mmx-text
+					class="mmx-accordion__heading-text"
+					data-style="&mvte:instance:styles:heading:style:value;"
+					data-tag="&mvte:instance:styles:heading:tag:value;"
+					data-chars-per-line="none"
+					style="
+						font-family: &mvte:instance:styles:heading:font_family;;
+						font-size: &mvte:instance:styles:heading:font_size;px;
+						font-weight: &mvte:instance:styles:heading:font_weight;;
+						color: &mvte:instance:styles:heading:font_color;;
+					"
+				>
+					&mvte:detail:heading:value;
+				</mmx-text>
+			</summary>
+			<mvt:if expr="NOT ISNULL l.settings:detail:content:value">
+				<mmx-text
+					class="mmx-accordion__content"
+					data-style="&mvte:instance:styles:content:style:value;"
+					data-source="&mvte:detail:content:source;"
+					data-chars-per-line="none"
+					style="
+						font-family: &mvte:instance:styles:content:font_family;;
+						font-size: &mvte:instance:styles:content:font_size;px;
+						font-weight: &mvte:instance:styles:content:font_weight;;
+						color: &mvte:instance:styles:content:font_color;;
+					"
+				>
+					<mvt:if expr="l.settings:detail:content:source EQ 'markdown'">
+						&mvt:detail:content:value;
+					<mvt:else>
+						&mvte:detail:content:value;
+					</mvt:if>
+				</mmx-text>
+			</mvt:if>
+		</details>
+	</mvt:foreach>
+</mmx-accordion>

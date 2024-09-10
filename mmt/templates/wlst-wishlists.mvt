@@ -131,7 +131,7 @@
 			<mvt:if expr="l.settings:wishlists:page_links:current_page NE 1">
 				<mvt:assign name="l.settings:prev_page" value="l.settings:wishlists:page_links:current_page - 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:category_listing:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
+					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlists:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>

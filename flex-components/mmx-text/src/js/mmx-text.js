@@ -71,6 +71,15 @@ class MMX_Text extends MMX_Element {
 				],
 				default: '',
 				allowAny: true
+			},
+			dom: {
+				options: ['light', 'shadow'],
+				default: 'light'
+			},
+			source: {
+				options: ['markdown'],
+				default: '',
+				allowAny: true
 			}
 		};
 	}
@@ -104,7 +113,7 @@ class MMX_Text extends MMX_Element {
 	render() {
 		const tag = this.getPropValue('tag');
 		return /*html*/`
-			<${tag} class="mmx-text type-${this.getStyleProp()}" part="text" ${this.inheritAttrs()}>
+			<${tag} class="mmx-text type-${this.getStyleProp()} ${this.getStyleState()}" part="text" ${this.inheritAttrs()}>
 				<span class="mmx-text__inner" part="text__inner">
 					${this.renderContent()}
 				</span>
@@ -117,6 +126,22 @@ class MMX_Text extends MMX_Element {
 			:host {
 				--mmx-text__inner--max-width: ${this.getInnerMaxWidth()};
 				--mmx-text__text-align: ${this.getPropValue('align')};
+			}
+
+			${this.shadowDomStyles()}
+		`;
+	}
+
+	shadowDomStyles() {
+		const style = this.getAttribute('style');
+
+		if (!style || !this.shouldRenderInShadowDom()) {
+			return '';
+		}
+
+		return /*css*/`
+			:where(h1, h2, h3, h4, h5, h6) {
+				${style};
 			}
 		`;
 	}
@@ -143,11 +168,23 @@ class MMX_Text extends MMX_Element {
 	renderMaxContent(maxCount = 0, splitOn = '', joinWith = '') {
 		const parts = this.textContent.trim().split(splitOn);
 		if (typeof maxCount === 'undefined' || maxCount === 0 || parts.length <= maxCount) {
-			return '<slot></slot>';
+			return this.renderSlottedContent();
 		}
 
 		const trimmedParts = parts.slice(0, maxCount).join(joinWith);
 		return trimmedParts + this.getPropValue('trim-suffix');
+	}
+
+	shouldRenderInShadowDom() {
+		return this.getPropValue('source') === 'markdown' || this.getPropValue('dom') === 'shadow';
+	}
+
+	renderSlottedContent() {
+		if (this.shouldRenderInShadowDom()) {
+			return this.innerHTML;
+		}
+
+		return '<slot></slot>';
 	}
 
 	getInnerMaxWidth() {
@@ -176,7 +213,7 @@ class MMX_Text extends MMX_Element {
 		return charsPerLine;
 	}
 
-	getStyleProp() {
+	getStyleWithoutDefault() {
 		if (this.hasPropValue('style')) {
 			return this.getPropValue('style');
 		}
@@ -188,7 +225,19 @@ class MMX_Text extends MMX_Element {
 			}
 		}
 
-		return MMX_Text.props.style.default;
+		return '';
+	}
+
+	getStyleProp() {
+		return this.getStyleWithoutDefault() || MMX_Text.props.style.default;
+	}
+
+	getStyleState() {
+		if (this.getStyleWithoutDefault()) {
+			return 'mmx-text--styled';
+		}
+
+		return 'mmx-text--unstyled';
 	}
 }
 

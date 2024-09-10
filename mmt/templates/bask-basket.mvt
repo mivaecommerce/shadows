@@ -15,16 +15,9 @@
 	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
 			<div class="t-basket__product-contents">
-				<script>
-					function continueShopping(link) {
-						if (sessionStorage.getItem('continue_url')) {
-							link.href = sessionStorage.getItem('continue_url');
-						}
-					}
-				</script>
 				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
 				<p>Your shopping cart is currently empty.</p>
-				<a class="c-button" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Start Shopping</a>
+				<a class="c-button" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
 			</div>
 		</div>
 	</section>
@@ -157,6 +150,7 @@
 										</mvt:foreach>
 									</div>
 									<mvt:if expr="l.settings:group:subterm_id">
+										<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Subscription_Term_ID=' $ encodeattribute( l.settings:group:subterm_id )" />
 										<p>Subscription: &mvte:group:productsubscriptionterm:descrip;</p>
 									</mvt:if>
 								</div>

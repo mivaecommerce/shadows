@@ -2,10 +2,12 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"can_disable": 1,
@@ -31,11 +33,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -358,6 +362,7 @@
 					"properties": [
 						{
 							"code": "img",
+							"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% picture[slot=\"image\"]",
 							"prompt": "Image",
 							"responsive_images": [
 								{
@@ -373,7 +378,9 @@
 						},
 						{
 							"code": "link",
+							"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% :shadow [part~=\"wrapper\"]",
 							"prompt": "Image Link",
+							"supports_new_tab": 1,
 							"type": "link"
 						},
 						{
@@ -383,21 +390,26 @@
 							"properties": [
 								{
 									"code": "heading",
+									"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% [slot=\"heading\"]",
 									"prompt": "Heading Text",
 									"type": "text"
 								},
 								{
 									"code": "subheading",
+									"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% [slot=\"subheading\"]",
 									"prompt": "Subheading Text",
 									"type": "text"
 								},
 								{
 									"code": "body",
+									"markdown": 1,
+									"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% [slot=\"body\"]",
 									"prompt": "Body Text",
 									"type": "textarea"
 								},
 								{
 									"code": "button",
+									"preview_property_selector": "mmx-hero[slot=\"image\"]%nth-of-type% [slot=\"button\"]",
 									"prompt": "Button Text",
 									"type": "text"
 								}
@@ -405,6 +417,13 @@
 							"type": "group"
 						}
 					],
+					"template": {
+						"text": {
+							"body": {
+								"source": "markdown"
+							}
+						}
+					},
 					"type": "list"
 				}
 			],
@@ -434,6 +453,7 @@
 							"value": "under"
 						}
 					],
+					"preview_property_selector": "mmx-hero[slot=\"image\"]:has(mmx-text) :shadow [part~=\"content\"]",
 					"prompt": "Text Vertical Alignment",
 					"type": "select"
 				},
@@ -456,6 +476,7 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": "mmx-hero[slot=\"image\"]:has(mmx-text) :shadow [part~=\"content\"]",
 					"prompt": "Text Horizontal Alignment",
 					"type": "selector"
 				},
@@ -523,6 +544,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"heading\"]",
 							"prompt": "Heading Style",
 							"type": "select"
 						},
@@ -589,6 +611,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"heading\"]",
 							"prompt": "Font Family",
 							"pseudoclasses": [
 								"normal"
@@ -600,11 +623,11 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"heading\"]",
 							"prompt": "Font Size",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "one-third",
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
@@ -649,17 +672,18 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"heading\"]",
 							"prompt": "Font Weight",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "two-thirds",
 							"style": "font-weight",
 							"type": "select"
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"heading\"]",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -734,6 +758,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"subheading\"]",
 							"prompt": "Subheading Style",
 							"type": "select"
 						},
@@ -800,6 +825,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"subheading\"]",
 							"prompt": "Font Family",
 							"pseudoclasses": [
 								"normal"
@@ -811,11 +837,11 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"subheading\"]",
 							"prompt": "Font Size",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "one-third",
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
@@ -860,17 +886,18 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"subheading\"]",
 							"prompt": "Font Weight",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "two-thirds",
 							"style": "font-weight",
 							"type": "select"
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"subheading\"]",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -945,6 +972,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"body\"]",
 							"prompt": "Body Style",
 							"type": "select"
 						},
@@ -1011,6 +1039,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"body\"]",
 							"prompt": "Font Family",
 							"pseudoclasses": [
 								"normal"
@@ -1022,11 +1051,11 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"body\"]",
 							"prompt": "Font Size",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "one-third",
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
@@ -1071,17 +1100,18 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"body\"]",
 							"prompt": "Font Weight",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "two-thirds",
 							"style": "font-weight",
 							"type": "select"
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"body\"]",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -1124,6 +1154,7 @@
 									"value": "secondary-link"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"button\"]",
 							"prompt": "Button Style",
 							"type": "select"
 						},
@@ -1150,6 +1181,7 @@
 									"value": "l"
 								}
 							],
+							"preview_property_selector": "mmx-hero[slot=\"image\"] [slot=\"button\"]",
 							"prompt": "Button Size",
 							"type": "select"
 						}
@@ -1203,6 +1235,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-hero[slot=\"image\"]:has(mmx-text) :shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1257,6 +1290,7 @@
 					"code": "overlay_opacity",
 					"label": "%",
 					"precision": -1,
+					"preview_property_selector": "mmx-hero[slot=\"image\"] > [slot=\"image\"]",
 					"prompt": "Image Shader Overlay",
 					"range_high": 100,
 					"range_low": 0,
@@ -1279,6 +1313,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-hero[slot=\"image\"]:has(mmx-text) :shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1367,11 +1402,6 @@
 			"align": {
 				"value": "left"
 			},
-			"body_text_styles": {
-				"body_style": {
-					"value": "paragraph-s"
-				}
-			},
 			"button_styles": {
 				"button_size": {
 					"value": "s"
@@ -1424,6 +1454,7 @@
 						},
 						"text": {
 							"body": {
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing"
 							},
 							"button": {
@@ -1447,6 +1478,7 @@
 						},
 						"text": {
 							"body": {
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing"
 							},
 							"button": {
@@ -1470,6 +1502,7 @@
 						},
 						"text": {
 							"body": {
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing"
 							},
 							"button": {
@@ -1532,7 +1565,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-B5uwk2boQ1iw/Pwx8P4ILMFIusqeYj7LU+h5GvnqRSk= sha384-QJjU/VXDIdQszoDEJvZe2z/wqoEcIy9eZSFJoixvCQ0lu5OafwDSF7VEXXTYjWoo sha512-taXWD6NqnCYSurZZLiWYI8soKALXgw5zGuCoTtu0AY6Hi4ZnxOHrWSTnDnVK0pevGIZMPG3fiQn7f72cAAOpCg=="
+					"value": "sha256-dTczy53i5hh+g+vpZit4BW5YFvdfDNoJQDNLB3hJkWQ= sha384-bPVz6Bc9OHVJ/ed10RFn5jDyQvacf89XS7QzJ7vqpUUnf6CgzesMsO0Oo3d3z3i+ sha512-KuHP7j6E/CXFajtT0PudpwmK9b/2ubgcSzSuyDlQWo1bgqCNrUdRyJ7aBorGe5ip8Yrf29G5mt1Rk7s13El+xg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1542,9 +1575,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

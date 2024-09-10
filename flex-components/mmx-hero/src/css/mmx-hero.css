@@ -234,7 +234,7 @@ slot + slot[name="button"],
 
 	.mmx-hero--content-is-next-to-image {
 		display: grid;
-		grid-template-columns: 1fr 1fr;
+		grid-template-columns: var(--mmx-hero__grid-template-columns);
 		gap: 0;
 	}
 
@@ -248,17 +248,12 @@ slot + slot[name="button"],
 }
 
 
-/* Desktop Customizations
-   =========================================== */
-@media screen and (min-width: 75em) {
-	.mmx-hero--content-is-next-to-image {
-		grid-template-columns: var(--mmx-hero__grid-template-columns);
-	}
-}
-
-
 /* Size: Content
    =========================================== */
+.mmx-hero--size--content {
+	overflow: visible;
+}
+
 .mmx-hero--size--content .mmx-hero__image-container {
 	height: 100%;
     position: absolute;

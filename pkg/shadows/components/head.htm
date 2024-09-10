@@ -16,13 +16,8 @@
 		<mvt:item name="prodctgy_meta" param="global" />
 	</mvt:if>
 </mvt:if>
-<mvt:comment>
-	<!--
-		This item outputs a single body style to control the default font, background color, and/or background image
-		if you have set them under ReadyTheme Settings.
-	-->
+<mvt:if expr="NOT ISNULL l.settings:readytheme:background_color OR NOT ISNULL l.settings:readytheme:background_image OR NOT ISNULL l.settings:readytheme:font">
 	<mvt:item name="readytheme" param="css" />
-</mvt:comment>
-
+</mvt:if>
 <mvt:item name="head" param="modules" />
 ]]></Template><Notes>#Set_Current_Time#</Notes></Head></Module>

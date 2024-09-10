@@ -81,7 +81,6 @@
 		</div>
 		<aside class="o-layout__item u-width-12 u-width-2--l">
 			<mvt:item name="category_tree" />
-			<mvt:item name="facets" />
 		</aside>
 	</section>
 

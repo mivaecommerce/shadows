@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.09.02</Version>
-	<MinimumMerchantVersion>10.05.00</MinimumMerchantVersion>
-	<MinimumMivaScriptVersion>5.37</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.09.02
+	<Version>10.10.00</Version>
+	<MinimumMerchantVersion>10.10.00</MinimumMerchantVersion>
+	<MinimumMivaScriptVersion>5.44</MinimumMivaScriptVersion>
+	<Description>Shadows ReadyTheme v10.10.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -181,6 +181,7 @@
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>content</Item>
+				<Item>countries</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>customfields</Item>
@@ -200,6 +201,7 @@
 				<Item>runtimejs</Item>
 				<Item>searchfield</Item>
 				<Item>shipestimate</Item>
+				<Item>states</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -219,24 +221,21 @@
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>category</Item>
-				<Item>category_listing</Item>
 				<Item>category_title</Item>
 				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
-				<Item>facets</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>prod_ctgy_hdft</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -560,19 +559,6 @@
 			</ItemList>
 		</Page>
 		<Page>
-			<Code>CTFM</Code>
-			<Name>Contact Form</Name>
-			<Title />
-			<UI>Yes</UI>
-			<Secure>Yes</Secure>
-			<Source>ctfm.mvt</Source>
-			<Cache>AnonymousEmptyBasket</Cache>
-			<CacheSettings />
-			<ItemList>
-				<Item>urls</Item>
-			</ItemList>
-		</Page>
-		<Page>
 			<Code>CTUS</Code>
 			<Name>Contact Us</Name>
 			<Title />
@@ -588,16 +574,16 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
+				<Item>messages</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -1101,16 +1087,15 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -1407,7 +1392,6 @@
 				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
-				<Item>facets</Item>
 				<Item>flex</Item>
 				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
@@ -1515,7 +1499,6 @@
 				<Item>product_display_imagemachine</Item>
 				<Item>prod_ctgy_hdft</Item>
 				<Item>readytheme</Item>
-				<Item>related_products</Item>
 				<Item>searchfield</Item>
 				<Item>states</Item>
 				<Item>store</Item>
@@ -1564,24 +1547,21 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>all_products</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
-				<Item>facets</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -1693,19 +1673,16 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
-				<Item>facets</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
-				<Item>search_results</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2207,6 +2184,33 @@
 				<Item>urls</Item>
 			</ItemList>
 		</Page>
+		<Page>
+			<Code>global_header</Code>
+			<Name>Global Header</Name>
+			<Fragment>Yes</Fragment>
+			<Source>global_header.mvt</Source>
+			<ItemList>
+				<Item>flex</Item>
+				<Item>sequence</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>global_footer</Code>
+			<Name>Global Footer</Name>
+			<Fragment>Yes</Fragment>
+			<Source>global_footer.mvt</Source>
+			<ItemList>
+				<Item>flex</Item>
+				<Item>sequence</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>product_list_additional_data</Code>
+			<Name>Product List Additional Data</Name>
+			<Fragment>Yes</Fragment>
+			<Source>product_list_additional_data.mvt</Source>
+			<Public>Yes</Public>
+		</Page>
 	</PageList>
 	<RequiredItemList>
 		<Item>
@@ -2681,10 +2685,6 @@
 		<Component>
 			<Code>cmp-cssui-prodlayo</Code>
 			<Name>CSSUI Product Display Layout</Name>
-		</Component>
-		<Component>
-			<Code>cmp-cssui-prodlist</Code>
-			<Name>CSSUI Product List</Name>
 		</Component>
 		<Component>
 			<Code>cmp-cssui-pchdft</Code>
@@ -3203,7 +3203,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.09.02';
+	mivaJS.ReadyThemeVersion = '10.10.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -3254,15 +3254,6 @@ mmx-featured-product::part(button__inner) {
 			<Attributes />
 			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.js</File_Path>
 		</JavaScriptResource_Add>
-		<JavaScriptResource_Delete code="contact" />
-		<JavaScriptResource_Add>
-			<Code>contact</Code>
-			<Type>LocalFile</Type>
-			<Global>No</Global>
-			<Active>Yes</Active>
-			<Attributes />
-			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</File_Path>
-		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="GTM-head-tag" />
 		<JavaScriptResource_Add>
 			<Code>GTM-head-tag</Code>
@@ -3287,7 +3278,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<Attributes />
 			<Template><![CDATA[<mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.1.0
+Version: 1.2.0
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -3448,6 +3439,7 @@ class MMXPromotionTracker {
 	}
 
 	init() {
+		this.#bindEvents();
 		this.promotions = document.querySelectorAll('[data-flex-item]');
 
 		if (!this.promotions.length) {
@@ -3549,6 +3541,39 @@ class MMXPromotionTracker {
 				price: item.price,
 				discount: item.base_price - item.price,
 				quantity: 1
+			}
+		});
+	}
+
+	#bindEvents() {
+		document.addEventListener('view_item_list', (e) => this.#onViewItemList(e), {capture: true});
+		document.addEventListener('select_item', (e) => this.#onSelectItem(e), {capture: true});
+	}
+
+	#onViewItemList(e) {
+		clearEcommerceDataLayer();
+		dataLayer.push({
+			event: 'view_item_list',
+			ecommerce: {
+				item_list_id: e.detail?.item_list_id,
+				item_list_name: e.detail?.item_list_name,
+				items: this.productsToEcommerceItems(e.detail?.products)
+			}
+		});
+	}
+
+	#onSelectItem(e) {
+		clearEcommerceDataLayer();
+		dataLayer.push({
+			event: 'select_item',
+			ecommerce: {
+				currency: '&mvtj:currency;',
+				value: e.detail?.products?.reduce((value, product) => {
+					return value += product?.price ?? 0;
+				}, 0),
+				item_list_id: e.detail?.item_list_id,
+				item_list_name: e.detail?.item_list_name,
+				items: this.productsToEcommerceItems(e.detail?.products)
 			}
 		});
 	}
@@ -4707,10 +4732,8 @@ new MMXPromotionTracker();
 		<JavaScriptResourceXGroup_Assign code="settings" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="polyfills" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="scripts" group_code="footer_js" />
-		<JavaScriptResourceXGroup_Assign code="contact" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="json-ld" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="edit-basket-attributes" group_code="footer_js" />
-		<JavaScriptResourceXPage_Assign code="contact" page_code="CTUS" />
 		<JavaScriptResourceXPage_Assign code="edit-basket-attributes" page_code="BASK" />
 	</Resources>
 	<ExternalFiles>
@@ -4803,10 +4826,6 @@ new MMXPromotionTracker();
 		</File>
 		<File>
 			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions.js</Name>
-		</File>
-		<File>
-			<Name>
-				/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/extensions/contact/contact.js</Name>
 		</File>
 		<File>
 			<Name>/%STORE_BASEHREF%/%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.css</Name>

@@ -1,0 +1,1565 @@
+{
+	"code": "mmx-contact-form",
+	"name": "Contact Form",
+	"type": "component",
+	"version": "10.10.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-contact-form",
+	"category": "contact-form",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
+	"properties": [
+		{
+			"code": "form",
+			"prompt": "Form",
+			"properties": [
+				{
+					"can_disable": "true",
+					"code": "header",
+					"collapsed": 1,
+					"prompt": "Header",
+					"properties": [
+						{
+							"code": "align",
+							"options": [
+								{
+									"text": "align_left",
+									"type": "icon",
+									"value": "left"
+								},
+								{
+									"text": "align_center",
+									"type": "icon",
+									"value": "center"
+								},
+								{
+									"text": "align_right",
+									"type": "icon",
+									"value": "right"
+								}
+							],
+							"prompt": "Text Alignment",
+							"type": "selector"
+						},
+						{
+							"code": "heading",
+							"preview_property_selector": ".mmx-form-header__heading",
+							"prompt": "Heading Text",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "heading_style",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Display One",
+												"value": "display-1"
+											},
+											{
+												"text": "Display Two",
+												"value": "display-2"
+											},
+											{
+												"text": "Display Three",
+												"value": "display-3"
+											},
+											{
+												"text": "Title One",
+												"value": "title-1"
+											},
+											{
+												"text": "Title Two",
+												"value": "title-2"
+											},
+											{
+												"text": "Title Three",
+												"value": "title-3"
+											},
+											{
+												"text": "Title Four",
+												"value": "title-4"
+											},
+											{
+												"text": "Subheading Large",
+												"value": "subheading-l"
+											},
+											{
+												"text": "Subheading Small",
+												"value": "subheading-s"
+											},
+											{
+												"text": "Subheading Extra-Small",
+												"value": "subheading-xs"
+											},
+											{
+												"text": "Paragraph Large",
+												"value": "paragraph-l"
+											},
+											{
+												"text": "Paragraph Small",
+												"value": "paragraph-s"
+											},
+											{
+												"text": "Paragraph Extra-Small",
+												"value": "paragraph-xs"
+											}
+										],
+										"prompt": "Heading Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									},
+									{
+										"code": "font_family",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Helvetica",
+												"value": "Helvetica, sans-serif"
+											},
+											{
+												"text": "Georgia",
+												"value": "Georgia, serif"
+											},
+											{
+												"text": "Palatino Linotype",
+												"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+											},
+											{
+												"text": "Times New Roman",
+												"value": "\"Times New Roman\", Times, serif"
+											},
+											{
+												"text": "Arial",
+												"value": "Arial, Helvetica, sans-serif"
+											},
+											{
+												"text": "Arial Black",
+												"value": "\"Arial Black\", Gadget, sans-serif"
+											},
+											{
+												"text": "Comic Sans MS",
+												"value": "\"Comic Sans MS\", cursive, sans-serif"
+											},
+											{
+												"text": "Impact",
+												"value": "Impact, Charcoal, sans-serif"
+											},
+											{
+												"text": "Lucida Sans Unicode",
+												"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+											},
+											{
+												"text": "Tahoma",
+												"value": "Tahoma, Geneva, sans-serif"
+											},
+											{
+												"text": "Trebuchet MS",
+												"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+											},
+											{
+												"text": "Verdana",
+												"value": "Verdana, Geneva, sans-serif"
+											},
+											{
+												"text": "Courier New",
+												"value": "\"Courier New\", Courier, monospace"
+											},
+											{
+												"text": "Lucida Console",
+												"value": "\"Lucida Console\", Monaco, monospace"
+											}
+										],
+										"prompt": "Font Family",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "font-family",
+										"type": "select"
+									},
+									{
+										"code": "font_size",
+										"label": "px",
+										"min": 1,
+										"prompt": "Font Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "one-third",
+										"style": "font-size",
+										"style_suffix": "px",
+										"text_type": "number",
+										"type": "text"
+									},
+									{
+										"code": "font_weight",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Ultra-Thin",
+												"value": 100
+											},
+											{
+												"text": "Light",
+												"value": 200
+											},
+											{
+												"text": "Book",
+												"value": 300
+											},
+											{
+												"text": "Normal",
+												"value": 400
+											},
+											{
+												"text": "Medium",
+												"value": 500
+											},
+											{
+												"text": "Semi-Bold",
+												"value": 600
+											},
+											{
+												"text": "Bold",
+												"value": 700
+											},
+											{
+												"text": "Black",
+												"value": 900
+											}
+										],
+										"prompt": "Font Weight",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "two-thirds",
+										"style": "font-weight",
+										"type": "select"
+									},
+									{
+										"code": "font_color",
+										"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+										"prompt": "Font Color",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "color",
+										"type": "color"
+									},
+									{
+										"code": "heading_tag",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "h1",
+												"value": "h1"
+											},
+											{
+												"text": "h2",
+												"value": "h2"
+											},
+											{
+												"text": "h3",
+												"value": "h3"
+											},
+											{
+												"text": "h4",
+												"value": "h4"
+											},
+											{
+												"text": "h5",
+												"value": "h5"
+											},
+											{
+												"text": "h6",
+												"value": "h6"
+											},
+											{
+												"text": "p",
+												"value": "p"
+											}
+										],
+										"prompt": "Heading Tag",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									}
+								]
+							},
+							"type": "text"
+						},
+						{
+							"code": "subheading",
+							"preview_property_selector": ".mmx-form-header__subheading",
+							"prompt": "Subheading Text",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "subheading_style",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Display One",
+												"value": "display-1"
+											},
+											{
+												"text": "Display Two",
+												"value": "display-2"
+											},
+											{
+												"text": "Display Three",
+												"value": "display-3"
+											},
+											{
+												"text": "Title One",
+												"value": "title-1"
+											},
+											{
+												"text": "Title Two",
+												"value": "title-2"
+											},
+											{
+												"text": "Title Three",
+												"value": "title-3"
+											},
+											{
+												"text": "Title Four",
+												"value": "title-4"
+											},
+											{
+												"text": "Subheading Large",
+												"value": "subheading-l"
+											},
+											{
+												"text": "Subheading Small",
+												"value": "subheading-s"
+											},
+											{
+												"text": "Subheading Extra-Small",
+												"value": "subheading-xs"
+											},
+											{
+												"text": "Paragraph Large",
+												"value": "paragraph-l"
+											},
+											{
+												"text": "Paragraph Small",
+												"value": "paragraph-s"
+											},
+											{
+												"text": "Paragraph Extra-Small",
+												"value": "paragraph-xs"
+											}
+										],
+										"prompt": "Subheading Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									},
+									{
+										"code": "font_family",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Helvetica",
+												"value": "Helvetica, sans-serif"
+											},
+											{
+												"text": "Georgia",
+												"value": "Georgia, serif"
+											},
+											{
+												"text": "Palatino Linotype",
+												"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+											},
+											{
+												"text": "Times New Roman",
+												"value": "\"Times New Roman\", Times, serif"
+											},
+											{
+												"text": "Arial",
+												"value": "Arial, Helvetica, sans-serif"
+											},
+											{
+												"text": "Arial Black",
+												"value": "\"Arial Black\", Gadget, sans-serif"
+											},
+											{
+												"text": "Comic Sans MS",
+												"value": "\"Comic Sans MS\", cursive, sans-serif"
+											},
+											{
+												"text": "Impact",
+												"value": "Impact, Charcoal, sans-serif"
+											},
+											{
+												"text": "Lucida Sans Unicode",
+												"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+											},
+											{
+												"text": "Tahoma",
+												"value": "Tahoma, Geneva, sans-serif"
+											},
+											{
+												"text": "Trebuchet MS",
+												"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+											},
+											{
+												"text": "Verdana",
+												"value": "Verdana, Geneva, sans-serif"
+											},
+											{
+												"text": "Courier New",
+												"value": "\"Courier New\", Courier, monospace"
+											},
+											{
+												"text": "Lucida Console",
+												"value": "\"Lucida Console\", Monaco, monospace"
+											}
+										],
+										"prompt": "Font Family",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "font-family",
+										"type": "select"
+									},
+									{
+										"code": "font_size",
+										"label": "px",
+										"min": 1,
+										"prompt": "Font Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "one-third",
+										"style": "font-size",
+										"style_suffix": "px",
+										"text_type": "number",
+										"type": "text"
+									},
+									{
+										"code": "font_weight",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Ultra-Thin",
+												"value": 100
+											},
+											{
+												"text": "Light",
+												"value": 200
+											},
+											{
+												"text": "Book",
+												"value": 300
+											},
+											{
+												"text": "Normal",
+												"value": 400
+											},
+											{
+												"text": "Medium",
+												"value": 500
+											},
+											{
+												"text": "Semi-Bold",
+												"value": 600
+											},
+											{
+												"text": "Bold",
+												"value": 700
+											},
+											{
+												"text": "Black",
+												"value": 900
+											}
+										],
+										"prompt": "Font Weight",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "two-thirds",
+										"style": "font-weight",
+										"type": "select"
+									},
+									{
+										"code": "font_color",
+										"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+										"prompt": "Font Color",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "color",
+										"type": "color"
+									}
+								]
+							},
+							"type": "text"
+						},
+						{
+							"code": "body",
+							"markdown": 1,
+							"preview_property_selector": ".mmx-form-header__body",
+							"prompt": "Body Text",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "body_style",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Display One",
+												"value": "display-1"
+											},
+											{
+												"text": "Display Two",
+												"value": "display-2"
+											},
+											{
+												"text": "Display Three",
+												"value": "display-3"
+											},
+											{
+												"text": "Title One",
+												"value": "title-1"
+											},
+											{
+												"text": "Title Two",
+												"value": "title-2"
+											},
+											{
+												"text": "Title Three",
+												"value": "title-3"
+											},
+											{
+												"text": "Title Four",
+												"value": "title-4"
+											},
+											{
+												"text": "Subheading Large",
+												"value": "subheading-l"
+											},
+											{
+												"text": "Subheading Small",
+												"value": "subheading-s"
+											},
+											{
+												"text": "Subheading Extra-Small",
+												"value": "subheading-xs"
+											},
+											{
+												"text": "Paragraph Large",
+												"value": "paragraph-l"
+											},
+											{
+												"text": "Paragraph Small",
+												"value": "paragraph-s"
+											},
+											{
+												"text": "Paragraph Extra-Small",
+												"value": "paragraph-xs"
+											}
+										],
+										"prompt": "Body Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									},
+									{
+										"code": "font_family",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Helvetica",
+												"value": "Helvetica, sans-serif"
+											},
+											{
+												"text": "Georgia",
+												"value": "Georgia, serif"
+											},
+											{
+												"text": "Palatino Linotype",
+												"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+											},
+											{
+												"text": "Times New Roman",
+												"value": "\"Times New Roman\", Times, serif"
+											},
+											{
+												"text": "Arial",
+												"value": "Arial, Helvetica, sans-serif"
+											},
+											{
+												"text": "Arial Black",
+												"value": "\"Arial Black\", Gadget, sans-serif"
+											},
+											{
+												"text": "Comic Sans MS",
+												"value": "\"Comic Sans MS\", cursive, sans-serif"
+											},
+											{
+												"text": "Impact",
+												"value": "Impact, Charcoal, sans-serif"
+											},
+											{
+												"text": "Lucida Sans Unicode",
+												"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+											},
+											{
+												"text": "Tahoma",
+												"value": "Tahoma, Geneva, sans-serif"
+											},
+											{
+												"text": "Trebuchet MS",
+												"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+											},
+											{
+												"text": "Verdana",
+												"value": "Verdana, Geneva, sans-serif"
+											},
+											{
+												"text": "Courier New",
+												"value": "\"Courier New\", Courier, monospace"
+											},
+											{
+												"text": "Lucida Console",
+												"value": "\"Lucida Console\", Monaco, monospace"
+											}
+										],
+										"prompt": "Font Family",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "font-family",
+										"type": "select"
+									},
+									{
+										"code": "font_size",
+										"label": "px",
+										"min": 1,
+										"prompt": "Font Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "one-third",
+										"style": "font-size",
+										"style_suffix": "px",
+										"text_type": "number",
+										"type": "text"
+									},
+									{
+										"code": "font_weight",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Ultra-Thin",
+												"value": 100
+											},
+											{
+												"text": "Light",
+												"value": 200
+											},
+											{
+												"text": "Book",
+												"value": 300
+											},
+											{
+												"text": "Normal",
+												"value": 400
+											},
+											{
+												"text": "Medium",
+												"value": 500
+											},
+											{
+												"text": "Semi-Bold",
+												"value": 600
+											},
+											{
+												"text": "Bold",
+												"value": 700
+											},
+											{
+												"text": "Black",
+												"value": 900
+											}
+										],
+										"prompt": "Font Weight",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "two-thirds",
+										"style": "font-weight",
+										"type": "select"
+									},
+									{
+										"code": "font_color",
+										"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+										"prompt": "Font Color",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "color",
+										"type": "color"
+									}
+								]
+							},
+							"type": "textarea"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "fields",
+					"group_prompt": "Field",
+					"item_prompt_property": "label:value",
+					"list_type": "group",
+					"min_count": 1,
+					"prompt": "Fields",
+					"properties": [
+						{
+							"code": "type",
+							"options": [
+								{
+									"text": "Text",
+									"value": "input:text"
+								},
+								{
+									"text": "Email",
+									"value": "input:email"
+								},
+								{
+									"text": "URL",
+									"value": "input:url"
+								},
+								{
+									"text": "Phone Number",
+									"value": "input:tel"
+								},
+								{
+									"text": "Number",
+									"value": "input:number"
+								},
+								{
+									"text": "Date",
+									"value": "input:date"
+								},
+								{
+									"text": "Date & Time",
+									"value": "input:datetime-local"
+								},
+								{
+									"text": "Text with Suggestions",
+									"value": "datalist"
+								},
+								{
+									"text": "Text Area",
+									"value": "textarea"
+								},
+								{
+									"text": "Select",
+									"value": "select"
+								},
+								{
+									"text": "Radio",
+									"value": "radio"
+								},
+								{
+									"text": "Checkboxes",
+									"value": "checkboxes"
+								}
+							],
+							"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+							"prompt": "Type",
+							"required": 1,
+							"type": "select"
+						},
+						{
+							"code": "label",
+							"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-label",
+							"prompt": "Label",
+							"required": 1,
+							"type": "text"
+						},
+						{
+							"code": "placeholder",
+							"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+							"prompt": "Placeholder",
+							"type": "text",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"input:text",
+										"input:email",
+										"input:tel",
+										"input:url",
+										"input:number",
+										"textarea",
+										"datalist"
+									]
+								}
+							}
+						},
+						{
+							"code": "description",
+							"markdown": 1,
+							"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-field-description",
+							"prompt": "Description",
+							"type": "textarea"
+						},
+						{
+							"code": "is_required",
+							"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+							"prompt": "Required?",
+							"type": "checkbox"
+						},
+						{
+							"code": "column_span",
+							"min": 1,
+							"preview_property_selector": ".mmx-form-field%nth-child%",
+							"prompt": "Column Span",
+							"step": 1,
+							"text_type": "number",
+							"type": "text"
+						},
+						{
+							"code": "options",
+							"group_prompt": "Option",
+							"list_type": "text",
+							"min_count": 1,
+							"prompt": "Options",
+							"template": {
+								"value": "Option goes here"
+							},
+							"type": "list",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"select",
+										"radio",
+										"datalist",
+										"checkboxes"
+									]
+								}
+							}
+						},
+						{
+							"code": "number_validation",
+							"prompt": "Validation",
+							"properties": [
+								{
+									"code": "min",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Minimum",
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "max",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Maximum",
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "step",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Step",
+									"text_type": "number",
+									"type": "text"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"input:number"
+									]
+								}
+							}
+						},
+						{
+							"code": "phone_validation",
+							"prompt": "Validation",
+							"properties": [
+								{
+									"code": "preset_pattern",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "000-000-0000",
+											"value": "000-000-0000"
+										},
+										{
+											"text": "1 (000) 000-0000 x000",
+											"value": "1 (000) 000-0000 x000"
+										},
+										{
+											"text": "Custom",
+											"value": "custom"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										}
+									],
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Preset",
+									"type": "select"
+								},
+								{
+									"code": "custom_pattern",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Pattern",
+									"type": "text",
+									"visibility_conditions": {
+										"preset_pattern": {
+											"value": [
+												"custom"
+											]
+										}
+									}
+								},
+								{
+									"code": "custom_message",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-field-error-message",
+									"prompt": "Message",
+									"type": "text",
+									"visibility_conditions": {
+										"preset_pattern": {
+											"value": [
+												"custom"
+											]
+										}
+									}
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"input:tel"
+									]
+								}
+							}
+						},
+						{
+							"code": "pattern_validation",
+							"prompt": "Validation",
+							"properties": [
+								{
+									"code": "pattern",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-control",
+									"prompt": "Pattern",
+									"type": "text"
+								},
+								{
+									"code": "message",
+									"preview_property_selector": ".mmx-form-field%nth-child% .mmx-form-field-error-message",
+									"prompt": "Message",
+									"type": "text"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"input:text",
+										"input:email"
+									]
+								}
+							}
+						}
+					],
+					"template": {
+						"column_span": {
+							"value": 1
+						},
+						"description": {
+							"source": "markdown"
+						},
+						"label": {
+							"value": "Label goes here"
+						},
+						"type": {
+							"value": "input:text"
+						}
+					},
+					"type": "list"
+				},
+				{
+					"code": "submit",
+					"collapsed": 1,
+					"prompt": "Submit Button",
+					"properties": [
+						{
+							"code": "button",
+							"preview_property_selector": ".mmx-form-submit-button",
+							"prompt": "Button Text",
+							"required": 1,
+							"textsettings": {
+								"fields": [
+									{
+										"code": "button_style",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Primary",
+												"value": "primary"
+											},
+											{
+												"text": "Secondary",
+												"value": "secondary"
+											},
+											{
+												"text": "Display Link",
+												"value": "display-link"
+											},
+											{
+												"text": "Primary Link",
+												"value": "primary-link"
+											},
+											{
+												"text": "Secondary Link",
+												"value": "secondary-link"
+											}
+										],
+										"prompt": "Button Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									},
+									{
+										"code": "button_size",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "X-Small",
+												"value": "xs"
+											},
+											{
+												"text": "Small",
+												"value": "s"
+											},
+											{
+												"text": "Medium",
+												"value": "m"
+											},
+											{
+												"text": "Large",
+												"value": "l"
+											}
+										],
+										"prompt": "Button Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									}
+								]
+							},
+							"type": "text"
+						},
+						{
+							"code": "button_align",
+							"options": [
+								{
+									"text": "align_left",
+									"type": "icon",
+									"value": "left"
+								},
+								{
+									"text": "align_center",
+									"type": "icon",
+									"value": "center"
+								},
+								{
+									"text": "align_right",
+									"type": "icon",
+									"value": "right"
+								}
+							],
+							"preview_property_selector": ".mmx-form-submit-button",
+							"prompt": "Button Alignment",
+							"type": "selector"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "layout",
+					"collapsed": 1,
+					"prompt": "Layout",
+					"properties": [
+						{
+							"code": "size",
+							"options": [
+								{
+									"text": "Small",
+									"value": "s"
+								},
+								{
+									"text": "Medium",
+									"value": "m"
+								},
+								{
+									"text": "Large",
+									"value": "l"
+								}
+							],
+							"prompt": "Size",
+							"type": "select"
+						},
+						{
+							"code": "width",
+							"label": "%",
+							"precision": 1,
+							"preview_property_selector": ".mmx-form",
+							"prompt": "Width",
+							"range_high": 100,
+							"range_low": 0,
+							"type": "slider"
+						},
+						{
+							"code": "position",
+							"options": [
+								{
+									"text": "Left",
+									"value": "center-left"
+								},
+								{
+									"text": "Center",
+									"value": "center"
+								},
+								{
+									"text": "Right",
+									"value": "center-right"
+								}
+							],
+							"preview_property_selector": ".mmx-form",
+							"prompt": "Position",
+							"type": "select"
+						},
+						{
+							"code": "columns",
+							"min": 1,
+							"placeholder": 1,
+							"preview_property_selector": ".mmx-form-fields",
+							"prompt": "Columns",
+							"step": 1,
+							"text_type": "number",
+							"type": "text"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "background",
+					"collapsed": 1,
+					"prompt": "Background",
+					"properties": [
+						{
+							"code": "img",
+							"prompt": "Background Image",
+							"responsive_images": [
+								{
+									"code": "mobile",
+									"prompt": "Mobile Image"
+								},
+								{
+									"code": "tablet",
+									"prompt": "Tablet Image"
+								}
+							],
+							"type": "image"
+						},
+						{
+							"code": "overlay_opacity",
+							"label": "%",
+							"precision": -1,
+							"prompt": "Image Shader Overlay",
+							"range_high": 100,
+							"range_low": 0,
+							"scale": -1,
+							"type": "slider"
+						},
+						{
+							"code": "background_color",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"prompt": "Background Color",
+							"style": "color",
+							"type": "color"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "messages",
+					"collapsed": 1,
+					"prompt": "Messages",
+					"properties": [
+						{
+							"code": "send_email_success",
+							"markdown": 1,
+							"prompt": "Successfully Sent Email",
+							"type": "textarea"
+						},
+						{
+							"code": "send_email_failure",
+							"markdown": 1,
+							"prompt": "Failure Sending Email",
+							"type": "textarea"
+						},
+						{
+							"code": "missing_required_fields",
+							"markdown": 1,
+							"prompt": "Missing Required Fields",
+							"type": "textarea"
+						}
+					],
+					"type": "group"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "email",
+			"collapsed": 1,
+			"prompt": "Email",
+			"properties": [
+				{
+					"code": "subject",
+					"prompt": "Subject",
+					"type": "text"
+				},
+				{
+					"code": "to",
+					"group_prompt": "Recipient",
+					"item_prompt_property": "email:value",
+					"list_type": "group",
+					"prompt": "To",
+					"properties": [
+						{
+							"code": "email",
+							"placeholder": "jsmith@example.com",
+							"prompt": "Email",
+							"text_type": "email",
+							"type": "text"
+						}
+					],
+					"type": "list"
+				},
+				{
+					"code": "cc",
+					"group_prompt": "Recipient",
+					"item_prompt_property": "email:value",
+					"list_type": "group",
+					"prompt": "CC",
+					"properties": [
+						{
+							"code": "email",
+							"placeholder": "jsmith@example.com",
+							"prompt": "Email",
+							"text_type": "email",
+							"type": "text"
+						}
+					],
+					"type": "list"
+				},
+				{
+					"code": "bcc",
+					"group_prompt": "Recipient",
+					"item_prompt_property": "email:value",
+					"list_type": "group",
+					"prompt": "BCC",
+					"properties": [
+						{
+							"code": "email",
+							"placeholder": "jsmith@example.com",
+							"prompt": "Email",
+							"text_type": "email",
+							"type": "text"
+						}
+					],
+					"type": "list"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"advanced_properties": [
+		{
+			"code": "spacing",
+			"prompt": "Spacing",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "padding",
+			"prompt": "Padding",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "content_theme",
+			"options": [
+				{
+					"text": "Light",
+					"value": "light"
+				},
+				{
+					"text": "Dark",
+					"value": "dark"
+				},
+				{
+					"text": "Invert",
+					"value": "invert"
+				}
+			],
+			"prompt": "Content Theme",
+			"type": "select"
+		}
+	],
+	"defaults": {
+		"form": {
+			"fields": {
+				"children": [
+					{
+						"column_span": {
+							"value": 1
+						},
+						"description": {
+							"source": "markdown"
+						},
+						"is_required": {
+							"value": 1
+						},
+						"label": {
+							"value": "Your name"
+						},
+						"pattern_validation": {
+							"visible": 1
+						},
+						"placeholder": {
+							"visible": 1
+						},
+						"type": {
+							"value": "input:text"
+						}
+					},
+					{
+						"column_span": {
+							"value": 1
+						},
+						"description": {
+							"source": "markdown"
+						},
+						"is_required": {
+							"value": 1
+						},
+						"label": {
+							"value": "Your email address"
+						},
+						"pattern_validation": {
+							"visible": 1
+						},
+						"placeholder": {
+							"value": "example@email.com",
+							"visible": 1
+						},
+						"type": {
+							"value": "input:email"
+						}
+					},
+					{
+						"column_span": {
+							"value": 1
+						},
+						"description": {
+							"source": "markdown"
+						},
+						"is_required": {
+							"value": 1
+						},
+						"label": {
+							"value": "Subject"
+						},
+						"pattern_validation": {
+							"visible": 1
+						},
+						"placeholder": {
+							"visible": 1
+						},
+						"type": {
+							"value": "input:text"
+						}
+					},
+					{
+						"column_span": {
+							"value": 1
+						},
+						"description": {
+							"source": "markdown"
+						},
+						"is_required": {
+							"value": 1
+						},
+						"label": {
+							"value": "Message"
+						},
+						"pattern_validation": {
+							"visible": 1
+						},
+						"placeholder": {
+							"value": "Type your message here...",
+							"visible": 1
+						},
+						"type": {
+							"value": "textarea"
+						}
+					}
+				]
+			},
+			"header": {
+				"align": {
+					"value": "center"
+				},
+				"body": {
+					"source": "markdown",
+					"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+				},
+				"heading": {
+					"value": "Heading Goes Here"
+				},
+				"settings": {
+					"enabled": 1
+				},
+				"subheading": {
+					"value": "Subheading Goes Here"
+				}
+			},
+			"layout": {
+				"columns": {
+					"value": 1
+				},
+				"position": {
+					"value": "center"
+				},
+				"size": {
+					"value": "m"
+				},
+				"width": {
+					"value": 100
+				}
+			},
+			"messages": {
+				"missing_required_fields": {
+					"source": "markdown",
+					"value": "We noticed some missing information. Please fill out the following required fields:"
+				},
+				"send_email_failure": {
+					"source": "markdown",
+					"value": "There was problem submitting your information. Please use another method to attempt to contact us."
+				},
+				"send_email_success": {
+					"source": "markdown",
+					"value": "Thank you for your form submission! We've received your information and will be in touch shortly."
+				}
+			},
+			"submit": {
+				"button": {
+					"value": "Submit"
+				},
+				"button_align": {
+					"value": "right"
+				}
+			}
+		}
+	},
+	"initialization_template": "src/templates/init.mvt",
+	"instance_template": "src/templates/instance.mvt",
+	"preview": "src/images/preview.svg",
+	"depends": {
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-forms": "=10.10.00",
+		"mmx-icons": "=10.10.00",
+		"mmx-messages": "=10.10.00",
+		"mmx-text": "=10.10.00"
+	}
+}

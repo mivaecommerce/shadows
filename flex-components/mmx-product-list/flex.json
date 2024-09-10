@@ -1,0 +1,2320 @@
+{
+	"code": "mmx-product-list",
+	"name": "Product List",
+	"type": "component",
+	"version": "10.10.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-product-list",
+	"category": "product-list",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": [
+		{
+			"conditions": {
+				"settings:list:products:product_set:value": [
+					"auto"
+				]
+			},
+			"type": "search"
+		}
+	],
+	"properties": [
+		{
+			"can_disable": 1,
+			"code": "heading",
+			"prompt": "Section Title",
+			"properties": [
+				{
+					"code": "heading_align",
+					"options": [
+						{
+							"text": "align_left",
+							"type": "icon",
+							"value": "left"
+						},
+						{
+							"text": "align_center",
+							"type": "icon",
+							"value": "center"
+						},
+						{
+							"text": "align_right",
+							"type": "icon",
+							"value": "right"
+						}
+					],
+					"preview_property_selector": "[slot=\"title\"]",
+					"prompt": "Heading Alignment",
+					"type": "selector"
+				},
+				{
+					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
+					"prompt": "Heading Text",
+					"textsettings": {
+						"fields": [
+							{
+								"code": "heading_style",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Display One",
+										"value": "display-1"
+									},
+									{
+										"text": "Display Two",
+										"value": "display-2"
+									},
+									{
+										"text": "Display Three",
+										"value": "display-3"
+									},
+									{
+										"text": "Title One",
+										"value": "title-1"
+									},
+									{
+										"text": "Title Two",
+										"value": "title-2"
+									},
+									{
+										"text": "Title Three",
+										"value": "title-3"
+									},
+									{
+										"text": "Title Four",
+										"value": "title-4"
+									},
+									{
+										"text": "Subheading Large",
+										"value": "subheading-l"
+									},
+									{
+										"text": "Subheading Small",
+										"value": "subheading-s"
+									},
+									{
+										"text": "Subheading Extra-Small",
+										"value": "subheading-xs"
+									},
+									{
+										"text": "Paragraph Large",
+										"value": "paragraph-l"
+									},
+									{
+										"text": "Paragraph Small",
+										"value": "paragraph-s"
+									},
+									{
+										"text": "Paragraph Extra-Small",
+										"value": "paragraph-xs"
+									}
+								],
+								"prompt": "Heading Style",
+								"pseudoclasses": [
+									"normal"
+								],
+								"type": "select"
+							},
+							{
+								"code": "font_family",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Helvetica",
+										"value": "Helvetica, sans-serif"
+									},
+									{
+										"text": "Georgia",
+										"value": "Georgia, serif"
+									},
+									{
+										"text": "Palatino Linotype",
+										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+									},
+									{
+										"text": "Times New Roman",
+										"value": "\"Times New Roman\", Times, serif"
+									},
+									{
+										"text": "Arial",
+										"value": "Arial, Helvetica, sans-serif"
+									},
+									{
+										"text": "Arial Black",
+										"value": "\"Arial Black\", Gadget, sans-serif"
+									},
+									{
+										"text": "Comic Sans MS",
+										"value": "\"Comic Sans MS\", cursive, sans-serif"
+									},
+									{
+										"text": "Impact",
+										"value": "Impact, Charcoal, sans-serif"
+									},
+									{
+										"text": "Lucida Sans Unicode",
+										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+									},
+									{
+										"text": "Tahoma",
+										"value": "Tahoma, Geneva, sans-serif"
+									},
+									{
+										"text": "Trebuchet MS",
+										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+									},
+									{
+										"text": "Verdana",
+										"value": "Verdana, Geneva, sans-serif"
+									},
+									{
+										"text": "Courier New",
+										"value": "\"Courier New\", Courier, monospace"
+									},
+									{
+										"text": "Lucida Console",
+										"value": "\"Lucida Console\", Monaco, monospace"
+									}
+								],
+								"prompt": "Font Family",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "font-family",
+								"type": "select"
+							},
+							{
+								"code": "font_size",
+								"label": "px",
+								"min": 1,
+								"prompt": "Font Size",
+								"pseudoclasses": [
+									"normal"
+								],
+								"size": "one-third",
+								"style": "font-size",
+								"style_suffix": "px",
+								"text_type": "number",
+								"type": "text"
+							},
+							{
+								"code": "font_weight",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Ultra-Thin",
+										"value": 100
+									},
+									{
+										"text": "Light",
+										"value": 200
+									},
+									{
+										"text": "Book",
+										"value": 300
+									},
+									{
+										"text": "Normal",
+										"value": 400
+									},
+									{
+										"text": "Medium",
+										"value": 500
+									},
+									{
+										"text": "Semi-Bold",
+										"value": 600
+									},
+									{
+										"text": "Bold",
+										"value": 700
+									},
+									{
+										"text": "Black",
+										"value": 900
+									}
+								],
+								"prompt": "Font Weight",
+								"pseudoclasses": [
+									"normal"
+								],
+								"size": "two-thirds",
+								"style": "font-weight",
+								"type": "select"
+							},
+							{
+								"code": "font_color",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+								"prompt": "Font Color",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "color",
+								"type": "color"
+							},
+							{
+								"code": "heading_tag",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "h1",
+										"value": "h1"
+									},
+									{
+										"text": "h2",
+										"value": "h2"
+									},
+									{
+										"text": "h3",
+										"value": "h3"
+									},
+									{
+										"text": "h4",
+										"value": "h4"
+									},
+									{
+										"text": "h5",
+										"value": "h5"
+									},
+									{
+										"text": "h6",
+										"value": "h6"
+									},
+									{
+										"text": "p",
+										"value": "p"
+									}
+								],
+								"prompt": "Heading Tag",
+								"pseudoclasses": [
+									"normal"
+								],
+								"type": "select"
+							}
+						]
+					},
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "list",
+			"prompt": "Product List",
+			"properties": [
+				{
+					"code": "products",
+					"collapsed": 1,
+					"prompt": "Products",
+					"properties": [
+						{
+							"code": "product_set",
+							"options": [
+								{
+									"text": "Determined by Page Items",
+									"value": "auto"
+								},
+								{
+									"text": "All Products",
+									"value": "all"
+								},
+								{
+									"text": "Assigned to Category",
+									"value": "category"
+								},
+								{
+									"text": "Related Products",
+									"value": "related"
+								}
+							],
+							"prompt": "Product Set",
+							"type": "select"
+						},
+						{
+							"code": "category_source",
+							"options": [
+								{
+									"text": "Determined by Page Items",
+									"value": "auto"
+								},
+								{
+									"text": "Specific Category",
+									"value": "manual"
+								}
+							],
+							"prompt": "Which Category?",
+							"type": "select",
+							"visibility_conditions": {
+								"product_set": {
+									"value": [
+										"category"
+									]
+								}
+							}
+						},
+						{
+							"code": "category",
+							"prompt": "Category",
+							"type": "category",
+							"visibility_conditions": {
+								"category_source": {
+									"value": [
+										"manual"
+									]
+								}
+							}
+						},
+						{
+							"code": "related_source",
+							"options": [
+								{
+									"text": "Determined by Page Items",
+									"value": "auto"
+								},
+								{
+									"text": "Specific Product",
+									"value": "manual"
+								}
+							],
+							"prompt": "Which Related Products?",
+							"type": "select",
+							"visibility_conditions": {
+								"product_set": {
+									"value": [
+										"related"
+									]
+								}
+							}
+						},
+						{
+							"code": "product",
+							"prompt": "Product",
+							"type": "product",
+							"visibility_conditions": {
+								"related_source": {
+									"value": [
+										"manual"
+									]
+								}
+							}
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "columns",
+					"collapsed": 1,
+					"prompt": "Product Columns",
+					"properties": [
+						{
+							"code": "mobile",
+							"max": 8,
+							"min": 1,
+							"placeholder": 2,
+							"preview_property_selector": ":shadow [part~=\"products\"]",
+							"prompt": "Mobile",
+							"required": 1,
+							"text_type": "number",
+							"type": "text"
+						},
+						{
+							"code": "tablet",
+							"max": 12,
+							"min": 1,
+							"placeholder": 3,
+							"preview_property_selector": ":shadow [part~=\"products\"]",
+							"prompt": "Tablet",
+							"required": 1,
+							"text_type": "number",
+							"type": "text"
+						},
+						{
+							"code": "desktop",
+							"max": 16,
+							"min": 1,
+							"placeholder": 4,
+							"preview_property_selector": ":shadow [part~=\"products\"]",
+							"prompt": "Desktop",
+							"required": 1,
+							"text_type": "number",
+							"type": "text"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "facets",
+					"collapsed": 1,
+					"prompt": "Facets",
+					"properties": [
+						{
+							"code": "title",
+							"preview_property_selector": ":shadow .mmx-product-list__facets-title",
+							"prompt": "Title",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "title_style",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Display One",
+												"value": "display-1"
+											},
+											{
+												"text": "Display Two",
+												"value": "display-2"
+											},
+											{
+												"text": "Display Three",
+												"value": "display-3"
+											},
+											{
+												"text": "Title One",
+												"value": "title-1"
+											},
+											{
+												"text": "Title Two",
+												"value": "title-2"
+											},
+											{
+												"text": "Title Three",
+												"value": "title-3"
+											},
+											{
+												"text": "Title Four",
+												"value": "title-4"
+											},
+											{
+												"text": "Subheading Large",
+												"value": "subheading-l"
+											},
+											{
+												"text": "Subheading Small",
+												"value": "subheading-s"
+											},
+											{
+												"text": "Subheading Extra-Small",
+												"value": "subheading-xs"
+											},
+											{
+												"text": "Paragraph Large",
+												"value": "paragraph-l"
+											},
+											{
+												"text": "Paragraph Small",
+												"value": "paragraph-s"
+											},
+											{
+												"text": "Paragraph Extra-Small",
+												"value": "paragraph-xs"
+											}
+										],
+										"prompt": "Title Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select"
+									},
+									{
+										"code": "font_family",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Helvetica",
+												"value": "Helvetica, sans-serif"
+											},
+											{
+												"text": "Georgia",
+												"value": "Georgia, serif"
+											},
+											{
+												"text": "Palatino Linotype",
+												"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+											},
+											{
+												"text": "Times New Roman",
+												"value": "\"Times New Roman\", Times, serif"
+											},
+											{
+												"text": "Arial",
+												"value": "Arial, Helvetica, sans-serif"
+											},
+											{
+												"text": "Arial Black",
+												"value": "\"Arial Black\", Gadget, sans-serif"
+											},
+											{
+												"text": "Comic Sans MS",
+												"value": "\"Comic Sans MS\", cursive, sans-serif"
+											},
+											{
+												"text": "Impact",
+												"value": "Impact, Charcoal, sans-serif"
+											},
+											{
+												"text": "Lucida Sans Unicode",
+												"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+											},
+											{
+												"text": "Tahoma",
+												"value": "Tahoma, Geneva, sans-serif"
+											},
+											{
+												"text": "Trebuchet MS",
+												"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+											},
+											{
+												"text": "Verdana",
+												"value": "Verdana, Geneva, sans-serif"
+											},
+											{
+												"text": "Courier New",
+												"value": "\"Courier New\", Courier, monospace"
+											},
+											{
+												"text": "Lucida Console",
+												"value": "\"Lucida Console\", Monaco, monospace"
+											}
+										],
+										"prompt": "Font Family",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "font-family",
+										"type": "select"
+									},
+									{
+										"code": "font_size",
+										"label": "px",
+										"min": 1,
+										"prompt": "Font Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "one-third",
+										"style": "font-size",
+										"style_suffix": "px",
+										"text_type": "number",
+										"type": "text"
+									},
+									{
+										"code": "font_weight",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Ultra-Thin",
+												"value": 100
+											},
+											{
+												"text": "Light",
+												"value": 200
+											},
+											{
+												"text": "Book",
+												"value": 300
+											},
+											{
+												"text": "Normal",
+												"value": 400
+											},
+											{
+												"text": "Medium",
+												"value": 500
+											},
+											{
+												"text": "Semi-Bold",
+												"value": 600
+											},
+											{
+												"text": "Bold",
+												"value": 700
+											},
+											{
+												"text": "Black",
+												"value": 900
+											}
+										],
+										"prompt": "Font Weight",
+										"pseudoclasses": [
+											"normal"
+										],
+										"size": "two-thirds",
+										"style": "font-weight",
+										"type": "select"
+									},
+									{
+										"code": "font_color",
+										"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+										"prompt": "Font Color",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": "color",
+										"type": "color"
+									}
+								]
+							},
+							"type": "text"
+						},
+						{
+							"code": "width",
+							"label": "%",
+							"placeholder": 20,
+							"precision": 1,
+							"preview_property_selector": ":shadow [part~=\"facets\"]",
+							"prompt": "Facet Column Width",
+							"range_high": 30,
+							"range_low": 10,
+							"type": "slider"
+						},
+						{
+							"code": "show_value_counts",
+							"prompt": "Display Facet Value Counts",
+							"type": "checkbox"
+						},
+						{
+							"code": "facet_styles",
+							"collapsed": 1,
+							"prompt": "Facet Styles",
+							"properties": [
+								{
+									"code": "facet_style",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Display One",
+											"value": "display-1"
+										},
+										{
+											"text": "Display Two",
+											"value": "display-2"
+										},
+										{
+											"text": "Display Three",
+											"value": "display-3"
+										},
+										{
+											"text": "Title One",
+											"value": "title-1"
+										},
+										{
+											"text": "Title Two",
+											"value": "title-2"
+										},
+										{
+											"text": "Title Three",
+											"value": "title-3"
+										},
+										{
+											"text": "Title Four",
+											"value": "title-4"
+										},
+										{
+											"text": "Subheading Large",
+											"value": "subheading-l"
+										},
+										{
+											"text": "Subheading Small",
+											"value": "subheading-s"
+										},
+										{
+											"text": "Subheading Extra-Small",
+											"value": "subheading-xs"
+										},
+										{
+											"text": "Paragraph Large",
+											"value": "paragraph-l"
+										},
+										{
+											"text": "Paragraph Small",
+											"value": "paragraph-s"
+										},
+										{
+											"text": "Paragraph Extra-Small",
+											"value": "paragraph-xs"
+										}
+									],
+									"preview_property_selector": ":shadow .mmx-product-list__facet-title",
+									"prompt": "Facet Style",
+									"type": "select"
+								},
+								{
+									"code": "font_family",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Helvetica",
+											"value": "Helvetica, sans-serif"
+										},
+										{
+											"text": "Georgia",
+											"value": "Georgia, serif"
+										},
+										{
+											"text": "Palatino Linotype",
+											"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+										},
+										{
+											"text": "Times New Roman",
+											"value": "\"Times New Roman\", Times, serif"
+										},
+										{
+											"text": "Arial",
+											"value": "Arial, Helvetica, sans-serif"
+										},
+										{
+											"text": "Arial Black",
+											"value": "\"Arial Black\", Gadget, sans-serif"
+										},
+										{
+											"text": "Comic Sans MS",
+											"value": "\"Comic Sans MS\", cursive, sans-serif"
+										},
+										{
+											"text": "Impact",
+											"value": "Impact, Charcoal, sans-serif"
+										},
+										{
+											"text": "Lucida Sans Unicode",
+											"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+										},
+										{
+											"text": "Tahoma",
+											"value": "Tahoma, Geneva, sans-serif"
+										},
+										{
+											"text": "Trebuchet MS",
+											"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+										},
+										{
+											"text": "Verdana",
+											"value": "Verdana, Geneva, sans-serif"
+										},
+										{
+											"text": "Courier New",
+											"value": "\"Courier New\", Courier, monospace"
+										},
+										{
+											"text": "Lucida Console",
+											"value": "\"Lucida Console\", Monaco, monospace"
+										}
+									],
+									"preview_property_selector": ":shadow .mmx-product-list__facet-title",
+									"prompt": "Font Family",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-family",
+									"type": "select"
+								},
+								{
+									"code": "font_size",
+									"label": "px",
+									"min": 1,
+									"preview_property_selector": ":shadow .mmx-product-list__facet-title",
+									"prompt": "Font Size",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-size",
+									"style_suffix": "px",
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "font_weight",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Ultra-Thin",
+											"value": 100
+										},
+										{
+											"text": "Light",
+											"value": 200
+										},
+										{
+											"text": "Book",
+											"value": 300
+										},
+										{
+											"text": "Normal",
+											"value": 400
+										},
+										{
+											"text": "Medium",
+											"value": 500
+										},
+										{
+											"text": "Semi-Bold",
+											"value": 600
+										},
+										{
+											"text": "Bold",
+											"value": 700
+										},
+										{
+											"text": "Black",
+											"value": 900
+										}
+									],
+									"preview_property_selector": ":shadow .mmx-product-list__facet-title",
+									"prompt": "Font Weight",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-weight",
+									"type": "select"
+								},
+								{
+									"code": "font_color",
+									"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+									"preview_property_selector": ":shadow .mmx-product-list__facet-title",
+									"prompt": "Font Color",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "color",
+									"type": "color"
+								}
+							],
+							"type": "group"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "sort_by",
+					"collapsed": 1,
+					"prompt": "Sort By",
+					"properties": [
+						{
+							"code": "default",
+							"options": [
+								{
+									"text": "Relevance",
+									"value": "relevance"
+								},
+								{
+									"text": "Display Order",
+									"value": "disp_order"
+								},
+								{
+									"text": "Display Order Descending",
+									"value": "disp_order_desc"
+								},
+								{
+									"text": "Newest",
+									"value": "newest"
+								},
+								{
+									"text": "Oldest",
+									"value": "oldest"
+								},
+								{
+									"text": "Recently Updated",
+									"value": "updated"
+								},
+								{
+									"text": "Code Ascending",
+									"value": "code_asc"
+								},
+								{
+									"text": "Code Descending",
+									"value": "code_desc"
+								},
+								{
+									"text": "Name Ascending",
+									"value": "name_asc"
+								},
+								{
+									"text": "Name Descending",
+									"value": "name_desc"
+								},
+								{
+									"text": "Price Ascending",
+									"value": "price_asc"
+								},
+								{
+									"text": "Price Descending",
+									"value": "price_desc"
+								},
+								{
+									"text": "Best Sellers",
+									"value": "bestsellers"
+								}
+							],
+							"preview_property_selector": ":shadow [part~=\"sort-by\"]",
+							"prompt": "Default Sort",
+							"type": "select"
+						},
+						{
+							"code": "options",
+							"group_prompt": "Sort Option",
+							"item_prompt_property": "label:value",
+							"list_type": "group",
+							"prompt": "Sort Options",
+							"properties": [
+								{
+									"code": "code",
+									"options": [
+										{
+											"text": "Relevance",
+											"value": "relevance"
+										},
+										{
+											"text": "Display Order",
+											"value": "disp_order"
+										},
+										{
+											"text": "Display Order Descending",
+											"value": "disp_order_desc"
+										},
+										{
+											"text": "Newest",
+											"value": "newest"
+										},
+										{
+											"text": "Oldest",
+											"value": "oldest"
+										},
+										{
+											"text": "Recently Updated",
+											"value": "updated"
+										},
+										{
+											"text": "Code Ascending",
+											"value": "code_asc"
+										},
+										{
+											"text": "Code Descending",
+											"value": "code_desc"
+										},
+										{
+											"text": "Name Ascending",
+											"value": "name_asc"
+										},
+										{
+											"text": "Name Descending",
+											"value": "name_desc"
+										},
+										{
+											"text": "Price Ascending",
+											"value": "price_asc"
+										},
+										{
+											"text": "Price Descending",
+											"value": "price_desc"
+										},
+										{
+											"text": "Best Sellers",
+											"value": "bestsellers"
+										}
+									],
+									"preview_property_selector": ":shadow [part~=\"sort-by\"]",
+									"prompt": "Sorting Method",
+									"type": "select"
+								},
+								{
+									"code": "label",
+									"preview_property_selector": ":shadow [part~=\"sort-by\"]",
+									"prompt": "Label",
+									"required": 1,
+									"type": "text"
+								}
+							],
+							"template": {
+								"label": {
+									"value": "Sort Option Label Here"
+								}
+							},
+							"type": "list"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "per_page",
+					"collapsed": 1,
+					"prompt": "View Per Page",
+					"properties": [
+						{
+							"code": "default",
+							"min": 1,
+							"placeholder": 24,
+							"preview_property_selector": ":shadow [part~=\"per-page\"]",
+							"prompt": "Default Per Page",
+							"step": 1,
+							"text_type": "number",
+							"type": "text"
+						},
+						{
+							"code": "options",
+							"group_prompt": "Per Page Option",
+							"item_prompt_property": "label:value",
+							"list_type": "group",
+							"prompt": "Per Page Options",
+							"properties": [
+								{
+									"code": "amount",
+									"min": 1,
+									"placeholder": 24,
+									"preview_property_selector": ":shadow [part~=\"per-page\"]",
+									"prompt": "Amount",
+									"required": 1,
+									"step": 1,
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "label",
+									"placeholder": "24 Items / Page",
+									"preview_property_selector": ":shadow [part~=\"per-page\"]",
+									"prompt": "Label",
+									"required": 1,
+									"type": "text"
+								}
+							],
+							"template": {
+								"amount": {
+									"value": 24
+								},
+								"label": {
+									"value": "24 Items / Page"
+								}
+							},
+							"type": "list"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "pagination",
+					"collapsed": 1,
+					"prompt": "Pagination",
+					"properties": [
+						{
+							"code": "page_numbers",
+							"options": [
+								{
+									"text": "Links",
+									"value": "links"
+								},
+								{
+									"text": "Dropdown",
+									"value": "dropdown"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								}
+							],
+							"preview_property_selector": ":shadow [part~=\"pagination-page-numbers\"]",
+							"prompt": "Page Numbers",
+							"type": "select"
+						},
+						{
+							"code": "page_link_count",
+							"min": 3,
+							"preview_property_selector": ":shadow [part~=\"pagination-page-numbers\"]",
+							"prompt": "Page Link Count",
+							"step": 2,
+							"text_type": "number",
+							"type": "text",
+							"visibility_conditions": {
+								"page_numbers": {
+									"value": [
+										"links"
+									]
+								}
+							}
+						},
+						{
+							"code": "next_previous",
+							"options": [
+								{
+									"text": "Arrows",
+									"value": "arrows"
+								},
+								{
+									"text": "Text",
+									"value": "text"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								}
+							],
+							"preview_property_selector": ":shadow [part~=\"pagination-next\"]",
+							"prompt": "Next/Previous",
+							"type": "select"
+						},
+						{
+							"code": "next_text",
+							"placeholder": "Next",
+							"preview_property_selector": ":shadow [part~=\"pagination-next\"]",
+							"prompt": "Next Text",
+							"type": "text",
+							"visibility_conditions": {
+								"next_previous": {
+									"value": [
+										"text"
+									]
+								}
+							}
+						},
+						{
+							"code": "previous_text",
+							"placeholder": "Previous",
+							"preview_property_selector": ":shadow [part~=\"pagination-previous\"]",
+							"prompt": "Previous Text",
+							"type": "text",
+							"visibility_conditions": {
+								"next_previous": {
+									"value": [
+										"text"
+									]
+								}
+							}
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "details",
+					"collapsed": 1,
+					"prompt": "Details",
+					"properties": [
+						{
+							"code": "show_total_products",
+							"preview_property_selector": ":shadow [part~=\"detail-total-products\"]",
+							"prompt": "Display Total Products",
+							"type": "checkbox"
+						},
+						{
+							"code": "show_current_page",
+							"preview_property_selector": ":shadow [part~=\"detail-current-page\"]",
+							"prompt": "Display Current Page",
+							"type": "checkbox"
+						},
+						{
+							"code": "show_search_term",
+							"preview_property_selector": ":shadow [part~=\"detail-search-term\"]",
+							"prompt": "Display Search Term",
+							"type": "checkbox"
+						}
+					],
+					"type": "group"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "card",
+			"prompt": "Product Card",
+			"properties": [
+				{
+					"can_disable": 1,
+					"code": "image",
+					"collapsed": 1,
+					"prompt": "Image",
+					"properties": [
+						{
+							"code": "type",
+							"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+							"prompt": "Image Type",
+							"type": "imagetype"
+						},
+						{
+							"code": "dimensions",
+							"placeholder": "300x300",
+							"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+							"prompt": "Image Dimensions",
+							"required": 1,
+							"type": "text",
+							"validation_message": "Enter the pixel dimensions that the image should be cropped to (ex. 300x300)",
+							"validation_pattern": "\\d+x\\d+"
+						},
+						{
+							"code": "fit",
+							"options": [
+								{
+									"text": "Cover",
+									"value": "cover"
+								},
+								{
+									"text": "Contain",
+									"value": "contain"
+								},
+								{
+									"text": "Fill",
+									"value": "fill"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								},
+								{
+									"text": "Scale Down",
+									"value": "scale-down"
+								}
+							],
+							"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+							"prompt": "Image Fit",
+							"type": "select"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "details",
+					"group_prompt": "Detail",
+					"item_prompt_property": "name:value",
+					"list_type": "group",
+					"prompt": "Details",
+					"properties": [
+						{
+							"code": "name",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Detail Name",
+							"required": 1,
+							"type": "text"
+						},
+						{
+							"code": "type",
+							"options": [
+								{
+									"text": "Name",
+									"value": "name"
+								},
+								{
+									"text": "Price",
+									"value": "price"
+								},
+								{
+									"text": "Code",
+									"value": "code"
+								},
+								{
+									"text": "SKU",
+									"value": "sku"
+								},
+								{
+									"text": "Description",
+									"value": "descrip"
+								},
+								{
+									"text": "Weight",
+									"value": "weight"
+								},
+								{
+									"text": "Custom Field",
+									"value": "customfield"
+								},
+								{
+									"text": "Fragment",
+									"value": "fragment"
+								},
+								{
+									"text": "Inventory Message (Short)",
+									"value": "inv_short"
+								},
+								{
+									"text": "Inventory Message (Long)",
+									"value": "inv_long"
+								},
+								{
+									"text": "Inventory Available",
+									"value": "inv_available"
+								},
+								{
+									"text": "Button: View Product",
+									"value": "button__view-product"
+								},
+								{
+									"text": "Button: Add to Cart",
+									"value": "button__add-to-cart"
+								},
+								{
+									"text": "Button: Add to Wishlist",
+									"value": "button__add-to-wishlist"
+								},
+								{
+									"text": "Quantity in Basket",
+									"value": "quantity"
+								},
+								{
+									"text": "Discounts",
+									"value": "discounts"
+								}
+							],
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Type",
+							"required": 1,
+							"type": "select"
+						},
+						{
+							"code": "customfield",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Custom Field",
+							"type": "productcustomfieldlookup",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"customfield"
+									]
+								}
+							}
+						},
+						{
+							"code": "fragment",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Fragment",
+							"type": "fragment",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"fragment"
+									]
+								}
+							}
+						},
+						{
+							"code": "prefix",
+							"placeholder": "SKU:, Weight:, etc.",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"]) [part~=\"detail-prefix\"]",
+							"prompt": "Prefix",
+							"type": "text",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"name",
+										"code",
+										"sku",
+										"description",
+										"weight",
+										"quantity",
+										"inv_short",
+										"inv_long",
+										"inv_available",
+										"customfield"
+									]
+								}
+							}
+						},
+						{
+							"code": "suffix",
+							"placeholder": "lbs., in. etc.",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"]) [part~=\"detail-suffix\"]",
+							"prompt": "Suffix",
+							"type": "text",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"name",
+										"code",
+										"weight",
+										"quantity",
+										"inv_short",
+										"inv_long",
+										"inv_available",
+										"customfield"
+									]
+								}
+							}
+						},
+						{
+							"code": "price",
+							"prompt": "Price",
+							"properties": [
+								{
+									"code": "displayed",
+									"options": [
+										{
+											"text": "Sale",
+											"value": "sale"
+										},
+										{
+											"text": "Retail",
+											"value": "retail"
+										},
+										{
+											"text": "Base",
+											"value": "base"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"]) [part~=\"price\"]",
+									"prompt": "Displayed Price",
+									"type": "select"
+								},
+								{
+									"code": "additional",
+									"options": [
+										{
+											"text": "Base",
+											"value": "base"
+										},
+										{
+											"text": "Retail",
+											"value": "retail"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"]) [part~=\"additional-price\"]",
+									"prompt": "Additional Price",
+									"type": "select"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"price"
+									]
+								}
+							}
+						},
+						{
+							"code": "button",
+							"prompt": "Button",
+							"properties": [
+								{
+									"code": "text",
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Button Text",
+									"textsettings": {
+										"fields": [
+											{
+												"code": "button_style",
+												"options": [
+													{
+														"text": "Default"
+													},
+													{
+														"text": "Primary",
+														"value": "primary"
+													},
+													{
+														"text": "Secondary",
+														"value": "secondary"
+													},
+													{
+														"text": "Display Link",
+														"value": "display-link"
+													},
+													{
+														"text": "Primary Link",
+														"value": "primary-link"
+													},
+													{
+														"text": "Secondary Link",
+														"value": "secondary-link"
+													}
+												],
+												"prompt": "Button Style",
+												"pseudoclasses": [
+													"normal"
+												],
+												"type": "select"
+											},
+											{
+												"code": "button_size",
+												"options": [
+													{
+														"text": "Default"
+													},
+													{
+														"text": "X-Small",
+														"value": "xs"
+													},
+													{
+														"text": "Small",
+														"value": "s"
+													},
+													{
+														"text": "Medium",
+														"value": "m"
+													},
+													{
+														"text": "Large",
+														"value": "l"
+													}
+												],
+												"prompt": "Button Size",
+												"pseudoclasses": [
+													"normal"
+												],
+												"type": "select"
+											}
+										]
+									},
+									"type": "text"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"button__view-product",
+										"button__add-to-cart",
+										"button__add-to-wishlist"
+									]
+								}
+							}
+						},
+						{
+							"code": "text_styles",
+							"collapsed": 1,
+							"prompt": "Text Styles",
+							"properties": [
+								{
+									"code": "text_align",
+									"options": [
+										{
+											"text": "align_left",
+											"type": "icon",
+											"value": "left"
+										},
+										{
+											"text": "align_center",
+											"type": "icon",
+											"value": "center"
+										},
+										{
+											"text": "align_right",
+											"type": "icon",
+											"value": "right"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Text Alignment",
+									"type": "selector"
+								},
+								{
+									"code": "style",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Display One",
+											"value": "display-1"
+										},
+										{
+											"text": "Display Two",
+											"value": "display-2"
+										},
+										{
+											"text": "Display Three",
+											"value": "display-3"
+										},
+										{
+											"text": "Title One",
+											"value": "title-1"
+										},
+										{
+											"text": "Title Two",
+											"value": "title-2"
+										},
+										{
+											"text": "Title Three",
+											"value": "title-3"
+										},
+										{
+											"text": "Title Four",
+											"value": "title-4"
+										},
+										{
+											"text": "Subheading Large",
+											"value": "subheading-l"
+										},
+										{
+											"text": "Subheading Small",
+											"value": "subheading-s"
+										},
+										{
+											"text": "Subheading Extra-Small",
+											"value": "subheading-xs"
+										},
+										{
+											"text": "Paragraph Large",
+											"value": "paragraph-l"
+										},
+										{
+											"text": "Paragraph Small",
+											"value": "paragraph-s"
+										},
+										{
+											"text": "Paragraph Extra-Small",
+											"value": "paragraph-xs"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Style",
+									"type": "select"
+								},
+								{
+									"code": "font_family",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Helvetica",
+											"value": "Helvetica, sans-serif"
+										},
+										{
+											"text": "Georgia",
+											"value": "Georgia, serif"
+										},
+										{
+											"text": "Palatino Linotype",
+											"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+										},
+										{
+											"text": "Times New Roman",
+											"value": "\"Times New Roman\", Times, serif"
+										},
+										{
+											"text": "Arial",
+											"value": "Arial, Helvetica, sans-serif"
+										},
+										{
+											"text": "Arial Black",
+											"value": "\"Arial Black\", Gadget, sans-serif"
+										},
+										{
+											"text": "Comic Sans MS",
+											"value": "\"Comic Sans MS\", cursive, sans-serif"
+										},
+										{
+											"text": "Impact",
+											"value": "Impact, Charcoal, sans-serif"
+										},
+										{
+											"text": "Lucida Sans Unicode",
+											"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+										},
+										{
+											"text": "Tahoma",
+											"value": "Tahoma, Geneva, sans-serif"
+										},
+										{
+											"text": "Trebuchet MS",
+											"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+										},
+										{
+											"text": "Verdana",
+											"value": "Verdana, Geneva, sans-serif"
+										},
+										{
+											"text": "Courier New",
+											"value": "\"Courier New\", Courier, monospace"
+										},
+										{
+											"text": "Lucida Console",
+											"value": "\"Lucida Console\", Monaco, monospace"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Font Family",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-family",
+									"type": "select"
+								},
+								{
+									"code": "font_size",
+									"label": "px",
+									"min": 1,
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Font Size",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-size",
+									"style_suffix": "px",
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "font_weight",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Ultra-Thin",
+											"value": 100
+										},
+										{
+											"text": "Light",
+											"value": 200
+										},
+										{
+											"text": "Book",
+											"value": 300
+										},
+										{
+											"text": "Normal",
+											"value": 400
+										},
+										{
+											"text": "Medium",
+											"value": 500
+										},
+										{
+											"text": "Semi-Bold",
+											"value": 600
+										},
+										{
+											"text": "Bold",
+											"value": 700
+										},
+										{
+											"text": "Black",
+											"value": 900
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Font Weight",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "font-weight",
+									"type": "select"
+								},
+								{
+									"code": "font_color",
+									"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Font Color",
+									"pseudoclasses": [
+										"normal"
+									],
+									"style": "color",
+									"type": "color"
+								},
+								{
+									"code": "font_style",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Normal",
+											"value": "normal"
+										},
+										{
+											"text": "Italic",
+											"value": "italic"
+										},
+										{
+											"text": "Oblique",
+											"value": "oblique"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Font Style",
+									"type": "select"
+								},
+								{
+									"code": "text_transform",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Capitalize",
+											"value": "capitalize"
+										},
+										{
+											"text": "Uppercase",
+											"value": "uppercase"
+										},
+										{
+											"text": "Lowercase",
+											"value": "lowercase"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Text Transform",
+									"type": "select"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"name",
+										"price",
+										"code",
+										"sku",
+										"descrip",
+										"weight",
+										"customfield",
+										"fragment",
+										"inv_short",
+										"inv_long",
+										"inv_available",
+										"quantity",
+										"discounts"
+									]
+								}
+							}
+						},
+						{
+							"code": "ADPR_url",
+							"placeholder": "BASK",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Add to Cart Destination",
+							"type": "link",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"button__add-to-cart"
+									]
+								}
+							}
+						},
+						{
+							"code": "ATWL_url",
+							"placeholder": "WISH",
+							"preview_property_selector": "mmx-product-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Add to Wishlist Destination",
+							"type": "link",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"button__add-to-wishlist"
+									]
+								}
+							}
+						}
+					],
+					"template": {
+						"ADPR_url": {
+							"type": "page",
+							"value": "BASK"
+						},
+						"ATWL_url": {
+							"type": "page",
+							"value": "WISH"
+						},
+						"name": {
+							"value": "Detail Name Here"
+						},
+						"price": {
+							"additional": {
+								"value": "base"
+							},
+							"displayed": {
+								"value": "sale"
+							}
+						}
+					},
+					"type": "list"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"advanced_properties": [
+		{
+			"code": "spacing",
+			"prompt": "Spacing",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "show_empty_results",
+			"prompt": "Display Empty Results",
+			"type": "checkbox"
+		},
+		{
+			"code": "empty_results_message",
+			"placeholder": "There are no products to display.",
+			"preview_property_selector": ":shadow [part~=\"empty\"]",
+			"prompt": "Empty Results Message",
+			"type": "text",
+			"visibility_conditions": {
+				"show_empty_results": {
+					"value": [
+						1
+					]
+				}
+			}
+		},
+		{
+			"code": "submit_method",
+			"options": [
+				{
+					"text": "Replace Products",
+					"value": "replace"
+				},
+				{
+					"text": "Reload Page",
+					"value": "reload"
+				}
+			],
+			"prompt": "Submit Method",
+			"type": "select"
+		},
+		{
+			"code": "param_prefix",
+			"placeholder": "ProductList, Related, Search, BestSellers, etc.",
+			"prompt": "Params Prefix",
+			"type": "text",
+			"validation_message": "The params prefix must only contain alphanumeric or underscore characters",
+			"validation_pattern": "\\w+"
+		}
+	],
+	"defaults": {
+		"advanced": {
+			"empty_results_message": {
+				"value": "There are no products to display."
+			},
+			"show_empty_results": {
+				"value": 1
+			}
+		},
+		"card": {
+			"details": {
+				"children": [
+					{
+						"name": {
+							"value": "Name"
+						},
+						"type": {
+							"value": "name"
+						}
+					},
+					{
+						"name": {
+							"value": "Price"
+						},
+						"price": {
+							"additional": {
+								"value": "base"
+							},
+							"displayed": {
+								"value": "sale"
+							}
+						},
+						"type": {
+							"value": "price"
+						}
+					},
+					{
+						"fragment": {
+							"value": "product_list_additional_data"
+						},
+						"name": {
+							"value": "Additional Data Fragment"
+						},
+						"type": {
+							"value": "fragment"
+						}
+					}
+				]
+			},
+			"image": {
+				"dimensions": {
+					"value": "350x350"
+				},
+				"fit": {
+					"value": "contain"
+				},
+				"settings": {
+					"enabled": 1
+				},
+				"type": {
+					"value": "main"
+				}
+			}
+		},
+		"heading": {
+			"heading_align": {
+				"value": "left"
+			},
+			"heading_text": {
+				"value": "Product List Heading Here"
+			},
+			"settings": {
+				"enabled": 1
+			}
+		},
+		"list": {
+			"columns": {
+				"desktop": {
+					"value": 4
+				},
+				"mobile": {
+					"value": 2
+				},
+				"tablet": {
+					"value": 3
+				}
+			},
+			"details": {
+				"settings": {
+					"enabled": 1
+				},
+				"show_current_page": {
+					"value": 0
+				},
+				"show_search_term": {
+					"value": 1
+				},
+				"show_total_products": {
+					"value": 1
+				}
+			},
+			"facets": {
+				"settings": {
+					"enabled": 1
+				},
+				"show_value_counts": {
+					"value": 1
+				},
+				"title": {
+					"value": "Filters"
+				},
+				"width": {
+					"value": 20
+				}
+			},
+			"pagination": {
+				"next_previous": {
+					"value": "arrows"
+				},
+				"next_text": {
+					"value": "Next"
+				},
+				"page_link_count": {
+					"value": 7
+				},
+				"page_numbers": {
+					"value": "links"
+				},
+				"previous_text": {
+					"value": "Previous"
+				},
+				"settings": {
+					"enabled": 1
+				}
+			},
+			"per_page": {
+				"default": {
+					"value": 24
+				},
+				"options": {
+					"children": [
+						{
+							"amount": {
+								"value": 12
+							},
+							"label": {
+								"value": "12 Items / Page"
+							}
+						},
+						{
+							"amount": {
+								"value": 24
+							},
+							"label": {
+								"value": "24 Items / Page"
+							}
+						},
+						{
+							"amount": {
+								"value": 48
+							},
+							"label": {
+								"value": "48 Items / Page"
+							}
+						}
+					]
+				},
+				"settings": {
+					"enabled": 1
+				}
+			},
+			"products": {
+				"product_set": {
+					"value": "auto"
+				}
+			},
+			"sort_by": {
+				"default": {
+					"value": "disp_order"
+				},
+				"options": {
+					"children": [
+						{
+							"code": {
+								"value": "disp_order"
+							},
+							"label": {
+								"value": "Featured"
+							}
+						},
+						{
+							"code": {
+								"value": "bestsellers"
+							},
+							"label": {
+								"value": "Best Selling"
+							}
+						},
+						{
+							"code": {
+								"value": "price_asc"
+							},
+							"label": {
+								"value": "Price (Low to High)"
+							}
+						},
+						{
+							"code": {
+								"value": "price_desc"
+							},
+							"label": {
+								"value": "Price (High to Low)"
+							}
+						},
+						{
+							"code": {
+								"value": "newest"
+							},
+							"label": {
+								"value": "Newest Items"
+							}
+						}
+					]
+				},
+				"settings": {
+					"enabled": 1
+				}
+			}
+		}
+	},
+	"initialization_template": "src/templates/init.mvt",
+	"instance_template": "src/templates/instance.mvt",
+	"preview": "src/images/preview.svg",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-product-list.js",
+			"resource_code": "mmx-product-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-K8JDgqqaiP5TehehFgr0PXd5S2NCKAg+AzkmUXifceU= sha384-rEcY3oXHTiGb11yrhWum/GuS1X3BF2XnqvBoxhsxM7HWgVrzBmr52m/r7AuqERPv sha512-onyMKCL1nWZbRcZVsOgzrLydNptCNiFFiJ+09r9BJvBO7s2kN/qW/ee/X+VVh7LKPd8KWW8T3OO84GV461KKAw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-product-list.css",
+			"resource_code": "mmx-product-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-SKYFz9W6la74/BrsLWq108Xw+bHGzJXlneMA7ZlziIE= sha384-pdvJ8y7Vs5QA/u2tqwOquuPssA1VchhOXvHI0C0oKxpDp8xjwiID4DFBV9oYgs4u sha512-DaYfHW3OIks6VDNHJRnXFHBMLnxzJM3z0jiip9xN21Z2RxCsfi/ed1qpjTpWAA6Y0mSPqERCWH+cHty+/vZYmQ=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-accordion": "=10.10.00",
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-card": "=10.10.00",
+		"mmx-forms": "=10.10.00",
+		"mmx-icons": "=10.10.00",
+		"mmx-messages": "=10.10.00",
+		"mmx-text": "=10.10.00"
+	}
+}

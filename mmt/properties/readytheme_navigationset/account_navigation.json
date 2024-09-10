@@ -14,49 +14,49 @@
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ACED\" target=\"_self\">Edit Information</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ACED"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACED\" target=\"_self\">Edit Information</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACED"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ACED\" target=\"_self\">Edit Information</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACED\" target=\"_self\">Edit Information</a>",
                     "link_dest": "ACED",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Edit Information",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ACED"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACED"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CEML\" target=\"_self\">Change Email</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CEML"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CEML\" target=\"_self\">Change Email</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CEML"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CEML\" target=\"_self\">Change Email</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CEML\" target=\"_self\">Change Email</a>",
                     "link_dest": "CEML",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Change Email",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CEML"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CEML"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD\" target=\"_self\">Change Password</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD\" target=\"_self\">Change Password</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD\" target=\"_self\">Change Password</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD\" target=\"_self\">Change Password</a>",
                     "link_dest": "CPWD",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Change Password",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPWD"
                 }
             ],
             "link": "Personal Information",
@@ -77,33 +77,33 @@
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD\" target=\"_self\">Edit Cards</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD\" target=\"_self\">Edit Cards</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD\" target=\"_self\">Edit Cards</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD\" target=\"_self\">Edit Cards</a>",
                     "link_dest": "CPCD",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Edit Cards",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCD"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA\" target=\"_self\">Add New Card</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA\" target=\"_self\">Add New Card</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA\" target=\"_self\">Add New Card</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA\" target=\"_self\">Add New Card</a>",
                     "link_dest": "CPCA",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Add New Card",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CPCA"
                 }
             ],
             "link": "Payment Options",
@@ -124,49 +124,49 @@
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order History</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order History</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order History</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order History</a>",
                     "link_dest": "ORDH",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Order History",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB\" target=\"_self\">Manage Subscriptions</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB\" target=\"_self\">Manage Subscriptions</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB\" target=\"_self\">Manage Subscriptions</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB\" target=\"_self\">Manage Subscriptions</a>",
                     "link_dest": "CSUB",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Manage Subscriptions",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CSUB"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
                     "link_dest": "WLST",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Wish Lists",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
                 }
             ],
             "link": "My Orders",
@@ -187,33 +187,33 @@
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL\" target=\"_self\">Check Your Balance</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL\" target=\"_self\">Check Your Balance</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL\" target=\"_self\">Check Your Balance</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL\" target=\"_self\">Check Your Balance</a>",
                     "link_dest": "ABAL",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Check Your Balance",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABAL"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT\" target=\"_self\">Redeem Gift Certificate</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT\" target=\"_self\">Redeem Gift Certificate</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT\" target=\"_self\">Redeem Gift Certificate</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT\" target=\"_self\">Redeem Gift Certificate</a>",
                     "link_dest": "RGFT",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Redeem Gift Certificate",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=RGFT"
                 }
             ],
             "link": "Customer Credit",
@@ -234,33 +234,33 @@
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CABK\" target=\"_self\">Edit Addresses</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CABK"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CABK\" target=\"_self\">Edit Addresses</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CABK"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CABK\" target=\"_self\">Edit Addresses</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CABK\" target=\"_self\">Edit Addresses</a>",
                     "link_dest": "CABK",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Edit Addresses",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CABK"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CABK"
                 },
                 {
                     "active": 1,
                     "branch_data": {
                         "1": {
-                            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CADA\" target=\"_self\">Add New Address</a>",
-                            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CADA"
+                            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CADA\" target=\"_self\">Add New Address</a>",
+                            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CADA"
                         }
                     },
                     "id": "",
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CADA\" target=\"_self\">Add New Address</a>",
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CADA\" target=\"_self\">Add New Address</a>",
                     "link_dest": "CADA",
                     "link_targ": "_self",
                     "link_type": "G",
                     "name": "Add New Address",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=CADA"
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CADA"
                 }
             ],
             "link": "Address Book",
@@ -272,17 +272,17 @@
             "active": 0,
             "branch_data": {
                 "1": {
-                    "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=AFED\" target=\"_self\">Affiliate Information</a>",
-                    "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=AFED"
+                    "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=AFED\" target=\"_self\">Affiliate Information</a>",
+                    "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=AFED"
                 }
             },
             "id": "",
-            "link": "<a href=\"https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=AFED\" target=\"_self\">Affiliate Information</a>",
+            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=AFED\" target=\"_self\">Affiliate Information</a>",
             "link_dest": "AFED",
             "link_targ": "_self",
             "link_type": "G",
             "name": "Affiliate Information",
-            "url": "https://dev-test-ssoule01.coolcommerce.net/mm5/merchant.mvc?Screen=AFED"
+            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=AFED"
         }
     ],
     "layout": "S",

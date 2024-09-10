@@ -1,0 +1,29 @@
+{
+    "code": "mmx-messages",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        },
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-CRMy+UHdNdLCzoTQCKnCvFAHhXvhi4E+CcYvD5zgUpI= sha384-PQg/MEPfAq4YgUjAzCrbVNvhyQxw3G8OrovkuFHbDN5QQJ1DTnsPjr0NhMlyLdHu sha512-ylCPRnLlnxT2jp/73BIxoeebkWpfA7b9i10qy3AZ4FRDqg2IKxLBNkK4uXfgDWxB6q0z/ucsBk7d5hNgS42MIw=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

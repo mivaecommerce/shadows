@@ -2,10 +2,12 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "layout",
@@ -23,6 +25,7 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"image-slider\"]",
 					"prompt": "Image Position",
 					"type": "selector"
 				}
@@ -109,6 +112,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Product Name Style",
 							"type": "select"
 						},
@@ -175,6 +179,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Family",
 							"pseudoclasses": [
 								"normal"
@@ -186,11 +191,11 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Size",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "one-third",
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
@@ -235,17 +240,18 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Weight",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "two-thirds",
 							"style": "font-weight",
 							"type": "select"
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -263,6 +269,7 @@
 					"properties": [
 						{
 							"code": "text",
+							"preview_property_selector": ":shadow [part~=\"subheading\"]",
 							"prompt": "Subheading (Ex. SKU or Brand)",
 							"textsettings": {
 								"fields": [
@@ -540,6 +547,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Description Style",
 							"type": "select"
 						},
@@ -606,6 +614,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Family",
 							"pseudoclasses": [
 								"normal"
@@ -617,11 +626,11 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Size",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "one-third",
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
@@ -666,17 +675,18 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Weight",
 							"pseudoclasses": [
 								"normal"
 							],
-							"size": "two-thirds",
 							"style": "font-weight",
 							"type": "select"
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Color",
 							"pseudoclasses": [
 								"normal"
@@ -691,6 +701,7 @@
 							"properties": [
 								{
 									"code": "text",
+									"preview_property_selector": ":shadow [part~=\"product-description\"]",
 									"prompt": "Description Text",
 									"type": "textarea"
 								}
@@ -774,13 +785,15 @@
 							"value": "span"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"product-name\"]",
 					"prompt": "Product Name Tag",
 					"type": "select"
 				},
 				{
 					"code": "image_type",
+					"preview_property_selector": ":shadow [part~=\"image-slider\"]",
 					"prompt": "Product Image",
-					"type": "text"
+					"type": "imagetype"
 				},
 				{
 					"code": "image_fit",
@@ -806,26 +819,31 @@
 							"value": "scale-down"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"image-slider\"]",
 					"prompt": "Image Fit",
 					"type": "select"
 				},
 				{
 					"code": "multiple_images",
+					"preview_property_selector": ":shadow [part~=\"image-slider\"]",
 					"prompt": "Display Multiple Images",
 					"type": "checkbox"
 				},
 				{
 					"code": "discount",
+					"preview_property_selector": ":shadow [part~=\"original-price\"], :shadow [part~=\"discounts\"]",
 					"prompt": "Display Discount Info",
 					"type": "checkbox"
 				},
 				{
 					"code": "sku",
+					"preview_property_selector": ":shadow [part~=\"product-sku\"]",
 					"prompt": "Display Product SKU",
 					"type": "checkbox"
 				},
 				{
 					"code": "code",
+					"preview_property_selector": ":shadow [part~=\"product-code\"]",
 					"prompt": "Display Product Code",
 					"type": "checkbox"
 				},
@@ -836,6 +854,7 @@
 					"properties": [
 						{
 							"code": "button_text",
+							"preview_property_selector": ":shadow [part~=\"button\"]",
 							"prompt": "Button Text",
 							"textsettings": {
 								"fields": [
@@ -1040,10 +1059,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-hero-slider": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-hero-slider": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

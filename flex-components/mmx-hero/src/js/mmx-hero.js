@@ -87,6 +87,10 @@ class MMX_Hero extends MMX_Element {
 				default: null,
 				allowAny: true
 			},
+			target: {
+				default: null,
+				allowAny: true
+			},
 			'overlay-bg': {
 				options: [
 					'linear-gradient',
@@ -276,7 +280,6 @@ class MMX_Hero extends MMX_Element {
 
 	styleResourceCodes		= ['mmx-base', 'mmx-text', 'mmx-button', 'mmx-hero'];
 
-
 	constructor() {
 		super();
 		this.makeShadow();
@@ -287,6 +290,7 @@ class MMX_Hero extends MMX_Element {
 			<a
 				part="wrapper theme-${this.getPropValue('content-theme')}"
 				${this.renderHref()}
+				${this.renderTarget()}
 				class="
 					mmx-hero
 					mmx-hero--size-method--${this.getSizeMethod()}
@@ -343,6 +347,11 @@ class MMX_Hero extends MMX_Element {
 	renderHref() {
 		const href = this.getPropValue('href');
 		return href ? `href="${MMX.encodeEntities(href)}"` : '';
+	}
+
+	renderTarget() {
+		const target = this.getPropValue('target');
+		return target ? `target="${MMX.encodeEntities(target)}"` : '';
 	}
 
 	slottedImage() {
@@ -774,6 +783,7 @@ class MMX_Hero extends MMX_Element {
 		this.setSpacing(this.data?.advanced?.spacing);
 		MMX.setElementAttributes(this, {
 			'data-href': this.data?.link?.url,
+			'data-target': this.data?.link?.new_tab ? '_blank' : undefined,
 			'data-size': this.data?.image?.size?.value,
 			'data-content-width': this.data?.advanced?.desktop?.container_width?.value,
 			'data-content-location': this.data?.content?.content_location?.value,

@@ -21,7 +21,156 @@
     "discount_volume": {
         "template_filename": "prod-discount_volume.mvc"
     },
+    "flex": {
+        "related-products": {
+            "component_code": "mmx-product-list",
+            "item_code": "related-products",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
+                "advanced": {
+                    "show_empty_results": {
+                        "value": 0
+                    }
+                },
+                "card": {
+                    "details": {
+                        "children": [
+                            {
+                                "name": {
+                                    "value": "Name"
+                                },
+                                "type": {
+                                    "value": "name"
+                                }
+                            },
+                            {
+                                "name": {
+                                    "value": "Price"
+                                },
+                                "price": {
+                                    "additional": {
+                                        "value": "base"
+                                    },
+                                    "displayed": {
+                                        "value": "sale"
+                                    }
+                                },
+                                "type": {
+                                    "value": "price"
+                                }
+                            },
+                            {
+                                "fragment": {
+                                    "value": "product_list_additional_data"
+                                },
+                                "name": {
+                                    "value": "Additional Data Fragment"
+                                },
+                                "type": {
+                                    "value": "fragment"
+                                }
+                            }
+                        ]
+                    },
+                    "image": {
+                        "dimensions": {
+                            "value": "350x350"
+                        },
+                        "fit": {
+                            "value": "contain"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        },
+                        "type": {
+                            "value": "main"
+                        }
+                    }
+                },
+                "heading": {
+                    "heading_align": {
+                        "value": "center"
+                    },
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_style": {
+                                        "value": "title-3"
+                                    },
+                                    "heading_tag": {
+                                        "value": "h2"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Related Products"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    }
+                },
+                "list": {
+                    "columns": {
+                        "desktop": {
+                            "value": 4
+                        },
+                        "mobile": {
+                            "value": 2
+                        },
+                        "tablet": {
+                            "value": 3
+                        }
+                    },
+                    "details": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "facets": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "pagination": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "per_page": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
+                    "products": {
+                        "product_set": {
+                            "value": "auto"
+                        }
+                    },
+                    "sort_by": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                }
+            }
+        }
+    },
     "footer_sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Related Products",
+                "param": "related-products"
+            }
+        ],
         "title": "Page Builder Footer"
     },
     "hdft": {
@@ -89,52 +238,6 @@
         "thumb_width": 64,
         "thumbnails": "thumbnails"
     },
-    "related_products": {
-        "additionalprice": "base",
-        "advanced": 1,
-        "b_height": 384,
-        "b_width": 384,
-        "button_add": 1,
-        "button_buy": 1,
-        "button_wish": 0,
-        "col_num": 2,
-        "constrain": "B",
-        "default_sort": "disp_order",
-        "displaydiscounts": 0,
-        "field_code": 1,
-        "field_desc": 0,
-        "field_name": 1,
-        "field_price": 1,
-        "field_sku": 0,
-        "field_weight": 0,
-        "format": "X",
-        "image": "T",
-        "imagemachine_enabled": 0,
-        "imagetypes": [
-            "main"
-        ],
-        "invmsg": "L",
-        "items_per_page_filter": 0,
-        "linkexcludecat": 0,
-        "mode": "relp",
-        "page_disp_count": 0,
-        "per_page": 0,
-        "predictdiscounts": 1,
-        "price": "sale",
-        "reverse_default_disp_order": 0,
-        "sort_by": {
-            "best": 1,
-            "code": 0,
-            "name": 0,
-            "new": 1,
-            "old": 1,
-            "price": 1,
-            "relevance": 0,
-            "switch": 0,
-            "updated": 0
-        },
-        "template_filename": "prod-related_products.mvc"
-    },
     "seo_settings": {
         "cat_lit": "category",
         "cat_lit_choice": "category",
@@ -147,8 +250,8 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     }
 }

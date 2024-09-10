@@ -1601,8 +1601,9 @@ const addToCart = (document => {
 							}
 
 							// Re-Initialize Attribute Machine (if it is active)
-							if (typeof attrMachCall !== 'undefined') {
-								attrMachCall.Initialize();
+							if (typeof attrMachProductId === 'string') {
+								const attrMachCall = window?.[`am${attrMachProductId}`];
+								attrMachCall?.Initialize();
 							}
 						}
 						else if (response.body.id === 'js-PATR') {

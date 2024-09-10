@@ -10,9 +10,18 @@
 <mvt:assign name="l.settings:instance:advanced:desktop:background_color:color:output_value" value="ternary(l.settings:instance:advanced:desktop:background_color:settings:enabled, l.settings:instance:advanced:desktop:background_color:color:value, '')" />
 <mvt:assign name="l.settings:instance:advanced:mobile:background_color:color:output_value" value="ternary(l.settings:instance:advanced:mobile:background_color:settings:enabled, l.settings:instance:advanced:mobile:background_color:color:value, '')" />
 
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-image-across
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	class="mmx-wrapper"
@@ -42,15 +51,15 @@
 		<mvt:if expr="ISNULL l.settings:image_across:img:image">
 			<mvt:assign name="l.settings:image_across:img:image" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/placeholder__459x320.jpg'" />
 		</mvt:if>
+		<mvt:assign name="l.settings:image_across:link:html:attr:data_target" value="ternary( l.settings:image_across:link:new_tab, '_blank', '' )" />
 
 		<mvt:comment>Render Hero</mvt:comment>
 		<mmx-hero
 			slot="image"
 			data-href="&mvte:image_across:link:url;"
-
+			data-target="&mvte:image_across:link:html:attr:data_target;"
 			data-align="&mvte:instance:content_styles:align:value;"
 			data-content-location="&mvte:instance:content_styles:content_location:value;"
-
 			data-overlay-bg="color"
 			data-overlay-bg-color="rgba(0, 0, 0, &mvte:instance:advanced:desktop:overlay_opacity:value;%)"
 			data-content-bg-color--mobile="&mvte:instance:advanced:mobile:background_color:color:output_value;"
@@ -108,6 +117,7 @@
 					<mmx-text
 						slot="body"
 						data-style="&mvte:instance:content_styles:body_text_styles:body_style:value;"
+						data-source="&mvte:image_across:text:body:source;"
 						style="
 							font-family: &mvte:instance:content_styles:body_text_styles:font_family;;
 							font-size: &mvte:instance:content_styles:body_text_styles:font_size;px;
@@ -115,7 +125,11 @@
 							color: &mvte:instance:content_styles:body_text_styles:font_color;;
 						"
 					>
-						&mvte:image_across:text:body:value;
+						<mvt:if expr="l.settings:image_across:text:body:source EQ 'markdown'">
+							&mvt:image_across:text:body:value;
+						<mvt:else>
+							&mvte:image_across:text:body:value;
+						</mvt:if>
 					</mmx-text>
 				</mvt:if>
 

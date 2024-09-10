@@ -20,9 +20,13 @@
 <mvt:comment>mmx libraries</mvt:comment>
 <mvt:item name="head" param="js:mmx-text" />
 <mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="js:mmx-icons" />
 
 <mvt:comment>mmx-hero</mvt:comment>
 <mvt:item name="head" param="js:mmx-hero" />
+
+<mvt:comment>mmx-forms</mvt:comment>
+<mvt:item name="head" param="css:mmx-forms" />
 
 <mvt:comment>mmx-combination-facet</mvt:comment>
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />

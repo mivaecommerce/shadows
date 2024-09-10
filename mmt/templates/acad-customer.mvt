@@ -1,14 +1,11 @@
 <section class="o-layout o-layout--justify-center">
 	<div class="o-layout__item u-width-12 u-width-9--m">
-		<mvt:do file="g.Module_Library_DB" name="l.state_datalist_count" value="StateList_Load_All(l.state_datalist)"/>
-		<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
-		
 		<mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
 			<mvt:assign name="l.settings:shipping_required" value="'required'" />
 		<mvt:elseif expr="l.settings:customer:primaddr EQ 'billing'">
 			<mvt:assign name="l.settings:billing_required" value="'required'" />
 		</mvt:if>
-		
+
 		<mvt:if expr="g.Order">
 			<mvt:assign name="l.settings:url" value="l.settings:urls:OINF:secure" />
 		<mvt:elseif expr="g.Redeem">
@@ -26,7 +23,7 @@
 			<input type="hidden" name="Order" value="&mvte:global:Order;" />
 			<input type="hidden" name="NewAccount" value="1" />
 			<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
-			
+
 			<div class="c-form-list o-layout">
 				<div id="LogInInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Log In Information</div>
 				<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:LoginEmail_Row;">
@@ -43,7 +40,7 @@
 				</div>
 			</div>
 			<hr class="c-keyline">
-			
+
 			<div class="c-form-list o-layout">
 				<div id="ShippingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Shipping Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12 u-hidden" id="shipping_controls">
@@ -57,7 +54,7 @@
 					</label>
 				</div>
 			</div>
-			
+
 			<section id="shipping_fields">
 				<mvt:if expr="NOT ISNULL l.settings:customer:validated_ship_addresses">
 					<input type="hidden" name="Customer_ShipValidated" value="1" />
@@ -104,7 +101,7 @@
 						<label id="Customer_ShipCity_label" class="c-form-label u-text-medium is-required" for="Customer_ShipCity">City</label>
 						<input id="Customer_ShipCity" class="c-form-input" type="text" name="Customer_ShipCity" value="&mvte:global:Customer_ShipCity;" &mvte:shipping_required; aria-describedby="ShippingInformation Customer_ShipCity_label">
 					</div>
-					
+
 					<mvt:if expr="g.States_Empty">
 						<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:ShipState_Row;">
 							<label id="Customer_ShipState_label" class="c-form-label u-text-medium is-required" for="Customer_ShipState">State/Province</label>
@@ -116,13 +113,13 @@
 							<input name="Customer_ShipState" type="hidden" value="&mvte:global:Customer_ShipState;">
 							<input id="Customer_ShipStateSelect" class="c-form-input" data-datalist list="ShipStateDatalist" name="Customer_ShipStateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Customer_ShipStateSelect;" &mvte:shipping_required; aria-describedby="ShippingInformation Customer_ShipStateSelect_label">
 							<datalist id="ShipStateDatalist">
-								<mvt:foreach array="global:StateDatalist" iterator="StateData">
-									<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+								<mvt:foreach array="states" iterator="state">
+									<option value="&mvte:state:code;">&mvte:state:name;</option>
 								</mvt:foreach>
 							</datalist>
 						</div>
 					</mvt:if>
-					
+
 					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:ShipCountry_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="Customer_ShipCountry" data-mvt-describedby="ShippingInformation Customer_ShipCountry_label" data-mvt-autocomplete="country">
 						<label id="Customer_ShipCountry_label" class="c-form-label u-text-medium is-required" for="Customer_ShipCountry">Country</label>
 						<div class="c-form-select">
@@ -136,7 +133,7 @@
 				</div>
 				<hr class="c-keyline">
 			</section>
-			
+
 			<div class="c-form-list o-layout">
 				<div id="BillingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Billing Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12" id="billing_controls">
@@ -150,7 +147,7 @@
 					</label>
 				</div>
 			</div>
-	
+
 			<section id="billing_fields">
 				<mvt:if expr="NOT ISNULL l.settings:customer:validated_bill_addresses">
 					<input type="hidden" name="Customer_BillValidated" value="1" />
@@ -197,7 +194,7 @@
 						<label id="Customer_BillCity_label" class="c-form-label u-text-medium is-required" for="Customer_BillCity">City</label>
 						<input id="Customer_BillCity" class="c-form-input" type="text" name="Customer_BillCity" value="&mvte:global:Customer_BillCity;" &mvte:billing_required; aria-describedby="BillingInformation Customer_BillCity_label">
 					</div>
-					
+
 					<mvt:if expr="g.States_Empty">
 						<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:BillState_Row;">
 							<label id="Customer_BillState_label" class="c-form-label u-text-medium is-required" for="Customer_BillState">State/Province</label>
@@ -209,13 +206,13 @@
 							<input name="Customer_BillState" type="hidden" value="&mvte:global:Customer_BillState;">
 							<input id="Customer_BillStateSelect" class="c-form-input" data-datalist list="BillStateDatalist" name="Customer_BillStateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Customer_BillStateSelect;" &mvte:billing_required; aria-describedby="BillingInformation Customer_BillStateSelect_label">
 							<datalist id="BillStateDatalist">
-								<mvt:foreach array="global:StateDatalist" iterator="StateData">
-									<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+								<mvt:foreach array="states" iterator="state">
+									<option value="&mvte:state:code;">&mvte:state:name;</option>
 								</mvt:foreach>
 							</datalist>
 						</div>
 					</mvt:if>
-					
+
 					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:BillCountry_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="Customer_BillCountry" data-mvt-describedby="BillingInformation Customer_BillCountry_label" data-mvt-autocomplete="country">
 						<label id="Customer_BillCountry_label" class="c-form-label u-text-medium is-required" for="Customer_BillCountry">Country</label>
 						<div class="c-form-select">
@@ -229,7 +226,7 @@
 				</div>
 				<hr class="c-keyline">
 			</section>
-			
+
 			<mvt:if expr="l.settings:customer:match">
 				<mvt:if expr="l.settings:customer:primaddr EQ 'shipping'">
 					<script>document.getElementById('billing_to_show').checked = true;</script>
@@ -237,11 +234,11 @@
 					<script>document.getElementById('shipping_to_show').checked = true;</script>
 				</mvt:if>
 			</mvt:if>
-			
+
 			<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified AND l.settings:customer:address_count">
 				<script>
 					let MvCustomerAddresses = [];
-		
+
 					<mvt:foreach iterator="address" array="customer:addresses">
 						MvCustomerAddresses[<mvt:eval expr="int( l.settings:address:id )" />] = {
 							"id": <mvt:eval expr="int( l.settings:address:id )" />,
@@ -264,7 +261,7 @@
 					</mvt:foreach>
 				</script>
 			</mvt:if>
-			
+
 			<div class="c-form-list">
 				<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
 					<input class="c-button" type="submit" value="Save">

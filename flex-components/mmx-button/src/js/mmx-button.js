@@ -7,7 +7,7 @@ class MMX_Button extends MMX_Element {
 	static get props() {
 		return {
 			style: {
-				options: ['primary', 'secondary', 'display-link', 'primary-link', 'secondary-link', 'dark-primary', 'dark-secondary', 'dark-display-link', 'dark-primary-link', 'dark-secondary-link'],
+				options: ['primary', 'secondary', 'display-link', 'primary-link', 'secondary-link', 'dark-primary', 'dark-secondary', 'dark-display-link', 'dark-primary-link', 'dark-secondary-link', 'pill'],
 				default: 'primary'
 			},
 			size: {
@@ -21,7 +21,11 @@ class MMX_Button extends MMX_Element {
 			type: {
 				options: ['submit', 'reset', 'button', 'link'],
 				default: '' // Default can be either `button` or `link` and is determined in getType()
-			}
+			},
+			shape: {
+				options: ['normal', 'round'],
+				default: 'normal'
+			},
 		};
 	}
 
@@ -37,7 +41,7 @@ class MMX_Button extends MMX_Element {
 		const tag = this.getTag();
 
 		return /*html*/`
-			<${tag} class="mmx-button ${this.getStyleClass()} mmx-button__size--${this.getPropValue('size')} mmx-button__width--${this.getPropValue('width')} ${this.darkClass()}" ${this.inheritAttrs()} part="button">
+			<${tag} class="mmx-button ${this.getStyleClass()} mmx-button__size--${this.getPropValue('size')} mmx-button__width--${this.getPropValue('width')} mmx-button__shape--${this.getPropValue('shape')} ${this.darkClass()}" ${this.inheritAttrs()} part="button">
 				<slot></slot>
 			</${tag}>
 		`;
@@ -105,10 +109,13 @@ class MMX_Button extends MMX_Element {
 	getStyleClass() {
 		const style = this.getPropValue('style');
 		let result = `mmx-button__${style}`;
-		if ( style.indexOf('link') > -1 ) {
-			result += '  mmx-button__link';
+
+		if ( style.indexOf('pill') > -1 ) {
+			result += ' mmx-button__pill';
+		} else if ( style.indexOf('link') > -1 ) {
+			result += ' mmx-button__link';
 		} else {
-			result += '  mmx-button__button';
+			result += ' mmx-button__button';
 		}
 
 		return result;

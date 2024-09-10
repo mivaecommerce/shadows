@@ -1,0 +1,59 @@
+{
+	"code": "mmx-card",
+	"name": "MMX Card",
+	"type": "library",
+	"version": "10.10.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-card",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-card.js",
+			"resource_code": "mmx-card",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-Z50EGqCi4rHHsa5Mk6B4dElk3cDZKsFByy8SzJZB0kg= sha384-GdO+9AGu8NyLr+EaZtK5dNHPKbLXNs04CaPMe5jG51O8wdw5F1Ey0H6Dgcd1NQZ/ sha512-QdD6igpQ2pJlirDmWydhSRIQ6v51YVkdtnL2aUcRfoz9X5kAOnZrpLM3ZDnCUAJuezSDujTDsVNuotoXo4NqBQ=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-card.css",
+			"resource_code": "mmx-card",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-rtzdFULtzvjpJ4Jd1wQABZ7yvzDgqmFKgjkj3UsH0yM= sha384-x//9vC76OnT2bWG/q5QEXLXUkzM0cI7z//01M29WWGUFlpK9m7Ff9nlALK9G9/BL sha512-58V+BGrYZSV/6hYacDtOnME2wR1tvD0K/CVugEIzmrA9Fwt/P3wAAl8ECSsojYKTYtVnL1LXIn8eT9u8Iou1og=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.10.00"
+	}
+}

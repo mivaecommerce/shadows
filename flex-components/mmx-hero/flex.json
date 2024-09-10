@@ -2,14 +2,18 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "link",
+			"preview_property_selector": ":shadow [part~=\"wrapper\"]",
 			"prompt": "Banner Link",
+			"supports_new_tab": 1,
 			"type": "link"
 		},
 		{
@@ -19,6 +23,7 @@
 				{
 					"code": "img",
 					"height": 580,
+					"preview_property_selector": "[slot=\"image\"]",
 					"prompt": "Hero Image",
 					"responsive_images": [
 						{
@@ -57,6 +62,7 @@
 							"value": "l"
 						}
 					],
+					"preview_property_selector": "[slot=\"image\"]",
 					"prompt": "Image Height",
 					"type": "select"
 				}
@@ -84,6 +90,7 @@
 							"value": "center-right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Content Placement",
 					"type": "selector"
 				},
@@ -106,11 +113,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": "[slot=\"heading\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -367,6 +376,7 @@
 				},
 				{
 					"code": "subheading",
+					"preview_property_selector": "[slot=\"subheading\"]",
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
@@ -582,6 +592,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": "[slot=\"body\"]",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -797,6 +809,7 @@
 				},
 				{
 					"code": "button",
+					"preview_property_selector": "[slot=\"button\"]",
 					"prompt": "Button Text",
 					"textsettings": {
 						"fields": [
@@ -913,6 +926,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -956,6 +970,7 @@
 							"value": "80%"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Container Width",
 					"type": "select"
 				},
@@ -985,6 +1000,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1056,15 +1072,7 @@
 				"value": "left"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 			},
 			"button": {
@@ -1140,7 +1148,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-/aKJyOv/SOMrcbc2N3foAioMOAQUfRjYgSLuOPVyQCY= sha384-rw9f4gD2kaU8PsyfHucPOicorqtALCmRpyFZkCeFrFtSiQO3UjjOZ/DhhUdPrsj9 sha512-OcKDjxNV+9+qGixEBrnHgmYbmuhLtbUJzcpIIKrbyp6ivEu6WqB9vGG2SvQy/H/VSPVvPIzk5E+gVTXfkf9wmg=="
+					"value": "sha256-wHH/6rYcMV9z96Hbs1I5Ki1qZN5N0/0Dq2ltUKv3TJc= sha384-DFg53PI8iOwisdeLqJOmGLQGCxM6i1aCocKJ0jitjysm3jmHsTUrpmb80x4y8hd7 sha512-6Pjgs0GmB/kkc0RZ+luDWwvv16+ZHxMkI5E/NNv3FUdY0/8J9O9T+4abjk+8eHSXrJiVjnlnGUHR0ZB8svPLxg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1168,7 +1176,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-BK/cp4ddb9h644akUdFzDG6Gm0Z586Qfv+CVLwpAqZg= sha384-qmejU5hhUHT92Vzt7T5jKBdQgweOSM+ap0GQGtQKyFZB/LLQsJVLmHhjJ+4D3yF3 sha512-bhxu/xz+U5dKj3yPeW1JEu1zNzt0KciW8SMLZnR1tkc0NVhzMbJIrSotDpK+U2V6e9rLhWhBmOjEz+Rt/0F9Qg=="
+					"value": "sha256-MihUh/gZ92xVBulgvM4C6FmcNYESznk1vO4FLTUTihM= sha384-NdpOXbr3ZUGAh078+thzGNMGldY2zgi8hRqiiYJhmAiyJT/5ITk8bb1Y4c7MRFtt sha512-JX+NQE9VqVi3aGJlDEdxwJq/8JUUlJpfZuItpeckWbaGWgfpeAXwGSZ4yREsXVanBcKA48gPoLwTex7yZHmK2A=="
 				},
 				{
 					"name": "crossorigin",
@@ -1178,8 +1186,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }
