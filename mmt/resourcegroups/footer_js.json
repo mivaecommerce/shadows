@@ -3,7 +3,6 @@
     "linked_js_resources": [
         "settings",
         "scripts",
-        "contact",
         "json-ld",
         "edit-basket-attributes"
     ],

@@ -61,7 +61,7 @@
 				</a>
 			</div>
 
-			<div class="o-layout__item u-width-6 u-width-8--l u-width-5--w u-hidden u-text-right t-site-header__secure &mvte:global:Session:shadows:checkout_shown;">
+			<div class="o-layout__item u-width-6 u-width-5--xl u-hidden u-text-right t-site-header__secure &mvte:global:Session:shadows:checkout_shown;">
 				<span class="u-color-gray-600 u-text-medium u-text-uppercase"><span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span> <span class="u-font-small">Secure Checkout</span></span>
 			</div>
 		</div>
@@ -75,6 +75,10 @@
 	</div>
 </div>
 <!-- end t-site-navigation -->
+
+<mvt:if expr="ISNULL g.Session:shadows:checkout_hidden">
+	<mvt:fragment code="global_header" />
+</mvt:if>
 
 <mvt:if expr="(l.settings:page:code NE 'SFNT' AND l.settings:page:code NE 'ACLN' AND l.settings:page:code NE 'BASK' AND l.settings:page:code NE 'BSKE' AND l.settings:page:code NE 'ORDL' AND l.settings:page:code NE 'OCST' AND l.settings:page:code NE 'OUS1' AND l.settings:page:code NE 'OUSM' AND l.settings:page:code NE 'UATM' AND l.settings:page:code NE 'UATR' AND l.settings:page:code NE 'OSEL' AND l.settings:page:code NE 'OPAY') AND (ISNULL g.Customer_Temporary_Password)">
 	<mvt:item name="breadcrumbs" />

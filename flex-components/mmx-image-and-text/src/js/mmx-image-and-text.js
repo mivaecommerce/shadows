@@ -23,6 +23,7 @@ class MMX_ImageAndText extends MMX_Hero {
 		this.setSpacing(this.data?.advanced?.spacing);
 		MMX.setElementAttributes(this, {
 			'data-href': this.data?.link?.url,
+			'data-target': this.data?.link?.new_tab ? '_blank' : undefined,
 			'data-size': this.data?.image?.size?.value,
 			'data-content-theme': this.data?.advanced?.content_theme?.value,
 			'data-content-width': this.data?.layout?.content_width?.value,

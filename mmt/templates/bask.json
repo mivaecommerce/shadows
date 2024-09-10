@@ -54,9 +54,9 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     },
     "shipestimate": {
         "advanced": 1,

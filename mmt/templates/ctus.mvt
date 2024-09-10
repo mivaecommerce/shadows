@@ -22,27 +22,23 @@
 					<hr class="c-keyline">
 				</div>
 			</section>
-	
+
 			<section class="o-layout">
 				<div class="o-layout__item">
-					<mvt:item name="header_sequence" />
 					<mvt:item name="hdft" param="header" />
+					<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 				</div>
 			</section>
 
 			<section class="o-layout">
-				<div class="o-layout__item u-width-12 u-width-6--m">
-					<mvt:item name="readytheme" param="contentsection( 'ctus_content' )" />
-				</div>
-				<div class="o-layout__item u-width-12 u-width-6--m">
-					<mvt:item name="readytheme" param="contentsection( 'contact_form' )" />
+				<div class="o-layout__item">
+					<mvt:item name="sequence" />
 				</div>
 			</section>
-			
+
 			<section class="o-layout">
 				<div class="o-layout__item">
 					<mvt:item name="hdft" param="footer" />
-					<mvt:item name="footer_sequence" />
 				</div>
 			</section>
 		</div>

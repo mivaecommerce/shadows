@@ -2,10 +2,12 @@
 	"code": "mmx-combination-facet",
 	"name": "Combination Facet",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-combination-facet",
 	"category": "combination-facet",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "controls",
@@ -13,23 +15,43 @@
 			"properties": [
 				{
 					"code": "facet_code",
-					"placeholder": "Utilities > Combination Facets > Code",
-					"prompt": "Your Combination Facet Code",
-					"type": "text"
+					"lookup": {
+						"columns": [
+							{
+								"code": "code",
+								"header": "Code",
+								"type": "code"
+							},
+							{
+								"code": "name",
+								"header": "Name",
+								"type": "name"
+							}
+						],
+						"module_code": "combofacets",
+						"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+						"selection_column": "code",
+						"title": "Combination Facet Lookup"
+					},
+					"prompt": "Combination Facet Code",
+					"type": "customlookup"
 				},
 				{
 					"code": "submit_destination",
 					"prompt": "Submit Destination",
+					"supports_new_tab": 1,
 					"type": "link"
 				},
 				{
 					"code": "submit_text",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"submit-apply\"]",
 					"prompt": "Submit Button Text",
 					"required": 1,
 					"type": "text"
 				},
 				{
 					"code": "reset_text",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"submit-reset\"]",
 					"prompt": "Reset Button Text",
 					"required": 1,
 					"type": "text"
@@ -81,6 +103,7 @@
 							"value": "dark-secondary-link"
 						}
 					],
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"submit\"]",
 					"prompt": "Submit & Reset Button Style",
 					"type": "select"
 				},
@@ -105,6 +128,7 @@
 				},
 				{
 					"code": "label_inactive",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"label-inactive\"]",
 					"prompt": "Label When Searching",
 					"textsettings": {
 						"fields": [
@@ -320,6 +344,7 @@
 				},
 				{
 					"code": "label_applied",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"label-applied\"]",
 					"prompt": "Label When Applied",
 					"textsettings": {
 						"fields": [
@@ -536,6 +561,7 @@
 				{
 					"code": "background_color",
 					"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"form\"]",
 					"prompt": "Background Color",
 					"style": "color",
 					"type": "color"
@@ -543,9 +569,368 @@
 				{
 					"code": "border_radius",
 					"precision": 1,
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"form\"]",
 					"prompt": "Border Radius",
 					"range_high": 20,
 					"range_low": 0,
+					"type": "slider"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "application",
+			"collapsed": 1,
+			"prompt": "Application Settings",
+			"properties": [
+				{
+					"code": "label_applied",
+					"preview_property_selector": "mmx-combination-facet :shadow .mmx-combination-facet__dialog-application-select-label",
+					"prompt": "Label When Applied",
+					"textsettings": {
+						"fields": [
+							{
+								"code": "label_style",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Display One",
+										"value": "display-1"
+									},
+									{
+										"text": "Display Two",
+										"value": "display-2"
+									},
+									{
+										"text": "Display Three",
+										"value": "display-3"
+									},
+									{
+										"text": "Title One",
+										"value": "title-1"
+									},
+									{
+										"text": "Title Two",
+										"value": "title-2"
+									},
+									{
+										"text": "Title Three",
+										"value": "title-3"
+									},
+									{
+										"text": "Title Four",
+										"value": "title-4"
+									},
+									{
+										"text": "Subheading Large",
+										"value": "subheading-l"
+									},
+									{
+										"text": "Subheading Small",
+										"value": "subheading-s"
+									},
+									{
+										"text": "Subheading Extra-Small",
+										"value": "subheading-xs"
+									},
+									{
+										"text": "Paragraph Large",
+										"value": "paragraph-l"
+									},
+									{
+										"text": "Paragraph Small",
+										"value": "paragraph-s"
+									},
+									{
+										"text": "Paragraph Extra-Small",
+										"value": "paragraph-xs"
+									}
+								],
+								"prompt": "Label Style",
+								"pseudoclasses": [
+									"normal"
+								],
+								"type": "select"
+							},
+							{
+								"code": "font_family",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Helvetica",
+										"value": "Helvetica, sans-serif"
+									},
+									{
+										"text": "Georgia",
+										"value": "Georgia, serif"
+									},
+									{
+										"text": "Palatino Linotype",
+										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
+									},
+									{
+										"text": "Times New Roman",
+										"value": "\"Times New Roman\", Times, serif"
+									},
+									{
+										"text": "Arial",
+										"value": "Arial, Helvetica, sans-serif"
+									},
+									{
+										"text": "Arial Black",
+										"value": "\"Arial Black\", Gadget, sans-serif"
+									},
+									{
+										"text": "Comic Sans MS",
+										"value": "\"Comic Sans MS\", cursive, sans-serif"
+									},
+									{
+										"text": "Impact",
+										"value": "Impact, Charcoal, sans-serif"
+									},
+									{
+										"text": "Lucida Sans Unicode",
+										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
+									},
+									{
+										"text": "Tahoma",
+										"value": "Tahoma, Geneva, sans-serif"
+									},
+									{
+										"text": "Trebuchet MS",
+										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
+									},
+									{
+										"text": "Verdana",
+										"value": "Verdana, Geneva, sans-serif"
+									},
+									{
+										"text": "Courier New",
+										"value": "\"Courier New\", Courier, monospace"
+									},
+									{
+										"text": "Lucida Console",
+										"value": "\"Lucida Console\", Monaco, monospace"
+									}
+								],
+								"prompt": "Font Family",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "font-family",
+								"type": "select"
+							},
+							{
+								"code": "font_size",
+								"label": "px",
+								"min": 1,
+								"prompt": "Font Size",
+								"pseudoclasses": [
+									"normal"
+								],
+								"size": "one-third",
+								"style": "font-size",
+								"style_suffix": "px",
+								"text_type": "number",
+								"type": "text"
+							},
+							{
+								"code": "font_weight",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Ultra-Thin",
+										"value": 100
+									},
+									{
+										"text": "Light",
+										"value": 200
+									},
+									{
+										"text": "Book",
+										"value": 300
+									},
+									{
+										"text": "Normal",
+										"value": 400
+									},
+									{
+										"text": "Medium",
+										"value": 500
+									},
+									{
+										"text": "Semi-Bold",
+										"value": 600
+									},
+									{
+										"text": "Bold",
+										"value": 700
+									},
+									{
+										"text": "Black",
+										"value": 900
+									}
+								],
+								"prompt": "Font Weight",
+								"pseudoclasses": [
+									"normal"
+								],
+								"size": "two-thirds",
+								"style": "font-weight",
+								"type": "select"
+							},
+							{
+								"code": "font_color",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+								"prompt": "Font Color",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "color",
+								"type": "color"
+							}
+						]
+					},
+					"type": "text"
+				},
+				{
+					"code": "label_unapplied",
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"application-select-text\"]",
+					"prompt": "Label When None Selected",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "menu_title_text",
+					"prompt": "Menu Title Text",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "add_text",
+					"prompt": "Add Link Text",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "dialog_add_heading",
+					"prompt": "Add Dialog Heading",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "dialog_add_button",
+					"prompt": "Add Dialog Button Text",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "dialog_edit_heading",
+					"prompt": "Edit Dialog Heading",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "dialog_edit_button",
+					"prompt": "Edit Dialog Button Text",
+					"required": 1,
+					"type": "text"
+				},
+				{
+					"code": "dialog_button_style",
+					"options": [
+						{
+							"text": "Default"
+						},
+						{
+							"text": "Primary",
+							"value": "primary"
+						},
+						{
+							"text": "Secondary",
+							"value": "secondary"
+						},
+						{
+							"text": "Display Link",
+							"value": "display-link"
+						},
+						{
+							"text": "Primary Link",
+							"value": "primary-link"
+						},
+						{
+							"text": "Secondary Link",
+							"value": "secondary-link"
+						},
+						{
+							"text": "Dark Primary",
+							"value": "dark-primary"
+						},
+						{
+							"text": "Dark Secondary",
+							"value": "dark-secondary"
+						},
+						{
+							"text": "Dark Display Link",
+							"value": "dark-display-link"
+						},
+						{
+							"text": "Dark Primary Link",
+							"value": "dark-primary-link"
+						},
+						{
+							"text": "Dark Secondary Link",
+							"value": "dark-secondary-link"
+						}
+					],
+					"prompt": "Dialog Button Style",
+					"type": "select"
+				},
+				{
+					"code": "dialog_button_size",
+					"options": [
+						{
+							"text": "Default"
+						},
+						{
+							"text": "X-Small",
+							"value": "xs"
+						},
+						{
+							"text": "Small",
+							"value": "s"
+						},
+						{
+							"text": "Medium",
+							"value": "m"
+						},
+						{
+							"text": "Large",
+							"value": "l"
+						}
+					],
+					"prompt": "Dialog Button Size",
+					"type": "select"
+				},
+				{
+					"code": "delete_confirmation_text",
+					"prompt": "Delete Confirmation Message",
+					"type": "text"
+				},
+				{
+					"code": "width",
+					"label": "%",
+					"precision": 1,
+					"preview_property_selector": "mmx-combination-facet :shadow [part~=\"form\"]",
+					"prompt": "Display Width",
+					"range_high": 100,
+					"range_low": 40,
 					"type": "slider"
 				}
 			],
@@ -580,6 +965,7 @@
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": ".mmx-combination-facet__heading",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -836,6 +1222,7 @@
 				},
 				{
 					"code": "subheading",
+					"preview_property_selector": ".mmx-combination-facet__subheading",
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
@@ -1051,6 +1438,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": ".mmx-combination-facet__body",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -1395,6 +1784,47 @@
 				"value": 0
 			}
 		},
+		"application": {
+			"add_text": {
+				"value": "Add New"
+			},
+			"delete_confirmation_text": {
+				"value": "Are you sure you want to delete this selection?"
+			},
+			"dialog_add_button": {
+				"value": "Add"
+			},
+			"dialog_add_heading": {
+				"value": "Add"
+			},
+			"dialog_edit_button": {
+				"value": "Save"
+			},
+			"dialog_edit_heading": {
+				"value": "Edit"
+			},
+			"label_applied": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"label_style": {
+								"value": "paragraph-s"
+							}
+						}
+					}
+				},
+				"value": "Shopping For:"
+			},
+			"label_unapplied": {
+				"value": "Select or Add New"
+			},
+			"menu_title_text": {
+				"value": "Saved Selections"
+			},
+			"width": {
+				"value": 50
+			}
+		},
 		"background": {
 			"background_color": {
 				"value": "#F5F5F5"
@@ -1408,15 +1838,7 @@
 				"value": "center"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 			},
 			"heading": {
@@ -1507,7 +1929,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-OGQweJ271dz99CKIm9CSB41tYSUVhQM3ytjS0Ub1//4= sha384-UwTf9LE0tYVIJO7Y/MAjEVDxC1GG66ExG9BCMkr3W+F+4kBCowCFnPqTney8wA0h sha512-PFXt+8SIiq/LPJYp/x/FvThZ+DFwZhPqxnykOGEwrMWyvZmKivN1h6C/Ei/fvNz1+5cmFqhmd6bRKVANFhOCuw=="
+					"value": "sha256-hYA03CJb6QPxliCV+uSy9g6P9ZFYOdDkQoGBxb0mORo= sha384-fcbzqykPFSm37RQQx0pFIX+nKsQp67iN1NHQu+4ic4ROOX2W64ZJscWlOirpdbLB sha512-KSmKRPwmkbbJl1wc5QoRNum1hhanqAjQMeblosF7PF59U8KFZw0vKWS0WDXrp23tRDQNmsalRAqVKDzASk2zIQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1535,7 +1957,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-33aN2AeFiUvhcqF6hGUFAJgxoLAAgk7PE5oDmYRlNuo= sha384-AM+INjYH3zKbGBbi/MR0d39ekC585DlRyuLt2hYYWBR3QtUY7aXmNJpfRWQERPz3 sha512-vLKmT+lMNHUNPzv/Nh/wlI3IoKJ4nyD5YRZrgs471ZP02AmV5mEaC9Cx8a0igTzrayJSVCf9gh7UPwYMKo4m1Q=="
+					"value": "sha256-bl4PqtKoiLZdn6Dm11cCBruJHIQNRLL9oZ9fClHYyYM= sha384-uDx5MfIpDgmNF9Zs3GPMZwO/5LdhV994NdTx9ykPdD4dEvGdpBWgV1cYw/NjuYNG sha512-779M968qUDdzc6Mnx4xu6GYiX9LErpD84Qj283tYQcCM20elDOclClgOEHD+s7O3andI2UDPKQ4/AaNQNFX1Mw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1545,9 +1967,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-forms": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-icons": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

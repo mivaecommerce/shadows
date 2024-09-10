@@ -32,6 +32,7 @@
 		--mmx-color-error-border: var(--mmx-color-red-002);
 	--mmx-color-red-003: #FBE3E3;
 		--mmx-color-error-background: var(--mmx-color-red-003);
+	--mmx-color-red-004: #E83E4C;
 
 
 	/**
@@ -72,6 +73,7 @@
 	 */
 	--mmx-font-family-1: Inter, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji";
 	--mmx-text-margin-bottom: 0.3em;
+	--mmx-markdown-spacing: 0.3em;
 
 
 	/**
@@ -370,7 +372,6 @@
 	--mmx-color-primary-disabled-text: var(--mmx-color-white);
 	--mmx-color-headings: var(--mmx-color-black);
 	--mmx-color-nav-links: var(--mmx-color-black);
-	--mmx-color-form-labels: var(--mmx-color-black);
 	--mmx-color-icons: var(--mmx-color-black);
 	--mmx-color-focus: var(--mmx-color-blue-01);
 	--mmx-color-text--medium: var(--mmx-color-grey-06);
@@ -392,10 +393,20 @@
 	--mmx-color-form-field-fill--light: var(--mmx-color-grey-01);
 	--mmx-color-dark-focus: #8CB1E1;
 	--mmx-color-secondary-link: #575A5D;
+	--mmx-color-pill-bg: var(--mmx-color-grey-01);
+	--mmx-color-pill-text: var(--mmx-color-body-copy);
 	--mmx-color-input-border: var(--mmx-color-grey-03);
 	--mmx-color-input-background: var(--mmx-color-white);
 	--mmx-color-input-color: var(--mmx-color-body-copy);
-	--mmx-color-input-background--disabled: var(--mmx-color-input-background);
+	--mmx-color-input-background--disabled: var(--mmx-color-grey-01);
+	--mmx-color-form-labels: var(--mmx-color-black);
+	--mmx-color-modal-dialog-background: var(--mmx-color-white);
+	--mmx-color-modal-dialog-close: var(--mmx-color-grey-05);
+	--mmx-color-modal-backdrop-background: rgba(0, 0, 0, 0.8);
+
+	--mmx-color-input-color--error: var(--mmx-color-error-text);
+	--mmx-color-input-border--error: var(--mmx-color-red-004);
+	--mmx-color-input-background--error: var(--mmx-color-input-background);
 }
 
 
@@ -428,10 +439,22 @@
 	--mmx-title-4-color: var(--mmx-heading-color);
 	--mmx-color-focus: var(--mmx-color-dark-focus);
 	--mmx-color-secondary-link: var(--mmx-color-white);
+	--mmx-color-pill-bg: rgba(255, 255, 255, 0.15);
+	--mmx-color-pill-text: var(--mmx-color-body-copy);
 	--mmx-color-input-border: rgba(255, 255, 255, 0.15);
 	--mmx-color-input-background: rgba(255, 255, 255, 0.1);
 	--mmx-color-input-color: var(--mmx-color-body-copy);
 	--mmx-color-input-background--disabled: var(--mmx-color-input-background);
+	--mmx-color-form-labels: var(--mmx-color-white);
+	--mmx-color-modal-dialog-background: var(--mmx-color-black);
+	--mmx-color-modal-dialog-close: var(--mmx-color-grey-01);
+	--mmx-color-modal-backdrop-background: rgba(0, 0, 0, 0.8);
+
+	/* Feedback > Error */
+	--mmx-color-error-text: var(--mmx-color-red-004);
+	--mmx-color-input-color--error: var(--mmx-color-white);
+	--mmx-color-input-border--error: var(--mmx-color-red-004);
+	--mmx-color-input-background--error: var(--mmx-color-input-background);
 }
 
 @media (min-width: 60em) {
@@ -461,10 +484,22 @@
 		--mmx-title-4-color: var(--mmx-heading-color);
 		--mmx-color-focus: var(--mmx-color-dark-focus);
 		--mmx-color-secondary-link: var(--mmx-color-white);
+		--mmx-color-pill-bg: rgba(255, 255, 255, 0.15);
+		--mmx-color-pill-text: var(--mmx-color-body-copy);
 		--mmx-color-input-border: rgba(255, 255, 255, 0.15);
 		--mmx-color-input-background: rgba(255, 255, 255, 0.1);
 		--mmx-color-input-color: var(--mmx-color-body-copy);
 		--mmx-color-input-background--disabled: var(--mmx-color-input-background);
+		--mmx-color-form-labels: var(--mmx-color-white);
+		--mmx-color-modal-dialog-background: var(--mmx-color-black);
+		--mmx-color-modal-dialog-close: var(--mmx-color-grey-01);
+		--mmx-color-modal-backdrop-background: rgba(0, 0, 0, 0.8);
+
+		/* Feedback > Error */
+		--mmx-color-error-text: var(--mmx-color-red-004);
+		--mmx-color-input-color--error: var(--mmx-color-white);
+		--mmx-color-input-border--error: var(--mmx-color-red-004);
+		--mmx-color-input-background--error: var(--mmx-color-input-background);
 	}
 }
 
@@ -512,7 +547,12 @@ mmx-text-editor:not(:defined),
 mmx-text:not(:defined),
 mmx-quick-order:not(:defined),
 mmx-icon:not(:defined),
-mmx-combination-facet:not(:defined) {
+mmx-combination-facet:not(:defined),
+mmx-accordion:not(:defined),
+mmx-message:not(:defined),
+mmx-product-list:not(:defined),
+mmx-card:not(:defined),
+mmx-product-card:not(:defined) {
 	visibility: hidden;
 }
 
@@ -527,13 +567,21 @@ mmx-product-carousel,
 mmx-text-editor,
 mmx-text,
 mmx-quick-order,
-mmx-combination-facet {
+mmx-combination-facet,
+mmx-accordion,
+mmx-product-list {
 	display: block;
 }
 
 mmx-button,
 mmx-icon {
 	display: inline-block;
+}
+
+mmx-message,
+mmx-card,
+mmx-product-card {
+	display: contents;
 }
 
 mmx-hero-slider mmx-hero[slot="hero_slide"] {

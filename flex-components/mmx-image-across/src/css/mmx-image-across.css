@@ -8,7 +8,7 @@
 	text-align: var(--mmx-image-across__text-align);
 }
 
-slot[name="title"]::slotted(*) {
+.mmx-image-across slot[name="title"]::slotted(*) {
 	margin: 0 auto 3%;
 }
 

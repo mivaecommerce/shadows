@@ -1,0 +1,77 @@
+/* ==========================================================================
+   MMX / CARD
+   ========================================================================== */
+
+:host {
+	--mmx-card__size: var(--mmx-spacing-m);
+	--mmx-card__gap: calc(var(--mmx-card__size) / 2);
+}
+
+.mmx-card {
+	align-content: start;
+	color: var(--mmx-color-body-copy);
+	display: grid;
+	grid-template-areas:
+		"header"
+		"main"
+		"footer";
+	position: relative;
+	text-decoration: none;
+}
+
+.mmx-card__flag {
+	align-items: flex-start;
+	display: flex;
+	gap: var(--mmx-card__gap);
+	margin: var(--mmx-card__gap);
+	text-align: left;
+	z-index: 1;
+	grid-area: main;
+	place-self: start left;
+}
+
+.mmx-card__header {
+	grid-area: header;
+}
+
+.mmx-card__main {
+	display: grid;
+	grid-area: main;
+	gap: var(--mmx-card__gap);
+}
+
+.mmx-card__footer {
+	grid-area: footer;
+}
+
+.mmx-card ::slotted(mmx-message) {
+	--mmx-message__margin-bottom: 0;
+}
+
+.mmx-card ::slotted(img) {
+    aspect-ratio: var(--mmx-card__aspect-ratio, 1 / 1);
+    height: auto;
+    object-fit: var(--mmx-card__object-fit, contain);
+    object-position: center;
+    width: 100%;
+}
+
+/* ==========================================================================
+   MMX / PRODUCT CARD
+   ========================================================================== */
+.mmx-product-card mmx-button {
+	margin-top: unset;
+}
+
+.mmx-product-card__prices span {
+	display: inline-block;
+}
+
+.mmx-product-card__additional-price {
+	margin-left: 0.5em;
+	text-decoration: line-through;
+}
+
+.mmx-product-card__detail--empty {
+	display: none;
+}

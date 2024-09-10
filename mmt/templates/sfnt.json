@@ -4,6 +4,10 @@
             "component_code": "mmx-hero",
             "item_code": "hero",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -42,15 +46,7 @@
                         "value": "left"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     },
                     "button": {
@@ -120,6 +116,10 @@
             "component_code": "mmx-hero",
             "item_code": "hero-2",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -154,6 +154,9 @@
                     }
                 },
                 "content": {
+                    "body": {
+                        "source": "markdown"
+                    },
                     "button": {
                         "textsettings": {
                             "fields": {
@@ -206,6 +209,10 @@
             "component_code": "mmx-product-carousel",
             "item_code": "product-carousel",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "settings": {
                         "additional_price": {
@@ -236,6 +243,9 @@
                         },
                         "displayed_price": {
                             "value": "sale"
+                        },
+                        "fragment_code": {
+                            "value": "product_list_additional_data"
                         },
                         "image_dimensions": {
                             "value": "300x300"
@@ -295,6 +305,10 @@
             "component_code": "mmx-image-across",
             "item_code": "six-across",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -366,6 +380,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #1"
                                     },
@@ -383,6 +400,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #2"
                                     },
@@ -400,6 +420,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #3"
                                     },
@@ -417,6 +440,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #4"
                                     },
@@ -434,6 +460,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #5"
                                     },
@@ -451,6 +480,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "heading": {
                                         "value": "Category #6"
                                     },
@@ -468,6 +500,10 @@
             "component_code": "mmx-text-banner",
             "item_code": "text-banner",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -491,6 +527,7 @@
                         "value": "center"
                     },
                     "body": {
+                        "source": "markdown",
                         "textsettings": {
                             "fields": {
                                 "normal": {
@@ -536,6 +573,10 @@
             "component_code": "mmx-text-banner",
             "item_code": "text-banner-2",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -554,15 +595,7 @@
                         "value": "left"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor."
                     },
                     "button": {
@@ -611,6 +644,10 @@
             "component_code": "mmx-text-banner",
             "item_code": "text-banner-3",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -629,15 +666,7 @@
                         "value": "center"
                     },
                     "body": {
-                        "textsettings": {
-                            "fields": {
-                                "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-s"
-                                    }
-                                }
-                            }
-                        },
+                        "source": "markdown",
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
                     },
                     "button": {
@@ -686,6 +715,10 @@
             "component_code": "mmx-image-across",
             "item_code": "three-across",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -714,11 +747,6 @@
                 "content_styles": {
                     "align": {
                         "value": "left"
-                    },
-                    "body_text_styles": {
-                        "body_style": {
-                            "value": "paragraph-s"
-                        }
                     },
                     "button_styles": {
                         "button_size": {
@@ -763,6 +791,7 @@
                                 },
                                 "text": {
                                     "body": {
+                                        "source": "markdown",
                                         "value": "Duis eiusmod aliqua minim sit in ut"
                                     },
                                     "button": {
@@ -786,6 +815,7 @@
                                 },
                                 "text": {
                                     "body": {
+                                        "source": "markdown",
                                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing"
                                     },
                                     "button": {
@@ -809,6 +839,7 @@
                                 },
                                 "text": {
                                     "body": {
+                                        "source": "markdown",
                                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing"
                                     },
                                     "button": {
@@ -831,6 +862,10 @@
             "component_code": "mmx-image-across",
             "item_code": "two-across",
             "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
                 "advanced": {
                     "content_theme": {
                         "value": "light"
@@ -862,11 +897,6 @@
                 "content_styles": {
                     "align": {
                         "value": "left"
-                    },
-                    "body_text_styles": {
-                        "body_style": {
-                            "value": "paragraph-l"
-                        }
                     },
                     "button_styles": {
                         "button_size": {
@@ -910,6 +940,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "button": {
                                         "value": "Shop Now"
                                     },
@@ -930,6 +963,9 @@
                                     "value": "SFNT"
                                 },
                                 "text": {
+                                    "body": {
+                                        "source": "markdown"
+                                    },
                                     "button": {
                                         "value": "Shop Now"
                                     },
@@ -967,9 +1003,9 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     },
     "sequence": {
         "sequence": [

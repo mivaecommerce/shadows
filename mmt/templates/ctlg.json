@@ -1,42 +1,4 @@
 {
-    "facets": {
-        "b_height": 234,
-        "b_width": 234,
-        "button_add": 1,
-        "button_buy": 1,
-        "button_wish": 0,
-        "col_num": 2,
-        "constrain": "B",
-        "default_sort": "disp_order",
-        "displaydiscounts": 0,
-        "field_code": 1,
-        "field_desc": 0,
-        "field_name": 1,
-        "field_price": 1,
-        "field_sku": 0,
-        "format": "X",
-        "image": "T",
-        "invmsg": "L",
-        "items_per_page_filter": 1,
-        "linkexcludecat": 1,
-        "mode": "ctgy",
-        "page_disp_count": 3,
-        "per_page": 10,
-        "predictdiscounts": 0,
-        "price": "base",
-        "reverse_default_disp_order": 0,
-        "sort_by": {
-            "best": 1,
-            "code": 0,
-            "name": 0,
-            "new": 1,
-            "old": 1,
-            "price": 1,
-            "relevance": 0,
-            "switch": 1,
-            "updated": 0
-        }
-    },
     "footer_sequence": {
         "title": "Page Builder Footer"
     },
@@ -63,8 +25,8 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
     }
 }

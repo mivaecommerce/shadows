@@ -59,15 +59,8 @@
 	<mvt:item name="product_display" />
 	<mvt:item name="attributemachine" param="body_deferred" />
 	<script>
-		if (typeof am&mvt:product:id; !== 'undefined') {
-			let attrMachCall = am&mvt:product:id;;
-			let attrPossible = amPossible&mvt:product:id;;
-		}
+		var attrMachProductId = '&mvtj:product:id;';
 	</script>
-
-	<mvt:if expr="l.settings:related_product_count NE 0">
-		<mvt:item name="related_products" />
-	</mvt:if>
 
 	<section class="o-layout">
 		<div class="o-layout__item">

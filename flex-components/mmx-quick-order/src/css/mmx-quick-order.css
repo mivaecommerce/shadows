@@ -11,7 +11,7 @@
 	outline: 2px solid var(--mmx-color-focus);
 }
 
-slot[name="title"]::slotted(*) {
+.mmx-quick-order slot[name="title"]::slotted(*) {
 	margin: 0 auto 3%;
 }
 

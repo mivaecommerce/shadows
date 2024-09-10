@@ -2,10 +2,12 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"can_disable": 1,
@@ -31,11 +33,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -357,6 +361,7 @@
 					"properties": [
 						{
 							"code": "category",
+							"preview_property_selector": ":shadow [part~=\"hero_slide\"]%nth-child%",
 							"prompt": "Category",
 							"type": "category"
 						},
@@ -381,6 +386,7 @@
 													"value": "cattitle"
 												}
 											],
+											"preview_property_selector": ":shadow [part~=\"hero_slide\"]%nth-child% [part~=\"hero_slide__image\"]",
 											"prompt": "Image",
 											"type": "select"
 										}
@@ -394,6 +400,7 @@
 									"properties": [
 										{
 											"code": "image",
+											"preview_property_selector": ":shadow [part~=\"hero_slide\"]%nth-child% [part~=\"hero_slide__image\"]",
 											"prompt": "Image",
 											"responsive_images": [
 												{
@@ -459,6 +466,7 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
@@ -526,6 +534,7 @@
 									"value": "paragraph-xs"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 							"prompt": "Style",
 							"type": "select"
 						},
@@ -592,6 +601,7 @@
 									"value": "\"Lucida Console\", Monaco, monospace"
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 							"prompt": "Font Family",
 							"style": "font-family",
 							"type": "select"
@@ -600,6 +610,7 @@
 							"code": "font_size",
 							"label": "px",
 							"min": 1,
+							"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 							"prompt": "Font Size",
 							"style": "font-size",
 							"style_suffix": "px",
@@ -645,6 +656,7 @@
 									"value": 900
 								}
 							],
+							"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 							"prompt": "Font Weight",
 							"style": "font-weight",
 							"type": "select"
@@ -652,6 +664,7 @@
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow [part~=\"hero_slide__heading\"]",
 							"prompt": "Font Color",
 							"style": "color",
 							"type": "color"
@@ -870,7 +883,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-rBaX2MuLw/MJA5+Ss8gg0QGx56izLCU7aIE/LHgvC7c= sha384-36YECjC/KwIW2wR1oV78z3raiGNoZcrOUG/cR2qqS4uakdLT0lULhq51oPWIGtUN sha512-K/Td0LwsIc0KKRyM34qwjBxs3ASImTTmJQ2KS0hpJN8PQqO8HrBuuoUFYQ0Eb/uBNEnYdKFqsv5KogmyhG7adA=="
+					"value": "sha256-AZpj1U0m8qdzyLEp3WET8BfPO57X6hDz9K0aXezjh/A= sha384-n0fdAn0w3thKfmXu81IL4yvRH1kEdgbPPFVRK/hoq9SeYuSXSIvaEQrR7GOUoQJo sha512-mZ8dyyaJ1YLFEBdr+nzJMicBiLb5Ab68IA2xaWCYZrXc+BgvliNXJFGpLHZC+zhcNCqOzmmInoLMkBWAW/T+Wg=="
 				},
 				{
 					"name": "crossorigin",
@@ -880,10 +893,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-hero-slider": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-hero-slider": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

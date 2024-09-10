@@ -72,18 +72,10 @@
 			</div>
 			<footer class="x-mini-basket__footer">
 				<div class="x-mini-basket__cta">
-					<a class="c-button c-button--full" href="&mvte:urls:OINF:secure;">Checkout</a>
-					<a class="c-button c-button--full c-button--secondary" href="&mvte:urls:BASK:auto;">Edit Cart</a>
+					<a class="c-button c-button--full" href="&mvte:urls:BASK:auto;">Checkout</a>
 				</div>
 			</footer>
 		<mvt:else>
-			<script>
-				function continueShopping(link) {
-					if (sessionStorage.getItem('continue_url')) {
-						link.href = sessionStorage.getItem('continue_url');
-					}
-				}
-			</script>
 			<footer class="x-mini-basket__footer u-text-center">
 				<p class="x-mini-basket__empty-icon u-bg-gray-100" aria-hidden="true">
 					<svg width="31.972" height="32.562" xmlns="http://www.w3.org/2000/svg">
@@ -102,7 +94,7 @@
 				<p class="c-heading--subheading--small">Your Cart is Empty</p>
 				<p class="t-input-font-size">Add items to get started</p>
 				<br>
-				<a class="c-button c-button--full u-text-medium" href="&mvte:urls:SFNT:auto;" onclick="continueShopping(this);">Continue Shopping</a>
+				<a class="c-button c-button--full u-text-medium" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Continue Shopping</a>
 			</footer>
 		</mvt:if>
 	</div>

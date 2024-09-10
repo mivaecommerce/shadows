@@ -2,10 +2,12 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "slides",
@@ -31,6 +33,7 @@
 							"value": "l"
 						}
 					],
+					"preview_property_selector": "[slot=\"hero_slide\"]",
 					"prompt": "Banner Height",
 					"type": "select"
 				},
@@ -51,7 +54,9 @@
 						},
 						{
 							"code": "link",
+							"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% :shadow [part~=\"wrapper\"]",
 							"prompt": "Slide Link",
+							"supports_new_tab": 1,
 							"type": "link"
 						},
 						{
@@ -61,6 +66,7 @@
 								{
 									"code": "img",
 									"height": 580,
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% > [slot=\"image\"]",
 									"prompt": "Hero Image",
 									"responsive_images": [
 										{
@@ -103,6 +109,7 @@
 											"value": "center-right"
 										}
 									],
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% :shadow [part~=\"content\"]",
 									"prompt": "Content Placement",
 									"type": "selector"
 								},
@@ -125,11 +132,13 @@
 											"value": "right"
 										}
 									],
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% :shadow [part~=\"content\"]",
 									"prompt": "Text Alignment",
 									"type": "selector"
 								},
 								{
 									"code": "heading",
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% [slot=\"heading\"]",
 									"prompt": "Heading Text",
 									"textsettings": {
 										"fields": [
@@ -386,6 +395,7 @@
 								},
 								{
 									"code": "subheading",
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% [slot=\"subheading\"]",
 									"prompt": "Subheading Text",
 									"textsettings": {
 										"fields": [
@@ -601,6 +611,8 @@
 								},
 								{
 									"code": "body",
+									"markdown": 1,
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% [slot=\"body\"]",
 									"prompt": "Body Text",
 									"textsettings": {
 										"fields": [
@@ -816,6 +828,7 @@
 								},
 								{
 									"code": "button",
+									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% [slot=\"button\"]",
 									"prompt": "Button Text",
 									"textsettings": {
 										"fields": [
@@ -895,15 +908,7 @@
 								"value": "left"
 							},
 							"body": {
-								"textsettings": {
-									"fields": {
-										"normal": {
-											"body_style": {
-												"value": "paragraph-s"
-											}
-										}
-									}
-								},
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 							},
 							"button": {
@@ -1017,6 +1022,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "[slot=\"hero_slide\"]:has(mmx-text) :shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1060,6 +1066,7 @@
 							"value": "80%"
 						}
 					],
+					"preview_property_selector": "[slot=\"hero_slide\"]:has(mmx-text) :shadow [part~=\"content\"]",
 					"prompt": "Text Container Width",
 					"type": "select"
 				},
@@ -1067,6 +1074,7 @@
 					"code": "overlay_opacity",
 					"label": "%",
 					"precision": -1,
+					"preview_property_selector": "[slot=\"hero_slide\"] > [slot=\"image\"]",
 					"prompt": "Image Shader Overlay",
 					"range_high": 100,
 					"range_low": 0,
@@ -1088,6 +1096,7 @@
 						{
 							"code": "color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "[slot=\"hero_slide\"]:has(mmx-text) :shadow [part~=\"content\"]",
 							"prompt": "Color",
 							"style": "color",
 							"type": "color"
@@ -1174,15 +1183,7 @@
 								"value": "left"
 							},
 							"body": {
-								"textsettings": {
-									"fields": {
-										"normal": {
-											"body_style": {
-												"value": "paragraph-s"
-											}
-										}
-									}
-								},
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 							},
 							"button": {
@@ -1253,15 +1254,7 @@
 								"value": "left"
 							},
 							"body": {
-								"textsettings": {
-									"fields": {
-										"normal": {
-											"body_style": {
-												"value": "paragraph-s"
-											}
-										}
-									}
-								},
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 							},
 							"button": {
@@ -1332,15 +1325,7 @@
 								"value": "left"
 							},
 							"body": {
-								"textsettings": {
-									"fields": {
-										"normal": {
-											"body_style": {
-												"value": "paragraph-s"
-											}
-										}
-									}
-								},
+								"source": "markdown",
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 							},
 							"button": {
@@ -1423,7 +1408,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-2Ixh7TFi8hHZ9KpR1HQWUn6ZYJytXcdU88PPOAcXrok= sha384-pxHH354fOcjmO4LJ9fe6chzPWAaB3N+pXM8i6nlbCzxyD5zWaD72pO6fPvNrDT20 sha512-+OvjEy06qLEhRWMwOF1n7+Psaz8qCpElUAt8aJOEEN92+75/c59DuMKe2Jmh90+2JghxW99HO5xiVc2J/97sDA=="
+					"value": "sha256-nxo6ovI02GboQtFiqkEVSm9gBykylSxdWq+YoNqSrwY= sha384-nmfWFMndNMASqc42U6WxnqTXyalktj/pBjf87KvE/I9jhqRzSysVSsGA7ONz2s+S sha512-L37WYnEmPs3VZ00KE5/gaQ0HLUdcVWVFbYB9ESdSZcpvKhzvuLSrDA9nafVlGtgh9td9GihTuqSFT5hw/KqDOw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1461,9 +1446,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

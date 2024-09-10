@@ -2,10 +2,12 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"can_disable": 1,
@@ -31,11 +33,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -317,6 +321,7 @@
 							"value": "l"
 						}
 					],
+					"preview_property_selector": ":shadow [slot=\"hero_slide\"] :shadow [part~=\"image\"]",
 					"prompt": "Image Height",
 					"type": "select"
 				},
@@ -344,6 +349,7 @@
 							"value": "scale-down"
 						}
 					],
+					"preview_property_selector": ":shadow [slot=\"hero_slide\"] :shadow [part~=\"image\"]",
 					"prompt": "Image Fit",
 					"type": "select"
 				},
@@ -450,6 +456,7 @@
 						{
 							"code": "products",
 							"list_type": "product",
+							"preview_property_selector": ":shadow [part~=\"product\"][part~=\"product--individual\"]%nth-child%",
 							"prompt": "Products",
 							"type": "list"
 						}
@@ -546,13 +553,15 @@
 				},
 				{
 					"code": "image_type",
+					"preview_property_selector": ":shadow [slot=\"hero_slide\"] :shadow [part~=\"image\"]",
 					"prompt": "Image Type",
 					"required": 1,
-					"type": "text"
+					"type": "imagetype"
 				},
 				{
 					"code": "image_dimensions",
 					"placeholder": "300x300",
+					"preview_property_selector": ":shadow [slot=\"hero_slide\"] :shadow [part~=\"image\"]",
 					"prompt": "Image Dimensions",
 					"required": 1,
 					"type": "text",
@@ -573,8 +582,13 @@
 						{
 							"text": "Base",
 							"value": "base"
+						},
+						{
+							"text": "None",
+							"value": "none"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"product-price\"]",
 					"prompt": "Displayed Price",
 					"required": 1,
 					"type": "select"
@@ -595,9 +609,24 @@
 							"value": "none"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"product-additional-price\"]",
 					"prompt": "Additional Price",
 					"required": 1,
-					"type": "select"
+					"type": "select",
+					"visibility_conditions": {
+						"displayed_price": {
+							"value": [
+								"sale",
+								"retail",
+								"base"
+							]
+						}
+					}
+				},
+				{
+					"code": "fragment_code",
+					"prompt": "Fragment Code",
+					"type": "fragment"
 				},
 				{
 					"can_disable": 1,
@@ -606,6 +635,7 @@
 					"properties": [
 						{
 							"code": "adpr_text",
+							"preview_property_selector": ":shadow [part~=\"button\"][href*=\"Action=ADPR\"]",
 							"prompt": "Add to Cart Text",
 							"required": 1,
 							"textsettings": {
@@ -678,6 +708,7 @@
 						},
 						{
 							"code": "prod_text",
+							"preview_property_selector": ":shadow [part~=\"button\"]:not([href*=\"Action=ADPR\"])",
 							"prompt": "Products With Attributes Text",
 							"required": 1,
 							"type": "text"
@@ -720,6 +751,9 @@
 				},
 				"displayed_price": {
 					"value": "sale"
+				},
+				"fragment_code": {
+					"value": "product_list_additional_data"
 				},
 				"image_dimensions": {
 					"value": "300x300"
@@ -788,7 +822,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-BNvqlyTcX7GvMgHn0Hfe3WfkepEOedVDaNnmpgitfBM= sha384-1McRPDx7wKUXcEwG8m5arE15mLIR4q3Tkg7+eERn6MEsSuAvV51fgmtrkh4qaaF7 sha512-ZdJOmkBGaTgXNTJYSK7p9F91oFGa0b/mx7+Y5n0zTR0sH+MjtKX/iuSjQPl865QcDgoEUlXrzHET4tjM4KyHPg=="
+					"value": "sha256-voRE7/WBQbvTtSwhzjZRIja0Eeo7v2LJumVEhq7N9f0= sha384-/VF9Noj75bgOlD8Nt4KfmDLpMTZbE5fsXToZCk9dC4ECiJ5zww9ZzrIbWdEnc9GF sha512-Ha5MFn7yASHWDJPivgW9swlSNJb8kM0XYR3bW66hQqNTOGAPinp89xonmvdyb0Iy8l4GJDXzBX+oQmCkjz4Nxw=="
 				},
 				{
 					"name": "crossorigin",
@@ -798,10 +832,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-hero-slider": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-hero-slider": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

@@ -1,6 +1,10 @@
 </main>
 <!-- end t-site-content -->
 
+<mvt:if expr="ISNULL g.Session:shadows:checkout_hidden">
+	<mvt:fragment code="global_footer" />
+</mvt:if>
+
 <mvt:if expr="l.settings:page:code NE 'ORDL' AND l.settings:page:code NE 'OCST' AND l.settings:page:code NE 'OUS1' AND l.settings:page:code NE 'OUSM' AND l.settings:page:code NE 'UATM' AND l.settings:page:code NE 'UATR' AND l.settings:page:code NE 'OSEL' AND l.settings:page:code NE 'OPAY' AND NOT ('AMAZONPAY' CIN l.settings:page:code)">
 	<footer class="t-site-footer u-bg-white">
 		<div class="o-wrapper t-site-footer__wrapper">

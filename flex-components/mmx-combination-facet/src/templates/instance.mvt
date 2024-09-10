@@ -20,31 +20,40 @@
 <mvt:assign name="l.settings:instance:hero_padding" value="ternary( ISNULL l.settings:instance:background:img:image AND ISNULL l.settings:instance:background:background_color:value, 'none', 'auto' )" />
 
 <mvt:comment>Determine Submit Destination URL</mvt:comment>
-<mvt:if expr="ISNULL l.settings:instance:controls:submit_destination:url AND NOT ISNULL l.settings:urls:_self:auto_sep">
+<mvt:if expr="s.request_method EQ 'POST' AND ISNULL l.settings:instance:controls:submit_destination:url AND NOT ISNULL l.settings:urls:_self:auto_sep">
 	<mvt:assign name="l.settings:instance:controls:submit_destination:url" value="l.settings:urls:_self:auto_sep" />
 
-	<mvt:if expr="g.Screen NE 'PROD'">
-		<mvt:comment>Optionally, Append Product List Parameters</mvt:comment>
-		<mvt:assign name="l.null" value="miva_splitstring( 'Search, Sort_By, Per_Page', ',', l.settings:instance:controls:submit_destination:params, 'trim' )" />
-		<mvt:foreach iterator="param" array="instance:controls:submit_destination:params">
-			<mvt:assign name="l.param_value" value="miva_variable_value( 'g.' $ l.settings:param )" />
-			<mvt:if expr="NOT ISNULL l.param_value">
-				<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:param, l.param_value )" />
-			</mvt:if>
-		</mvt:foreach>
+	<mvt:comment>Optionally, Append Product List Parameters</mvt:comment>
+	<mvt:assign name="l.null" value="miva_splitstring( 'Search, Sort_By, Per_Page', ',', l.settings:instance:controls:submit_destination:params, 'trim' )" />
+	<mvt:foreach iterator="param" array="instance:controls:submit_destination:params">
+		<mvt:assign name="l.param_value" value="miva_variable_value( 'g.' $ l.settings:param )" />
+		<mvt:if expr="NOT ISNULL l.param_value">
+			<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:param, l.param_value )" />
+		</mvt:if>
+	</mvt:foreach>
 
-		<mvt:comment>Optionally, Append Applied Facets to URL</mvt:comment>
-		<mvt:foreach iterator="applied_facet" array="facets:applied_facets">
-			<mvt:foreach iterator="input_value" array="applied_facet:input_values">
-				<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:applied_facet:code, l.settings:input_value)" />
-			</mvt:foreach>
-		</mvt:foreach>
-	</mvt:if>
+	<mvt:comment>Optionally, Append Applied Facets to URL</mvt:comment>
+	<mvt:do file="g.Module_Feature_FCT_UT" name="l.null" value="FacetList_Load_All_Cached( l.settings:mmx_combination_facet:facets )" />
+	<mvt:foreach iterator="facet" array="mmx_combination_facet:facets">
+		<mvt:assign name="l.facet_value" value="miva_variable_value( 'g.' $ l.settings:facet:code )" />
+		<mvt:if expr="NOT ISNULL l.facet_value">
+			<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:facet:code, l.facet_value )" />
+		</mvt:if>
+	</mvt:foreach>
+</mvt:if>
+
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
 </mvt:if>
 
 <mvt:comment>Render Component</mvt:comment>
 <mmx-hero
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
@@ -92,6 +101,7 @@
 				</mvt:if>
 				<mmx-text
 					slot="title"
+					class="mmx-combination-facet__subheading"
 					data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
 					style="&mvte:instance:content:subheading:textsettings:styles:normal;"
 				>
@@ -104,6 +114,7 @@
 				</mvt:if>
 				<mmx-text
 					slot="title"
+					class="mmx-combination-facet__heading"
 					data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
 					data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
 					style="&mvte:instance:content:heading:textsettings:styles:normal;"
@@ -112,15 +123,21 @@
 				</mmx-text>
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
-				<mvt:if expr="ISNULL l.settings:instance:content:body:textsettings:fields:normal:body_style:value OR l.settings:instance:content:body:textsettings:fields:normal:body_style:value EQ 'default'">
-					<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:body_style:value" value="'paragraph-s'" />
+				<mvt:if expr="l.settings:instance:content:body:textsettings:fields:normal:body_style:value EQ 'default'">
+					<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:body_style:value" value="''" />
 				</mvt:if>
 				<mmx-text
 					slot="title"
+					class="mmx-combination-facet__body"
 					data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+					data-source="&mvte:instance:content:body:source;"
 					style="&mvte:instance:content:body:textsettings:styles:normal;"
 				>
-					&mvte:instance:content:body:value;
+					<mvt:if expr="l.settings:instance:content:body:source EQ 'markdown'">
+						&mvt:instance:content:body:value;
+					<mvt:else>
+						&mvte:instance:content:body:value;
+					</mvt:if>
 				</mmx-text>
 			</mvt:if>
 		</mvt:if>

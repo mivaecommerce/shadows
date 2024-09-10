@@ -173,11 +173,44 @@ MMX.closestElement = (selector, node) => {
 		return null;
 	}
 
-	return (node.closest(selector) || MMX.closestElement(selector, node.getRootNode()?.host));
+	return (node.closest?.(selector) || MMX.closestElement(selector, node?.getRootNode?.()?.host));
+};
+
+MMX.querySelector = (selector, root = document) => {
+	if (selector === ':shadow') {
+		return root?.shadowRoot;
+	}
+
+	if (typeof root.querySelector === 'function') {
+		return root.querySelector(selector);
+	}
+
+	return null;
+};
+
+MMX.querySelectorList = (selectors = [], root = document) => {
+	let lastElement = root;
+
+	if (!Array.isArray(selectors) || selectors.length === 0) {
+		return null;
+	}
+
+	for (const selector of selectors) {
+		const element = MMX.querySelector(selector, lastElement);
+
+		if (!element) {
+			lastElement = null;
+			break;
+		}
+
+		lastElement = element;
+	}
+
+	return lastElement;
 };
 
 MMX.encodeEntities = (input) => {
-	return String(input)
+	return String(input ?? '')
 			.replace(/&reg;/g, '®')
 			.replace(/&trade;/g, '™')
 			.replace(/&/g, '&amp;')
@@ -379,6 +412,10 @@ MMX.longMerchantUrl = (searchParams = {}, {merchantUrl, storeCode = window.Store
 	return url.toString();
 };
 
+MMX.pluralize = (singular, count, plural) => {
+	return count === 1 ? singular : plural ?? `${singular}s`;
+};
+
 class MMX_Element extends HTMLElement {
 
 	themeResourcePattern;
@@ -426,7 +463,17 @@ class MMX_Element extends HTMLElement {
 		});
 
 		// Re-Render when the innerHTML / child-nodes are updated
-		this.observer = new MutationObserver(() => {
+		this.observer = new MutationObserver((records) => {
+			const validRecords = records.filter(record => {
+				return ![...record.addedNodes, ...record.removedNodes].find(node => {
+					return node?.closest?.('.mmx-skip-mutation') || node?.parentElement?.closest?.('.mmx-skip-mutation');
+				});
+			});
+
+			if (!validRecords.length) {
+				return;
+			}
+
 			this.renderOnFrame();
 		});
 
@@ -494,6 +541,15 @@ class MMX_Element extends HTMLElement {
 		MMX.renderTemplate(element, template);
 		this.lastTemplate = template;
 		this.afterRender?.();
+		this.debouncedDispatchContentUpdated();
+	}
+
+	debouncedDispatchContentUpdated = MMX.debounce(() => {
+		this.dispatchContentUpdated();
+	}, 100);
+
+	dispatchContentUpdated() {
+		this.dispatchEvent(new CustomEvent('contentUpdated'));
 	}
 
 	getTemplate() {
@@ -692,11 +748,12 @@ class MMX_Element extends HTMLElement {
 			type: 'mmx-text',
 			attributes: {
 				class: className,
+				'data-source': property.source,
 				'data-style': property?.textsettings?.fields?.[field]?.[`${prefix}style`]?.value || defaultStyle,
 				'data-tag': property?.textsettings?.fields?.[field]?.[`${prefix}tag`]?.value || defaultTag,
 				style: property?.textsettings?.styles?.[field] || ''
 			},
-			content: property.value,
+			content: property.source === 'markdown' ? property.value : MMX.encodeEntities(property.value)
 		});
 
 		return text.outerHTML;
@@ -714,10 +771,75 @@ class MMX_Element extends HTMLElement {
 				'data-style': property?.textsettings?.fields?.[field]?.[`${prefix}style`]?.value || defaultStyle,
 				'data-size': property?.textsettings?.fields?.[field]?.[`${prefix}size`]?.value || defaultSize
 			},
-			content: property.value,
+			content: MMX.encodeEntities(property.value)
 		});
 
 		return button.outerHTML;
+	}
+
+	getStylesFromGroup(group = {}) {
+		return Object.keys(group).reduce((styles, key) => {
+			let value = group[key]?.value;
+
+			if (MMX.valueIsEmpty(value) || key === 'style') {
+				return styles;
+			}
+
+			if (key === 'font_size') {
+				value += 'px';
+			}
+
+			if (key === 'font_color') {
+				key = 'color';
+			}
+
+			if (styles.length) {
+				styles += '; ';
+			}
+
+			return styles += `${key.replace('_', '-')}: ${value}`;
+		}, '');
+	}
+
+	/**
+	 * Fragment Helpers
+	 */
+	renderContentIntoLightDomSlot({slotName, content} = {}) {
+		if (typeof slotName !== 'string' || typeof content !== 'string') {
+			return '';
+		}
+
+		const existingLightElement = this.querySelector(`[slot="${MMX.encodeEntities(slotName)}"]`);
+		existingLightElement?.remove();
+
+		const contentFragment = document.createRange().createContextualFragment(content);
+		const lightElement = MMX.createElement({
+			type: 'div',
+			attributes: {
+				slot: slotName,
+				class: 'mmx-skip-mutation',
+			}
+		});
+		lightElement.appendChild(contentFragment);
+		this.appendChild(lightElement);
+
+		return /*html*/`
+			<slot name="${MMX.encodeEntities(slotName)}"></slot>
+		`;
+	}
+
+	renderProductFragment({product, fragmentCode, slotName} = {}) {
+		const fragmentContent = product?.fragments?.[fragmentCode]?.trim?.();
+		slotName = slotName ?? `fragment__${fragmentCode}--${product?.code}`;
+
+		if (MMX.valueIsEmpty(fragmentContent)) {
+			return '';
+		}
+
+		return this.renderContentIntoLightDomSlot({
+			slotName,
+			content: fragmentContent
+		});
 	}
 
 	/**
@@ -779,6 +901,29 @@ class MMX_Element extends HTMLElement {
 
 	renderStylesheetLink(sheet) {
 		return sheet.outerHTML;
+	}
+
+	/**
+	 * Reveal Element Functions
+	 */
+	bindRevealElement() {
+		this.addEventListener('revealElement', (e) => {
+			this.onRevealElement(e);
+		});
+	}
+
+	onRevealElement(e) {
+		this.revealElementFromSelectorList(e.detail?.preview_property_selector);
+	}
+
+	revealElementFromSelectorList(selectors) {
+		const element = MMX.querySelectorList(selectors, this);
+
+		if (!element) {
+			return;
+		}
+
+		this.revealElement?.(element);
 	}
 }
 

@@ -15,7 +15,6 @@
 	cursor: not-allowed;
 }
 
-
 /* Link vs. Button Styles
    =========================================== */
 .mmx-button__button {
@@ -37,7 +36,7 @@
 	font-size: 13px;
 	text-decoration-thickness: 1px;
 	text-decoration: underline;
-	text-underline-offset: 3px;
+	text-underline-offset: 4px;
 }
 
 	.mmx-button__link:hover,
@@ -90,7 +89,9 @@
 	.mmx-button__dark-primary:focus,
 	:host(.focus) .mmx-button__dark-primary,
 	.mmx-button__dark-secondary:focus,
-	:host(.focus) .mmx-button__dark-secondary {
+	:host(.focus) .mmx-button__dark-secondary,
+	.mmx-button__pill:focus,
+	:host(.focus) .mmx-button__pill {
 		outline: 2px solid var(--mmx-color-focus);
 	}
 
@@ -127,6 +128,30 @@
 		color: var(--mmx-color-secondary-disabled-text);
 	}
 
+/* Style: Pill
+   =========================================== */
+.mmx-button__pill {
+	background: var(--mmx-color-pill-bg);
+	border: none;
+	border-radius: 1em;
+	color: var(--mmx-color-pill-text);
+	padding: 0.25em 1em;
+	text-decoration: none;
+	vertical-align: middle;
+	transition: box-shadow .25s ease;
+	margin: 0.3em 0.1em;
+}
+
+.mmx-button__pill:hover,
+:host(.hover) .mmx-button__pill {
+	background: color-mix(in srgb, var(--mmx-color-pill-bg), var(--mmx-color-white) 30%);
+	box-shadow: 0 0.1em 0.3em rgba(0, 0, 0, 0.15);
+}
+
+.mmx-button__pill:disabled,
+:host(.disabled) .mmx-button__pill {
+	opacity: 0.5;
+}
 
 /* Style: Display Link
    =========================================== */
@@ -157,7 +182,7 @@
    =========================================== */
 .mmx-button__secondary-link,
 .mmx-button__dark-secondary-link {
-	text-underline-offset: 0;
+	text-underline-offset: 2px;
 }
 
 .mmx-button__secondary-link {
@@ -200,3 +225,20 @@
 .mmx-button__button.mmx-button__size--l {
 	padding: 22px 38px;
 }
+
+/* Shape: Round
+   =========================================== */
+.mmx-button.mmx-button__shape--round {
+	border-radius: 100%;
+	height: 3em;
+	line-height: 3em;
+	padding: 0;
+	text-align: center;
+	text-decoration: none;
+	vertical-align: middle;
+	width: 3em;
+}
+	.mmx-button__link.mmx-button__shape--round:hover,
+	:host(.hover) .mmx-button__link.mmx-button__shape--round{
+		background: color-mix(in srgb, var(--mmx-color-primary-bg) 5%, var(--mmx-color-primary-text));
+	}

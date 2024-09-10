@@ -1,0 +1,70 @@
+<mvt:assign name="l.settings:instance:fallback_product_image" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__335x335.jpg'" />
+<mvt:assign name="l.settings:instance:heading:heading_text:value" value="glosub( l.settings:instance:heading:heading_text:value, '%search%', g.Search )" />
+
+<mvt:comment>Pass Server Data</mvt:comment>
+<mvt:assign name="l.settings:instance:server:search" value="g.Search" />
+
+<mvt:comment>Determine Automatic Category</mvt:comment>
+<mvt:if expr="
+	l.settings:instance:list:products:product_set:value EQ 'auto' OR
+	(
+		l.settings:instance:list:products:product_set:value EQ 'category' AND
+		l.settings:instance:list:products:category_source:value EQ 'auto'
+	)
+">
+	<mvt:assign name="l.settings:instance:list:products:category:category_code" value="l.settings:category:code" />
+</mvt:if>
+
+<mvt:comment>Determine Automatic Product</mvt:comment>
+<mvt:if expr="
+	l.settings:instance:list:products:product_set:value EQ 'auto' OR
+	(
+		l.settings:instance:list:products:product_set:value EQ 'related' AND
+		l.settings:instance:list:products:related_source:value EQ 'auto'
+	)
+">
+	<mvt:assign name="l.settings:instance:list:products:product:product_code" value="l.settings:product:code" />
+</mvt:if>
+
+<mvt:comment>Determine component id & page-code</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-product-list
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	data-init="script"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	data-adpr-url="&mvte:urls:BASK:auto;"
+	data-atwl-url="&mvte:urls:WISH:auto;"
+	class="mmx-wrapper"
+>
+	<mvt:comment>Init Script</mvt:comment>
+	<script type="application/json">
+		<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
+	</script>
+
+	<mvt:comment>Render Section Heading</mvt:comment>
+	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
+		<mvt:if expr="ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value OR l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value EQ 'default'">
+			<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value" value="'title-1'" />
+		</mvt:if>
+		<mmx-text
+			slot="title"
+			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
+			data-align="&mvte:instance:heading:heading_align:value;"
+			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
+		>
+			&mvte:instance:heading:heading_text:value;
+		</mmx-text>
+	</mvt:if>
+</mmx-product-list>

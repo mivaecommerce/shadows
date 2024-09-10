@@ -2,10 +2,12 @@
 	"code": "mmx-text-banner",
 	"name": "Text Banner",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-banner",
 	"category": "text-banner",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "text_layout",
@@ -19,6 +21,7 @@
 					"value": "vertical-banner"
 				}
 			],
+			"preview_property_selector": ":shadow [part~=\"wrapper\"]",
 			"prompt": "Text Layout",
 			"type": "selector"
 		},
@@ -38,6 +41,7 @@
 					"value": "l"
 				}
 			],
+			"preview_property_selector": ":shadow [part~=\"wrapper\"]",
 			"prompt": "Banner Size",
 			"type": "select"
 		},
@@ -64,11 +68,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": "[slot=\"heading\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -325,6 +331,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": "[slot=\"body\"]",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -545,6 +553,7 @@
 					"properties": [
 						{
 							"code": "button_text",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Text",
 							"textsettings": {
 								"fields": [
@@ -616,7 +625,9 @@
 						},
 						{
 							"code": "button_link",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Link",
+							"supports_new_tab": 1,
 							"type": "link"
 						}
 					],
@@ -724,15 +735,7 @@
 				"value": "center"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor. Praesent eget justo lectus."
 			},
 			"button": {
@@ -780,9 +783,9 @@
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

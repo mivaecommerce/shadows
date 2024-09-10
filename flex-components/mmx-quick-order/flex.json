@@ -2,10 +2,12 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"can_disable": 1,
@@ -31,11 +33,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -773,6 +777,7 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -1541,6 +1546,7 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -1831,6 +1837,7 @@
 		},
 		{
 			"code": "add_row_text",
+			"preview_property_selector": ":shadow [part~=\"add-row\"]",
 			"prompt": "Add Row Text",
 			"textsettings": {
 				"fields": [
@@ -1902,6 +1909,7 @@
 		},
 		{
 			"code": "add_to_cart_text",
+			"preview_property_selector": ":shadow [part~=\"add-to-cart\"]",
 			"prompt": "Add to Cart Text",
 			"textsettings": {
 				"fields": [
@@ -2083,11 +2091,13 @@
 				},
 				{
 					"code": "search_placeholder_runtime",
+					"preview_property_selector": ":shadow [part~=\"search-input\"]",
 					"prompt": "Placeholder for Search Method: Runtime",
 					"type": "text"
 				},
 				{
 					"code": "search_placeholder_code",
+					"preview_property_selector": ":shadow [part~=\"search-input\"]",
 					"prompt": "Placeholder for Search Method: Code",
 					"type": "text"
 				},
@@ -2147,7 +2157,7 @@
 									"code": "image_type",
 									"prompt": "Image Type",
 									"required": 1,
-									"type": "text"
+									"type": "imagetype"
 								},
 								{
 									"code": "image_dimensions",
@@ -2323,6 +2333,7 @@
 		},
 		"bulk": {
 			"body": {
+				"source": "markdown",
 				"value": "Copy & paste or type out a list of products & quantities to load into the quick-add."
 			},
 			"button": {
@@ -2337,6 +2348,7 @@
 		},
 		"csv": {
 			"body": {
+				"source": "markdown",
 				"value": "Upload a CSV file with the product-codes & quantities you'd like to import."
 			},
 			"button": {
@@ -2375,7 +2387,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-XhKRNtlRkr1otuHqw+8r7osEMF0TnGiSs8wGmpahsAs= sha384-8XhGGlStDdMkgWpkoYTiKrrJbxWf/DS5ihDW7hL8ACuAo4BMykaKTiRnNGdcpWhx sha512-/UeqhOaw/fLU6UIl/DT7XzKfKC/CT+jmmtMrPcHEd7QAcsKct3De6aXlJb6K6P4tzMpX9vyz5srP78Oa1uYT6A=="
+					"value": "sha256-jd12PZ8GthCJVFqmZSLsnkJQvtRfSOsT0lImOBOL3b4= sha384-UvtjTQWg9HnhBiU6wbqySuHj8Y5KD2w6trkWUlGPX8fJqSskFk1CdHxEgxgsjcPU sha512-qXfet0wFvp+FAHYqjqDEpEXR5DszoMCNFm73qvO+nt7Zu/gt7DIefgg05HyYFUgGW3j0pgVXHaN2OUTsS9byzQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -2403,7 +2415,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-pVTGTatIxL8LF/NvAh85lfXInrDwXqNQG/uqJD2OBpw= sha384-WqFVBv1/q0cd/QMPst/xgTsaXGbz2C8Z7Su1+ux3aXo/li1LHmCQ8rBLWVlhkIlg sha512-RODJvbBI+juY+pvx9v5Y5DRtIVBSvb/Q+2mi/Q81VZTFtqxkkS3eoIWaxTlfS6KSbHcIUqTbO8w0FdUp0JuUMQ=="
+					"value": "sha256-ZxfK4A+T94+uWzSZgfdmQK7qNNYoI8UB3T1cZm4dn+M= sha384-xUqFB8DHJtRogoAW7bZS2vS+epYFnckRZOS/Yhs7QluP81QcLftjJlHZ7Lvb6tRX sha512-FCbvbcbX4HtqhACPRtfVBBYSEJ6OMf8J+y8QpigSOO9D0pruvXxyBaT3IXwDnBL/KIMOY55Gq3EbCfkEb9xqBg=="
 				},
 				{
 					"name": "crossorigin",
@@ -2413,10 +2425,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-csv": "=10.09.02",
-		"mmx-icons": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-csv": "=10.10.00",
+		"mmx-icons": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

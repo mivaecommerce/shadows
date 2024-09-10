@@ -27,9 +27,6 @@
 	<mvt:assign name="l.settings:url" value="l.settings:urls:INVC:secure" />
 </mvt:if>
 
-<mvt:do name="l.state_datalist_count" file="g.Module_Library_DB" value="StateList_Load_All(l.state_datalist)"/>
-<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
-
 <mvt:if expr="g.Basket:cust_id EQ 0">
 	<div class="c-dialog" data-dialog="sign-in" aria-hidden="true">
 		<div class="c-dialog__overlay" tabindex="-1">
@@ -78,7 +75,7 @@
 			<p id="ShippingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Shipping Information</p>
 			<p class="c-form-list__item u-hidden" id="shipping_controls">
 				<label class="c-form-checkbox">
-					<input id="shipping_to_show" class="c-form-checkbox__input" type="checkbox" name="shipping_to_show" value="1" checked>
+					<input id="shipping_to_show" class="c-form-checkbox__input" type="checkbox" name="shipping_to_show" value="1">
 					<span class="c-form-checkbox__caption">Same as Billing</span>
 				</label>
 			</p>
@@ -178,8 +175,8 @@
 						<input name="ShipState" type="hidden" value="&mvte:global:ShipState;">
 						<input id="ShipStateSelect" class="c-form-input" data-datalist list="ShipStateDatalist" name="ShipStateSelect" placeholder="Select or Type" type="text" value="&mvte:global:ShipStateSelect;" &mvte:shipping_required; aria-describedby="ShippingInformation ShipStateSelect_label" autocomplete="address-level1">
 						<datalist id="ShipStateDatalist">
-							<mvt:foreach array="global:StateDatalist" iterator="StateData">
-								<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+							<mvt:foreach array="states" iterator="state">
+								<option value="&mvte:state:code;">&mvte:state:name;</option>
 							</mvt:foreach>
 						</datalist>
 					</div>
@@ -203,7 +200,7 @@
 			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Billing Information</p>
 			<p class="c-form-list__item" id="billing_controls">
 				<label class="c-form-checkbox">
-					<input id="billing_to_show" class="c-form-checkbox__input" type="checkbox" name="billing_to_show" value="1" checked>
+					<input id="billing_to_show" class="c-form-checkbox__input" type="checkbox" name="billing_to_show" value="1">
 					<span class="c-form-checkbox__caption">Same as Shipping</span>
 				</label>
 			</p>
@@ -299,8 +296,8 @@
 						<input name="BillState" type="hidden" value="&mvte:global:BillState;">
 						<input id="BillStateSelect" class="c-form-input" data-datalist list="BillStateDatalist" name="BillStateSelect" placeholder="Select or Type" type="text" value="&mvte:global:BillStateSelect;" &mvte:billing_required; aria-describedby="BillingInformation BillStateSelect_label" autocomplete="address-level1">
 						<datalist id="BillStateDatalist">
-							<mvt:foreach array="global:StateDatalist" iterator="StateData">
-								<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+							<mvt:foreach array="states" iterator="state">
+								<option value="&mvte:state:code;">&mvte:state:name;</option>
 							</mvt:foreach>
 						</datalist>
 					</div>

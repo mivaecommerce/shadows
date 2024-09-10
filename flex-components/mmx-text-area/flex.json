@@ -2,10 +2,12 @@
 	"code": "mmx-text-area",
 	"name": "Text Area",
 	"type": "component",
-	"version": "10.09.02",
+	"version": "10.10.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-area",
 	"category": "text-area",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": "",
 	"properties": [
 		{
 			"code": "content",
@@ -30,11 +32,13 @@
 							"value": "right"
 						}
 					],
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Text Alignment",
 					"type": "selector"
 				},
 				{
 					"code": "heading",
+					"preview_property_selector": "[slot=\"heading\"]",
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
@@ -291,6 +295,7 @@
 				},
 				{
 					"code": "subheading",
+					"preview_property_selector": "[slot=\"subheading\"]",
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
@@ -506,6 +511,8 @@
 				},
 				{
 					"code": "body",
+					"markdown": 1,
+					"preview_property_selector": "[slot=\"body\"]",
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
@@ -726,6 +733,7 @@
 					"properties": [
 						{
 							"code": "button_text",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Text",
 							"textsettings": {
 								"fields": [
@@ -797,7 +805,9 @@
 						},
 						{
 							"code": "button_link",
+							"preview_property_selector": "[slot=\"button\"]",
 							"prompt": "Button Link",
+							"supports_new_tab": 1,
 							"type": "link"
 						}
 					],
@@ -845,6 +855,7 @@
 					"code": "width",
 					"label": "%",
 					"precision": -1,
+					"preview_property_selector": ":shadow [part~=\"content\"]",
 					"prompt": "Width",
 					"range_high": 100,
 					"range_low": 20,
@@ -868,15 +879,7 @@
 				"value": "center"
 			},
 			"body": {
-				"textsettings": {
-					"fields": {
-						"normal": {
-							"body_style": {
-								"value": "paragraph-s"
-							}
-						}
-					}
-				},
+				"source": "markdown",
 				"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
 			},
 			"button": {
@@ -933,9 +936,9 @@
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"depends": {
-		"mmx-base": "=10.09.02",
-		"mmx-button": "=10.09.02",
-		"mmx-hero": "=10.09.02",
-		"mmx-text": "=10.09.02"
+		"mmx-base": "=10.10.00",
+		"mmx-button": "=10.10.00",
+		"mmx-hero": "=10.10.00",
+		"mmx-text": "=10.10.00"
 	}
 }

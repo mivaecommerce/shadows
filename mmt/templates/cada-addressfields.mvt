@@ -7,7 +7,7 @@
 	<mvt:if expr="NOT ISNULL l.settings:addressfields:validated_addresses">
 		<input type="hidden" name="Address_Validated" value="1" />
 	</mvt:if>
-	
+
 	<p class="c-heading-foxtrot">Recipient</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Description_Row;">
@@ -40,7 +40,7 @@
 		</div-->
 	</div>
 	<hr class="c-keyline">
-	
+
 	<p class="c-heading-foxtrot">Address</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_Address1_Row;">
@@ -55,9 +55,7 @@
 			<label class="c-form-label u-text-medium is-required" for="l-Address_City">City</label>
 			<input id="l-Address_City" class="c-form-input" type="text" name="Address_City" value="&mvte:global:Address_City;" required aria-required="true">
 		</div>
-		
-		<mvt:do name="l.state_datalist_count" file="g.Module_Library_DB" value="StateList_Load_All(l.state_datalist)"/>
-		<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
+
 		<mvt:if expr="g.States_Empty">
 			<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_State_Row;">
 				<label id="Address_State_label" class="c-form-label u-text-medium is-required" for="Address_State">State/Province</label>
@@ -69,13 +67,13 @@
 				<input name="Address_State" type="hidden" value="&mvte:global:Address_State;">
 				<input id="Address_StateSelect" class="c-form-input" data-datalist list="Address_StateDatalist" name="Address_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Address_StateSelect;" required aria-required="true" autocomplete="address-level1">
 				<datalist id="Address_StateDatalist">
-					<mvt:foreach array="global:StateDatalist" iterator="StateData">
-						<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+					<mvt:foreach array="states" iterator="state">
+						<option value="&mvte:state:code;">&mvte:state:name;</option>
 					</mvt:foreach>
 				</datalist>
 			</div>
 		</mvt:if>
-		
+
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Country_Row;" data-hook="mvt-select" data-mvt-classlist="c-form-select__dropdown" data-mvt-id="Address_Country" data-mvt-autocomplete="country">
 			<label class="c-form-label u-text-medium is-required" for="Address_Country">Country</label>
 			<div class="c-form-select">
@@ -88,7 +86,7 @@
 		</div>
 	</div>
 	<hr class="c-keyline">
-	
+
 	<div class="c-form-list">
 		<div class="c-form-list__item &mvte:global:Address_Default_Shipping_Row;">
 			<mvt:if expr="g.Address_Default_Shipping">
@@ -117,7 +115,7 @@
 			</mvt:if>
 		</div>
 	</div>
-	
+
 	<div class="o-layout--justify-end c-form-inline-set">
 		<input class="c-button" type="submit" value="Save">
 		<a class="c-button c-button--secondary" href="&mvte:urls:CABK:secure;">Cancel</a>

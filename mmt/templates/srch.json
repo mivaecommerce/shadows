@@ -1,44 +1,252 @@
 {
-    "facets": {
-        "b_height": 234,
-        "b_width": 234,
-        "button_add": 1,
-        "button_buy": 1,
-        "button_wish": 0,
-        "col_num": 2,
-        "constrain": "B",
-        "default_sort": "disp_order",
-        "displaydiscounts": 0,
-        "field_code": 1,
-        "field_desc": 0,
-        "field_name": 1,
-        "field_price": 1,
-        "field_sku": 0,
-        "format": "X",
-        "image": "T",
-        "invmsg": "L",
-        "items_per_page_filter": 1,
-        "linkexcludecat": 1,
-        "mode": "ctgy",
-        "page_disp_count": 3,
-        "per_page": 10,
-        "predictdiscounts": 0,
-        "price": "base",
-        "reverse_default_disp_order": 0,
-        "sort_by": {
-            "best": 1,
-            "code": 0,
-            "name": 0,
-            "new": 1,
-            "old": 1,
-            "price": 1,
-            "relevance": 0,
-            "switch": 1,
-            "updated": 0
+    "flex": {
+        "search-listing": {
+            "component_code": "mmx-product-list",
+            "item_code": "search-listing",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.1,
+                    "settings_version": "10.10.00"
+                },
+                "advanced": {
+                    "empty_results_message": {
+                        "value": "There were no products that matched your search."
+                    },
+                    "show_empty_results": {
+                        "value": 1
+                    }
+                },
+                "card": {
+                    "details": {
+                        "children": [
+                            {
+                                "name": {
+                                    "value": "Name"
+                                },
+                                "type": {
+                                    "value": "name"
+                                }
+                            },
+                            {
+                                "name": {
+                                    "value": "Price"
+                                },
+                                "price": {
+                                    "additional": {
+                                        "value": "base"
+                                    },
+                                    "displayed": {
+                                        "value": "sale"
+                                    }
+                                },
+                                "type": {
+                                    "value": "price"
+                                }
+                            },
+                            {
+                                "fragment": {
+                                    "value": "product_list_additional_data"
+                                },
+                                "name": {
+                                    "value": "Additional Data Fragment"
+                                },
+                                "type": {
+                                    "value": "fragment"
+                                }
+                            }
+                        ]
+                    },
+                    "image": {
+                        "dimensions": {
+                            "value": "350x350"
+                        },
+                        "fit": {
+                            "value": "contain"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        },
+                        "type": {
+                            "value": "main"
+                        }
+                    }
+                },
+                "heading": {
+                    "heading_align": {
+                        "value": "left"
+                    },
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "heading_tag": {
+                                        "value": "h1"
+                                    }
+                                }
+                            }
+                        },
+                        "value": "You searched for \"%search%\""
+                    },
+                    "settings": {
+                        "enabled": 1
+                    }
+                },
+                "list": {
+                    "columns": {
+                        "desktop": {
+                            "value": 4
+                        },
+                        "mobile": {
+                            "value": 2
+                        },
+                        "tablet": {
+                            "value": 3
+                        }
+                    },
+                    "details": {
+                        "settings": {
+                            "enabled": 1
+                        },
+                        "show_current_page": {
+                            "value": 0
+                        },
+                        "show_search_term": {
+                            "value": 0
+                        },
+                        "show_total_products": {
+                            "value": 1
+                        }
+                    },
+                    "facets": {
+                        "settings": {
+                            "enabled": 1
+                        },
+                        "show_value_counts": {
+                            "value": 1
+                        },
+                        "title": {
+                            "value": "Filters"
+                        },
+                        "width": {
+                            "value": 20
+                        }
+                    },
+                    "pagination": {
+                        "next_previous": {
+                            "value": "arrows"
+                        },
+                        "next_text": {
+                            "value": "Next"
+                        },
+                        "page_link_count": {
+                            "value": 7
+                        },
+                        "page_numbers": {
+                            "value": "links"
+                        },
+                        "previous_text": {
+                            "value": "Previous"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
+                    "per_page": {
+                        "default": {
+                            "value": 24
+                        },
+                        "options": {
+                            "children": [
+                                {
+                                    "amount": {
+                                        "value": 12
+                                    },
+                                    "label": {
+                                        "value": "12 Items / Page"
+                                    }
+                                },
+                                {
+                                    "amount": {
+                                        "value": 24
+                                    },
+                                    "label": {
+                                        "value": "24 Items / Page"
+                                    }
+                                },
+                                {
+                                    "amount": {
+                                        "value": 48
+                                    },
+                                    "label": {
+                                        "value": "48 Items / Page"
+                                    }
+                                }
+                            ]
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
+                    "products": {
+                        "product_set": {
+                            "value": "auto"
+                        }
+                    },
+                    "sort_by": {
+                        "default": {
+                            "value": "disp_order"
+                        },
+                        "options": {
+                            "children": [
+                                {
+                                    "code": {
+                                        "value": "disp_order"
+                                    },
+                                    "label": {
+                                        "value": "Featured"
+                                    }
+                                },
+                                {
+                                    "code": {
+                                        "value": "bestsellers"
+                                    },
+                                    "label": {
+                                        "value": "Best Selling"
+                                    }
+                                },
+                                {
+                                    "code": {
+                                        "value": "price_asc"
+                                    },
+                                    "label": {
+                                        "value": "Price (Low to High)"
+                                    }
+                                },
+                                {
+                                    "code": {
+                                        "value": "price_desc"
+                                    },
+                                    "label": {
+                                        "value": "Price (High to Low)"
+                                    }
+                                },
+                                {
+                                    "code": {
+                                        "value": "newest"
+                                    },
+                                    "label": {
+                                        "value": "Newest Items"
+                                    }
+                                }
+                            ]
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    }
+                }
+            }
         }
-    },
-    "footer_sequence": {
-        "title": "Page Builder Footer"
     },
     "hdft": {
         "footer": {
@@ -47,55 +255,6 @@
         "header": {
             "template_filename": "srch-header.mvc"
         }
-    },
-    "header_sequence": {
-        "title": "Page Builder Header"
-    },
-    "search_results": {
-        "additionalprice": "base",
-        "advanced": 1,
-        "b_height": 384,
-        "b_width": 384,
-        "button_add": 1,
-        "button_buy": 1,
-        "button_wish": 0,
-        "col_num": 2,
-        "constrain": "B",
-        "default_sort": "disp_order",
-        "displaydiscounts": 0,
-        "field_code": 1,
-        "field_desc": 0,
-        "field_name": 1,
-        "field_price": 1,
-        "field_sku": 0,
-        "field_weight": 0,
-        "format": "X",
-        "image": "T",
-        "imagemachine_enabled": 0,
-        "imagetypes": [
-            "main"
-        ],
-        "invmsg": "L",
-        "items_per_page_filter": 1,
-        "linkexcludecat": 0,
-        "mode": "srch",
-        "page_disp_count": 3,
-        "per_page": 12,
-        "predictdiscounts": 1,
-        "price": "sale",
-        "reverse_default_disp_order": 0,
-        "sort_by": {
-            "best": 1,
-            "code": 0,
-            "name": 0,
-            "new": 1,
-            "old": 1,
-            "price": 1,
-            "relevance": 0,
-            "switch": 1,
-            "updated": 0
-        },
-        "template_filename": "srch-search_results.mvc"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -109,8 +268,22 @@
         "sm_active": 1,
         "suffix": "html",
         "suffix_choice": "html",
-        "surlprefix": "https://dev-test-ssoule01.coolcommerce.net/",
+        "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
-        "urlprefix": "http://dev-test-ssoule01.coolcommerce.net/"
+        "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Search Results",
+                "param": "search-listing"
+            }
+        ],
+        "title": "Sequence"
     }
 }

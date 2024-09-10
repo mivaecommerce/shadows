@@ -42,7 +42,7 @@
 					</div>
 				</div>
 				<hr class="c-keyline">
-				
+
 				<p class="c-heading-foxtrot">Contact Info</p>
 				<div class="c-form-list o-layout">
 					<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_ContactName_Row;">
@@ -73,9 +73,7 @@
 						<label class="c-form-label u-text-medium is-required" for="l-Affiliate_City">City</label>
 						<input id="l-Affiliate_City" class="c-form-input" type="text" name="Affiliate_City" value="&mvte:global:Affiliate_City;" required>
 					</div>
-					
-					<mvt:do file="g.Module_Library_DB" name="l.state_datalist_count" value="StateList_Load_All(l.state_datalist)"/>
-					<mvt:assign name="g.StateDatalist" value="l.state_datalist"/>
+
 					<mvt:if expr="g.States_Empty">
 						<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Affiliate_State_Row;">
 							<label class="c-form-label u-text-medium is-required" for="Affiliate_State">State/Province</label>
@@ -87,8 +85,8 @@
 							<input name="Customer_ShipState" type="hidden" value="&mvte:global:Customer_ShipState;">
 							<input id="Affiliate_StateSelect" class="c-form-input" data-datalist list="ShipStateDatalist" name="Affiliate_StateSelect" placeholder="Select or Type" type="text" value="&mvte:global:Affiliate_StateSelect;" required>
 							<datalist id="ShipStateDatalist">
-								<mvt:foreach array="global:StateDatalist" iterator="StateData">
-									<option value="&mvte:StateData:code;">&mvte:StateData:name;</option>
+								<mvt:foreach array="states" iterator="state">
+									<option value="&mvte:state:code;">&mvte:state:name;</option>
 								</mvt:foreach>
 							</datalist>
 						</div>
@@ -105,7 +103,7 @@
 						<input class="c-form-input" id="l-Affiliate_Zip" type="text" name="Affiliate_Zip" value="&mvte:global:Affiliate_Zip;" required>
 					</div>
 				</div>
-				
+
 				<mvt:if expr="NOT ISNULL g.AffiliateOptions:terms">
 					<hr class="c-keyline">
 					<p class="c-heading-foxtrot">Terms &amp; Conditions</p>
@@ -115,7 +113,7 @@
 						</div>
 					</div>
 				</mvt:if>
-				
+
 				<div class="c-form-list">
 					<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
 						<input class="c-button" type="submit" value="Save">

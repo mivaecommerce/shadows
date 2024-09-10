@@ -51,6 +51,7 @@ class MMX_ProductCarousel extends MMX_Element {
 	constructor() {
 		super();
 		this.makeShadow();
+		this.bindRevealElement();
 	}
 
 	render() {
@@ -62,6 +63,24 @@ class MMX_ProductCarousel extends MMX_Element {
 				${this.renderProducts()}
 			</div>
 		`;
+	}
+
+	afterRender() {
+		this.#debouncedAfterRender();
+	}
+
+	#debouncedAfterRender = MMX.debounce(() => {
+		this.notifyOfProductPriceChanges();
+	}, 100);
+
+	notifyOfProductPriceChanges() {
+		this.products?.forEach?.(product => {
+			window?.MivaEvents?.ThrowEvent?.('price_changed', {
+				product_code: product.code,
+				price: product.price,
+				additional_price: product.base_price
+			});
+		});
 	}
 
 	styles() {
@@ -103,6 +122,12 @@ class MMX_ProductCarousel extends MMX_Element {
 				value: [
 					'sale_price',
 					'attributes'
+				]
+			},
+			{
+				name: 'fragments',
+				value: [
+					this.getFragmentCode()
 				]
 			}
 		];
@@ -165,6 +190,11 @@ class MMX_ProductCarousel extends MMX_Element {
 				return productCodes.indexOf(MMX.normalizeCode(a?.code)) - productCodes.indexOf(MMX.normalizeCode(b?.code));
 			});
 
+			response.data.data.map(product => {
+				product.isIndividual = true;
+				return product;
+			});
+
 			this.products.unshift(...response.data.data);
 			this.forceUpdate();
 		})
@@ -194,6 +224,7 @@ class MMX_ProductCarousel extends MMX_Element {
 
 		return /*html*/`
 			<mmx-hero-slider
+				part="slider"
 				data-per-page="${this.getPropValue('per-page')}"
 				data-per-move="${this.getPropValue('per-move')}"
 				data-peek="${this.getPropValue('peek')}"
@@ -216,6 +247,10 @@ class MMX_ProductCarousel extends MMX_Element {
 		return this?.data?.advanced?.settings?.image_type?.value ?? 'main';
 	}
 
+	getFragmentCode() {
+		return this?.data?.advanced?.settings?.fragment_code?.value;
+	}
+
 	renderProduct(product) {
 		const imageType = this.getImageType();
 		product.imgSrc = product.imagetypes?.[imageType]?.sizes?.[this.getPropValue('image-dimensions')]?.url ?? product?.imagetypes?.[imageType]?.sizes?.original?.url ?? '';
@@ -223,13 +258,15 @@ class MMX_ProductCarousel extends MMX_Element {
 		return /*html*/`
 			<mmx-hero
 				slot="hero_slide"
+				part="hero_slide product ${product.isIndividual ? 'product--individual' : 'product--category'}"
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(product.url)}"
 				data-img-src="${MMX.encodeEntities(product.imgSrc)}"
 			>
 				<div slot="content">
-					<div class="type-product-name">${product.name}</div>
+					<div part="product-name" class="type-product-name">${product.name}</div>
 					${this.renderPrice(product)}
+					${this.renderProductFragmentPart(product)}
 					${this.renderButton(product)}
 				</div>
 			</mmx-hero>
@@ -237,6 +274,10 @@ class MMX_ProductCarousel extends MMX_Element {
 	}
 
 	renderPrice(product) {
+		if (this?.data?.advanced?.settings?.displayed_price?.value === 'none') {
+			return '';
+		}
+
 		// Price Display
 		product.price_display = product.formatted_sale_price;
 		if (this?.data?.advanced?.settings?.displayed_price?.value === 'base'){
@@ -256,9 +297,9 @@ class MMX_ProductCarousel extends MMX_Element {
 		}
 
 		return /*html*/`
-			<div class="type-product-prices">
-				<span class="type-product-price">${product.price_display}</span>
-				${product.additional_price_display.length && product.additional_price_display !== product.price_display ? /*html*/`<span class="type-product-additional-price">${product.additional_price_display}</span>` : ''}
+			<div part="product-prices" class="type-product-prices">
+				<span part="product-price" class="type-product-price">${product.price_display}</span>
+				${product.additional_price_display.length && product.additional_price_display !== product.price_display ? /*html*/`<span part="product-additional-price" class="type-product-additional-price">${product.additional_price_display}</span>` : ''}
 			</div>
 		`;
 	}
@@ -281,6 +322,20 @@ class MMX_ProductCarousel extends MMX_Element {
 			</mmx-button>`;
 	}
 
+	renderProductFragmentPart(product) {
+		const fragmentCode		= this.getFragmentCode();
+		const fragmentContent = this.renderProductFragment({product, fragmentCode});
+
+		if (MMX.valueIsEmpty(fragmentContent)){
+			return '';
+		}
+
+		return /*html*/`
+			<div part="product-fragment product-fragment__${MMX.encodeEntities(fragmentCode)}">
+				${fragmentContent}
+			</div>`;
+	}
+
 	getBaskUrl() {
 		return this.getPropValue('bask-url') ?? MMX.longMerchantUrl({Screen: 'BASK'});
 	}
@@ -297,6 +352,14 @@ class MMX_ProductCarousel extends MMX_Element {
 		adprUrl.searchParams.append('Product_Code', product.code);
 		adprUrl.searchParams.append('Quantity', quantity);
 		return adprUrl.toString();
+	}
+
+	slider() {
+		return this.shadowRoot.querySelector('[part~="slider"]');
+	}
+
+	revealElement(element) {
+		this.slider()?.revealElement(element);
 	}
 }
 

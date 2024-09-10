@@ -7,9 +7,18 @@
 	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
 </mvt:if>
 
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-image-and-text
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	class="mmx-wrapper"
@@ -59,9 +68,14 @@
 		<mmx-text
 			slot="body"
 			data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
+			data-source="&mvte:instance:content:body:source;"
 			style="&mvte:instance:content:body:textsettings:styles:normal;"
 		>
-			&mvte:instance:content:body:value;
+			<mvt:if expr="l.settings:instance:content:body:source EQ 'markdown'">
+				&mvt:instance:content:body:value;
+			<mvt:else>
+				&mvte:instance:content:body:value;
+			</mvt:if>
 		</mmx-text>
 	</mvt:if>
 	<mvt:if expr="l.settings:instance:content:button:settings:enabled">

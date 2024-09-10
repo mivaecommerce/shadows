@@ -1,8 +1,17 @@
 <mvt:assign name="l.settings:instance:fallback_product_image_default" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__720x720.jpg'" />
 <mvt:assign name="l.settings:instance:fallback_product_image_mobile" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__335x335.jpg'" />
 
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
 <mmx-featured-product
-	id="&mvte:instance_item:component_code;__&mvte:instance_item:item_code;"
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
 	class="mmx-wrapper"

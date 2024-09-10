@@ -22,24 +22,22 @@
 					<hr class="c-keyline">
 				</div>
 			</section>
-	
+
 			<section class="o-layout">
 				<div class="o-layout__item">
-					<mvt:item name="header_sequence" />
 					<mvt:item name="hdft" param="header" />
 				</div>
 			</section>
 
 			<section class="o-layout">
 				<div class="o-layout__item">
-					<mvt:item name="readytheme" param="contentsection( 'faqs_content' )" />
+					<mvt:item name="sequence" />
 				</div>
 			</section>
-			
+
 			<section class="o-layout">
 				<div class="o-layout__item">
 					<mvt:item name="hdft" param="footer" />
-					<mvt:item name="footer_sequence" />
 				</div>
 			</section>
 		</div>

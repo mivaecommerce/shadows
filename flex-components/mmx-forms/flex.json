@@ -1,0 +1,59 @@
+{
+	"code": "mmx-forms",
+	"name": "MMX Forms",
+	"type": "library",
+	"version": "10.10.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-forms",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-forms.js",
+			"resource_code": "mmx-forms",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-S1gx8Jx7mCWupv09uSLKe391QpMhlh0R2LzW7l2dWOU= sha384-QN5rc66OXy/CpmYBLuMaJuYAmGMou9kUWaPzE8CalR5iNYZMFKMxon1nW3I2jCum sha512-/xXPnDu38Aqd8q4fl6j3qTLbb6ck2veSnNnmppoI9CkaRMY5m+ZKdwQmdFSbL9SgoPL6tGpRe/SdJjNOebc8hw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-forms.css",
+			"resource_code": "mmx-forms",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-PD3j5fOKNM2L0ifoyv+4YGn59aQgCDL8HFf5gjaIBQE= sha384-3pg4F2GTTGHw8CLMuRJGBOyI5eJmXEDqb5sa49SuWOm5fXM2tqY5EyHddrydaJgH sha512-u5vWkG8oNEDLobbMi6Z3Lb+NRomQsXRjfWqHhUM4r4vwsXBXMfRSzX7J11isd0s09NC701xXyPUvJ306LgeHFw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.10.00"
+	}
+}

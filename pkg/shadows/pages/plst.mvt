@@ -13,39 +13,21 @@
 </head>
 <body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
-
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<mvt:item name="header_sequence" />
+			<mvt:item name="hdft" param="header" />
 		</div>
-	</section>
-	
-	<h1 class="c-heading-charlie">&mvt:page:name;</h1><br>
-	
-	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l o-layout--wide">
-		<div class="o-layout__item u-width-12 u-width-10--l">
-			<section class="o-layout">
-				<div class="o-layout__item">
-					<mvt:item name="hdft" param="header" />
-				</div>
-			</section>
-			
-			<mvt:item name="all_products" />
-			
-			<section class="o-layout">
-				<div class="o-layout__item">
-					<mvt:item name="hdft" param="footer" />
-				</div>
-			</section>
-		</div>
-		<aside class="o-layout__item u-width-12 u-width-2--l">
-			<mvt:item name="facets" />
-		</aside>
 	</section>
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<mvt:item name="footer_sequence" />
+			<mvt:item name="sequence" />
+		</div>
+	</section>
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
 		</div>
 	</section>
 	<mvt:item name="hdft" param="global_footer" />
