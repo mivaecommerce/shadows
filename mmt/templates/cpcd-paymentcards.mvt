@@ -35,7 +35,7 @@
 				<a href="&mvte:urls:CPCE:auto_sep;PaymentMethod=paymentcard:&mvta:paymentcard:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit</a>
 				<mvt:assign name="l.settings:js_encoded_url" value="encodejavascriptstring( l.settings:urls:CPCD:secure )"/>
 				<mvt:assign name="l.settings:js_encoded_paymentcard_id" value="encodejavascriptstring( l.settings:paymentcard:id )"/>
-				<mvt:assign name="l.settings:js_encoded_csrf_token" value="encodejavascriptstring( g.Sort_By )"/>
+				<mvt:assign name="l.settings:js_encoded_csrf_token" value="encodejavascriptstring( g.Basket:csrf_token )"/>
 				<button class="c-button--as-link" onclick="if ( confirm( 'Deleting this payment card cannot be undone.\x0A\x0AContinue?' ) ) { MMDynamic_Form_Submit( '&mvte:js_encoded_url;', { 'Action': 'DCPC', 'PaymentCard_ID': '&mvte:js_encoded_paymentcard_id;', 'CSRF_Token': '&mvte:js_encoded_csrf_token;' } ); } return false;">Delete</button>
 			</span>
 		</div>

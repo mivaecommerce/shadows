@@ -183,6 +183,10 @@ class MMX_ProductList extends MMX_Element {
 			'show-empty-results' : {
 				isBoolean: true,
 				default: true
+			},
+			'show-category-tree': {
+				isBoolean: true,
+				default: false
 			}
 		};
 	}
@@ -302,7 +306,8 @@ class MMX_ProductList extends MMX_Element {
 			'data-product-fallback-image': this.data?.fallback_product_image,
 			'data-param-prefix': this.data?.advanced?.param_prefix?.value,
 			'data-empty-results-message': this.data?.advanced?.empty_results_message?.value,
-			'data-show-empty-results': this.data?.advanced?.show_empty_results?.value
+			'data-show-empty-results': this.data?.advanced?.show_empty_results?.value,
+			'data-show-category-tree': this.data?.list?.facets?.show_category_tree?.value
 		});
 
 		this.#setParamPrefix();
@@ -1530,6 +1535,7 @@ class MMX_ProductList extends MMX_Element {
 					${this.#renderPerPageSortBy()}
 					${this.#renderAppliedFacets()}
 					${this.#renderFacetsList()}
+					${this.#renderCategoryTree()}
 				</form>
 				<mmx-button
 					part="facets-dialog-close"
@@ -1905,6 +1911,17 @@ class MMX_ProductList extends MMX_Element {
 				>
 				</mmx-form-input-range>
 			</div>
+		`;
+	}
+
+	// Category Tree
+	#renderCategoryTree() {
+		if (!this.getPropValue('show-category-tree')) {
+			return '';
+		}
+
+		return /*html*/`
+			<slot part="category-tree" name="category-tree"></slot>
 		`;
 	}
 }

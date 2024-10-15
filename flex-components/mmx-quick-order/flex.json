@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.10.00",
+	"version": "10.10.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -2091,15 +2091,31 @@
 				},
 				{
 					"code": "search_placeholder_runtime",
+					"placeholder": "Search for a product...",
 					"preview_property_selector": ":shadow [part~=\"search-input\"]",
-					"prompt": "Placeholder for Search Method: Runtime",
-					"type": "text"
+					"prompt": "Search Placeholder",
+					"type": "text",
+					"visibility_conditions": {
+						"search_method": {
+							"value": [
+								"runtime"
+							]
+						}
+					}
 				},
 				{
 					"code": "search_placeholder_code",
+					"placeholder": "Enter a product code...",
 					"preview_property_selector": ":shadow [part~=\"search-input\"]",
-					"prompt": "Placeholder for Search Method: Code",
-					"type": "text"
+					"prompt": "Search Placeholder",
+					"type": "text",
+					"visibility_conditions": {
+						"search_method": {
+							"value": [
+								"code"
+							]
+						}
+					}
 				},
 				{
 					"code": "search_results_title",
@@ -2317,12 +2333,6 @@
 				"search_method": {
 					"value": "runtime"
 				},
-				"search_placeholder_code": {
-					"value": "Enter a product code..."
-				},
-				"search_placeholder_runtime": {
-					"value": "Search for a product..."
-				},
 				"search_results_title": {
 					"value": "Search Results"
 				},
@@ -2387,7 +2397,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-jd12PZ8GthCJVFqmZSLsnkJQvtRfSOsT0lImOBOL3b4= sha384-UvtjTQWg9HnhBiU6wbqySuHj8Y5KD2w6trkWUlGPX8fJqSskFk1CdHxEgxgsjcPU sha512-qXfet0wFvp+FAHYqjqDEpEXR5DszoMCNFm73qvO+nt7Zu/gt7DIefgg05HyYFUgGW3j0pgVXHaN2OUTsS9byzQ=="
+					"value": "sha256-KPZg89B//3Fl3+VUL8HS1pbF8hVhBjJvs/bXPPNCS9Q= sha384-iRSkj7GW5EQUMzPJNYu9UrhoCzAOAwF4X19VYGCpdXHBWv92I1RIiJXhU6zl57qd sha512-coflYY8vrHXI9qWrXo5idEl6yRBnu/6lY9yIR5KMk6Ca3fyFAacvr8FUUimxiZSsj/la3cqftQSpNsbAVPwSww=="
 				},
 				{
 					"name": "crossorigin",
@@ -2415,7 +2425,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ZxfK4A+T94+uWzSZgfdmQK7qNNYoI8UB3T1cZm4dn+M= sha384-xUqFB8DHJtRogoAW7bZS2vS+epYFnckRZOS/Yhs7QluP81QcLftjJlHZ7Lvb6tRX sha512-FCbvbcbX4HtqhACPRtfVBBYSEJ6OMf8J+y8QpigSOO9D0pruvXxyBaT3IXwDnBL/KIMOY55Gq3EbCfkEb9xqBg=="
+					"value": "sha256-U42cw+gcgHEkTSecWq1WTg9oyWhbO28w1BQQpocPdv8= sha384-si9euY9kSZ5UPpFIJDi5RwcBdCX7eMfhbyX28bu47vc7XyALgnkkFmzNP8MwjROv sha512-UYIvTDRQtJL1v2y6eSF7Gp9vseMZHK8Ys8z+Niigw40P5seqjeZhtjN6YSMQPclItdK7qDgF6UDb86bYqrioLQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -2425,10 +2435,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.00",
-		"mmx-button": "=10.10.00",
-		"mmx-csv": "=10.10.00",
-		"mmx-icons": "=10.10.00",
-		"mmx-text": "=10.10.00"
+		"mmx-base": "=10.10.01",
+		"mmx-button": "=10.10.01",
+		"mmx-csv": "=10.10.01",
+		"mmx-icons": "=10.10.01",
+		"mmx-text": "=10.10.01"
 	}
 }

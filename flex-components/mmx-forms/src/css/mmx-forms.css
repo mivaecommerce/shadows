@@ -67,6 +67,10 @@
 	width: 100%;
 }
 
+.mmx-form-select__dropdown option {
+	color: initial;
+}
+
 .mmx-form-input--minimal,
 .mmx-form-textarea--minimal,
 .mmx-form-select--minimal .mmx-form-select__dropdown {

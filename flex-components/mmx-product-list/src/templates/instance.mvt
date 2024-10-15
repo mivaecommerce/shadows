@@ -67,4 +67,11 @@
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
 	</mvt:if>
+
+	<mvt:comment>Render Category Tree</mvt:comment>
+	<mvt:if expr="l.settings:instance:list:facets:show_category_tree:value">
+		<div slot="category-tree">
+			<mvt:item name="category_tree" />
+		</div>
+	</mvt:if>
 </mmx-product-list>

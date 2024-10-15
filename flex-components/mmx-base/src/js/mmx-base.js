@@ -740,7 +740,7 @@ class MMX_Element extends HTMLElement {
 	 * Rendering Helpers
 	 */
 	renderTextProperty(property = {}, {className = '', prefix = '', field = 'normal', defaultStyle = 'paragraph-s', defaultTag = 'div'}) {
-		if (!property?.value?.length) {
+		if (MMX.valueIsEmpty(property?.value)) {
 			return '';
 		}
 
@@ -760,7 +760,7 @@ class MMX_Element extends HTMLElement {
 	}
 
 	renderButtonProperty(property = {}, {className = '', field = 'normal', prefix = 'button_', defaultStyle = 'primary', defaultSize = 's'}) {
-		if (!property?.value?.length) {
+		if (MMX.valueIsEmpty(property?.value)) {
 			return '';
 		}
 

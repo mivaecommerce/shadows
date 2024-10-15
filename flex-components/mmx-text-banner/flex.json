@@ -2,7 +2,7 @@
 	"code": "mmx-text-banner",
 	"name": "Text Banner",
 	"type": "component",
-	"version": "10.10.00",
+	"version": "10.10.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-banner",
 	"category": "text-banner",
@@ -783,9 +783,9 @@
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"depends": {
-		"mmx-base": "=10.10.00",
-		"mmx-button": "=10.10.00",
-		"mmx-hero": "=10.10.00",
-		"mmx-text": "=10.10.00"
+		"mmx-base": "=10.10.01",
+		"mmx-button": "=10.10.01",
+		"mmx-hero": "=10.10.01",
+		"mmx-text": "=10.10.01"
 	}
 }

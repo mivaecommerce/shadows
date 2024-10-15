@@ -47,48 +47,42 @@
 	}
 },
 {
-	"selector": "#document-sizer",
-	"properties": {
-		"min-width": "100%"
-	}
-},
-{
 	"selector": "#payment-fields",
 	"properties": {
-		"display": "flex",
-		"flex-wrap": "wrap",
-		"gap": "1rem",
-		"justify-content": "space-between",
 		"padding": "0 0.25rem",
 		"width": "100%"
 	}
 },
 {
-	"selector": "#mivapay_form",
+	"selector": "#mvp_addresslist_container::before",
 	"properties": {
+		"content": "'Billing Address'",
+		"display": "block",
+		"font-size": "1.125rem",
+		"font-weight": "700",
 		"position": "relative",
-		"height": "auto",
+		"padding-bottom": "1rem",
 		"clear": "both",
-		"overflow": "auto",
-		"zoom": "1"
+		"text-transform": "uppercase"
 	}
 },
 {
 	"selector": ".form_row",
 	"properties": {
-		"display": "flex",
-		"flex": "1",
-		"flex-wrap": "wrap",
-		"gap": "0 0.5rem"
+		"margin-bottom": "1rem",
+		"float": "left",
+		"position": "relative",
+		"width": "100%",
+		"min-height": "1px"
 	}
 },
 {
 	"selector": ".form_row label",
 	"properties": {
-		"display": "inline-flex",
-		"flex-basis": "100%",
+		"display": "block",
+		"margin-bottom": "0.25rem",
 		"font-size": "13px",
-		"margin-bottom": "0.5em"
+		"font-weight": "600"
 	}
 },
 {
@@ -99,12 +93,12 @@
 		"border": "1px solid #ccc",
 		"border-radius": "0.25rem",
 		"display": "inline-block",
-		"flex": "1",
 		"font-family": "inherit",
  		"font-size": "13px",
 		"line-height": "1",
 		"margin-bottom": "0.25em",
-		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)"
+		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)",
+		"width": "100%"
 	}
 },
 {
@@ -116,11 +110,12 @@
 		"border-radius": "0.25rem",
 		"box-shadow": "0 0 0 0 rgba(17, 17, 17, 0.2)",
 		"cursor": "pointer",
-		"flex": "1",
 		"font-family": "inherit",
+		"line-height": "1",
 		"margin-bottom": "0.25em",
 		"padding": "calc(1.23em - 1px) calc(1.7em - 1px)",
-		"transition": "box-shadow 0.25s ease, border-color 0.25s ease"
+		"transition": "box-shadow 0.25s ease, border-color 0.25s ease",
+		"width": "100%"
 	}
 },
 {
@@ -137,79 +132,127 @@
 	}
 },
 {
-	"selector": ".mvp_exp_date_container",
+	"selector": "#mvp_exp_month,#mvp_exp_year",
 	"properties": {
-		"display": "grid",
-		"grid-template-columns": "repeat(2, 1fr)"
+		"width": "45%"
 	}
 },
 {
-	"selector": ".mvp_exp_date_container label",
+	"selector": "#mvp_exp_month",
 	"properties": {
-		"grid-column": "span 2"
+		"float": "left"
 	}
 },
 {
-	"selector": ".mvp_cvv_container",
+	"selector": "#mvp_cvv_container",
 	"properties": {
-		"flex": "0"
+		"clear": "left",
+		"width": "25%"
 	}
 },
 {
-	"selector": "#mvp_addressfields_container.mvp_addressfields_container",
+	"selector": "#mvp_exp_date_container::before",
 	"properties": {
-		"display": "flex",
-		"width": "100%",
-		"align-items": "center",
-		"flex-direction": "column"
+		"content": "'/'",
+		"display": "inline-block",
+		"position": "absolute",
+		"left": "49%",
+		"top": "2.5em",
+		"font-size": "1em"
+	}
+},
+{
+	"selector": "#mvp_exp_year",
+	"properties": {
+		"float": "right"
 	}
 },
 {
 	"selector": "#mvp_addressfields_container.mvp_addressfields_hide",
-	"properties": {
+	"properties":
+	{
 		"display": "none"
 	}
 },
 {
-	"selector": ".mvp_storetoken_container",
-	"properties": {
-		"justify-content": "flex-start"
-	}
-},
-{
-	"selector": ".mvp_storetoken",
-	"properties": {
-		"filter": "grayscale(1)",
-		"margin-right": "1em"
-	}
-},
-{
-	"selector": "::placeholder",
-	"properties": {
-		"line-height": "normal"
-	}
-},
-{
 "at-rule": "media",
-"media": "screen and (max-width: 747px)",
+"media": "screen and (min-width: 550px)",
 "selectors":
 	[
 		{
-			"selector": ".mvp_exp_date_container",
+			"selector": ".form_row",
 			"properties": {
-				"flex-basis": "auto"
+				"padding-right": "1rem",
+				"padding-left": "1rem"
 			}
-		}
-	]
-},
-{
-"at-rule": "media",
-"media": "screen and (min-width: 748px)",
-"selectors":
-	[
+		},
+		{
+			"selector": "#mivapay_form",
+			"properties": {
+				"position": "relative",
+				"height": "auto",
+				"clear": "both",
+				"overflow": "auto",
+				"zoom": "1"
+			}
+		},
+		{
+			"selector": "#mvp_cardtype_container, #mvp_address2_container, #mvp_addresslist_container, #mvp_stateselect_container, #mvp_state_container, #mvp_zip_container",
+			"properties": {
+				"width": "33.3332%"
+			}
+		},
 		{
 			"selector": "#mvp_cardtype_container",
 			"properties": {
+				"float": "none"
+			}
+		},
+		{
+			"selector": "#mvp_firstname_container, #mvp_lastname_container, #mvp_cardnumber_container, #mvp_exp_date_container, #mvp_country_container",
+			"properties": {
+				"width": "50%"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container",
+			"properties": {
+				"width": "66.6665%",
+				"clear": "left"
+			}
+		},
+		{
+			"selector": "#mvp_address1_container label::before, #mvp_address2_container label::before",
+			"properties": {
+				"content": "'Street'",
+				"display": "inline-block",
+				"margin-right": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_addresslist_container",
+			"properties": {
+				"clear": "both"
+			}
+		},
+		{
+			"selector": "#mvp_address2_container label::after",
+			"properties": {
+				"content": "'(Optional)'",
+				"display": "inline-block",
+				"margin-left": "0.25rem"
+			}
+		},
+		{
+			"selector": "#mvp_country_container",
+			"properties": {
+				"clear": "both",
 				"float": "none"
 			}
 		}

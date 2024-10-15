@@ -2,7 +2,7 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "10.10.00",
+	"version": "10.10.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
@@ -1575,9 +1575,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.00",
-		"mmx-button": "=10.10.00",
-		"mmx-hero": "=10.10.00",
-		"mmx-text": "=10.10.00"
+		"mmx-base": "=10.10.01",
+		"mmx-button": "=10.10.01",
+		"mmx-hero": "=10.10.01",
+		"mmx-text": "=10.10.01"
 	}
 }

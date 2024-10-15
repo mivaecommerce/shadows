@@ -5,8 +5,8 @@
             "item_code": "search-listing",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1,
-                    "settings_version": "10.10.00"
+                    "flex_version": 10.1001,
+                    "settings_version": "10.10.01"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -120,6 +120,9 @@
                     "facets": {
                         "settings": {
                             "enabled": 1
+                        },
+                        "show_category_tree": {
+                            "value": 1
                         },
                         "show_value_counts": {
                             "value": 1

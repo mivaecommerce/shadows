@@ -1388,12 +1388,12 @@ class MMX_QuickOrder extends MMX_Element {
 			<button part="search-result" class="mmx-quick-order__search-result ${hasImage}" type="button" data-product-code="${MMX.encodeEntities(product.code)}">
 				${this.renderImage(product)}
 				<div part="search-result-content" class="mmx-quick-order__search-result-content">
-					<div part="search-result-name" class="type-product-name">${product.name}</div>
 					${this.getPropValue('show-code') ? /*html*/`<div part="search-result-code" class="type-paragraph-xs">Code: ${product.code}</div>` : ''}
 					${this.getPropValue('show-sku') && product.sku.length ? /*html*/`<div part="search-result-sku" class="type-paragraph-xs">SKU: ${product.sku}</div>` : ''}
+					<div part="search-result-name" class="type-product-name">${product.name}</div>
+					${this.renderPrice(product)}
 					${this.renderInventory(product)}
 					${this.getPropValue('show-inv-available') && product.inv_active ? /*html*/`<div part="search-result-inv-available" class="type-paragraph-xs">Available: ${product.inv_available ?? '&infin;'}</div>` : ''}
-					${this.renderPrice(product)}
 					${this.getPropValue('show-link') ? /*html*/`<a part="search-result-link" exportparts="button: search-result-link__inner" class="mmx-button mmx-button__link mmx-button__size--s mmx-button__link mmx-button__primary-link" href="${MMX.encodeEntities(product.url)}" target="_blank">View Product</a>` : ''}
 				</div>
 			</button>
@@ -1510,6 +1510,7 @@ class MMX_QuickOrder extends MMX_Element {
 		selectedProductContainer.innerHTML = '';
 		const featuredProduct = this.createFeaturedProduct(product);
 		featuredProduct.product = this.selectProductAttributeValues(product, attributeValues);
+		featuredProduct.classList.add(`has-inv-level--${product.inv_level}`);
 		selectedProductContainer.append(featuredProduct);
 		this.bindRowSelectedProductContainerEvents(row);
 	}
@@ -1517,10 +1518,25 @@ class MMX_QuickOrder extends MMX_Element {
 	selectProductAttributeValues(product = {}, attributeValues = {}) {
 		const updatedProduct = MMX.copy(product);
 
-		updatedProduct?.attributes?.map(attribute => {
-			attribute.value = attributeValues?.[attribute.code];
-			return attribute;
-		});
+		for (const key in attributeValues) {
+			const attributeValue = attributeValues[key];
+			const [attributeCode, linkedAttributeCode] = String(key).split(' ');
+			const attribute = this.findAttributeByCode(updatedProduct.attributes, attributeCode) ?? this.findAttributeByCode(updatedProduct.attributes, key);
+
+			if (!attribute) {
+				continue;
+			}
+
+			if (attribute.attemp_id > 0) {
+				const linkedAttribute = this.findAttributeByCode(attribute.attributes, linkedAttributeCode);
+
+				if (linkedAttribute) {
+					linkedAttribute.value = attributeValue;
+				}
+			} else {
+				attribute.value = attributeValue;
+			}
+		}
 
 		updatedProduct?.subscriptionterms?.map(term => {
 			term.selected = attributeValues?.subscription_term_descrip === term.descrip || attributeValues?.subscription_term_id === term.id;
@@ -1528,6 +1544,10 @@ class MMX_QuickOrder extends MMX_Element {
 		});
 
 		return updatedProduct;
+	}
+
+	findAttributeByCode(attributes = [], code) {
+		return attributes?.find(attribute => MMX.normalizeCode(attribute.code) === MMX.normalizeCode(code));
 	}
 
 	createFeaturedProduct(product) {
@@ -1538,7 +1558,17 @@ class MMX_QuickOrder extends MMX_Element {
 				'data-bask-url': this.getBaskUrl(),
 				'data-init': 'script',
 				'data-desktop-image-size': imageDimensions,
-				'data-mobile-image-size': imageDimensions
+				'data-mobile-image-size': imageDimensions,
+				part: 'selected-product-featured-product',
+				exportparts: [
+					'product-code: selected-product-code',
+					'product-sku: selected-product-sku',
+					'product-name: selected-product-name',
+					'pricing: selected-product-prices',
+					'current-price: selected-product-price',
+					'original-price: selected-product-additional-price',
+					'inventory-message: selected-product-inv-message'
+				].join(', ')
 			},
 			content: /*html*/`
 				<script type="application/json">

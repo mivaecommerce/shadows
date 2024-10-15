@@ -23,7 +23,7 @@
 	<h1 class="c-heading-charlie t-category-name">&mvt:page:name;</h1><br>
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
-		<div class="o-layout__item u-width-12 u-width-10--l">
+		<div class="o-layout__item">
 			<section class="o-layout">
 				<div class="o-layout__item">
 					<mvt:item name="hdft" param="header" />
@@ -79,9 +79,6 @@
 				</div>
 			</section>
 		</div>
-		<aside class="o-layout__item u-width-12 u-width-2--l">
-			<mvt:item name="category_tree" />
-		</aside>
 	</section>
 
 	<section class="o-layout">

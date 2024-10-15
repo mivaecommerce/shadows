@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.10.00</Version>
+	<Version>10.10.01</Version>
 	<MinimumMerchantVersion>10.10.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.44</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.10.00
+	<Description>Shadows ReadyTheme v10.10.01
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -1238,7 +1238,6 @@
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
-				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>global_minibasket</Item>
@@ -1389,7 +1388,6 @@
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
 				<Item>category</Item>
-				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>flex</Item>
@@ -1671,6 +1669,7 @@
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
+				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>flex</Item>
@@ -1750,7 +1749,6 @@
 				<Item>affiliatelink</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
-				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>global_minibasket</Item>
@@ -3203,7 +3201,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.10.00';
+	mivaJS.ReadyThemeVersion = '10.10.01';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

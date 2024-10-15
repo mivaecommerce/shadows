@@ -253,15 +253,18 @@ a[target="_blank"]::after {
 	background: var(--mmx-color-grey-01);
 }
 
-[class*="mmx-quick-order__search-result-inv-level"] {
+[class*="mmx-quick-order__search-result-inv-level"],
+mmx-featured-product::part(inventory-message) {
 	color: var(--mmx-color-success-text);
 }
 
-.mmx-quick-order__search-result-inv-level--low {
+.mmx-quick-order__search-result-inv-level--low,
+mmx-featured-product.has-inv-level--low::part(inventory-message) {
 	color: var(--mmx-color-warning-text);
 }
 
-.mmx-quick-order__search-result-inv-level--out {
+.mmx-quick-order__search-result-inv-level--out,
+mmx-featured-product.has-inv-level--out::part(inventory-message) {
 	color: var(--mmx-color-error-text);
 }
 

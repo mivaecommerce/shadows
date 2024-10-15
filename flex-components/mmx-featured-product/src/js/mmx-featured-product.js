@@ -414,6 +414,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		});
 		this.initializeImageManager();
 		this.bindMivaEvents();
+		this.initializeSubscription();
 	}
 
 	bindMivaEvents() {
@@ -430,6 +431,15 @@ class MMX_FeaturedProduct extends MMX_Element {
 				}));
 			});
 		});
+	}
+
+	initializeSubscription() {
+		if (this.productHasSubscription) {
+			const subscription = this.shadowRoot.querySelector('#l-subscription');
+			if (Number(subscription.value) > 0) {
+				subscription.dispatchEvent(new Event('change'));
+			}
+		}
 	}
 
 	renderProductImages() {

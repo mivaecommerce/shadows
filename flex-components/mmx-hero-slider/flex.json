@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.10.00",
+	"version": "10.10.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -1112,23 +1112,37 @@
 			"prompt": "Slide Controls",
 			"properties": [
 				{
+					"code": "autoplay",
+					"prompt": "Autoplay",
+					"type": "checkbox"
+				},
+				{
 					"code": "delay",
 					"label": "seconds",
 					"min": 1,
 					"prompt": "Time Delay Per Slide",
 					"step": 1,
 					"text_type": "number",
-					"type": "text"
-				},
-				{
-					"code": "autoplay",
-					"prompt": "Autoplay",
-					"type": "checkbox"
+					"type": "text",
+					"visibility_conditions": {
+						"autoplay": {
+							"value": [
+								1
+							]
+						}
+					}
 				},
 				{
 					"code": "pause_on_hover",
 					"prompt": "Pause on Hover",
-					"type": "checkbox"
+					"type": "checkbox",
+					"visibility_conditions": {
+						"autoplay": {
+							"value": [
+								1
+							]
+						}
+					}
 				}
 			],
 			"type": "group"
@@ -1446,9 +1460,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.00",
-		"mmx-button": "=10.10.00",
-		"mmx-hero": "=10.10.00",
-		"mmx-text": "=10.10.00"
+		"mmx-base": "=10.10.01",
+		"mmx-button": "=10.10.01",
+		"mmx-hero": "=10.10.01",
+		"mmx-text": "=10.10.01"
 	}
 }

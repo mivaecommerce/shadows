@@ -7,9 +7,9 @@
 		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 			<li class="x-category-tree__list x-category-tree__list--level-1">
 				<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
-					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 				<mvt:else>
-					<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;">&mvte:navigationitem:name;</a>
+					<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 				</mvt:if>
 			</li>
 		</mvt:foreach>

@@ -278,7 +278,8 @@ class MMX_Hero extends MMX_Element {
 		};
 	}
 
-	styleResourceCodes		= ['mmx-base', 'mmx-text', 'mmx-button', 'mmx-hero'];
+	styleResourceCodes = ['mmx-base', 'mmx-text', 'mmx-button', 'mmx-hero'];
+	renderUniquely = true;
 
 	constructor() {
 		super();
@@ -286,6 +287,7 @@ class MMX_Hero extends MMX_Element {
 	}
 
 	render() {
+		const contentStyle = this.showHideContent() ? '' : 'none';
 		return /*html*/`
 			<a
 				part="wrapper theme-${this.getPropValue('content-theme')}"
@@ -308,7 +310,7 @@ class MMX_Hero extends MMX_Element {
 				</div>
 				<div part="content-bg" class="mmx-hero__content-bg mmx-hero__content-bg--${this.getPropValue('content-location')}">
 					<div part="content-wrapper" class="mmx-hero__content-wrapper">
-						<div part="content" class="mmx-hero__content">
+						<div part="content" class="mmx-hero__content" style="display: ${contentStyle};">
 							<div part="rendered-content" class="mmx-hero__rendered-content">${this.renderContent()}</div>
 							<slot name="content"></slot>
 							<div class="mmx-hero__individual-content">${this.renderIndividualSlots()}</div>
@@ -384,18 +386,25 @@ class MMX_Hero extends MMX_Element {
 
 		// Show Hide Content Based on Data Settings
 		if ([0, false, 'false'].includes(this.data?.content?.settings?.enabled)) {
-			content.style.display = 'none';
-			return;
+			if (content) {
+				content.style.display = 'none';
+			}
+			return false;
 		}
 
 		// Show Hide Content Based on if Content Exists
-		const hasContent = this.hasSlottedContent() || this.renderedContent().textContent.trim().length;
+		const hasContent = this.hasSlottedContent() || this.renderedContent()?.textContent?.trim()?.length;
 		if (hasContent) {
-			content.style.display = '';
-			return;
+			if (content) {
+				content.style.display = '';
+			}
+			return true;
 		}
 
-		content.style.display = 'none';
+		if (content) {
+			content.style.display = 'none';
+		}
+		return false;
 	}
 
 	getSizeMethod() {

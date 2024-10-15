@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "10.10.00",
+	"version": "10.10.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -686,6 +686,12 @@
 						{
 							"code": "show_value_counts",
 							"prompt": "Display Facet Value Counts",
+							"type": "checkbox"
+						},
+						{
+							"code": "show_category_tree",
+							"preview_property_selector": "[slot=\"category-tree\"]",
+							"prompt": "Display Category Tree",
 							"type": "checkbox"
 						},
 						{
@@ -2131,6 +2137,9 @@
 				"settings": {
 					"enabled": 1
 				},
+				"show_category_tree": {
+					"value": 1
+				},
 				"show_value_counts": {
 					"value": 1
 				},
@@ -2270,7 +2279,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-K8JDgqqaiP5TehehFgr0PXd5S2NCKAg+AzkmUXifceU= sha384-rEcY3oXHTiGb11yrhWum/GuS1X3BF2XnqvBoxhsxM7HWgVrzBmr52m/r7AuqERPv sha512-onyMKCL1nWZbRcZVsOgzrLydNptCNiFFiJ+09r9BJvBO7s2kN/qW/ee/X+VVh7LKPd8KWW8T3OO84GV461KKAw=="
+					"value": "sha256-m6pQh/LP47DPf/glM5Hp8Xsjo9e0jvBjENDR+zKeSsQ= sha384-UzEfgJNkeT1cw6rzr99hYdsGfV4tneqbZbwmwoa6Uz2pGBV4XZJihW3R48mGUnPV sha512-FcAgx55L5BXlQY/uvuE/Tm2bxZXU/de7uXoHXw9qZuU86FSoBmikmZks57AWREqnhP4s9BBkIe33XHu3dElymg=="
 				},
 				{
 					"name": "crossorigin",
@@ -2308,13 +2317,13 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.10.00",
-		"mmx-base": "=10.10.00",
-		"mmx-button": "=10.10.00",
-		"mmx-card": "=10.10.00",
-		"mmx-forms": "=10.10.00",
-		"mmx-icons": "=10.10.00",
-		"mmx-messages": "=10.10.00",
-		"mmx-text": "=10.10.00"
+		"mmx-accordion": "=10.10.01",
+		"mmx-base": "=10.10.01",
+		"mmx-button": "=10.10.01",
+		"mmx-card": "=10.10.01",
+		"mmx-forms": "=10.10.01",
+		"mmx-icons": "=10.10.01",
+		"mmx-messages": "=10.10.01",
+		"mmx-text": "=10.10.01"
 	}
 }

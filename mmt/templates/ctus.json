@@ -5,8 +5,8 @@
             "item_code": "contact-form",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1,
-                    "settings_version": "10.10.00"
+                    "flex_version": 10.1001,
+                    "settings_version": "10.10.01"
                 },
                 "advanced": {
                     "spacing": {
@@ -163,8 +163,8 @@
             "item_code": "text-editor",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1,
-                    "settings_version": "10.10.00"
+                    "flex_version": 10.1001,
+                    "settings_version": "10.10.01"
                 },
                 "advanced": {
                     "spacing": {

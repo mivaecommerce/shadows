@@ -98,6 +98,10 @@
 	width: 100%;
 }
 
+.mmx-combination-facet__dropdown-select option {
+	color: initial;
+}
+
 .mmx-combination-facet__dropdown-select:is(:disabled, [aria-disabled="true"]) {
 	background-color: var(--mmx-color-input-background);
 	cursor: not-allowed;
