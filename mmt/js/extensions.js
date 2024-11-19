@@ -1053,6 +1053,8 @@ const paymentMethod = (() => {
 		dialog.el.onkeydown = e => {
 			dialog.trap(e);
 		};
+
+		dialog.el.dispatchEvent(new CustomEvent('show'));
 	};
 
 
@@ -1068,6 +1070,7 @@ const paymentMethod = (() => {
 		dialog.el.setAttribute('aria-hidden', 'true');
 		dialog.removeInert();
 		dialog.focused.focus();
+		dialog.el.dispatchEvent(new CustomEvent('hide'));
 	};
 
 
