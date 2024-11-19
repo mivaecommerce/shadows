@@ -107,18 +107,14 @@
 								<strong>&mvte:subscription:message;</strong>
 							</div>
 						</mvt:if>
-						<div class="o-layout u-grids-1 u-grids-3--l">
+						<div class="o-layout u-grids-2">
 							<p class="o-layout__item">
 								<span class="u-font-small u-text-uppercase">Quantity</span><br>
 								<strong>&mvte:subscription:quantity;</strong>
 							</p>
 							<p class="o-layout__item">
-								<span class="u-font-small u-text-uppercase">Price</span><br>
-								<strong>&mvte:item:formatted_price;</strong>
-							</p>
-							<p class="o-layout__item">
 								<span class="u-font-small u-text-uppercase">Subtotal</span><br>
-								<strong>&mvte:item:formatted_subtotal;</strong>
+								<strong>&mvte:item:formatted_total;</strong>
 							</p>
 						</div>
 					</figcaption>

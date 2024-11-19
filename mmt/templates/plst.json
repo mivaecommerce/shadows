@@ -5,8 +5,8 @@
             "item_code": "all-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1001,
-                    "settings_version": "10.10.01"
+                    "flex_version": 10.11,
+                    "settings_version": "10.11.00"
                 },
                 "advanced": {
                     "show_empty_results": {
