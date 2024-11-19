@@ -11,8 +11,11 @@
 		<tr class="c-table-simple__row u-color-gray-600">
 			<td class="c-table-simple__cell">
 				<div class="x-mini-basket__list">
-					<mvt:assign name="l.settings:basket_subtotal" value="0" />
 					<mvt:foreach iterator="group" array="basket:groups">
+						<mvt:if expr="l.settings:group:parent_id GT 0">
+							<mvt:comment>Skip child items</mvt:comment>
+							<mvt:foreachcontinue />
+						</mvt:if>
 						<div class="x-mini-basket__line">
 							<figure class="x-mini-basket__image">
 								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
@@ -20,16 +23,13 @@
 							<div class="x-mini-basket__item">
 								<span class="x-mini-basket__item-name">
 									&mvt:group:name;
-									<mvt:if expr="l.settings:group:upsold">
-										<br />(Special Offer)
-									</mvt:if>
 								</span>
 								<span class="x-mini-basket__item-attributes u-text-regular">
 									<mvt:foreach iterator="option" array="group:options">
 										<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
 											<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
-										<mvt:else>
-											<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+										<mvt:elseif expr="ISNULL l.settings:option:attr_prompt">
+											<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
 										</mvt:if>
 										<span class="u-block">
 											<mvt:if expr="l.settings:option:option_id">
@@ -42,37 +42,29 @@
 												&mvt:option:attr_prompt;
 											</mvt:if>
 										</span>
-										<mvt:foreach iterator="discount" array="option:discounts">
-											<mvt:if expr="l.settings:discount:display">
-												<span class="u-flex u-color-red">
-													<span class="o-layout--grow">&mvt:discount:descrip;</span>
-													<span>&mvt:discount:formatted_discount;</span>
-												</span>
-											</mvt:if>
-										</mvt:foreach>
 									</mvt:foreach>
+									<mvt:if expr="l.settings:group:subterm_id">
+										<span class="u-block">Subscription: &mvte:group:productsubscriptionterm:descrip;</span>
+									</mvt:if>
 									<mvt:foreach iterator="discount" array="group:discounts">
 										<mvt:if expr="l.settings:discount:display">
-											<mvt:if expr="'sale' CIN l.settings:discount:descrip">
-												<mvt:assign name="l.settings:discount:descrip" value="'Savings'"/>
-											<mvt:else>
-												<mvt:assign name="l.settings:discount:descrip" value="l.settings:discount:descrip"/>
-											</mvt:if>
 											<span class="u-flex u-color-red">
-												<span class="o-layout--grow">&mvt:discount:descrip;</span>
-												<span>&mvt:discount:formatted_discount;</span>
+												&mvt:discount:descrip;
 											</span>
 										</mvt:if>
 									</mvt:foreach>
-									<mvt:if expr="l.settings:group:subterm_id">
-										<p>Subscription: &mvte:group:productsubscriptionterm:descrip;</p>
+									<mvt:if expr="l.settings:group:upsold">
+										<span class="u-flex u-color-red">
+											Special Offer
+										</span>
 									</mvt:if>
 								</span>
-								
+
 								<div class="x-mini-basket__item-total">
-									<mvt:assign name="l.settings:basket_subtotal" value="l.settings:basket_subtotal + l.settings:group:subtotal_comprehensive" />
 									<span class="u-font-small">Qty: &mvte:group:quantity;</span>
-									<span class="u-text-medium x-mini-basket__item-price">&mvt:group:formatted_subtotal_comprehensive;</span>
+									<div class="x-mini-basket__item-price">
+										<mvt:fragment code="group_productcharges" />
+									</div>
 								</div>
 							</div>
 						</div>
@@ -81,7 +73,6 @@
 			</td>
 		</tr>
 
-		<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, l.settings:basket_subtotal)" />
 		<tr class="c-table-simple__row t-input-font-size u-color-gray-600">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
 				<span>
@@ -91,10 +82,10 @@
 						<span>Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
 					</mvt:if>
 				</span>
-				<span class="u-color-black">&mvt:basket:formatted_subtotal;</span>
+				<span class="u-color-black">&mvt:global_minibasket:formatted_subtotal;</span>
 			</td>
 		</tr>
-		
+
 		<mvt:if expr="ISNULL l.settings:basket:charges">
 			<tr class="c-table-simple__row u-color-gray-600">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -118,7 +109,7 @@
 				</tr>
 			</mvt:foreach>
 		</mvt:if>
-		
+
 		<mvt:foreach iterator="coupon" array="basket:coupons">
 			<tr class="c-table-simple__row u-color-gray-600">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -140,7 +131,7 @@
 				</td>
 			</tr>
 		</mvt:foreach>
-		
+
 		<mvt:if expr="l.settings:basket:applycoupons">
 			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell">
@@ -222,7 +213,7 @@
 				</td>
 			</tr>
 		</mvt:if>
-		
+
 		<tr class="c-table-simple__row u-color-black t-basket__order-total">
 			<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
 				<span>Total</span>
@@ -237,7 +228,7 @@
 				</td>
 			</tr>
 		</mvt:foreach>
-		
+
 		<mvt:if expr="( NOT ISNULL l.settings:splitpayment:remaining ) AND ( l.settings:splitpayment:remaining NE l.settings:basket:total )">
 			<tr class="c-table-simple__row u-color-gray-600">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -246,7 +237,7 @@
 				</td>
 			</tr>
 		</mvt:if>
-		
+
 		<tr>
 			<td>
 				<hr class="c-keyline u-border-gray-400"/>

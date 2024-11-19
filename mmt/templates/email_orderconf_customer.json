@@ -1,6 +1,6 @@
 {
     "toe_order_contents": {
-        "advanced": 0,
+        "advanced": 1,
         "b_height": 75,
         "b_width": 75,
         "constrain": "B",
@@ -11,6 +11,9 @@
             "shipping": 1
         },
         "groups": 1,
+        "imagetypes": [
+            "main"
+        ],
         "lineitemcoupons": 0,
         "lineitemdiscounts": 0,
         "payments": 1,

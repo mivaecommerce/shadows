@@ -946,12 +946,9 @@ const paymentMethod = (() => {
 (() => {
 	/**
 	 * Create a dialog object, set the target element, and create a list of focusable elements.
-	 * @type {{set: *[], closeTriggers: *[], focused: Element, focusable: string, el: Element, openTriggers: *[], init: function, show: function, hide: function, trap: function, getFocusable: function, getFirstFocusable: function, setInert: function, removeInert: function}}
+	 * @type {{focused: Element, focusable: string, el: Element, init: function, show: function, hide: function, trap: function, getFocusable: function, getFirstFocusable: function, setInert: function, removeInert: function}}
 	 */
 	let dialog = {
-		set: Array.from(document.querySelectorAll('[data-dialog]')),
-		openTriggers: Array.from(document.querySelectorAll('[data-dialog-trigger]')),
-		closeTriggers: Array.from(document.querySelectorAll('[data-dialog-close]')),
 		focusable: 'a[href], area[href], input:not([disabled]):not([type="hidden"]):not([aria-hidden]), select:not([disabled]):not([aria-hidden]), textarea:not([disabled]):not([aria-hidden]), button:not([disabled]):not([aria-hidden]), object, embed, [tabindex]:not([tabindex^="-"])',
 		el: undefined,
 		focused: undefined,
@@ -988,49 +985,49 @@ const paymentMethod = (() => {
 	};
 
 
+	const getDialogs = function getDialogs() {
+		return Array.from(document.querySelectorAll('[data-dialog]'));
+	};
+
+
 	/**
-	 * Initialize the dialog, find the focusable children elements, and set up the click handlers.
+	 * Handle dialog related click events
 	 */
-	dialog.init = () => {
-		dialog.set.forEach(dialog => {
-			dialog.setAttribute('aria-hidden', 'true');
-		});
-
-		dialog.openTriggers.forEach(trigger => {
-			trigger.addEventListener('click', function (e) {
-				e.preventDefault();
-				let name = this.dataset.dialogTrigger;
-
-				dialog.el = dialog.set.find(({dataset}) => dataset.dialog === name);
-				if (validateDialogPresence(name) !== false) {
-					dialog.show();
-				}
-			});
-		});
-
-		dialog.closeTriggers.forEach(trigger => {
-			trigger.addEventListener('click', e => {
+	document.addEventListener('click', e => {
+		// Close the open dialog when clicking on the background.
+		if (e.target === dialog.el?.firstElementChild) {
+			if (dialog.el.getAttribute('aria-hidden') === 'false') {
 				e.preventDefault();
 				dialog.hide();
-			});
-		});
-
-		/**
-		 * Close the open dialog when clicking on the background.
-		 */
-		document.addEventListener('click', clickEvent => {
-			let clickEventTarget = clickEvent.target;
-
-			if (dialog.el) {
-				if (clickEventTarget === dialog.el.firstElementChild) {
-					if (dialog.el.getAttribute('aria-hidden') === 'false') {
-						clickEvent.preventDefault();
-						dialog.hide();
-					}
-				}
 			}
-		});
+		}
 
+		// Open the dialog when clicking on a [data-dialog-trigger] element
+		if (e.target.hasAttribute?.('data-dialog-trigger')) {
+			e.preventDefault();
+			let name = e.target.dataset.dialogTrigger;
+
+			dialog.el = getDialogs().find(({dataset}) => dataset.dialog === name);
+			if (validateDialogPresence(name) !== false) {
+				dialog.show();
+			}
+		}
+
+		// Close the dialog when clicking on a [data-dialog-close] element
+		if (e.target.hasAttribute?.('data-dialog-close')) {
+			e.preventDefault();
+			dialog.hide();
+		}
+	});
+
+
+	/**
+	 * Initialize the dialogs
+	 */
+	dialog.init = () => {
+		getDialogs().forEach(dialog => {
+			dialog.setAttribute('aria-hidden', 'true');
+		});
 	};
 
 
@@ -1143,7 +1140,7 @@ const paymentMethod = (() => {
 	 */
 	dialog.setInert = () => {
 		Array.from(document.body.children).forEach(child => {
-			if (!dialog.set.includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+			if (!getDialogs().includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
 				child.classList.add('is-inert');
 				child.setAttribute('inert', '');
 			}
@@ -1152,7 +1149,7 @@ const paymentMethod = (() => {
 
 	dialog.removeInert = () => {
 		Array.from(document.body.children).forEach(child => {
-			if (!dialog.set.includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
+			if (!getDialogs().includes(child) && child !== dialog.el && child.tagName !== 'LINK' && child.tagName !== 'SCRIPT') {
 				child.classList.remove('is-inert');
 				child.removeAttribute('inert');
 			}
@@ -1165,7 +1162,7 @@ const paymentMethod = (() => {
 	 * @param targetDialog
 	 */
 	let openDialog = targetDialog => {
-		dialog.el = dialog.set.find(({dataset}) => dataset.dialog === targetDialog);
+		dialog.el = getDialogs().find(({dataset}) => dataset.dialog === targetDialog);
 		if (validateDialogPresence(targetDialog) !== false) {
 			dialog.show();
 		}
@@ -1187,9 +1184,6 @@ const paymentMethod = (() => {
 	 * dynamic content has been added. It will then reinitialize.
 	 */
 	let reloadDialog = () => {
-		dialog.set = Array.from(document.querySelectorAll('[data-dialog]'));
-		dialog.openTriggers = Array.from(document.querySelectorAll('[data-dialog-trigger]'));
-		dialog.closeTriggers = Array.from(document.querySelectorAll('[data-dialog-close]'));
 		dialog.init();
 	};
 	window && (window.reloadDialog = reloadDialog);

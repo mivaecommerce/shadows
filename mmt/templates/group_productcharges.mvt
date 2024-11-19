@@ -1,0 +1,57 @@
+<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:total" />
+<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:subtotal_base_price_comprehensive" />
+<mvt:foreach iterator="child" array="group:children">
+	<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:totals:parent_child + l.settings:child:total" />
+	<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:totals:parent_child_original + l.settings:child:subtotal_base_price_comprehensive" />
+</mvt:foreach>
+<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child )" />
+<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child_original" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child_original )" />
+
+<div class="t-product-charges t-product-charges--group">
+	<div class="t-product-charge__totals">
+		<mvt:if expr="l.settings:group:totals:parent_child_original GT l.settings:group:totals:parent_child">
+			<s class="t-product-charge__amount-original">&mvt:group:totals:formatted_parent_child_original;</s>
+		</mvt:if>
+		<span class="t-product-charge__amount-total">&mvt:group:totals:formatted_parent_child;</span>
+	</div>
+	<mvt:if expr="l.settings:group:child_count GT 0">
+		<div class="t-product-charge__list">
+			<div class="t-product-charge">
+				<div class="t-product-charge__name">
+					Base Product
+				</div>
+				<div class="t-product-charge__amount">
+					&mvt:group:formatted_subtotal_comprehensive;
+				</div>
+			</div>
+			<mvt:foreach iterator="child" array="group:children">
+				<div class="t-product-charge">
+					<div class="t-product-charge__name">
+						&mvte:child:name;
+						<mvt:if expr="NOT ISNULL l.settings:child:product:descrip">
+							<button class="c-button--as-text u-icon-info" data-dialog-trigger="product-charge--&mvte:child:code;"></button>
+							<div class="c-dialog" data-dialog="product-charge--&mvte:child:code;" aria-hidden="true">
+								<div class="c-dialog__overlay" tabindex="-1">
+									<div class="c-dialog__container u-width-10 u-width-8--s u-width-6--l u-width-4--xl" aria-modal="true" role="alertdialog">
+										<header class="c-dialog__header">
+											<h2 id="address-validation-title" class="c-dialog__title c-heading-echo">
+												&mvte:child:name;
+											</h2>
+											<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
+										</header>
+										<div class="c-dialog__content">
+											&mvt:child:product:descrip;
+										</div>
+									</div>
+								</div>
+							</div>
+						</mvt:if>
+					</div>
+					<div class="t-product-charge__amount">
+						&mvt:child:formatted_total;
+					</div>
+				</div>
+			</mvt:foreach>
+		</div>
+	</mvt:if>
+</div>

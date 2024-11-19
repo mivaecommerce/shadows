@@ -1,11 +1,11 @@
 <section class="x-mini-basket" data-hook="mini-basket" data-item-count="&mvte:global_minibasket:parent_basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;" aria-modal="true" tabindex="-1">
 	<div class="x-mini-basket__content u-bg-white" data-hook="mini-basket__content" aria-describedby="mb-description" aria-label="Your Cart Summary" role="dialog" tabindex="0">
 		<header>
-			<mvt:assign name="l.settings:global_minibasket:complete_subtotal" value="0"/>
-			<mvt:foreach iterator="item" array="global_minibasket:groups">
-				<mvt:assign name="l.settings:global_minibasket:complete_subtotal" value="l.settings:global_minibasket:complete_subtotal + l.settings:item:subtotal_comprehensive"/>
+			<mvt:assign name="l.settings:global_minibasket:subtotal" value="0"/>
+			<mvt:foreach iterator="group" array="global_minibasket:groups">
+				<mvt:assign name="l.settings:global_minibasket:subtotal" value="l.settings:global_minibasket:subtotal + l.settings:group:total"/>
 			</mvt:foreach>
-			<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:global_minibasket:formatted_complete_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:global_minibasket:complete_subtotal)"/>
+			<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:global_minibasket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:global_minibasket:subtotal)"/>
 			<div class="x-mini-basket__header">
 				<strong id="mb-description" class="x-mini-basket__summary">Your Cart (&mvte:global_minibasket:parent_basket_count;)</strong>
 				<button class="u-icon-cross" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
@@ -13,23 +13,25 @@
 			<mvt:if expr="NOT l.settings:global_minibasket:empty">
 				<div class="x-mini-basket__subtotal">
 					<span>Subtotal:</span>
-					<span>&mvt:global_minibasket:formatted_complete_subtotal;</span>
+					<span>&mvt:global_minibasket:formatted_subtotal;</span>
 				</div>
 			</mvt:if>
 		</header>
 		<mvt:if expr="NOT l.settings:global_minibasket:empty">
 			<div class="x-mini-basket__list">
-				<mvt:foreach iterator="item" array="global_minibasket:groups">
-					<mvt:do file="g.Module_Library_DB" name="l.success" value="Product_Load_Code(l.settings:item:code, l.settings:item_p )" />
-					<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:item:uri" value="Store_Product_URL(l.settings:item_p, NULL)" />
+				<mvt:foreach iterator="group" array="global_minibasket:groups">
+					<mvt:if expr="l.settings:group:parent_id GT 0">
+						<mvt:comment>Skip child items</mvt:comment>
+						<mvt:foreachcontinue />
+					</mvt:if>
 					<div class="x-mini-basket__line">
 						<figure class="x-mini-basket__image">
-							<img src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:global_minibasket:b_width;" height="&mvte:global_minibasket:b_height;">
+							<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:global_minibasket:b_width;" height="&mvte:global_minibasket:b_height;">
 						</figure>
-						<a class="x-mini-basket__item" href="&mvt:item:uri;">
-							<span class="x-mini-basket__item-name">&mvt:item:name;</span>
+						<div class="x-mini-basket__item">
+							<a href="&mvt:group:link;" class="x-mini-basket__item-name">&mvt:group:name;</a>
 							<span class="x-mini-basket__item-attributes">
-								<mvt:foreach iterator="option" array="item:options">
+								<mvt:foreach iterator="option" array="group:options">
 									<span class="u-block">
 										<mvt:if expr="l.settings:option:option_id">
 											&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
@@ -42,15 +44,29 @@
 										</mvt:if>
 									</span>
 								</mvt:foreach>
-								<mvt:if expr="l.settings:item:subterm_id">
-									<span class="u-block">Subscription: &mvte:item:productsubscriptionterm:descrip;</span>
+								<mvt:if expr="l.settings:group:subterm_id">
+									<span class="u-block">Subscription: &mvte:group:productsubscriptionterm:descrip;</span>
+								</mvt:if>
+								<mvt:foreach iterator="discount" array="group:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<div class="u-block u-color-red">
+											&mvt:discount:descrip;
+										</div>
+									</mvt:if>
+								</mvt:foreach>
+								<mvt:if expr="l.settings:group:upsold">
+									<div class="u-block u-color-red">
+										Special Offer
+									</div>
 								</mvt:if>
 							</span>
 							<div class="x-mini-basket__item-total">
-								<span class="u-font-small">Qty: &mvte:item:quantity;</span>
-								<span class="u-text-medium x-mini-basket__item-price">&mvt:item:formatted_subtotal_comprehensive;</span>
+								<span class="u-font-small">Qty: &mvte:group:quantity;</span>
+								<div class="x-mini-basket__item-price">
+									<mvt:fragment code="group_productcharges" />
+								</div>
 							</div>
-						</a>
+						</div>
 					</div>
 				</mvt:foreach>
 				<div class="x-mini-basket__line">

@@ -1,10 +1,19 @@
 AttributeMachine.prototype.Generate_Discount = function (discount) {
-	let discount_div;
+	const charge = document.createElement('div');
+	charge.classList.add('t-product-charge', 't-product-charge--discount');
 
-	discount_div = document.createElement('div');
-	discount_div.innerHTML = discount.descrip + ': ' + discount.formatted_discount;
+	const chargeName = document.createElement('div');
+	chargeName.classList.add('t-product-charge__name');
+	chargeName.innerHTML = discount.descrip;
 
-	return discount_div;
+	const chargeAmount = document.createElement('div');
+	chargeAmount.classList.add('t-product-charge__amount');
+	chargeAmount.innerHTML = `-${discount.formatted_discount}`;
+
+	charge.appendChild(chargeName);
+	charge.appendChild(chargeAmount);
+
+	return charge;
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
