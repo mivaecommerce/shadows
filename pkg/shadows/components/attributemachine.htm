@@ -1,10 +1,19 @@
 <Page_Update code="PROD"><Item code="attributemachine"><Enabled>Yes</Enabled><InitialAttributeState>Preload</InitialAttributeState><DependencyResolution>First</DependencyResolution><InventoryElement>inventory-message</InventoryElement><InventoryMessage>Short</InventoryMessage><PriceElement>price-value</PriceElement><AdditionalPriceElement>price-value-additional</AdditionalPriceElement><WeightElement>product-weight-value</WeightElement><DiscountElement>product-discounts</DiscountElement><PriceDisplay>Sale</PriceDisplay><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayDiscounts>Yes</DisplayDiscounts><PredictDiscounts>Yes</PredictDiscounts><SwatchElement>swatches</SwatchElement><InvalidAttributeCombinationMessage>Please select a valid combination of attributes.</InvalidAttributeCombinationMessage><MissingTextFieldValueMessage><![CDATA[<br>A value must be entered for <b>%attribute_prompt%</b>.]]></MissingTextFieldValueMessage><MissingRadioSelectionMessage><![CDATA[<br>An option must be selected for <b>%attribute_prompt%</b>.]]></MissingRadioSelectionMessage><Template><![CDATA[AttributeMachine.prototype.Generate_Discount = function (discount) {
-	let discount_div;
+	const charge = document.createElement('div');
+	charge.classList.add('t-product-charge', 't-product-charge--discount');
 
-	discount_div = document.createElement('div');
-	discount_div.innerHTML = discount.descrip + ': ' + discount.formatted_discount;
+	const chargeName = document.createElement('div');
+	chargeName.classList.add('t-product-charge__name');
+	chargeName.innerHTML = discount.descrip;
 
-	return discount_div;
+	const chargeAmount = document.createElement('div');
+	chargeAmount.classList.add('t-product-charge__amount');
+	chargeAmount.innerHTML = `-${discount.formatted_discount}`;
+
+	charge.appendChild(chargeName);
+	charge.appendChild(chargeAmount);
+
+	return charge;
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {
@@ -136,12 +145,21 @@ const Update_Volume_Pricing = function (priceData) {
 	}
 };
 ]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="attributemachine"><Enabled>Yes</Enabled><InitialAttributeState>Preload</InitialAttributeState><DependencyResolution>First</DependencyResolution><InventoryElement/><InventoryMessage>Short</InventoryMessage><PriceElement/><AdditionalPriceElement/><WeightElement/><DiscountElement/><PriceDisplay>Base</PriceDisplay><AdditionalPriceDisplay>None</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>No</PredictDiscounts><SwatchElement>swatches</SwatchElement><InvalidAttributeCombinationMessage>Please select a valid combination of attributes.</InvalidAttributeCombinationMessage><MissingTextFieldValueMessage><![CDATA[<br>A value must be entered for <b>%attribute_prompt%</b>.]]></MissingTextFieldValueMessage><MissingRadioSelectionMessage><![CDATA[<br>An option must be selected for <b>%attribute_prompt%</b>.]]></MissingRadioSelectionMessage><Template><![CDATA[AttributeMachine.prototype.Generate_Discount = function (discount) {
-	let discount_div;
+	const charge = document.createElement('div');
+	charge.classList.add('t-product-charge', 't-product-charge--discount');
 
-	discount_div = document.createElement('div');
-	discount_div.innerHTML = discount.descrip + ': ' + discount.formatted_discount;
+	const chargeName = document.createElement('div');
+	chargeName.classList.add('t-product-charge__name');
+	chargeName.innerHTML = discount.descrip;
 
-	return discount_div;
+	const chargeAmount = document.createElement('div');
+	chargeAmount.classList.add('t-product-charge__amount');
+	chargeAmount.innerHTML = `-${discount.formatted_discount}`;
+
+	charge.appendChild(chargeName);
+	charge.appendChild(chargeAmount);
+
+	return charge;
 };
 
 AttributeMachine.prototype.Generate_Swatch = function (product_code, attribute, option) {

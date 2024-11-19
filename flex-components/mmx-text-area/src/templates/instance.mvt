@@ -1,12 +1,3 @@
-<mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
-<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
-	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
-	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
-<mvt:else>
-	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
-	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
-</mvt:if>
-
 <mvt:if expr="NOT ISNULL l.settings:fragment:code">
 	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
 	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />

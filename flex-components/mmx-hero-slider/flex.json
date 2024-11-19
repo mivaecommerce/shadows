@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.10.01",
+	"version": "10.11.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -981,6 +981,25 @@
 	],
 	"advanced_properties": [
 		{
+			"code": "loading",
+			"options": [
+				{
+					"text": "Default"
+				},
+				{
+					"text": "Lazy",
+					"value": "lazy"
+				},
+				{
+					"text": "Eager",
+					"value": "eager"
+				}
+			],
+			"prompt": "Loading",
+			"required": 0,
+			"type": "select"
+		},
+		{
 			"code": "spacing",
 			"prompt": "Spacing",
 			"properties": [
@@ -1460,9 +1479,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.01",
-		"mmx-button": "=10.10.01",
-		"mmx-hero": "=10.10.01",
-		"mmx-text": "=10.10.01"
+		"mmx-base": "=10.11.00",
+		"mmx-button": "=10.11.00",
+		"mmx-hero": "=10.11.00",
+		"mmx-text": "=10.11.00"
 	}
 }

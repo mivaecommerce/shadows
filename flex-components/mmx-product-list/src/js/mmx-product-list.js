@@ -83,8 +83,7 @@ class MMX_ProductList extends MMX_Element {
 				default: '2,3,4'
 			},
 			'product-fallback-image': {
-				allowAny: true,
-				default: null
+				allowAny: true
 			},
 			'adpr-url': {
 				allowAny: true,
@@ -435,10 +434,7 @@ class MMX_ProductList extends MMX_Element {
 		tablet = MMX.coerceNumber(tablet, mobile);
 		desktop = MMX.coerceNumber(desktop, mobile);
 
-		let current = this ? window.getComputedStyle(this).getPropertyValue('--mmx-product-list__columns') : mobile;
-
 		return {
-			current: MMX.coerceNumber(current, mobile),
 			mobile,
 			tablet,
 			desktop
@@ -801,7 +797,7 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	#renderPerPageSortBy() {
-		if (!this.getPropValue('per-page') && !this.getPropValue('sort-by')) {
+		if (!this.getPropValue('show-per-page') && !this.getPropValue('show-sort-by')) {
 			return '';
 		}
 
@@ -860,7 +856,6 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	// Sort By
-
 	#sortValueLabelMap = {
 		relevance: 'Relevance',
 		disp_order: 'Display Order',
@@ -958,6 +953,7 @@ class MMX_ProductList extends MMX_Element {
 		};
 
 		this.#products.forEach(product => {
+			attributes['data-product-code'] = product.code;
 			MMX_ProductCard.create({product, details, parent, attributes});
 		});
 
@@ -1638,7 +1634,7 @@ class MMX_ProductList extends MMX_Element {
 			return '';
 		}
 
-		const url = this.#buildUrlToSelf({omitFacets: true});
+		const url = this.#buildUrlToSelf({Offset: 0, omitFacets: true});
 
 		return /*html*/`
 			<mmx-button
@@ -1692,7 +1688,7 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	#getUrlToClearFacet({facet, facetValue} = {}) {
-		const removeUrl = this.#buildUrlToSelf();
+		const removeUrl = this.#buildUrlToSelf({Offset: 0});
 		removeUrl.searchParams.delete(this.#scopeParam(facet?.code), facetValue?.value);
 		return removeUrl;
 	}

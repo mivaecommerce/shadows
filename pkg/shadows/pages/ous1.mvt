@@ -20,117 +20,77 @@
 		</div>
 	</section>
 
-	<section class="o-layout o-layout--justify-center o-layout--wide t-order-complete-content">
-		<div class="o-layout__item u-width-12 u-width-6--m">
+	<section class="o-layout o-layout--wide t-order-complete-content">
+		<div class="o-layout__item">
 			<h1 class="c-heading-echo u-text-center">Special Offer</h1>
 			<h2 class="c-heading--subheading--small u-text-center">
 				Save &mvt:upsale:formatted_upsell_savings;<br>
 				<em class="u-font-small">Offer valid for this order only</em>
 			</h2>
 			<br>
-			<mvt:do name="l.success" file="g.Module_Library_DB" value="ProductImage_Load_Type(l.settings:upsale:id, 1, l.settings:imagetype)" />
-			<mvt:do name="l.success" file="g.Module_Library_DB" value="Image_Load_ID(l.settings:imagetype:image_id, l.settings:imagedata)" />
-			<mvt:assign name="g.socialImage" value="g.baseurl $ l.settings:imagedata:image" />
-			<mvt:if expr="NOT ISNULL l.settings:imagedata:image">
-				<div class="o-layout o-layout--wide">
-					<picture class="o-layout__item u-width-6--m">
+			<mvt:do name="l.loaded_image_type" file="g.Module_Library_DB" value="ImageType_Load_Code( 'main', l.image_type )" />
+			<mvt:if expr="l.loaded_image_type">
+				<mvt:do name="l.loaded_product_image" file="g.Module_Library_DB" value="ProductImage_Load_Type(l.settings:upsale:id, l.image_type:id, l.product_image)" />
+				<mvt:if expr="l.loaded_product_image">
+					<mvt:do name="l.null" file="g.Module_Library_DB" value="Image_Load_ID(l.product_image:image_id, l.settings:imagedata)" />
+				</mvt:if>
+			</mvt:if>
+			<div class="o-layout o-layout--wide o-layout--justify-center">
+				<mvt:if expr="NOT ISNULL l.settings:imagedata:image">
+					<picture class="o-layout__item u-width-5--m">
 						<img class="u-block" src="&mvte:imagedata:image;" alt="&mvte:upsale:name;" loading="lazy" width="&mvte:imagedata:image:width;" height="&mvte:imagedata:image:height;">
 					</picture>
-					<br>
-					<div class="o-layout__item u-width-6--m">
-						<p class="c-heading-foxtrot">&mvt:upsale:name;</p>
-						<p>
-							Code: &mvt:upsale:code;<br>
-							Regular Price: &mvt:upsale:formatted_price;<br>
-							Special Price: &mvt:upsale:formatted_upsell_price;<br>
-							You Save: &mvt:upsale:formatted_upsell_savings;<br>
-							Shipping Weight: &mvt:upsale:weight; &mvt:store:wtunits;
-						</p>
-						<div>&mvt:upsale:desc;</div>
-						<br>
-						<form method="post" action="&mvte:urls:OSEL:secure;">
-							<fieldset>
-								<legend>&mvt:page:name;</legend>
-								<input type="hidden" name="Action" value="AUPR" />
-								<input type="hidden" name="Product_Code" value="&mvte:upsale:code;" />
-								<mvt:if expr="g.BasketPaymentGateway EQ 1">
-									<input type="hidden" name="BasketPaymentGateway" value="1" />
-								</mvt:if>
-								<mvt:item name="tax" />
-								<div class="c-form-list">
-									<div class="o-layout c-form-list__item x-product-layout-purchase__options u-color-gray-40">
-										<mvt:item name="product_attributes" param="upsale:id" />
-									</div>
-									<div class="c-form-list__item c-form-list__item--full">
-										<mvt:item name="buttons" param="AddToOrder" />
-									</div>
-								</div>
-							</fieldset>
-						</form>
-						<form method="post" action="&mvte:urls:OSEL:secure;">
-							<fieldset>
-								<legend>&mvt:page:name;</legend>
-								<mvt:if expr="g.BasketPaymentGateway EQ 1">
-									<input type="hidden" name="BasketPaymentGateway" value="1" />
-								</mvt:if>
-								<mvt:item name="tax" />
-								<div class="c-form-list">
-									<div class="c-form-list__item c-form-list__item--full">
-										<mvt:item name="buttons" param="DoNotAddToOrder" />
-									</div>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			<mvt:else>
-				<p class="c-heading-foxtrot">&mvt:upsale:name;</p>
-				<p>
-					Code: &mvt:upsale:code;<br>
-					Regular Price: &mvt:upsale:formatted_price;<br>
-					Special Price: &mvt:upsale:formatted_upsell_price;<br>
-					You Save: &mvt:upsale:formatted_upsell_savings;<br>
-					Shipping Weight: &mvt:upsale:weight; &mvt:store:wtunits;
-				</p>
-				<div>&mvt:upsale:desc;</div>
+				</mvt:if>
 				<br>
-				<form method="post" action="&mvte:urls:OSEL:secure;">
-					<fieldset>
-						<legend>&mvt:page:name;</legend>
-						<input type="hidden" name="Action" value="AUPR" />
-						<input type="hidden" name="Product_Code" value="&mvte:upsale:code;" />
-						<mvt:if expr="g.BasketPaymentGateway EQ 1">
-							<input type="hidden" name="BasketPaymentGateway" value="1" />
-						</mvt:if>
-						<mvt:item name="tax" />
-						<div class="c-form-list">
-							<div class="c-form-list__item x-product-layout-purchase__options">
-								<mvt:item name="product_attributes" param="upsale:id" />
+				<div class="o-layout__item u-width-5--m">
+					<p class="c-heading-foxtrot">&mvt:upsale:name;</p>
+					<p>
+						Code: &mvt:upsale:code;<br>
+						Regular Price: &mvt:upsale:formatted_price;<br>
+						Special Price: &mvt:upsale:formatted_upsell_price;<br>
+						You Save: &mvt:upsale:formatted_upsell_savings;<br>
+						Shipping Weight: &mvt:upsale:formatted_weight;
+					</p>
+					<div>&mvt:upsale:desc;</div>
+					<br>
+					<form method="post" action="&mvte:urls:OSEL:secure;">
+						<fieldset>
+							<legend>&mvt:page:name;</legend>
+							<input type="hidden" name="Action" value="AUPR" />
+							<input type="hidden" name="Product_Code" value="&mvte:upsale:code;" />
+							<mvt:if expr="g.BasketPaymentGateway EQ 1">
+								<input type="hidden" name="BasketPaymentGateway" value="1" />
+							</mvt:if>
+							<mvt:item name="tax" />
+							<div class="c-form-list">
+								<div class="o-layout c-form-list__item x-product-layout-purchase__options">
+									<mvt:item name="product_attributes" param="upsale:id" />
+								</div>
+								<div class="c-form-list__item c-form-list__item--full">
+									<mvt:item name="buttons" param="AddToOrder" />
+								</div>
 							</div>
-							<div class="c-form-list__item c-form-list__item--full">
-								<mvt:item name="buttons" param="AddToOrder" />
+						</fieldset>
+					</form>
+					<form method="post" action="&mvte:urls:OSEL:secure;">
+						<fieldset>
+							<legend>&mvt:page:name;</legend>
+							<mvt:if expr="g.BasketPaymentGateway EQ 1">
+								<input type="hidden" name="BasketPaymentGateway" value="1" />
+							</mvt:if>
+							<mvt:item name="tax" />
+							<div class="c-form-list">
+								<div class="c-form-list__item c-form-list__item--full">
+									<mvt:item name="buttons" param="DoNotAddToOrder" />
+								</div>
 							</div>
-						</div>
-					</fieldset>
-				</form>
-				<form method="post" action="&mvte:urls:OSEL:secure;">
-					<fieldset>
-						<legend>&mvt:page:name;</legend>
-						<mvt:if expr="g.BasketPaymentGateway EQ 1">
-							<input type="hidden" name="BasketPaymentGateway" value="1" />
-						</mvt:if>
-						<mvt:item name="tax" />
-						<div class="c-form-list">
-							<div class="c-form-list__item c-form-list__item--full">
-								<mvt:item name="buttons" param="DoNotAddToOrder" />
-							</div>
-						</div>
-					</fieldset>
-				</form>
-			</mvt:if>
+						</fieldset>
+					</form>
+				</div>
+			</div>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

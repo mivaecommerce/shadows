@@ -12,9 +12,15 @@
 			</tr>
 		</thead>
 		<tbody>
-			<mvt:assign name="g.basket_subtotal" value="0" />
-			<mvt:assign name="l.settings:basket:basket_quantity" value="0" />
+			<mvt:assign name="l.settings:order:subtotal" value="0" />
+			<mvt:assign name="l.settings:order:parent_order_count" value="0" />
 			<mvt:foreach iterator="group" array="order:groups">
+				<mvt:assign name="l.settings:order:subtotal" value="l.settings:order:subtotal + l.settings:group:total" />
+				<mvt:if expr="l.settings:group:parent_id GT 0">
+					<mvt:comment>Skip child items</mvt:comment>
+					<mvt:foreachcontinue />
+				</mvt:if>
+				<mvt:assign name="l.settings:order:parent_order_count" value="l.settings:order:parent_order_count + l.settings:group:quantity" />
 				<tr class="t-basket__product-information">
 					<td class="t-basket__product-image" data-label="">
 						<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
@@ -25,116 +31,74 @@
 						<mvt:else>
 							<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
 						</mvt:if>
-						<mvt:if expr="l.settings:group:upsold">
-							<div class="c-heading--subheading">(Special Offer)</div>
-						</mvt:if>
 						<div class="t-basket__product-attributes">
-							<div class="t-basket__product-sku">SKU: &mvt:group:code;</div>
 							<div class="t-basket__product-attr-options">
-								<mvt:assign name="l.settings:attr_ref" value="''" />
 								<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
 								<mvt:foreach iterator="option" array="group:options">
 									<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
 										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
 									<mvt:elseif expr="l.settings:option:attr_code EQ 'giftcert'">
 										<mvt:assign name="l.settings:option:attr_prompt" value="'Certificate Code'" />
-									<mvt:else>
-										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_prompt" />
+									<mvt:elseif expr="ISNULL l.settings:option:attr_prompt">
+										<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
 									</mvt:if>
-									<mvt:assign name="l.settings:group:option_counter" value="l.settings:group:option_counter + 1" />
 									<span class="u-flex">
-										<mvt:if expr="l.settings:option:attmpat_id">
-											<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_prompt" />
-										<mvt:else>
-											<mvt:assign name="l.settings:attr_ref" value="l.settings:option:attr_code" />
-										</mvt:if>
 										<mvt:if expr="l.settings:option:option_id">
 											<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
-											<mvt:if expr="l.settings:option:subtotal GT 0">
-												<span>&mvt:option:formatted_subtotal;</span>
-											</mvt:if>
 										<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 											<mvt:if expr="( l.settings:option:attr_code EQ 'digitaldownload' ) AND ( NOT ISNULL l.settings:option:digital_download_url )">
 												<a class="o-layout--grow" href="&mvte:option:digital_download_url;" target="_blank">Digital Download</a><br>
 											<mvt:else>
 												<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
-												<span>&mvt:option:formatted_subtotal;</span>
 											</mvt:if>
 										<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
 											<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
-											<mvt:if expr="l.settings:option:subtotal GT 0">
-												<span>&mvt:option:formatted_subtotal;</span>
-											</mvt:if>
 										<mvt:else>
 											<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
-											<mvt:if expr="l.settings:option:subtotal GT 0">
-												<span>&mvt:option:formatted_subtotal;</span>
-											</mvt:if>
 										</mvt:if>
 									</span>
-									<mvt:foreach iterator="discount" array="option:discounts">
-										<mvt:if expr="l.settings:discount:display">
-											<span class="u-flex u-color-red">
-												<span class="o-layout--grow">&mvt:discount:descrip;</span>
-												<span>&mvt:discount:formatted_discount;</span>
-											</span>
-										</mvt:if>
-									</mvt:foreach>
 								</mvt:foreach>
-							</div>
-							<mvt:foreach iterator="discount" array="group:discounts">
-								<mvt:if expr="l.settings:discount:display">
-									<mvt:if expr="'sale' CIN l.settings:discount:descrip">
-										<mvt:assign name="l.settings:discount:descrip" value="'Savings'"/>
-									<mvt:else>
-										<mvt:assign name="l.settings:discount:descrip" value="l.settings:discount:descrip"/>
+								<mvt:if expr="l.settings:group:subterm_id">
+									<span class="u-flex">Subscription: &mvte:group:subscription:productsubscriptionterm:descrip;</span>
+								</mvt:if>
+								<mvt:foreach iterator="discount" array="group:discounts">
+									<mvt:if expr="l.settings:discount:display">
+										<span class="u-flex u-color-red">&mvt:discount:descrip;</span>
 									</mvt:if>
+								</mvt:foreach>
+								<mvt:if expr="l.settings:group:upsold">
 									<span class="u-flex u-color-red">
-										<span class="o-layout--grow">&mvt:discount:descrip;</span>
-										<span>&mvt:discount:formatted_discount;</span>
+										Special Offer
 									</span>
 								</mvt:if>
-							</mvt:foreach>
-							<mvt:if expr="l.settings:group:subterm_id">
-								<p>Subscription: &mvte:group:productsubscriptionterm:descrip;</p>
-							</mvt:if>
+							</div>
 						</div>
 					</td>
-					
+
 					<td class="t-basket__product-qty" data-label="Quantity">
-						<mvt:assign name="l.settings:basket:basket_quantity" value="l.settings:basket:basket_quantity + l.settings:group:quantity" />
 						<p class="u-text-center">&mvte:group:quantity;</p>
 					</td>
-					
+
 					<td class="u-text-right t-basket__product-price" data-label="Subtotal">
-						<p>
-							<span class="u-text-medium u-block">&mvt:group:formatted_subtotal_comprehensive;</span>
-							<mvt:assign name="g.basket_subtotal" value="g.basket_subtotal + l.settings:group:subtotal_comprehensive" />
-							<mvt:if expr="l.settings:group:subtotal_base_price_comprehensive GT l.settings:group:subtotal_comprehensive">
-								<s class="c-heading--subheading u-block">&mvt:group:formatted_subtotal_base_price_comprehensive;</s>
-							</mvt:if>
-							<mvt:if expr="l.settings:group:upsold">
-								<span class="c-heading--subheading u-block">&nbsp;</span>
-							</mvt:if>
-						</p>
+						<mvt:fragment code="group_productcharges" />
 					</td>
 				</tr>
 			</mvt:foreach>
 		</tbody>
 	</table>
-	<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:basket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, g.basket_subtotal)" />
+	<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:order:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, l.settings:order:subtotal)" />
 	<table class="c-table-simple t-order-totals-table">
 		<tbody class="u-text-medium">
 			<tr class="c-table-simple__row u-color-gray-600">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>
-						<mvt:if expr="l.settings:basket:basket_quantity GT 1">
-							<span class="">Subtotal:</span> &mvte:basket:basket_quantity; Items
+						<mvt:if expr="l.settings:order:parent_order_count GT 1">
+							<span class="">Subtotal:</span> &mvte:order:parent_order_count; Items
 						<mvt:else>
-							<span class="">Subtotal:</span> &mvte:basket:basket_quantity; Item
+							<span class="">Subtotal:</span> &mvte:order:parent_order_count; Item
 						</mvt:if>
 					</span>
-					<span class="u-color-black">&mvt:basket:formatted_subtotal;</span>
+					<span class="u-color-black">&mvt:order:formatted_subtotal;</span>
 				</td>
 			</tr>
 
@@ -146,7 +110,7 @@
 					</td>
 				</tr>
 			</mvt:foreach>
-			
+
 			<mvt:foreach iterator="coupon" array="order:coupons">
 				<tr class="c-table-simple__row u-color-gray-600">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
@@ -171,7 +135,7 @@
 					</td>
 				</tr>
 			</mvt:foreach>
-			
+
 			<tr class="c-table-simple__row u-color-black t-basket__order-total">
 				<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
 					<span>Total</span>

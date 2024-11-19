@@ -65,7 +65,7 @@ class MMX_ProductCard extends MMX_Card {
 	static productCardProps = {
 		'fallback-image': {
 			allowAny: true,
-			default: null
+			default: 'graphics/en-US/cssui/blank.gif'
 		},
 		'adpr-url': {
 			allowAny: true,
@@ -184,6 +184,10 @@ class MMX_ProductCard extends MMX_Card {
 
 		if (type === 'inv_available') {
 			return this.#renderInventoryAvailable(detail);
+		}
+
+		if (type === 'weight') {
+			return this.#renderWeight(detail);
 		}
 
 		return this.#renderCoreDetail(detail);
@@ -453,6 +457,14 @@ class MMX_ProductCard extends MMX_Card {
 
 		return this.#renderTextDetail({
 			value: this.#product?.inv_available,
+			detail
+		});
+	}
+
+	// Render: Weight
+	#renderWeight(detail = {}) {
+		return this.#renderTextDetail({
+			value: this.#product?.formatted_weight,
 			detail
 		});
 	}

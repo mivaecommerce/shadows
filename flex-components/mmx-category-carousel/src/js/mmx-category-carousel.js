@@ -65,6 +65,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 		MMX.setElementAttributes(this, {
 			'data-per-page': this.data?.advanced?.slide_controls?.per_page?.value,
 			'data-per-move': this.data?.advanced?.slide_controls?.per_move?.value,
+			'data-peek': this.data?.advanced?.slide_controls?.peek?.value,
 			'data-size': this.data?.category_group?.image_size?.value,
 			'data-image-fit': this.data?.category_group?.image_fit?.value
 		});

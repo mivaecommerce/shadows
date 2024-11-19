@@ -7,9 +7,6 @@
 	<mvt:exit />
 </mvt:if>
 
-<mvt:assign name="l.settings:js_encoded_url" value="encodejavascriptstring( l.settings:urls:_self:auto_sep )"/>
-<mvt:assign name="l.settings:js_encoded_per_page" value="encodejavascriptstring( g.Per_Page )"/>
-<mvt:assign name="l.settings:js_encoded_sort_by" value="encodejavascriptstring( g.Sort_By )"/>
 <mvt:if expr="l.settings:wishlistitems:items_per_page_filter EQ 1">
 	<section class="u-hidden u-flex--l o-layout--align-bottom o-layout--justify-end o-layout--wrap">
 		<div class="x-display-list-filtering">
@@ -18,7 +15,7 @@
 					<div class="c-form-list__item">
 						<label class="c-form-label" for="l-per_page">View</label>
 						<div class="c-form-select">
-							<select id="l-per_page" class="c-form-select__dropdown" name="Per_Page" onchange="window.location.href='&mvte:js_encoded_url;Per_Page=' + encodeURIComponent( this.options[ this.selectedIndex ].value ) + '&amp;Sort_By=' + encodeURIComponent( '&mvte:js_encoded_sort_by;' );">
+							<select id="l-per_page" class="c-form-select__dropdown" name="Per_Page" onchange="window.location.href='&mvtj:urls:_self:auto_sep;WishList_ID=' + encodeURIComponent( '&mvtj:global:WishList_ID;' ) + '&amp;Per_Page=' + encodeURIComponent( this.options[ this.selectedIndex ].value ) + '&amp;Sort_By=' + encodeURIComponent( '&mvtj:global:Sort_By;' );">
 								<mvt:if expr="g.Per_Page EQ 12">
 									<option value="12" selected="selected">12 Items/Page</option>
 								<mvt:else>
@@ -69,7 +66,7 @@
 							<tr class="c-table-responsive__row u-text-uppercase u-font-tiny">
 								<th class="c-table-responsive__cell" scope="col">Product</th>
 								<th class="c-table-responsive__cell" scope="col">Quantity</th>
-								<th class="c-table-responsive__cell u-text-right" scope="col">Price</th>
+								<th class="c-table-responsive__cell u-text-right" scope="col">Subtotal</th>
 								<th class="c-table-responsive__cell" scope="col">&nbsp;</th>
 							</tr>
 						</thead>
@@ -84,35 +81,18 @@
 											<div class="o-layout__item u-width-12 u-width-8--m u-width-9--l t-basket__product-details">
 												<a class="t-basket__product-name" href="&mvte:wishlistitem:product:link;" title="&mvte:wishlistitem:product:name;" rel="nofollow">&mvt:wishlistitem:product:name;</a>
 												<div class="t-basket__product-attributes">
-													<mvt:if expr="NOT ISNULL l.settings:wishlistitem:product:sku">
-														<div class="t-basket__product-sku">SKU: &mvte:wishlistitem:product:sku;</div>
-													<mvt:else>
-														<div class="t-basket__product-code">Code: &mvte:wishlistitem:product:code;</div>
-													</mvt:if>
 													<div class="t-basket__product-added">Added: &mvt:wishlistitem:formatted_dtadded_date;</div>
 													<div class="t-basket__product-attr-options">
 														<mvt:foreach iterator="option" array="wishlistitem:product:options">
 															<span class="u-flex">
 																<mvt:if expr="l.settings:option:option_id">
 																	<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
-																	<mvt:if expr="l.settings:option:subtotal GT 0">
-																		<span>&mvt:option:formatted_subtotal;</span>
-																	</mvt:if>
 																<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 																	<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
-																	<mvt:if expr="l.settings:option:subtotal GT 0">
-																		<span>&mvt:option:formatted_subtotal;</span>
-																	</mvt:if>
 																<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
 																	<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
-																	<mvt:if expr="l.settings:option:subtotal GT 0">
-																		<span>&mvt:option:formatted_subtotal;</span>
-																	</mvt:if>
 																<mvt:else>
 																	<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
-																	<mvt:if expr="l.settings:option:subtotal GT 0">
-																		<span>&mvt:option:formatted_subtotal;</span>
-																	</mvt:if>
 																</mvt:if>
 															</span>
 														</mvt:foreach>
@@ -153,7 +133,7 @@
 											</div>
 										</div>
 									</td>
-									
+
 									<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Quantity">
 										<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( g.Edit_Wish EQ l.settings:wishlistitem:id )">
 											<div class="c-form-list">
@@ -166,16 +146,13 @@
 											<p class="u-text-center">&mvte:wishlistitem:quantity;</p>
 										</mvt:if>
 									</td>
-									
-									<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-right" data-label="Price">
+
+									<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-right" data-label="Subtotal">
 										<span>
-											<span class="u-text-bold u-block">&mvt:wishlistitem:product:formatted_price;</span>
-											<mvt:if expr="l.settings:wishlistitem:product:base_price GT l.settings:wishlistitem:product:price">
-												<s class="c-heading--subheading u-block">&mvt:wishlistitem:product:formatted_base_price;</s>
-											</mvt:if>
+											<span class="u-text-bold u-block">&mvt:wishlistitem:formatted_total;</span>
 										</span>
 									</td>
-									
+
 									<td class="c-table-responsive__cell">
 										<mvt:if expr="( ISNULL g.Edit_Wish ) AND ( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id )">
 											<form class="o-layout--justify-end c-form-inline-set" method="post" action="&mvte:urls:BASK:secure;">

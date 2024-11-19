@@ -413,7 +413,7 @@ MMX.longMerchantUrl = (searchParams = {}, {merchantUrl, storeCode = window.Store
 };
 
 MMX.pluralize = (singular, count, plural) => {
-	return count === 1 ? singular : plural ?? `${singular}s`;
+	return count === 1 ? `${singular}` : plural ?? `${singular}s`;
 };
 
 class MMX_Element extends HTMLElement {

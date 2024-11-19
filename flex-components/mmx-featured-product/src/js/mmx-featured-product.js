@@ -223,6 +223,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'bask-url': {
 				allowAny: true,
 				default: MMX.longMerchantUrl({Screen: 'BASK'})
+			},
+			'fragment-code': {
+				allowAny: true,
+				default: null
 			}
 		};
 	}
@@ -363,6 +367,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 			{
 				name: 'ondemandcolumns',
 				value: ondemandcolumns
+			},
+			{
+				name: 'fragments',
+				value: [
+					this.getPropValue('fragment-code')
+				]
 			}
 		];
 	}
@@ -412,25 +422,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			success: 1,
 			data: this.product.attributes
 		});
-		this.initializeImageManager();
-		this.bindMivaEvents();
 		this.initializeSubscription();
-	}
-
-	bindMivaEvents() {
-		if (typeof window.MivaEvents?.SubscribeToEvent !== 'function') {
-			return;
-		}
-
-		['variant_changed', 'price_changed'].forEach(event => {
-			MivaEvents.SubscribeToEvent(event, (productData) => {
-				this.dispatchEvent(new CustomEvent(event, {
-					detail: {
-						productData
-					}
-				}));
-			});
-		});
 	}
 
 	initializeSubscription() {
@@ -545,6 +537,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 							<div part="current-price" id="price-value" class="mmx-featured-product__current-price">${this.product.formatted_price}</div>
 							${this.renderProductContentOriginalPricing()}
 						</div>
+						${this.renderProductFragmentPart()}
 						${this.renderProductContentDiscounts()}
 					</div>
 					${this.renderProductContentInventoryMessage()}
@@ -615,6 +608,20 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<s part="original-price" id="price-value-additional" class="mmx-featured-product__original-price">${this.product.base_price > this.product.price ? this.product.formatted_base_price : ''}</s>
 		`;
+	}
+
+	renderProductFragmentPart() {
+		const fragmentCode = this.getPropValue('fragment-code');
+		const fragmentContent = this.renderProductFragment({product: this.product, fragmentCode});
+
+		if (MMX.valueIsEmpty(fragmentContent)){
+			return '';
+		}
+
+		return /*html*/`
+			<div part="product-fragment product-fragment__${MMX.encodeEntities(fragmentCode)}">
+				${fragmentContent}
+			</div>`;
 	}
 
 	renderProductContentDiscounts() {
@@ -1042,6 +1049,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 		this.initializeAttributeMachine_OverwriteGenerateSwatch(attributemachine);
 		this.initializeAttributeMachine_OverwriteSwatchClick(attributemachine);
 		this.initializeAttributeMachine_OverwriteEnableDisablePurchaseButtons(attributemachine);
+		this.initializeAttributeMachine_OverwriteOnPriceChanged(attributemachine);
+		this.initializeAttributeMachine_OverwriteOnVariantChanged(attributemachine);
 
 		attributemachine.Initialize(attributes, possible);
 	}
@@ -1181,20 +1190,30 @@ class MMX_FeaturedProduct extends MMX_Element {
 		};
 	}
 
+	initializeAttributeMachine_OverwriteOnPriceChanged(attributemachine) {
+		attributemachine.onPriceChanged = (productData) => {
+			this.dispatchEvent(new CustomEvent('price_changed', {
+				detail: {
+					productData
+				}
+			}));
+		};
+	}
+
+	initializeAttributeMachine_OverwriteOnVariantChanged(attributemachine) {
+		attributemachine.onVariantChanged = (productData) => {
+			this.imageManagerUpdateVariant(productData.variant_id);
+			this.dispatchEvent(new CustomEvent('variant_changed', {
+				detail: {
+					productData
+				}
+			}));
+		};
+	}
+
 	//
 	// Image Manager
 	//
-
-	initializeImageManager() {
-		const self = this;
-
-		MivaEvents?.SubscribeToEvent?.('variant_changed', (product_data) => {
-			if (product_data.product_code === this.getPropValue('product-code')) {
-				this.imageManagerUpdateVariant(product_data.variant_id);
-			}
-		});
-	}
-
 	imageManagerUpdateVariant(variant_id) {
 		if (this.variant_id === variant_id) {
 			return;
@@ -1294,7 +1313,6 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-discount': this.data?.advanced?.product?.discount?.value,
 			'data-show-product-sku': this.data?.advanced?.product?.sku?.value,
 			'data-show-product-code': this.data?.advanced?.product?.code?.value,
-			'data-product-code': this.data?.product?.product?.product_code,
 			'data-product-name-style': this.data?.text?.product_name?.product_name_style?.value,
 			'data-product-name-tag': this.data?.advanced?.product?.product_name_tag?.value,
 			'data-product-name-font-family': this.data?.text?.product_name?.font_family?.value,
@@ -1318,7 +1336,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-button-style': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_style?.value : undefined,
 			'data-button-size': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_size?.value : undefined,
 			'data-fallback-product-image-default': this.data?.fallback_product_image_default,
-			'data-fallback-product-image-mobile': this.data?.fallback_product_image_mobile
+			'data-fallback-product-image-mobile': this.data?.fallback_product_image_mobile,
+			'data-fragment-code': this.data?.advanced?.product?.fragment_code?.value,
+			'data-product-code': this.data?.product?.product?.product_code // this should always be last so that loadProduct() is called once the previous attribute-values/props are set
 		});
 	}
 }

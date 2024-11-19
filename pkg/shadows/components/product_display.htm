@@ -39,25 +39,19 @@
 							<span>&mvt:product:name;</span>
 						</h1>
 					</div>
-					<div class="c-form-list__item">
+					<div class="c-form-list__item c-form-list__item--full">
 						<div class="x-product-layout-purchase__pricing">
 							<span class="x-product-layout-purchase__pricing-current">
 								<span id="price-value">&mvt:product:formatted_price;</span>
 							</span>
 							<s id="price-value-additional" class="u-color-gray-500 x-product-layout-purchase__pricing-original"><mvt:if expr="l.settings:product:base_price GT l.settings:product:price">&mvt:product:formatted_base_price;</mvt:if></s>
-						</div>
-						<div id="product-discounts" class="x-product-layout-purchase__product-discounts">
-							<mvt:foreach iterator="discount" array="product:discounts">
-								<mvt:if expr="l.settings:discount:display">
-									<div>&mvt:discount:descrip;: &mvt:discount:formatted_discount;</div>
-								</mvt:if>
-							</mvt:foreach>
+							<mvt:fragment code="product_display_productcharges" />
 						</div>
 						<mvt:comment>
 							<!-- If you would like to display the product weight, uncomment this section. -->
 							<mvt:if expr="l.settings:product:weight NE 0">
 								<div class="x-product-layout-purchase__product-weight">
-									Shipping Weight: <span id="product-weight-value">&mvt:product:weight;</span> &mvt:store:wtunits;
+									Shipping Weight: <span id="product-weight-value" data-mm-formatted>&mvt:product:formatted_weight;</span>
 								</div>
 							</mvt:if>
 						</mvt:comment>

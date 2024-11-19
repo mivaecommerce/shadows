@@ -2,7 +2,7 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "10.10.01",
+	"version": "10.11.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
@@ -759,6 +759,15 @@
 					],
 					"prompt": "Items Per Scroll",
 					"type": "select"
+				},
+				{
+					"code": "peek",
+					"min": 0,
+					"placeholder": 75,
+					"prompt": "Peek Amount",
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
 				}
 			],
 			"type": "group"
@@ -767,6 +776,9 @@
 	"defaults": {
 		"advanced": {
 			"slide_controls": {
+				"peek": {
+					"value": 75
+				},
 				"per_move": {
 					"value": "auto"
 				},
@@ -883,7 +895,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-AZpj1U0m8qdzyLEp3WET8BfPO57X6hDz9K0aXezjh/A= sha384-n0fdAn0w3thKfmXu81IL4yvRH1kEdgbPPFVRK/hoq9SeYuSXSIvaEQrR7GOUoQJo sha512-mZ8dyyaJ1YLFEBdr+nzJMicBiLb5Ab68IA2xaWCYZrXc+BgvliNXJFGpLHZC+zhcNCqOzmmInoLMkBWAW/T+Wg=="
+					"value": "sha256-BMjsSsfxh/EPjx8C2lbMlR5gD2xAN+NZnG2o1GTJ724= sha384-Gh5iZGiXShaM086hRPvASzV+cPs6ohKI9bZMHt9xnAbnwyVa/wT9jwVQRaxhxBXr sha512-gqeRyt2SFlnFUVBvExxlPqIvYkRkoBC0gpY69Tf8ON9Ct+tzPdea8fWvujPwBBgQTZrRgEpJvCpf9qP+GAFXrg=="
 				},
 				{
 					"name": "crossorigin",
@@ -893,10 +905,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.01",
-		"mmx-button": "=10.10.01",
-		"mmx-hero": "=10.10.01",
-		"mmx-hero-slider": "=10.10.01",
-		"mmx-text": "=10.10.01"
+		"mmx-base": "=10.11.00",
+		"mmx-button": "=10.11.00",
+		"mmx-hero": "=10.11.00",
+		"mmx-hero-slider": "=10.11.00",
+		"mmx-text": "=10.11.00"
 	}
 }

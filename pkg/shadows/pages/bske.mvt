@@ -23,7 +23,7 @@
 	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
 			<div class="t-basket__product-contents">
-				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
+				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 				<p>Your shopping cart is currently empty.</p>
 				<a class="c-button" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
 			</div>

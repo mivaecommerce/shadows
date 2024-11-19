@@ -9,6 +9,7 @@
 
 <mvt:item name="head" param="js:mmx-base" />
 <mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-icons" />
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-hero" />
 <mvt:item name="head" param="js:mmx-video" />

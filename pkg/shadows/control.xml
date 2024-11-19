@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.10.01</Version>
-	<MinimumMerchantVersion>10.10.00</MinimumMerchantVersion>
-	<MinimumMivaScriptVersion>5.44</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.10.01
+	<Version>10.11.00</Version>
+	<MinimumMerchantVersion>10.11.00</MinimumMerchantVersion>
+	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
+	<Description>Shadows ReadyTheme v10.11.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -2209,6 +2209,45 @@
 			<Source>product_list_additional_data.mvt</Source>
 			<Public>Yes</Public>
 		</Page>
+		<Page>
+			<Code>group_productcharges</Code>
+			<Name>Basket/Order Group Product Charges</Name>
+			<Fragment>Yes</Fragment>
+			<Source>group_productcharges.mvt</Source>
+			<Public>Yes</Public>
+		</Page>
+		<Page>
+			<Code>product_display_productcharges</Code>
+			<Name>Product Display Product Charges</Name>
+			<Fragment>Yes</Fragment>
+			<Source>product_display_productcharges.mvt</Source>
+			<Public>Yes</Public>
+			<ItemList>
+				<Item>productcharges</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_ORDERCONF_CUSTOMER</Code>
+			<Name>Order Confirmation: Customer</Name>
+			<Source>email_orderconf_customer.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>store</Item>
+				<Item>toe_order_contents</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_ORDERCONF_MERCHANT</Code>
+			<Name>Order Confirmation: Merchant</Name>
+			<Source>email_orderconf_merchant.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>store</Item>
+				<Item>toe_order_contents</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
 	</PageList>
 	<RequiredItemList>
 		<Item>
@@ -2566,6 +2605,10 @@
 		<Item>
 			<Code>footer_sequence</Code>
 			<Module>cmp-mv-sequence</Module>
+		</Item>
+		<Item>
+			<Code>productcharges</Code>
+			<Module>productcharges</Module>
 		</Item>
 	</RequiredItemList>
 	<Config>
@@ -3201,7 +3244,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.10.01';
+	mivaJS.ReadyThemeVersion = '10.11.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

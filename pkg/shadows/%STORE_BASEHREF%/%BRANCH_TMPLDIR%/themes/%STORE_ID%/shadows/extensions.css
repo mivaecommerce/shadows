@@ -656,6 +656,7 @@
 }
 
 @media (min-width: 75em) {
+	.x-product-layout-purchase__pricing,
 	.x-product-layout-purchase__options,
 	.x-product-layout-purchase__cta {
 		max-width: 60%;
@@ -1177,12 +1178,15 @@
 
 .x-mini-basket__item-price {
 	color: var(--black);
+	width: 100%;
+	max-width: 300px;
 }
 
 .x-mini-basket__item-total {
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
+	gap: 1rem;
 }
 
 .x-mini-basket__charges,

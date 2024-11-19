@@ -1,0 +1,47 @@
+<mvt:assign name="l.settings:group:parent_child_total" value="l.settings:group:total" />
+<mvt:assign name="l.settings:group:child_total" value="0" />
+<mvt:foreach iterator="child" array="group:children">
+	<mvt:assign name="l.settings:group:parent_child_total" value="l.settings:group:parent_child_total + l.settings:child:total" />
+	<mvt:assign name="l.settings:group:child_total" value="l.settings:group:child_total + l.settings:child:total" />
+</mvt:foreach>
+<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:formatted_parent_child_total" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:parent_child_total )" />
+
+<div class="t-product-charges">
+	<div class="t-product-charge__totals">
+		<mvt:if expr="l.settings:group:child_count EQ 0 AND l.settings:group:subtotal_base_price_comprehensive GT l.settings:group:total">
+			<s class="t-product-charge__amount-additional">&mvt:group:formatted_subtotal_base_price_comprehensive;</s>&nbsp;
+		</mvt:if>
+		<div class="t-product-charge__total">&mvt:group:formatted_parent_child_total;</div>
+	</div>
+	<mvt:if expr="l.settings:group:child_count GT 0">
+		<div class="t-product-charge">
+			<div class="t-product-charge__name">
+				Base Product
+			</div>
+			<div class="t-product-charge__amount">
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:group:base" value="Round_Item_Total(l.settings:group:parent_child_total - l.settings:group:child_total)" />
+				<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:formatted_base" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:base )" />
+				&mvt:group:formatted_base;
+			</div>
+		</div>
+		<mvt:foreach iterator="child" array="group:children">
+			<div class="t-product-charge">
+				<mvt:if expr="NOT ISNULL l.settings:child:product:descrip">
+					<details name="product-charges" class="t-product-charge__name" data-details-tooltip>
+						<summary>&mvte:child:name; <span class="u-icon-info"></span></summary>
+						<div data-details-tooltip-content>
+							&mvt:child:product:descrip;
+						</div>
+					</details>
+				<mvt:else>
+					<div class="t-product-charge__name">
+						&mvte:child:name;
+					</div>
+				</mvt:if>
+				<div class="t-product-charge__amount">
+					&mvt:child:formatted_total;
+				</div>
+			</div>
+		</mvt:foreach>
+	</mvt:if>
+</div>

@@ -1,5 +1,5 @@
 <mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
-<mvt:if expr="l.settings:total_sequence_item_pos EQ 1">
+<mvt:if expr="l.settings:instance:advanced:loading:value EQ 'eager' OR (ISNULL l.settings:instance:advanced:loading:value AND l.settings:total_sequence_item_pos EQ 1)">
 	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
 	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
 <mvt:else>

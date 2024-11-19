@@ -57,14 +57,14 @@
 									<mvt:item name="datepicker" />
 									<script>
 										const nextOrderDateWrap = document.querySelector('[data-hook="nextOrderDateWrap"]');
-								
+
 										nextOrderDateWrap.addEventListener('click', function (clickEvent) {
 											let miva_datepicker;
 											let nextdate;
 											const nextOrderDate_Year = document.querySelector('[data-hook="nextOrderDate_Year"]');
 											const nextOrderDate_Month = document.querySelector('[data-hook="nextOrderDate_Month"]');
 											const nextOrderDate_Day = document.querySelector('[data-hook="nextOrderDate_Day"]');
-								
+
 											nextdate = new Date(nextOrderDate_Year.value, parseInt(nextOrderDate_Month.value) - 1, nextOrderDate_Day.value, 0, 0, 0, 0);
 											miva_datepicker = new MivaDatePicker(nextdate.getTime() / 1000);
 											miva_datepicker.SetDateLimit_Past(new Date());
@@ -73,7 +73,7 @@
 												const day = date.getDate();
 												const month = date.getMonth() + 1;
 												const year = date.getFullYear();
-								
+
 												nextOrderDate_Year.value = year;
 												nextOrderDate_Month.value = month;
 												nextOrderDate_Day.value = day;
@@ -87,7 +87,7 @@
 							</mvt:if>
 						</mvt:if>
 					</div>
-					
+
 					<mvt:foreach iterator="option" array="item:options">
 						<div class="o-layout">
 							<p class="o-layout__item u-width-12">
@@ -197,7 +197,7 @@
 							<tr class="c-table-simple__row u-color-gray-30">
 								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
 									<span>Product Price</span>
-									<strong>&mvt:item:formatted_subtotal;</strong>
+									<strong>&mvt:item:formatted_total;</strong>
 								</td>
 							</tr>
 							<mvt:if expr="l.settings:discount:display">
@@ -246,7 +246,7 @@
 								});
 							});
 						});
-						
+
 						quantity.addEventListener('blur', function () {
 							AJAX_Call_Module_JSON(Update_Shipping_Methods, 'runtime', 'cmp-cssui-subscriptionfields', 'SubscriptionShippingMethodList_Load', {
 								Address_ID: encodeURIComponent(address.options[address.selectedIndex].value),
@@ -262,10 +262,10 @@
 								while (shippingMethod.options.length > 0) {
 									shippingMethod.remove(0);
 								}
-	
+
 								shippingData.data.data.forEach(function (method) {
 									const originalMethod = shippingMethodSelected === method.mod_code + ':' + method.code;
-									
+
 									shippingMethod.add(new Option(method.name + ' (' + method.formatted_price + ')', method.mod_code + ':' + method.code, originalMethod, originalMethod));
 								});
 							}
@@ -288,4 +288,5 @@
 			</section>
 		</mvt:foreach>
 	</fieldset>
-</form>]]></Template><Notes>#Set_Current_Time#</Notes><Mode>subscription_edit</Mode></Item></Page_Update>
+</form>
+]]></Template><Notes>#Set_Current_Time#</Notes><Mode>subscription_edit</Mode></Item></Page_Update>

@@ -17,6 +17,7 @@
 	data-image-dimensions="&mvte:instance:advanced:settings:image_dimensions:value;"
 	data-per-page="&mvte:instance:advanced:settings:per_page:value;"
 	data-per-move="&mvte:instance:advanced:settings:per_move:value;"
+	data-peek="&mvte:instance:advanced:settings:peek:value;"
 	class="mmx-wrapper"
 	data-init="script"
 >

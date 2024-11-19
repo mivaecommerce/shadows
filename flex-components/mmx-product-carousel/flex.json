@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.10.01",
+	"version": "10.11.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -552,6 +552,15 @@
 					"type": "select"
 				},
 				{
+					"code": "peek",
+					"min": 0,
+					"placeholder": 75,
+					"prompt": "Peek Amount",
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
 					"code": "image_type",
 					"preview_property_selector": ":shadow [slot=\"hero_slide\"] :shadow [part~=\"image\"]",
 					"prompt": "Image Type",
@@ -761,6 +770,9 @@
 				"image_type": {
 					"value": "main"
 				},
+				"peek": {
+					"value": 75
+				},
 				"per_move": {
 					"value": "auto"
 				},
@@ -832,10 +844,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.01",
-		"mmx-button": "=10.10.01",
-		"mmx-hero": "=10.10.01",
-		"mmx-hero-slider": "=10.10.01",
-		"mmx-text": "=10.10.01"
+		"mmx-base": "=10.11.00",
+		"mmx-button": "=10.11.00",
+		"mmx-hero": "=10.11.00",
+		"mmx-hero-slider": "=10.11.00",
+		"mmx-text": "=10.11.00"
 	}
 }

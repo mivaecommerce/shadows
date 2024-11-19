@@ -60,7 +60,7 @@ class MMX_Video extends MMX_Hero {
 		const videoUrl = this.getPropValue('video');
 
 		if (!videoUrl) {
-			return '';
+			return this.#renderPlaceholder();
 		}
 
 		this.provider = this.videoProviders.find(provider => {
@@ -157,6 +157,14 @@ class MMX_Video extends MMX_Hero {
 		this.vimeoProvider,
 		this.htmlProvider // Should be last as it always renders
 	];
+
+	#renderPlaceholder() {
+		return /*html*/`
+			<div part="video placeholder" class="mmx-video-placeholder">
+				<mmx-icon part="placeholder-icon" class="mmx-video-placeholder__icon" data-name="triangle-right"></mmx-icon>
+			</div>
+		`;
+	}
 }
 
 if (!customElements.get('mmx-video')) {

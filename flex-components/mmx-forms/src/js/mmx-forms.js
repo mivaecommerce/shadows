@@ -475,19 +475,16 @@ class MMX_FormInputRange extends MMX_Element {
 
 	#setValidity() {
 		if (this.#inputLow()?.validity?.valid === false) {
-			this.#validationMessage = this.#inputLow().validationMessage;
-			this.#internals.setValidity(this.#inputLow().validity, this.#validationMessage);
+			this.#internals.setValidity(this.#inputLow().validity, this.#inputLow().validationMessage);
 			return;
 		}
 
 		if (this.#inputHigh()?.validity?.valid === false) {
-			this.#validationMessage = this.#inputHigh().validationMessage;
-			this.#internals.setValidity(this.#inputHigh().validity, this.#validationMessage);
+			this.#internals.setValidity(this.#inputHigh().validity, this.#inputHigh().validationMessage);
 			return;
 		}
 
-		this.#validationMessage = '';
-		this.#internals.setValidity({});
+		this.#internals.setValidity({}, '');
 	}
 
 	checkValidity() {
@@ -502,10 +499,8 @@ class MMX_FormInputRange extends MMX_Element {
 		return this.#internals.setValidity(...args);
 	}
 
-	#validationMessage = '';
-
 	get validationMessage() {
-		return this.#validationMessage;
+		return this.#internals.validationMessage;
 	}
 
 	get validity() {

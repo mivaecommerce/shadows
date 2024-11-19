@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "10.10.01",
+	"version": "10.11.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -885,6 +885,25 @@
 	],
 	"advanced_properties": [
 		{
+			"code": "loading",
+			"options": [
+				{
+					"text": "Default"
+				},
+				{
+					"text": "Lazy",
+					"value": "lazy"
+				},
+				{
+					"text": "Eager",
+					"value": "eager"
+				}
+			],
+			"prompt": "Loading",
+			"required": 0,
+			"type": "select"
+		},
+		{
 			"code": "spacing",
 			"prompt": "Spacing",
 			"properties": [
@@ -1176,7 +1195,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-MihUh/gZ92xVBulgvM4C6FmcNYESznk1vO4FLTUTihM= sha384-NdpOXbr3ZUGAh078+thzGNMGldY2zgi8hRqiiYJhmAiyJT/5ITk8bb1Y4c7MRFtt sha512-JX+NQE9VqVi3aGJlDEdxwJq/8JUUlJpfZuItpeckWbaGWgfpeAXwGSZ4yREsXVanBcKA48gPoLwTex7yZHmK2A=="
+					"value": "sha256-Tvg+Oe/QZiCXLfQoh8Qe1gEDa6EZdNuuIB6WpoEqDbk= sha384-TfkchTQNAgBBEreWgy/6USfwSNAnnRn0psYLtgu0Yr1h1wrc4tGomlbC/XvukSCO sha512-oSI0fXzc19p9GkkHDQrcXHAJTtBveEcLHYllJ2IJXcl9njyycG/B4YkJiT8RXOocSLGX7CDlWnT5eM2snXTrhg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1186,8 +1205,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.10.01",
-		"mmx-button": "=10.10.01",
-		"mmx-text": "=10.10.01"
+		"mmx-base": "=10.11.00",
+		"mmx-button": "=10.11.00",
+		"mmx-text": "=10.11.00"
 	}
 }

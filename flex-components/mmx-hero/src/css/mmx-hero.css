@@ -364,6 +364,28 @@ slot + slot[name="button"],
 	position: relative;
 }
 
+.mmx-video-placeholder {
+	align-items: center;
+	background: var(--mmx-color-grey-03);
+	display: flex;
+	justify-content: center;
+}
+
+.mmx-video-placeholder__icon {
+    align-items: center;
+    background: var(--mmx-color-black);
+    border-radius: 100%;
+    color: var(--mmx-color-white);
+    display: flex;
+	font-size: 1.5rem;
+    height: 6rem;
+    justify-content: center;
+    opacity: 0.5;
+	padding-left: 0.25rem;
+    text-align: center;
+    width: 6rem;
+}
+
 /* Hero > Product Card Styles
    =========================================== */
 :host .type-product-prices {
