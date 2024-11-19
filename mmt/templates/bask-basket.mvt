@@ -15,7 +15,7 @@
 	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
 			<div class="t-basket__product-contents">
-				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
+				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 				<p>Your shopping cart is currently empty.</p>
 				<a class="c-button" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
 			</div>
@@ -24,17 +24,17 @@
 	<mvt:exit />
 </mvt:if>
 
-<section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvte:global_minibasket:basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;">
+<section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvte:global_minibasket:parent_basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;">
 	<div class="o-layout__item u-width-12 u-width-8--l u-width-9--w">
 		<div class="t-basket__alt-heading u-hidden--l">
-			<p class="c-heading-echo">Your Cart (&mvte:global_minibasket:basket_count;)</p>
+			<p class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</p>
 			<p class="t-basket__alt-heading-subtotal">
 				<span>Subtotal:</span>
 				<span>&mvt:global_minibasket:formatted_total;</span>
 			</p>
 		</div>
 		<div class="t-basket__product-contents">
-			<h1 class="c-heading-echo u-hidden u-shown--l">Your Cart (&mvte:global_minibasket:basket_count;)</h1>
+			<h1 class="c-heading-echo u-hidden u-shown--l">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 			<table class="o-table t-basket__table" data-basket-table>
 				<thead class="c-table-responsive_thead u-text-left">
 					<tr class="t-basket__table-head">
@@ -252,10 +252,10 @@
 					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell u-flex o-layout--justify-between">
 							<span class="u-color-gray-600">
-								<mvt:if expr="l.settings:global_minibasket:basket_count GT 1">
-									<span class="">Subtotal:</span> &mvte:global_minibasket:basket_count; Items
+								<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 1">
+									<span class="">Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Items
 								<mvt:else>
-									<span class="">Subtotal:</span> &mvte:global_minibasket:basket_count; Item
+									<span class="">Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
 								</mvt:if>
 							</span>
 							<span class="u-color-black">&mvt:basket:formatted_subtotal;</span>

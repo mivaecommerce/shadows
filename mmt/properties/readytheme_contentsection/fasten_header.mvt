@@ -68,12 +68,12 @@
 			</a>
 		</mvt:if>
 		<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
-			<mvt:if expr="l.settings:global_minibasket:basket_count GT 0">
+			<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 0">
 				<span class="u-icon-cart-full" aria-hidden="true"></span>
 			<mvt:else>
 				<span class="u-icon-cart-empty" aria-hidden="true"></span>
 			</mvt:if>
-			<span class="t-site-header__basket-link-quantity" data-hook="mini-basket-count">&mvte:global_minibasket:basket_count;</span>
+			<span class="t-site-header__basket-link-quantity" data-hook="mini-basket-count">&mvte:global_minibasket:parent_basket_count;</span>
 		</a>
 	</div>
 </section>

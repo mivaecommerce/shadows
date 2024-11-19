@@ -1,4 +1,4 @@
-<section class="x-mini-basket" data-hook="mini-basket" data-item-count="&mvte:global_minibasket:basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;" aria-modal="true" tabindex="-1">
+<section class="x-mini-basket" data-hook="mini-basket" data-item-count="&mvte:global_minibasket:parent_basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;" aria-modal="true" tabindex="-1">
 	<div class="x-mini-basket__content u-bg-white" data-hook="mini-basket__content" aria-describedby="mb-description" aria-label="Your Cart Summary" role="dialog" tabindex="0">
 		<header>
 			<mvt:assign name="l.settings:global_minibasket:complete_subtotal" value="0"/>
@@ -7,7 +7,7 @@
 			</mvt:foreach>
 			<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:global_minibasket:formatted_complete_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:global_minibasket:complete_subtotal)"/>
 			<div class="x-mini-basket__header">
-				<strong id="mb-description" class="x-mini-basket__summary">Your Cart (&mvte:global_minibasket:basket_count;)</strong>
+				<strong id="mb-description" class="x-mini-basket__summary">Your Cart (&mvte:global_minibasket:parent_basket_count;)</strong>
 				<button class="u-icon-cross" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
 			</div>
 			<mvt:if expr="NOT l.settings:global_minibasket:empty">
