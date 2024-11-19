@@ -51,7 +51,7 @@
 							<!-- If you would like to display the product weight, uncomment this section. -->
 							<mvt:if expr="l.settings:product:weight NE 0">
 								<div class="x-product-layout-purchase__product-weight">
-									Shipping Weight: <span id="product-weight-value">&mvt:product:weight;</span> &mvt:store:wtunits;
+									Shipping Weight: <span id="product-weight-value" data-mm-formatted>&mvt:product:formatted_weight;</span>
 								</div>
 							</mvt:if>
 						</mvt:comment>
