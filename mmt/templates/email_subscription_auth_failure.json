@@ -1,13 +1,10 @@
 {
     "toe_subscriptions": {
-        "advanced": 0,
+        "advanced": 1,
         "b_height": 200,
         "b_width": 200,
-        "constrain": "B",
+        "constrain": "N",
         "image": "main",
-        "imagetypes": [
-            "main"
-        ],
         "lineitemdiscounts": 0,
         "lineitemprice": "base",
         "template_filename": "email_subscription_auth_failure-toe_subscriptions.mvc"

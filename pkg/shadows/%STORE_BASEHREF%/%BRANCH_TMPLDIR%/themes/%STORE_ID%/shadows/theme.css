@@ -866,8 +866,12 @@
 	}
 }
 .t-payment-cta {
-	padding: 3rem 0;
+	padding: 2rem 0;
 	text-align: right;
+}
+
+.t-opay-form {
+	max-width: 40rem;
 }
 
 .t-payment-form {
@@ -897,18 +901,25 @@
 
 .t-payment-form__field-set {
 	flex-grow: 1;
+	width: 100%;
+}
+
+.t-payment-form__field-set:last-child {
+	margin-bottom: 1em;
 }
 
 .t-payment-form__field-set .c-form-input {
 	display: block;
 }
 
-.t-payment-form__field-exp {
-	max-width: calc(70% - 1em);
+.t-payment-form__field-set .c-form-label {
+	font-weight: var(--font-medium);
 }
 
-.t-payment-form__field-cvv {
-	max-width: calc(30% - 1em);
+.t-payment-form:has(.t-payment-form__field-cvv) .t-payment-form__field-exp,
+.t-payment-form:has(.t-payment-form__field-cc_cvv) .t-payment-form__field-cc_exp,
+.t-payment-form__field-cvv, .t-payment-form__field-cc_cvv {
+	max-width: calc(50% - 1em);
 }
 
 .t-payment-form .t-data-cvv {
@@ -920,6 +931,9 @@
 	.t-payment-form__fields {
 		padding: 1em 2em;
 	}
+	.t-payment-form:has(#mivapay_frame) .t-payment-form__fields {
+		padding: 1em;
+	}
 	.t-payment-form__field-set .c-form-input {
 		display: inline-block;
 	}
@@ -929,18 +943,35 @@
 	.t-payment-form__field-lname {
 		max-width: calc(50% - 1em);
 	}
-	.t-payment-form__field-number {
+	.t-payment-form__field-number,
+	.t-payment-form__field-cc_number,
+	.t-payment-form__field-exp,
+	.t-payment-form__field-cc_exp {
 		max-width: calc(50% - 1em);
 	}
-	.t-payment-form__field-exp {
-		max-width: calc(40% - 1em);
+	.t-payment-form:has(.t-payment-form__field-cvv) .t-payment-form__field-exp,
+	.t-payment-form:has(.t-payment-form__field-cc_cvv) .t-payment-form__field-cc_exp {
+		max-width: calc(30% - 1em);
 	}
-	.t-payment-form__field-cvv {
-		max-width: calc(10% - 1em);
+	.t-payment-form__field-cvv,
+	.t-payment-form__field-cc_cvv {
+		max-width: calc(20% - 1em);
 	}
 }
 .t-paypalcp .t-payment-form__field-set {
 	flex-basis: clamp(20rem, 50% - 1rem, 100%);
+}
+
+.t-paypalcp#payment-fields label {
+	max-width: none;
+}
+
+.t-customercredit-payment-form .t-payment-form__heading {
+	border-bottom: none;
+}
+
+.t-customercredit-payment-form .t-payment-form__fields {
+	display: none;
 }
 
 .t-customer-address-2 summary,

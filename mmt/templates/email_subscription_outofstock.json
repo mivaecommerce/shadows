@@ -1,9 +1,12 @@
 {
     "toe_subscriptions": {
-        "advanced": 0,
+        "advanced": 1,
         "b_height": 200,
         "b_width": 200,
         "constrain": "B",
+        "display": {
+            "discounts": 1
+        },
         "image": "main",
         "imagetypes": [
             "main"

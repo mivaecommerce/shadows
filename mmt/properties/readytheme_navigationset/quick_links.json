@@ -1,148 +1,130 @@
 {
     "items": [
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS\" target=\"_self\">About Us</a>",
             "link_dest": "ABUS",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "About Us",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ABUS"
+            "name": "About Us"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACLN\" target=\"_self\">Account</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACLN"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACLN\" target=\"_self\">Account</a>",
             "link_dest": "ACLN",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Account",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ACLN"
+            "name": "Account"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS\" target=\"_self\">Contact Us</a>",
             "link_dest": "CTUS",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Contact Us",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=CTUS"
+            "name": "Contact Us"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">FAQS</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS\" target=\"_self\">FAQS</a>",
             "link_dest": "FAQS",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "FAQS",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=FAQS"
+            "name": "FAQS"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order Status</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH\" target=\"_self\">Order Status</a>",
             "link_dest": "ORDH",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Order Status",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=ORDH"
+            "name": "Order Status"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST\" target=\"_self\">Wish Lists</a>",
             "link_dest": "WLST",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Wish Lists",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=WLST"
+            "name": "Wish Lists"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO\" target=\"_self\">Privacy Policy</a>",
             "link_dest": "PRPO",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Privacy Policy",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=PRPO"
+            "name": "Privacy Policy"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp;amp; Returns</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP\" target=\"_self\">Shipping &amp;amp; Returns</a>",
             "link_dest": "SARP",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Shipping &amp; Returns",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SARP"
+            "name": "Shipping &amp; Returns"
         },
         {
-            "active": 1,
-            "branch_data": {
+            ".branch_data": {
                 "1": {
                     "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP\" target=\"_self\">Site Map</a>",
                     "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP"
                 }
             },
+            "active": 1,
             "id": "",
-            "link": "<a href=\"https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP\" target=\"_self\">Site Map</a>",
             "link_dest": "SMAP",
             "link_targ": "_self",
             "link_type": "G",
-            "name": "Site Map",
-            "url": "https://local.coolcommerce.net/mm5/merchant.mvc?Screen=SMAP"
+            "name": "Site Map"
         }
     ],
     "layout": "S",

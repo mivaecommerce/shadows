@@ -1,7 +1,7 @@
 {
     "return": {
-        "b_height": 63,
-        "b_width": 63,
+        "b_height": 75,
+        "b_width": 75,
         "constrain": "B",
         "image": "main",
         "imagetypes": [

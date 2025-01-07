@@ -2,7 +2,7 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "10.11.00",
+	"version": "10.11.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
@@ -905,10 +905,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.00",
-		"mmx-button": "=10.11.00",
-		"mmx-hero": "=10.11.00",
-		"mmx-hero-slider": "=10.11.00",
-		"mmx-text": "=10.11.00"
+		"mmx-base": "=10.11.02",
+		"mmx-button": "=10.11.02",
+		"mmx-hero": "=10.11.02",
+		"mmx-hero-slider": "=10.11.02",
+		"mmx-text": "=10.11.02"
 	}
 }

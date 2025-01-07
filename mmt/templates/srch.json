@@ -5,11 +5,12 @@
             "item_code": "search-listing",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.11,
-                    "settings_version": "10.11.00"
+                    "flex_version": 10.1102,
+                    "settings_version": "10.11.02"
                 },
                 "advanced": {
                     "empty_results_message": {
+                        "source": "markdown",
                         "value": "There were no products that matched your search."
                     },
                     "show_empty_results": {

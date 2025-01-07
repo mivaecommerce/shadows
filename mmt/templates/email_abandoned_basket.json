@@ -1,9 +1,10 @@
 {
     "toe_basket_contents": {
-        "advanced": 0,
+        "advanced": 1,
         "b_height": 75,
         "b_width": 75,
         "constrain": "B",
+        "discounts": 1,
         "display": {
             "discounts": 1,
             "handling": 1,
@@ -11,6 +12,9 @@
             "shipping": 1
         },
         "groups": 1,
+        "imagetypes": [
+            "main"
+        ],
         "lineitemcoupons": 0,
         "lineitemdiscounts": 0,
         "payments": 1,

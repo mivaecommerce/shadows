@@ -15,17 +15,17 @@
 	<meta name="format-detection" content="date=no" />
 	<meta name="format-detection" content="address=no" />
 	<meta name="format-detection" content="telephone=no" />
-	<title>Email Template</title>
-	
+	<title>&mvte:page:name;</title>
+
 
 	<style type="text/css" media="screen">
 		/* Linked Styles */
 		body { padding:0 !important; margin:0 !important; display:block !important; background:#ffffff; -webkit-text-size-adjust:none }
 		a { color:#2a68ce; text-decoration:none }
-		p { padding:0 !important; margin:0 !important } 
+		p { padding:0 !important; margin:0 !important }
 
 		/* Mobile styles */
-		@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) { 
+		@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
 			div[class='mobile-br-5'] { height: 5px !important; }
 			div[class='mobile-br-10'] { height: 10px !important; }
 			div[class='mobile-br-15'] { height: 15px !important; }
@@ -33,9 +33,9 @@
 			div[class='mobile-br-25'] { height: 25px !important; }
 			div[class='mobile-br-30'] { height: 30px !important; }
 
-			th[class='m-td'], 
-			td[class='m-td'], 
-			div[class='hide-for-mobile'], 
+			th[class='m-td'],
+			td[class='m-td'],
+			div[class='hide-for-mobile'],
 			span[class='hide-for-mobile'] { display: none !important; width: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; min-height: 0 !important; }
 
 			span[class='mobile-block'] { display: block !important; }
@@ -49,9 +49,9 @@
 
 			table[class='mobile-shell'] { width: 100% !important; min-width: 100% !important; }
 			td[class='td'] { width: 100% !important; min-width: 100% !important; }
-			
+
 			table[class='center'] { margin: 0 auto; }
-			
+
 			td[class='column-top'],
 			th[class='column-top'],
 			td[class='column'],
@@ -62,7 +62,7 @@
 			div[class='text-header'],
 			div[class='text-footer-1'],
 			div[class='text-footer'] { text-align: center !important; }
-		} 
+		}
 	</style>
 </head>
 <body class="body" style="padding:0 !important; margin:0 !important; display:block !important; background:#ffffff; -webkit-text-size-adjust:none">
@@ -96,8 +96,7 @@
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="20">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
-</td>
+																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div></td>
 																	</tr>
 																</table>
 															</th>
@@ -110,7 +109,7 @@
 																				<br />
 																				<a href="&mvte:urls:ABUS:auto;" target="_blank" class="link-1" style="color:#7a838d; text-decoration:none"><span class="link-1" style="color:#7a838d; text-decoration:none">
 																					&mvte:store:address;<br />
-																					&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+																					&mvte:store:city;, &mvte:store:state; &mvte:store:zip;<br />
 																					&mvte:store:country;
 																				</span></a>
 																			</div>
@@ -187,7 +186,7 @@
 																</div>
 																<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																
+
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" height="1" bgcolor="#e3e3e3">&nbsp;</td>
@@ -211,8 +210,7 @@
 																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -257,7 +255,7 @@
 																		</div>
 																		<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
 
-																		
+
 																		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																			<tr>
 																				<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" height="1" bgcolor="#e3e3e3">&nbsp;</td>
@@ -287,8 +285,7 @@
 																			<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 																				<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																					<tr>
-																						<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+																						<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 																					</tr>
 																				</table>
 																			</th>
@@ -310,8 +307,7 @@
 																								<td align="center" bgcolor="#2a68ce">
 																									<table border="0" cellspacing="0" cellpadding="0">
 																										<tr>
-																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-</td>
+																											<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="15"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table></td>
 																											<td bgcolor="#2a68ce">
 																												<div class="text-btn-1" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:20px; text-align:center">
 																													<a href="&mvte:shipment_info:tracklink;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><span class="link-white" style="color:#ffffff; text-decoration:none">Track Your Shipment</span></a>
@@ -360,6 +356,11 @@
 																		</tr>
 
 																		<mvt:foreach iterator="group" array="shipment_info:groups">
+																			<mvt:assign name="l.settings:group:parent_index" value="miva_array_search( l.settings:shipment_info:groups, 1, l.group, 'l.group:group_id EQ l.settings:group:parent_id' )" />
+																			<mvt:if expr="l.settings:group:parent_id GT 0 AND l.settings:group:parent_index GT 0">
+																				<mvt:comment>Skip child items when the parent is also displaying</mvt:comment>
+																				<mvt:foreachcontinue />
+																			</mvt:if>
 																			<tr>
 																				<td valign="top">
 																					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
@@ -380,8 +381,7 @@
 																							<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="10">
 																								<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																									<tr>
-																										<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-10"></div>
-</td>
+																										<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-10"></div></td>
 																									</tr>
 																								</table>
 																							</th>
@@ -390,19 +390,29 @@
 																									<tr>
 																										<td>
 																											<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvt:group:name;</div>
-																											<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">&mvt:group:code;</div>
-
 																											<mvt:foreach iterator="option" array="group:options">
-																												<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
+																												<mvt:if expr="ISNULL l.settings:option:attr_prompt">
+																													<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+																												</mvt:if>
+																												<mvt:if expr="ISNULL l.settings:option:opt_prompt">
+																													<mvt:assign name="l.settings:option:opt_prompt" value="l.settings:option:opt_code" />
+																												</mvt:if>
+																												<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
 																													<mvt:if expr="l.settings:option:option_id">
-																														&mvt:option:attr_code;: &mvt:option:opt_code;
+																														&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
 																													<mvt:elseif expr="NOT ISNULL l.settings:option:data">
-																														&mvt:option:attr_code;: &mvt:option:data;
+																														&mvt:option:attr_prompt;: &mvt:option:data;
 																													<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-																														&mvt:option:attr_code;: &mvt:option:data_long;
+																														&mvt:option:attr_prompt;: &mvt:option:data_long;
 																													<mvt:else>
-																														&mvt:option:attr_code;
+																														&mvt:option:attr_prompt;
 																													</mvt:if>
+																												</div>
+																											</mvt:foreach>
+																											<mvt:assign name="l.settings:group:child_count" value="miva_array_filter_ref( l.settings:shipment_info:groups, 1, l.group, 'l.group:parent_id EQ l.settings:group:group_id', l.settings:group:children )" />
+																											<mvt:foreach iterator="child" array="group:children">
+																												<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
+																													&mvt:child:name;
 																												</div>
 																											</mvt:foreach>
 																										</td>
@@ -435,7 +445,7 @@
 											</tr>
 										</table>
 										<!-- END Main -->
-										
+
 										<!-- Footer -->
 										<table width="100%" border="0" cellspacing="0" cellpadding="0">
 											<tr>
@@ -480,8 +490,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="30">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -499,8 +508,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>

@@ -86,37 +86,7 @@
 						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;" class="img" width="10"></td>
 						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
 							<div class="text-1-right" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-								<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:total" />
-								<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:subtotal_base_price_comprehensive" />
-								<mvt:foreach iterator="child" array="group:children">
-									<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:totals:parent_child + l.settings:child:total" />
-									<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:totals:parent_child_original + l.settings:child:subtotal_base_price_comprehensive" />
-								</mvt:foreach>
-								<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child )" />
-								<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child_original" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child_original )" />
-
-								<table style="width: 100%;">
-									<tr>
-										<td colspan="2" style="text-align: right;">
-											<mvt:if expr="l.settings:group:totals:parent_child_original GT l.settings:group:totals:parent_child">
-												<s style="color: #767676;">&mvt:group:totals:formatted_parent_child_original;</s>
-											</mvt:if>
-											<span>&mvt:group:totals:formatted_parent_child;</span>
-										</td>
-									</tr>
-									<mvt:if expr="l.settings:group:child_count GT 0">
-										<tr style="color:#767676; font-size: 12px; line-height: 14px;">
-											<td style="text-align: left;">Base Product</td>
-											<td style="text-align: right;">&mvt:group:formatted_subtotal_comprehensive;</td>
-										</tr>
-										<mvt:foreach iterator="child" array="group:children">
-											<tr style="color:#767676; font-size: 12px; line-height: 14px;">
-												<td style="text-align: left;">&mvte:child:name;</td>
-												<td style="text-align: right;">&mvt:child:formatted_total;</td>
-											</tr>
-										</mvt:foreach>
-									</mvt:if>
-								</table>
+								<mvt:fragment code="email_group_productcharges" />
 							</div>
 						</td>
 					</tr>
@@ -240,7 +210,7 @@
 </mvt:if>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-]]></Template><ImageTypes><ImageType>main</ImageType></ImageTypes><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="EMAIL_ORDERCONF_MERCHANT"><Item code="toe_order_contents"><Template><![CDATA[<table width="100%" border="0" cellspacing="0" cellpadding="0">
+]]></Template><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>75</Width><Height>75</Height></ImageDimensions><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="EMAIL_ORDERCONF_MERCHANT"><Item code="toe_order_contents"><Template><![CDATA[<table width="100%" border="0" cellspacing="0" cellpadding="0">
 	<tr>
 		<td>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -328,37 +298,7 @@
 						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;" class="img" width="10"></td>
 						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
 							<div class="text-1-right" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-								<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:total" />
-								<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:subtotal_base_price_comprehensive" />
-								<mvt:foreach iterator="child" array="group:children">
-									<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:totals:parent_child + l.settings:child:total" />
-									<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:totals:parent_child_original + l.settings:child:subtotal_base_price_comprehensive" />
-								</mvt:foreach>
-								<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child )" />
-								<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child_original" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child_original )" />
-
-								<table style="width: 100%;">
-									<tr>
-										<td colspan="2" style="text-align: right;">
-											<mvt:if expr="l.settings:group:totals:parent_child_original GT l.settings:group:totals:parent_child">
-												<s style="color: #767676;">&mvt:group:totals:formatted_parent_child_original;</s>
-											</mvt:if>
-											<span>&mvt:group:totals:formatted_parent_child;</span>
-										</td>
-									</tr>
-									<mvt:if expr="l.settings:group:child_count GT 0">
-										<tr style="color:#767676; font-size: 12px; line-height: 14px;">
-											<td style="text-align: left;">Base Product</td>
-											<td style="text-align: right;">&mvt:group:formatted_subtotal_comprehensive;</td>
-										</tr>
-										<mvt:foreach iterator="child" array="group:children">
-											<tr style="color:#767676; font-size: 12px; line-height: 14px;">
-												<td style="text-align: left;">&mvte:child:name;</td>
-												<td style="text-align: right;">&mvt:child:formatted_total;</td>
-											</tr>
-										</mvt:foreach>
-									</mvt:if>
-								</table>
+								<mvt:fragment code="email_group_productcharges" />
 							</div>
 						</td>
 					</tr>
@@ -482,4 +422,4 @@
 </mvt:if>
 
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="30" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-]]></Template><ImageTypes><ImageType>main</ImageType></ImageTypes><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+]]></Template><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>75</Width><Height>75</Height></ImageDimensions><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

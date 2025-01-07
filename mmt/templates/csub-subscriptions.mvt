@@ -58,18 +58,19 @@
 
 <section class="x-product-list">
 	<mvt:foreach iterator="subscription" array="subscriptions:items">
-		<div class="x-product-list__item">
-			<mvt:foreach iterator="item" array="subscription:items">
+		<mvt:foreach iterator="item" array="subscription:items">
+			<mvt:if expr="l.settings:item:parent_id GT 0">
+				<mvt:comment>Skip child items</mvt:comment>
+				<mvt:foreachcontinue />
+			</mvt:if>
+			<div class="x-product-list__item">
 				<figure class="x-product-list__figure">
-					<mvt:if expr="ISNULL l.settings:item:imagetypes:main">
-						<mvt:assign name="l.settings:item:src" value="g.theme_path $ '/images/img_coming_soon.png'" />
-					<mvt:else>
-						<mvt:assign name="l.settings:item:src" value="l.settings:item:imagetypes:main" />
+					<mvt:if expr="NOT ISNULL l.settings:item:imagetypes:main">
+						<img class="x-product-list__image" src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:subscriptions:b_width;" height="&mvte:subscriptions:b_height;">
 					</mvt:if>
-					<img class="x-product-list__image" src="&mvte:item:src;" alt="&mvte:item:name;" loading="lazy" width="&mvte:subscriptions:b_width;" height="&mvte:subscriptions:b_height;">
 					<figcaption class="x-product-list__figure-caption">
 						<mvt:if expr="l.settings:subscription:status NE 'C'">
-							<div class="u-text-center u-text-uppercase">
+							<div>
 								<mvt:if expr="l.settings:subscription:nextdate EQ 0">
 									Next Shipment: N/A
 								<mvt:else>
@@ -78,7 +79,7 @@
 							</div>
 						</mvt:if>
 						<mvt:if expr="l.settings:subscription:status EQ 'C'">
-							<div class="u-color-red u-text-center u-text-uppercase">
+							<div class="u-color-red">
 								<mvt:if expr="l.settings:subscription:nextdate EQ 0">
 									Cancellation Date: N/A
 								<mvt:else>
@@ -88,39 +89,51 @@
 						</mvt:if>
 						<p>
 							<mvt:if expr="l.settings:subscription:status EQ 'C'">
-								<a class="c-button c-button--secondary" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">View Subscription</a>
+								<a class="c-button c-button--secondary c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">View Subscription</a>
 							<mvt:else>
-								<a class="c-button c-button--secondary" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit Subscription</a>
+								<a class="c-button c-button--secondary c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit Subscription</a>
 							</mvt:if>
 						</p>
+						<div class="u-text-bold">&mvt:item:name;</div>
 						<div>
-							<strong>&mvte:item:name;</strong><br>
-							<span class="u-font-small">&mvte:item:code;</span>
+							<mvt:foreach iterator="option" array="item:options">
+								<div>
+									<mvt:if expr="l.settings:option:option_id">
+										&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										&mvt:option:attr_prompt;: &mvt:option:data;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										&mvt:option:attr_prompt;: &mvt:option:data_long;
+									<mvt:else>
+										&mvt:option:attr_prompt;
+									</mvt:if>
+								</div>
+							</mvt:foreach>
 						</div>
 						<div>
-							<span class="u-font-small u-text-uppercase">Term</span><br>
-							<strong>&mvte:subscription:productsubscriptionterm:descrip;<mvt:if expr="l.settings:subscription:status EQ 'C'"> <span class="u-color-red">(Cancelled)</span></mvt:if></strong>
+							<span class="c-form-label u-text-medium">Term:</span><br>
+							<span>&mvte:subscription:productsubscriptionterm:descrip;<mvt:if expr="l.settings:subscription:status EQ 'C'"> <span class="u-color-red">(Cancelled)</span></mvt:if></span>
 						</div>
 						<mvt:if expr="l.settings:subscription:status EQ 'E'">
 							<div class="u-color-red">
-								<span class="u-font-small u-text-uppercase">Processing Error</span><br>
-								<strong>&mvte:subscription:message;</strong>
+								<span class="c-form-label u-text-medium">Processing Error</span><br>
+								<span>&mvte:subscription:message;</span>
 							</div>
 						</mvt:if>
 						<div class="o-layout u-grids-2">
 							<p class="o-layout__item">
-								<span class="u-font-small u-text-uppercase">Quantity</span><br>
-								<strong>&mvte:subscription:quantity;</strong>
+								<span class="c-form-label u-text-medium">Quantity:</span><br>
+								<span>&mvte:subscription:quantity;</span>
 							</p>
 							<p class="o-layout__item">
-								<span class="u-font-small u-text-uppercase">Subtotal</span><br>
-								<strong>&mvte:item:formatted_total;</strong>
+								<span class="c-form-label u-text-medium">Total:</span><br>
+								<span>&mvt:subscription:formatted_total;</span>
 							</p>
 						</div>
 					</figcaption>
 				</figure>
-			</mvt:foreach>
-		</div>
+			</div>
+		</mvt:foreach>
 	</mvt:foreach>
 </section>
 <!-- end .x-product-list -->
@@ -173,3 +186,5 @@
 	</nav>
 	<!-- end .x-pagination -->
 </mvt:if>
+
+<br>

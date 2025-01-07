@@ -59,7 +59,6 @@
 							{name: 'visa', value: '&mvte:method:module;:&mvte:method:code;'},
 						</mvt:if>
 						<mvt:assign name="g.cc_payment" value="1" />
-						<mvt:assign name="g.payment_module_class" value="l.settings:method:module $ '-payment-form'" />
 					</mvt:if>
 				</mvt:foreach>
 			];
@@ -91,7 +90,27 @@
 					<mvt:assign name="l.settings:url" value="l.settings:urls:INVC:secure" />
 				</mvt:if>
 
-				<form data-hook="opay-form" method="post" action="&mvte:url;">
+				<mvt:capture variable="l.settings:cvv_dialog">
+					<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What is This?</button>
+					<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
+						<div class="c-dialog__overlay" tabindex="-1">
+							<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
+								<header class="c-dialog__header">
+									<p id="cvv-info-title" class="c-dialog__title c-heading-foxtrot">Credit Card Security Code</p>
+									<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
+								</header>
+								<div class="c-dialog__content">
+									<p><strong>What is the CVV2 and what does it look like?</strong><br />For your protection, we ask that you enter an extra 3-4 digit number called the CVV2. The CVV2 is NOT your PIN and is not the last 3 or 4 digits of your credit card number. It is an extra ID printed on your Visa, MasterCard, Discover or American Express Card.<br />We request this code as a security measure to our customers. Requiring this information helps to ensure that the credit card is present at the time of purchase. If you cannot find this code, or it is illegible, please contact your credit card issuer.</p>
+									<p><strong>Visa, MasterCard and Discover:</strong><br />On the back of the card in the top-right corner of the signature box. Enter the three-digit number following the credit card number. (See below.)</p>
+									<p><strong>American Express:</strong><br />On the front of the card. Enter the four-digit number on the right directly above the credit card number. (See below.)</p>
+									<p class="u-text-center"><img src="&mvte:global:theme_path;/core/images/img_cvv.png" alt="CID/CVV/CVV2 Locations" loading="lazy"></p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</mvt:capture>
+
+				<form class="t-opay-form" data-hook="opay-form" method="post" action="&mvte:url;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<mvt:if expr="ISNULL l.settings:payment:payment_url">
@@ -107,7 +126,7 @@
 						<mvt:if expr="l.settings:paymentsettings:mivapay:enabled AND ( l.settings:mivapay:paymentcardtype:id OR l.settings:mivapay:paymentcard:id )">
 							<div class="c-form-list">
 								<div class="c-form-list__item c-form-list__item--full">
-									<div class="t-payment-form t-&mvte:global:payment_module_class;">
+									<div class="t-payment-form t-&mvte:payment:module:code;-payment-form">
 										<div class="t-payment-form__heading">
 											<span class="u-text-medium">
 												Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
@@ -175,66 +194,28 @@
 									</span>
 									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
 								</div>
-								<div class="t-payment-form__fields">
+								<div class="t-payment-form__fields c-form-fields--compact">
 									<mvt:foreach array="payment:fields" iterator="field">
+										<mvt:assign name="l.settings:field:html:class:invalid" value="ternary( l.settings:field:invalid, 'u-color-red', '' )" />
 										<mvt:if expr="l.settings:field:code EQ 'cc_exp'">
-											<div class="t-payment-form__field-set">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										<mvt:elseif expr="l.settings:field:code EQ 'cc_number'">
-											<div class="t-payment-form__field-set">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										<mvt:elseif expr="l.settings:field:code EQ 'cc_cvv'">
-											<div class="t-payment-form__field-set">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
-												<div class="c-control-group o-layout--align-center">
-													<span class="u-width-6">
-														<mvt:item name="payment" param="field:code"/>
-													</span>
-													<span class="u-width-6">
-														<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What's This? <span class="u-icon-question" aria-hidden="true"></span></button>
-													</span>
-												</div>
-
-												<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
-													<div class="c-dialog__overlay" tabindex="-1">
-														<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
-															<header class="c-dialog__header">
-																<p id="cvv-info-title" class="c-dialog__title c-heading-foxtrot">Credit Card Security Code</p>
-																<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
-															</header>
-															<div class="c-dialog__content">
-																<p><strong>What is the CVV2 and what does it look like?</strong><br />For your protection, we ask that you enter an extra 3-4 digit number called the CVV2. The CVV2 is NOT your PIN and is not the last 3 or 4 digits of your credit card number. It is an extra ID printed on your Visa, MasterCard, Discover or American Express Card.<br />We request this code as a security measure to our customers. Requiring this information helps to ensure that the credit card is present at the time of purchase. If you cannot find this code, or it is illegible, please contact your credit card issuer.</p>
-																<p><strong>Visa, MasterCard and Discover:</strong><br />On the back of the card in the top-right corner of the signature box. Enter the three-digit number following the credit card number. (See below.)</p>
-																<p><strong>American Express:</strong><br />On the front of the card. Enter the four-digit number on the right directly above the credit card number. (See below.)</p>
-																<p class="u-text-center"><img src="&mvte:global:theme_path;/core/images/img_cvv.png" alt="CID/CVV/CVV2 Locations" loading="lazy"></p>
-															</div>
-														</div>
-													</div>
-												</div>
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<mvt:item name="payment" param="field:code"/>
+												&mvt:cvv_dialog;
 											</div>
 										<mvt:else>
-											<div class="t-payment-form__field-set" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-name">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-name">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										</mvt:if>
@@ -242,7 +223,7 @@
 								</div>
 							</div>
 						<mvt:else>
-							<div class="t-payment-form t-&mvte:global:payment_module_class;">
+							<div class="t-payment-form t-&mvte:payment:module:code;-payment-form">
 								<div class="t-payment-form__heading">
 									<span class="u-text-medium">
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
@@ -250,102 +231,43 @@
 									</span>
 									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
 								</div>
-								<div class="t-payment-form__fields">
+								<div class="t-payment-form__fields c-form-fields--compact">
 									<mvt:foreach array="payment:fields" iterator="field">
+										<mvt:assign name="l.settings:field:html:class:invalid" value="ternary( l.settings:field:invalid, 'u-color-red', '' )" />
 										<!-- &mvte:field:code; -->
 										<mvt:if expr="'exp' CIN l.settings:field:code">
-											<div class="t-payment-form__field-set t-payment-form__field-exp" data-hook="mvt-select" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-select__dropdown">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set t-payment-form__field-exp" data-hook="mvt-auto exp-select-one" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-select__dropdown">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<div class="c-form-inline-set">
 													<mvt:item name="payment" param="field:code" />
 												</div>
 											</div>
 										<mvt:elseif expr="l.settings:field:code EQ 'cc_number'">
-											<div class="t-payment-form__field-set t-payment-form__field-number" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-number" data-dataHook="detect-card">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set t-payment-form__field-number" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-number" data-dataHook="detect-card" data-inputmode="numeric" data-pattern="[0-9]*" data-placeholder="**** **** **** ****">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
-												<script id="&mvte:field:code;-script">
-													(() => {
-														let thisFunction = document.querySelector('#&mvte:field:code;-script');
-														let ccCvv = thisFunction.previousElementSibling;
-
-														ccCvv.setAttribute('inputmode', 'numeric');
-														ccCvv.setAttribute('pattern', '[0-9]*');
-													})();
-												</script>
 											</div>
 										<mvt:elseif expr="'cvv' CIN l.settings:field:code">
-											<div class="t-payment-form__field-set t-payment-form__field-cvv">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
-												<div data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input c-form-input--cvv" data-mvt-autocomplete="cc-csc">
+											<div class="t-payment-form__field-set t-payment-form__field-cvv" data-hook="cvv-message-mover">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<div data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input c-form-input--cvv" data-mvt-autocomplete="cc-csc" data-inputmode="numeric" data-pattern="[0-9]*" data-placeholder="***">
 													<mvt:item name="payment" param="field:code"/>
-													<script id="&mvte:field:code;-script">
-														(() => {
-															let thisFunction = document.querySelector('#&mvte:field:code;-script');
-															let ccCvv = thisFunction.previousElementSibling;
-
-															ccCvv.setAttribute('inputmode', 'numeric');
-															ccCvv.setAttribute('pattern', '[0-9]*');
-														})();
-													</script>
 												</div>
-												<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What's This?</button>
-
-												<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
-													<div class="c-dialog__overlay" tabindex="-1">
-														<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
-															<header class="c-dialog__header">
-																<p id="cvv-info-title" class="c-dialog__title c-heading-foxtrot">Credit Card Security Code</p>
-																<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
-															</header>
-															<div class="c-dialog__content">
-																<p><strong>What is the CVV2 and what does it look like?</strong><br />For your protection, we ask that you enter an extra 3-4 digit number called the CVV2. The CVV2 is NOT your PIN and is not the last 3 or 4 digits of your credit card number. It is an extra ID printed on your Visa, MasterCard, Discover or American Express Card.<br />We request this code as a security measure to our customers. Requiring this information helps to ensure that the credit card is present at the time of purchase. If you cannot find this code, or it is illegible, please contact your credit card issuer.</p>
-																<p><strong>Visa, MasterCard and Discover:</strong><br />On the back of the card in the top-right corner of the signature box. Enter the three-digit number following the credit card number. (See below.)</p>
-																<p><strong>American Express:</strong><br />On the front of the card. Enter the four-digit number on the right directly above the credit card number. (See below.)</p>
-																<p class="u-text-center"><img src="&mvte:global:theme_path;/core/images/img_cvv.png" alt="CID/CVV/CVV2 Locations" loading="lazy"></p>
-															</div>
-														</div>
-													</div>
-												</div>
-
+												&mvt:cvv_dialog;
 											</div>
 										<mvt:elseif expr="'fname' CIN l.settings:field:code">
 											<div class="t-payment-form__field-set t-payment-form__field-fname" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-given-name">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										<mvt:elseif expr="'lname' CIN l.settings:field:code">
 											<div class="t-payment-form__field-set t-payment-form__field-lname" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-family-name">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										<mvt:else>
-											<div class="t-payment-form__field-set" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input">
-												<mvt:if expr="l.settings:field:invalid">
-													<label class="c-form-label u-color-red u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												<mvt:else>
-													<label class="c-form-label u-text-bold" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
-												</mvt:if>
+											<div class="t-payment-form__field-set" data-hook="mvt-auto" data-mvt-id="&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
 												<mvt:item name="payment" param="field:code" />
 											</div>
 										</mvt:if>
@@ -355,8 +277,8 @@
 						</mvt:if>
 
 						<mvt:if expr="l.settings:payment:capabilities:split">
-							<hr class="c-keyline">
-							<div class="c-form-list u-text-uppercase">
+							<br>
+							<div class="c-form-list">
 								<mvt:if expr="g.Amount_Invalid">
 									<p class="c-heading-foxtrot u-color-red">Payment Amount</p>
 								<mvt:else>
@@ -425,29 +347,17 @@
 									<mvt:foreach array="paymentmethods" iterator="method">
 										<mvt:if expr="( l.settings:method:module NE 'customercredit' ) OR ( ( g.PaymentMethod NE 'customercredit:credit' ) AND ( NOT miva_array_search( l.settings:splitpayment:splits, 1, l.split, 'l.split:module:code EQ l.settings:method:module' ) ) )">
 											<div class="c-form-list__item c-form-list__item--full">
-												<mvt:if expr="pos1 EQ 1">
-													<label class="c-form-checkbox c-form-checkbox--radio">
-														<mvt:if expr="l.settings:method:paymentcard:id">
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcard:&mvte:method:paymentcard:id;" checked>
-														<mvt:elseif expr="l.settings:method:paymentcardtype:id">
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcardtype:&mvte:method:paymentcardtype:id;" checked>
-														<mvt:else>
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="&mvte:method:module;:&mvte:method:code;" checked>
-														</mvt:if>
-														<span class="c-form-checkbox__caption">&mvt:method:name;</span>
-													</label>
-												<mvt:else>
-													<label class="c-form-checkbox c-form-checkbox--radio">
-														<mvt:if expr="l.settings:method:paymentcard:id">
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcard:&mvte:method:paymentcard:id;">
-														<mvt:elseif expr="l.settings:method:paymentcardtype:id">
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcardtype:&mvte:method:paymentcardtype:id;">
-														<mvt:else>
-															<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="&mvte:method:module;:&mvte:method:code;">
-														</mvt:if>
-														<span class="c-form-checkbox__caption">&mvt:method:name;</span>
-													</label>
-												</mvt:if>
+												<mvt:assign name="l.settings:method:html:attr:checked" value="ternary( l.pos1 EQ 1, 'checked', '' )" />
+												<label class="c-form-checkbox c-form-checkbox--radio">
+													<mvt:if expr="l.settings:method:paymentcard:id">
+														<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcard:&mvte:method:paymentcard:id;" &mvte:method:html:attr:checked;>
+													<mvt:elseif expr="l.settings:method:paymentcardtype:id">
+														<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="paymentcardtype:&mvte:method:paymentcardtype:id;" &mvte:method:html:attr:checked;>
+													<mvt:else>
+														<input class="c-form-checkbox__input" type="radio" name="AdditionalPaymentMethod" value="&mvte:method:module;:&mvte:method:code;" &mvte:method:html:attr:checked;>
+													</mvt:if>
+													<span class="c-form-checkbox__caption">&mvt:method:name;</span>
+												</label>
 											</div>
 										</mvt:if>
 									</mvt:foreach>

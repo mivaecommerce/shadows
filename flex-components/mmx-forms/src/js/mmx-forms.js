@@ -642,8 +642,8 @@ class MMX_FormInputRange extends MMX_Element {
 		this.#sliderSelection().style.right = this.#createPercent(state.range - state.relativeHigh, state.range);
 
 		// Label Text
-		this.#inputLabelLow().innerText = this.#formatValue(this.low);
-		this.#inputLabelHigh().innerText = this.#formatValue(this.high);
+		this.#inputLabelLow().innerHTML = this.#formatValue(this.low);
+		this.#inputLabelHigh().innerHTML = this.#formatValue(this.high);
 	}
 
 	#formatValue(value = '') {

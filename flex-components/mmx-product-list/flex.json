@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "10.11.00",
+	"version": "10.11.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -1995,10 +1995,11 @@
 		},
 		{
 			"code": "empty_results_message",
+			"markdown": 1,
 			"placeholder": "There are no products to display.",
 			"preview_property_selector": ":shadow [part~=\"empty\"]",
 			"prompt": "Empty Results Message",
-			"type": "text",
+			"type": "textarea",
 			"visibility_conditions": {
 				"show_empty_results": {
 					"value": [
@@ -2034,6 +2035,7 @@
 	"defaults": {
 		"advanced": {
 			"empty_results_message": {
+				"source": "markdown",
 				"value": "There are no products to display."
 			},
 			"show_empty_results": {
@@ -2278,7 +2280,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-1ClogO4l6fMbjMr4kkJE/fWsQojSXlQKnIMFNUlOSPM= sha384-mNKACN2OkscesHP4GJqGPe0x39muBn93dEPrT8kNziEenXkjz/g7ifL0CJ969Kcw sha512-4szL85/nzh1zdVcGDc87DRvYADuYjROP2HXhb6fEcUtr8BbpkXMzhSkgOnJvWYfgKPpDv5NhzPlAhO6K9SbEYw=="
+					"value": "sha256-cxjZ3Weu1kXyZ3HneJZOa4f3seVT1faJ/CKTBF0cW2g= sha384-QWn0sfkruRuWe99b/a4GJpAuss7G6zT2mhRK78AL2oQ1Fn0nDOZ7kQ7rnozu/+U4 sha512-0qy+UirW44niT1aKoxQD/KiqOHq5HetS9qt+X8XCkAtZhL7CTOoBhGMkBS4TNMSK+gajFCX/sE5E6AgO3ZGOOw=="
 				},
 				{
 					"name": "crossorigin",
@@ -2316,13 +2318,13 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.11.00",
-		"mmx-base": "=10.11.00",
-		"mmx-button": "=10.11.00",
-		"mmx-card": "=10.11.00",
-		"mmx-forms": "=10.11.00",
-		"mmx-icons": "=10.11.00",
-		"mmx-messages": "=10.11.00",
-		"mmx-text": "=10.11.00"
+		"mmx-accordion": "=10.11.02",
+		"mmx-base": "=10.11.02",
+		"mmx-button": "=10.11.02",
+		"mmx-card": "=10.11.02",
+		"mmx-forms": "=10.11.02",
+		"mmx-icons": "=10.11.02",
+		"mmx-messages": "=10.11.02",
+		"mmx-text": "=10.11.02"
 	}
 }

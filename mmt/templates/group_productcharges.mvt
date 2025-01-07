@@ -27,15 +27,15 @@
 			<mvt:foreach iterator="child" array="group:children">
 				<div class="t-product-charge">
 					<div class="t-product-charge__name">
-						&mvte:child:name;
+						&mvt:child:name;
 						<mvt:if expr="NOT ISNULL l.settings:child:product:descrip">
 							<button class="c-button--as-text u-icon-info" data-dialog-trigger="product-charge--&mvte:child:code;"></button>
 							<div class="c-dialog" data-dialog="product-charge--&mvte:child:code;" aria-hidden="true">
 								<div class="c-dialog__overlay" tabindex="-1">
 									<div class="c-dialog__container u-width-10 u-width-8--s u-width-6--l u-width-4--xl" aria-modal="true" role="alertdialog">
 										<header class="c-dialog__header">
-											<h2 id="address-validation-title" class="c-dialog__title c-heading-echo">
-												&mvte:child:name;
+											<h2 class="c-dialog__title c-heading-echo">
+												&mvt:child:name;
 											</h2>
 											<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 										</header>

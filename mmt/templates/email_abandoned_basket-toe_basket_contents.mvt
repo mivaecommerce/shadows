@@ -3,108 +3,91 @@
 		<td>
 			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 				<tr>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" width="200">
-						<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Item</strong></div>
+					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" width="310" colspan="3">
+						<div class="text-1" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left"><strong>Item</strong></div>
 					</td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" width="100">
-						<div class="text-1-center" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center"><strong>Qty</strong></div>
-					</td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" width="100">
-						<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right"><strong>Price</strong></div>
-					</td>
-					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" width="10"></td>
 					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;">
-						<div class="text-1-right" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right"><strong>Total</strong></div>
+						<div class="text-1-center" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center"><strong>Qty</strong></div>
+					</td>
+					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;" class="img" width="10"></td>
+					<td valign="top" style="border-bottom: 1px solid #e3e3e3; border-top: 1px solid #e3e3e3; padding-top: 10px; padding-bottom: 10px;">
+						<div class="text-1-right" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right"><strong>Total</strong></div>
 					</td>
 				</tr>
 
-				<mvt:foreach iterator="item" array="basket:groups">
-					<mvt:if expr="l.settings:item:option_count">
-						<mvt:assign name="l.settings:item_padding" value="'padding-top: 15px; padding-bottom: 5px;'" />
-					<mvt:else>
-						<mvt:assign name="l.settings:item_padding" value="'padding-top: 15px; padding-bottom: 15px;'" />
+				<mvt:foreach iterator="group" array="basket:groups">
+					<mvt:if expr="l.settings:group:parent_id GT 0">
+						<mvt:comment>Skip child items</mvt:comment>
+						<mvt:foreachcontinue />
 					</mvt:if>
-
 					<tr>
-						<td valign="top" style="&mvte:item_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-						<td valign="top" style="&mvte:item_padding;">
-							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvt:item:name;</div>
-							<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">&mvt:item:code;</div>
-							
-						</td>
-						<td valign="top" style="&mvte:item_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-						<td valign="top" style="&mvte:item_padding;">
-							<div class="text-1-center" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center">&mvte:item:quantity;</div>
-						</td>
-						<td valign="top" style="&mvte:item_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-						<td valign="top" style="&mvte:item_padding;">
-							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-								&mvt:item:formatted_price;
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
+							<div class="img" style="font-size:0pt; line-height:0pt; text-align:left">
+								<mvt:if expr="ISNULL l.settings:group:imagetypes:main">
+									&nbsp;
+								<mvt:else>
+									<img src="&mvt:global:baseurl;&mvte:group:imagetypes:main;" border="0" alt="&mvte:group:name;" />
+								</mvt:if>
 							</div>
 						</td>
-						<td valign="top" style="&mvte:item_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-						<td valign="top" style="&mvte:item_padding;">
-							<div class="text-1-right" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-								&mvt:item:formatted_subtotal;
-							</div>
-						</td>
-					</tr>
-
-					<mvt:foreach iterator="option" array="item:options">
-						<mvt:if expr="l.pos2 LT l.settings:item:option_count">
-							<mvt:assign name="l.settings:option_padding" value="'padding-bottom: 5px;'" />
-						<mvt:else>
-							<mvt:assign name="l.settings:option_padding" value="'padding-bottom: 15px;'" />
-						</mvt:if>
-
-						<tr>
-							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-							<td valign="top" style="&mvte:option_padding;">
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
+							<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvt:group:name;</div>
+							<mvt:foreach iterator="option" array="group:options">
+								<mvt:if expr="ISNULL l.settings:option:attr_prompt">
+									<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+								</mvt:if>
+								<mvt:if expr="ISNULL l.settings:option:opt_prompt">
+									<mvt:assign name="l.settings:option:opt_prompt" value="l.settings:option:opt_code" />
+								</mvt:if>
 								<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
 									<mvt:if expr="l.settings:option:option_id">
-										&mvt:option:attr_code;: &mvt:option:opt_code;
+										&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
 									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 										<mvt:if expr="( l.settings:option:attr_code EQ 'digitaldownload' ) AND ( NOT ISNULL l.settings:option:digital_download_url )">
 											<a href="&mvte:option:digital_download_url;" target="_blank">Digital Download</a>
 										<mvt:else>
-											&mvt:option:attr_code;: &mvt:option:data;
+											&mvt:option:attr_prompt;: &mvt:option:data;
 										</mvt:if>
 									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-										&mvt:option:attr_code;: &mvt:option:data_long;
+										&mvt:option:attr_prompt;: &mvt:option:data_long;
 									<mvt:else>
-										&mvt:option:attr_code;
+										&mvt:option:attr_prompt;
 									</mvt:if>
 								</div>
-							</td>
-							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-							<td valign="top" style="&mvte:option_padding;">
-								&nbsp;
-							</td>
-							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-							<td valign="top" style="&mvte:option_padding;">
-								<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-									<mvt:if expr="l.settings:option:price">
-										&mvt:option:formatted_price;
-									<mvt:else>
-										&nbsp;
-									</mvt:if>
+							</mvt:foreach>
+							<mvt:if expr="l.settings:group:subterm_id">
+								<div class="text-3" style="color:#767676; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
+									Subscription: &mvte:group:productsubscriptionterm:descrip;
 								</div>
-							</td>
-							<td valign="top" style="&mvte:option_padding;" class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="10"></td>
-							<td valign="top" style="&mvte:option_padding;">
-								<div class="text-1-right" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
-									<mvt:if expr="l.settings:option:subtotal">
-										&mvt:option:formatted_subtotal;
-									<mvt:else>
-										&nbsp;
-									</mvt:if>
+							</mvt:if>
+							<mvt:foreach iterator="discount" array="group:discounts">
+								<mvt:if expr="l.settings:discount:display">
+									<div class="text-3" style="color:#b13138; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
+										&mvt:discount:descrip;
+									</div>
+								</mvt:if>
+							</mvt:foreach>
+							<mvt:if expr="l.settings:group:upsold">
+								<div class="text-3" style="color:#b13138; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
+									Special Offer
 								</div>
-							</td>
-						</tr>
-					</mvt:foreach>
+							</mvt:if>
+						</td>
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;" class="img" width="10"></td>
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
+							<div class="text-1-center" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:center">
+								&mvte:group:quantity;
+							</div>
+						</td>
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;" class="img" width="10"></td>
+						<td valign="top" style="padding-top: 15px; padding-bottom: 15px;">
+							<div class="text-1-right" style="color:#111111; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:right">
+								<mvt:fragment code="email_group_productcharges" />
+							</div>
+						</td>
+					</tr>
 				</mvt:foreach>
 			</table>
 		</td>

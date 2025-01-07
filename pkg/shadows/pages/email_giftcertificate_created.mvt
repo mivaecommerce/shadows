@@ -110,7 +110,7 @@
 																				<br />
 																				<a href="&mvte:urls:ABUS:auto;" target="_blank" class="link-1" style="color:#7a838d; text-decoration:none"><span class="link-1" style="color:#7a838d; text-decoration:none">
 																					&mvte:store:address;<br />
-																					&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+																					&mvte:store:city;, &mvte:store:state; &mvte:store:zip;<br />
 																					&mvte:store:country;
 																				</span></a>
 																			</div>

@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.11.00</Version>
-	<MinimumMerchantVersion>10.11.00</MinimumMerchantVersion>
+	<Version>10.11.02</Version>
+	<MinimumMerchantVersion>10.11.02</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.11.00
+	<Description>Shadows ReadyTheme v10.11.02
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -2227,6 +2227,68 @@
 			</ItemList>
 		</Page>
 		<Page>
+			<Code>email_group_productcharges</Code>
+			<Name>Email Group Product Charges</Name>
+			<Fragment>Yes</Fragment>
+			<Source>email_group_productcharges.mvt</Source>
+			<Public>Yes</Public>
+		</Page>
+		<Page>
+			<Code>EMAIL_ABANDONED_BASKET</Code>
+			<Name>Abandoned Basket</Name>
+			<Source>email_abandoned_basket.mvt</Source>
+			<ItemList>
+				<Item>buttons</Item>
+				<Item>store</Item>
+				<Item>toe_basket_contents</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_BACKORDER_NOTICE</Code>
+			<Name>Backorder Notice</Name>
+			<Source>email_backorder_notice.mvt</Source>
+			<ItemList>
+				<Item>backorder</Item>
+				<Item>order</Item>
+				<Item>store</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_CUSTOMER_CREATED</Code>
+			<Name>Customer Created</Name>
+			<Source>email_customer_created.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_DIGITALDOWNLOAD_CREATED</Code>
+			<Name>Digital Download Created</Name>
+			<Source>email_digitaldownload_created.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>store</Item>
+				<Item>toe_digitaldownloads</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_GIFTCERTIFICATE_CREATED</Code>
+			<Name>Gift Certificate Created</Name>
+			<Source>email_giftcertificate_created.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>store</Item>
+				<Item>toe_giftcertificates</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
 			<Code>EMAIL_ORDERCONF_CUSTOMER</Code>
 			<Name>Order Confirmation: Customer</Name>
 			<Source>email_orderconf_customer.mvt</Source>
@@ -2234,6 +2296,7 @@
 				<Item>order</Item>
 				<Item>store</Item>
 				<Item>toe_order_contents</Item>
+				<Item>tokenlist</Item>
 				<Item>urls</Item>
 			</ItemList>
 		</Page>
@@ -2245,6 +2308,109 @@
 				<Item>order</Item>
 				<Item>store</Item>
 				<Item>toe_order_contents</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_PAYMENTCARD_EXPIRING</Code>
+			<Name>Payment Card Expiring</Name>
+			<Source>email_paymentcard_expiring.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_RETURN_RECEIVED</Code>
+			<Name>Return Received</Name>
+			<Source>email_return_received.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>return</Item>
+				<Item>store</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_RMA_ISSUED</Code>
+			<Name>RMA Issued</Name>
+			<Source>email_rma_issued.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>return</Item>
+				<Item>store</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SHIPMENT_SHIPPED</Code>
+			<Name>Shipment Shipped</Name>
+			<Source>email_shipment_shipped.mvt</Source>
+			<ItemList>
+				<Item>order</Item>
+				<Item>shipment</Item>
+				<Item>store</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_AUTH_FAILURE</Code>
+			<Name>Subscription Authorization Failure</Name>
+			<Source>email_subscription_auth_failure.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscriptions</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_CANCELLED</Code>
+			<Name>Subscription Cancelled</Name>
+			<Source>email_subscription_cancelled.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscription_fields</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_CHANGED</Code>
+			<Name>Subscription Changed</Name>
+			<Source>email_subscription_changed.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscription_fields</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_CREATED</Code>
+			<Name>Subscription Created</Name>
+			<Source>email_subscription_created.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscriptions</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_OUTOFSTOCK</Code>
+			<Name>Subscription Out of Stock</Name>
+			<Source>email_subscription_outofstock.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscriptions</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>EMAIL_SUBSCRIPTION_REMINDER</Code>
+			<Name>Subscription Reminder</Name>
+			<Source>email_subscription_reminder.mvt</Source>
+			<ItemList>
+				<Item>store</Item>
+				<Item>toe_subscriptions</Item>
 				<Item>urls</Item>
 			</ItemList>
 		</Page>
@@ -3244,7 +3410,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.11.00';
+	mivaJS.ReadyThemeVersion = '10.11.02';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

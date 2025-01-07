@@ -40,7 +40,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -57,14 +57,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -82,14 +82,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -113,7 +113,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>
@@ -144,7 +144,8 @@
 			</div>
 		</mvt:if>
 	</div>
-</mvt:if>]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PROD"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
+</mvt:if>
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PROD"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
 	<mvt:assign name="l.settings:attribute_ID" value="'l-' $ tolower(l.settings:attribute:code)" />
 	<mvt:if expr="l.settings:attribute:required">
 		<mvt:assign name="l.settings:required_attribute" value="'required'" />
@@ -183,7 +184,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -200,14 +201,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -225,14 +226,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -255,7 +256,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>
@@ -287,7 +288,8 @@
 		</mvt:if>
 	</div>
 </mvt:if>
-<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
+<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="PATR"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
 	<mvt:assign name="l.settings:attribute_ID" value="'l-' $ tolower(l.settings:attribute:code)" />
 	<mvt:if expr="l.settings:attribute:required">
 		<mvt:assign name="l.settings:required_attribute" value="'required'" />
@@ -326,7 +328,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -343,14 +345,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -368,14 +370,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -399,7 +401,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>
@@ -431,7 +433,8 @@
 		</mvt:if>
 	</div>
 </mvt:if>
-<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="UATR"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
+<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="UATR"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
 	<mvt:assign name="l.settings:attribute_ID" value="'l-' $ tolower(l.settings:attribute:code)" />
 	<mvt:if expr="l.settings:attribute:required">
 		<mvt:assign name="l.settings:required_attribute" value="'required'" />
@@ -470,7 +473,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -487,14 +490,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -512,14 +515,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -543,7 +546,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>
@@ -575,7 +578,8 @@
 		</mvt:if>
 	</div>
 </mvt:if>
-<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OUS1"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
+<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OUS1"><Item code="product_attributes"><Template><![CDATA[<mvt:foreach iterator="attribute" array="attributes">
 	<mvt:assign name="l.settings:attribute_ID" value="'l-' $ tolower(l.settings:attribute:code)" />
 	<mvt:if expr="l.settings:attribute:required">
 		<mvt:assign name="l.settings:required_attribute" value="'required'" />
@@ -614,7 +618,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -631,14 +635,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -656,14 +660,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -687,7 +691,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>
@@ -719,4 +723,5 @@
 		</mvt:if>
 	</div>
 </mvt:if>
-<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+<input data-hook="product-attribute__count" type="hidden" name="Product_Attribute_Count" value="<mvt:eval expr="miva_array_elements(l.settings:attributes)" />">
+]]></Template><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

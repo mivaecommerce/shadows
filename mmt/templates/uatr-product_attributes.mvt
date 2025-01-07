@@ -37,7 +37,7 @@
 						<mvt:else>
 							&mvte:option:prompt;
 							<mvt:if expr="l.settings:option:price">
-								&nbsp;&mvte:option:formatted_price;
+								&nbsp;&mvt:option:formatted_price;
 							</mvt:if>
 						</mvt:if>
 					</span>
@@ -54,14 +54,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -79,14 +79,14 @@
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="" selected>
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						<mvt:else>
 							<option value="&mvte:option:code;" data-option-price="&mvt:option:price;" data-regular-price="">
 								&mvte:option:prompt;
 								<mvt:if expr="l.settings:option:price">
-									&nbsp;&mvte:option:formatted_price;
+									&nbsp;&mvt:option:formatted_price;
 								</mvt:if>
 							</option>
 						</mvt:if>
@@ -110,7 +110,7 @@
 					<mvt:else>
 						&mvte:attribute:prompt;
 						<mvt:if expr="l.settings:attribute:price">
-							&nbsp;&mvte:attribute:formatted_price;
+							&nbsp;&mvt:attribute:formatted_price;
 						</mvt:if>
 					</mvt:if>
 				</span>

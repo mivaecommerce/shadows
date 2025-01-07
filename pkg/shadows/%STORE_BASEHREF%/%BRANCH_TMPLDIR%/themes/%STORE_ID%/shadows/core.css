@@ -1670,6 +1670,15 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	resize: vertical;
 }
 
+/**
+ * For use in small areas such as payment-fields
+ */
+.c-form-input--compact,
+.c-form-fields--compact .c-form-input {
+	padding-left: calc(0.5em - var(--default-border-width));
+	padding-right: calc(0.5em - var(--default-border-width));
+}
+
 /* Form select inputs
   =========================================== */
 .c-form-select {
@@ -1726,6 +1735,25 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	padding: calc(1.23em - var(--default-border-width)) calc(1.7em - var(--default-border-width));
 	transition: box-shadow 0.25s ease, border-color 0.25s ease;
 	width: 100%;
+}
+
+/**
+ * For use in small areas such as payment-fields
+ */
+.c-form-select--compact::before,
+.c-form-fields--compact .c-form-select::before {
+	width: 1em;
+}
+
+.c-form-select--compact::after,
+.c-form-fields--compact .c-form-select::after {
+	right: 0.5em;
+}
+
+.c-form-select--compact .c-form-select__dropdown,
+.c-form-fields--compact .c-form-select__dropdown {
+	padding-left: calc(0.5em - var(--default-border-width));
+	padding-right: calc(0.5em - var(--default-border-width));
 }
 
 /* Form checkbox inputs

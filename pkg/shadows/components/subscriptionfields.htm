@@ -6,47 +6,68 @@
 		<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 		<mvt:assign name="g.basket_subtotal" value="0" />
 		<mvt:foreach iterator="item" array="subscriptionfields:items">
+			<mvt:if expr="l.settings:item:parent_id GT 0">
+				<mvt:comment>Skip child items</mvt:comment>
+				<mvt:foreachcontinue />
+			</mvt:if>
 			<section class="o-layout o-layout--wide">
 				<p class="o-layout__item u-width-12 u-width-6--l u-text-center">
-					<img src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:subscriptionfields:b_width;" height="&mvte:subscriptionfields:b_height;">
+					<mvt:if expr="NOT ISNULL l.settings:item:imagetypes:main">
+						<a href="&mvte:item:link;">
+							<img src="&mvte:item:imagetypes:main;" alt="&mvte:item:name;" loading="lazy" width="&mvte:subscriptionfields:b_width;" height="&mvte:subscriptionfields:b_height;">
+						</a>
+					</mvt:if>
 				</p>
 				<div class="o-layout__item u-width-12 u-width-6--l">
-					<p class="c-heading-delta">
-						<a href="&mvte:item:link;"><strong>&mvt:item:name;</strong></a><br>
-						<span class="c-heading--subheading">SKU: &mvt:item:code;</span>
-					</p>
-					<hr class="c-keyline c-keyline--small">
-
+					<p class="u-color-gray-600">SKU: &mvte:item:code;</p>
+					<p class="c-heading-echo">&mvt:item:name;</p>
+					<mvt:if expr="l.settings:item:option_count">
+						<p>
+							<mvt:foreach iterator="option" array="item:options">
+								<div>
+									<mvt:if expr="l.settings:option:option_id">
+										&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data">
+										&mvt:option:attr_prompt;: &mvt:option:data;
+									<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
+										&mvt:option:attr_prompt;: &mvt:option:data_long;
+									<mvt:else>
+										&mvt:option:attr_prompt;
+									</mvt:if>
+								</div>
+							</mvt:foreach>
+						</p>
+					</mvt:if>
 					<div class="o-layout u-grids-2">
 						<p class="o-layout__item">
-							<span class="u-font-tiny u-text-uppercase">First Order Date</span><br>
+							<span class="c-form-label u-text-medium">First Order Date:</span><br>
 							<mvt:if expr="l.settings:subscriptionfields:nextdate EQ 0">
-								<strong class="u-font-small">N/A</strong>
+								<span>N/A</span>
 							<mvt:else>
-								<strong class="u-font-small">&mvt:subscriptionfields:formatted_firstdate_date;</strong>
+								<span>&mvt:subscriptionfields:formatted_firstdate_date;</span>
 							</mvt:if>
 						</p>
 						<p class="o-layout__item">
-							<span class="u-font-tiny u-text-uppercase">Last Order Date</span><br>
+							<span class="c-form-label u-text-medium">Last Order Date:</span><br>
 							<mvt:if expr="l.settings:subscriptionfields:nextdate EQ 0">
-								<strong class="u-font-small">N/A</strong>
+								<span>N/A</span>
 							<mvt:else>
-								<strong class="u-font-small">&mvt:subscriptionfields:formatted_lastdate_date;</strong>
+								<span>&mvt:subscriptionfields:formatted_lastdate_date;</span>
 							</mvt:if>
 						</p>
 						<mvt:if expr="l.settings:subscriptionfields:status NE 'C'">
 							<p class="o-layout__item">
 								<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_qty AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
-									<label class="c-form-label u-font-tiny u-text-uppercase" for="l-quantity-&mvte:group:group_id;">Quantity</label>
+									<label class="c-form-label u-text-medium" for="l-quantity-&mvte:group:group_id;">Quantity:</label>
 									<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-form-input--large u-text-center" data-hook="Quantity" type="text" inputmode="decimal" name="Quantity" value="&mvte:global:Quantity;" min="0" pattern="[0-9]*" required>
 								<mvt:else>
-									<label class="c-form-label u-font-tiny u-text-uppercase" for="l-quantity-&mvte:group:group_id;">Quantity</label>
+									<label class="c-form-label u-text-medium" for="l-quantity-&mvte:group:group_id;">Quantity:</label>
 									<input id="l-quantity-&mvte:group:group_id;" class="c-form-input c-form-input--large u-text-center" value="&mvt:subscriptionfields:quantity;" disabled>
 								</mvt:if>
 							</p>
 							<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:can_date">
 								<div class="o-layout__item">
-									<label class="c-form-label u-font-tiny u-text-uppercase" for="nextOrderDateDisplay" title="Next Order Date">Next Order Date</label>
+									<label class="c-form-label u-text-medium" for="nextOrderDateDisplay" title="Next Order Date">Next Order Date:</label>
 									<input data-hook="nextOrderDate_Year" type="hidden" name="NextOrderDate_Year" value="&mvte:global:NextOrderDate_Year;" />
 									<input data-hook="nextOrderDate_Month" type="hidden" name="NextOrderDate_Month" value="&mvte:global:NextOrderDate_Month;" />
 									<input data-hook="nextOrderDate_Day" type="hidden" name="NextOrderDate_Day" value="&mvte:global:NextOrderDate_Day;" />
@@ -88,38 +109,11 @@
 						</mvt:if>
 					</div>
 
-					<mvt:foreach iterator="option" array="item:options">
-						<div class="o-layout">
-							<p class="o-layout__item u-width-12">
-								<mvt:if expr="l.settings:option:option_id">
-									<strong>&mvt:option:attr_prompt;:</strong> &mvt:option:opt_prompt;
-								<mvt:elseif expr="NOT ISNULL l.settings:option:data">
-									<strong>&mvt:option:attr_prompt;:</strong> &mvt:option:data;
-								<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-									<strong>&mvt:option:attr_prompt;:</strong> &mvt:option:data_long;
-								<mvt:else>
-									<strong>&mvt:option:attr_prompt;</strong>
-								</mvt:if>
-							</p>
-							<mvt:if expr="l.settings:discount:display">
-								<mvt:foreach array="option:discounts" iterator="discount">
-									<p class="o-layout__item u-width-12 u-font-small">&mvt:discount:descrip;: &mvt:discount:formatted_discount;</p>
-								</mvt:foreach>
-							</mvt:if>
-							<mvt:if expr="l.settings:option:base_price">
-								<p class="o-layout__item u-width-6 u-font-small">Price Each: &mvt:option:formatted_base_price;</p>
-							</mvt:if>
-							<mvt:if expr="l.settings:option:subtotal_base_price">
-								<p class="o-layout__item u-width-6 u-font-small">Subtotal: &mvt:option:formatted_subtotal_base_price;</p>
-							</mvt:if>
-						</div>
-					</mvt:foreach>
-
 					<mvt:if expr="l.settings:subscriptionfields:status NE 'C'">
 						<div class="c-form-list">
 							<mvt:if expr="l.settings:subscriptionfields:productsubscriptionsettings:enabled AND l.settings:subscriptionfields:productsubscriptionsettings:can_term AND ((l.settings:subscriptionfields:productsubscriptionsettings:term_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:term_min))">
 								<div class="c-form-list__item c-form-list__item--full">
-									<label class="c-form-label u-font-tiny u-text-uppercase" for="ProductSubscriptionTerm_ID" title="Subscription Term">Term</label>
+									<label class="c-form-label u-text-medium" for="ProductSubscriptionTerm_ID" title="Subscription Term">Term:</label>
 									<span class="c-form-select">
 										<select id="ProductSubscriptionTerm_ID" class="c-form-select__dropdown c-form-input--large" data-hook="ProductSubscriptionTerm_ID" name="ProductSubscriptionTerm_ID" required>
 											<mvt:foreach iterator="productsubscriptointerm" array="subscriptionfields:productsubscriptionterms">
@@ -134,7 +128,7 @@
 								</div>
 							</mvt:if>
 							<div class="c-form-list__item c-form-list__item--full &mvte:global:SubscriptionAddress_Row;">
-								<label class="c-form-label u-font-tiny u-text-uppercase" for="Address_ID" title="Shipping Address">Shipping Address</label>
+								<label class="c-form-label u-text-medium" for="Address_ID" title="Shipping Address">Shipping Address:</label>
 								<div class="c-form-select">
 									<select id="Address_ID" class="c-form-select__dropdown c-form-input--large" data-hook="Address_ID" name="Address_ID" required>
 										<mvt:foreach iterator="address" array="customer:addresses">
@@ -148,7 +142,7 @@
 								</div>
 							</div>
 							<div class="c-form-list__item c-form-list__item--full &mvte:global:SubscriptionShipping_Row;">
-								<label class="c-form-label u-font-tiny u-text-uppercase" for="ShippingMethod" title="Shipping Method">Shipping Method</label>
+								<label class="c-form-label u-text-medium" for="ShippingMethod" title="Shipping Method">Shipping Method:</label>
 								<div class="c-form-select">
 									<select id="ShippingMethod" class="c-form-select__dropdown c-form-input--large" data-hook="ShippingMethod" name="ShippingMethod" required>
 										<mvt:if expr="l.settings:subscriptionfields:ship_id EQ 0">
@@ -169,7 +163,7 @@
 								</div>
 							</div>
 							<div class="c-form-list__item c-form-list__item--full &mvte:global:SubscriptionPaymentCard_Row;">
-								<label class="c-form-label u-font-tiny u-text-uppercase" for="PaymentCard_ID" title="Payment Method">Payment Method</label>
+								<label class="c-form-label u-text-medium" for="PaymentCard_ID" title="Payment Method">Payment Method:</label>
 								<div class="c-form-select">
 									<select id="PaymentCard_ID" class="c-form-select__dropdown c-form-input--large" data-hook="PaymentCard_ID" name="PaymentCard_ID" required>
 										<mvt:if expr="l.settings:subscriptionfields:custpc_id EQ 0">
@@ -193,33 +187,61 @@
 					</mvt:if>
 
 					<table class="o-table-borderless c-table-simple">
-						<tbody class="u-font-small u-text-uppercase">
-							<tr class="c-table-simple__row u-color-gray-30">
+						<tbody class="u-text-medium">
+							<tr class="c-table-simple__row">
 								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
 									<span>Product Price</span>
-									<strong>&mvt:item:formatted_total;</strong>
+									<span>&mvt:item:formatted_total;</span>
 								</td>
 							</tr>
+							<mvt:foreach iterator="child" array="item:children">
+								<tr class="c-table-simple__row">
+									<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
+										<div>
+											&mvt:child:name;
+											<mvt:if expr="NOT ISNULL l.settings:child:product:descrip">
+												<button class="c-button--as-text u-icon-info" data-dialog-trigger="product-charge--&mvte:child:code;"></button>
+												<div class="c-dialog" data-dialog="product-charge--&mvte:child:code;" aria-hidden="true">
+													<div class="c-dialog__overlay" tabindex="-1">
+														<div class="c-dialog__container u-width-10 u-width-8--s u-width-6--l u-width-4--xl" aria-modal="true" role="alertdialog">
+															<header class="c-dialog__header">
+																<h2 class="c-dialog__title c-heading-echo">
+																	&mvt:child:name;
+																</h2>
+																<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
+															</header>
+															<div class="c-dialog__content">
+																&mvt:child:product:descrip;
+															</div>
+														</div>
+													</div>
+												</div>
+											</mvt:if>
+										</div>
+										<div>&mvt:child:formatted_total;</div>
+									</td>
+								</tr>
+							</mvt:foreach>
 							<mvt:if expr="l.settings:discount:display">
 								<mvt:foreach array="item:discounts" iterator="discount">
-									<tr class="c-table-simple__row u-color-gray-30">
+									<tr class="c-table-simple__row">
 										<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
 											<span>&mvt:discount:descrip;</span>
-											<strong>&mvt:discount:formatted_discount;</strong>
+											<span>&mvt:discount:formatted_discount;</span>
 										</td>
 									</tr>
 								</mvt:foreach>
 							</mvt:if>
 							<mvt:foreach iterator="charge" array="subscriptionfields:charges">
-								<tr class="c-table-simple__row u-color-gray-30">
+								<tr class="c-table-simple__row">
 									<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between">
 										<span>&mvt:charge:descrip;</span>
-										<strong>&mvt:charge:formatted_disp_amt;</strong>
+										<span>&mvt:charge:formatted_disp_amt;</span>
 									</td>
 								</tr>
 							</mvt:foreach>
 							<tr class="c-table-simple__row">
-								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between c-heading-delta u-text-bold">
+								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between c-heading--subheading--small">
 									<span>Estimated Total</span>
 									<span>&mvt:subscriptionfields:formatted_display_total;</span>
 								</td>
@@ -264,23 +286,28 @@
 								}
 
 								shippingData.data.data.forEach(function (method) {
-									const originalMethod = shippingMethodSelected === method.mod_code + ':' + method.code;
+									const option = document.createElement('option');
+									const methodValue = method.mod_code + ':' + method.code;
 
-									shippingMethod.add(new Option(method.name + ' (' + method.formatted_price + ')', method.mod_code + ':' + method.code, originalMethod, originalMethod));
+									option.innerHTML = `${method.name} (${method.formatted_price})`;
+									option.value = methodValue;
+									option.selected = shippingMethodSelected === methodValue;
+
+									shippingMethod.appendChild(option);
 								});
 							}
 						};
 					</script>
 					<br>
-					<div class="o-layout u-grids-2">
+					<div>
 						<mvt:if expr="l.settings:subscriptionfields:status NE 'C' AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
-							<p class="o-layout__item">
-								<input class="c-button c-button--full c-button--huge u-bg-gray-50 u-font-small u-text-uppercase" type="submit" value="Save Changes">
+							<p>
+								<input class="c-button c-button--full" type="submit" value="Save Changes">
 							</p>
 						</mvt:if>
 						<mvt:if expr="(l.settings:subscriptionfields:status NE 'C') AND l.settings:subscriptionfields:productsubscriptionsettings:can_cancel AND ((l.settings:subscriptionfields:productsubscriptionsettings:cncl_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:cncl_min))">
-							<p class="o-layout__item" onclick="if ( !confirm( 'Are you sure you want to cancel your subscription? This action cannot be undone.\x0A\x0AContinue?' ) ) { return false; } else { document.forms.csbe_form.elements.Action.value = 'DCSB'; }">
-								<input class="c-button c-button--clear c-button--full c-button--huge u-bg-transparent u-color-gray-50 u-font-small" type="submit" value="Cancel Subscription">
+							<p onclick="if ( !confirm( 'Are you sure you want to cancel your subscription? This action cannot be undone.\x0A\x0AContinue?' ) ) { return false; } else { document.forms.csbe_form.elements.Action.value = 'DCSB'; }">
+								<input class="c-button c-button--as-link c-button--full" type="submit" value="Cancel Subscription">
 							</p>
 						</mvt:if>
 					</div>

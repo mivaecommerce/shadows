@@ -15,17 +15,17 @@
 	<meta name="format-detection" content="date=no" />
 	<meta name="format-detection" content="address=no" />
 	<meta name="format-detection" content="telephone=no" />
-	<title>Email Template</title>
-	
+	<title>&mvte:page:name;</title>
+
 
 	<style type="text/css" media="screen">
 		/* Linked Styles */
 		body { padding:0 !important; margin:0 !important; display:block !important; background:#ffffff; -webkit-text-size-adjust:none }
 		a { color:#2a68ce; text-decoration:none }
-		p { padding:0 !important; margin:0 !important } 
+		p { padding:0 !important; margin:0 !important }
 
 		/* Mobile styles */
-		@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) { 
+		@media only screen and (max-device-width: 480px), only screen and (max-width: 480px) {
 			div[class='mobile-br-5'] { height: 5px !important; }
 			div[class='mobile-br-10'] { height: 10px !important; }
 			div[class='mobile-br-15'] { height: 15px !important; }
@@ -33,9 +33,9 @@
 			div[class='mobile-br-25'] { height: 25px !important; }
 			div[class='mobile-br-30'] { height: 30px !important; }
 
-			th[class='m-td'], 
-			td[class='m-td'], 
-			div[class='hide-for-mobile'], 
+			th[class='m-td'],
+			td[class='m-td'],
+			div[class='hide-for-mobile'],
 			span[class='hide-for-mobile'] { display: none !important; width: 0 !important; height: 0 !important; font-size: 0 !important; line-height: 0 !important; min-height: 0 !important; }
 
 			span[class='mobile-block'] { display: block !important; }
@@ -49,9 +49,9 @@
 
 			table[class='mobile-shell'] { width: 100% !important; min-width: 100% !important; }
 			td[class='td'] { width: 100% !important; min-width: 100% !important; }
-			
+
 			table[class='center'] { margin: 0 auto; }
-			
+
 			td[class='column-top'],
 			th[class='column-top'],
 			td[class='column'],
@@ -62,7 +62,7 @@
 			div[class='text-header'],
 			div[class='text-footer-1'],
 			div[class='text-footer'] { text-align: center !important; }
-		} 
+		}
 	</style>
 </head>
 <body class="body" style="padding:0 !important; margin:0 !important; display:block !important; background:#ffffff; -webkit-text-size-adjust:none">
@@ -96,8 +96,7 @@
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="20">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
-</td>
+																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div></td>
 																	</tr>
 																</table>
 															</th>
@@ -110,7 +109,7 @@
 																				<br />
 																				<a href="&mvte:urls:ABUS:auto;" target="_blank" class="link-1" style="color:#7a838d; text-decoration:none"><span class="link-1" style="color:#7a838d; text-decoration:none">
 																					&mvte:store:address;<br />
-																					&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+																					&mvte:store:city;, &mvte:store:state; &mvte:store:zip;<br />
 																					&mvte:store:country;
 																				</span></a>
 																			</div>
@@ -192,8 +191,7 @@
 																		<td align="center" bgcolor="#2a68ce">
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="40"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-</td>
+																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="40"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table></td>
 																					<td bgcolor="#2a68ce">
 																						<div class="text-btn" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:18px; line-height:22px; text-align:center">
 																							<mvt:if expr="l.settings:subscription_count GT 1">
@@ -264,8 +262,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="30">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -283,8 +280,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>

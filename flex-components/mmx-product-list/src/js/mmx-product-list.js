@@ -179,6 +179,9 @@ class MMX_ProductList extends MMX_Element {
 			'empty-results-message': {
 				allowAny: true
 			},
+			'empty-results-message-source': {
+				allowAny: true
+			},
 			'show-empty-results' : {
 				isBoolean: true,
 				default: true
@@ -305,6 +308,7 @@ class MMX_ProductList extends MMX_Element {
 			'data-product-fallback-image': this.data?.fallback_product_image,
 			'data-param-prefix': this.data?.advanced?.param_prefix?.value,
 			'data-empty-results-message': this.data?.advanced?.empty_results_message?.value,
+			'data-empty-results-message-source': this.data?.advanced?.empty_results_message?.source,
 			'data-show-empty-results': this.data?.advanced?.show_empty_results?.value,
 			'data-show-category-tree': this.data?.list?.facets?.show_category_tree?.value
 		});
@@ -735,6 +739,7 @@ class MMX_ProductList extends MMX_Element {
 
 	#renderMainEmpty() {
 		const message = this.getPropValue('empty-results-message');
+		const source = this.getPropValue('empty-results-message-source');
 
 		if (MMX.valueIsEmpty(message)) {
 			return '';
@@ -742,7 +747,7 @@ class MMX_ProductList extends MMX_Element {
 
 		return /*html*/`
 			<div part="empty" class="mmx-product-list__empty">
-				<mmx-message data-style="info">${MMX.encodeEntities(message)}</mmx-message>
+				<mmx-message data-style="info">${source === 'markdown' ? message : MMX.encodeEntities(message)}</mmx-message>
 			</div>
 		`;
 	}

@@ -1,8 +1,8 @@
 {
     "toe_subscriptions": {
-        "advanced": 0,
-        "b_height": 75,
-        "b_width": 75,
+        "advanced": 1,
+        "b_height": 200,
+        "b_width": 200,
         "constrain": "B",
         "display": {
             "discounts": 1,
@@ -11,6 +11,9 @@
             "shipping": 1
         },
         "groups": 1,
+        "imagetypes": [
+            "main"
+        ],
         "lineitemcoupons": 0,
         "lineitemdiscounts": 0,
         "payments": 1,

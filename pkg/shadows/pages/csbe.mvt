@@ -16,16 +16,6 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta u-text-bold u-text-uppercase">
-				Edit Subscription<br>
-				<span class="c-heading--subheading">&mvte:subscriptionfields:productsubscriptionterm:descrip;</span>
-			</h1>
-			<hr class="c-keyline">
-		</div>
-	</section>
-	
-	<section class="o-layout">
-		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -33,13 +23,17 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
+			<h1 class="c-heading-delta">
+				Edit Subscription
+			</h1>
+			<hr class="c-keyline">
 			<mvt:item name="subscriptionfields" />
 		</div>
 		<aside class="o-layout__item u-width-12 u-width-3--l">
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

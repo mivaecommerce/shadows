@@ -135,7 +135,7 @@ const Update_Volume_Pricing = function (priceData) {
 			else {
 				quantityCell.innerText = entry.low + '+';
 			}
-			priceCell.innerText = entry.formatted_price;
+			priceCell.innerHTML = entry.formatted_price;
 			pricingRow.append(quantityCell, priceCell);
 			tableBody.append(pricingRow);
 		});
@@ -281,7 +281,7 @@ const Update_Volume_Pricing = function (priceData) {
 			else {
 				quantityCell.innerText = entry.low + '+';
 			}
-			priceCell.innerText = entry.formatted_price;
+			priceCell.innerHTML = entry.formatted_price;
 			pricingRow.append(quantityCell, priceCell);
 			tableBody.append(pricingRow);
 		});

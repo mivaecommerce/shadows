@@ -339,7 +339,8 @@ const miniBasket = (document => {
 
 		if (mivaJS.miniBasket.use && mivaJS.miniBasket.closeOnEsc) {
 			window.addEventListener('keydown', event => {
-				let escKey = (event.key === 'Escape');
+				const escKey = (event.key === 'Escape');
+				const openDialog = document.querySelector('[data-dialog][aria-hidden=false]');
 
 				if (event.defaultPrevented) {
 					return;
@@ -349,11 +350,13 @@ const miniBasket = (document => {
 					return;
 				}
 
-				if (escKey) {
-					if (mbElement.classList.contains('x-mini-basket--open')) {
-						event.preventDefault();
-						toggleMenu(event, 'close');
-					}
+				if (openDialog) {
+					return;
+				}
+
+				if (mbElement.classList.contains('x-mini-basket--open') ) {
+					event.preventDefault();
+					toggleMenu(event, 'close');
 				}
 			}, true);
 		}

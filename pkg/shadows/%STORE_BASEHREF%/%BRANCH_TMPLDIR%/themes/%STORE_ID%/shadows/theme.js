@@ -10,6 +10,7 @@ const themeFunctionality = {
 		 */
 		let mvtInputWraps = document.querySelectorAll('[data-hook~="mvt-input"]');
 		let mvtSelectWraps = document.querySelectorAll('[data-hook~="mvt-select"]');
+		let mvtAutoWraps = document.querySelectorAll('[data-hook~="mvt-auto"]');
 		let styleMVT = function styleMVT(element, input) {
 			let mvtItems = element.querySelectorAll(input);
 			let attr = {
@@ -40,8 +41,31 @@ const themeFunctionality = {
 			styleMVT(element, 'input');
 		});
 
-
 		mvtSelectWraps.forEach(element => {
+			styleMVT(element, 'select');
+		});
+
+		mvtAutoWraps.forEach(element => {
+			const selects = element.querySelectorAll('select');
+
+			if (!selects.length) {
+				element.dataset.mvtClasslist = element.dataset.mvtClasslist ?? 'c-form-input';
+				styleMVT(element, 'input:not([type="radio"], [type="checkbox"])');
+				return;
+			}
+
+			selects.forEach(select => {
+				const wrapDiv = document.createElement('div');
+				wrapDiv.classList.add('c-form-select');
+				select.parentNode.insertBefore(wrapDiv, select);
+				wrapDiv.appendChild(select);
+
+				if (wrapDiv.nextSibling.nodeType === Node.TEXT_NODE) {
+					wrapDiv.nextSibling.remove();
+				}
+			});
+
+			element.dataset.mvtClasslist = element.dataset.mvtClasslist ?? 'c-form-select__dropdown';
 			styleMVT(element, 'select');
 		});
 
@@ -360,33 +384,35 @@ const themeFunctionality = {
 		 * Added functionality to help style the default Miva output payment
 		 * fields.
 		 */
-		document.querySelectorAll('[data-hook="mvt-input"]').forEach(mvtInput => {
-			let dataHook = mvtInput.getAttribute('data-datahook');
+		document.querySelectorAll('[data-hook~="mvt-input"]').forEach(mvtInput => {
+			const input = mvtInput.querySelector('input');
+			const dataHook = mvtInput.getAttribute('data-datahook');
+			const inputmode = mvtInput.getAttribute('data-inputmode');
+			const pattern = mvtInput.getAttribute('data-pattern');
+			const placeholder = mvtInput.getAttribute('data-placeholder');
 
 			if (dataHook) {
-				mvtInput.querySelector('input').setAttribute('data-hook', dataHook);
+				input.setAttribute('data-hook', dataHook);
 			}
-		});
 
-		document.querySelectorAll('[data-hook="mvt-select"]').forEach(mvtSelect => {
-			mvtSelect.querySelectorAll('select').forEach(select => {
-				let wrapDiv = document.createElement('div');
+			if (inputmode) {
+				input.setAttribute('inputmode', inputmode);
+			}
 
-				wrapDiv.classList.add('c-form-select');
-				select.parentNode.insertBefore(wrapDiv, select);
-				wrapDiv.appendChild(select);
+			if (pattern) {
+				input.setAttribute('pattern', pattern);
+			}
 
-				if (wrapDiv.nextSibling.nodeType === 3) {
-					wrapDiv.nextSibling.remove();
-				}
-			});
+			if (placeholder) {
+				input.setAttribute('placeholder', placeholder);
+			}
 		});
 
 		/**
 		 * Credit Card Detection
 		 */
 		(() => {
-			let creditCardInput = document.querySelector('[data-hook="detect-card"]');
+			let creditCardInput = document.querySelector('[data-hook~="detect-card"]');
 
 			if (creditCardInput !== null) {
 				['input', 'paste'].forEach(event => {
@@ -411,6 +437,52 @@ const themeFunctionality = {
 					});
 				});
 			}
+		})();
+
+		/**
+		 * Expiration Select One
+		 */
+		(() => {
+			const container = document.querySelector('[data-hook~="exp-select-one"]');
+
+			if (!container) {
+				return;
+			}
+
+			const monthSelectOne = container.querySelector('select:has(option[value="12"]) option[value=""]');
+			if (monthSelectOne) {
+				monthSelectOne.innerText = 'MM';
+			}
+
+			const yearSelectOne = container.querySelector(`select:has(option[value="${new Date().getFullYear()}"]) option[value=""]`);
+			if (yearSelectOne) {
+				yearSelectOne.innerText = 'YYYY';
+			}
+		})();
+
+		/**
+		 * CVV Message Mover
+		 */
+		(() => {
+			const container = document.querySelector('[data-hook~="cvv-message-mover"]');
+
+			if (!container) {
+				return;
+			}
+
+			const mvtInput = container.querySelector('[data-hook="mvt-input"][data-mvt-id="cvv"]');
+			const cvvDialog = container.querySelector('.c-dialog__content');
+			const cvvMessage = document.createElement('p');
+
+			Array.from(mvtInput.childNodes).forEach(node => {
+				if (node.id === 'cvv') {
+					return;
+				}
+
+				cvvMessage.appendChild(node);
+			});
+
+			cvvDialog.prepend(cvvMessage);
 		})();
 	},
     jsINVC() {

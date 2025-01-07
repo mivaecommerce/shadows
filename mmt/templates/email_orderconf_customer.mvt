@@ -15,7 +15,7 @@
 	<meta name="format-detection" content="date=no" />
 	<meta name="format-detection" content="address=no" />
 	<meta name="format-detection" content="telephone=no" />
-	<title>Email Template</title>
+	<title>&mvte:page:name;</title>
 
 
 	<style type="text/css" media="screen">
@@ -96,8 +96,7 @@
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="20">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
-</td>
+																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div></td>
 																	</tr>
 																</table>
 															</th>
@@ -219,8 +218,7 @@
 																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -286,8 +284,7 @@
 																		<td align="center" bgcolor="#2a68ce">
 																			<table border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="70"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
-</td>
+																					<td class="img" style="font-size:0pt; line-height:0pt; text-align:left" width="70"><table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="50" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table></td>
 																					<td bgcolor="#2a68ce">
 																						<div class="text-btn-1" style="color:#ffffff; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:20px; text-align:center">
 																							<a href="&mvte:urls:ORDS:secure_sep;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:order:bill_email;&amp;Order_BillZip=&mvta:order:bill_zip;" target="_blank" class="link-white" style="color:#ffffff; text-decoration:none"><strong class="link-white" style="color:#ffffff; text-decoration:none">Check Order Status</strong></a>
@@ -347,8 +344,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="30">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -366,8 +362,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>

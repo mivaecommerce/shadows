@@ -15,7 +15,7 @@
 	<meta name="format-detection" content="date=no" />
 	<meta name="format-detection" content="address=no" />
 	<meta name="format-detection" content="telephone=no" />
-	<title>Email Template</title>
+	<title>&mvte:page:name;</title>
 
 
 	<style type="text/css" media="screen">
@@ -96,8 +96,7 @@
 															<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" width="20">
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div>
-</td>
+																		<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-15"></div></td>
 																	</tr>
 																</table>
 															</th>
@@ -219,8 +218,7 @@
 																		<th class="column" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; Margin:0" valign="top" width="10">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-30"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -306,8 +304,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="30">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>
@@ -325,8 +322,7 @@
 																		<th class="column-top" style="font-size:0pt; line-height:0pt; padding:0; margin:0; font-weight:normal; vertical-align:top; Margin:0" valign="top" width="20">
 																			<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																				<tr>
-																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div>
-</td>
+																					<td><div style="font-size:0pt; line-height:0pt;" class="mobile-br-5"></div></td>
 																				</tr>
 																			</table>
 																		</th>

@@ -109,7 +109,7 @@
 																				<br />
 																				<a href="&mvte:urls:ABUS:auto;" target="_blank" class="link-1" style="color:#7a838d; text-decoration:none"><span class="link-1" style="color:#7a838d; text-decoration:none">
 																					&mvte:store:address;<br />
-																					&mvte:store:city;, &mvte:store:state &mvte:store:zip;<br />
+																					&mvte:store:city;, &mvte:store:state; &mvte:store:zip;<br />
 																					&mvte:store:country;
 																				</span></a>
 																			</div>
@@ -356,6 +356,11 @@
 																		</tr>
 
 																		<mvt:foreach iterator="group" array="shipment_info:groups">
+																			<mvt:assign name="l.settings:group:parent_index" value="miva_array_search( l.settings:shipment_info:groups, 1, l.group, 'l.group:group_id EQ l.settings:group:parent_id' )" />
+																			<mvt:if expr="l.settings:group:parent_id GT 0 AND l.settings:group:parent_index GT 0">
+																				<mvt:comment>Skip child items when the parent is also displaying</mvt:comment>
+																				<mvt:foreachcontinue />
+																			</mvt:if>
 																			<tr>
 																				<td valign="top">
 																					<table width="100%" border="0" cellspacing="0" cellpadding="0" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%"><tr><td height="15" class="spacer" style="font-size:0pt; line-height:0pt; text-align:center; width:100%; min-width:100%">&nbsp;</td></tr></table>
@@ -385,19 +390,29 @@
 																									<tr>
 																										<td>
 																											<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">&mvt:group:name;</div>
-																											<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">&mvt:group:code;</div>
-
 																											<mvt:foreach iterator="option" array="group:options">
-																												<div class="text-1" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:16px; line-height:24px; text-align:left">
+																												<mvt:if expr="ISNULL l.settings:option:attr_prompt">
+																													<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
+																												</mvt:if>
+																												<mvt:if expr="ISNULL l.settings:option:opt_prompt">
+																													<mvt:assign name="l.settings:option:opt_prompt" value="l.settings:option:opt_code" />
+																												</mvt:if>
+																												<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
 																													<mvt:if expr="l.settings:option:option_id">
-																														&mvt:option:attr_code;: &mvt:option:opt_code;
+																														&mvt:option:attr_prompt;: &mvt:option:opt_prompt;
 																													<mvt:elseif expr="NOT ISNULL l.settings:option:data">
-																														&mvt:option:attr_code;: &mvt:option:data;
+																														&mvt:option:attr_prompt;: &mvt:option:data;
 																													<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
-																														&mvt:option:attr_code;: &mvt:option:data_long;
+																														&mvt:option:attr_prompt;: &mvt:option:data_long;
 																													<mvt:else>
-																														&mvt:option:attr_code;
+																														&mvt:option:attr_prompt;
 																													</mvt:if>
+																												</div>
+																											</mvt:foreach>
+																											<mvt:assign name="l.settings:group:child_count" value="miva_array_filter_ref( l.settings:shipment_info:groups, 1, l.group, 'l.group:parent_id EQ l.settings:group:group_id', l.settings:group:children )" />
+																											<mvt:foreach iterator="child" array="group:children">
+																												<div class="text-3" style="color:#7a838d; font-family:Arial, sans-serif; min-width:auto !important; font-size:14px; line-height:22px; text-align:left">
+																													&mvt:child:name;
 																												</div>
 																											</mvt:foreach>
 																										</td>
