@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.11.02",
+	"version": "10.11.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -1162,6 +1162,15 @@
 							]
 						}
 					}
+				},
+				{
+					"code": "nav_button_size",
+					"max": 50,
+					"placeholder": 24,
+					"prompt": "Navigation Button Size",
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
 				}
 			],
 			"type": "group"
@@ -1175,6 +1184,9 @@
 				},
 				"delay": {
 					"value": 5
+				},
+				"nav_button_size": {
+					"value": 24
 				},
 				"pause_on_hover": {
 					"value": 1
@@ -1441,7 +1453,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-nxo6ovI02GboQtFiqkEVSm9gBykylSxdWq+YoNqSrwY= sha384-nmfWFMndNMASqc42U6WxnqTXyalktj/pBjf87KvE/I9jhqRzSysVSsGA7ONz2s+S sha512-L37WYnEmPs3VZ00KE5/gaQ0HLUdcVWVFbYB9ESdSZcpvKhzvuLSrDA9nafVlGtgh9td9GihTuqSFT5hw/KqDOw=="
+					"value": "sha256-Ri32J7GcxmBHpbPghfcIk5wGgIqUci51SG/l/Eq/eP8= sha384-TtOoq3uMVGq66ZXKe0V80F4JESLaBiN6GuQyc3lOvmDUPDS7oGeq2EQs5r8Y3kRe sha512-4IUZ1yrPjgWYWk0POE/BvuxH2Qv8+xMESu+YVVrWOdUnkqItk4kR+7M1RkGPsKfENejsU/EeQHz+CjbMtfhDnA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1469,7 +1481,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Qds7sMThnlLO+ncwACEklEtJf9bj/1ObxSgR+JkjSyE= sha384-t3Snuv6SrEwHv0qiDv9y1LDjdorZJZNNecBhFdtqoCpv/Spm0hKzn9SUaav7/cOm sha512-t4fO5x/FShAQFQU1IXm3AHYEFiBum71E4xMUVzuBiYAyFfwJYgTnT5tTPXDm9Yf1Po7Xj+sEUH/Jb+YtQbX2UA=="
+					"value": "sha256-kDEX+6LNc7CWy2E+RGgMFGlIqnnSL7rO1yo6bdiEnT8= sha384-WpNvT+T9AinvBPI8VNFot1Hoc8xE8jVV5s1siW/HUATtq9dKfSEhjSWLmvbsfUit sha512-FKECaa/GUpNt6FyYx3DTWBTxIWzbHtOoIq7EGke/ZFaRZSOHTuTXLky4Mub4/sQTo64IOrWgkJiyXiwGm8NJWA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1479,9 +1491,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.02",
-		"mmx-button": "=10.11.02",
-		"mmx-hero": "=10.11.02",
-		"mmx-text": "=10.11.02"
+		"mmx-base": "=10.11.03",
+		"mmx-button": "=10.11.03",
+		"mmx-hero": "=10.11.03",
+		"mmx-text": "=10.11.03"
 	}
 }

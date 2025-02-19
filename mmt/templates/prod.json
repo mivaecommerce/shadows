@@ -27,8 +27,8 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1102,
-                    "settings_version": "10.11.02"
+                    "flex_version": 10.1103,
+                    "settings_version": "10.11.03"
                 },
                 "advanced": {
                     "empty_results_message": {

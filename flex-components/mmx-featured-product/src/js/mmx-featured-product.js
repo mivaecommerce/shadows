@@ -227,6 +227,11 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'fragment-code': {
 				allowAny: true,
 				default: null
+			},
+			'nav-button-size': {
+				allowAny: true,
+				isNumeric: true,
+				default: 10
 			}
 		};
 	}
@@ -471,6 +476,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 				data-size="${MMX.encodeEntities(this.getPropValue('desktop-image-size'))}"
 				data-nav-position="under"
 				data-nav-style="minimal"
+				data-nav-button-size="${MMX.encodeEntities(this.getPropValue('nav-button-size'))}"
 			>
 				${this.images?.map(image => this.renderProductImage(image)).join('') ?? ''}
 			</mmx-hero-slider>
@@ -484,6 +490,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 				part="image-slide"
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(this.product.url)}"
+				data-title="View ${MMX.encodeEntities(this.product.name)}"
 			>
 				${this.renderProductImagePictureTag(image)}
 			</mmx-hero>
@@ -498,7 +505,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<picture slot="image">
 				${this.renderProductMobileImage(image)}
-				<img src="${MMX.encodeEntities(image.default)}">
+				<img src="${MMX.encodeEntities(image.default)}" alt="">
 			</picture>
 		`;
 	}
@@ -1338,6 +1345,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-fallback-product-image-default': this.data?.fallback_product_image_default,
 			'data-fallback-product-image-mobile': this.data?.fallback_product_image_mobile,
 			'data-fragment-code': this.data?.advanced?.product?.fragment_code?.value,
+			'data-nav-button-size': this.data?.advanced?.product?.nav_button_size?.value ?? '',
 			'data-product-code': this.data?.product?.product?.product_code // this should always be last so that loadProduct() is called once the previous attribute-values/props are set
 		});
 	}

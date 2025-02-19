@@ -27,6 +27,7 @@
 	data-autoplay="&mvte:instance:advanced:controls:autoplay:value;"
 	data-pause-on-hover="&mvte:instance:advanced:controls:pause_on_hover:value;"
 	data-size="&mvte:instance:slides:image_size:value;"
+	data-nav-button-size="&mvte:instance:advanced:controls:nav_button_size:value;"
 >
 	<mvt:foreach iterator="hero_image" array="instance:slides:hero_images:children">
 		<mvt:comment>Generate optional Hero attribute</mvt:comment>

@@ -3,6 +3,8 @@
    ========================================================================== */
 :host {
 	--mmx-hero-slider__per-page: var(--mmx-hero-slider__per-page--mobile);
+	--mmx-hero-slider__nav-button-size: var(--mmx-min-target-size);
+	--mmx-hero-slider__button-padding: calc(var(--mmx-hero-slider__nav-button-size) / 2);
 }
 
 /* Responsive Slide Widths for Tablet & Desktop
@@ -193,9 +195,8 @@
 .mmx-hero-slider__slider-navigation {
 	display: none;
 	left: 50%;
-	height: 22px;
-	padding: 0 16px;
-	border-radius: 11px;
+	padding: var(--mmx-hero-slider__button-padding);
+	border-radius: calc(var(--mmx-hero-slider__nav-button-size) + (2 * var(--mmx-hero-slider__button-padding)));
 	align-items: center;
 	justify-content: space-between;
 	transform: translateX(-50%);
@@ -234,8 +235,8 @@
 	position: relative;
 	display: inline-block;
 	margin-left: 16px;
-	width: 10px;
-	height: 10px;
+	width: var(--mmx-hero-slider__nav-button-size);
+	height: var(--mmx-hero-slider__nav-button-size);
 	padding: 0;
 	border-radius: 50%;
 	cursor: pointer;

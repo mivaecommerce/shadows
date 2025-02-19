@@ -270,6 +270,7 @@ class MMX_ProductCard extends MMX_Card {
 				slot="main"
 				part="image"
 				src="${MMX.encodeEntities(resizedImage.url)}"
+				alt=""
 				style="
 					object-fit: ${MMX.encodeEntities(fit)};
 					aspect-ratio: ${MMX.encodeEntities(width + ' / ' + height)};

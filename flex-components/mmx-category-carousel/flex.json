@@ -2,7 +2,7 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "10.11.02",
+	"version": "10.11.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
@@ -895,7 +895,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-BMjsSsfxh/EPjx8C2lbMlR5gD2xAN+NZnG2o1GTJ724= sha384-Gh5iZGiXShaM086hRPvASzV+cPs6ohKI9bZMHt9xnAbnwyVa/wT9jwVQRaxhxBXr sha512-gqeRyt2SFlnFUVBvExxlPqIvYkRkoBC0gpY69Tf8ON9Ct+tzPdea8fWvujPwBBgQTZrRgEpJvCpf9qP+GAFXrg=="
+					"value": "sha256-icdj+h7o0Tx5lsmCLlenwLTxmCFHdbLdW7LA16zjLPQ= sha384-xmCjS66bjHticD21c2ApPEMTEg8pF1rl4Y3OatcQhfR3jxlNzTO57rLUDmufeyQV sha512-GvS+QijnTvniHnBvgL1ubBwIrLvGAtqo+GTwx2wGe/srwXAh3+5VxjwUqww5zqbLnP7WZ92rvunJF7/dXpsP8A=="
 				},
 				{
 					"name": "crossorigin",
@@ -905,10 +905,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.02",
-		"mmx-button": "=10.11.02",
-		"mmx-hero": "=10.11.02",
-		"mmx-hero-slider": "=10.11.02",
-		"mmx-text": "=10.11.02"
+		"mmx-base": "=10.11.03",
+		"mmx-button": "=10.11.03",
+		"mmx-hero": "=10.11.03",
+		"mmx-hero-slider": "=10.11.03",
+		"mmx-text": "=10.11.03"
 	}
 }

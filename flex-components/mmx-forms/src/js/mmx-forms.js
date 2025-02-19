@@ -346,8 +346,8 @@ class MMX_FormInputRange extends MMX_Element {
 					<div part="track" class="mmx-form-input-range__track">
 						<div part="slider-background" class="mmx-form-input-range__slider-background"></div>
 						<div part="slider-selection" class="mmx-form-input-range__slider-selection"></div>
-						<button id="slider-low" part="slider-button slider-low" type="button" class="mmx-form-input-range__slider-button mmx-form-input-range__slider-low"></button>
-						<button id="slider-high" part="slider-button slider-high" type="button" class="mmx-form-input-range__slider-button mmx-form-input-range__slider-high"></button>
+						<button id="slider-low" title="Low" part="slider-button slider-low" type="button" class="mmx-form-input-range__slider-button mmx-form-input-range__slider-low"></button>
+						<button id="slider-high" title="High" part="slider-button slider-high" type="button" class="mmx-form-input-range__slider-button mmx-form-input-range__slider-high"></button>
 					</div>
 				</div>
 				<div part="controls" class="mmx-form-input-range__controls">

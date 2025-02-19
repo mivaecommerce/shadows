@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.11.02</Version>
-	<MinimumMerchantVersion>10.11.02</MinimumMerchantVersion>
+	<Version>10.11.03</Version>
+	<MinimumMerchantVersion>10.11.03</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.11.02
+	<Description>Shadows ReadyTheme v10.11.03
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -3410,7 +3410,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.11.02';
+	mivaJS.ReadyThemeVersion = '10.11.03';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

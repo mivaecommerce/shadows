@@ -87,6 +87,11 @@ class MMX_HeroSlider extends MMX_Element {
 			'sync-heights': {
 				allowAny: true,
 				default: ''
+			},
+			'nav-button-size': {
+				allowAny: true,
+				isNumeric: true,
+				default: 10
 			}
 		};
 	}
@@ -190,11 +195,13 @@ class MMX_HeroSlider extends MMX_Element {
 
 	styles() {
 		const perPageBreakpoints = this.getPerPageBreakpoints();
+		const buttonSize = MMX.coerceNumber(this.getPropValue('nav-button-size'), 10);
 		return /*css*/`
 			:host {
 				--mmx-hero-slider__per-page--mobile: ${perPageBreakpoints.mobile};
 				--mmx-hero-slider__per-page--tablet: ${perPageBreakpoints.tablet};
 				--mmx-hero-slider__per-page--desktop: ${perPageBreakpoints.desktop};
+				--mmx-hero-slider__nav-button-size: ${buttonSize}px;
 			}
 		`;
 	}
@@ -506,8 +513,7 @@ class MMX_HeroSlider extends MMX_Element {
 		// Update each slide
 		state.slides.forEach((slide, i) => {
 			const isOnPage = this.slideIndexIsOnPage(i, state);
-			slide.setAttribute('aria-hidden', !isOnPage);
-			slide.setAttribute('tabindex', isOnPage ? '' : -1);
+			MMX.setBooleanAttribute(slide, 'inert', !isOnPage);
 			slide.style.width = state.slideWidth;
 			slide.style.transform = state.slideTransform;
 			slide.style.paddingLeft = state.slidePaddingLeft;

@@ -43,7 +43,7 @@
 .mmx-form-fieldset {
 	border: none;
 	display: grid;
-	gap: calc(var(--mmx-form__size) * 0.25);
+	gap: calc(var(--mmx-form__size) * 0.5);
 	margin: 0;
 	padding: 0;
 }

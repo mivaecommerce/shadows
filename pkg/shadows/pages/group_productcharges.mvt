@@ -1,18 +1,9 @@
-<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:total" />
-<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:subtotal_base_price_comprehensive" />
-<mvt:foreach iterator="child" array="group:children">
-	<mvt:assign name="l.settings:group:totals:parent_child" value="l.settings:group:totals:parent_child + l.settings:child:total" />
-	<mvt:assign name="l.settings:group:totals:parent_child_original" value="l.settings:group:totals:parent_child_original + l.settings:child:subtotal_base_price_comprehensive" />
-</mvt:foreach>
-<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child )" />
-<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:group:totals:formatted_parent_child_original" value="CurrencyModule_AddFormatting( g.Store:currncy_mod, l.settings:group:totals:parent_child_original )" />
-
 <div class="t-product-charges t-product-charges--group">
 	<div class="t-product-charge__totals">
-		<mvt:if expr="l.settings:group:totals:parent_child_original GT l.settings:group:totals:parent_child">
-			<s class="t-product-charge__amount-original">&mvt:group:totals:formatted_parent_child_original;</s>
+		<mvt:if expr="l.settings:group:subtotal_base_price_comprehensive_with_children GT l.settings:group:total_with_children">
+			<s class="t-product-charge__amount-original">&mvt:group:formatted_subtotal_base_price_comprehensive_with_children;</s>
 		</mvt:if>
-		<span class="t-product-charge__amount-total">&mvt:group:totals:formatted_parent_child;</span>
+		<span class="t-product-charge__amount-total">&mvt:group:formatted_total_with_children;</span>
 	</div>
 	<mvt:if expr="l.settings:group:child_count GT 0">
 		<div class="t-product-charge__list">

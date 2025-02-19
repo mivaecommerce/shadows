@@ -842,6 +842,7 @@ class MMX_ProductList extends MMX_Element {
 						name="Per_Page"
 						class="mmx-form-select__dropdown"
 						part="per-page-select-dropdown"
+						title="Products Per Page Options"
 						required
 					>
 						${this.#perPageOptions.map(option => this.#renderPerPageOption(option)).join('')}
@@ -901,6 +902,7 @@ class MMX_ProductList extends MMX_Element {
 						name="Sort_By"
 						class="mmx-form-select__dropdown"
 						part="sort-by-select-dropdown"
+						title="Sort By Options"
 						required
 					>
 						${this.#sortByOptions.map(option => this.#renderSortByOption(option)).join('')}
@@ -1310,6 +1312,7 @@ class MMX_ProductList extends MMX_Element {
 					name="Offset"
 					class="mmx-form-select__dropdown"
 					part="pagination-select-dropdown"
+					title="Pagination Current Page"
 					required
 				>
 					${this.#renderPaginationOptions()}
@@ -1845,6 +1848,7 @@ class MMX_ProductList extends MMX_Element {
 					name="${MMX.encodeEntities(facet.code)}"
 					class="mmx-form-select__dropdown"
 					part="facet-values facet-values-select-dropdown"
+					title="${MMX.encodeEntities(facet.name)} Facet Options"
 				>
 					<option value="">&lt;Select One&gt;</option>
 					${facet?.values?.map(facetValue => this.#renderFacetValuesSelectOption({facet, facetValue})).join('')}
@@ -1863,7 +1867,7 @@ class MMX_ProductList extends MMX_Element {
 	#renderFacetValuesNested(facet) {
 		return /*html*/`
 			<div
-				class="mmx-product-list__facet-values"
+				class="mmx-product-list__facet-values mmx-form-fieldset"
 				part="facet-values facet-values-nested"
 			>
 				${this.#renderFacetValuesNestedApplied({facet})}

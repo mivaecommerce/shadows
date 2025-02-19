@@ -359,6 +359,7 @@
 	--mmx-spacing-l: 32px;
 	--mmx-spacing-xl: 64px;
 	--mmx-spacing-sequence: 40px;
+	--mmx-min-target-size: 24px;
 }
 
 

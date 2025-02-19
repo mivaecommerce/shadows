@@ -1486,6 +1486,7 @@ class MMX_CombinationFacetFields extends MMX_Element {
 					part="dropdown-select"
 					class="mmx-combination-facet__dropdown-select"
 					data-field-code="${MMX.encodeEntities(field.code)}"
+					title="${MMX.encodeEntities(field.name)}"
 					${required}
 					${disabled}
 				>

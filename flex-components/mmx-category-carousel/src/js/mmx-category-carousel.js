@@ -152,6 +152,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				data-pause-on-hover="${this.getPropValue('pause-on-hover')}"
 				data-arrow-style="${this.getPropValue('arrow-style')}"
 				data-nav-position="${this.getPropValue('nav-position')}"
+				data-nav-button-size="${this.getPropValue('nav-button-size')}"
 				data-wrap="${this.getPropValue('wrap')}"
 			>
 				${children.map(child => this.renderCategory(child)).join('')}

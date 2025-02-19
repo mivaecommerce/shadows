@@ -91,6 +91,10 @@ class MMX_Hero extends MMX_Element {
 				default: null,
 				allowAny: true
 			},
+			title: {
+				default: null,
+				allowAny: true
+			},
 			'overlay-bg': {
 				options: [
 					'linear-gradient',
@@ -293,6 +297,7 @@ class MMX_Hero extends MMX_Element {
 				part="wrapper theme-${this.getPropValue('content-theme')}"
 				${this.renderHref()}
 				${this.renderTarget()}
+				${this.renderTitle()}
 				class="
 					mmx-hero
 					mmx-hero--size-method--${this.getSizeMethod()}
@@ -354,6 +359,11 @@ class MMX_Hero extends MMX_Element {
 	renderTarget() {
 		const target = this.getPropValue('target');
 		return target ? `target="${MMX.encodeEntities(target)}"` : '';
+	}
+
+	renderTitle() {
+		const title = this.getPropValue('title');
+		return title ? `title="${MMX.encodeEntities(title)}"` : '';
 	}
 
 	slottedImage() {

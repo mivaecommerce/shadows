@@ -235,6 +235,7 @@ class MMX_ProductCarousel extends MMX_Element {
 				data-pause-on-hover="${this.getPropValue('pause-on-hover')}"
 				data-arrow-style="${this.getPropValue('arrow-style')}"
 				data-nav-position="${this.getPropValue('nav-position')}"
+				data-nav-button-size="${this.getPropValue('nav-button-size')}"
 				data-sync-heights="${this.getPropValue('sync-heights')}"
 				data-wrap="${this.getPropValue('wrap')}"
 			>
