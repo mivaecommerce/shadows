@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "Helvetica, sans-serif",
+    "name": "Helvetica",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

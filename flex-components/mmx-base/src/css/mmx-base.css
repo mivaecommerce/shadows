@@ -360,6 +360,11 @@
 	--mmx-spacing-xl: 64px;
 	--mmx-spacing-sequence: 40px;
 	--mmx-min-target-size: 24px;
+
+	/**
+	 * Layout
+	 */
+	--mmx-site-wrapper-width: 100rem;
 }
 
 
@@ -552,7 +557,13 @@ mmx-accordion:not(:defined),
 mmx-message:not(:defined),
 mmx-product-list:not(:defined),
 mmx-card:not(:defined),
-mmx-product-card:not(:defined) {
+mmx-product-card:not(:defined),
+mmx-product-details:not(:defined),
+mmx-tabs:not(:defined),
+mmx-tab:not(:defined),
+mmx-tab-panel:not(:defined),
+mmx-image-gallery:not(:defined),
+mmx-dialog:not(:defined) {
 	visibility: hidden;
 }
 
@@ -569,12 +580,18 @@ mmx-text,
 mmx-quick-order,
 mmx-combination-facet,
 mmx-accordion,
-mmx-product-list {
+mmx-product-list,
+mmx-product-details,
+mmx-tabs,
+mmx-tab,
+mmx-tab-panel,
+mmx-image-gallery {
 	display: block;
 }
 
 mmx-button,
-mmx-icon {
+mmx-icon,
+mmx-dialog {
 	display: inline-block;
 }
 

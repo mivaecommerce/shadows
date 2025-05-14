@@ -23,4 +23,17 @@
 	<script type="application/json">
 		<mvt:eval expr="miva_json_encode( l.settings:instance, '')" />
 	</script>
+
+	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:product:button:button_text:textsettings:fields:normal:button_theme:stylesheet">	<mvt:eval expr="l.settings:instance:advanced:product:button:button_text:textsettings:fields:normal:button_theme:stylesheet" />	</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:text:product_name:typography_theme:stylesheet">											<mvt:eval expr="l.settings:instance:text:product_name:typography_theme:stylesheet" />											</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:text:subheading:text:textsettings:fields:normal:typography_theme:stylesheet">				<mvt:eval expr="l.settings:instance:text:subheading:text:textsettings:fields:normal:typography_theme:stylesheet" />				</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:text:description:typography_theme:stylesheet">												<mvt:eval expr="l.settings:instance:text:description:typography_theme:stylesheet" />											</mvt:if>
+	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+	<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+		<template data-theme-stylesheet>
+			<mvt:eval expr="l.theme_stylesheet" />
+		</template>
+	</mvt:if>
 </mmx-featured-product>

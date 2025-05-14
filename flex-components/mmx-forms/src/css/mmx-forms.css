@@ -348,3 +348,71 @@
 .mmx-form-input-range__input-high:focus-visible + .mmx-form-input-range__input-label-high {
 	display: none;
 }
+
+/* Control: Input Quantity */
+.mmx-form-input-quantity {
+	border-radius: calc(var(--mmx-form__size) * 0.25);
+	border: 1px solid var(--mmx-color-input-border);
+	box-shadow: 0 0 0 0 rgba(var(--mmx-color-black), 0.2);
+	color: var(--mmx-color-input-color);
+	display: grid;
+	grid-auto-flow: row;
+	grid-template-columns: repeat(3, 1fr);
+	padding: 0;
+	transition: box-shadow 0.25s ease, border-color 0.25s ease;
+}
+
+.mmx-form-input-quantity__button {
+	background: transparent;
+	border-radius: calc(var(--mmx-form__size) * 0.25);
+}
+
+.mmx-form-input-quantity__button:hover:not([disabled]) {
+	border: 1px solid var(--mmx-color-input-border);
+}
+
+.mmx-form-input-quantity__control {
+	border: 1px solid transparent;
+	background-color: var(--mmx-color-input-background);
+	cursor: pointer;
+	font-family: var(--mmx-font-family-1);
+	position: relative;
+	width: 100%;
+	text-align: center;
+}
+
+.mmx-form-input-quantity__control[disabled] {
+	cursor: not-allowed;
+}
+
+.mmx-form-input-quantity__input::-webkit-outer-spin-button,
+.mmx-form-input-quantity__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.mmx-form-input-quantity__input[type=number] {
+  -moz-appearance: textfield;
+}
+
+/* Input Quantity: Sizes
+   =========================================== */
+.mmx-form-input-quantity__size--xs .mmx-form-input-quantity__control {
+	font-size: calc(var(--mmx-form__size) * 0.7);
+	padding: calc(var(--mmx-form__size) * 0.75) 0;
+}
+
+.mmx-form-input-quantity__size--s .mmx-form-input-quantity__control{
+	font-size: calc(var(--mmx-form__size) * 0.75);
+	padding: calc(var(--mmx-form__size) * 0.9) 0;
+}
+
+.mmx-form-input-quantity__size--m .mmx-form-input-quantity__control {
+	font-size: calc(var(--mmx-form__size) * 0.8);
+	padding: calc(var(--mmx-form__size) * 1.1) 0;
+}
+
+.mmx-form-input-quantity__size--l .mmx-form-input-quantity__control{
+	font-size: var(--mmx-form__size);
+	padding: calc(var(--mmx-form__size) * 1.30) 0;
+}

@@ -1,0 +1,61 @@
+{
+	"code": "mmx-image-gallery",
+	"name": "MMX Image Gallery",
+	"type": "library",
+	"version": "10.12.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-image-gallery",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-image-gallery.js",
+			"resource_code": "mmx-image-gallery",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-JFnJB4z6iL9RUCv43FFzlY/5JG8JqIIjGUtWW9BovfY= sha384-0tmsM+3MCnoIfm7za1KTCgKZRiOLiqvBlktZFIO8n49R0yAb8fzzZQX/+UarAmjO sha512-elyuxe45YiNWopsm17QWSe3YQFdMr17X5LAHvexplXo1UZmcHSPGoNLIC+WuiC1tPWfVwxmxldiP8cmq7mRISw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-image-gallery.css",
+			"resource_code": "mmx-image-gallery",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-VugstqHIwIuiryGT1DF4EHxb4srr/VVFe8vZUboUlqM= sha384-UmnQVcAtRqtDPFYh/RYXjGnqT0Uag7MdPLQskIU5Ftn+RwveHeoLkkFVZREMEFPH sha512-pZ3Fgn+m0AKYTNcHWDguDUm8NPpUVHs3ITxfMYD7C0DavOpOKeQXNfcb7MLYAblFPqMwq75HtXkHLGCHHtz6og=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.12.00",
+		"mmx-hero": "=10.12.00",
+		"mmx-hero-slider": "=10.12.00"
+	}
+}

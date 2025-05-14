@@ -16,6 +16,10 @@
 	cursor: not-allowed;
 }
 
+.mmx-theme-button {
+	min-height: var(--mmx-min-target-size);
+}
+
 /* Link vs. Button Styles
    =========================================== */
 .mmx-button__button {
@@ -26,6 +30,11 @@
 
 .mmx-button__button.mmx-button__width--full {
 	display: block;
+	width: 100%;
+}
+
+.mmx-theme-button.mmx-theme-button__width--full {
+	display: flex;
 	width: 100%;
 }
 

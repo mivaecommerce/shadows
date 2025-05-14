@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -53,6 +53,14 @@
 					"collapsed": 1,
 					"prompt": "Product Name Text",
 					"properties": [
+						{
+							"code": "typography_theme",
+							"preview_property_selector": ":shadow [part~=\"product-name\"]",
+							"prompt": "Typography",
+							"supports_customization": 1,
+							"supports_legacy": 1,
+							"type": "typography"
+						},
 						{
 							"code": "product_name_style",
 							"options": [
@@ -114,78 +122,28 @@
 							],
 							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Product Name Style",
-							"type": "select"
+							"type": "select",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						},
 						{
-							"code": "font_family",
-							"options": [
-								{
-									"text": "Default"
-								},
-								{
-									"text": "Helvetica",
-									"value": "Helvetica, sans-serif"
-								},
-								{
-									"text": "Georgia",
-									"value": "Georgia, serif"
-								},
-								{
-									"text": "Palatino Linotype",
-									"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-								},
-								{
-									"text": "Times New Roman",
-									"value": "\"Times New Roman\", Times, serif"
-								},
-								{
-									"text": "Arial",
-									"value": "Arial, Helvetica, sans-serif"
-								},
-								{
-									"text": "Arial Black",
-									"value": "\"Arial Black\", Gadget, sans-serif"
-								},
-								{
-									"text": "Comic Sans MS",
-									"value": "\"Comic Sans MS\", cursive, sans-serif"
-								},
-								{
-									"text": "Impact",
-									"value": "Impact, Charcoal, sans-serif"
-								},
-								{
-									"text": "Lucida Sans Unicode",
-									"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-								},
-								{
-									"text": "Tahoma",
-									"value": "Tahoma, Geneva, sans-serif"
-								},
-								{
-									"text": "Trebuchet MS",
-									"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-								},
-								{
-									"text": "Verdana",
-									"value": "Verdana, Geneva, sans-serif"
-								},
-								{
-									"text": "Courier New",
-									"value": "\"Courier New\", Courier, monospace"
-								},
-								{
-									"text": "Lucida Console",
-									"value": "\"Lucida Console\", Monaco, monospace"
-								}
-							],
+							"code": "font",
 							"preview_property_selector": ":shadow [part~=\"product-name\"]",
-							"prompt": "Font Family",
-							"pseudoclasses": [
-								"normal"
-							],
-							"style": "font-family",
-							"type": "select"
+							"prompt": "Font",
+							"style": 1,
+							"type": "font",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						},
 						{
 							"code": "font_size",
@@ -193,71 +151,32 @@
 							"min": 1,
 							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Size",
-							"pseudoclasses": [
-								"normal"
-							],
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
-							"type": "text"
-						},
-						{
-							"code": "font_weight",
-							"options": [
-								{
-									"text": "Default"
-								},
-								{
-									"text": "Ultra-Thin",
-									"value": 100
-								},
-								{
-									"text": "Light",
-									"value": 200
-								},
-								{
-									"text": "Book",
-									"value": 300
-								},
-								{
-									"text": "Normal",
-									"value": 400
-								},
-								{
-									"text": "Medium",
-									"value": 500
-								},
-								{
-									"text": "Semi-Bold",
-									"value": 600
-								},
-								{
-									"text": "Bold",
-									"value": 700
-								},
-								{
-									"text": "Black",
-									"value": 900
+							"type": "text",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
 								}
-							],
-							"preview_property_selector": ":shadow [part~=\"product-name\"]",
-							"prompt": "Font Weight",
-							"pseudoclasses": [
-								"normal"
-							],
-							"style": "font-weight",
-							"type": "select"
+							}
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"preview_property_selector": ":shadow [part~=\"product-name\"]",
 							"prompt": "Font Color",
-							"pseudoclasses": [
-								"normal"
-							],
 							"style": "color",
-							"type": "color"
+							"type": "color",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						}
 					],
 					"type": "group"
@@ -273,6 +192,16 @@
 							"prompt": "Subheading (Ex. SKU or Brand)",
 							"textsettings": {
 								"fields": [
+									{
+										"code": "typography_theme",
+										"prompt": "Typography",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "typography"
+									},
 									{
 										"code": "subheading_style",
 										"options": [
@@ -333,77 +262,37 @@
 											}
 										],
 										"prompt": "Subheading Style",
-										"type": "select"
-									},
-									{
-										"code": "font_family",
-										"options": [
-											{
-												"text": "Default"
-											},
-											{
-												"text": "Helvetica",
-												"value": "Helvetica, sans-serif"
-											},
-											{
-												"text": "Georgia",
-												"value": "Georgia, serif"
-											},
-											{
-												"text": "Palatino Linotype",
-												"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-											},
-											{
-												"text": "Times New Roman",
-												"value": "\"Times New Roman\", Times, serif"
-											},
-											{
-												"text": "Arial",
-												"value": "Arial, Helvetica, sans-serif"
-											},
-											{
-												"text": "Arial Black",
-												"value": "\"Arial Black\", Gadget, sans-serif"
-											},
-											{
-												"text": "Comic Sans MS",
-												"value": "\"Comic Sans MS\", cursive, sans-serif"
-											},
-											{
-												"text": "Impact",
-												"value": "Impact, Charcoal, sans-serif"
-											},
-											{
-												"text": "Lucida Sans Unicode",
-												"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-											},
-											{
-												"text": "Tahoma",
-												"value": "Tahoma, Geneva, sans-serif"
-											},
-											{
-												"text": "Trebuchet MS",
-												"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-											},
-											{
-												"text": "Verdana",
-												"value": "Verdana, Geneva, sans-serif"
-											},
-											{
-												"text": "Courier New",
-												"value": "\"Courier New\", Courier, monospace"
-											},
-											{
-												"text": "Lucida Console",
-												"value": "\"Lucida Console\", Monaco, monospace"
-											}
-										],
-										"prompt": "Font Family",
 										"pseudoclasses": [
 											"normal"
 										],
-										"style": "font-family",
-										"type": "select"
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"typography_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "font",
+										"prompt": "Font",
+										"pseudoclasses": [
+											"normal"
+										],
+										"style": 1,
+										"type": "font",
+										"visibility_conditions": {
+											"normal": {
+												"typography_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									},
 									{
 										"code": "font_size",
@@ -413,58 +302,19 @@
 										"pseudoclasses": [
 											"normal"
 										],
-										"size": "one-third",
 										"style": "font-size",
 										"style_suffix": "px",
 										"text_type": "number",
-										"type": "text"
-									},
-									{
-										"code": "font_weight",
-										"options": [
-											{
-												"text": "Default"
-											},
-											{
-												"text": "Ultra-Thin",
-												"value": 100
-											},
-											{
-												"text": "Light",
-												"value": 200
-											},
-											{
-												"text": "Book",
-												"value": 300
-											},
-											{
-												"text": "Normal",
-												"value": 400
-											},
-											{
-												"text": "Medium",
-												"value": 500
-											},
-											{
-												"text": "Semi-Bold",
-												"value": 600
-											},
-											{
-												"text": "Bold",
-												"value": 700
-											},
-											{
-												"text": "Black",
-												"value": 900
+										"type": "text",
+										"visibility_conditions": {
+											"normal": {
+												"typography_theme": {
+													"theme_mode": [
+														0
+													]
+												}
 											}
-										],
-										"prompt": "Font Weight",
-										"pseudoclasses": [
-											"normal"
-										],
-										"size": "two-thirds",
-										"style": "font-weight",
-										"type": "select"
+										}
 									},
 									{
 										"code": "font_color",
@@ -474,7 +324,16 @@
 											"normal"
 										],
 										"style": "color",
-										"type": "color"
+										"type": "color",
+										"visibility_conditions": {
+											"normal": {
+												"typography_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									}
 								]
 							},
@@ -488,6 +347,14 @@
 					"collapsed": 1,
 					"prompt": "Description Text",
 					"properties": [
+						{
+							"code": "typography_theme",
+							"preview_property_selector": ":shadow [part~=\"product-description\"]",
+							"prompt": "Typography",
+							"supports_customization": 1,
+							"supports_legacy": 1,
+							"type": "typography"
+						},
 						{
 							"code": "description_style",
 							"options": [
@@ -549,78 +416,28 @@
 							],
 							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Description Style",
-							"type": "select"
+							"type": "select",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						},
 						{
-							"code": "font_family",
-							"options": [
-								{
-									"text": "Default"
-								},
-								{
-									"text": "Helvetica",
-									"value": "Helvetica, sans-serif"
-								},
-								{
-									"text": "Georgia",
-									"value": "Georgia, serif"
-								},
-								{
-									"text": "Palatino Linotype",
-									"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-								},
-								{
-									"text": "Times New Roman",
-									"value": "\"Times New Roman\", Times, serif"
-								},
-								{
-									"text": "Arial",
-									"value": "Arial, Helvetica, sans-serif"
-								},
-								{
-									"text": "Arial Black",
-									"value": "\"Arial Black\", Gadget, sans-serif"
-								},
-								{
-									"text": "Comic Sans MS",
-									"value": "\"Comic Sans MS\", cursive, sans-serif"
-								},
-								{
-									"text": "Impact",
-									"value": "Impact, Charcoal, sans-serif"
-								},
-								{
-									"text": "Lucida Sans Unicode",
-									"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-								},
-								{
-									"text": "Tahoma",
-									"value": "Tahoma, Geneva, sans-serif"
-								},
-								{
-									"text": "Trebuchet MS",
-									"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-								},
-								{
-									"text": "Verdana",
-									"value": "Verdana, Geneva, sans-serif"
-								},
-								{
-									"text": "Courier New",
-									"value": "\"Courier New\", Courier, monospace"
-								},
-								{
-									"text": "Lucida Console",
-									"value": "\"Lucida Console\", Monaco, monospace"
-								}
-							],
+							"code": "font",
 							"preview_property_selector": ":shadow [part~=\"product-description\"]",
-							"prompt": "Font Family",
-							"pseudoclasses": [
-								"normal"
-							],
-							"style": "font-family",
-							"type": "select"
+							"prompt": "Font",
+							"style": 1,
+							"type": "font",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						},
 						{
 							"code": "font_size",
@@ -628,71 +445,32 @@
 							"min": 1,
 							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Size",
-							"pseudoclasses": [
-								"normal"
-							],
 							"style": "font-size",
 							"style_suffix": "px",
 							"text_type": "number",
-							"type": "text"
-						},
-						{
-							"code": "font_weight",
-							"options": [
-								{
-									"text": "Default"
-								},
-								{
-									"text": "Ultra-Thin",
-									"value": 100
-								},
-								{
-									"text": "Light",
-									"value": 200
-								},
-								{
-									"text": "Book",
-									"value": 300
-								},
-								{
-									"text": "Normal",
-									"value": 400
-								},
-								{
-									"text": "Medium",
-									"value": 500
-								},
-								{
-									"text": "Semi-Bold",
-									"value": 600
-								},
-								{
-									"text": "Bold",
-									"value": 700
-								},
-								{
-									"text": "Black",
-									"value": 900
+							"type": "text",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
 								}
-							],
-							"preview_property_selector": ":shadow [part~=\"product-description\"]",
-							"prompt": "Font Weight",
-							"pseudoclasses": [
-								"normal"
-							],
-							"style": "font-weight",
-							"type": "select"
+							}
 						},
 						{
 							"code": "font_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
 							"preview_property_selector": ":shadow [part~=\"product-description\"]",
 							"prompt": "Font Color",
-							"pseudoclasses": [
-								"normal"
-							],
 							"style": "color",
-							"type": "color"
+							"type": "color",
+							"visibility_conditions": {
+								"typography_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
 						},
 						{
 							"can_disable": 1,
@@ -873,6 +651,43 @@
 							"textsettings": {
 								"fields": [
 									{
+										"code": "button_theme",
+										"prompt": "Button Theme",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "button"
+									},
+									{
+										"code": "button_width",
+										"options": [
+											{
+												"text": "Auto",
+												"value": "auto"
+											},
+											{
+												"text": "Full",
+												"value": "full"
+											}
+										],
+										"prompt": "Button Width",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														1
+													]
+												}
+											}
+										}
+									},
+									{
 										"code": "button_style",
 										"options": [
 											{
@@ -903,7 +718,16 @@
 										"pseudoclasses": [
 											"normal"
 										],
-										"type": "select"
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									},
 									{
 										"code": "button_size",
@@ -932,7 +756,16 @@
 										"pseudoclasses": [
 											"normal"
 										],
-										"type": "select"
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									}
 								]
 							},
@@ -950,6 +783,20 @@
 			"product": {
 				"button": {
 					"button_text": {
+						"textsettings": {
+							"fields": {
+								"normal": {
+									"button_theme": {
+										"code": "primary",
+										"size": "m",
+										"theme_mode": 1
+									},
+									"button_width": {
+										"value": "full"
+									}
+								}
+							}
+						},
 						"value": "Add to Cart"
 					},
 					"settings": {
@@ -986,21 +833,20 @@
 		},
 		"text": {
 			"description": {
-				"description_style": {
-					"value": "paragraph-s"
-				},
 				"overwritten_description": {
 					"settings": {
 						"enabled": 0
 					}
+				},
+				"typography_theme": {
+					"code": "paragraph-s",
+					"theme_mode": 1
 				}
 			},
 			"product_name": {
-				"product_name_style": {
-					"value": "title-3"
-				},
-				"product_name_tag": {
-					"value": "div"
+				"typography_theme": {
+					"code": "title-3",
+					"theme_mode": 1
 				}
 			},
 			"subheading": {
@@ -1008,14 +854,9 @@
 					"textsettings": {
 						"fields": {
 							"normal": {
-								"font_color": {
-									"value": "#575A5D"
-								},
-								"font_size": {
-									"value": 12
-								},
-								"font_weight": {
-									"value": 500
+								"typography_theme": {
+									"code": "subheading-s",
+									"theme_mode": 1
 								}
 							}
 						}
@@ -1024,6 +865,7 @@
 			}
 		}
 	},
+	"upgrade_template": "src/templates/upgrade.mvt",
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
@@ -1038,7 +880,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-CN/wSUgCv2MzKOpWXN8lUf3GnvJ5pVbBmIm4bXSNnro= sha384-2mSQHfLp3rPwAlAMnyAKuFDG+cuZ4LPpqbvvHJG2giRCYbpenSD5jeo7YxkJw16l sha512-8E/iB7v44FO2uEfK2DpaTrOHQnIEPH0OV8TuVyyvwGUNiKwV/QtzyuDeAwXCQJJNHc2Zj4qOwcB/pS3ptEHp0g=="
+					"value": "sha256-GdWF1s+ozULPwNebhNNJecIe8x3Xm8OJBNjRq8B1l84= sha384-50MElBMS9u9qWuP7bNIhEjf1Y6dG9Qz4oU5yBVJ/Ik7cZRuy2OuIyfLLS2q41HZ5 sha512-FrFhoxOgF5z2ybVAWsilfSpZLTfvcTEijo/9zetQAQLO1RiPM14TwQqJ+Z1Rv3k+B3dRR2rQPHGP789EFlnFyg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1076,10 +918,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03",
-		"mmx-button": "=10.11.03",
-		"mmx-hero": "=10.11.03",
-		"mmx-hero-slider": "=10.11.03",
-		"mmx-text": "=10.11.03"
+		"mmx-base": "=10.12.00",
+		"mmx-button": "=10.12.00",
+		"mmx-hero": "=10.12.00",
+		"mmx-hero-slider": "=10.12.00",
+		"mmx-text": "=10.12.00"
 	}
 }

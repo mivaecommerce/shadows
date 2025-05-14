@@ -25,6 +25,10 @@
 
 .mmx-quick-order__add-row {
 	justify-self: center;
+
+	mmx-icon {
+		margin-right: 0.25em;
+	}
 }
 
 .mmx-quick-order__add-to-cart {
@@ -345,10 +349,6 @@ mmx-featured-product::part(product-add-to-cart) {
 
 .mmx-quick-order__status-message {
 	grid-area: status;
-}
-
-.mmx-quick-order__status-message mmx-icon {
-	height: 20px;
 }
 
 .mmx-quick-order__row[data-status="success"] {

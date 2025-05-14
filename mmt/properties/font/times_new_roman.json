@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "\"Times New Roman\", Times, serif",
+    "name": "Times New Roman",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

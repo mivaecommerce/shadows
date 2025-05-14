@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "\"Courier New\", Courier, monospace",
+    "name": "Courier New",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

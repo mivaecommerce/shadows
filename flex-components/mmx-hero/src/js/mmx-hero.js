@@ -210,6 +210,15 @@ class MMX_Hero extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'heading-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'heading-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'heading-style': {
 				options: [
 					'display-1',
@@ -240,6 +249,15 @@ class MMX_Hero extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'body-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'body-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'body-style': {
 				options: [
 					'paragraph-l',
@@ -251,6 +269,15 @@ class MMX_Hero extends MMX_Element {
 			subheading: {
 				allowAny: true,
 				default: null
+			},
+			'subheading-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'subheading-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'subheading-style': {
 				options: [
@@ -271,6 +298,15 @@ class MMX_Hero extends MMX_Element {
 				options: ['xs', 's', 'm', 'l'],
 				default: 'm'
 			},
+			'button-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'button-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'img-src': {
 				allowAny: true,
 				default: null
@@ -278,6 +314,10 @@ class MMX_Hero extends MMX_Element {
 			'img-alt': {
 				allowAny: true,
 				default: null
+			},
+			tag: {
+				allowAny: true,
+				default: 'a'
 			}
 		};
 	}
@@ -292,8 +332,9 @@ class MMX_Hero extends MMX_Element {
 
 	render() {
 		const contentStyle = this.showHideContent() ? '' : 'none';
+		const tag = this.getPropValue('tag');
 		return /*html*/`
-			<a
+			<${tag}
 				part="wrapper theme-${this.getPropValue('content-theme')}"
 				${this.renderHref()}
 				${this.renderTarget()}
@@ -322,7 +363,7 @@ class MMX_Hero extends MMX_Element {
 						</div>
 					</div>
 				</div>
-			</a>
+			</${tag}>
 		`;
 	}
 
@@ -741,7 +782,19 @@ class MMX_Hero extends MMX_Element {
 		if (!subheading) {
 			return '';
 		}
-		return /*html*/`<mmx-text part="subheading" data-style="${this.getPropValue('subheading-style')}">${subheading}</mmx-text>`;
+
+		const theme_available = this.getPropValue('subheading-theme');
+
+		return /*html*/`
+			<mmx-text
+				part="subheading"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('subheading-theme-class'))}"
+				data-style="${this.getPropValue('subheading-style')}"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${subheading}
+			</mmx-text>`;
 	}
 
 	renderHeading() {
@@ -749,7 +802,21 @@ class MMX_Hero extends MMX_Element {
 		if (!heading) {
 			return '';
 		}
-		return /*html*/`<mmx-text part="heading" data-style="${this.getPropValue('heading-style')}" data-tag="${this.getPropValue('heading-tag')}" data-chars-per-line="none">${heading}</mmx-text>`;
+
+		const theme_available = this.getPropValue('heading-theme');
+
+		return /*html*/`
+			<mmx-text
+				part="heading"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('heading-theme-class'))}"
+				data-style="${this.getPropValue('heading-style')}"
+				data-tag="${this.getPropValue('heading-tag')}"
+				data-chars-per-line="none"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${heading}
+			</mmx-text>`;
 	}
 
 	renderBody() {
@@ -757,7 +824,20 @@ class MMX_Hero extends MMX_Element {
 		if (!body) {
 			return '';
 		}
-		return /*html*/`<mmx-text part="body" data-style="${this.getPropValue('body-style')}" data-chars-per-line="55">${body}</mmx-text>`;
+
+		const theme_available = this.getPropValue('body-theme');
+
+		return /*html*/`
+			<mmx-text
+				part="body"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('body-theme-class'))}"
+				data-style="${this.getPropValue('body-style')}"
+				data-chars-per-line="55"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${body}
+			</mmx-text>`;
 	}
 
 	renderButton() {
@@ -765,7 +845,19 @@ class MMX_Hero extends MMX_Element {
 		if (!button) {
 			return '';
 		}
-		return /*html*/`<mmx-button part="button" exportparts="button: button__inner" data-style="${this.getPropValue('button-style')}" data-size="${this.getPropValue('button-size')}">${button}</mmx-button>`;
+		return /*html*/`
+			<mmx-button
+				part="button"
+				exportparts="button: button__inner"
+				data-style="${this.getPropValue('button-style')}"
+				data-size="${this.getPropValue('button-size')}"
+				data-theme="${this.getPropValue('button-theme')}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('button-theme-class'))}"
+			>
+				${this.renderThemeStylesheetTemplate(this.getPropValue('button-theme'))}
+				${button}
+			</mmx-button>
+		`;
 	}
 
 	bindEvents() {
@@ -813,15 +905,23 @@ class MMX_Hero extends MMX_Element {
 			'data-content-bg-color--desktop': this.data?.advanced?.desktop?.background_color?.settings?.enabled ? this.data?.advanced?.desktop?.background_color?.color?.value : undefined,
 			'data-content-theme': this.data?.advanced?.content_theme?.value,
 			'data-subheading': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.value : undefined,
+			'data-subheading-theme': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-subheading-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-subheading-style': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.subheading_style?.value : undefined,
 			'data-heading': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.value : undefined,
+			'data-heading-theme': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-heading-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-heading-style': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.heading_style?.value : undefined,
 			'data-heading-tag': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.heading_tag?.value : undefined,
 			'data-body': this.data?.content?.settings?.enabled ? this.data?.content?.body?.value : undefined,
+			'data-body-theme': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-body-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-body-style': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.body_style?.value : undefined,
 			'data-button': this.data?.content?.settings?.enabled ? this.data?.content?.button?.value : undefined,
 			'data-button-style': this.data?.content?.settings?.enabled ? this.data?.content?.button?.textsettings?.fields?.normal?.button_style?.value : undefined,
 			'data-button-size': this.data?.content?.settings?.enabled ? this.data?.content?.button?.textsettings?.fields?.normal?.button_size?.value : undefined,
+			'data-button-theme': this.data?.content?.settings?.enabled ? this.data?.content?.button?.textsettings?.fields?.normal?.button_theme?.theme_available : undefined,
+			'data-button-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.button?.textsettings?.fields?.normal?.button_theme?.classname : undefined
 		});
 	}
 }

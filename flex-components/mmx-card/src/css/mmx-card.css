@@ -63,13 +63,13 @@
 	margin-top: unset;
 }
 
-.mmx-product-card__prices span {
+.mmx-product-card__prices mmx-text {
 	display: inline-block;
 }
 
 .mmx-product-card__additional-price {
 	margin-left: 0.5em;
-	text-decoration: line-through;
+	--mmx-text__text-decoration: line-through;
 }
 
 .mmx-product-card__detail--empty {

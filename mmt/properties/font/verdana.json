@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "Verdana, Geneva, sans-serif",
+    "name": "Verdana",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

@@ -127,8 +127,9 @@ class MMX_Icon extends MMX_Element {
 
 	styles() {
 		return /*css*/`
-			:host * {
+			:host {
 				line-height: 1;
+				vertical-align: middle;
 			}
 
 			svg {

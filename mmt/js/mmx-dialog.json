@@ -1,0 +1,21 @@
+{
+    "code": "mmx-dialog",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-1vMbwTJ5cmTaEFGgHZOpngiyQ+HnE/rzFui5mHxcDwg= sha384-whISXd6FZHpVw1GuW4xrMdt2PLHf+hV/sN7gU6HD0rEEjTDkA8RGXtFjplnNBFKp sha512-LocKQQDBSPAGnuCfGr0KLW8lVX1+edT/z2wuIvjuv0MCuuicXI0BPR9SDxkq6Gg2DvoaDli4KaK+eMUNUf+ztA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

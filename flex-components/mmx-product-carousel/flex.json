@@ -2,12 +2,60 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
-	"sample_data_types": "",
+	"sample_data_types": [
+		{
+			"conditions": {
+				"settings:products:product_set:value": [
+					"auto"
+				]
+			},
+			"type": "search"
+		},
+		{
+			"conditions": {
+				"settings:products:product_set:value": [
+					"auto"
+				]
+			},
+			"type": "product"
+		},
+		{
+			"conditions": {
+				"settings:products:product_set:value": [
+					"related"
+				],
+				"settings:products:related_source:value": [
+					"auto"
+				]
+			},
+			"type": "product"
+		},
+		{
+			"conditions": {
+				"settings:products:product_set:value": [
+					"auto"
+				]
+			},
+			"type": "category"
+		},
+		{
+			"conditions": {
+				"settings:products:category_source:value": [
+					"auto"
+				],
+				"settings:products:product_set:value": [
+					"category",
+					"hybrid"
+				]
+			},
+			"type": "category"
+		}
+	],
 	"properties": [
 		{
 			"can_disable": 1,
@@ -43,6 +91,16 @@
 					"prompt": "Heading Text",
 					"textsettings": {
 						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
 							{
 								"code": "heading_style",
 								"options": [
@@ -106,77 +164,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -186,58 +201,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -247,7 +223,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "heading_tag",
@@ -288,7 +273,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -354,114 +348,211 @@
 					"type": "select"
 				},
 				{
-					"can_disable": 1,
-					"code": "from_category",
-					"prompt": "Select a Category",
-					"properties": [
+					"code": "product_set",
+					"options": [
 						{
-							"code": "category",
-							"prompt": "Category",
-							"type": "category"
+							"text": "Determined by Page Items",
+							"value": "auto"
 						},
 						{
-							"code": "count",
-							"options": [
-								{
-									"text": 5,
-									"value": 5
-								},
-								{
-									"text": 10,
-									"value": 10
-								},
-								{
-									"text": 15,
-									"value": 15
-								},
-								{
-									"text": 20,
-									"value": 20
-								}
-							],
-							"prompt": "Number of Products",
-							"type": "select"
+							"text": "All Products",
+							"value": "all"
 						},
 						{
-							"code": "sort",
-							"options": [
-								{
-									"text": "Relevance",
-									"value": "relevance"
-								},
-								{
-									"text": "Display Order",
-									"value": "disp_order"
-								},
-								{
-									"text": "Display Order Descending",
-									"value": "disp_order_desc"
-								},
-								{
-									"text": "Newest",
-									"value": "newest"
-								},
-								{
-									"text": "Oldest",
-									"value": "oldest"
-								},
-								{
-									"text": "Recently Updated",
-									"value": "updated"
-								},
-								{
-									"text": "Code Ascending",
-									"value": "code_asc"
-								},
-								{
-									"text": "Code Descending",
-									"value": "code_desc"
-								},
-								{
-									"text": "Name Ascending",
-									"value": "name_asc"
-								},
-								{
-									"text": "Name Descending",
-									"value": "name_desc"
-								},
-								{
-									"text": "Price Ascending",
-									"value": "price_asc"
-								},
-								{
-									"text": "Price Descending",
-									"value": "price_desc"
-								},
-								{
-									"text": "Best Sellers",
-									"value": "bestsellers"
-								}
-							],
-							"prompt": "Sort Order",
-							"type": "select"
+							"text": "Assigned to Category",
+							"value": "category"
+						},
+						{
+							"text": "Related Products",
+							"value": "related"
+						},
+						{
+							"text": "Specific Products",
+							"value": "products"
+						},
+						{
+							"text": "Specific Category / Product Selection",
+							"value": "hybrid"
 						}
 					],
-					"type": "group"
+					"prompt": "Product Set",
+					"type": "select"
 				},
 				{
-					"can_disable": 1,
-					"code": "from_individual",
-					"prompt": "Select Individual Products",
-					"properties": [
+					"code": "category_source",
+					"options": [
 						{
-							"code": "products",
-							"list_type": "product",
-							"preview_property_selector": ":shadow [part~=\"product\"][part~=\"product--individual\"]%nth-child%",
-							"prompt": "Products",
-							"type": "list"
+							"text": "Determined by Page Items",
+							"value": "auto"
+						},
+						{
+							"text": "Specific Category",
+							"value": "manual"
 						}
 					],
-					"type": "group"
+					"prompt": "Which Category?",
+					"type": "select",
+					"visibility_conditions": {
+						"product_set": {
+							"value": [
+								"category",
+								"hybrid"
+							]
+						}
+					}
+				},
+				{
+					"code": "category",
+					"prompt": "Category",
+					"type": "category",
+					"visibility_conditions": {
+						"category_source": {
+							"value": [
+								"manual"
+							]
+						},
+						"product_set": {
+							"value": [
+								"category",
+								"hybrid"
+							]
+						}
+					}
+				},
+				{
+					"code": "related_source",
+					"options": [
+						{
+							"text": "Determined by Page Items",
+							"value": "auto"
+						},
+						{
+							"text": "Specific Product",
+							"value": "manual"
+						}
+					],
+					"prompt": "Which Related Products?",
+					"type": "select",
+					"visibility_conditions": {
+						"product_set": {
+							"value": [
+								"related"
+							]
+						}
+					}
+				},
+				{
+					"code": "product",
+					"prompt": "Product",
+					"type": "product",
+					"visibility_conditions": {
+						"product_set": {
+							"value": [
+								"related"
+							]
+						},
+						"related_source": {
+							"value": [
+								"manual"
+							]
+						}
+					}
+				},
+				{
+					"code": "products",
+					"list_type": "product",
+					"prompt": "Products",
+					"type": "list",
+					"visibility_conditions": {
+						"product_set": {
+							"value": [
+								"products",
+								"hybrid"
+							]
+						}
+					}
+				},
+				{
+					"code": "count",
+					"options": [
+						{
+							"text": 5,
+							"value": 5
+						},
+						{
+							"text": 10,
+							"value": 10
+						},
+						{
+							"text": 15,
+							"value": 15
+						},
+						{
+							"text": 20,
+							"value": 20
+						}
+					],
+					"prompt": "Number of Products",
+					"type": "select"
+				},
+				{
+					"code": "sort",
+					"options": [
+						{
+							"text": "Relevance",
+							"value": "relevance"
+						},
+						{
+							"text": "Display Order",
+							"value": "disp_order"
+						},
+						{
+							"text": "Display Order Descending",
+							"value": "disp_order_desc"
+						},
+						{
+							"text": "Newest",
+							"value": "newest"
+						},
+						{
+							"text": "Oldest",
+							"value": "oldest"
+						},
+						{
+							"text": "Recently Updated",
+							"value": "updated"
+						},
+						{
+							"text": "Code Ascending",
+							"value": "code_asc"
+						},
+						{
+							"text": "Code Descending",
+							"value": "code_desc"
+						},
+						{
+							"text": "Name Ascending",
+							"value": "name_asc"
+						},
+						{
+							"text": "Name Descending",
+							"value": "name_desc"
+						},
+						{
+							"text": "Price Ascending",
+							"value": "price_asc"
+						},
+						{
+							"text": "Price Descending",
+							"value": "price_desc"
+						},
+						{
+							"text": "Best Sellers",
+							"value": "bestsellers"
+						}
+					],
+					"prompt": "Sort Order",
+					"type": "select"
 				}
 			],
 			"type": "group"
@@ -650,6 +741,43 @@
 							"textsettings": {
 								"fields": [
 									{
+										"code": "button_theme",
+										"prompt": "Button Theme",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "button"
+									},
+									{
+										"code": "button_width",
+										"options": [
+											{
+												"text": "Auto",
+												"value": "auto"
+											},
+											{
+												"text": "Full",
+												"value": "full"
+											}
+										],
+										"prompt": "Button Width",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														1
+													]
+												}
+											}
+										}
+									},
+									{
 										"code": "button_style",
 										"options": [
 											{
@@ -680,7 +808,16 @@
 										"pseudoclasses": [
 											"normal"
 										],
-										"type": "select"
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									},
 									{
 										"code": "button_size",
@@ -709,7 +846,16 @@
 										"pseudoclasses": [
 											"normal"
 										],
-										"type": "select"
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"button_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
 									}
 								]
 							},
@@ -740,11 +886,13 @@
 						"textsettings": {
 							"fields": {
 								"normal": {
-									"button_size": {
-										"value": "s"
+									"button_theme": {
+										"code": "primary",
+										"size": "m",
+										"theme_mode": 1
 									},
-									"button_style": {
-										"value": "primary"
+									"button_width": {
+										"value": "full"
 									}
 								}
 							}
@@ -786,6 +934,16 @@
 				"value": "center"
 			},
 			"heading_text": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-1",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Featured Products"
 			},
 			"settings": {
@@ -793,33 +951,30 @@
 			}
 		},
 		"products": {
-			"from_category": {
-				"category": {
-					"category_code": "featured"
-				},
-				"count": {
-					"value": 15
-				},
-				"settings": {
-					"enabled": 1
-				},
-				"sort": {
-					"value": "bestsellers"
-				}
+			"category": {
+				"category_code": "featured"
 			},
-			"from_individual": {
-				"settings": {
-					"enabled": 0
-				}
+			"category_source": {
+				"value": "manual"
+			},
+			"count": {
+				"value": 5
 			},
 			"image_fit": {
 				"value": "contain"
 			},
 			"image_size": {
 				"value": "auto"
+			},
+			"product_set": {
+				"value": "category"
+			},
+			"sort": {
+				"value": "disp_order"
 			}
 		}
 	},
+	"upgrade_template": "src/templates/upgrade.mvt",
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
@@ -834,7 +989,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-fLj3u6dWJlFF6NjXQ+YB1UL4Cvuu/0XCOmRmXLuyKgU= sha384-E7Qm1nEPnulpZoxNVYhxdrH/2RjMUezNDgzO1ib+1hHeR3BjJVqsEyRu+VdjRXKx sha512-d9D/Jrk/Bsj8vufz2TPfDlS9HYrr7viLuN9tKn2xOzfKKEp9AmXaL6D7RVC5BNsiw9Os83kuBgrAsYf844Mn4w=="
+					"value": "sha256-hbKwHXLo2d1olQbpPJBH0/5wv9fa4CLL8RvM77ahZqo= sha384-A5tbv9jeSzgQIqyC82TBIM5E+BBoM9kkMR7UtrErgqlUP5SLsRXf4brPHgu3LZcQ sha512-TIFkzsCVkzYSUuauSDt65DBCg9HW0CspNJ+1DP8OOohmZohyOwh3WoiN1tfRj9zYBh9UPJtd90B29o1WiWteXA=="
 				},
 				{
 					"name": "crossorigin",
@@ -844,10 +999,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03",
-		"mmx-button": "=10.11.03",
-		"mmx-hero": "=10.11.03",
-		"mmx-hero-slider": "=10.11.03",
-		"mmx-text": "=10.11.03"
+		"mmx-base": "=10.12.00",
+		"mmx-button": "=10.12.00",
+		"mmx-hero": "=10.12.00",
+		"mmx-hero-slider": "=10.12.00",
+		"mmx-text": "=10.12.00"
 	}
 }

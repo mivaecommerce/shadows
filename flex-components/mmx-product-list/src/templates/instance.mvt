@@ -59,11 +59,24 @@
 		</mvt:if>
 		<mmx-text
 			slot="title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
 			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
 			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
 			data-align="&mvte:instance:heading:heading_align:value;"
-			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
 		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
 	</mvt:if>
@@ -73,5 +86,44 @@
 		<div slot="category-tree">
 			<mvt:item name="category_tree" />
 		</div>
+	</mvt:if>
+
+	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet">						<mvt:eval expr="l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet" />						</mvt:if>
+
+		<mvt:foreach iterator="detail" array="instance:card:details:children">
+			<mvt:if expr="l.settings:detail:type:value EQ 'button__view-product'	OR
+						  l.settings:detail:type:value EQ 'button__add-to-cart'		OR
+						  l.settings:detail:type:value EQ 'button__add-to-wishlist'">
+				<mvt:if expr="NOT ISNULL l.settings:detail:button:text:textsettings:fields:normal:button_theme:stylesheet">
+					<mvt:eval expr="l.settings:detail:button:text:textsettings:fields:normal:button_theme:stylesheet" />
+				</mvt:if>
+			<mvt:elseif expr="l.settings:detail:type:value EQ 'price'">
+				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet">	<mvt:eval expr="l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet" />	</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:additional:typography_theme:stylesheet">	<mvt:eval expr="l.settings:detail:price_text_styles:additional:typography_theme:stylesheet" />	</mvt:if>
+			<mvt:elseif expr="l.settings:detail:type:value EQ 'name'			OR
+							  l.settings:detail:type:value EQ 'code'			OR
+							  l.settings:detail:type:value EQ 'sku'				OR
+							  l.settings:detail:type:value EQ 'descrip'			OR
+							  l.settings:detail:type:value EQ 'weight'			OR
+							  l.settings:detail:type:value EQ 'customfield'		OR
+							  l.settings:detail:type:value EQ 'fragment'		OR
+							  l.settings:detail:type:value EQ 'inv_short'		OR
+							  l.settings:detail:type:value EQ 'inv_long'		OR
+							  l.settings:detail:type:value EQ 'inv_available'	OR
+							  l.settings:detail:type:value EQ 'quantity'		OR
+							  l.settings:detail:type:value EQ 'discounts'">
+				<mvt:if expr="NOT ISNULL l.settings:detail:text_styles:typography_theme:stylesheet">
+					<mvt:eval expr="l.settings:detail:text_styles:typography_theme:stylesheet" />
+				</mvt:if>
+			</mvt:if>
+		</mvt:foreach>
+	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+	<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+		<template data-theme-stylesheet>
+			<mvt:eval expr="l.theme_stylesheet" />
+		</template>
 	</mvt:if>
 </mmx-product-list>

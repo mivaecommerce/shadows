@@ -68,57 +68,5 @@
 				"telephone": "&mvtj:store:phone;"
 			}
 		</mvt:if>
-		<mvt:if expr="l.settings:product:id GT 0 AND NOT ISNULL l.settings:product_display">
-			<mvt:assign name="l.settings:product:stripped_descrip" value="miva_html_strip( l.settings:product:descrip, '' )"/>
-			,{
-				"@type": "Product",
-				"name": "&mvtj:product:name;",
-				"image": "&mvtj:global:socialImage;",
-				"description": "&mvtj:product:stripped_descrip;",
-				<mvt:if expr="NOT ISNULL l.settings:product:sku">
-					"sku": "&mvtj:product:sku;",
-					"mpn": "&mvtj:product:sku;",
-				<mvt:else>
-					"sku": "&mvtj:product:code;",
-					"mpn": "&mvtj:product:code;",
-				</mvt:if>
-				"category": "&mvtj:category:name;",
-				"brand": {
-					"@type": "Brand",
-					<mvt:if expr="NOT ISNULL l.settings:product:customfield_values:customfields:brand">
-						"name": "&mvtj:product:customfield_values:customfields:brand;"
-					<mvt:else>
-						"name": "&mvtj:store:name;"
-					</mvt:if>
-				},
-				"offers": {
-					"@type": "Offer",
-					"url": "&mvtj:product:link;",
-					<mvt:if expr="NOT ISNULL l.settings:product:sku">
-						"sku": "&mvtj:product:sku;",
-					<mvt:else>
-						"sku": "&mvtj:product:code;",
-					</mvt:if>
-					"name": "&mvtj:product:name;",
-					"description": "&mvtj:product:stripped_descrip;",
-					"seller": "&mvtj:store:name;",
-					"itemCondition": "https://schema.org/NewCondition",
-					<mvt:if expr="NOT ISNUll l.settings:attributemachine:product:price AND NOT ISNULL l.settings:attributes">
-						"price": "&mvtj:attributemachine:product:price;",
-					<mvt:else>
-						"price": "&mvtj:product:price;",
-					</mvt:if>
-					<mvt:assign name="l.availability_inv_level" value="ternary(NOT ISNULL l.settings:attributemachine:product:inv_level, l.settings:attributemachine:product:inv_level, l.settings:product:inv_level)" />
-					<mvt:if expr="l.availability_inv_level EQ 'low'">
-						"availability": "https://schema.org/LimitedAvailability",
-					<mvt:elseif expr="l.availability_inv_level EQ 'out'">
-						"availability": "https://schema.org/OutOfStock",
-					<mvt:else>
-						"availability": "https://schema.org/InStock",
-					</mvt:if>
-					"priceCurrency": "USD"
-				}
-			}
-		</mvt:if>
 	]
 }

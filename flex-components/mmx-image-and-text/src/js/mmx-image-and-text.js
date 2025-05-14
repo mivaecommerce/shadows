@@ -32,15 +32,23 @@ class MMX_ImageAndText extends MMX_Hero {
 			'data-content-bg-color--mobile': this.data?.advanced?.text_background?.settings?.enabled ? this.data?.advanced?.text_background?.color?.value : undefined,
 			'data-content-bg-color--desktop': this.data?.advanced?.text_background?.settings?.enabled ? this.data?.advanced?.text_background?.color?.value : undefined,
 			'data-subheading': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.value : undefined,
+			'data-subheading-theme': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-subheading-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-subheading-style': this.data?.content?.settings?.enabled ? this.data?.content?.subheading?.textsettings?.fields?.normal?.subheading_style?.value : undefined,
 			'data-heading': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.value : undefined,
+			'data-heading-theme': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-heading-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-heading-style': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.heading_style?.value : undefined,
 			'data-heading-tag': this.data?.content?.settings?.enabled ? this.data?.content?.heading?.textsettings?.fields?.normal?.heading_tag?.value : undefined,
 			'data-body': this.data?.content?.settings?.enabled ? this.data?.content?.body?.value : undefined,
+			'data-body-theme': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.typography_theme?.theme_available : undefined,
+			'data-body-theme-class': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.typography_theme?.classname : undefined,
 			'data-body-style': this.data?.content?.settings?.enabled ? this.data?.content?.body?.textsettings?.fields?.normal?.body_style?.value : undefined,
 			'data-button': this.data?.content?.settings?.enabled && this.data?.content?.button?.settings?.enabled ? this.data?.content?.button?.button_text?.value : undefined,
 			'data-button-style': this.data?.content?.settings?.enabled && this.data?.content?.button?.settings?.enabled ? this.data?.content?.button?.button_text?.textsettings?.fields?.normal?.button_style?.value : undefined,
 			'data-button-size': this.data?.content?.settings?.enabled && this.data?.content?.button?.settings?.enabled ? this.data?.content?.button?.button_text?.textsettings?.fields?.normal?.button_size?.value : undefined,
+			'data-button-theme': this.data?.content?.settings?.enabled && this.data?.content?.button?.settings?.enabled ? this.data?.content?.button?.button_text?.textsettings?.fields?.normal?.button_theme?.theme_available : undefined,
+			'data-button-theme-class': this.data?.content?.settings?.enabled && this.data?.content?.button?.settings?.enabled ? this.data?.content?.button?.button_text?.textsettings?.fields?.normal?.button_theme?.classname : undefined
 		});
 	}
 }

@@ -1,0 +1,84 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:assign name="l.settings:instance:advanced:search:origin:value" value="'Runtime API'" />
+	<mvt:assign name="l.settings:instance:advanced:search:type:value" value="'system'" />
+
+	<mvt:comment> Typography: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:list:facets:facet_styles:typography_theme:theme_mode" value="0" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:heading:heading_text:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:list:facets:title:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:list:facets:title:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:list:facets:facet_styles:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:list:facets:facet_styles:font_family:value )" />
+
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:weight" value="l.settings:instance:heading:heading_text:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:list:facets:title:textsettings:fields:normal:font:weight" value="l.settings:instance:list:facets:title:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:list:facets:facet_styles:font:weight" value="l.settings:instance:list:facets:facet_styles:font_weight:value" />
+
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:list:facets:title:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:list:facets:facet_styles:font:style" value="''" />
+
+	<mvt:foreach iterator="detail" array="instance:card:details:children">
+		<mvt:if expr="l.settings:detail:type:value EQ 'button__view-product' OR
+					  l.settings:detail:type:value EQ 'button__add-to-cart' OR
+					  l.settings:detail:type:value EQ 'button__add-to-wishlist'">
+			<mvt:assign name="l.settings:detail:button:text:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail:button:text:textsettings:fields:normal:button_width:visible" value="0" />
+		<mvt:elseif expr="l.settings:detail:type:value EQ 'name'			OR
+						  l.settings:detail:type:value EQ 'code'			OR
+						  l.settings:detail:type:value EQ 'sku'				OR
+						  l.settings:detail:type:value EQ 'descrip'			OR
+						  l.settings:detail:type:value EQ 'weight'			OR
+						  l.settings:detail:type:value EQ 'customfield'		OR
+						  l.settings:detail:type:value EQ 'fragment'		OR
+						  l.settings:detail:type:value EQ 'inv_short'		OR
+						  l.settings:detail:type:value EQ 'inv_long'		OR
+						  l.settings:detail:type:value EQ 'inv_available'	OR
+						  l.settings:detail:type:value EQ 'quantity'		OR
+						  l.settings:detail:type:value EQ 'discounts'">
+			<mvt:assign name="l.settings:detail:text_styles:typography_theme:theme_mode" value="0" />
+
+			<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+			<mvt:do name="l.settings:detail:text_styles:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:detail:text_styles:font_family:value )" />
+			<mvt:assign name="l.settings:detail:text_styles:font:weight" value="l.settings:detail:text_styles:font_weight:value" />
+
+			<mvt:if expr="l.settings:detail:text_styles:font_style:value EQ 'oblique'">
+				<mvt:assign name="l.settings:detail:text_styles:font:style" value="'italic'" />
+			<mvt:else>
+				<mvt:assign name="l.settings:detail:text_styles:font:style" value="l.settings:detail:text_styles:font_style:value" />
+			</mvt:if>
+		<mvt:elseif expr="l.settings:detail:type:value EQ 'price'">
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:typography_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:typography_theme:theme_mode" value="0" />
+
+			<mvt:comment> Copy from original text_styles to the new price_text_styles:displayed price fields </mvt:comment>
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:style:value"			value="l.settings:detail:text_styles:style:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:font_size:value"		value="l.settings:detail:text_styles:font_size:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:font_color:value"		value="l.settings:detail:text_styles:font_color:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:text_transform:value"	value="l.settings:detail:text_styles:text_transform:value" />
+
+			<mvt:comment> Copy from original text_styles to the new price_text_styles:additional price fields </mvt:comment>
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:style:value"			value="l.settings:detail:text_styles:style:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:font_size:value"		value="l.settings:detail:text_styles:font_size:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:font_color:value"		value="l.settings:detail:text_styles:font_color:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:text_transform:value"	value="l.settings:detail:text_styles:text_transform:value" />
+
+			<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+			<mvt:do name="l.settings:detail:price_text_styles:displayed:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:detail:text_styles:font_family:value )" />
+			<mvt:do name="l.settings:detail:price_text_styles:additional:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:detail:text_styles:font_family:value )" />
+
+			<mvt:assign name="l.settings:detail:price_text_styles:displayed:font:weight" value="l.settings:detail:text_styles:font_weight:value" />
+			<mvt:assign name="l.settings:detail:price_text_styles:additional:font:weight" value="l.settings:detail:text_styles:font_weight:value" />
+
+			<mvt:if expr="l.settings:detail:text_styles:font_style:value EQ 'oblique'">
+				<mvt:assign name="l.settings:detail:price_text_styles:displayed:font:style" value="'italic'" />
+				<mvt:assign name="l.settings:detail:price_text_styles:additional:font:style" value="'italic'" />
+			<mvt:else>
+				<mvt:assign name="l.settings:detail:price_text_styles:displayed:font:style" value="l.settings:detail:text_styles:font_style:value" />
+				<mvt:assign name="l.settings:detail:price_text_styles:additional:font:style" value="l.settings:detail:text_styles:font_style:value" />
+			</mvt:if>
+		</mvt:if>
+	</mvt:foreach>
+</mvt:if>

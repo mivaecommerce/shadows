@@ -1,0 +1,57 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:comment> Upgrade Submit Button Settings </mvt:comment>
+	<mvt:assign name="l.settings:instance:controls:submit_button:value"															value="l.settings:instance:controls:submit_text:value" />
+	<mvt:assign name="l.settings:instance:controls:submit_button:textsettings:fields:normal:button_style:value"					value="l.settings:instance:controls:submit_button_style:value" />
+	<mvt:assign name="l.settings:instance:controls:submit_button:textsettings:fields:normal:button_size:value"					value="l.settings:instance:controls:input_size:value" />
+
+	<mvt:comment> Upgrade Reset Button Settings </mvt:comment>
+	<mvt:assign name="l.settings:instance:controls:reset_button:value"															value="l.settings:instance:controls:reset_text:value" />
+	<mvt:assign name="l.settings:instance:controls:reset_button:textsettings:fields:normal:button_style:value"					value="l.settings:instance:controls:submit_button_style:value" />
+	<mvt:assign name="l.settings:instance:controls:reset_button:textsettings:fields:normal:button_size:value"					value="l.settings:instance:controls:input_size:value" />
+
+	<mvt:comment> Upgrade Add Dialog Button Settings </mvt:comment>
+	<mvt:assign name="l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_style:value"			value="l.settings:instance:application:dialog_button_style:value" />
+	<mvt:assign name="l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_size:value"			value="l.settings:instance:application:dialog_button_size:value" />
+
+	<mvt:comment> Upgrade Edit Dialog Button Settings </mvt:comment>
+	<mvt:assign name="l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_style:value"			value="l.settings:instance:application:dialog_button_style:value" />
+	<mvt:assign name="l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_size:value"			value="l.settings:instance:application:dialog_button_size:value" />
+
+	<mvt:comment> Ensure Button Theme Mode is Disabled on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:controls:submit_button:textsettings:fields:normal:button_theme:theme_mode"			value="0" />
+	<mvt:assign name="l.settings:instance:controls:reset_button:textsettings:fields:normal:button_theme:theme_mode"				value="0" />
+	<mvt:assign name="l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_theme:theme_mode"		value="0" />
+	<mvt:assign name="l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_width:visible"		value="0" />
+	<mvt:assign name="l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_theme:theme_mode"	value="0" />
+	<mvt:assign name="l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_width:visible"		value="0" />
+
+	<mvt:comment> Ensure Typography Theme Mode is Disabled on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:controls:label_applied:textsettings:fields:normal:typography_theme:theme_mode"		value="0" />
+	<mvt:assign name="l.settings:instance:controls:label_inactive:textsettings:fields:normal:typography_theme:theme_mode"		value="0" />
+	<mvt:assign name="l.settings:instance:application:label_applied:textsettings:fields:normal:typography_theme:theme_mode"		value="0" />
+	<mvt:assign name="l.settings:instance:content:heading:textsettings:fields:normal:typography_theme:theme_mode"				value="0" />
+	<mvt:assign name="l.settings:instance:content:subheading:textsettings:fields:normal:typography_theme:theme_mode"			value="0" />
+	<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:typography_theme:theme_mode"					value="0" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:controls:label_applied:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:controls:label_applied:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:controls:label_inactive:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:controls:label_inactive:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:application:label_applied:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:application:label_applied:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:content:heading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:content:heading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:content:subheading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:content:subheading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:content:body:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:content:body:textsettings:fields:normal:font_family:value )" />
+
+	<mvt:assign name="l.settings:instance:controls:label_applied:textsettings:fields:normal:font:weight" value="l.settings:instance:controls:label_applied:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:controls:label_inactive:textsettings:fields:normal:font:weight" value="l.settings:instance:controls:label_inactive:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:application:label_applied:textsettings:fields:normal:font:weight" value="l.settings:instance:application:label_applied:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:content:heading:textsettings:fields:normal:font:weight" value="l.settings:instance:content:heading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:content:subheading:textsettings:fields:normal:font:weight" value="l.settings:instance:content:subheading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:font:weight" value="l.settings:instance:content:body:textsettings:fields:normal:font_weight:value" />
+
+	<mvt:assign name="l.settings:instance:controls:label_applied:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:controls:label_inactive:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:application:label_applied:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:content:heading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:content:subheading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:font:style" value="''" />
+</mvt:if>

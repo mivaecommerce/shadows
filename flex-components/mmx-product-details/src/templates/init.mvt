@@ -1,0 +1,61 @@
+<mvt:comment>mmx-base</mvt:comment>
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="js:mmx-base" />
+
+<template class="mmx-resources">
+	<mvt:comment>mmx libraries</mvt:comment>
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-dialog" />
+	<mvt:item name="head" param="css:mmx-image-gallery" />
+	<mvt:item name="head" param="css:mmx-messages" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+	<mvt:item name="head" param="css:mmx-featured-product" />
+	<mvt:item name="head" param="css:mmx-product-details" />
+</template>
+
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'MivaEvents.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'ajax.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'runtime.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'AttributeMachine.js' )" />
+
+<mvt:comment>MMCurrencyFormatter</mvt:comment>
+<mvt:if expr="g.Store:currncy_mod:api_ver GE 9.07">
+	<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.using_custom_currency_formatter" value="CurrencyModule_Output_CurrencyFormat_JavaScript( g.Store:currncy_mod )" />
+</mvt:if>
+
+<mvt:if expr="l.using_custom_currency_formatter">
+	<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'runtime_ui.js' )" />
+<mvt:else>
+	<script>
+		function MMCurrencyFormatter(value, show_whole_numbers_only) {
+			return show_whole_numbers_only ? parseInt(MMX.coerceNumber(value, 0), 10) : MMX.coerceNumber(value, 0);
+		}
+	</script>
+</mvt:if>
+
+<mvt:comment>mmx libraries</mvt:comment>
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="css:mmx-forms" />
+<mvt:item name="head" param="js:mmx-forms" />
+<mvt:item name="head" param="js:mmx-dialog" />
+<mvt:item name="head" param="js:mmx-icons" />
+<mvt:item name="head" param="js:mmx-messages" />
+<mvt:item name="head" param="js:mmx-hero" />
+<mvt:item name="head" param="js:mmx-hero-slider" />
+<mvt:item name="head" param="js:mmx-featured-product" />
+<mvt:item name="head" param="js:mmx-product-details" />
+<mvt:item name="head" param="css:mmx-accordion" />
+<mvt:item name="head" param="js:mmx-accordion" />
+<mvt:item name="head" param="css:mmx-tabs" />
+<mvt:item name="head" param="js:mmx-tabs" />
+<mvt:item name="head" param="js:mmx-image-gallery" />
+
+<mvt:comment>Theme Editor stylesheet</mvt:comment>
+<mvt:item name="head" param="css:mm-theme-styles" />
+
+<mvt:comment>mmx-customizations</mvt:comment>
+<mvt:item name="head" param="css:mmx-customizations" />

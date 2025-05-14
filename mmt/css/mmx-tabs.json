@@ -1,0 +1,29 @@
+{
+    "code": "mmx-tabs",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        },
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-cFkEo3J6r9hQoWR8HgwU4RBJ97izHY2W/Cx+TzDLq5Q= sha384-mKGo5UOXDF0kYPX68hfqh5RHb5JtcJPtB6N9X/xDX4ppOVinyZmBH61O6emwbUNm sha512-Tj1bZ538Whu6qkdcl3LulrtV/9iB3IEtRFpZS+RVnAXZxByOAs+7J2uU0sbz07mCkQ3cO/0nBSwNrf4TSUSRhw=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

@@ -2,7 +2,7 @@
 	"code": "mmx-button",
 	"name": "MMX Button",
 	"type": "library",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-button",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-pAe4ipCdy19S1npgUoK426+2OeCJzbBo9aaVud4THE4= sha384-1tWQaRKOL5+mMX9tnwcIsueiNPdJq2eXtuxeZSUmi2NNV4LtBTG2VlCjYv2MZ1/B sha512-YOsYHSiyM2cR6YueFRHuhAjy/sEju87Vq1n64E6AK7xjttpYAPJrHSSqeQ//XxNJs9MnFk0uKJH57Bcfch2/KQ=="
+					"value": "sha256-h+9/rjPvivtxzwkRyhtZrVkG74YwIdsbmTRatHyjWvM= sha384-xCmgySMcBftZ4w5AYyHCYbptbrhPEvQ7n0gaMIGxdaPpvIrnPYzz6oTYjuSYJOyv sha512-xhDxIE2KjV/VEJMJySTg5dD2Gryh5F1ZIDyv1eVpUX3J6MT1fcwbElPJcDWjhSzKuNuHkOr0ZF/6s4Kq5RHgIw=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-WKkKtn7JT7XHjRxPmx3GUHx5fKaqenM+XNtTiGlR11Q= sha384-aXHPHma86SmY1UhwxEx+Zdcm4b8K8WBSvCogayJr7Cu7VwBW08xkdg+aJIakpgIC sha512-Rp/ZMjUDR8Dwa1suU6uP5vP6l2qC/lKrIL4BMtj7SO+V2oLnNbYlJeOn1CNLP2da3xNACE8KAKnhITmQyC0spQ=="
+					"value": "sha256-mOD+FIRwZX/CLNCAE0JD8HUzDYnHU3aMXUQ0+UcLUuI= sha384-Ful1tzqoLG6fDWAZ4+9yafw8QVxG+umb/l/5kSrdWyOkYPQs1xvxDp3kbw/M7UtV sha512-x4PpUyuPseI8i+7+MsduZlpp5YwUWI47t1O09PfQscBesAiLhfXDogOmI39vmBHI6Xj+U71OnqItxHsBRjFDyQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03"
+		"mmx-base": "=10.12.00"
 	}
 }

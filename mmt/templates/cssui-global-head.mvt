@@ -20,3 +20,37 @@
 	<mvt:item name="readytheme" param="css" />
 </mvt:if>
 <mvt:item name="head" param="modules" />
+
+<mvt:if expr="g.Screen EQ 'PROD'">
+	<mvt:assign name="g.socialURL" value="l.settings:product:link" />
+	<mvt:assign name="g.socialText" value="'Check out the deal on ' $ l.settings:product:name $ ' at ' $ g.store:name" />
+	<mvt:do name="l.loaded_image_type" file="g.Module_Library_DB" value="ImageType_Load_Code( 'main', l.image_type )" />
+	<mvt:if expr="l.loaded_image_type">
+		<mvt:do name="l.loaded_product_image" file="g.Module_Library_DB" value="ProductImage_Load_Type(l.settings:product:id, l.image_type:id, l.product_image)" />
+		<mvt:if expr="l.loaded_product_image">
+			<mvt:do name="l.null" file="g.Module_Library_DB" value="Image_Load_ID(l.product_image:image_id, l.settings:imagedata)" />
+		</mvt:if>
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:imagedata:image">
+		<mvt:assign name="g.socialImage" value="g.baseurl $ l.settings:imagedata:image" />
+	<mvt:else>
+		<mvt:assign name="g.socialImage" value="g.baseurl $ 'graphics/en-US/admin/blank.gif'" />
+	</mvt:if>
+	<meta property="og:title" content="&mvte:product:name;">
+	<meta property="og:type" content="product">
+	<meta property="og:image" content="&mvte:global:socialImage;">
+	<meta property="og:url" content="&mvte:global:socialURL;">
+	<meta property="og:site_name" content="&mvte:global:store:name;">
+	<meta property="og:description" content="&mvte:global:socialText;">
+	<meta property="og:locale" content="en_US">
+	<meta name="twitter:card" content="summary_large_image">
+	<mvt:comment>
+		<meta name="twitter:site" content="@TWITTER_ACCOUNT">
+		<meta name="twitter:creator" content="@TWITTER_ACCOUNT">
+	</mvt:comment>
+	<meta name="twitter:url" content="&mvte:global:socialURL;">
+	<meta name="twitter:title" content="&mvte:product:name;">
+	<meta name="twitter:description" content="&mvte:global:socialText;">
+	<meta name="twitter:image" content="&mvte:global:socialImage;">
+	<meta name="twitter:image:alt" content="&mvte:product:name;">
+</mvt:if>

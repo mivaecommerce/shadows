@@ -1,0 +1,18 @@
+{
+    "active": 1,
+    "family": "Inter, sans-serif",
+    "google_font_name": "Inter",
+    "name": "Inter",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "300": 1,
+        "400": 1,
+        "500": 1,
+        "600": 1,
+        "700": 1
+    }
+}

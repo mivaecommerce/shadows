@@ -1,0 +1,75 @@
+/* ==========================================================================
+   MMX / TABS
+   ========================================================================== */
+:root {
+	--mmx-tabs__size: 1rem;
+	--mmx-tabs__border: 1px solid var(--mmx-color-grey-03);
+}
+
+slot[name="tab"] {
+	display: flex;
+	flex-direction: row;
+	gap: var(--mmx-tabs__size);
+	justify-content: center;
+}
+
+slot[name="tab"]::slotted(*) {
+	display: inline-block;
+}
+
+.mmx-tab {
+	background: none;
+	border: none;
+	cursor: pointer;
+	font: var(--mmx-subheading-xs-font);
+	padding: calc(var(--mmx-tabs__size) / 2) calc(var(--mmx-tabs__size));
+	position: relative;
+}
+
+mmx-tab-panel[hidden] {
+	display: none;
+}
+
+.mmx-tab-panel {
+	padding: 0 var(--mmx-tabs__size) var(--mmx-tabs__size);
+}
+
+@media screen and (max-width: 59.999em) {
+	mmx-tabs {
+		border-top: var(--mmx-tabs__border);
+	}
+
+	.mmx-tab,
+	mmx-tab-panel {
+		border-bottom: var(--mmx-tabs__border);
+	}
+
+	:host([data-selected="true"]) .mmx-tab {
+		border-bottom: none;
+	}
+
+	.mmx-tab {
+		display: grid;
+		grid-template-columns: 1fr min-content;
+		text-align: left;
+		width: 100%;
+	}
+
+	.mmx-tab::after {
+		content: '-';
+	}
+
+	:host([data-selected="true"]) .mmx-tab::after {
+		content: '+';
+	}
+}
+
+@media screen and (min-width: 60em) {
+	:host([data-selected="true"]) .mmx-tab {
+		border-bottom: 2px solid currentColor;
+	}
+
+	.mmx-tab-panel {
+		padding: var(--mmx-tabs__size);
+	}
+}

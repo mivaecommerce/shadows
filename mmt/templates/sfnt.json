@@ -5,8 +5,8 @@
             "item_code": "hero",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -47,17 +47,26 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
                     },
                     "button": {
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "button_size": {
-                                        "value": "s"
-                                    },
-                                    "button_style": {
-                                        "value": "primary"
+                                    "button_theme": {
+                                        "code": "primary",
+                                        "size": "s",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -71,11 +80,12 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "display-3"
-                                    },
                                     "heading_tag": {
                                         "value": "h1"
+                                    },
+                                    "typography_theme": {
+                                        "code": "display-3",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -89,8 +99,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "subheading_style": {
-                                        "value": "subheading-l"
+                                    "typography_theme": {
+                                        "code": "subheading-l",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -117,8 +128,8 @@
             "item_code": "hero-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -155,17 +166,26 @@
                 },
                 "content": {
                     "body": {
-                        "source": "markdown"
+                        "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
                     },
                     "button": {
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "button_size": {
-                                        "value": "s"
-                                    },
-                                    "button_style": {
-                                        "value": "secondary"
+                                    "button_theme": {
+                                        "code": "primary",
+                                        "size": "s",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -179,8 +199,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-1"
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -189,6 +210,18 @@
                     },
                     "settings": {
                         "enabled": 1
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "subheading-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
                     }
                 },
                 "image": {
@@ -210,8 +243,8 @@
             "item_code": "product-carousel",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "settings": {
@@ -223,11 +256,10 @@
                                 "textsettings": {
                                     "fields": {
                                         "normal": {
-                                            "button_size": {
-                                                "value": "s"
-                                            },
-                                            "button_style": {
-                                                "value": "primary"
+                                            "button_theme": {
+                                                "code": "primary",
+                                                "size": "s",
+                                                "theme_mode": 1
                                             }
                                         }
                                     }
@@ -266,6 +298,16 @@
                         "value": "center"
                     },
                     "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Featured Products"
                     },
                     "settings": {
@@ -273,30 +315,26 @@
                     }
                 },
                 "products": {
-                    "from_category": {
-                        "category": {
-                            "category_code": "featured"
-                        },
-                        "count": {
-                            "value": 15
-                        },
-                        "settings": {
-                            "enabled": 1
-                        },
-                        "sort": {
-                            "value": "bestsellers"
-                        }
+                    "category": {
+                        "category_code": "featured"
                     },
-                    "from_individual": {
-                        "settings": {
-                            "enabled": 0
-                        }
+                    "category_source": {
+                        "value": "manual"
+                    },
+                    "count": {
+                        "value": 15
                     },
                     "image_fit": {
                         "value": "contain"
                     },
                     "image_size": {
                         "value": "auto"
+                    },
+                    "product_set": {
+                        "value": "category"
+                    },
+                    "sort": {
+                        "value": "bestsellers"
                     }
                 }
             }
@@ -306,8 +344,8 @@
             "item_code": "six-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -339,28 +377,47 @@
                         "value": "center"
                     },
                     "body_text_styles": {
-                        "body_style": {
-                            "value": "paragraph-l"
+                        "typography_theme": {
+                            "code": "paragraph-l",
+                            "theme_mode": 1
                         }
                     },
                     "button_styles": {
-                        "button_size": {
-                            "value": "s"
-                        },
-                        "button_style": {
-                            "value": "secondary"
+                        "button_theme": {
+                            "code": "secondary",
+                            "size": "s",
+                            "theme_mode": 1
                         }
                     },
                     "content_location": {
                         "value": "under"
                     },
                     "heading_text_styles": {
-                        "heading_style": {
-                            "value": "subheading-s"
+                        "typography_theme": {
+                            "code": "subheading-s",
+                            "theme_mode": 1
+                        }
+                    },
+                    "subheading_text_styles": {
+                        "typography_theme": {
+                            "code": "subheading-s",
+                            "theme_mode": 1
                         }
                     }
                 },
                 "heading": {
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "settings": {
                         "enabled": 0
                     }
@@ -501,8 +558,8 @@
             "item_code": "text-banner",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -531,8 +588,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "body_style": {
-                                        "value": "paragraph-l"
+                                    "typography_theme": {
+                                        "code": "paragraph-l",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -548,11 +606,10 @@
                             "textsettings": {
                                 "fields": {
                                     "normal": {
-                                        "button_size": {
-                                            "value": "l"
-                                        },
-                                        "button_style": {
-                                            "value": "primary-link"
+                                        "button_theme": {
+                                            "code": "primary-link",
+                                            "size": "l",
+                                            "theme_mode": 1
                                         }
                                     }
                                 }
@@ -561,6 +618,18 @@
                         },
                         "settings": {
                             "enabled": 1
+                        }
+                    },
+                    "heading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-4",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
                         }
                     }
                 },
@@ -574,8 +643,8 @@
             "item_code": "text-banner-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -596,6 +665,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor."
                     },
                     "button": {
@@ -607,11 +686,10 @@
                             "textsettings": {
                                 "fields": {
                                     "normal": {
-                                        "button_size": {
-                                            "value": "xs"
-                                        },
-                                        "button_style": {
-                                            "value": "primary"
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "xs",
+                                            "theme_mode": 1
                                         }
                                     }
                                 }
@@ -626,8 +704,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-4"
+                                    "typography_theme": {
+                                        "code": "title-4",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -645,8 +724,8 @@
             "item_code": "text-banner-3",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -667,6 +746,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
                     },
                     "button": {
@@ -678,11 +767,10 @@
                             "textsettings": {
                                 "fields": {
                                     "normal": {
-                                        "button_size": {
-                                            "value": "xs"
-                                        },
-                                        "button_style": {
-                                            "value": "primary"
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "xs",
+                                            "theme_mode": 1
                                         }
                                     }
                                 }
@@ -697,8 +785,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-1"
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -716,8 +805,8 @@
             "item_code": "three-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -748,29 +837,48 @@
                     "align": {
                         "value": "left"
                     },
+                    "body_text_styles": {
+                        "typography_theme": {
+                            "code": "paragraph-s",
+                            "theme_mode": 1
+                        }
+                    },
                     "button_styles": {
-                        "button_size": {
-                            "value": "s"
-                        },
-                        "button_style": {
-                            "value": "secondary-link"
+                        "button_theme": {
+                            "code": "secondary-link",
+                            "size": "s",
+                            "theme_mode": 1
                         }
                     },
                     "content_location": {
                         "value": "under"
                     },
                     "heading_text_styles": {
-                        "heading_style": {
-                            "value": "subheading-l"
+                        "typography_theme": {
+                            "code": "subheading-l",
+                            "theme_mode": 1
                         }
                     },
                     "subheading_text_styles": {
-                        "subheading_style": {
-                            "value": "subheading-s"
+                        "typography_theme": {
+                            "code": "subheading-s",
+                            "theme_mode": 1
                         }
                     }
                 },
                 "heading": {
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "settings": {
                         "enabled": 0
                     }
@@ -863,8 +971,8 @@
             "item_code": "two-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -898,29 +1006,48 @@
                     "align": {
                         "value": "left"
                     },
+                    "body_text_styles": {
+                        "typography_theme": {
+                            "code": "paragraph-s",
+                            "theme_mode": 1
+                        }
+                    },
                     "button_styles": {
-                        "button_size": {
-                            "value": "xs"
-                        },
-                        "button_style": {
-                            "value": "secondary"
+                        "button_theme": {
+                            "code": "secondary",
+                            "size": "xs",
+                            "theme_mode": 1
                         }
                     },
                     "content_location": {
                         "value": "bottom-left"
                     },
                     "heading_text_styles": {
-                        "heading_style": {
-                            "value": "title-3"
+                        "typography_theme": {
+                            "code": "title-3",
+                            "theme_mode": 1
                         }
                     },
                     "subheading_text_styles": {
-                        "subheading_style": {
-                            "value": "subheading-l"
+                        "typography_theme": {
+                            "code": "subheading-l",
+                            "theme_mode": 1
                         }
                     }
                 },
                 "heading": {
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "settings": {
                         "enabled": 0
                     }

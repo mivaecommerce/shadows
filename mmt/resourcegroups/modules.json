@@ -3,6 +3,7 @@
     "linked_js_resources": [],
     "linked_css_resources": [
         "minibasket",
-        "readytheme"
+        "readytheme",
+        "mm-theme-styles"
     ]
 }

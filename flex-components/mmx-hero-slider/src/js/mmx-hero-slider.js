@@ -92,6 +92,13 @@ class MMX_HeroSlider extends MMX_Element {
 				allowAny: true,
 				isNumeric: true,
 				default: 10
+			},
+			'max-width': {
+				options: [
+					'none',
+					'auto'
+				],
+				default: 'none'
 			}
 		};
 	}
@@ -159,15 +166,17 @@ class MMX_HeroSlider extends MMX_Element {
 	}
 
 	render() {
+		const arrowStyle = this.getPropValue('arrow-style');
+
 		return /*html*/`
-			<div part="wrapper" class="mmx-hero-slider mmx-hero-slider--arrow-style-${this.getPropValue('arrow-style')} mmx-hero-slider--per-page-${this.getCurrentPerPage()}">
+			<div part="wrapper" class="mmx-hero-slider mmx-hero-slider--arrow-style-${arrowStyle} mmx-hero-slider--per-page-${this.getCurrentPerPage()}">
 				<div part="slides" class="mmx-hero-slider__slides">
 					${this.renderSlides()}
 					<slot name="hero_slide"></slot>
 				</div>
-				<button class="mmx-hero-slider__arrow-left" title="Move to previous slider page">${this.renderSliderArrowSVG()}</button>
-				<button class="mmx-hero-slider__arrow-right" title="Move to next slider page">${this.renderSliderArrowSVG()}</button>
-				<div class="mmx-hero-slider__slider-navigation mmx-hero-slider__slider-navigation--position-${this.getPropValue('nav-position')} mmx-hero-slider__slider-navigation--style-${this.getPropValue('nav-style')}"></div>
+				<button part="arrow-${arrowStyle} arrow-left" class="mmx-hero-slider__arrow-left" title="Move to previous slider page">${this.renderSliderArrowSVG()}</button>
+				<button part="arrow-${arrowStyle} arrow-right" class="mmx-hero-slider__arrow-right" title="Move to next slider page">${this.renderSliderArrowSVG()}</button>
+				<div part="slider-navigation" class="mmx-hero-slider__slider-navigation mmx-hero-slider__slider-navigation--position-${this.getPropValue('nav-position')} mmx-hero-slider__slider-navigation--style-${this.getPropValue('nav-style')}"></div>
 			</div>
 		`;
 	}
@@ -270,10 +279,10 @@ class MMX_HeroSlider extends MMX_Element {
 		}
 
 		if (swipeDistance > 0) {
-			this.moveToNext();
+			this.#notify_slider_interaction(this.moveToNext());
 		}
 		else if (swipeDistance < 0) {
-			this.moveToPrev();
+			this.#notify_slider_interaction(this.moveToPrev());
 		}
 	}
 
@@ -285,19 +294,29 @@ class MMX_HeroSlider extends MMX_Element {
 	// Navigation
 
 	#event_navigation_move_prev_click = (e) => {
-		this.moveToPrev();
+		this.#notify_slider_interaction(this.moveToPrev());
 	};
 
 	#event_navigation_move_next_click = (e) => {
-		this.moveToNext();
+		this.#notify_slider_interaction(this.moveToNext());
 	};
 
 	#event_navigation_move_position_click = (e) => {
 		if (e?.currentTarget.hasOwnProperty('__mmx_item_position')) {
-			this.moveToPage(e.currentTarget.__mmx_item_position);
+			this.#notify_slider_interaction(this.moveToPage(e.currentTarget.__mmx_item_position));
 			return false;
 		}
 	};
+
+	#notify_slider_interaction = (position) => {
+		this.dispatchEvent(new CustomEvent('slider:interaction', {
+			bubbles: true,
+			composed: true,
+			detail: {
+				position
+			}
+		}));
+	}
 
 	bindNavigation() {
 		var navigation_left, navigation_right;
@@ -482,6 +501,8 @@ class MMX_HeroSlider extends MMX_Element {
 		this.#current_slide = isNaN(position) ? 0 : position;
 		const state = this.getSliderState();
 
+		this.#setMaxWidth(state);
+
 		// Don't move if we don't have slides
 		if (state.slideCount === 0) {
 			return;
@@ -522,6 +543,10 @@ class MMX_HeroSlider extends MMX_Element {
 		// Update the selected nav item
 		[...this.navigationSliderElements()].forEach((navItem, i) => {
 			if (i === this.currentPage())  {
+				const isFocusingNavigation = this.shadowRoot.activeElement?.closest?.('.mmx-hero-slider__slider-navigation');
+				if (isFocusingNavigation) {
+					navItem.focus();
+				}
 				return navItem.classList.add('selected');
 			}
 
@@ -531,6 +556,13 @@ class MMX_HeroSlider extends MMX_Element {
 		this.updateArrows();
 
 		return position;
+	}
+
+	#setMaxWidth(state) {
+		if (this.getPropValue('max-width') === 'auto') {
+			const width = MMX.coerceNumber(this.getSize().split('x').at(0));
+			this.style.maxWidth = width > 0 ? `${(state.perPage * width) + ((state.perPage - 1) * state.gap) + state.peek}px` : 'auto';
+		}
 	}
 
 	moveToSlideElement(desiredSlide) {
@@ -567,7 +599,7 @@ class MMX_HeroSlider extends MMX_Element {
 		state.peek = state.hasMultiplePages && state.perPage > 1 ? this.getPropValue('peek') + state.gap : 0;
 
 		state.totalGap = (state.perPage - 1) * state.gap;
-		state.slideWidth = (this.clientWidth - state.peek + state.gap) / state.perPage;
+		state.slideWidth = ((this.clientWidth - state.peek - ((state.perPage - 1) * state.gap)) / state.perPage) + state.gap;
 		state.translateX = state.hasMultiplePages ? ((0 - state.moveToPosition) * state.slideWidth) - state.gap : -1 * state.gap;
 
 		// Create peek on left side
@@ -575,7 +607,7 @@ class MMX_HeroSlider extends MMX_Element {
 			state.translateX += state.peek;
 		}
 
-		state.slideWidth = state.slideWidth + 'px';
+		state.slideWidth = `${state.slideWidth}px`;
 		state.slideTransform = 'translateX(' + state.translateX + 'px)';
 		state.slidePaddingLeft = state.gap + 'px';
 

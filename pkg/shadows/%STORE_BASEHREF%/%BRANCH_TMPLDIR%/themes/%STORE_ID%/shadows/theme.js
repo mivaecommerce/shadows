@@ -290,15 +290,6 @@ const themeFunctionality = {
     jsCTGY() {
 	},
     jsPROD() {
-		/**
-		 * Initialize the AJAX Add-To-Cart extension
-		 */
-		addToCart.init();
-
-		/**
-		 * Initialize the A11y-Tabs extension
-		 */
-		tabbedContent.init();
 	},
     jsPLST() {
 	},

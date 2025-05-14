@@ -74,29 +74,68 @@
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:subheading:value">
 					<mmx-text
 						slot="subheading"
-						data-style="&mvte:hero_image:content:subheading:textsettings:fields:normal:subheading_style;"
-						style="&mvte:hero_image:content:subheading:textsettings:styles:normal;"
+						data-theme="&mvte:hero_image:content:subheading:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:hero_image:content:subheading:textsettings:fields:normal:typography_theme:classname;"
+						data-style="&mvte:hero_image:content:subheading:textsettings:fields:normal:subheading_style:value;"
 					>
+						<mvt:if expr="l.settings:hero_image:content:subheading:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:hero_image:content:subheading:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:hero_image:content:subheading:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:hero_image:content:subheading:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:hero_image:content:subheading:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						&mvte:hero_image:content:subheading:value;
 					</mmx-text>
 				</mvt:if>
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:heading:value">
 					<mmx-text
 						slot="heading"
-						data-style="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_style;"
-						data-tag="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_tag;"
-						style="&mvte:hero_image:content:heading:textsettings:styles:normal;"
+						data-theme="&mvte:hero_image:content:heading:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:hero_image:content:heading:textsettings:fields:normal:typography_theme:classname;"
+						data-style="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_style:value;"
+						data-tag="&mvte:hero_image:content:heading:textsettings:fields:normal:heading_tag:value;"
 					>
+						<mvt:if expr="l.settings:hero_image:content:heading:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:hero_image:content:heading:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:hero_image:content:heading:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:hero_image:content:heading:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:hero_image:content:heading:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						&mvte:hero_image:content:heading:value;
 					</mmx-text>
 				</mvt:if>
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:body:value">
 					<mmx-text
 						slot="body"
-						data-style="&mvte:hero_image:content:body:textsettings:fields:normal:body_style;"
+						data-theme="&mvte:hero_image:content:body:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:hero_image:content:body:textsettings:fields:normal:typography_theme:classname;"
+						data-style="&mvte:hero_image:content:body:textsettings:fields:normal:body_style:value;"
 						data-source="&mvte:hero_image:content:body:source;"
-						style="&mvte:hero_image:content:body:textsettings:styles:normal;"
 					>
+						<mvt:if expr="l.settings:hero_image:content:body:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:hero_image:content:body:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:hero_image:content:body:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:hero_image:content:body:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:hero_image:content:body:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						<mvt:if expr="l.settings:hero_image:content:body:source EQ 'markdown'">
 							&mvt:hero_image:content:body:value;
 						<mvt:else>
@@ -107,9 +146,17 @@
 				<mvt:if expr="NOT ISNULL l.settings:hero_image:content:button:value">
 					<mmx-button
 						slot="button"
-						data-style="&mvte:hero_image:content:button:textsettings:fields:normal:button_style;"
-						data-size="&mvte:hero_image:content:button:textsettings:fields:normal:button_size;"
+						data-style="&mvte:hero_image:content:button:textsettings:fields:normal:button_style:value;"
+						data-size="&mvte:hero_image:content:button:textsettings:fields:normal:button_size:value;"
+						data-theme="&mvte:hero_image:content:button:textsettings:fields:normal:button_theme:theme_available;"
+						data-theme-class="&mvte:hero_image:content:button:textsettings:fields:normal:button_theme:classname;"
 					>
+						<mvt:if expr="l.settings:hero_image:content:button:textsettings:fields:normal:button_theme:theme_available AND NOT ISNULL l.settings:hero_image:content:button:textsettings:fields:normal:button_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:hero_image:content:button:textsettings:fields:normal:button_theme:stylesheet;
+							</template>
+						</mvt:if>
+
 						&mvte:hero_image:content:button:value;
 					</mmx-button>
 				</mvt:if>

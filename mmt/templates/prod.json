@@ -1,38 +1,693 @@
 {
-    "attributemachine": {
-        "additional_price_element_id": "price-value-additional",
-        "additionalprice": "base",
-        "dependency_resolution": "first",
-        "discount_element_id": "product-discounts",
-        "displaydiscounts": 1,
-        "enabled": 1,
-        "inv_element_id": "inventory-message",
-        "inv_short": 0,
-        "invalid_msg": "Please select a valid combination of attributes.",
-        "missing_radio_msg": "<br>An option must be selected for <b>%attribute_prompt%</b>.",
-        "missing_text_msg": "<br>A value must be entered for <b>%attribute_prompt%</b>.",
-        "preload": 1,
-        "price": "sale",
-        "price_element_id": "price-value",
-        "swatch_element_id": "swatches",
-        "template_filename": "prod-attributemachine.mvc",
-        "weight_element_id": "product-weight-value"
-    },
-    "discount_volume": {
-        "template_filename": "prod-discount_volume.mvc"
-    },
     "flex": {
+        "product-details": {
+            "component_code": "mmx-product-details",
+            "item_code": "product-details",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
+                },
+                "advanced": {
+                    "update_url_with_variant_id": {
+                        "value": 1
+                    }
+                },
+                "details": {
+                    "children": [
+                        {
+                            "container_styles": {
+                                "settings": {
+                                    "enabled": 0
+                                }
+                            },
+                            "details": {
+                                "children": [
+                                    {
+                                        "container_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "details": {
+                                            "children": [
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "image_settings": {
+                                                        "closeup": {
+                                                            "dimensions": {
+                                                                "value": "960x960"
+                                                            },
+                                                            "settings": {
+                                                                "enabled": 1
+                                                            }
+                                                        },
+                                                        "main": {
+                                                            "dimensions": {
+                                                                "value": "580x580"
+                                                            },
+                                                            "image_type": {
+                                                                "value": "main"
+                                                            }
+                                                        },
+                                                        "thumbnail": {
+                                                            "dimensions": {
+                                                                "value": "64x64"
+                                                            },
+                                                            "per_page": {
+                                                                "value": 9
+                                                            },
+                                                            "settings": {
+                                                                "enabled": 1
+                                                            }
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Images"
+                                                    },
+                                                    "type": {
+                                                        "value": "images"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "flex_basis": {
+                                            "value": 150
+                                        },
+                                        "max_height_settings": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "name": {
+                                            "value": "Images"
+                                        },
+                                        "type": {
+                                            "value": "vertical-group"
+                                        }
+                                    },
+                                    {
+                                        "container_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "details": {
+                                            "children": [
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Code"
+                                                    },
+                                                    "prefix": {
+                                                        "value": "SKU: "
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 1
+                                                        },
+                                                        "typography_theme": {
+                                                            "code": "paragraph-xs",
+                                                            "theme_mode": 1
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "code"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Name"
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 1
+                                                        },
+                                                        "typography_theme": {
+                                                            "code": "title-3",
+                                                            "theme_mode": 1
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "name"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "details": {
+                                                        "children": [
+                                                            {
+                                                                "container_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    }
+                                                                },
+                                                                "name": {
+                                                                    "value": "Sale Price"
+                                                                },
+                                                                "price": {
+                                                                    "value": "sale"
+                                                                },
+                                                                "text_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 1
+                                                                    },
+                                                                    "typography_theme": {
+                                                                        "code": "subheading-l",
+                                                                        "customizations": {
+                                                                            "styles": {
+                                                                                "color": {
+                                                                                    "value": "#111111"
+                                                                                },
+                                                                                "overwrite_color": 1
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "type": {
+                                                                    "value": "price"
+                                                                }
+                                                            },
+                                                            {
+                                                                "container_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    }
+                                                                },
+                                                                "name": {
+                                                                    "value": "Additional Price"
+                                                                },
+                                                                "price": {
+                                                                    "value": "retail"
+                                                                },
+                                                                "text_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 1
+                                                                    },
+                                                                    "typography_theme": {
+                                                                        "code": "subheading-l",
+                                                                        "customizations": {
+                                                                            "styles": {
+                                                                                "color": {
+                                                                                    "value": "#767676"
+                                                                                },
+                                                                                "overwrite_color": 1
+                                                                            }
+                                                                        }
+                                                                    }
+                                                                },
+                                                                "type": {
+                                                                    "value": "price"
+                                                                }
+                                                            }
+                                                        ]
+                                                    },
+                                                    "name": {
+                                                        "value": "Prices"
+                                                    },
+                                                    "type": {
+                                                        "value": "inline-group"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Product Charges"
+                                                    },
+                                                    "type": {
+                                                        "value": "product-charges"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Volume Pricing Table"
+                                                    },
+                                                    "type": {
+                                                        "value": "volume-pricing-table"
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "price": {
+                                                            "textsettings": {
+                                                                "fields": {
+                                                                    "normal": {
+                                                                        "typography_theme": {
+                                                                            "code": "subheading-s"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "quantity": {
+                                                            "textsettings": {
+                                                                "fields": {
+                                                                    "normal": {
+                                                                        "typography_theme": {
+                                                                            "code": "subheading-s"
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "message_styles": {
+                                                        "display": {
+                                                            "value": "inline-block"
+                                                        },
+                                                        "style": {
+                                                            "value": "auto"
+                                                        },
+                                                        "variant": {
+                                                            "value": "minimal"
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Inventory Message"
+                                                    },
+                                                    "type": {
+                                                        "value": "inv_short"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Attributes"
+                                                    },
+                                                    "type": {
+                                                        "value": "attributes"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "details": {
+                                                        "children": [
+                                                            {
+                                                                "container_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    }
+                                                                },
+                                                                "flex_basis": {
+                                                                    "value": 40
+                                                                },
+                                                                "name": {
+                                                                    "value": "Quantity Input"
+                                                                },
+                                                                "type": {
+                                                                    "value": "quantity-input"
+                                                                }
+                                                            },
+                                                            {
+                                                                "container_styles": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    }
+                                                                },
+                                                                "details": {
+                                                                    "children": [
+                                                                        {
+                                                                            "add_to_cart_button": {
+                                                                                "textsettings": {
+                                                                                    "fields": {
+                                                                                        "normal": {
+                                                                                            "button_theme": {
+                                                                                                "code": "primary",
+                                                                                                "size": "m",
+                                                                                                "theme_mode": 1
+                                                                                            },
+                                                                                            "button_width": {
+                                                                                                "value": "full"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "value": "Add to Cart"
+                                                                            },
+                                                                            "container_styles": {
+                                                                                "settings": {
+                                                                                    "enabled": 0
+                                                                                }
+                                                                            },
+                                                                            "global_minibasket_url": {
+                                                                                "type": "page",
+                                                                                "value": "BASK"
+                                                                            },
+                                                                            "name": {
+                                                                                "value": "Add To Cart Button"
+                                                                            },
+                                                                            "type": {
+                                                                                "value": "add-to-cart-button"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "add_to_wishlist_button": {
+                                                                                "textsettings": {
+                                                                                    "fields": {
+                                                                                        "normal": {
+                                                                                            "button_theme": {
+                                                                                                "code": "primary-link",
+                                                                                                "size": "m",
+                                                                                                "theme_mode": 1
+                                                                                            },
+                                                                                            "button_width": {
+                                                                                                "value": "full"
+                                                                                            }
+                                                                                        }
+                                                                                    }
+                                                                                },
+                                                                                "value": "Add to Wishlist"
+                                                                            },
+                                                                            "atwl_url": {
+                                                                                "type": "page",
+                                                                                "value": "WISH"
+                                                                            },
+                                                                            "container_styles": {
+                                                                                "settings": {
+                                                                                    "enabled": 0
+                                                                                }
+                                                                            },
+                                                                            "name": {
+                                                                                "value": "Add To Wishlist Button"
+                                                                            },
+                                                                            "type": {
+                                                                                "value": "add-to-wishlist-button"
+                                                                            }
+                                                                        },
+                                                                        {
+                                                                            "container_styles": {
+                                                                                "settings": {
+                                                                                    "enabled": 0
+                                                                                }
+                                                                            },
+                                                                            "fragment": {
+                                                                                "value": "product_details_additional_data"
+                                                                            },
+                                                                            "name": {
+                                                                                "value": "Fragment"
+                                                                            },
+                                                                            "text_styles": {
+                                                                                "settings": {
+                                                                                    "enabled": 0
+                                                                                }
+                                                                            },
+                                                                            "type": {
+                                                                                "value": "fragment"
+                                                                            }
+                                                                        }
+                                                                    ]
+                                                                },
+                                                                "max_height_settings": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    }
+                                                                },
+                                                                "name": {
+                                                                    "value": "Call to Actions"
+                                                                },
+                                                                "type": {
+                                                                    "value": "vertical-group"
+                                                                }
+                                                            }
+                                                        ],
+                                                        "visible": 1
+                                                    },
+                                                    "name": {
+                                                        "value": "Quantity & CTAs"
+                                                    },
+                                                    "type": {
+                                                        "value": "side-by-side-group"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "max_height_settings": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "name": {
+                                            "value": "Details"
+                                        },
+                                        "type": {
+                                            "value": "vertical-group"
+                                        }
+                                    }
+                                ]
+                            },
+                            "name": {
+                                "value": "Main Content"
+                            },
+                            "type": {
+                                "value": "side-by-side-group"
+                            },
+                            "vertical_breakpoint": {
+                                "code": "tablet"
+                            }
+                        },
+                        {
+                            "container_styles": {
+                                "settings": {
+                                    "enabled": 0
+                                }
+                            },
+                            "details": {
+                                "children": [
+                                    {
+                                        "container_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "details": {
+                                            "children": [
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Description"
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 1
+                                                        },
+                                                        "typography_theme": {
+                                                            "code": "paragraph-s",
+                                                            "theme_mode": 1
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "descrip"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "max_height_settings": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "name": {
+                                            "value": "Description"
+                                        },
+                                        "text_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "type": {
+                                            "value": "vertical-group"
+                                        }
+                                    },
+                                    {
+                                        "container_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "details": {
+                                            "children": [
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "SKU"
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "sku"
+                                                    }
+                                                },
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "customfield": {
+                                                        "value": "customfields:brand"
+                                                    },
+                                                    "name": {
+                                                        "value": "Brand"
+                                                    },
+                                                    "prefix": {
+                                                        "value": "Brand:"
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "customfield"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "max_height_settings": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "name": {
+                                            "value": "Technical Specs"
+                                        },
+                                        "type": {
+                                            "value": "vertical-group"
+                                        }
+                                    },
+                                    {
+                                        "container_styles": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "details": {
+                                            "children": [
+                                                {
+                                                    "container_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "name": {
+                                                        "value": "Reviews"
+                                                    },
+                                                    "text_styles": {
+                                                        "settings": {
+                                                            "enabled": 0
+                                                        }
+                                                    },
+                                                    "type": {
+                                                        "value": "fragment"
+                                                    }
+                                                }
+                                            ]
+                                        },
+                                        "max_height_settings": {
+                                            "settings": {
+                                                "enabled": 0
+                                            }
+                                        },
+                                        "name": {
+                                            "value": "Reviews"
+                                        },
+                                        "type": {
+                                            "value": "vertical-group"
+                                        }
+                                    }
+                                ]
+                            },
+                            "name": {
+                                "value": "Product Tabs"
+                            },
+                            "tab_settings": {
+                                "typography_theme": {
+                                    "code": "subheading-xs",
+                                    "theme_mode": 1
+                                }
+                            },
+                            "type": {
+                                "value": "tab-group"
+                            }
+                        }
+                    ]
+                },
+                "product": {
+                    "source": {
+                        "value": "auto"
+                    }
+                }
+            }
+        },
         "related-products": {
             "component_code": "mmx-product-list",
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "empty_results_message": {
                         "source": "markdown"
+                    },
+                    "search": {
+                        "origin": {
+                            "value": "Runtime API"
+                        },
+                        "type": {
+                            "value": "system"
+                        }
                     },
                     "show_empty_results": {
                         "value": 0
@@ -44,6 +699,12 @@
                             {
                                 "name": {
                                     "value": "Name"
+                                },
+                                "text_styles": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
                                 },
                                 "type": {
                                     "value": "name"
@@ -61,6 +722,42 @@
                                         "value": "sale"
                                     }
                                 },
+                                "price_text_styles": {
+                                    "additional": {
+                                        "text_align": {
+                                            "value": "left"
+                                        },
+                                        "typography_theme": {
+                                            "code": "paragraph-s",
+                                            "customizations": {
+                                                "styles": {
+                                                    "color": {
+                                                        "value": "#767676"
+                                                    },
+                                                    "overwrite_color": 1
+                                                }
+                                            },
+                                            "theme_mode": 1
+                                        }
+                                    },
+                                    "displayed": {
+                                        "text_align": {
+                                            "value": "left"
+                                        },
+                                        "typography_theme": {
+                                            "code": "paragraph-s",
+                                            "customizations": {
+                                                "styles": {
+                                                    "color": {
+                                                        "value": "#111111"
+                                                    },
+                                                    "overwrite_color": 1
+                                                }
+                                            },
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                },
                                 "type": {
                                     "value": "price"
                                 }
@@ -71,6 +768,12 @@
                                 },
                                 "name": {
                                     "value": "Additional Data Fragment"
+                                },
+                                "text_styles": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
                                 },
                                 "type": {
                                     "value": "fragment"
@@ -101,11 +804,12 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-3"
-                                    },
                                     "heading_tag": {
                                         "value": "h2"
+                                    },
+                                    "typography_theme": {
+                                        "code": "title-3",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -134,8 +838,26 @@
                         }
                     },
                     "facets": {
+                        "facet_styles": {
+                            "typography_theme": {
+                                "code": "subheading-s",
+                                "theme_mode": 1
+                            }
+                        },
                         "settings": {
                             "enabled": 0
+                        },
+                        "title": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "typography_theme": {
+                                            "code": "title-4",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            }
                         }
                     },
                     "pagination": {
@@ -162,20 +884,6 @@
             }
         }
     },
-    "footer_sequence": {
-        "sequence": [
-            {
-                "dt_end": 0,
-                "dt_start": 0,
-                "enabled": 1,
-                "id": "",
-                "item": "flex",
-                "name": "Related Products",
-                "param": "related-products"
-            }
-        ],
-        "title": "Page Builder Footer"
-    },
     "hdft": {
         "footer": {
             "template_filename": "prod-footer.mvc"
@@ -183,63 +891,6 @@
         "header": {
             "template_filename": "prod-header.mvc"
         }
-    },
-    "header_sequence": {
-        "title": "Page Builder Header"
-    },
-    "product_attributes": {
-        "template_filename": "prod-product_attributes.mvc"
-    },
-    "product_display": {
-        "additionalprice": "base",
-        "advanced": 1,
-        "b_height": 274,
-        "b_width": 274,
-        "button_wish": 1,
-        "button_wish_nodisable": 1,
-        "constrain": "B",
-        "displaydiscounts": 1,
-        "field_code": 1,
-        "field_desc": 1,
-        "field_name": 1,
-        "field_price": 1,
-        "field_sku": 0,
-        "field_weight": 1,
-        "fields_custom": [
-            {
-                "code": "main",
-                "module": "productimagecustomfields"
-            }
-        ],
-        "image": "F",
-        "imagemachine_enabled": 1,
-        "invmsg": "L",
-        "predictdiscounts": 1,
-        "price": "sale",
-        "template_filename": "prod-product_display.mvc"
-    },
-    "product_display_imagemachine": {
-        "closeup_active": 1,
-        "closeup_close": "closeup_close",
-        "closeup_div": "closeup_div",
-        "closeup_height": 960,
-        "closeup_image": "closeup_image",
-        "closeup_size": "B",
-        "closeup_width": 960,
-        "enabled": 1,
-        "head": {
-            "template_filename": "prod-product_display_imagemachine-head.mvc"
-        },
-        "image_height": 580,
-        "image_size": "B",
-        "image_width": 580,
-        "legacy_image": "N",
-        "main_image": "main_image",
-        "preload": 1,
-        "thumb_active": 1,
-        "thumb_height": 64,
-        "thumb_width": 64,
-        "thumbnails": "thumbnails"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -256,5 +907,28 @@
         "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
         "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Product Details",
+                "param": "product-details"
+            },
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Related Products",
+                "param": "related-products"
+            }
+        ],
+        "title": "Sequence"
     }
 }

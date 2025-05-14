@@ -102,9 +102,22 @@
 				<mmx-text
 					slot="title"
 					class="mmx-combination-facet__subheading"
+					data-theme="&mvte:instance:content:subheading:textsettings:fields:normal:typography_theme:theme_available;"
+					data-theme-class="&mvte:instance:content:subheading:textsettings:fields:normal:typography_theme:classname;"
 					data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
-					style="&mvte:instance:content:subheading:textsettings:styles:normal;"
 				>
+					<mvt:if expr="l.settings:instance:content:subheading:textsettings:fields:normal:typography_theme:theme_available">
+						<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:textsettings:fields:normal:typography_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:content:subheading:textsettings:fields:normal:typography_theme:stylesheet;
+							</template>
+						</mvt:if>
+					<mvt:elseif expr="NOT ISNULL l.settings:instance:content:subheading:textsettings:styles:normal">
+						<template data-legacy-styles>
+							&mvt:instance:content:subheading:textsettings:styles:normal;
+						</template>
+					</mvt:if>
+
 					&mvte:instance:content:subheading:value;
 				</mmx-text>
 			</mvt:if>
@@ -115,10 +128,23 @@
 				<mmx-text
 					slot="title"
 					class="mmx-combination-facet__heading"
+					data-theme="&mvte:instance:content:heading:textsettings:fields:normal:typography_theme:theme_available;"
+					data-theme-class="&mvte:instance:content:heading:textsettings:fields:normal:typography_theme:classname;"
 					data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
 					data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
-					style="&mvte:instance:content:heading:textsettings:styles:normal;"
 				>
+					<mvt:if expr="l.settings:instance:content:heading:textsettings:fields:normal:typography_theme:theme_available">
+						<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:textsettings:fields:normal:typography_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:content:heading:textsettings:fields:normal:typography_theme:stylesheet;
+							</template>
+						</mvt:if>
+					<mvt:elseif expr="NOT ISNULL l.settings:instance:content:heading:textsettings:styles:normal">
+						<template data-legacy-styles>
+							&mvt:instance:content:heading:textsettings:styles:normal;
+						</template>
+					</mvt:if>
+
 					&mvte:instance:content:heading:value;
 				</mmx-text>
 			</mvt:if>
@@ -129,10 +155,23 @@
 				<mmx-text
 					slot="title"
 					class="mmx-combination-facet__body"
+					data-theme="&mvte:instance:content:body:textsettings:fields:normal:typography_theme:theme_available;"
+					data-theme-class="&mvte:instance:content:body:textsettings:fields:normal:typography_theme:classname;"
 					data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
 					data-source="&mvte:instance:content:body:source;"
-					style="&mvte:instance:content:body:textsettings:styles:normal;"
 				>
+					<mvt:if expr="l.settings:instance:content:body:textsettings:fields:normal:typography_theme:theme_available">
+						<mvt:if expr="NOT ISNULL l.settings:instance:content:body:textsettings:fields:normal:typography_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:content:body:textsettings:fields:normal:typography_theme:stylesheet;
+							</template>
+						</mvt:if>
+					<mvt:elseif expr="NOT ISNULL l.settings:instance:content:body:textsettings:styles:normal">
+						<template data-legacy-styles>
+							&mvt:instance:content:body:textsettings:styles:normal;
+						</template>
+					</mvt:if>
+
 					<mvt:if expr="l.settings:instance:content:body:source EQ 'markdown'">
 						&mvt:instance:content:body:value;
 					<mvt:else>
@@ -140,6 +179,25 @@
 					</mvt:if>
 				</mmx-text>
 			</mvt:if>
+		</mvt:if>
+
+		<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+			<mvt:comment> Theme Buttons </mvt:comment>
+			<mvt:if expr="NOT ISNULL l.settings:instance:controls:submit_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:instance:controls:submit_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:controls:reset_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:instance:controls:reset_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_theme:stylesheet">		<mvt:eval expr="l.settings:instance:application:dialog_add_button:textsettings:fields:normal:button_theme:stylesheet" />	</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_theme:stylesheet">	<mvt:eval expr="l.settings:instance:application:dialog_edit_button:textsettings:fields:normal:button_theme:stylesheet" />	</mvt:if>
+
+			<mvt:comment> Theme Typography </mvt:comment>
+			<mvt:if expr="NOT ISNULL l.settings:instance:controls:label_applied:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:instance:controls:label_applied:textsettings:fields:normal:typography_theme:stylesheet" />		</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:controls:label_inactive:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:instance:controls:label_inactive:textsettings:fields:normal:typography_theme:stylesheet" />		</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:instance:application:label_applied:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:instance:application:label_applied:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+		<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+		<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+			<template data-theme-stylesheet>
+				<mvt:eval expr="l.theme_stylesheet" />
+			</template>
 		</mvt:if>
 	</mmx-combination-facet>
 </mmx-hero>

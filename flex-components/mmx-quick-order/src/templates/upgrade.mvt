@@ -1,0 +1,41 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:comment> Theme Buttons </mvt:comment>
+	<mvt:assign name="l.settings:instance:add_row_text:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:add_to_cart_text:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:bulk:button:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:csv:button:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+
+	<mvt:comment> Theme Typography </mvt:comment>
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:bulk:heading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:bulk:subheading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:bulk:body:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:csv:heading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:csv:subheading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:csv:body:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:heading:heading_text:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:bulk:heading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:bulk:heading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:bulk:subheading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:bulk:subheading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:bulk:body:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:bulk:body:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:csv:heading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:csv:heading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:csv:subheading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:csv:subheading:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:csv:body:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:csv:body:textsettings:fields:normal:font_family:value )" />
+
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:weight" value="l.settings:instance:heading:heading_text:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:bulk:heading:textsettings:fields:normal:font:weight" value="l.settings:instance:bulk:heading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:bulk:subheading:textsettings:fields:normal:font:weight" value="l.settings:instance:bulk:subheading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:bulk:body:textsettings:fields:normal:font:weight" value="l.settings:instance:bulk:body:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:csv:heading:textsettings:fields:normal:font:weight" value="l.settings:instance:csv:heading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:csv:subheading:textsettings:fields:normal:font:weight" value="l.settings:instance:csv:subheading:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:csv:body:textsettings:fields:normal:font:weight" value="l.settings:instance:csv:body:textsettings:fields:normal:font_weight:value" />
+
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:bulk:heading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:bulk:subheading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:bulk:body:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:csv:heading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:csv:subheading:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:csv:body:textsettings:fields:normal:font:style" value="''" />
+</mvt:if>

@@ -41,6 +41,15 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'product-name-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'product-name-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'product-name-style': {
 				options: [
 					'display-1',
@@ -78,13 +87,17 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'product-name-font-weight': {
+				allowAny: true,
+				default: null
+			},
+			'product-name-font-style': {
+				allowAny: true,
+				default: null
+			},
 			'product-name-font-size': {
 				allowAny: true,
 				isNumeric: true,
-				default: null
-			},
-			'product-name-font-weight': {
-				allowAny: true,
 				default: null
 			},
 			'product-name-font-color': {
@@ -111,6 +124,15 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'subheading-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'subheading-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'subheading-style': {
 				options: [
 					'display-1',
@@ -134,13 +156,17 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'subheading-font-weight': {
+				allowAny: true,
+				default: null
+			},
+			'subheading-font-style': {
+				allowAny: true,
+				default: null
+			},
 			'subheading-font-size': {
 				allowAny: true,
 				isNumeric: true,
-				default: null
-			},
-			'subheading-font-weight': {
-				allowAny: true,
 				default: null
 			},
 			'subheading-font-color': {
@@ -155,6 +181,15 @@ class MMX_FeaturedProduct extends MMX_Element {
 			description: {
 				allowAny: true,
 				default: null
+			},
+			'description-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'description-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'description-style': {
 				options: [
@@ -179,13 +214,17 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				default: null
 			},
+			'description-font-weight': {
+				allowAny: true,
+				default: null
+			},
+			'description-font-style': {
+				allowAny: true,
+				default: null
+			},
 			'description-font-size': {
 				allowAny: true,
 				isNumeric: true,
-				default: null
-			},
-			'description-font-weight': {
-				allowAny: true,
 				default: null
 			},
 			'description-font-color': {
@@ -203,6 +242,19 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'button-size': {
 				allowAny: true,
 				default: 's'
+			},
+			'button-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'button-theme-class': {
+				allowAny: true,
+				default: ''
+			},
+			'button-theme-width': {
+				allowAny: true,
+				default: 'full'
 			},
 			'desktop-image-size': {
 				allowAny: true,
@@ -232,6 +284,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 				allowAny: true,
 				isNumeric: true,
 				default: 10
+			},
+			'show-product-images': {
+				isBoolean: true,
+				default: true
 			}
 		};
 	}
@@ -432,15 +488,26 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	initializeSubscription() {
 		if (this.productHasSubscription) {
-			const subscription = this.shadowRoot.querySelector('#l-subscription');
-			if (Number(subscription.value) > 0) {
-				subscription.dispatchEvent(new Event('change'));
+			if (this.#subscriptionTermID() > 0) {
+				this.#subscription().dispatchEvent(new Event('change'));
 			}
 		}
 	}
 
+	#subscription() {
+		return this.shadowRoot.querySelector('#l-subscription');
+	}
+
+	#subscriptionTermID() {
+		return MMX.coerceNumber(Number(this.#subscription()?.value), 0);
+	}
+
 	renderProductImages() {
-		return this.getPropValue('multiple-images') ? this.renderProductImageSlider() : this.renderProductImageStandalone();
+		if (this.getPropValue('show-product-images') ) {
+			return this.getPropValue('multiple-images') ? this.renderProductImageSlider() : this.renderProductImageStandalone();
+		} else {
+			return '';
+		}
 	}
 
 	renderProductImageStandalone() {
@@ -521,6 +588,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContent() {
+		const theme_available = this.getPropValue('product-name-theme');
+
 		return /*html*/`
 			<div part="product-content" class="mmx-featured-product__product-content">
 				<form autocomplete="off" method="post" action="${MMX.encodeEntities(this.getBaskUrl())}">
@@ -533,10 +602,13 @@ class MMX_FeaturedProduct extends MMX_Element {
 					<mmx-text
 						part="product-name"
 						class="mmx-featured-product__product-name-text"
+						data-theme="${theme_available}"
+						data-theme-class="${MMX.encodeEntities(this.getPropValue('product-name-theme-class'))}"
 						data-style="${MMX.encodeEntities(this.getPropValue('product-name-style'))}"
 						data-tag="${MMX.encodeEntities(this.getPropValue('product-name-tag'))}"
-						${this.renderFontStyles('product-name')}
 					>
+						${this.renderLegacyStylesTemplate(theme_available, this.renderFontStyles('product-name'))}
+						${this.renderThemeStylesheetTemplate(theme_available)}
 						${this.product.name}
 					</mmx-text>
 					<div part="pricing-discounts" class="mmx-featured-product__pricing-discounts">
@@ -563,13 +635,18 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return '';
 		}
 
+		const theme_available = this.getPropValue('subheading-theme');
+
 		return /*html*/`
 			<mmx-text
 				part="subheading"
 				class="mmx-featured-product__subheading"
+				data-theme="${theme_available}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('subheading-theme-class'))}"
 				data-style="${MMX.encodeEntities(this.getPropValue('subheading-style'))}"
-				${this.renderFontStyles('subheading')}
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.renderFontStyles('subheading'))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${subheading}
 			</mmx-text>
 		`;
@@ -722,7 +799,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${required}>${attribute.value ?? ''}</textarea>
+				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${required}>${MMX.encodeEntities(attribute.value ?? '')}</textarea>
 			</div>
 		`;
 	}
@@ -831,7 +908,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 	renderProductContentAttributeCheckbox(attribute, index, template) {
 		var encoded_image_template;
 		const required = attribute.required ? 'required' : '';
-		const checked  = MMX.isTruthy(attribute.value) ? 'checked' : '';
+		const checked  = this.#attributeValueIsTruthy(attribute.value) ? 'checked' : '';
 
 		if (attribute.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(attribute.image)}" alt="${MMX.encodeEntities(attribute.prompt)}" loading="lazy" />`;
 		else							encoded_image_template = `${attribute.prompt} ${attribute.price ? attribute.formatted_price : ''}`;
@@ -845,6 +922,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 				</label>
 			</div>
 		`;
+	}
+
+	#attributeValueIsTruthy(value) {
+		return !MMX.valueIsEmpty(value) && String(value) !== '0';
 	}
 
 	renderProductContentAttributeTemplate(attribute, index) {
@@ -900,15 +981,20 @@ class MMX_FeaturedProduct extends MMX_Element {
 			description	= this.getPropValue('description') ?? '';
 		}
 
+		const theme_available = this.getPropValue('description-theme');
+
 		return /*html*/`
 			<mmx-text
 				part="product-description"
 				class="mmx-featured-product__product-description"
 				data-max-chars="${MMX.encodeEntities(max_chars)}"
 				data-trim-suffix="..."
+				data-theme="${theme_available}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('description-theme-class'))}"
 				data-style="${MMX.encodeEntities(this.getPropValue('description-style'))}"
-				${this.renderFontStyles('description')}
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.renderFontStyles('description'))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${description}
 			</mmx-text>
 		`;
@@ -925,6 +1011,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return '';
 		}
 
+		const theme_available = this.getPropValue('button-theme');
+
 		return /*html*/`
 			<div part="product-add-to-cart" class="mmx-featured-product__product-add-to-cart">
 				<mmx-button
@@ -933,8 +1021,11 @@ class MMX_FeaturedProduct extends MMX_Element {
 					data-type="submit"
 					data-style="${MMX.encodeEntities(this.getPropValue('button-style'))}"
 					data-size="${MMX.encodeEntities(this.getPropValue('button-size'))}"
-					data-width="full"
+					data-theme="${MMX.encodeEntities(theme_available)}"
+					data-theme-class="${MMX.encodeEntities(this.getPropValue('button-theme-class'))}"
+					data-width="${!theme_available ? 'full' : MMX.encodeEntities(this.getPropValue('button-theme-width'))}"
 				>
+					${this.renderThemeStylesheetTemplate(theme_available)}
 					${MMX.encodeEntities(button)}
 				</mmx-button>
 			</div>
@@ -945,15 +1036,16 @@ class MMX_FeaturedProduct extends MMX_Element {
 		var encoded_name_styles = new Array();
 
 		if (this.getPropValue(`${prefix}-font-family`) !== null)	encoded_name_styles.push(`font-family: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-family`))};`);
-		if (this.getPropValue(`${prefix}-font-size`) !== null)		encoded_name_styles.push(`font-size: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-size`))}px;`);
 		if (this.getPropValue(`${prefix}-font-weight`) !== null)	encoded_name_styles.push(`font-weight: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-weight`))};`);
+		if (this.getPropValue(`${prefix}-font-style`) !== null)		encoded_name_styles.push(`font-style: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-style`))};`);
+		if (this.getPropValue(`${prefix}-font-size`) !== null)		encoded_name_styles.push(`font-size: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-size`))}px;`);
 		if (this.getPropValue(`${prefix}-font-color`) !== null)		encoded_name_styles.push(`color: ${MMX.encodeEntities(this.getPropValue(`${prefix}-font-color`))};`);
 
 		if (!encoded_name_styles.length) {
 			return '';
 		}
 
-		return /*html*/`style="${encoded_name_styles.join('')}"`;
+		return /*html*/`${encoded_name_styles.join('')}`;
 	}
 
 	getButton() {
@@ -1013,6 +1105,63 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	get inventoryMessage() {
 		return this.shadowRoot.getElementById('inv-message')?.textContent?.trim() ?? '';
+	}
+
+	get quantity() {
+		return MMX.coerceNumber(this.shadowRoot.querySelector('[name="Quantity"]').value, 1);
+	}
+
+	get selectedSubscriptionTerm() {
+		const subscriptionTermID = this.#subscriptionTermID();
+		return this.product?.subscriptionterms?.find?.(term => {
+			return term.id === subscriptionTermID;
+		});
+	}
+
+	getRuntimeBasketItemInsertParams() {
+		return {
+			Function: 'Runtime_BasketItem_Insert',
+			Product_Code: this.product.code,
+			Quantity: this.quantity,
+			Attributes: this.#getRuntimeBasketItemInsertAttributes(),
+			Subscription_Term_ID: this.#subscriptionTermID()
+		};
+	}
+
+	#getRuntimeBasketItemInsertAttributes() {
+		const attributes = this.#getFlatAttributes();
+
+		return attributes.map((attribute, index) => {
+			const value = this.formData?.get?.(`Product_Attributes[${index + 1}]:value`) ?? '';
+
+			if (attribute.templateAttribute?.code) {
+				return {
+					code: attribute.templateAttribute.code,
+					template_code: attribute.code,
+					value
+				};
+			}
+
+			return {
+				code: attribute.code,
+				value
+			};
+		});
+	}
+
+	#getFlatAttributes() {
+		return this.product.attributes.reduce((flatAttributes, attribute) => {
+			if (attribute.attemp_id > 0) {
+				attribute.attributes.forEach(templateAttribute => {
+					templateAttribute.templateAttribute = attribute;
+					flatAttributes.push(templateAttribute);
+				});
+			} else {
+				flatAttributes.push(attribute);
+			}
+
+			return flatAttributes;
+		}, []);
 	}
 
 	//
@@ -1222,7 +1371,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 	// Image Manager
 	//
 	imageManagerUpdateVariant(variant_id) {
-		if (this.variant_id === variant_id) {
+		if (this.variant_id === variant_id || !this.getPropValue('show-product-images')) {
 			return;
 		}
 
@@ -1312,6 +1461,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 	onDataChange() {
 		this.setSpacing(this.data?.advanced?.spacing);
 
+		if (this.data?.product?.product?._isPreloaded) {
+			this.setProduct(this.data?.product?.product?.product);
+		}
+
 		MMX.setElementAttributes(this, {
 			'data-image-position': this.data?.layout?.image_position?.value,
 			'data-image-type': this.data?.advanced?.product?.image_type?.value,
@@ -1320,28 +1473,40 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-discount': this.data?.advanced?.product?.discount?.value,
 			'data-show-product-sku': this.data?.advanced?.product?.sku?.value,
 			'data-show-product-code': this.data?.advanced?.product?.code?.value,
+			'data-product-name-theme': this.data?.text?.product_name?.typography_theme?.theme_available,
+			'data-product-name-theme-class': this.data?.text?.product_name?.typography_theme?.classname,
 			'data-product-name-style': this.data?.text?.product_name?.product_name_style?.value,
 			'data-product-name-tag': this.data?.advanced?.product?.product_name_tag?.value,
-			'data-product-name-font-family': this.data?.text?.product_name?.font_family?.value,
+			'data-product-name-font-family': this.data?.text?.product_name?.font?.font?.family,
+			'data-product-name-font-weight': this.data?.text?.product_name?.font?.weight,
+			'data-product-name-font-style': this.data?.text?.product_name?.font?.style,
 			'data-product-name-font-size': this.data?.text?.product_name?.font_size?.value,
-			'data-product-name-font-weight': this.data?.text?.product_name?.font_weight?.value,
 			'data-product-name-font-color': this.data?.text?.product_name?.font_color?.value,
 			'data-subheading': this.data?.text?.subheading?.text?.value,
+			'data-subheading-theme': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.typography_theme?.theme_available,
+			'data-subheading-theme-class': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.typography_theme?.classname,
 			'data-subheading-style': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.subheading_style?.value,
-			'data-subheading-font-family': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font_family?.value,
+			'data-subheading-font-family': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font?.font?.family,
+			'data-subheading-font-weight': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font?.weight,
+			'data-subheading-font-style': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font?.style,
 			'data-subheading-font-size': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font_size?.value,
-			'data-subheading-font-weight': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font_weight?.value,
 			'data-subheading-font-color': this.data?.text?.subheading?.text?.textsettings?.fields?.normal?.font_color?.value,
 			'data-overwrite-description': this.data?.text?.description?.overwritten_description?.settings?.enabled,
 			'data-description': this.data?.text?.description?.overwritten_description?.settings?.enabled ? (this.data?.text?.description?.overwritten_description?.text?.value || '') : undefined,
+			'data-description-theme': this.data?.text?.description?.typography_theme?.theme_available,
+			'data-description-theme-class': this.data?.text?.description?.typography_theme?.classname,
 			'data-description-style': this.data?.text?.description?.description_style?.value,
-			'data-description-font-family': this.data?.text?.description?.font_family?.value,
+			'data-description-font-family': this.data?.text?.description?.font?.font?.family,
+			'data-description-font-weight': this.data?.text?.description?.font?.weight,
+			'data-description-font-style': this.data?.text?.description?.font?.style,
 			'data-description-font-size': this.data?.text?.description?.font_size?.value,
-			'data-description-font-weight': this.data?.text?.description?.font_weight?.value,
 			'data-description-font-color': this.data?.text?.description?.font_color?.value,
 			'data-button': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.value : undefined,
 			'data-button-style': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_style?.value : undefined,
 			'data-button-size': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_size?.value : undefined,
+			'data-button-theme': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_theme?.theme_available : undefined,
+			'data-button-theme-class': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_theme?.classname : undefined,
+			'data-button-theme-width': this.data?.advanced?.product?.button?.settings?.enabled ? this.data?.advanced?.product?.button?.button_text?.textsettings?.fields?.normal?.button_width?.value : undefined,
 			'data-fallback-product-image-default': this.data?.fallback_product_image_default,
 			'data-fallback-product-image-mobile': this.data?.fallback_product_image_mobile,
 			'data-fragment-code': this.data?.advanced?.product?.fragment_code?.value,

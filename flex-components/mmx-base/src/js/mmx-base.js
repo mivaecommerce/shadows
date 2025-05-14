@@ -10,11 +10,11 @@ MMX.variableType = (value) => {
 };
 
 MMX.isTruthy = (value) => {
-	return [true, 'true', 'yes', 'y', '1', 1].includes(value);
+	return [true, 'true', 'yes', 'y', 'on', '1', 1].includes(typeof value === 'string' ? value.toLowerCase() : value);
 };
 
 MMX.isFalsy = (value) => {
-	return [null, undefined, false, 'false', 'no', 'n', '0', 0].includes(value);
+	return [null, undefined, false, 'false', 'no', 'n', 'off', '0', 0].includes(typeof value === 'string' ? value.toLowerCase() : value);
 };
 
 MMX.copy = (value) => {
@@ -47,6 +47,16 @@ MMX.coerceNumber = (value, fallback = 0) => {
 	return isNaN(value) ? fallback : Number(value);
 };
 
+MMX.coerceString = (value = '', {prefix = '', suffix = '', fallback = ''} = {}) => {
+	const isValidValue = (typeof value === 'string' && value.length) || typeof value === 'number';
+
+	if (isValidValue) {
+		return `${prefix}${value}${suffix}`;
+	}
+
+	return fallback;
+};
+
 MMX.normalizeCode = (value) => {
 	const valueType = MMX.variableType(value);
 
@@ -57,6 +67,10 @@ MMX.normalizeCode = (value) => {
 	return '';
 };
 
+MMX.scriptSafeJSONStringify = (data) => {
+	return JSON.stringify(data).replace(/\//gi, '\\/');
+};
+
 MMX.valueIsEmpty = (value) => {
 	if (value === null)											return true;
 	else if (typeof value === 'object')							return Object.keys(value).length === 0 && value.constructor === Object;
@@ -65,6 +79,120 @@ MMX.valueIsEmpty = (value) => {
 
 	// type is boolean, number, function, non-zero length string, etc
 	return false;
+};
+
+MMX.arrayIsEmpty = (arr) => {
+	return !Array.isArray(arr) || arr.length === 0;
+};
+
+MMX.keyToCssProp = (key = '') => {
+	return MMX.snakeToKebabCase(MMX.camelToKebabCase(key));
+};
+
+MMX.camelToKebabCase = (value = '') => {
+	return String(value)
+		.replace(/([A-Z])([A-Z][a-z])/g, '$1-$2') // withASingleCharacterWord
+		.replace(/([a-z0-9])([A-Z])/g, '$1-$2') // commonCamelCase
+		.toLowerCase();
+};
+
+MMX.snakeToKebabCase = (value = '') => {
+	return String(value).replace(/_/g, '-').toLowerCase();
+};
+
+MMX.objectToCssShorthand = (obj, {key = 'padding_%side%'} = {}) => {
+	const first = MMX.composeUnitValue(obj?.[key.replace('%side%', 'top').replace('%corner%', 'top_left')]);
+	const second = MMX.composeUnitValue(obj?.[key.replace('%side%', 'right').replace('%corner%', 'top_right')]);
+	const third = MMX.composeUnitValue(obj?.[key.replace('%side%', 'bottom').replace('%corner%', 'bottom_right')]);
+	const fourth = MMX.composeUnitValue(obj?.[key.replace('%side%', 'left').replace('%corner%', 'bottom_left')]);
+
+	if (first === second && first === third && first === fourth) {
+		return first;
+	}
+
+	return `${first ?? 0} ${second ?? 0} ${third ?? 0} ${fourth ?? 0}`;
+};
+
+MMX.composeUnitValue = (obj, {fallbackUnit = 'px'} = {}) => {
+	if (typeof obj?.value !== 'number') {
+		return undefined;
+	}
+
+	const value = MMX.coerceNumber(obj?.value);
+
+	if (value === 0) {
+		return `${value}`;
+	}
+
+	return `${value}${MMX.coerceString(obj?.unit, {fallback: fallbackUnit})}`;
+};
+
+MMX.boxShadowObjectToCssValue = (obj) => {
+	if (!obj?.box_shadow_enabled?.value) {
+		return undefined;
+	}
+
+	const inset = obj?.box_shadow_inset?.value;
+	const offsetX = MMX.composeUnitValue(obj?.box_shadow_offset_x) ?? 0;
+	const offsetY = MMX.composeUnitValue(obj?.box_shadow_offset_y) ?? 0;
+	const blur = MMX.composeUnitValue(obj?.box_shadow_blur) ?? 0;
+	const spread = MMX.composeUnitValue(obj?.box_shadow_spread) ?? 0;
+	const color = obj?.box_shadow_color?.value;
+
+	return `${inset} ${offsetX} ${offsetY} ${blur} ${spread} ${color}`;
+};
+
+MMX.objectToInlineStyles = (styles = {}) => {
+	return Object.entries(styles).reduce((inlineStyles, [key, value]) => {
+		const isValidValue = (typeof value === 'string' && value.length) || typeof value === 'number';
+
+		if (isValidValue) {
+			const prop = MMX.keyToCssProp(key);
+			inlineStyles.push(`${prop}: ${value}`);
+		}
+
+		return inlineStyles;
+	}, []).join(';');
+};
+
+MMX.renderBreakpointStyle = ({selector = ':root', breakpoint = {}, match = {}} = {}) => {
+	if (MMX.isFalsy(breakpoint?.breakpoint_available) || MMX.valueIsEmpty(match)) {
+		return '';
+	}
+
+	return /*html*/`
+		<style>
+			@media ${MMX.buildMediaQuery(breakpoint)} {
+				${selector} {
+					${MMX.objectToInlineStyles(match)}
+				}
+			}
+		</style>
+	`;
+};
+
+MMX.buildMediaQuery = (rules = {}) => {
+	const parts = [];
+
+	const minWidth = MMX.composeUnitValue({
+		value: rules?.breakpoint?.start?.value,
+		unit: rules?.breakpoint?.start?.unit
+	});
+
+	const maxWidth = MMX.composeUnitValue({
+		value: rules?.breakpoint?.end?.value,
+		unit: rules?.breakpoint?.end?.unit
+	});
+
+	if (typeof minWidth !== 'undefined') {
+		parts.push(`(min-width: ${minWidth})`);
+	}
+
+	if (typeof maxWidth !== 'undefined') {
+		parts.push(`(max-width: ${maxWidth})`);
+	}
+
+	return parts.join(' and ');
 };
 
 MMX.watchData = (obj, callback) => {
@@ -173,7 +301,11 @@ MMX.closestElement = (selector, node) => {
 		return null;
 	}
 
-	return (node.closest?.(selector) || MMX.closestElement(selector, node?.getRootNode?.()?.host));
+	return (
+		node.closest?.(selector) ||
+		node.parentElement?.closest?.(selector) ||
+		MMX.closestElement(selector, node?.getRootNode?.()?.host)
+	);
 };
 
 MMX.querySelector = (selector, root = document) => {
@@ -416,6 +548,10 @@ MMX.pluralize = (singular, count, plural) => {
 	return count === 1 ? `${singular}` : plural ?? `${singular}s`;
 };
 
+MMX.setWindowLocation = (href) => {
+	window.location.href = href;
+};
+
 class MMX_Element extends HTMLElement {
 
 	themeResourcePattern;
@@ -465,8 +601,12 @@ class MMX_Element extends HTMLElement {
 		// Re-Render when the innerHTML / child-nodes are updated
 		this.observer = new MutationObserver((records) => {
 			const validRecords = records.filter(record => {
+				if (MMX.closestElement('.mmx-skip-mutation', record.target)) {
+					return false;
+				}
+
 				return ![...record.addedNodes, ...record.removedNodes].find(node => {
-					return node?.closest?.('.mmx-skip-mutation') || node?.parentElement?.closest?.('.mmx-skip-mutation');
+					return MMX.closestElement('.mmx-skip-mutation', node);
 				});
 			});
 
@@ -553,7 +693,7 @@ class MMX_Element extends HTMLElement {
 	}
 
 	getTemplate() {
-		if (this.hideOnEmpty && this.isEmpty()) {
+		if (this.hideOnEmpty && this.isEmpty() && this.slotsAreEmpty()) {
 			return '';
 		}
 		return this.renderStyles() + this.output('render');
@@ -561,6 +701,22 @@ class MMX_Element extends HTMLElement {
 
 	isEmpty() {
 		return this.textContent.trim().length === 0;
+	}
+
+	slotsAreEmpty() {
+		return !this.slotsHaveContent();
+	}
+
+	slotsHaveContent() {
+		return Array.from(this.querySelectorAll('slot')).some(slot => {
+			return Array.from(slot.assignedElements()).some(element => {
+				return this.hasTextContent(element);
+			});
+		});
+	}
+
+	hasTextContent(element = this) {
+		return element?.textContent?.trim?.()?.length > 0;
 	}
 
 	forceUpdate() {
@@ -744,16 +900,23 @@ class MMX_Element extends HTMLElement {
 			return '';
 		}
 
+		const theme_available = property?.textsettings?.fields?.[field]?.typography_theme?.theme_available ?? false;
+
 		const text = MMX.createElement({
 			type: 'mmx-text',
 			attributes: {
 				class: className,
 				'data-source': property.source,
+				'data-theme': theme_available,
+				'data-theme-class': property?.textsettings?.fields?.[field]?.typography_theme?.classname ?? '',
 				'data-style': property?.textsettings?.fields?.[field]?.[`${prefix}style`]?.value || defaultStyle,
 				'data-tag': property?.textsettings?.fields?.[field]?.[`${prefix}tag`]?.value || defaultTag,
-				style: property?.textsettings?.styles?.[field] || ''
 			},
-			content: property.source === 'markdown' ? property.value : MMX.encodeEntities(property.value)
+			content: `
+				${this.renderLegacyStylesTemplate(theme_available, property?.textsettings?.styles?.[field] ?? '')}
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${property.source === 'markdown' ? property.value : MMX.encodeEntities(property.value)}
+			`
 		});
 
 		return text.outerHTML;
@@ -769,35 +932,81 @@ class MMX_Element extends HTMLElement {
 			attributes: {
 				class: className,
 				'data-style': property?.textsettings?.fields?.[field]?.[`${prefix}style`]?.value || defaultStyle,
-				'data-size': property?.textsettings?.fields?.[field]?.[`${prefix}size`]?.value || defaultSize
+				'data-size': property?.textsettings?.fields?.[field]?.[`${prefix}size`]?.value || defaultSize,
+				'data-theme': property?.textsettings?.fields?.[field]?.[`${prefix}theme`]?.theme_available ?? false,
+				'data-theme-class': property?.textsettings?.fields?.[field]?.[`${prefix}theme`]?.classname || ''
 			},
-			content: MMX.encodeEntities(property.value)
+			content: `
+				${this.renderThemeStylesheetTemplate(property?.textsettings?.fields?.[field]?.[`${prefix}theme`]?.theme_available || false)}
+				${MMX.encodeEntities(property.value)}
+			`
 		});
 
 		return button.outerHTML;
 	}
 
+	renderThemeStylesheetTemplate(theme_available) {
+		if (!theme_available) {
+			return '';
+		}
+
+		return /*html*/`
+			<template data-theme-stylesheet>
+				${this.querySelector(':scope > template[data-theme-stylesheet]')?.content?.textContent ?? ''}
+			</template>
+		`;
+	}
+
+	renderLegacyStylesTemplate(theme_available, styles) {
+		if (theme_available || !styles?.length) {
+			return '';
+		}
+
+		return /*html*/`
+			<template data-legacy-styles>
+				${styles}
+			</template>
+		`;
+	}
+
 	getStylesFromGroup(group = {}) {
 		return Object.keys(group).reduce((styles, key) => {
-			let value = group[key]?.value;
-
-			if (MMX.valueIsEmpty(value) || key === 'style') {
+			if (key === 'style' || key === 'button_theme' || key === 'typography_theme') {
 				return styles;
 			}
 
-			if (key === 'font_size') {
-				value += 'px';
+			let newStyles = [];
+
+			if (key === 'font') {
+				if (!MMX.valueIsEmpty(group[key]?.font?.family))	newStyles.push(`font-family: ${group[key]?.font.family}`);
+				if (!MMX.valueIsEmpty(group[key]?.weight))			newStyles.push(`font-weight: ${group[key]?.weight}`);
+				if (!MMX.valueIsEmpty(group[key]?.style))			newStyles.push(`font-style: ${group[key]?.style}`);
+			}
+			else {
+				let value = group[key]?.value;
+
+				if (!MMX.valueIsEmpty(value)) {
+					if (key === 'font_size') {
+						value += 'px';
+					}
+
+					if (key === 'font_color') {
+						key = 'color';
+					}
+					
+					newStyles.push(`${MMX.snakeToKebabCase(key)}: ${value}`);
+				}
 			}
 
-			if (key === 'font_color') {
-				key = 'color';
+			if (newStyles.length === 0) {
+				return styles;
 			}
 
 			if (styles.length) {
 				styles += '; ';
 			}
 
-			return styles += `${key.replace('_', '-')}: ${value}`;
+			return `${styles}${newStyles.join(';')}`;
 		}, '');
 	}
 
@@ -873,11 +1082,28 @@ class MMX_Element extends HTMLElement {
 
 	renderStyles() {
 		return /*html*/`
+			${this.renderStyleElements()}
 			${this.renderStylesheetLinks()}
 			<style>
 				${this.output('styles')}
 			</style>
 		`;
+	}
+
+	renderStyleElements() {
+		const mmxStyleElements = [...document.querySelectorAll('style[data-resource-code]')].filter(style => {
+			return this.shouldIncludeStyleElement(style);
+		});
+
+		return mmxStyleElements.map(this.renderStyleElement).join('\n');
+	}
+
+	shouldIncludeStyleElement(style) {
+		return (style.hasAttribute('data-resource-code') && this.styleResourceCodes.indexOf(style.getAttribute('data-resource-code')) !== -1);
+	}
+
+	renderStyleElement(style) {
+		return style.outerHTML;
 	}
 
 	renderStylesheetLinks() {

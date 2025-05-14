@@ -5,8 +5,8 @@
             "item_code": "accordion",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "accordion": {
                     "details": {
@@ -106,9 +106,16 @@
                             "value": 1
                         }
                     },
+                    "content": {
+                        "typography_theme": {
+                            "code": "paragraph-s",
+                            "theme_mode": 1
+                        }
+                    },
                     "heading": {
-                        "style": {
-                            "value": "subheading-l"
+                        "typography_theme": {
+                            "code": "subheading-l",
+                            "theme_mode": 1
                         }
                     },
                     "icon": {

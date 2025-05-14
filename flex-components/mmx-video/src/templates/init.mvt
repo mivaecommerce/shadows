@@ -1,4 +1,5 @@
 <mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="css:mm-theme-styles" />
 <mvt:item name="head" param="css:mmx-customizations" />
 
 <template class="mmx-resources">

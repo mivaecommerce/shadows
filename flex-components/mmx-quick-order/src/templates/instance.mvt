@@ -32,12 +32,47 @@
 		</mvt:if>
 		<mmx-text
 			slot="title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
 			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
 			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
 			data-align="&mvte:instance:heading:heading_align:value;"
-			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
 		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
+	</mvt:if>
+
+	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:comment> Theme Buttons </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:bulk:button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:instance:bulk:button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:csv:button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:instance:csv:button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:add_row_text:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:instance:add_row_text:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:add_to_cart_text:textsettings:fields:normal:button_theme:stylesheet">		<mvt:eval expr="l.settings:instance:add_to_cart_text:textsettings:fields:normal:button_theme:stylesheet" />		</mvt:if>
+
+		<mvt:comment> Theme Typography </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:bulk:heading:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:instance:bulk:heading:textsettings:fields:normal:typography_theme:stylesheet" />		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:bulk:subheading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:instance:bulk:subheading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:bulk:body:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:instance:bulk:body:textsettings:fields:normal:typography_theme:stylesheet" />		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:csv:heading:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:instance:csv:heading:textsettings:fields:normal:typography_theme:stylesheet" />		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:csv:subheading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:instance:csv:subheading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:csv:body:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:instance:csv:body:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+	<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+		<template data-theme-stylesheet>
+			<mvt:eval expr="l.theme_stylesheet" />
+		</template>
 	</mvt:if>
 </mmx-quick-order>

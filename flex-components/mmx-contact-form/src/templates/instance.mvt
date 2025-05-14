@@ -236,10 +236,23 @@
 					</mvt:if>
 					<mmx-text
 						class="mmx-form-header__subheading"
+						data-theme="&mvte:instance:form:header:subheading:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:form:header:subheading:textsettings:fields:normal:typography_theme:classname;"
 						data-style="&mvte:instance:form:header:subheading:textsettings:fields:normal:subheading_style:value;"
 						data-align="&mvte:instance:form:header:align:value;"
-						style="&mvte:instance:form:header:subheading:textsettings:styles:normal;"
 					>
+						<mvt:if expr="l.settings:instance:form:header:subheading:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:form:header:subheading:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:form:header:subheading:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:instance:form:header:subheading:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:instance:form:header:subheading:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						&mvte:instance:form:header:subheading:value;
 					</mmx-text>
 				</mvt:if>
@@ -249,11 +262,24 @@
 					</mvt:if>
 					<mmx-text
 						class="mmx-form-header__heading"
+						data-theme="&mvte:instance:form:header:heading:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:form:header:heading:textsettings:fields:normal:typography_theme:classname;"
 						data-style="&mvte:instance:form:header:heading:textsettings:fields:normal:heading_style:value;"
 						data-align="&mvte:instance:form:header:align:value;"
 						data-tag="&mvte:instance:form:header:heading:textsettings:fields:normal:heading_tag:value;"
-						style="&mvte:instance:form:header:heading:textsettings:styles:normal;"
 					>
+						<mvt:if expr="l.settings:instance:form:header:heading:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:form:header:heading:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:form:header:heading:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:instance:form:header:heading:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:instance:form:header:heading:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						&mvte:instance:form:header:heading:value;
 					</mmx-text>
 				</mvt:if>
@@ -263,11 +289,24 @@
 					</mvt:if>
 					<mmx-text
 						class="mmx-form-header__body"
+						data-theme="&mvte:instance:form:header:body:textsettings:fields:normal:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:form:header:body:textsettings:fields:normal:typography_theme:classname;"
 						data-style="&mvte:instance:form:header:body:textsettings:fields:normal:body_style:value;"
 						data-align="&mvte:instance:form:header:align:value;"
 						data-source="&mvte:instance:form:header:body:source;"
-						style="&mvte:instance:form:header:body:textsettings:styles:normal;"
 					>
+						<mvt:if expr="l.settings:instance:form:header:body:textsettings:fields:normal:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:form:header:body:textsettings:fields:normal:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:form:header:body:textsettings:fields:normal:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:elseif expr="NOT ISNULL l.settings:instance:form:header:body:textsettings:styles:normal">
+							<template data-legacy-styles>
+								&mvt:instance:form:header:body:textsettings:styles:normal;
+							</template>
+						</mvt:if>
+
 						<mvt:if expr="l.settings:instance:form:header:body:source EQ 'markdown'">
 							&mvt:instance:form:header:body:value;
 						<mvt:else>
@@ -467,8 +506,16 @@
 					data-type="submit"
 					data-style="&mvte:instance:form:submit:button:textsettings:fields:normal:button_style:value;"
 					data-size="&mvte:instance:form:submit:button:textsettings:fields:normal:button_size:value;"
+					data-theme="&mvte:instance:form:submit:button:textsettings:fields:normal:button_theme:theme_available;"
+					data-theme-class="&mvte:instance:form:submit:button:textsettings:fields:normal:button_theme:classname;"
 					data-width="full"
 				>
+					<mvt:if expr="l.settings:instance:form:submit:button:textsettings:fields:normal:button_theme:theme_available AND NOT ISNULL l.settings:instance:form:submit:button:textsettings:fields:normal:button_theme:stylesheet">
+						<template data-theme-stylesheet>
+							&mvt:instance:form:submit:button:textsettings:fields:normal:button_theme:stylesheet;
+						</template>
+					</mvt:if>
+
 					&mvte:instance:form:submit:button:value;
 				</mmx-button>
 			</div>

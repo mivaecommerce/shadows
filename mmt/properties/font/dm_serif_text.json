@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "\"DM Serif Text\", serif",
+    "google_font_name": "DM Serif Text",
+    "name": "DM Serif Text",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

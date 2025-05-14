@@ -28,7 +28,7 @@
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_twitter">
 									<li class="t-global-footer-social__list-item">
-										<a class="t-global-footer-social__link u-icon-twitter-x" href="&mvt:readytheme:social_twitter;" aria-label="𝕏 (Twitter)" target="_blank" rel="noreferrer"></a>
+										<a class="t-global-footer-social__link u-icon-twitter-x" href="&mvt:readytheme:social_twitter;" aria-label="X (Twitter)" target="_blank" rel="noreferrer"></a>
 									</li>
 								</mvt:if>
 								<mvt:if expr="l.settings:readytheme:social_instagram">

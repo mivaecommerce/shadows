@@ -1,0 +1,173 @@
+/* ==========================================================================
+   MMX / PRODUCT DETAILS
+   ========================================================================== */
+
+:host {
+	--mmx-form__size: var(--mmx-product-details__size);
+	--mmx-product-details__size: 1rem;
+	display: block;
+}
+
+/* Details Layout
+   =========================================== */
+[part~="details"],
+[part~="detail-content"] {
+	display: flex;
+	flex-direction: column;
+	gap: var(--mmx-product-details__size);
+}
+
+[part~="detail"] {
+	flex-basis: 100%;
+	flex-grow: 1;
+	min-width: 0;
+}
+
+/* Layout Groups
+   =========================================== */
+[part~="detail-content__side-by-side-group"] {
+	flex-direction: row;
+}
+
+[part~="detail-content__inline-group"] {
+	align-items: baseline;
+	display: inline-flex;
+	flex-direction: row;
+}
+
+[part~="detail-content__inline-group"] > [part~="detail"] {
+	flex-basis: auto;
+}
+
+/* Detail Styles
+   =========================================== */
+.mmx-product-details mmx-text {
+	--mmx-text-margin-bottom: 0;
+}
+
+.mmx-product-details mmx-button {
+	margin-top: unset;
+}
+
+[part~="empty"] {
+	display: none;
+}
+
+[part~="price"] > div {
+	margin-bottom: 0;
+}
+
+[part~="price-retail"],
+[part~="price-base"]{
+	--mmx-text__text-decoration: line-through;
+}
+
+[part~="discounts"],
+[part~="product-charges__discount"] {
+	color: var(--mmx-color-red-001);
+	font-weight: var(--mmx-font-weight-medium);
+}
+
+[part~="inventory-message"],
+[part~="fitment"] {
+	--mmx-message__margin-bottom: 0;
+	--mmx-text-margin-bottom: 0;
+}
+
+[part~="button"] {
+	display: block;
+	width: 100%;
+}
+
+[part~="add-to-cart-message"] {
+	display: block;
+	margin-top: var(--mmx-product-details__size);
+}
+
+[part~="attributes-product-machine"]::part(image-slider),
+[part~="attributes-product-machine"]::part(product-name),
+[part~="attributes-product-machine"]::part(pricing-discounts),
+[part~="attributes-product-machine"]::part(inventory-message),
+[part~="attributes-product-machine"]::part(product-description) {
+	display: none;
+}
+
+[part~="attributes-product-machine"]::part(product-content),
+[part~="attributes-product-machine"]::part(product-attributes),
+[part~="attributes-product-machine"]::part(product-attribute) {
+	margin: 0;
+}
+
+[part~="attributes-product-machine"]::part(product-attributes) {
+	display: flex;
+	flex-direction: column;
+	gap: var(--mmx-product-details__size);
+}
+
+[part~="volume-pricing-table-table"] {
+	width: 100%;
+}
+
+[part~="volume-pricing-table-th"] {
+	font-weight: var(--mmx-font-weight-bold);
+}
+
+[part~="volume-pricing-table-th"],
+[part~="volume-pricing-table-td"] {
+	border-bottom: 1px solid var(--mmx-color-grey-03);
+	padding: calc(var(--mmx-product-details__size) * 0.5) 0;
+	text-align: left;
+	width: 50%;
+}
+
+.has-read-more {
+	max-height: auto;
+	overflow-y: hidden;
+	position: relative;
+}
+
+.has-read-more::after {
+	background: linear-gradient(to top, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0));
+	bottom: 0;
+	content: '';
+	height: var(--mmx-product-details__size);
+	position: absolute;
+	width: 100%;
+}
+
+
+/* Product Charges
+   =========================================== */
+[part~="product-charges__amount-total"] {
+	font-weight: bold;
+}
+
+[part~="product-charges__amount-original"] {
+	color: var(--mmx-color-grey-05);
+}
+
+[part~="product-charges__list"] {
+	color: var(--mmx-color-grey-06);
+	display: grid;
+	gap: 0 0.5rem;
+	grid-template-columns: repeat(2, auto);
+}
+
+[part~="product-charges__charge"] {
+	display: contents;
+}
+
+[part~="product-charges__subtotal"]::before {
+	border-top: 1px solid var(--mmx-color-grey-03);
+	content: " ";
+	grid-column: span 2;
+	margin: 0.5rem 0;
+}
+
+[part~="product-charges__name"] {
+	text-align: left;
+}
+
+[part~="product-charges__amount"] {
+	text-align: right;
+}

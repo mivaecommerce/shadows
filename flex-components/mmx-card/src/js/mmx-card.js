@@ -212,13 +212,18 @@ class MMX_ProductCard extends MMX_Card {
 			return this.#renderEmptyDetail();
 		}
 
+		const theme_available = detail?.text_styles?.typography_theme?.theme_available ?? false;
+
 		return /*html*/`
 			<mmx-text
 				slot="main"
 				part="detail ${MMX.encodeEntities(detail?.type?.value)}"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
-				style="${MMX.encodeEntities(this.getStylesFromGroup(detail?.text_styles))}"
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${this.#renderProductDetailSpan('prefix', prefix)}
 				${MMX.encodeEntities(value)}
 				${this.#renderProductDetailSpan('suffix', suffix)}
@@ -299,32 +304,41 @@ class MMX_ProductCard extends MMX_Card {
 			this.#product.additional_price_display = this.#product.formatted_retail;
 		}
 
-		const styles = this.getStylesFromGroup(detail?.text_styles);
+		const displayed_theme_available = detail?.price_text_styles?.displayed?.typography_theme?.theme_available ?? false;
+		const additional_theme_available = detail?.price_text_styles?.additional?.typography_theme?.theme_available ?? false;
 
 		return /*html*/`
 		<div
 			slot="main"
 			part="detail prices"
 			class="mmx-product-card__prices"
-			style="${MMX.encodeEntities(styles)}"
+			style="text-align: ${detail?.price_text_styles?.text_align?.value ?? ''}"
 		>
-				<span
-					part="price"
-					class="mmx-product-card__price type-${MMX.encodeEntities(detail?.text_styles?.style?.value || 'product-price')}"
-					style="${MMX.encodeEntities(styles)}"
+			<mmx-text
+				part="price"
+				class="mmx-product-card__price"
+				data-theme="${MMX.encodeEntities(displayed_theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.price_text_styles?.displayed?.typography_theme?.classname ?? '')}"
+				data-style="${MMX.encodeEntities(detail?.price_text_styles?.displayed?.style?.value || 'product-price')}"
+			>
+				${this.renderLegacyStylesTemplate(displayed_theme_available, this.getStylesFromGroup(detail?.price_text_styles?.displayed))}
+				${this.renderThemeStylesheetTemplate(displayed_theme_available)}
+				${this.#product.price_display}
+			</mmx-text>
+			${this.#product.additional_price_display.length && this.#product.additional_price_display !== this.#product.price_display ? /*html*/`
+				<mmx-text
+					part="additional-price"
+					class="mmx-product-card__additional-price"
+					data-theme="${MMX.encodeEntities(additional_theme_available)}"
+					data-theme-class="${MMX.encodeEntities(detail?.price_text_styles?.additional?.typography_theme?.classname ?? '')}"
+					data-style="${MMX.encodeEntities(detail?.price_text_styles?.additional?.style?.value || 'product-additional-price')}"
 				>
-					${this.#product.price_display}
-				</span>
-				${this.#product.additional_price_display.length && this.#product.additional_price_display !== this.#product.price_display ? /*html*/`
-					<span
-						part="additional-price"
-						class="mmx-product-card__additional-price type-${MMX.encodeEntities(detail?.text_styles?.style?.value || 'product-additional-price')}"
-						style="${MMX.encodeEntities(styles)}"
-					>
-						${this.#product.additional_price_display}
-					</span>
-				` : ''}
-			</div>
+					${this.renderLegacyStylesTemplate(additional_theme_available, this.getStylesFromGroup(detail?.price_text_styles?.additional))}
+					${this.renderThemeStylesheetTemplate(additional_theme_available)}
+					${this.#product.additional_price_display}
+				</mmx-text>
+			` : ''}
+		</div>
 		`;
 	}
 
@@ -354,6 +368,8 @@ class MMX_ProductCard extends MMX_Card {
 			text = MMX.valueIsEmpty(text) ? 'View Details' : text;
 		}
 
+		const theme_available = detail.button?.text?.textsettings?.fields?.normal?.button_theme?.theme_available || false;
+
 		return /*html*/`
 			<mmx-button
 				slot="main"
@@ -362,8 +378,11 @@ class MMX_ProductCard extends MMX_Card {
 				href="${MMX.encodeEntities(link)}"
 				data-style="${detail.button?.text?.textsettings?.fields?.normal?.button_style?.value || 'display-link'}"
 				data-size="${detail.button?.text?.textsettings?.fields?.normal?.button_size?.value || 'm'}"
-				data-width="full"
+				data-theme="${theme_available}"
+				data-theme-class="${MMX.encodeEntities(detail.button?.text?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
+				data-width="${!theme_available ? 'full' : MMX.encodeEntities(detail.button?.text?.textsettings?.fields?.normal?.button_width?.value ?? 'auto')}"
 			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${MMX.encodeEntities(text)}
 			</mmx-button>`;
 	}
@@ -406,15 +425,27 @@ class MMX_ProductCard extends MMX_Card {
 			return this.#renderEmptyDetail();
 		}
 
+		let classname = '';
+		const theme_available = detail?.text_styles?.typography_theme?.theme_available ?? false;
+
+		if (!theme_available) {
+			classname = `class="type-${MMX.encodeEntities(detail?.text_styles?.style?.value)}"`;
+		}
+
 		return /*html*/`
-			<div
+			<mmx-text
 				slot="main"
 				part="detail fragment fragment__${MMX.encodeEntities(fragmentCode)}"
-				class="type-${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
-				style="${MMX.encodeEntities(this.getStylesFromGroup(detail?.text_styles))}"
+				${classname}
+				data-hide-on-empty="false"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${fragmentContent}
-			</div>
+			</mmx-text>
 		`;
 	}
 
@@ -439,14 +470,25 @@ class MMX_ProductCard extends MMX_Card {
 			return '';
 		}
 
+		let classname = '';
+		const theme_available = detail?.text_styles?.typography_theme?.theme_available ?? false;
+
+		if (!theme_available) {
+			classname = `class="type-${MMX.encodeEntities(detail?.text_styles?.style?.value)}"`;
+		}
+
 		return /*html*/`
-			<div
+			<mmx-text
 				part="discount"
-				class="type-${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
-				style="${MMX.encodeEntities(this.getStylesFromGroup(detail?.text_styles))}"
+				${classname}
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${discount.descrip}: ${discount.formatted_discount}
-			</div>
+			</mmx-text>
 		`;
 	}
 

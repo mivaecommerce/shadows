@@ -15,6 +15,36 @@ class MMX_ProductCarousel extends MMX_Element {
 	}
 
 	static carouselProps = {
+		'product-set': {
+			options: [
+				'auto',
+				'all',
+				'category',
+				'related',
+				'search',
+				'products',
+				'hybrid'
+			],
+			default: 'auto'
+		},
+		'category-code': {
+			allowAny: true
+		},
+		'product-code': {
+			allowAny: true
+		},
+		'search': {
+			allowAny: true
+		},
+		'count': {
+			allowAny: true,
+			isNumeric: true,
+			default: 5
+		},
+		'sort-by': {
+			allowAny: true,
+			default: 'disp_order',
+		},
 		'image-dimensions': {
 			options: [
 				'100x100',
@@ -47,6 +77,10 @@ class MMX_ProductCarousel extends MMX_Element {
 	styleResourceCodes = ['mmx-base', 'mmx-text', 'mmx-button', 'mmx-hero', 'mmx-hero-slider'];
 
 	products = [];
+	#searchOrigin = 'Runtime API';
+	#searchType = 'system';
+	#searchIndex = '';
+	#errorMessage;
 
 	constructor() {
 		super();
@@ -92,20 +126,122 @@ class MMX_ProductCarousel extends MMX_Element {
 	}
 
 	onDataChange() {
-		this.products = [];
-
-		if (MMX.isTruthy(this.data.products.from_individual.settings.enabled)) {
-			this.loadIndividualProducts();
-		}
-
-		if (MMX.isTruthy(this.data.products.from_category.settings.enabled)) {
-			this.loadProductsFromCategory();
-		}
-
 		MMX.setElementAttributes(this, {
+			'data-product-set': this.data?.products?.product_set?.value,
+			'data-category-code': this.data?.products?.category?.category_code,
+			'data-product-code': this.data?.products?.product?.product_code,
+			'data-search': this.data?.server?.search,
+			'data-count': this.data?.products?.count?.value,
+			'data-sort-by': this.data?.products?.sort?.value,
 			'data-size': this.data?.products?.image_size?.value,
 			'data-image-fit': this.data?.products?.image_fit?.value
 		});
+
+		this.#loadProducts();
+	}
+
+	#getProductSet() {
+		const productSet = this.getPropValue('product-set');
+
+		if (productSet === 'related' || (productSet === 'auto' && this.getPropValue('product-code'))) {
+			return 'related';
+		}
+
+		if (productSet === 'category' || (productSet === 'auto' && this.getPropValue('category-code'))) {
+			return 'category';
+		}
+
+		if (productSet === 'search' || (productSet === 'auto' && !MMX.valueIsEmpty(this.getPropValue('search')))) {
+			return 'search';
+		}
+
+		if (productSet === 'products') {
+			return 'products';
+		}
+
+		if (productSet === 'hybrid') {
+			return 'hybrid';
+		}
+
+		return 'all';
+	}
+
+	#canLoadData() {
+		const productSet = this.#getProductSet();
+
+		if (productSet == 'category' && !this?.data?.products?.category?.category_code?.length) {
+			return false;
+		}
+
+		if (productSet == 'related' && !this?.data?.products?.product?.product_code?.length) {
+			return false;
+		}
+
+		return true;
+	}
+
+	#loadProducts() {
+		this.products = [];
+		this.#errorMessage = undefined;
+
+		const product_set = this.#getProductSet();
+
+		if (product_set === 'products' || product_set === 'hybrid') {
+			if (product_set === 'hybrid') {
+				this.loadProductsFromCategory(this?.data?.products?.category?.category_code);
+			}
+
+			this.loadIndividualProducts(this?.data?.products?.products?.children);
+			return;
+		}
+
+		if (!this.#canLoadData()) {
+			return;
+		}
+
+		MMX.Runtime_JSON_API_Call({
+			params: this.#getListLoadQueryParams()
+		})
+		.then(response => {
+			this.products = response.data.data;
+			this.forceUpdate();
+		})
+		.catch(response => {
+			this.#errorMessage = response.error_message;
+			this.forceUpdate();
+		});
+	}
+
+	#getListLoadQueryFunction() {
+		const productSet = this.#getProductSet();
+
+		if (productSet === 'category') {
+			return 'Runtime_CategoryProductList_Load_Query';
+		}
+
+		if (productSet === 'related') {
+			return 'Runtime_RelatedProductList_Load_Query';
+		}
+
+		return 'Runtime_ProductList_Load_Query';
+	}
+
+	#getListLoadQueryParams() {
+		return {
+			Function: this.#getListLoadQueryFunction(),
+			Count: this.getPropValue('count'),
+			Sort: this.getPropValue('sort-by'),
+			Filter: this.#getListLoadQueryFilters(),
+			Product_Code: this.getPropValue('product-code'),
+			Category_Code: this.getPropValue('category-code')
+		};
+	}
+
+	#getListLoadQueryFilters() {
+		return [
+			...this.getDefaultFilters(),
+			...this.#getSearchFilters()
+		];
 	}
 
 	getDefaultFilters() {
@@ -133,30 +269,46 @@ class MMX_ProductCarousel extends MMX_Element {
 		];
 	}
 
-	loadProductsFromCategory({category_code, count, sort, filter} = {} ) {
-		category_code = category_code ?? this?.data?.products?.from_category?.category?.category_code;
-		count = count ?? this?.data?.products?.from_category?.count?.value;
-		sort = sort ?? this?.data?.products?.from_category?.sort?.value;
-		filter = filter ?? this.getDefaultFilters();
+	#getSearchFilters() {
+		const search = this.getPropValue('search');
 
+		if (this.#getProductSet() != 'search' || MMX.valueIsEmpty(search)) {
+			return [];
+		}
+
+		return [{
+			name: 'runtime_search',
+			value: {
+				search: search,
+				origin: this.#searchOrigin,
+				type: this.#searchType,
+				index: this.#searchIndex
+			}
+		}];
+	}
+
+	loadProductsFromCategory(category_code) {
 		if (MMX.valueIsEmpty(category_code)) {
 			return;
 		}
 
 		MMX.Runtime_JSON_API_Call({
 			params: {
-				function: 'Runtime_CategoryProductList_Load_Query',
-				category_code,
-				count,
-				sort,
-				filter
+				Function: 'Runtime_CategoryProductList_Load_Query',
+				Filter: this.getDefaultFilters(),
+				Count: this.getPropValue('count'),
+				Sort: this.getPropValue('sort-by'),
+				Category_Code: category_code
 			}
 		})
 		.then(response => {
 			this.products.push(...response.data.data);
 			this.forceUpdate();
 		})
-		.catch(response => {});
+		.catch(response => {
+			this.#errorMessage = response.error_message;
+			this.forceUpdate();
+		});
 	}
 
 	loadIndividualProducts(products) {
@@ -168,8 +320,8 @@ class MMX_ProductCarousel extends MMX_Element {
 
 		MMX.Runtime_JSON_API_Call({
 			params: {
-				function: 'Runtime_ProductList_Load_Query',
-				filter: [
+				Function: 'Runtime_ProductList_Load_Query',
+				Filter: [
 					{
 						name: 'search',
 						value: [
@@ -198,12 +350,13 @@ class MMX_ProductCarousel extends MMX_Element {
 			this.products.unshift(...response.data.data);
 			this.forceUpdate();
 		})
-		.catch(response => {});
+		.catch(response => {
+			this.#errorMessage = response.error_message;
+			this.forceUpdate();
+		});
 	}
 
 	getProductCodesToLoad(products) {
-		products = products ?? this?.data?.products?.from_individual?.products?.children;
-
 		if (!products?.length) {
 			return;
 		}
@@ -310,15 +463,20 @@ class MMX_ProductCarousel extends MMX_Element {
 			return '';
 		}
 
+		const theme_available = this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.theme_available ?? false;
+
 		return /*html*/`
 			<mmx-button
 				href="${MMX.encodeEntities(this.buttonUrl(product))}"
-				data-style="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_style?.value}"
-				data-size="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_size?.value}"
-				data-width="full"
+				data-style="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_style?.value ?? ''}"
+				data-size="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_size?.value ?? ''}"
+				data-theme="${theme_available}"
+				data-theme-class="${MMX.encodeEntities(this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
+				data-width="${!theme_available ? 'full' : MMX.encodeEntities(this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
 				part="button"
 				exportparts="button: button__inner"
 			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${product?.attributes?.length ? this?.data?.advanced?.settings?.button?.prod_text?.value : this?.data?.advanced?.settings?.button?.adpr_text?.value}
 			</mmx-button>`;
 	}

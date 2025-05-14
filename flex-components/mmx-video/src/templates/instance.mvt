@@ -44,29 +44,68 @@
 		<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:value">
 			<mmx-text
 				slot="subheading"
+				data-theme="&mvte:instance:content:subheading:textsettings:fields:normal:typography_theme:theme_available;"
+				data-theme-class="&mvte:instance:content:subheading:textsettings:fields:normal:typography_theme:classname;"
 				data-style="&mvte:instance:content:subheading:textsettings:fields:normal:subheading_style:value;"
-				style="&mvte:instance:content:subheading:textsettings:styles:normal;"
 			>
+				<mvt:if expr="l.settings:instance:content:subheading:textsettings:fields:normal:typography_theme:theme_available">
+					<mvt:if expr="NOT ISNULL l.settings:instance:content:subheading:textsettings:fields:normal:typography_theme:stylesheet">
+						<template data-theme-stylesheet>
+							&mvt:instance:content:subheading:textsettings:fields:normal:typography_theme:stylesheet;
+						</template>
+					</mvt:if>
+				<mvt:elseif expr="NOT ISNULL l.settings:instance:content:subheading:textsettings:styles:normal">
+					<template data-legacy-styles>
+						&mvt:instance:content:subheading:textsettings:styles:normal;
+					</template>
+				</mvt:if>
+
 				&mvte:instance:content:subheading:value;
 			</mmx-text>
 		</mvt:if>
 		<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:value">
 			<mmx-text
 				slot="heading"
+				data-theme="&mvte:instance:content:heading:textsettings:fields:normal:typography_theme:theme_available;"
+				data-theme-class="&mvte:instance:content:heading:textsettings:fields:normal:typography_theme:classname;"
 				data-style="&mvte:instance:content:heading:textsettings:fields:normal:heading_style:value;"
 				data-tag="&mvte:instance:content:heading:textsettings:fields:normal:heading_tag:value;"
-				style="&mvte:instance:content:heading:textsettings:styles:normal;"
 			>
+				<mvt:if expr="l.settings:instance:content:heading:textsettings:fields:normal:typography_theme:theme_available">
+					<mvt:if expr="NOT ISNULL l.settings:instance:content:heading:textsettings:fields:normal:typography_theme:stylesheet">
+						<template data-theme-stylesheet>
+							&mvt:instance:content:heading:textsettings:fields:normal:typography_theme:stylesheet;
+						</template>
+					</mvt:if>
+				<mvt:elseif expr="NOT ISNULL l.settings:instance:content:heading:textsettings:styles:normal">
+					<template data-legacy-styles>
+						&mvt:instance:content:heading:textsettings:styles:normal;
+					</template>
+				</mvt:if>
+
 				&mvte:instance:content:heading:value;
 			</mmx-text>
 		</mvt:if>
 		<mvt:if expr="NOT ISNULL l.settings:instance:content:body:value">
 			<mmx-text
 				slot="body"
+				data-theme="&mvte:instance:content:body:textsettings:fields:normal:typography_theme:theme_available;"
+				data-theme-class="&mvte:instance:content:body:textsettings:fields:normal:typography_theme:classname;"
 				data-style="&mvte:instance:content:body:textsettings:fields:normal:body_style:value;"
 				data-source="&mvte:instance:content:body:source;"
-				style="&mvte:instance:content:body:textsettings:styles:normal;"
 			>
+				<mvt:if expr="l.settings:instance:content:body:textsettings:fields:normal:typography_theme:theme_available">
+					<mvt:if expr="NOT ISNULL l.settings:instance:content:body:textsettings:fields:normal:typography_theme:stylesheet">
+						<template data-theme-stylesheet>
+							&mvt:instance:content:body:textsettings:fields:normal:typography_theme:stylesheet;
+						</template>
+					</mvt:if>
+				<mvt:elseif expr="NOT ISNULL l.settings:instance:content:body:textsettings:styles:normal">
+					<template data-legacy-styles>
+						&mvt:instance:content:body:textsettings:styles:normal;
+					</template>
+				</mvt:if>
+
 				<mvt:if expr="l.settings:instance:content:body:source EQ 'markdown'">
 					&mvt:instance:content:body:value;
 				<mvt:else>
@@ -80,9 +119,17 @@
 				slot="button"
 				data-style="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_style:value;"
 				data-size="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_size:value;"
+				data-theme="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_theme:theme_available;"
+				data-theme-class="&mvte:instance:content:button:button_text:textsettings:fields:normal:button_theme:classname;"
 				href="&mvte:instance:content:button:button_link:url;"
 				target="&mvte:instance:content:button:button_link:html:attr:target;"
 			>
+				<mvt:if expr="l.settings:instance:content:button:button_text:textsettings:fields:normal:button_theme:theme_available AND NOT ISNULL l.settings:instance:content:button:button_text:textsettings:fields:normal:button_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:content:button:button_text:textsettings:fields:normal:button_theme:stylesheet;
+					</template>
+				</mvt:if>
+
 				&mvte:instance:content:button:button_text:value;
 			</mmx-button>
 		</mvt:if>

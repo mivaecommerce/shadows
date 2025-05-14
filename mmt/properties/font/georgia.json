@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "Georgia, serif",
+    "name": "Georgia",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

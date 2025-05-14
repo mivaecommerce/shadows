@@ -1,0 +1,21 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:assign name="l.settings:instance:styles:heading:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:styles:content:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+
+	<mvt:comment> Copy heading font color over to new icon color property </mvt:comment>
+	<mvt:assign name="l.settings:instance:styles:icon:color:value" value="l.settings:instance:styles:heading:font_color:value" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:styles:heading:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:styles:heading:font_family:value )" />
+	<mvt:do name="l.settings:instance:styles:content:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:styles:content:font_family:value )" />
+	<mvt:do name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:heading:heading_text:textsettings:fields:normal:font_family:value )" />
+
+	<mvt:assign name="l.settings:instance:styles:heading:font:weight" value="l.settings:instance:styles:heading:font_weight:value" />
+	<mvt:assign name="l.settings:instance:styles:content:font:weight" value="l.settings:instance:styles:content:font_weight:value" />
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:weight" value="l.settings:instance:heading:heading_text:textsettings:fields:normal:font_weight:value" />
+
+	<mvt:assign name="l.settings:instance:styles:heading:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:styles:content:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:style" value="''" />
+</mvt:if>

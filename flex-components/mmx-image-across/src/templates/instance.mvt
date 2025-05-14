@@ -38,11 +38,24 @@
 		</mvt:if>
 		<mmx-text
 			slot="title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
 			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
 			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
 			data-align="&mvte:instance:heading:heading_align:value;"
-			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
 		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
 	</mvt:if>
@@ -86,14 +99,32 @@
 				<mvt:if expr="NOT ISNULL l.settings:image_across:text:subheading:value">
 					<mmx-text
 						slot="subheading"
+						data-theme="&mvte:instance:content_styles:subheading_text_styles:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:content_styles:subheading_text_styles:typography_theme:classname;"
 						data-style="&mvte:instance:content_styles:subheading_text_styles:subheading_style:value;"
-						style="
-							font-family: &mvte:instance:content_styles:subheading_text_styles:font_family;;
-							font-size: &mvte:instance:content_styles:subheading_text_styles:font_size;px;
-							font-weight: &mvte:instance:content_styles:subheading_text_styles:font_weight;;
-							color: &mvte:instance:content_styles:subheading_text_styles:font_color;;
-						"
 					>
+						<mvt:if expr="l.settings:instance:content_styles:subheading_text_styles:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:content_styles:subheading_text_styles:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:else>
+							<mvt:capture variable="l.styles"><mvt:miva output="off" />
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:font:font:family">	<mvt:eval expr="'font-family: ' $ l.settings:instance:content_styles:subheading_text_styles:font:font:family $ ';'" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:font:weight">		<mvt:eval expr="'font-weight: ' $ l.settings:instance:content_styles:subheading_text_styles:font:weight $ ';'" />		</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:font:style">			<mvt:eval expr="'font-style: ' $ l.settings:instance:content_styles:subheading_text_styles:font:style $ ';'" />			</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:font_size:value">	<mvt:eval expr="'font-size: ' $ l.settings:instance:content_styles:subheading_text_styles:font_size:value $ 'px;'" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:subheading_text_styles:font_color:value">	<mvt:eval expr="'color: ' $ l.settings:instance:content_styles:subheading_text_styles:font_color:value $ ';'" />		</mvt:if>
+							<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+							<mvt:if expr="NOT ISNULL l.styles">
+								<template data-legacy-styles>
+									<mvt:eval expr="l.styles" />
+								</template>
+							</mvt:if>
+						</mvt:if>
+
 						&mvte:image_across:text:subheading:value;
 					</mmx-text>
 				</mvt:if>
@@ -101,14 +132,32 @@
 				<mvt:if expr="NOT ISNULL l.settings:image_across:text:heading:value">
 					<mmx-text
 						slot="heading"
+						data-theme="&mvte:instance:content_styles:heading_text_styles:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:content_styles:heading_text_styles:typography_theme:classname;"
 						data-style="&mvte:instance:content_styles:heading_text_styles:heading_style:value;"
-						style="
-							font-family: &mvte:instance:content_styles:heading_text_styles:font_family;;
-							font-size: &mvte:instance:content_styles:heading_text_styles:font_size;px;
-							font-weight: &mvte:instance:content_styles:heading_text_styles:font_weight;;
-							color: &mvte:instance:content_styles:heading_text_styles:font_color;;
-						"
 					>
+						<mvt:if expr="l.settings:instance:content_styles:heading_text_styles:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:content_styles:heading_text_styles:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:else>
+							<mvt:capture variable="l.styles"><mvt:miva output="off" />
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:font:font:family">	<mvt:eval expr="'font-family: ' $ l.settings:instance:content_styles:heading_text_styles:font:font:family $ ';'" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:font:weight">		<mvt:eval expr="'font-weight: ' $ l.settings:instance:content_styles:heading_text_styles:font:weight $ ';'" />		</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:font:style">		<mvt:eval expr="'font-style: ' $ l.settings:instance:content_styles:heading_text_styles:font:style $ ';'" />		</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:font_size:value">	<mvt:eval expr="'font-size: ' $ l.settings:instance:content_styles:heading_text_styles:font_size:value $ 'px;'" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:heading_text_styles:font_color:value">	<mvt:eval expr="'color: ' $ l.settings:instance:content_styles:heading_text_styles:font_color:value $ ';'" />		</mvt:if>
+							<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+							<mvt:if expr="NOT ISNULL l.styles">
+								<template data-legacy-styles>
+									<mvt:eval expr="l.styles" />
+								</template>
+							</mvt:if>
+						</mvt:if>
+
 						&mvte:image_across:text:heading:value;
 					</mmx-text>
 				</mvt:if>
@@ -116,15 +165,33 @@
 				<mvt:if expr="NOT ISNULL l.settings:image_across:text:body:value">
 					<mmx-text
 						slot="body"
+						data-theme="&mvte:instance:content_styles:body_text_styles:typography_theme:theme_available;"
+						data-theme-class="&mvte:instance:content_styles:body_text_styles:typography_theme:classname;"
 						data-style="&mvte:instance:content_styles:body_text_styles:body_style:value;"
 						data-source="&mvte:image_across:text:body:source;"
-						style="
-							font-family: &mvte:instance:content_styles:body_text_styles:font_family;;
-							font-size: &mvte:instance:content_styles:body_text_styles:font_size;px;
-							font-weight: &mvte:instance:content_styles:body_text_styles:font_weight;;
-							color: &mvte:instance:content_styles:body_text_styles:font_color;;
-						"
 					>
+						<mvt:if expr="l.settings:instance:content_styles:body_text_styles:typography_theme:theme_available">
+							<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:typography_theme:stylesheet">
+								<template data-theme-stylesheet>
+									&mvt:instance:content_styles:body_text_styles:typography_theme:stylesheet;
+								</template>
+							</mvt:if>
+						<mvt:else>
+							<mvt:capture variable="l.styles"><mvt:miva output="off" />
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:font:font:family">	<mvt:eval expr="'font-family: ' $ l.settings:instance:content_styles:body_text_styles:font:font:family $ ';'" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:font:weight">		<mvt:eval expr="'font-weight: ' $ l.settings:instance:content_styles:body_text_styles:font:weight $ ';'" />			</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:font:style">		<mvt:eval expr="'font-style: ' $ l.settings:instance:content_styles:body_text_styles:font:style $ ';'" />			</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:font_size:value">	<mvt:eval expr="'font-size: ' $ l.settings:instance:content_styles:body_text_styles:font_size:value $ 'px;'" />		</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:instance:content_styles:body_text_styles:font_color:value">	<mvt:eval expr="'color: ' $ l.settings:instance:content_styles:body_text_styles:font_color:value $ ';'" />			</mvt:if>
+							<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+							<mvt:if expr="NOT ISNULL l.styles">
+								<template data-legacy-styles>
+									<mvt:eval expr="l.styles" />
+								</template>
+							</mvt:if>
+						</mvt:if>
+
 						<mvt:if expr="l.settings:image_across:text:body:source EQ 'markdown'">
 							&mvt:image_across:text:body:value;
 						<mvt:else>
@@ -138,7 +205,15 @@
 						slot="button"
 						data-style="&mvte:instance:content_styles:button_styles:button_style:value;"
 						data-size="&mvte:instance:content_styles:button_styles:button_size:value;"
+						data-theme="&mvte:instance:content_styles:button_styles:button_theme:theme_available;"
+						data-theme-class="&mvte:instance:content_styles:button_styles:button_theme:classname;"
 					>
+						<mvt:if expr="l.settings:instance:content_styles:button_styles:button_theme:theme_available AND NOT ISNULL l.settings:instance:content_styles:button_styles:button_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:content_styles:button_styles:button_theme:stylesheet;
+							</template>
+						</mvt:if>
+
 						&mvte:image_across:text:button:value;
 					</mmx-button>
 				</mvt:if>

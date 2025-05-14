@@ -5,12 +5,20 @@
             "item_code": "all-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "empty_results_message": {
                         "source": "markdown"
+                    },
+                    "search": {
+                        "origin": {
+                            "value": "Runtime API"
+                        },
+                        "type": {
+                            "value": "system"
+                        }
                     },
                     "show_empty_results": {
                         "value": 1
@@ -22,6 +30,12 @@
                             {
                                 "name": {
                                     "value": "Name"
+                                },
+                                "text_styles": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
                                 },
                                 "type": {
                                     "value": "name"
@@ -39,6 +53,42 @@
                                         "value": "sale"
                                     }
                                 },
+                                "price_text_styles": {
+                                    "additional": {
+                                        "text_align": {
+                                            "value": "left"
+                                        },
+                                        "typography_theme": {
+                                            "code": "paragraph-s",
+                                            "customizations": {
+                                                "styles": {
+                                                    "color": {
+                                                        "value": "#767676"
+                                                    },
+                                                    "overwrite_color": 1
+                                                }
+                                            },
+                                            "theme_mode": 1
+                                        }
+                                    },
+                                    "displayed": {
+                                        "text_align": {
+                                            "value": "left"
+                                        },
+                                        "typography_theme": {
+                                            "code": "paragraph-s",
+                                            "customizations": {
+                                                "styles": {
+                                                    "color": {
+                                                        "value": "#111111"
+                                                    },
+                                                    "overwrite_color": 1
+                                                }
+                                            },
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                },
                                 "type": {
                                     "value": "price"
                                 }
@@ -49,6 +99,12 @@
                                 },
                                 "name": {
                                     "value": "Additional Data Fragment"
+                                },
+                                "text_styles": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
                                 },
                                 "type": {
                                     "value": "fragment"
@@ -81,6 +137,10 @@
                                 "normal": {
                                     "heading_tag": {
                                         "value": "h1"
+                                    },
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -118,6 +178,12 @@
                         }
                     },
                     "facets": {
+                        "facet_styles": {
+                            "typography_theme": {
+                                "code": "subheading-s",
+                                "theme_mode": 1
+                            }
+                        },
                         "settings": {
                             "enabled": 1
                         },
@@ -128,6 +194,16 @@
                             "value": 1
                         },
                         "title": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "typography_theme": {
+                                            "code": "title-4",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
                             "value": "Filters"
                         },
                         "width": {

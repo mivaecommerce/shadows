@@ -266,7 +266,6 @@
 
 .mmx-product-list__facets-dialog-open mmx-icon {
 	margin-right: 0.25em;
-	vertical-align: middle;
 }
 
 .mmx-product-list__facets-dialog {
@@ -330,10 +329,6 @@
 
 .mmx-product-list__facets-dialog[open] .mmx-product-list__clear-all {
 	display: none;
-}
-
-.mmx-product-list__facets-dialog-close mmx-icon {
-	line-height: 1;
 }
 
 /* Facets: Accordion */

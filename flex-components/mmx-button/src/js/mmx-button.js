@@ -14,6 +14,15 @@ class MMX_Button extends MMX_Element {
 				options: ['xs', 's', 'm', 'l'],
 				default: 'm'
 			},
+			theme: {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			width: {
 				options: ['auto', 'full'],
 				default: 'auto'
@@ -25,11 +34,11 @@ class MMX_Button extends MMX_Element {
 			shape: {
 				options: ['normal', 'round'],
 				default: 'normal'
-			},
+			}
 		};
 	}
 
-	styleResourceCodes = ['mmx-base', 'mmx-button'];
+	styleResourceCodes = ['mmx-base', 'mmx-button', 'mm-theme-styles'];
 	hideOnEmpty = true;
 
 	constructor() {
@@ -39,11 +48,57 @@ class MMX_Button extends MMX_Element {
 
 	render() {
 		const tag = this.getTag();
+		const theme = this.getPropValue('theme');
+
+		if (theme) {
+			return this.#renderTheme({tag});
+		}
 
 		return /*html*/`
-			<${tag} class="mmx-button ${this.getStyleClass()} mmx-button__size--${this.getPropValue('size')} mmx-button__width--${this.getPropValue('width')} mmx-button__shape--${this.getPropValue('shape')} ${this.darkClass()}" ${this.inheritAttrs()} part="button">
+			<${tag} class="mmx-button ${this.getStyleClass()} mmx-button__size--${this.getPropValue('size')} mmx-button__width--${this.getPropValue('width')} mmx-button__shape--${this.getPropValue('shape')} ${this.darkClass()}" ${this.inheritAttrs()} part="button" data-mmx-button>
 				<slot></slot>
 			</${tag}>
+		`;
+	}
+
+	#renderTheme({tag} = {}) {
+		const theme_class = this.getPropValue('theme-class');
+
+		return /*html*/`
+			${this.#renderThemeStylesheet()}
+			<${tag} class="mmx-theme-button mmx-theme-button__width--${this.getPropValue('width')} ${MMX.encodeEntities(theme_class)}" ${this.inheritAttrs()} data-mmx-button>
+				<slot></slot>
+			</${tag}>
+		`;
+	}
+
+	#renderThemeStylesheet() {
+		const theme_stylesheet = this.querySelector(':scope > template[data-theme-stylesheet]');
+		let variable_override_css = '';
+		let variable_override_styles = new Array();
+
+		if (getComputedStyle(this).getPropertyValue('--mmx-theme-button__height')?.length)			variable_override_styles.push('height: var(--mmx-theme-button__height, auto) !important;');
+		if (getComputedStyle(this).getPropertyValue('--mmx-theme-button__line-height')?.length)		variable_override_styles.push('line-height: var(--mmx-theme-button__line-height, auto) !important;');
+		if (getComputedStyle(this).getPropertyValue('--mmx-theme-button__padding-bottom')?.length)	variable_override_styles.push('padding-bottom: var(--mmx-theme-button__padding-bottom, auto) !important;');
+		if (getComputedStyle(this).getPropertyValue('--mmx-theme-button__padding-top')?.length)		variable_override_styles.push('padding-top: var(--mmx-theme-button__padding-top, auto) !important;');
+
+		if (variable_override_styles.length) {
+			variable_override_css = /*html*/`
+				.mmx-theme-button {
+					${variable_override_styles.join('\n')}
+				}
+			`;
+		}
+
+		if (!theme_stylesheet && !variable_override_css.length) {
+			return '';
+		}
+
+		return /*html*/`
+			<style type="text/css">
+				${theme_stylesheet?.content?.textContent ?? ''}
+				${variable_override_css}
+			</style>
 		`;
 	}
 
@@ -122,7 +177,7 @@ class MMX_Button extends MMX_Element {
 	}
 
 	getButton() {
-		return this.shadowRoot.querySelector('.mmx-button');
+		return this.shadowRoot.querySelector('[data-mmx-button]');
 	}
 
 	getTag() {

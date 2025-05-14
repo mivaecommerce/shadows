@@ -1,0 +1,281 @@
+<mvt:comment>Determine Product Code</mvt:comment>
+<mvt:if expr="l.settings:instance:product:source:value EQ 'auto'">
+	<mvt:assign name="l.settings:instance:product:specific:product_code" value="l.settings:product:code" />
+</mvt:if>
+
+<mvt:comment>Pass Server Data to the Component</mvt:comment>
+<mvt:if expr="s.request_method EQ 'POST'">
+	<mvt:assign name="l.settings:instance:server:Quantity" value="g.Quantity" />
+	<mvt:assign name="l.settings:instance:server:Product_Subscription_Term_ID" value="g.Product_Subscription_Term_ID" />
+	<mvt:assign name="l.settings:instance:server:Product_Attributes" value="g.Product_Attributes" />
+	<mvt:assign name="l.settings:instance:server:Variant_ID" value="g.Variant_ID" />
+</mvt:if>
+
+<mvt:comment>Product Charges</mvt:comment>
+<mvt:assign name="l.settings:productcharges:totals:charges" value="0" />
+<mvt:foreach iterator="charge" array="productcharges:chargetypes">
+		<mvt:assign name="l.settings:productcharges:totals:charges" value="l.settings:productcharges:totals:charges + l.settings:charge:price" />
+</mvt:foreach>
+<mvt:assign name="l.settings:instance:server:productcharges" value="l.settings:productcharges" />
+
+<mvt:comment>Determine component id & page-code</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<form
+	action="&mvte:urls:BASK:auto;"
+	method="post"
+	name="add"
+>
+	<mmx-product-details
+		id="&mvte:component_id;"
+		data-page-code="&mvte:page_code;"
+		data-flex-component="&mvte:instance_item:component_code;"
+		data-flex-item="&mvte:instance_item:item_code;"
+		style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+		class="mmx-wrapper"
+		data-init="script"
+		data-global-minibasket-url="&mvte:urls:BASK:auto;"
+		data-atwl-url="&mvte:urls:WISH:auto;"
+		data-store-name="&mvte:store:name;"
+	>
+		<mvt:comment>Init Script</mvt:comment>
+		<script type="application/json">
+			<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
+		</script>
+
+		<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+			<mvt:foreach iterator="level_1_detail" array="instance:details:children">
+				<mvt:if expr="l.settings:level_1_detail:type:value EQ 'add-to-cart-button'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
+						<mvt:eval expr="l.settings:level_1_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'add-to-wishlist-button'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
+						<mvt:eval expr="l.settings:level_1_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'vertical-group' AND l.settings:level_1_detail:max_height_settings:settings:enabled">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet">
+						<mvt:eval expr="l.settings:level_1_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'accordion-group'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:accordion_settings:heading:typography_theme:stylesheet">
+						<mvt:eval expr="l.settings:level_1_detail:accordion_settings:heading:typography_theme:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'tab-group'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:tab_settings:typography_theme:stylesheet">
+						<mvt:eval expr="l.settings:level_1_detail:tab_settings:typography_theme:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'volume-pricing-table'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'code'				OR
+								  l.settings:level_1_detail:type:value EQ 'customfield'			OR
+								  l.settings:level_1_detail:type:value EQ 'custom-text'			OR
+								  l.settings:level_1_detail:type:value EQ 'descrip'				OR
+								  l.settings:level_1_detail:type:value EQ 'discounts'			OR
+								  l.settings:level_1_detail:type:value EQ 'fragment'			OR
+								  l.settings:level_1_detail:type:value EQ 'inv_available'		OR
+								  l.settings:level_1_detail:type:value EQ 'name'				OR
+								  l.settings:level_1_detail:type:value EQ 'price'				OR
+								  l.settings:level_1_detail:type:value EQ 'quantity-in-basket'	OR
+								  l.settings:level_1_detail:type:value EQ 'sku'					OR
+								  l.settings:level_1_detail:type:value EQ 'weight'">
+					<mvt:if expr="l.settings:level_1_detail:text_styles:settings:enabled">
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:text_styles:typography_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_1_detail:text_styles:typography_theme:stylesheet" />
+						</mvt:if>
+					</mvt:if>
+				</mvt:if>
+
+				<mvt:foreach iterator="level_2_detail" array="level_1_detail:details:children">
+					<mvt:if expr="l.settings:level_2_detail:type:value EQ 'add-to-cart-button'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_2_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'add-to-wishlist-button'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_2_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'vertical-group' AND l.settings:level_2_detail:max_height_settings:settings:enabled">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_2_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet" />
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'accordion-group'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:accordion_settings:heading:typography_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_2_detail:accordion_settings:heading:typography_theme:stylesheet" />
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'tab-group'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:tab_settings:typography_theme:stylesheet">
+							<mvt:eval expr="l.settings:level_2_detail:tab_settings:typography_theme:stylesheet" />
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'volume-pricing-table'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'code'				OR
+									  l.settings:level_2_detail:type:value EQ 'customfield'			OR
+									  l.settings:level_2_detail:type:value EQ 'custom-text'			OR
+									  l.settings:level_2_detail:type:value EQ 'descrip'				OR
+									  l.settings:level_2_detail:type:value EQ 'discounts'			OR
+									  l.settings:level_2_detail:type:value EQ 'fragment'			OR
+									  l.settings:level_2_detail:type:value EQ 'inv_available'		OR
+									  l.settings:level_2_detail:type:value EQ 'name'				OR
+									  l.settings:level_2_detail:type:value EQ 'price'				OR
+									  l.settings:level_2_detail:type:value EQ 'quantity-in-basket'	OR
+									  l.settings:level_2_detail:type:value EQ 'sku'					OR
+									  l.settings:level_2_detail:type:value EQ 'weight'">
+						<mvt:if expr="l.settings:level_2_detail:text_styles:settings:enabled">
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:text_styles:typography_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_2_detail:text_styles:typography_theme:stylesheet" />
+							</mvt:if>
+						</mvt:if>
+					</mvt:if>
+
+					<mvt:foreach iterator="level_3_detail" array="level_2_detail:details:children">
+						<mvt:if expr="l.settings:level_3_detail:type:value EQ 'add-to-cart-button'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_3_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'add-to-wishlist-button'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_3_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'vertical-group' AND l.settings:level_3_detail:max_height_settings:settings:enabled">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_3_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet" />
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'accordion-group'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:accordion_settings:heading:typography_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_3_detail:accordion_settings:heading:typography_theme:stylesheet" />
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'tab-group'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:tab_settings:typography_theme:stylesheet">
+								<mvt:eval expr="l.settings:level_3_detail:tab_settings:typography_theme:stylesheet" />
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'volume-pricing-table'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'code'				OR
+										  l.settings:level_3_detail:type:value EQ 'customfield'			OR
+										  l.settings:level_3_detail:type:value EQ 'custom-text'			OR
+										  l.settings:level_3_detail:type:value EQ 'descrip'				OR
+										  l.settings:level_3_detail:type:value EQ 'discounts'			OR
+										  l.settings:level_3_detail:type:value EQ 'fragment'			OR
+										  l.settings:level_3_detail:type:value EQ 'inv_available'		OR
+										  l.settings:level_3_detail:type:value EQ 'name'				OR
+										  l.settings:level_3_detail:type:value EQ 'price'				OR
+										  l.settings:level_3_detail:type:value EQ 'quantity-in-basket'	OR
+										  l.settings:level_3_detail:type:value EQ 'sku'					OR
+										  l.settings:level_3_detail:type:value EQ 'weight'">
+							<mvt:if expr="l.settings:level_3_detail:text_styles:settings:enabled">
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:text_styles:typography_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_3_detail:text_styles:typography_theme:stylesheet" />
+								</mvt:if>
+							</mvt:if>
+						</mvt:if>
+
+						<mvt:foreach iterator="level_4_detail" array="level_3_detail:details:children">
+							<mvt:if expr="l.settings:level_4_detail:type:value EQ 'add-to-cart-button'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_4_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'add-to-wishlist-button'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_4_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'vertical-group' AND l.settings:level_4_detail:max_height_settings:settings:enabled">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_4_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet" />
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'accordion-group'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:accordion_settings:heading:typography_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_4_detail:accordion_settings:heading:typography_theme:stylesheet" />
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'tab-group'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:tab_settings:typography_theme:stylesheet">
+									<mvt:eval expr="l.settings:level_4_detail:tab_settings:typography_theme:stylesheet" />
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'volume-pricing-table'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'code'				OR
+											  l.settings:level_4_detail:type:value EQ 'customfield'			OR
+											  l.settings:level_4_detail:type:value EQ 'custom-text'			OR
+											  l.settings:level_4_detail:type:value EQ 'descrip'				OR
+											  l.settings:level_4_detail:type:value EQ 'discounts'			OR
+											  l.settings:level_4_detail:type:value EQ 'fragment'			OR
+											  l.settings:level_4_detail:type:value EQ 'inv_available'		OR
+											  l.settings:level_4_detail:type:value EQ 'name'				OR
+											  l.settings:level_4_detail:type:value EQ 'price'				OR
+											  l.settings:level_4_detail:type:value EQ 'quantity-in-basket'	OR
+											  l.settings:level_4_detail:type:value EQ 'sku'					OR
+											  l.settings:level_4_detail:type:value EQ 'weight'">
+								<mvt:if expr="l.settings:level_4_detail:text_styles:settings:enabled">
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:text_styles:typography_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_4_detail:text_styles:typography_theme:stylesheet" />
+									</mvt:if>
+								</mvt:if>
+							</mvt:if>
+
+							<mvt:foreach iterator="level_5_detail" array="level_4_detail:details:children">
+								<mvt:if expr="l.settings:level_5_detail:type:value EQ 'add-to-cart-button'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_5_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'add-to-wishlist-button'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_5_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'vertical-group' AND l.settings:level_5_detail:max_height_settings:settings:enabled">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_5_detail:max_height_settings:read_more:textsettings:fields:normal:button_theme:stylesheet" />
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'tab-group'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:accordion_settings:heading:typography_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_5_detail:accordion_settings:heading:typography_theme:stylesheet" />
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'accordion-group'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:tab_settings:typography_theme:stylesheet">
+										<mvt:eval expr="l.settings:level_5_detail:tab_settings:typography_theme:stylesheet" />
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'volume-pricing-table'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'code'				OR
+												  l.settings:level_5_detail:type:value EQ 'customfield'			OR
+												  l.settings:level_5_detail:type:value EQ 'custom-text'			OR
+												  l.settings:level_5_detail:type:value EQ 'descrip'				OR
+												  l.settings:level_5_detail:type:value EQ 'discounts'			OR
+												  l.settings:level_5_detail:type:value EQ 'fragment'			OR
+												  l.settings:level_5_detail:type:value EQ 'inv_available'		OR
+												  l.settings:level_5_detail:type:value EQ 'name'				OR
+												  l.settings:level_5_detail:type:value EQ 'price'				OR
+												  l.settings:level_5_detail:type:value EQ 'quantity-in-basket'	OR
+												  l.settings:level_5_detail:type:value EQ 'sku'					OR
+												  l.settings:level_5_detail:type:value EQ 'weight'">
+									<mvt:if expr="l.settings:level_5_detail:text_styles:settings:enabled">
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:text_styles:typography_theme:stylesheet">
+											<mvt:eval expr="l.settings:level_5_detail:text_styles:typography_theme:stylesheet" />
+										</mvt:if>
+									</mvt:if>
+								</mvt:if>
+							</mvt:foreach>
+						</mvt:foreach>
+					</mvt:foreach>
+				</mvt:foreach>
+			</mvt:foreach>
+		<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+		<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+			<template data-theme-stylesheet>
+				<mvt:eval expr="l.theme_stylesheet" />
+			</template>
+		</mvt:if>
+	</mmx-product-details>
+</form>

@@ -5,8 +5,8 @@
             "item_code": "image-and-text",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -24,6 +24,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -35,8 +45,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-2"
+                                    "typography_theme": {
+                                        "code": "title-2",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -50,8 +61,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "subheading-s"
+                                    "typography_theme": {
+                                        "code": "subheading-s",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -82,8 +94,8 @@
             "item_code": "image-and-text-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -101,6 +113,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -112,8 +134,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-2"
+                                    "typography_theme": {
+                                        "code": "title-2",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -127,8 +150,9 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "subheading-s"
+                                    "typography_theme": {
+                                        "code": "subheading-s",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
@@ -159,8 +183,8 @@
             "item_code": "one-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -194,16 +218,48 @@
                     "align": {
                         "value": "center"
                     },
+                    "body_text_styles": {
+                        "typography_theme": {
+                            "code": "paragraph-s",
+                            "theme_mode": 1
+                        }
+                    },
+                    "button_styles": {
+                        "button_theme": {
+                            "code": "secondary",
+                            "size": "xs",
+                            "theme_mode": 1
+                        }
+                    },
                     "content_location": {
                         "value": "center"
                     },
                     "heading_text_styles": {
-                        "heading_style": {
-                            "value": "title-2"
+                        "typography_theme": {
+                            "code": "title-2",
+                            "theme_mode": 1
+                        }
+                    },
+                    "subheading_text_styles": {
+                        "typography_theme": {
+                            "code": "subheading-s",
+                            "theme_mode": 1
                         }
                     }
                 },
                 "heading": {
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "settings": {
                         "enabled": 0
                     }
@@ -241,8 +297,8 @@
             "item_code": "text-area",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "desktop": {
@@ -257,6 +313,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -268,13 +334,26 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-3"
+                                    "typography_theme": {
+                                        "code": "title-3",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
                         },
                         "value": "Heading Goes Here"
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "subheading-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }
@@ -284,8 +363,8 @@
             "item_code": "text-area-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1103,
-                    "settings_version": "10.11.03"
+                    "flex_version": 10.12,
+                    "settings_version": "10.12.00"
                 },
                 "advanced": {
                     "desktop": {
@@ -300,6 +379,16 @@
                     },
                     "body": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "paragraph-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
@@ -311,13 +400,26 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
-                                    "heading_style": {
-                                        "value": "title-2"
+                                    "typography_theme": {
+                                        "code": "title-2",
+                                        "theme_mode": 1
                                     }
                                 }
                             }
                         },
                         "value": "Heading Goes Here"
+                    },
+                    "subheading": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "subheading-s",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             }

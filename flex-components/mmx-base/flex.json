@@ -2,7 +2,7 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-RI/VcGQQJieA51UfiPBz31c9c2gN0rz/7vNPpAnS56g= sha384-NijN2bOUPGOG9TcJgzJgQGsq2epuv4rLxKXAzM9sz/BofbZdoMhrRpSTCU5m0FKg sha512-B7TKaSc4xu8LDvT43Yxxp6wuwSTzoLy+XxNSCMnn9Ibc6kQ1rBvf78b4ULC0OE349n2lcXL3VSYRm7GaXQbDWA=="
+					"value": "sha256-b9G5YKgCNIwmJp/ygwl9MEi3yfpZ5pR+PNBRgm3FVsA= sha384-yFWzOFDCfzMVIW19tvg/wlNOOMVSls1Tt/cAk6BHQJjyHdzIBcwzN1MeXxXZA9c9 sha512-rawE2/IHfqtXSyDYKmPdgWF9uIehE1nT+ESLKTx+z6pinXiySb1oaruHhz9sBLSsGIU/cCF8Tm0DrQ39ajSq5A=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-KoLM5ytlZi8lSe0UfLX5gJCOSUzFfY0fRUnZ3VLZqfo= sha384-S88lb8N9kDBgx22T2dEdH+bZ5gWhjAfO/zDHHHxV+XKtXdrQSqy4IZgb69kZEAxA sha512-/XEdCkvHS1KSwQhkhBhXgtt/DO7WRdOBv3e5kaHEuCwZifIaDJmSbTkRIrxNOhBeJ9rjeERekcYtTKibVDyfmA=="
+					"value": "sha256-NVr8tG/6TRJtletiPiYUPdZObc1l5waejt9q9Hm4hOk= sha384-7jfRYduNY9mzahaZBsw8SitdfDqrtdRqCH2vu3jIuBuUuJcBsstATIPaEeWQjnkp sha512-fKXX6v4repY5gDZRiix3XujnghON65zcejGltdP99YXUl15VwQwk0Ffo70opQATrFYz1+x8/48bB0X/vfK7GKQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,28 +54,32 @@
 		}
 	],
 	"conflicts": {
-		"mmx-accordion": "<10.11.03",
-		"mmx-button": "<10.11.03",
-		"mmx-card": "<10.11.03",
-		"mmx-category-carousel": "<10.11.03",
-		"mmx-combination-facet": "<10.11.03",
-		"mmx-contact-form": "<10.11.03",
-		"mmx-csv": "<10.11.03",
-		"mmx-featured-product": "<10.11.03",
-		"mmx-forms": "<10.11.03",
-		"mmx-hero": "<10.11.03",
-		"mmx-hero-slider": "<10.11.03",
-		"mmx-icons": "<10.11.03",
-		"mmx-image-across": "<10.11.03",
-		"mmx-image-and-text": "<10.11.03",
-		"mmx-messages": "<10.11.03",
-		"mmx-product-carousel": "<10.11.03",
-		"mmx-product-list": "<10.11.03",
-		"mmx-quick-order": "<10.11.03",
-		"mmx-text": "<10.11.03",
-		"mmx-text-area": "<10.11.03",
-		"mmx-text-banner": "<10.11.03",
-		"mmx-text-editor": "<10.11.03",
-		"mmx-video": "<10.11.03"
+		"mmx-accordion": "<10.12.00",
+		"mmx-button": "<10.12.00",
+		"mmx-card": "<10.12.00",
+		"mmx-category-carousel": "<10.12.00",
+		"mmx-combination-facet": "<10.12.00",
+		"mmx-contact-form": "<10.12.00",
+		"mmx-csv": "<10.12.00",
+		"mmx-dialog": "<10.12.00",
+		"mmx-featured-product": "<10.12.00",
+		"mmx-forms": "<10.12.00",
+		"mmx-hero": "<10.12.00",
+		"mmx-hero-slider": "<10.12.00",
+		"mmx-icons": "<10.12.00",
+		"mmx-image-across": "<10.12.00",
+		"mmx-image-and-text": "<10.12.00",
+		"mmx-image-gallery": "<10.12.00",
+		"mmx-messages": "<10.12.00",
+		"mmx-product-carousel": "<10.12.00",
+		"mmx-product-details": "<10.12.00",
+		"mmx-product-list": "<10.12.00",
+		"mmx-quick-order": "<10.12.00",
+		"mmx-tabs": "<10.12.00",
+		"mmx-text": "<10.12.00",
+		"mmx-text-area": "<10.12.00",
+		"mmx-text-banner": "<10.12.00",
+		"mmx-text-editor": "<10.12.00",
+		"mmx-video": "<10.12.00"
 	}
 }

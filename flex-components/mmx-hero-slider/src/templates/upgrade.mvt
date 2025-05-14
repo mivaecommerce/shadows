@@ -1,0 +1,24 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:foreach iterator="slide" array="instance:slides:hero_images:children">
+		<mvt:comment> Theme Buttons </mvt:comment>
+		<mvt:assign name="l.settings:slide:content:button:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+
+		<mvt:comment> Theme Typography </mvt:comment>
+		<mvt:assign name="l.settings:slide:content:heading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+		<mvt:assign name="l.settings:slide:content:subheading:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+		<mvt:assign name="l.settings:slide:content:body:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+
+		<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+		<mvt:do name="l.settings:slide:content:heading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:slide:content:heading:textsettings:fields:normal:font_family:value )" />
+		<mvt:do name="l.settings:slide:content:subheading:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:slide:content:subheading:textsettings:fields:normal:font_family:value )" />
+		<mvt:do name="l.settings:slide:content:body:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:slide:content:body:textsettings:fields:normal:font_family:value )" />
+
+		<mvt:assign name="l.settings:slide:content:heading:textsettings:fields:normal:font:weight" value="l.settings:slide:content:heading:textsettings:fields:normal:font_weight:value" />
+		<mvt:assign name="l.settings:slide:content:subheading:textsettings:fields:normal:font:weight" value="l.settings:slide:content:subheading:textsettings:fields:normal:font_weight:value" />
+		<mvt:assign name="l.settings:slide:content:body:textsettings:fields:normal:font:weight" value="l.settings:slide:content:body:textsettings:fields:normal:font_weight:value" />
+
+		<mvt:assign name="l.settings:slide:content:heading:textsettings:fields:normal:font:style" value="''" />
+		<mvt:assign name="l.settings:slide:content:subheading:textsettings:fields:normal:font:style" value="''" />
+		<mvt:assign name="l.settings:slide:content:body:textsettings:fields:normal:font:style" value="''" />
+	</mvt:foreach>
+</mvt:if>

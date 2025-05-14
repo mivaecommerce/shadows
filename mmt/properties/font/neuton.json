@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "Neuton, serif",
+    "google_font_name": "Neuton",
+    "name": "Neuton",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

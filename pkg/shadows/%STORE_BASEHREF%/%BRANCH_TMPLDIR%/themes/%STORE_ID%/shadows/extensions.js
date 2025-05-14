@@ -157,7 +157,7 @@ const tabbedContent = (document => {
  *
  * This is the default, off-canvas, mini-basket functionality of Miva.
  *
- * Version: 10.05.00
+ * Version: 10.12.00
  */
 
 const miniBasket = (document => {
@@ -218,8 +218,8 @@ const miniBasket = (document => {
 	 */
 	let toggleMenu = (event, display) => {
 		if (mivaJS.miniBasket.use) {
-			event.preventDefault();
-			event.stopPropagation();
+			event?.preventDefault?.();
+			event?.stopPropagation?.();
 			if (display === 'open') {
 				mbElement.parentElement.hidden = false;
 			}
@@ -329,7 +329,47 @@ const miniBasket = (document => {
 			toggleMenu(event, 'close');
 		}, false);
 
-		if (mivaJS.miniBasket.use && mivaJS.miniBasket.closeOnBackground) {
+		if (!mivaJS.miniBasket.use) {
+			return;
+		}
+
+		document.addEventListener('global_minibasket:updated', (e) => {
+			const content = e.detail?.content;
+
+			if (!content) {
+				return;
+			}
+
+			const newMb = document.createElement('div');
+			newMb.innerHTML = content;
+
+			const newMbElement = newMb.querySelector('[data-hook~="mini-basket"]');
+			const newMbContent = newMb.querySelector('[data-hook~="mini-basket__content"]');
+			const itemCount = newMbElement?.dataset?.itemCount ?? mbElement.dataset.itemCount;
+			const subtotal = newMbElement?.dataset?.subtotal ?? mbElement.dataset.subtotal;
+
+			mbElement.dataset.itemCount = itemCount;
+			mbElement.dataset.subtotal = subtotal;
+			mbContent.innerHTML = newMbContent.innerHTML ?? mbContent.innerHTML;
+
+			const miniBasketCounts = document.querySelectorAll('[data-hook~="mini-basket-count"]');
+
+			miniBasketCounts.forEach(count => {
+				count.textContent = itemCount;
+
+				const icon = count.previousElementSibling;
+
+				if (icon.classList.contains('u-icon-cart-empty')) {
+					icon.classList.add('u-icon-cart-full');
+				}
+			});
+
+			if (e.detail?.openMenu) {
+				toggleMenu(null, 'open');
+			}
+		});
+
+		if (mivaJS.miniBasket.closeOnBackground) {
 			mbElement.addEventListener('click', function (event) {
 				if (event.target === this) {
 					toggleMenu(event, 'close');
@@ -337,7 +377,7 @@ const miniBasket = (document => {
 			}, false);
 		}
 
-		if (mivaJS.miniBasket.use && mivaJS.miniBasket.closeOnEsc) {
+		if (mivaJS.miniBasket.closeOnEsc) {
 			window.addEventListener('keydown', event => {
 				const escKey = (event.key === 'Escape');
 				const openDialog = document.querySelector('[data-dialog][aria-hidden=false]');
@@ -499,52 +539,46 @@ const quantify = (() => {
 
 				adjusters[id].addEventListener('click', function (event) {
 					if (event.target.closest('button')) {
-						let button = event.target;
-						let inputs = [].filter.call(this.children, sibling => sibling !== button && sibling.closest('input'));
-						let input = inputs[0];
-						let max = input.hasAttribute('data-max') ? parseInt(input.getAttribute('data-max')) : undefined;
-						let min = input.hasAttribute('data-min') ? parseInt(input.getAttribute('data-min')) : 1;
-						let step = input.hasAttribute('data-step') ? parseInt(input.getAttribute('data-step')) : 1;
-						let value = parseInt(input.value);
-						let action = button.getAttribute('data-action');
-						let changed = new Event('change');
-
-						if (isNaN(step)) {
-							step = 1;
-						}
 						event.stopPropagation();
 						event.preventDefault();
 
+						const button = event.target;
+						const inputs = [].filter.call(this.children, sibling => sibling !== button && sibling.closest('input'));
+						const input = inputs[0];
+						const change = new Event('change');
+						const action = button.getAttribute('data-action');
+
+						let max = parseInt(input.dataset?.max);
+						let min = parseInt(input.dataset?.min);
+						let step = parseInt(input.dataset?.step);
+						let value = parseInt(input.value);
+
+						max = isNaN(max) ? Infinity : max;
+						min = isNaN(min) ? 1 : min;
+						step = isNaN(step) ? 1 : step;
+
 						if (action === 'decrement') {
-							if (!isNaN(min)) {
-								if (min < value) {
-									input.value = value - step;
-								}
-								else {
-									input.value = min;
-								}
-							}
-							else {
-								input.value = value > step ? value - step : step;
-							}
-							input.dispatchEvent(changed);
-							allowRemoveUpdate(section);
+							value -= step;
 						}
 						else if (action === 'increment') {
-							if (max !== undefined && !isNaN(max)) {
-								if (max > value) {
-									input.value = value + step;
-								}
-								else {
-									input.value = max;
-								}
-							}
-							else {
-								input.value = value + step;
-							}
-							input.dispatchEvent(changed);
-							allowRemoveUpdate(section);
+							value += step;
 						}
+
+						if (isNaN(value)) {
+							input.value = min;
+						}
+						else if (value < min) {
+							input.value = min;
+						}
+						else if (value > max) {
+							input.value = max;
+						}
+						else {
+							input.value = value;
+						}
+
+						input.dispatchEvent(change);
+						allowRemoveUpdate(section);
 					}
 				});
 			}

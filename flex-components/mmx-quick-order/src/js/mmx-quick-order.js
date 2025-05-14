@@ -14,6 +14,15 @@ class MMX_QuickOrder extends MMX_Element {
 				allowAny: true,
 				default: 'm'
 			},
+			'add-row-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'add-row-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'add-row-text': {
 				allowAny: true,
 				default: 'Add Row'
@@ -25,6 +34,15 @@ class MMX_QuickOrder extends MMX_Element {
 			'add-to-cart-size': {
 				allowAny: true,
 				default: 'm'
+			},
+			'add-to-cart-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'add-to-cart-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'add-to-cart-text': {
 				allowAny: true,
@@ -237,9 +255,11 @@ class MMX_QuickOrder extends MMX_Element {
 				exportparts="button: add-row__inner"
 				data-style="${MMX.encodeEntities(this.getPropValue('add-row-style'))}"
 				data-size="${MMX.encodeEntities(this.getPropValue('add-row-size'))}"
+				data-theme="${MMX.encodeEntities(this.getPropValue('add-row-theme'))}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('add-row-theme-class'))}"
 			>
-				<mmx-icon class="mmx-quick-order__add-row-icon" part="add-row-icon">add-circle</mmx-icon>
-				${this.getPropValue('add-row-text')}
+				${this.renderThemeStylesheetTemplate(this.getPropValue('add-row-theme'))}
+				<mmx-icon class="mmx-quick-order__add-row-icon" part="add-row-icon">add-circle</mmx-icon>${this.getPropValue('add-row-text')}
 			</mmx-button>
 		`;
 	}
@@ -252,7 +272,10 @@ class MMX_QuickOrder extends MMX_Element {
 				exportparts="button: add-to-cart__inner"
 				data-style="${MMX.encodeEntities(this.getPropValue('add-to-cart-style'))}"
 				data-size="${MMX.encodeEntities(this.getPropValue('add-to-cart-size'))}"
+				data-theme="${MMX.encodeEntities(this.getPropValue('add-to-cart-theme'))}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('add-to-cart-theme-class'))}"
 			>
+				${this.renderThemeStylesheetTemplate(this.getPropValue('add-to-cart-theme'))}
 				${this.getPropValue('add-to-cart-text')}
 			</mmx-button>
 		`;
@@ -380,9 +403,13 @@ class MMX_QuickOrder extends MMX_Element {
 			'data-add-row-text': this?.data?.add_row_text?.value,
 			'data-add-row-style': this.data?.add_row_text?.textsettings?.fields?.normal?.button_style?.value,
 			'data-add-row-size': this.data?.add_row_text?.textsettings?.fields?.normal?.button_size?.value,
+			'data-add-row-theme': this.data?.add_row_text?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-add-row-theme-class': this.data?.add_row_text?.textsettings?.fields?.normal?.button_theme?.classname,
 			'data-add-to-cart-text': this?.data?.add_to_cart_text?.value,
 			'data-add-to-cart-style': this.data?.add_to_cart_text?.textsettings?.fields?.normal?.button_style?.value,
 			'data-add-to-cart-size': this.data?.add_to_cart_text?.textsettings?.fields?.normal?.button_size?.value,
+			'data-add-to-cart-theme': this.data?.add_to_cart_text?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-add-to-cart-theme-class': this.data?.add_to_cart_text?.textsettings?.fields?.normal?.button_theme?.classname,
 			'data-enable-bulk': this?.data?.bulk?.settings?.enabled,
 			'data-enable-csv': this?.data?.csv?.settings?.enabled,
 			'data-fallback-product-image': this.data?.fallback_product_image,
@@ -1572,7 +1599,7 @@ class MMX_QuickOrder extends MMX_Element {
 			},
 			content: /*html*/`
 				<script type="application/json">
-					${JSON.stringify(this.getFeaturedProductConfig(product))}
+					${MMX.scriptSafeJSONStringify(this.getFeaturedProductConfig(product))}
 				</script>
 			`
 		});

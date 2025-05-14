@@ -3,7 +3,8 @@
    ========================================================================== */
 
 
-.mmx-text {
+.mmx-text,
+.mmx-theme-text {
 	padding: 0;
 	margin: 0 0 var(--mmx-text-margin-bottom) 0;
 	text-align: var(--mmx-text__text-align, unset);
@@ -12,8 +13,10 @@
 .mmx-text__inner {
 	display: inline-block;
 	max-width: var(--mmx-text__inner--max-width, auto);
+	text-decoration: var(--mmx-text__text-decoration, none);
 }
 
+.mmx-text__inner > template:first-child + *,
 .mmx-text__inner > *:first-child {
 	margin-top: 0;
 }
@@ -77,42 +80,42 @@ a {
 }
 
 .type-display-2,
-h1 {
+h1:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-2-font);
 	text-transform: var(--mmx-heading-case);
 }
 
 .type-display-3,
-h2 {
+h2:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-3-font);
 	text-transform: var(--mmx-heading-case);
 }
 
 .type-title-1,
-h3 {
+h3:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-3-font);
 	text-transform: var(--mmx-heading-case);
 }
 
 .type-title-2,
-h4 {
+h4:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-3-font);
 	text-transform: var(--mmx-heading-case);
 }
 
 .type-title-3,
-h5 {
+h5:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-4-font);
 	text-transform: var(--mmx-heading-case);
 }
 
 .type-title-4,
-h6 {
+h6:where(:not(.mmx-theme-text)) {
 	color: var(--mmx-heading-color);
 	font: var(--mmx-title-4-font);
 	text-transform: var(--mmx-heading-case);
@@ -188,32 +191,32 @@ h6 {
 	}
 
 	.type-display-2,
-	h1 {
+	h1:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-1-font);
 	}
 
 	.type-display-3,
-	h2 {
+	h2:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-2-font);
 	}
 
 	.type-title-1,
-	h3 {
+	h3:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-3-font);
 	}
 
 	.type-title-2,
-	h4 {
+	h4:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-3-font);
 	}
 
 	.type-title-3,
-	h5 {
+	h5:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-4-font);
 	}
 
 	.type-title-4,
-	h6 {
+	h6:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-4-font);
 	}
 
@@ -250,32 +253,32 @@ h6 {
 	}
 
 	.type-display-2,
-	h1 {
+	h1:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-display-2-font);
 	}
 
 	.type-display-3,
-	h2 {
+	h2:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-display-3-font);
 	}
 
 	.type-title-1,
-	h3 {
+	h3:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-1-font);
 	}
 
 	.type-title-2,
-	h4 {
+	h4:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-2-font);
 	}
 
 	.type-title-3,
-	h5 {
+	h5:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-3-font);
 	}
 
 	.type-title-4,
-	h6 {
+	h6:where(:not(.mmx-theme-text)) {
 		font: var(--mmx-title-4-font);
 	}
 
@@ -310,13 +313,19 @@ h6 {
 	color: inherit;
 	font: inherit;
 	text-transform: inherit;
+}
+
+.mmx-text--styled :where(h1, h2, h3, h4, h5, h6),
+.mmx-theme-text :where(h1, h2, h3, h4, h5, h6) {
 	margin: var(--mmx-markdown-spacing) 0;
 }
 
-.mmx-text--styled :where(p, ul, ol, blockquote) {
+.mmx-text--styled :where(p, ul, ol, blockquote),
+.mmx-theme-text :where(p, ul, ol, blockquote) {
 	margin: calc(3 * var(--mmx-markdown-spacing)) 0;
 }
 
-.mmx-text--styled :where(li > ul, li > ol) {
+.mmx-text--styled :where(li > ul, li > ol),
+.mmx-theme-text :where(li > ul, li > ol) {
 	margin: 0;
 }

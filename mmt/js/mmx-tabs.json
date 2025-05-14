@@ -1,0 +1,21 @@
+{
+    "code": "mmx-tabs",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-CSJyGOT+Vr5HSF/ReaCr3ZNWvUbYrHMgo9WVMoK/ia4= sha384-AWxlWkIwcd8DWdgAUtW658HhFAfSEM2pWc9lfLNUYXHNi2JL4BY3yFkGg/tJ/Vrm sha512-xmGYhA6xJz6iSJchZOmWkkWsfiyAK9Zn71msqyDQcVxa0chvUhm0Upv4R5e6Y7gpJ+WTr59qkYHCe34Nhb++tA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

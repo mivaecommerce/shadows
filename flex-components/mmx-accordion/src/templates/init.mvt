@@ -15,5 +15,8 @@
 <mvt:item name="head" param="css:mmx-accordion" />
 <mvt:item name="head" param="js:mmx-accordion" />
 
+<mvt:comment>Theme Editor stylesheet</mvt:comment>
+<mvt:item name="head" param="css:mm-theme-styles" />
+
 <mvt:comment>mmx-customizations</mvt:comment>
 <mvt:item name="head" param="css:mmx-customizations" />

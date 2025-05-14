@@ -106,6 +106,10 @@ mmx-accordion[data-border-location="underline"] .mmx-accordion__details {
 	border-width: 0 0 var(--mmx-accordion__border-width) 0;
 }
 
+mmx-accordion[data-border-location="none"] .mmx-accordion__details {
+	border: none;
+}
+
 /* Icon Location */
 mmx-accordion[data-icon-location="left"] .mmx-accordion__heading {
 	grid-template-columns: [icon] min-content [text] auto;

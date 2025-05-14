@@ -1,0 +1,59 @@
+{
+	"code": "mmx-tabs",
+	"name": "MMX Tabs",
+	"type": "library",
+	"version": "10.12.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-tabs",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-tabs.js",
+			"resource_code": "mmx-tabs",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-CSJyGOT+Vr5HSF/ReaCr3ZNWvUbYrHMgo9WVMoK/ia4= sha384-AWxlWkIwcd8DWdgAUtW658HhFAfSEM2pWc9lfLNUYXHNi2JL4BY3yFkGg/tJ/Vrm sha512-xmGYhA6xJz6iSJchZOmWkkWsfiyAK9Zn71msqyDQcVxa0chvUhm0Upv4R5e6Y7gpJ+WTr59qkYHCe34Nhb++tA=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-tabs.css",
+			"resource_code": "mmx-tabs",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-cFkEo3J6r9hQoWR8HgwU4RBJ97izHY2W/Cx+TzDLq5Q= sha384-mKGo5UOXDF0kYPX68hfqh5RHb5JtcJPtB6N9X/xDX4ppOVinyZmBH61O6emwbUNm sha512-Tj1bZ538Whu6qkdcl3LulrtV/9iB3IEtRFpZS+RVnAXZxByOAs+7J2uU0sbz07mCkQ3cO/0nBSwNrf4TSUSRhw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.12.00"
+	}
+}

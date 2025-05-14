@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "\"Arial Black\", Gadget, sans-serif",
+    "name": "Arial Black",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

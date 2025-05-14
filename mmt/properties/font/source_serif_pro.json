@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "\"Source Serif Pro\", serif",
+    "google_font_name": "Source Serif Pro",
+    "name": "Source Serif Pro",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

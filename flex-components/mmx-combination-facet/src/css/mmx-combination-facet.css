@@ -12,7 +12,7 @@
 	text-align: var(--mmx-combination-facet--text-align);
 }
 
-.mmx-combination-facet slot[name="title"]::slotted(*:last-child) {
+.mmx-combination-facet slot[name="title"]::slotted(*:nth-last-child(-n + 1 of *:not(template))) {
 	margin-bottom: calc(var(--mmx-combination-facet--size) * 2);
 }
 
@@ -123,6 +123,13 @@
 	line-height: var(--mmx-combination-facet--control-height);
 	padding-bottom: 0;
 	padding-top: 0;
+}
+
+.mmx-combination-facet__submit:not([data-style*="link"]) {
+	--mmx-theme-button__height: var(--mmx-combination-facet--control-height);
+	--mmx-theme-button__line-height: var(--mmx-combination-facet--control-height);
+	--mmx-theme-button__padding-bottom: 0;
+	--mmx-theme-button__padding-top: 0;
 }
 
 /* Desktop Layout */
@@ -370,10 +377,6 @@
 	height: 100%;
 	text-align: left;
 	align-items: center;
-}
-
-.mmx-combination-facet__application-select-menu-add-link mmx-icon {
-	line-height: 0;
 }
 
 .mmx-combination-facet__application-select-menu-add-link-icon {

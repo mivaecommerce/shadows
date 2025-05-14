@@ -1,0 +1,52 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:comment> Theme Buttons </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_width:visible" value="0" />
+
+	<mvt:comment> Theme Typography </mvt:comment>
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:heading:heading_text:textsettings:fields:normal:font_family:value )" />
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:weight" value="l.settings:instance:heading:heading_text:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:font:style" value="''" />
+
+	<mvt:if expr="l.settings:instance:products:from_individual:settings:enabled AND l.settings:instance:products:from_category:settings:enabled">
+		<mvt:comment>
+		|
+		| Copy settings from from_individual and from_category to hybrid_settings
+		|
+		</mvt:comment>
+
+		<mvt:assign name="l.settings:instance:products:product_set:value"							value="'hybrid'" />
+		<mvt:assign name="l.settings:instance:products:category_source:value"						value="'manual'" />
+		<mvt:assign name="l.settings:instance:products:category:category_code"						value="l.settings:instance:products:from_category:category:category_code" />
+		<mvt:assign name="l.settings:instance:products:count:value"									value="l.settings:instance:products:from_category:count:value" />
+		<mvt:assign name="l.settings:instance:products:sort:value"									value="l.settings:instance:products:from_category:sort:value" />
+		<mvt:assign name="l.settings:instance:products:products"									value="l.settings:instance:products:from_individual:products" />
+	<mvt:elseif expr="l.settings:instance:products:from_individual:settings:enabled">
+		<mvt:comment>
+		|
+		| Copy settings from from_individual to products
+		|
+		</mvt:comment>
+
+		<mvt:assign name="l.settings:instance:products:product_set:value"							value="'products'" />
+		<mvt:assign name="l.settings:instance:products:products"									value="l.settings:instance:products:from_individual:products" />
+	<mvt:else>
+		<mvt:comment>
+		|
+		| Copy settings from from_category to category
+		|
+		</mvt:comment>
+
+		<mvt:assign name="l.settings:instance:products:product_set:value"							value="'category'" />
+		<mvt:assign name="l.settings:instance:products:category_source:value"						value="'manual'" />
+		<mvt:assign name="l.settings:instance:products:category:category_code"						value="l.settings:instance:products:from_category:category:category_code" />
+		<mvt:assign name="l.settings:instance:products:count:value"									value="l.settings:instance:products:from_category:count:value" />
+		<mvt:assign name="l.settings:instance:products:sort:value"									value="l.settings:instance:products:from_category:sort:value" />
+	</mvt:if>
+
+	<mvt:eval expr="miva_member_delete( l.settings:instance:products, 'from_category' )" />
+	<mvt:eval expr="miva_member_delete( l.settings:instance:products, 'from_individual' )" />
+</mvt:if>

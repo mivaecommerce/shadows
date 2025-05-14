@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "\"Azeret Mono\", mono",
+    "google_font_name": "Azeret Mono",
+    "name": "Azeret Mono",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

@@ -113,6 +113,15 @@ class MMX_ProductList extends MMX_Element {
 				allowAny: true,
 				default: 'Filters'
 			},
+			'facets-title-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'facets-title-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'facets-title-style': {
 				allowAny: true,
 				default: 'title-4'
@@ -125,6 +134,15 @@ class MMX_ProductList extends MMX_Element {
 				allowAny: true,
 				isNumeric: true,
 				default: 20
+			},
+			'facet-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'facet-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'facet-style': {
 				allowAny: true,
@@ -203,6 +221,9 @@ class MMX_ProductList extends MMX_Element {
 	#pagination = {};
 	#sortByOptions = [];
 	#perPageOptions = [];
+	#searchOrigin = 'Runtime API';
+	#searchType = 'system';
+	#searchIndex = '';
 	#commonParamsToExclude = ['Screen', 'Action', 'Per_Page', 'Sort_By', 'Offset', 'Search'];
 	#paramPrefix;
 	#desktopBreakpoint = window.matchMedia('(min-width: 60em)');
@@ -267,6 +288,9 @@ class MMX_ProductList extends MMX_Element {
 		this.#card = this.data.card;
 		this.#sortByOptions = Array.from(this.data?.list?.sort_by?.options?.children ?? []);
 		this.#perPageOptions = Array.from(this.data?.list?.per_page?.options?.children ?? []);
+		this.#searchOrigin = this.data?.advanced?.search?.origin?.value ?? 'Runtime API';
+		this.#searchType = this.data?.advanced?.search?.type?.value ?? 'system';
+		this.#searchIndex = this.data?.advanced?.search?.index?.value ?? '';
 
 		MMX.setElementAttributes(this, {
 			'data-product-set': this.data?.list?.products?.product_set?.value,
@@ -287,9 +311,13 @@ class MMX_ProductList extends MMX_Element {
 			'data-pagination-next-text': this.data?.list?.pagination?.next_text?.value,
 			'data-pagination-previous-text': this.data?.list?.pagination?.previous_text?.value,
 			'data-facets-title': this.data?.list?.facets?.title?.value,
+			'data-facets-title-theme': this.data?.list?.facets?.title?.textsettings?.fields?.normal?.typography_theme?.theme_available,
+			'data-facets-title-theme-class': this.data?.list?.facets?.title?.textsettings?.fields?.normal?.typography_theme?.classname,
 			'data-facets-title-style': this.data?.list?.facets?.title?.textsettings?.fields?.normal?.title_style?.value,
 			'data-facets-title-styles': this.data?.list?.facets?.title?.textsettings?.styles?.normal,
 			'data-facets-width': this.data?.list?.facets?.width?.value,
+			'data-facet-theme': this.data?.list?.facets?.facet_styles?.typography_theme?.theme_available,
+			'data-facet-theme-class': this.data?.list?.facets?.facet_styles?.typography_theme?.classname,
 			'data-facet-style': this.data?.list?.facets?.facet_styles?.facet_style?.value,
 			'data-facet-styles': this.getStylesFromGroup(this.data?.list?.facets?.facet_styles),
 			'data-columns': [
@@ -590,14 +618,14 @@ class MMX_ProductList extends MMX_Element {
 				});
 			}
 
-			if (type === 'customfield' && typeof detail?.customfield?.value === 'string') {
+			if (type === 'customfield' && !MMX.valueIsEmpty(detail?.customfield?.value)) {
 				filters.push({
 					name: 'ondemandcolumns',
 					value: [`CustomField_Values:${detail.customfield.value}`]
 				});
 			}
 
-			if (type === 'fragment' && typeof detail?.fragment?.value === 'string') {
+			if (type === 'fragment' && !MMX.valueIsEmpty(detail?.fragment?.value)) {
 				filters.push({
 					name: 'fragments',
 					value: [detail.fragment.value]
@@ -653,7 +681,12 @@ class MMX_ProductList extends MMX_Element {
 
 		return [{
 			name: 'runtime_search',
-			value: search
+			value: {
+				search: search,
+				origin: this.#searchOrigin,
+				type: this.#searchType,
+				index: this.#searchIndex
+			}
 		}];
 	}
 
@@ -959,9 +992,13 @@ class MMX_ProductList extends MMX_Element {
 			'data-atwl-url': this.getPropValue('atwl-url')
 		};
 
+		const content = /*html*/`
+			${this.renderThemeStylesheetTemplate(true)}
+		`;
+
 		this.#products.forEach(product => {
 			attributes['data-product-code'] = product.code;
-			MMX_ProductCard.create({product, details, parent, attributes});
+			MMX_ProductCard.create({product, details, parent, attributes, content});
 		});
 
 		return parent;
@@ -1618,6 +1655,8 @@ class MMX_ProductList extends MMX_Element {
 
 	// Render: Facets Header
 	#renderFacetsHeader() {
+		const theme_available = this.getPropValue('facets-title-theme');
+
 		return /*html*/`
 			<div
 				class="mmx-product-list__facets-header"
@@ -1626,9 +1665,12 @@ class MMX_ProductList extends MMX_Element {
 				<mmx-text
 					class="mmx-product-list__facets-title"
 					part="facets-title"
+					data-theme="${MMX.encodeEntities(theme_available)}"
+					data-theme-class="${MMX.encodeEntities(this.getPropValue('facets-title-theme-class'))}"
 					data-style="${MMX.encodeEntities(this.getPropValue('facets-title-style'))}"
-					style="${MMX.encodeEntities(this.getPropValue('facets-title-styles'))}"
 				>
+					${this.renderLegacyStylesTemplate(theme_available, this.getPropValue('facets-title-styles'))}
+					${this.renderThemeStylesheetTemplate(theme_available)}
 					${MMX.encodeEntities(this.getPropValue('facets-title'))}
 				</mmx-text>
 
@@ -1722,6 +1764,8 @@ class MMX_ProductList extends MMX_Element {
 
 	// Render: Facet
 	#renderFacet(facet = {}) {
+		const theme_available = this.getPropValue('facet-theme');
+
 		return /*html*/`
 			<details
 				slot="details"
@@ -1733,9 +1777,12 @@ class MMX_ProductList extends MMX_Element {
 					<mmx-text
 						class="mmx-product-list__facet-title mmx-accordion__heading-text"
 						part="facet-title"
+						data-theme="${MMX.encodeEntities(theme_available)}"
+						data-theme-class="${MMX.encodeEntities(this.getPropValue('facet-theme-class'))}"
 						data-style="${MMX.encodeEntities(this.getPropValue('facet-style'))}"
-						style="${MMX.encodeEntities(this.getPropValue('facet-styles'))}"
 					>
+						${this.renderLegacyStylesTemplate(theme_available, this.getPropValue('facet-styles'))}
+						${this.renderThemeStylesheetTemplate(theme_available)}
 						${facet?.name}
 					</mmx-text>
 					<mmx-icon

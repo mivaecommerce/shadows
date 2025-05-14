@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif",
+    "name": "Lucida Sans Unicode",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

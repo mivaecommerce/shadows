@@ -2,7 +2,7 @@
 	"code": "mmx-card",
 	"name": "MMX Card",
 	"type": "library",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-card",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-BEQSp0Pu5QnuzgGoCdS7JXbTOG77lpNpILFV9MVa910= sha384-QxeTqr01W/cScvkpAleuGFBv6pYsrCAYcz5pHdTi3hZEGyiNBI1RcqsfRlS6TlCz sha512-k9cP2gZxn47mdfCz8wWjl3wvumVR2iHDAkkYQfRuzNK0AXfAdyXRePXn+8OoFFHLYhzosTrDsriG5nivfTu9Yg=="
+					"value": "sha256-4T+xp7TCdbr/knw4J9NJtlFEgL7JQIqSL0mdTZw/zek= sha384-jO6YpwQbG5xHNse5RxmE+OkhaM8tfLLSh57nExKuLdWnc2Sgkg3xHKAzhr9eb7Kg sha512-TFrnRkx0oLKRTXyXpYGHknAI+etsaKw2S6uSxzd//eUNaka1YHPXfgbIizn6JTnPmuqQUm9xPBt9rA+iwLFMBw=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-rtzdFULtzvjpJ4Jd1wQABZ7yvzDgqmFKgjkj3UsH0yM= sha384-x//9vC76OnT2bWG/q5QEXLXUkzM0cI7z//01M29WWGUFlpK9m7Ff9nlALK9G9/BL sha512-58V+BGrYZSV/6hYacDtOnME2wR1tvD0K/CVugEIzmrA9Fwt/P3wAAl8ECSsojYKTYtVnL1LXIn8eT9u8Iou1og=="
+					"value": "sha256-cLXE8OOk6bKZmTAhnvCMouk5A0Pxqn0lQM9LNquverY= sha384-0ysGIJhoYiATVRYR5VsuC/hLn/nNn1tdPjelvKudebhh92gwvAt7ciwKFbvnxias sha512-Dhs0kxCUW00CtixT98lKU9ZR+G3kGrAxfrtvkJ9cR87rwsorwroDS9Qq0lAgwn0aeJdYeHxa7T9inxJib0DRpQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03"
+		"mmx-base": "=10.12.00"
 	}
 }

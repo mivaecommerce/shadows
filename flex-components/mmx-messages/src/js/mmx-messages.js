@@ -29,6 +29,11 @@ class MMX_Message extends MMX_Element {
 			dom: {
 				options: ['light', 'shadow'],
 				default: 'shadow'
+			},
+			'auto-remove': {
+				allowAny: true,
+				isNumeric: true,
+				default: 0
 			}
 		};
 	}
@@ -65,6 +70,30 @@ class MMX_Message extends MMX_Element {
 		}
 
 		return '<slot></slot>';
+	}
+
+	afterRender(){
+		this.#initializeAutoRemove();
+	}
+
+	#removal = 0;
+
+	#initializeAutoRemove() {
+		const duration = MMX.coerceNumber(this.getPropValue('auto-remove'), 0);
+
+		if (!(duration > 0)) {
+			return;
+		}
+
+		clearTimeout(this.#removal);
+
+		this.#removal = setTimeout(() => {
+			this.#removeSelf();
+		}, duration);
+	}
+
+	#removeSelf() {
+		this.remove();
 	}
 }
 

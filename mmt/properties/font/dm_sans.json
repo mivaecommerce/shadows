@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "\"DM Sans\", sans-serif",
+    "google_font_name": "DM Sans",
+    "name": "DM Sans",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

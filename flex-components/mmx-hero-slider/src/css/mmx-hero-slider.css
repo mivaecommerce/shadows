@@ -260,13 +260,8 @@
 	background-color: #767676;
 }
 
-.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:focus {
-	background-color: #FFFFFF;
-	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px #3A58FC;
-}
-
+.mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:focus,
 .mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button:focus {
-	background-color: #767676;
 	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px #3A58FC;
 }
 

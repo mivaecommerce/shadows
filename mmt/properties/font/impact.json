@@ -1,0 +1,14 @@
+{
+    "active": 0,
+    "family": "Impact, Charcoal, sans-serif",
+    "name": "Impact",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

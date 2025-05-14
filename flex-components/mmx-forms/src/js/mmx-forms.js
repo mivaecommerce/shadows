@@ -654,3 +654,270 @@ class MMX_FormInputRange extends MMX_Element {
 if (!customElements.get('mmx-form-input-range')) {
 	customElements.define('mmx-form-input-range', MMX_FormInputRange);
 }
+
+class MMX_FormInputQuantity extends MMX_Element {
+	#internals;
+	static formAssociated = true;
+
+	static get props () {
+		return {
+			name: {
+				allowAny: true,
+				default: ''
+			},
+			value: {
+				allowAny: true,
+				isNumeric: true,
+				default: 1
+			},
+			min: {
+				allowAny: true,
+				isNumeric: true,
+				default: 1
+			},
+			max: {
+				allowAny: true,
+				isNumeric: true
+			},
+			step: {
+				allowAny: true,
+				isNumeric: true,
+				default: 1
+			},
+			size: {
+				options: ['xs', 's', 'm', 'l'],
+				default: 'm'
+			}
+		};
+	}
+
+	constructor() {
+		super();
+		this.makeShadow();
+		this.#internals = this.attachInternals();
+		this.#setFormValue();
+	}
+
+	styleResourceCodes = ['mmx-base', 'mmx-forms'];
+	renderUniquely = true;
+
+	render() {
+		const min = this.getPropValue('min');
+		const max = this.getPropValue('max');
+		const step = this.getPropValue('step');
+		const value = this.getPropValue('value');
+		const disabled = this.disabled ? 'disabled' : '';
+		const required = this.required ? 'required' : '';
+
+		return /*html*/`
+			<div
+				class="mmx-form-input-quantity mmx-form-input-quantity__size--${this.getPropValue('size')}"
+				part="wrapper"
+			>
+				<button
+					type="button"
+					id="decrease"
+					part="button decrease"
+					class="mmx-form-input-quantity__control mmx-form-input-quantity__button"
+					title="Decrease Quantity"
+					${disabled}
+				>
+					<mmx-icon data-name="subtract"></mmx-icon>
+				</button>
+				<input
+					type="number"
+					id="quantity"
+					part="input quantity"
+					class="mmx-form-input-quantity__control mmx-form-input-quantity__input"
+					aria-label="Quantity Amount"
+					step="${MMX.encodeEntities(step)}"
+					min="${MMX.encodeEntities(min)}"
+					max="${MMX.encodeEntities(max)}"
+					value="${MMX.encodeEntities(value)}"
+					${disabled}
+					${required}
+				/>
+				<button
+					type="button"
+					id="increase"
+					part="button increase"
+					class="mmx-form-input-quantity__control mmx-form-input-quantity__button"
+					title="Increase Quantity"
+					${disabled}
+				>
+					<mmx-icon data-name="add"></mmx-icon>
+				</button>
+			</div>
+		`;
+	}
+
+	afterRender() {
+		this.#handleChanges();
+		this.#bindEvents();
+	}
+
+	#handleChanges() {
+		this.#setFormValue();
+		this.#updateButtons();
+	}
+
+	// Elements
+	#inputQuantity() {
+		return this.shadowRoot.querySelector('[part~="quantity"]');
+	}
+
+	#increaseButton() {
+		return this.shadowRoot.querySelector('[part~="increase"]');
+	}
+
+	#decreaseButton() {
+		return this.shadowRoot.querySelector('[part~="decrease"]');
+	}
+
+	// Events
+	#bindEvents() {
+		this.addEventListener('input', (e) => {
+			this.#onInput(e);
+		});
+
+		this.addEventListener('click', (e) => {
+			this.#onClick(e);
+		});
+	}
+
+	#onInput() {
+		this.#handleChanges();
+	}
+
+	#onClick() {
+		this.#increaseDecreaseQuantity();
+	}
+
+	// Public Values
+	#setFormValue() {
+		this.#setValidity();
+		const formData = new FormData();
+		formData.append(this.name, this.value);
+		this.#internals.setFormValue(formData);
+	}
+
+	#setValidity() {
+		if (this.#inputQuantity()?.validity?.valid === false) {
+			this.#internals.setValidity(this.#inputQuantity().validity, this.#inputQuantity().validationMessage);
+			return;
+		}
+
+		this.#internals.setValidity({}, '');
+	}
+
+	checkValidity() {
+		return this.#internals.checkValidity();
+	}
+
+	reportValidity() {
+		return this.#internals.reportValidity();
+	}
+
+	setValidity(...args) {
+		return this.#internals.setValidity(...args);
+	}
+
+	get validationMessage() {
+		return this.#internals.validationMessage;
+	}
+
+	get validity() {
+		return this.#internals.validity;
+	}
+
+	get name() {
+		return this.getPropValue('name');
+	}
+
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
+
+	set disabled(disabled) {
+		disabled = Boolean(disabled);
+
+		if (disabled) {
+			this.setAttribute('disabled', '');
+		}
+		else {
+			this.removeAttribute('disabled');
+		}
+
+		this.#updateButtons();
+		this.#inputQuantity().disabled = disabled;
+
+		return disabled;
+	}
+
+	get required() {
+		return this.hasAttribute('required');
+	}
+
+	get max() {
+		return this.getPropValue('max');
+	}
+
+	get min() {
+		return this.getPropValue('min');
+	}
+
+	get value() {
+		return this.#inputQuantity()?.value ?? '';
+	}
+
+	get valueAsNumber() {
+		return this.#inputQuantity()?.valueAsNumber;
+	}
+
+	set value(value) {
+		const inputQuantity = this.#inputQuantity();
+
+		inputQuantity.value = value;
+
+		if (isNaN(inputQuantity.valueAsNumber) || inputQuantity.validity.quantityOverflow || inputQuantity.validity.stepMismatch){
+			inputQuantity.stepDown();
+		}
+		else if (inputQuantity.validity.quantityUnderflow){
+			inputQuantity.stepUp();
+		}
+
+		this.#dispatchInputEvent();
+	}
+
+	// Methods
+	#dispatchInputEvent() {
+		const inputEvent = new Event('input', {
+			bubbles: true,
+			composed: true
+		});
+
+		this.#inputQuantity().dispatchEvent(inputEvent);
+	}
+
+	#increaseDecreaseQuantity() {
+		switch (this.shadowRoot.activeElement?.id) {
+			case 'increase':
+				this.#inputQuantity().stepUp();
+				this.#dispatchInputEvent();
+				break;
+			case 'decrease':
+				this.#inputQuantity().stepDown();
+				this.#dispatchInputEvent();
+				break;
+		}
+	}
+
+	#updateButtons() {
+		this.#decreaseButton().disabled = this.disabled || Number(this.value) === Number(this.min);
+		this.#increaseButton().disabled = this.disabled || Number(this.value) === Number(this.max);
+	}
+}
+
+if (!customElements.get('mmx-form-input-quantity')) {
+	customElements.define('mmx-form-input-quantity', MMX_FormInputQuantity);
+}

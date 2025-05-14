@@ -2,7 +2,7 @@
 	"code": "mmx-messages",
 	"name": "MMX Messages",
 	"type": "library",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-messages",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-VvEc5Wxa5pagvRy6Fbp8gydURxUxRqVW/+JAXf+qQrw= sha384-inA3iPo+COS9bDXl5FjVzymaeJNKxEZIRfpUiIkKWXQDZfV9jF3NUdNvJ5tDff9b sha512-HndSmwwHqHSk621nrYi+/Q9dVIYXOt3XWoUC8uQMwSK/Eo+PNg1xvm0KuCz2KExj4ZmOl4qF2xbxL1QWlI2fHQ=="
+					"value": "sha256-e6fmblNTWgRBGOtt1qU7yVNgcBMuKYRDOV6heaPJgeE= sha384-jeJaRjha7ehxwAFqUokD6kyYAiZxcyZMSjq1oSekVfDck/sdwNTil4FKVYh68c33 sha512-0weyMRCFxmFuWtWgu8ztColcJWsJ28kbKzpVwZwhbbM8Oxn9kc8PhzhXrD4Rp8AE19DTrBMCCgGuq1OYPJiApw=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-CRMy+UHdNdLCzoTQCKnCvFAHhXvhi4E+CcYvD5zgUpI= sha384-PQg/MEPfAq4YgUjAzCrbVNvhyQxw3G8OrovkuFHbDN5QQJ1DTnsPjr0NhMlyLdHu sha512-ylCPRnLlnxT2jp/73BIxoeebkWpfA7b9i10qy3AZ4FRDqg2IKxLBNkK4uXfgDWxB6q0z/ucsBk7d5hNgS42MIw=="
+					"value": "sha256-0GPJqj70Doi3WyMHsgWWLovY9ixzAr5GFJc2NbEBZXU= sha384-CpVH34pTTCgA5vVsgAHf5gO9Vu6SCmlgv+tPIpkc1TYiFLzDQksm+w3GMnYup4uW sha512-O1n1LFQqMmCo4oNFcbul1adY2Ia4xnFJjs6XQ6bfcyLgxqDCl4ntc3XRX8hSQ7DLOPxepf8epE98YUQXlhmPyA=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03"
+		"mmx-base": "=10.12.00"
 	}
 }

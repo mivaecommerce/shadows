@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.11.03",
+	"version": "10.12.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -44,6 +44,16 @@
 					"textsettings": {
 						"fields": [
 							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
+							{
 								"code": "heading_style",
 								"options": [
 									{
@@ -106,77 +116,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -186,58 +153,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -247,7 +175,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "heading_tag",
@@ -288,7 +225,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -310,6 +256,16 @@
 					"textsettings": {
 						"fields": [
 							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
+							{
 								"code": "heading_style",
 								"options": [
 									{
@@ -372,77 +328,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -452,58 +365,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -513,7 +387,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "heading_tag",
@@ -554,7 +437,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -565,6 +457,16 @@
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
 							{
 								"code": "subheading_style",
 								"options": [
@@ -628,77 +530,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -708,58 +567,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -769,7 +589,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -781,6 +610,16 @@
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
 							{
 								"code": "body_style",
 								"options": [
@@ -844,77 +683,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -924,58 +720,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -985,7 +742,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -997,6 +763,16 @@
 					"required": 1,
 					"textsettings": {
 						"fields": [
+							{
+								"code": "button_theme",
+								"prompt": "Button Theme",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "button"
+							},
 							{
 								"code": "button_style",
 								"options": [
@@ -1028,7 +804,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"button_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "button_size",
@@ -1057,7 +842,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"button_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -1079,6 +873,16 @@
 					"textsettings": {
 						"fields": [
 							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
+							{
 								"code": "heading_style",
 								"options": [
 									{
@@ -1141,77 +945,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -1221,58 +982,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -1282,7 +1004,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "heading_tag",
@@ -1323,7 +1054,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -1334,6 +1074,16 @@
 					"prompt": "Subheading Text",
 					"textsettings": {
 						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
 							{
 								"code": "subheading_style",
 								"options": [
@@ -1397,77 +1147,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -1477,58 +1184,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -1538,7 +1206,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -1550,6 +1227,16 @@
 					"prompt": "Body Text",
 					"textsettings": {
 						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
 							{
 								"code": "body_style",
 								"options": [
@@ -1613,77 +1300,34 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
-								"code": "font_family",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Helvetica",
-										"value": "Helvetica, sans-serif"
-									},
-									{
-										"text": "Georgia",
-										"value": "Georgia, serif"
-									},
-									{
-										"text": "Palatino Linotype",
-										"value": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif"
-									},
-									{
-										"text": "Times New Roman",
-										"value": "\"Times New Roman\", Times, serif"
-									},
-									{
-										"text": "Arial",
-										"value": "Arial, Helvetica, sans-serif"
-									},
-									{
-										"text": "Arial Black",
-										"value": "\"Arial Black\", Gadget, sans-serif"
-									},
-									{
-										"text": "Comic Sans MS",
-										"value": "\"Comic Sans MS\", cursive, sans-serif"
-									},
-									{
-										"text": "Impact",
-										"value": "Impact, Charcoal, sans-serif"
-									},
-									{
-										"text": "Lucida Sans Unicode",
-										"value": "\"Lucida Sans Unicode\", \"Lucida Grande\", sans-serif"
-									},
-									{
-										"text": "Tahoma",
-										"value": "Tahoma, Geneva, sans-serif"
-									},
-									{
-										"text": "Trebuchet MS",
-										"value": "\"Trebuchet MS\", Helvetica, sans-serif"
-									},
-									{
-										"text": "Verdana",
-										"value": "Verdana, Geneva, sans-serif"
-									},
-									{
-										"text": "Courier New",
-										"value": "\"Courier New\", Courier, monospace"
-									},
-									{
-										"text": "Lucida Console",
-										"value": "\"Lucida Console\", Monaco, monospace"
-									}
-								],
-								"prompt": "Font Family",
+								"code": "font",
+								"prompt": "Font",
 								"pseudoclasses": [
 									"normal"
 								],
-								"style": "font-family",
-								"type": "select"
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "font_size",
@@ -1693,58 +1337,19 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"size": "one-third",
 								"style": "font-size",
 								"style_suffix": "px",
 								"text_type": "number",
-								"type": "text"
-							},
-							{
-								"code": "font_weight",
-								"options": [
-									{
-										"text": "Default"
-									},
-									{
-										"text": "Ultra-Thin",
-										"value": 100
-									},
-									{
-										"text": "Light",
-										"value": 200
-									},
-									{
-										"text": "Book",
-										"value": 300
-									},
-									{
-										"text": "Normal",
-										"value": 400
-									},
-									{
-										"text": "Medium",
-										"value": 500
-									},
-									{
-										"text": "Semi-Bold",
-										"value": 600
-									},
-									{
-										"text": "Bold",
-										"value": 700
-									},
-									{
-										"text": "Black",
-										"value": 900
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
 									}
-								],
-								"prompt": "Font Weight",
-								"pseudoclasses": [
-									"normal"
-								],
-								"size": "two-thirds",
-								"style": "font-weight",
-								"type": "select"
+								}
 							},
 							{
 								"code": "font_color",
@@ -1754,7 +1359,16 @@
 									"normal"
 								],
 								"style": "color",
-								"type": "color"
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -1766,6 +1380,16 @@
 					"required": 1,
 					"textsettings": {
 						"fields": [
+							{
+								"code": "button_theme",
+								"prompt": "Button Theme",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "button"
+							},
 							{
 								"code": "button_style",
 								"options": [
@@ -1797,7 +1421,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"button_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							},
 							{
 								"code": "button_size",
@@ -1826,7 +1459,16 @@
 								"pseudoclasses": [
 									"normal"
 								],
-								"type": "select"
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"button_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
 							}
 						]
 					},
@@ -1842,6 +1484,16 @@
 			"textsettings": {
 				"fields": [
 					{
+						"code": "button_theme",
+						"prompt": "Button Theme",
+						"pseudoclasses": [
+							"normal"
+						],
+						"supports_customization": 1,
+						"supports_legacy": 1,
+						"type": "button"
+					},
+					{
 						"code": "button_style",
 						"options": [
 							{
@@ -1872,7 +1524,16 @@
 						"pseudoclasses": [
 							"normal"
 						],
-						"type": "select"
+						"type": "select",
+						"visibility_conditions": {
+							"normal": {
+								"button_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
+						}
 					},
 					{
 						"code": "button_size",
@@ -1901,7 +1562,16 @@
 						"pseudoclasses": [
 							"normal"
 						],
-						"type": "select"
+						"type": "select",
+						"visibility_conditions": {
+							"normal": {
+								"button_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
+						}
 					}
 				]
 			},
@@ -1914,6 +1584,16 @@
 			"textsettings": {
 				"fields": [
 					{
+						"code": "button_theme",
+						"prompt": "Button Theme",
+						"pseudoclasses": [
+							"normal"
+						],
+						"supports_customization": 1,
+						"supports_legacy": 1,
+						"type": "button"
+					},
+					{
 						"code": "button_style",
 						"options": [
 							{
@@ -1944,7 +1624,16 @@
 						"pseudoclasses": [
 							"normal"
 						],
-						"type": "select"
+						"type": "select",
+						"visibility_conditions": {
+							"normal": {
+								"button_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
+						}
 					},
 					{
 						"code": "button_size",
@@ -1973,7 +1662,16 @@
 						"pseudoclasses": [
 							"normal"
 						],
-						"type": "select"
+						"type": "select",
+						"visibility_conditions": {
+							"normal": {
+								"button_theme": {
+									"theme_mode": [
+										0
+									]
+								}
+							}
+						}
 					}
 				]
 			},
@@ -2266,9 +1964,31 @@
 	],
 	"defaults": {
 		"add_row_text": {
+			"textsettings": {
+				"fields": {
+					"normal": {
+						"button_theme": {
+							"code": "primary-link",
+							"size": "m",
+							"theme_mode": 1
+						}
+					}
+				}
+			},
 			"value": "Add Row"
 		},
 		"add_to_cart_text": {
+			"textsettings": {
+				"fields": {
+					"normal": {
+						"button_theme": {
+							"code": "primary",
+							"size": "m",
+							"theme_mode": 1
+						}
+					}
+				}
+			},
 			"value": "Add to Cart"
 		},
 		"advanced": {
@@ -2344,31 +2064,117 @@
 		"bulk": {
 			"body": {
 				"source": "markdown",
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "paragraph-s",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Copy & paste or type out a list of products & quantities to load into the quick-add."
 			},
 			"button": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"button_theme": {
+								"code": "primary",
+								"size": "m",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Load Products"
 			},
 			"heading": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-3",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Bulk Import"
 			},
 			"settings": {
 				"enabled": 1
+			},
+			"subheading": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "subheading-s",
+								"theme_mode": 1
+							}
+						}
+					}
+				}
 			}
 		},
 		"csv": {
 			"body": {
 				"source": "markdown",
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "paragraph-s",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Upload a CSV file with the product-codes & quantities you'd like to import."
 			},
 			"button": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"button_theme": {
+								"code": "primary",
+								"size": "m",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Load Products"
 			},
 			"heading": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-3",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "CSV Import"
 			},
 			"settings": {
 				"enabled": 1
+			},
+			"subheading": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "subheading-s",
+								"theme_mode": 1
+							}
+						}
+					}
+				}
 			}
 		},
 		"heading": {
@@ -2376,6 +2182,16 @@
 				"value": "center"
 			},
 			"heading_text": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-1",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "Quick Order"
 			},
 			"settings": {
@@ -2383,6 +2199,7 @@
 			}
 		}
 	},
+	"upgrade_template": "src/templates/upgrade.mvt",
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
@@ -2397,7 +2214,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-KPZg89B//3Fl3+VUL8HS1pbF8hVhBjJvs/bXPPNCS9Q= sha384-iRSkj7GW5EQUMzPJNYu9UrhoCzAOAwF4X19VYGCpdXHBWv92I1RIiJXhU6zl57qd sha512-coflYY8vrHXI9qWrXo5idEl6yRBnu/6lY9yIR5KMk6Ca3fyFAacvr8FUUimxiZSsj/la3cqftQSpNsbAVPwSww=="
+					"value": "sha256-aSuunF0uNO3Vf9HPkZ65MqDOKT/688k0EyWdV4tpGjc= sha384-BpBPWXN7XkNbML52OrrRA4cuNIiaLhI9RAJvfl9tTeVVfClwFM91MlvJVzGyQeYF sha512-JfDppDQ4pwvPIQQZCeq4okEYKL6z+9Ks8PX0QxYJq4dWkpqjUK+SVxOONNZNIMTGMFfyoNzg7TVHKrsNxMm3cQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -2425,7 +2242,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-U42cw+gcgHEkTSecWq1WTg9oyWhbO28w1BQQpocPdv8= sha384-si9euY9kSZ5UPpFIJDi5RwcBdCX7eMfhbyX28bu47vc7XyALgnkkFmzNP8MwjROv sha512-UYIvTDRQtJL1v2y6eSF7Gp9vseMZHK8Ys8z+Niigw40P5seqjeZhtjN6YSMQPclItdK7qDgF6UDb86bYqrioLQ=="
+					"value": "sha256-QHwgJbqcGSd5oFo3nAEXG0U9RQ52x0ILNJiYB8qA+nQ= sha384-R+XhCM2rR6tWp/zK07l5e+yQ9dkO3Po8X3qBK4MYNS/3hCchsil6s0eowwolyBcp sha512-j2CmZKhyYURud3ksCMzRxoHQDz0EDw54sygDlMyZyakYU45KQShjoQjtvsJSRvV4BAitWjEULdHNwnqkmpVFEA=="
 				},
 				{
 					"name": "crossorigin",
@@ -2435,10 +2252,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.11.03",
-		"mmx-button": "=10.11.03",
-		"mmx-csv": "=10.11.03",
-		"mmx-icons": "=10.11.03",
-		"mmx-text": "=10.11.03"
+		"mmx-base": "=10.12.00",
+		"mmx-button": "=10.12.00",
+		"mmx-csv": "=10.12.00",
+		"mmx-icons": "=10.12.00",
+		"mmx-text": "=10.12.00"
 	}
 }

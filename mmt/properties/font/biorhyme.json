@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "BioRhyme, serif",
+    "google_font_name": "BioRhyme",
+    "name": "BioRhyme",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

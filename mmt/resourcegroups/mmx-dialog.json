@@ -1,0 +1,9 @@
+{
+    "code": "mmx-dialog",
+    "linked_js_resources": [
+        "mmx-dialog"
+    ],
+    "linked_css_resources": [
+        "mmx-dialog"
+    ]
+}

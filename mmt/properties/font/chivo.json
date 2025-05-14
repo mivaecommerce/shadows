@@ -1,0 +1,15 @@
+{
+    "active": 0,
+    "family": "Chivo, sans-serif",
+    "google_font_name": "Chivo",
+    "name": "Chivo",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "google",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

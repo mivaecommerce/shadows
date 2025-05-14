@@ -7,7 +7,6 @@
 	<mvt:item name="head" param="css:mmx-text" />
 	<mvt:item name="head" param="css:mmx-button" />
 	<mvt:item name="head" param="css:mmx-messages" />
-	<mvt:item name="head" param="css:mmx-forms" />
 	<mvt:item name="head" param="css:mmx-product-list" />
 	<mvt:item name="head" param="css:mmx-card" />
 </template>
@@ -35,11 +34,15 @@
 <mvt:item name="head" param="js:mmx-button" />
 <mvt:item name="head" param="js:mmx-icons" />
 <mvt:item name="head" param="js:mmx-messages" />
+<mvt:item name="head" param="css:mmx-forms" />
 <mvt:item name="head" param="js:mmx-forms" />
 <mvt:item name="head" param="js:mmx-product-list" />
 <mvt:item name="head" param="js:mmx-card" />
 <mvt:item name="head" param="css:mmx-accordion" />
 <mvt:item name="head" param="js:mmx-accordion" />
+
+<mvt:comment>Theme Editor stylesheet</mvt:comment>
+<mvt:item name="head" param="css:mm-theme-styles" />
 
 <mvt:comment>mmx-customizations</mvt:comment>
 <mvt:item name="head" param="css:mmx-customizations" />

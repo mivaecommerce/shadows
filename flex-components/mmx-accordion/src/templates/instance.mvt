@@ -58,11 +58,24 @@
 		<mmx-text
 			slot="title"
 			class="mmx-accordion__title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
 			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
 			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
 			data-align="&mvte:instance:heading:heading_align:value;"
-			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
 		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
 	</mvt:if>
@@ -88,46 +101,82 @@
 					<mvt:if expr="NOT ISNULL l.settings:instance:styles:icon:closed:value">
 						<mmx-icon
 							class="mmx-accordion__heading-icon-closed"
-							data-color="&mvte:instance:styles:heading:font_color:value;"
+							data-color="&mvte:instance:styles:icon:color:value;"
 							data-name="&mvte:instance:styles:icon:closed:value;"
 						></mmx-icon>
 					</mvt:if>
 					<mvt:if expr="NOT ISNULL l.settings:instance:styles:icon:open:value">
 						<mmx-icon
 							class="mmx-accordion__heading-icon-open"
-							data-color="&mvte:instance:styles:heading:font_color:value;"
+							data-color="&mvte:instance:styles:icon:color:value;"
 							data-name="&mvte:instance:styles:icon:open:value;"
 						></mmx-icon>
 					</mvt:if>
 				</mvt:if>
 				<mmx-text
 					class="mmx-accordion__heading-text"
+					data-theme="&mvte:instance:styles:heading:typography_theme:theme_available;"
+					data-theme-class="&mvte:instance:styles:heading:typography_theme:classname;"
 					data-style="&mvte:instance:styles:heading:style:value;"
 					data-tag="&mvte:instance:styles:heading:tag:value;"
 					data-chars-per-line="none"
-					style="
-						font-family: &mvte:instance:styles:heading:font_family;;
-						font-size: &mvte:instance:styles:heading:font_size;px;
-						font-weight: &mvte:instance:styles:heading:font_weight;;
-						color: &mvte:instance:styles:heading:font_color;;
-					"
 				>
+					<mvt:if expr="l.settings:instance:styles:heading:typography_theme:theme_available">
+						<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:typography_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:styles:heading:typography_theme:stylesheet;
+							</template>
+						</mvt:if>
+					<mvt:else>
+						<mvt:capture variable="l.styles"><mvt:miva output="off" />
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:font:font:family">	<mvt:eval expr="'font-family: ' $ l.settings:instance:styles:heading:font:font:family $ ';'" />		</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:font:weight">		<mvt:eval expr="'font-weight: ' $ l.settings:instance:styles:heading:font:weight $ ';'" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:font:style">		<mvt:eval expr="'font-style: ' $ l.settings:instance:styles:heading:font:style $ ';'" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:font_size:value">	<mvt:eval expr="'font-size: ' $ l.settings:instance:styles:heading:font_size:value $ 'px;'" />		</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:heading:font_color:value">	<mvt:eval expr="'color: ' $ l.settings:instance:styles:heading:font_color:value $ ';'" />			</mvt:if>
+						<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+						<mvt:if expr="NOT ISNULL l.styles">
+							<template data-legacy-styles>
+								<mvt:eval expr="l.styles" />
+							</template>
+						</mvt:if>
+					</mvt:if>
+
 					&mvte:detail:heading:value;
 				</mmx-text>
 			</summary>
 			<mvt:if expr="NOT ISNULL l.settings:detail:content:value">
 				<mmx-text
 					class="mmx-accordion__content"
+					data-theme="&mvte:instance:styles:content:typography_theme:theme_available;"
+					data-theme-class="&mvte:instance:styles:content:typography_theme:classname;"
 					data-style="&mvte:instance:styles:content:style:value;"
 					data-source="&mvte:detail:content:source;"
 					data-chars-per-line="none"
-					style="
-						font-family: &mvte:instance:styles:content:font_family;;
-						font-size: &mvte:instance:styles:content:font_size;px;
-						font-weight: &mvte:instance:styles:content:font_weight;;
-						color: &mvte:instance:styles:content:font_color;;
-					"
 				>
+					<mvt:if expr="l.settings:instance:styles:content:typography_theme:theme_available">
+						<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:typography_theme:stylesheet">
+							<template data-theme-stylesheet>
+								&mvt:instance:styles:content:typography_theme:stylesheet;
+							</template>
+						</mvt:if>
+					<mvt:else>
+						<mvt:capture variable="l.styles"><mvt:miva output="off" />
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:font:font:family">	<mvt:eval expr="'font-family: ' $ l.settings:instance:styles:content:font:font:family $ ';'" />		</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:font:weight">		<mvt:eval expr="'font-weight: ' $ l.settings:instance:styles:content:font:weight $ ';'" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:font:style">		<mvt:eval expr="'font-style: ' $ l.settings:instance:styles:content:font:style $ ';'" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:font_size:value">	<mvt:eval expr="'font-size: ' $ l.settings:instance:styles:content:font_size:value $ 'px;'" />		</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:instance:styles:content:font_color:value">	<mvt:eval expr="'color: ' $ l.settings:instance:styles:content:font_color:value $ ';'" />			</mvt:if>
+						<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+						<mvt:if expr="NOT ISNULL l.styles">
+							<template data-legacy-styles>
+								<mvt:eval expr="l.styles" />
+							</template>
+						</mvt:if>
+					</mvt:if>
+
 					<mvt:if expr="l.settings:detail:content:source EQ 'markdown'">
 						&mvt:detail:content:value;
 					<mvt:else>

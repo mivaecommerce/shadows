@@ -24,11 +24,6 @@
 	margin-bottom: 0;
 }
 
-/* Icon */
-.mmx-message ::slotted(mmx-icon) {
-	vertical-align: middle;
-}
-
 /* Align */
 .mmx-message--align-left {
 	text-align: left;

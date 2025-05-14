@@ -27,6 +27,15 @@ class MMX_Text extends MMX_Element {
 				],
 				default: 'div'
 			},
+			theme: {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			style: {
 				options: [
 					'display-1',
@@ -80,12 +89,16 @@ class MMX_Text extends MMX_Element {
 				options: ['markdown'],
 				default: '',
 				allowAny: true
+			},
+			'hide-on-empty': {
+				allowAny: true,
+				isBoolean: true,
+				default: true
 			}
 		};
 	}
 
-	styleResourceCodes = ['mmx-base', 'mmx-text'];
-	hideOnEmpty = true;
+	styleResourceCodes = ['mmx-base', 'mmx-text', 'mm-theme-styles'];
 
 	copyTypes = [
 		'paragraph-l',
@@ -111,13 +124,63 @@ class MMX_Text extends MMX_Element {
 	}
 
 	render() {
+		const theme = this.getPropValue('theme');
+
+		if (theme)	return this.#renderTheme();
+		else		return this.#renderLegacy();
+	}
+
+	get hideOnEmpty()
+	{
+		return this.getPropValue('hide-on-empty');
+	}
+
+	#renderLegacy() {
 		const tag = this.getPropValue('tag');
+		const legacy_styles = this.#renderLegacyStyles();
+
+		if (legacy_styles?.length) {
+			this.setAttribute('style', legacy_styles);
+		}
+
 		return /*html*/`
 			<${tag} class="mmx-text type-${this.getStyleProp()} ${this.getStyleState()}" part="text" ${this.inheritAttrs()}>
 				<span class="mmx-text__inner" part="text__inner">
 					${this.renderContent()}
 				</span>
 			</${tag}>
+		`;
+	}
+
+	#renderLegacyStyles() {
+		return this.querySelector(':scope > template[data-legacy-styles]')?.content?.textContent?.trim?.() ?? '';
+	}
+
+	#renderTheme() {
+		const tag = this.getPropValue('tag');
+		const theme_class = this.getPropValue('theme-class');
+
+		return /*html*/`
+			${this.#renderThemeStylesheet()}
+			<${tag} class="mmx-theme-text ${MMX.encodeEntities(theme_class)}" ${this.inheritAttrs()}>
+				<span class="mmx-text__inner" part="text__inner">
+					${this.renderContent()}
+				</span>
+			</${tag}>
+		`;
+	}
+
+	#renderThemeStylesheet() {
+		const theme_stylesheet = this.querySelector(':scope > template[data-theme-stylesheet]');
+
+		if (!theme_stylesheet) {
+			return '';
+		}
+
+		return /*html*/`
+			<style type="text/css">
+				${theme_stylesheet.content.textContent}
+			</style>
 		`;
 	}
 

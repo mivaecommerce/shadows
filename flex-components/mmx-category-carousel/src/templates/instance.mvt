@@ -6,6 +6,11 @@
 	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
 </mvt:if>
 
+<mvt:comment>Determine Automatic Category</mvt:comment>
+<mvt:if expr="l.settings:instance:category_group:source:value EQ 'auto'">
+	<mvt:assign name="l.settings:instance:category_id" value="l.settings:category:id" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-category-carousel
 	id="&mvte:component_id;"
@@ -29,12 +34,31 @@
 		</mvt:if>
 		<mmx-text
 			slot="title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
 			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
 			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
 			data-align="&mvte:instance:heading:heading_align:value;"
-			style="&mvte:instance:heading:heading_text:textsettings:styles:normal;"
 		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
 			&mvte:instance:heading:heading_text:value;
 		</mmx-text>
+	</mvt:if>
+
+	<mvt:if expr="NOT ISNULL l.settings:instance:text_styles:category_name:typography_theme:stylesheet">
+		<template data-theme-stylesheet>
+			&mvt:instance:text_styles:category_name:typography_theme:stylesheet;
+		</template>
 	</mvt:if>
 </mmx-category-carousel>

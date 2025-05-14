@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.11.03</Version>
-	<MinimumMerchantVersion>10.11.03</MinimumMerchantVersion>
+	<Version>10.12.00</Version>
+	<MinimumMerchantVersion>10.12.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.11.03
+	<Description>Shadows ReadyTheme v10.12.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -33,6 +33,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -65,6 +66,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -97,6 +99,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -127,6 +130,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -156,6 +160,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -193,6 +198,7 @@
 				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>product</Item>
@@ -230,6 +236,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>prod_ctgy_hdft</Item>
@@ -261,6 +268,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -291,6 +299,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -320,6 +329,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -351,6 +361,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -381,6 +392,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -413,6 +425,7 @@
 				<Item>html_profile</Item>
 				<Item>messages</Item>
 				<Item>mivapay</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>payment</Item>
 				<Item>paymentmethod</Item>
@@ -452,6 +465,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentmethods</Item>
 				<Item>prodctgy_meta</Item>
@@ -484,6 +498,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -514,6 +529,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>product</Item>
@@ -549,6 +565,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -579,6 +596,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -612,6 +630,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>orderhistory_list</Item>
 				<Item>paymentcards</Item>
@@ -649,6 +668,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -682,6 +702,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -714,6 +735,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -747,6 +769,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -780,6 +803,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -813,6 +837,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -845,6 +870,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -872,6 +898,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -902,6 +929,7 @@
 				<Item>html_profile</Item>
 				<Item>messages</Item>
 				<Item>mivapay</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -933,6 +961,7 @@
 				<Item>html_profile</Item>
 				<Item>messages</Item>
 				<Item>mivapay</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -963,6 +992,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentcards</Item>
 				<Item>paymentsettings</Item>
@@ -997,6 +1027,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentcards</Item>
 				<Item>paymentsettings</Item>
@@ -1031,6 +1062,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -1062,6 +1094,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1091,6 +1124,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1122,6 +1156,7 @@
 				<Item>html_profile</Item>
 				<Item>http_headers</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>order</Item>
 				<Item>order_contents</Item>
@@ -1156,6 +1191,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1184,6 +1220,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1204,20 +1241,22 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>attributemachine</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>flex</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
+				<Item>sequence</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>product</Item>
-				<Item>product_attributes</Item>
+				<Item>productcharges</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
 				<Item>store</Item>
@@ -1246,6 +1285,7 @@
 				<Item>html_profile</Item>
 				<Item>http_headers</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1273,6 +1313,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1302,6 +1343,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>orderhistory_list</Item>
 				<Item>paymentsettings</Item>
@@ -1333,6 +1375,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>order</Item>
 				<Item>order_customer</Item>
@@ -1366,6 +1409,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1397,6 +1441,7 @@
 				<Item>head</Item>
 				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1424,6 +1469,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1453,6 +1499,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1474,33 +1521,26 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>attributemachine</Item>
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>category</Item>
-				<Item>countries</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
-				<Item>discount_volume</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
+				<Item>sequence</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>product</Item>
-				<Item>product_attributes</Item>
-				<Item>product_display</Item>
-				<Item>product_display_imagemachine</Item>
+				<Item>productcharges</Item>
 				<Item>prod_ctgy_hdft</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
-				<Item>states</Item>
 				<Item>store</Item>
-				<Item>tax</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
 			</ItemList>
@@ -1525,6 +1565,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1555,6 +1596,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1585,6 +1627,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1616,6 +1659,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -1647,6 +1691,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1677,6 +1722,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1726,6 +1772,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1755,6 +1802,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1784,6 +1832,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1814,6 +1863,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1845,6 +1895,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>product</Item>
@@ -1878,6 +1929,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -1910,6 +1962,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -1941,6 +1994,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -1970,6 +2024,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -2001,6 +2056,7 @@
 				<Item>head</Item>
 				<Item>html_profile</Item>
 				<Item>messages</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>paymentsettings</Item>
 				<Item>prodctgy_meta</Item>
@@ -2030,6 +2086,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -2057,6 +2114,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -2085,6 +2143,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -2114,6 +2173,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -2143,6 +2203,7 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
@@ -2172,11 +2233,46 @@
 				<Item>hdft</Item>
 				<Item>head</Item>
 				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
 				<Item>sequence</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_PROD</Code>
+			<Name>Product Details</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>layout_prod.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>sequence</Item>
+				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>product</Item>
+				<Item>productcharges</Item>
+				<Item>prod_ctgy_hdft</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2207,6 +2303,13 @@
 			<Name>Product List Additional Data</Name>
 			<Fragment>Yes</Fragment>
 			<Source>product_list_additional_data.mvt</Source>
+			<Public>Yes</Public>
+		</Page>
+		<Page>
+			<Code>product_details_additional_data</Code>
+			<Name>Product Details Additional Data</Name>
+			<Fragment>Yes</Fragment>
+			<Source>product_details_additional_data.mvt</Source>
 			<Public>Yes</Public>
 		</Page>
 		<Page>
@@ -2776,6 +2879,10 @@
 			<Code>productcharges</Code>
 			<Module>productcharges</Module>
 		</Item>
+		<Item>
+			<Code>mm_theme</Code>
+			<Module>cmp-mv-theme</Module>
+		</Item>
 	</RequiredItemList>
 	<Config>
 		<CustomerFields_Update>
@@ -3009,6 +3116,10 @@
 			<Code>cmp-mv-sequence</Code>
 			<Name>Sequence</Name>
 		</Component>
+		<Component>
+			<Code>cmp-mv-theme</Code>
+			<Name>Theme</Name>
+		</Component>
 	</ComponentList>
 	<Resources>
 		<ResourceGroup_Delete code="head_tag" />
@@ -3023,20 +3134,6 @@
 		<ResourceGroup_Add>
 			<Code>css_list</Code>
 		</ResourceGroup_Add>
-		<CSSResource_Delete code="google-fonts" />
-		<CSSResource_Add>
-			<Code>google-fonts</Code>
-			<Type>ExternalFile</Type>
-			<Global>Yes</Global>
-			<Active>Yes</Active>
-			<Attributes>
-				<Attribute>
-					<Name>rel</Name>
-					<Value>stylesheet</Value>
-				</Attribute>
-			</Attributes>
-			<File_Path><![CDATA[https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap]]></File_Path>
-		</CSSResource_Add>
 		<CSSResource_Delete code="preconnect-google-fonts" />
 		<CSSResource_Add>
 			<Code>preconnect-google-fonts</Code>
@@ -3392,7 +3489,6 @@ mmx-featured-product::part(button__inner) {
 		<CSSResourceXGroup_Assign code="preconnect-google-analytics" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="preconnect-google-fonts" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="preconnect-gstatic" group_code="css_list" />
-		<CSSResourceXGroup_Assign code="google-fonts" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="combofacets" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="mailchimp" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="stylesheet" group_code="css_list" />
@@ -3410,7 +3506,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.11.03';
+	mivaJS.ReadyThemeVersion = '10.12.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -3485,7 +3581,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<Attributes />
 			<Template><![CDATA[<mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.2.0
+Version: 1.3.0
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -3735,26 +3831,33 @@ class MMXPromotionTracker {
 	};
 
 	productsToEcommerceItems(products = []) {
-		if (!products?.length) {
+		if (!Array.isArray(products) || !products.length) {
 			return [];
 		}
 
-		return products.map((item, i) => {
-			return {
-				item_id: item.code,
-				item_name: item.name,
-				item_sku: item?.sku,
+		return products.map((product, i) => {
+			const item = {
+				item_id: product.code,
+				item_name: product.name,
+				item_sku: product.sku,
 				index: i,
-				price: item.price,
-				discount: item.base_price - item.price,
+				price: product.price,
+				discount: Number((product.base_price - product.price).toFixed(2)),
 				quantity: 1
+			};
+
+			if (typeof product.item_variant === 'string') {
+				item.item_variant = product.item_variant;
 			}
+
+			return item;
 		});
 	}
 
 	#bindEvents() {
 		document.addEventListener('view_item_list', (e) => this.#onViewItemList(e), {capture: true});
 		document.addEventListener('select_item', (e) => this.#onSelectItem(e), {capture: true});
+		document.addEventListener('track_mmx_event', (e) => this.#onTrackMmxEvent(e), {capture: true});
 	}
 
 	#onViewItemList(e) {
@@ -3783,6 +3886,54 @@ class MMXPromotionTracker {
 				items: this.productsToEcommerceItems(e.detail?.products)
 			}
 		});
+	}
+
+	#onTrackMmxEvent(e) {
+		const event = e.detail?.event;
+		if (typeof event !== 'string') {
+			return;
+		}
+
+		const ecommerce = e.detail?.ecommerce?.constructor?.name === 'Object' ? e.detail.ecommerce : {};
+		ecommerce.currency = '&mvtj:currency;';
+
+		const products = e.detail?.products;
+		if (Array.isArray(products)) {
+			ecommerce.value = products.reduce((value, product) => {
+				const quantity = product?.quantity ?? 1;
+				const price = product?.price ?? 0;
+				return value += quantity * price;
+			}, 0);
+
+			ecommerce.items = products.map((product, i) => {
+				const item = {
+					item_id: product.code,
+					item_name: product.name,
+					item_sku: product.sku,
+					index: i,
+					price: product.price,
+					discount: Number((product.base_price - product.price).toFixed(2)),
+					quantity: product?.quantity ?? 1
+				};
+
+				if (typeof product.item_variant === 'string') {
+					item.item_variant = product.item_variant;
+				}
+
+				if (typeof product.item_brand === 'string') {
+					item.item_brand = product.item_brand;
+				}
+
+				if (typeof product.item_category === 'string') {
+					item.item_category = product.item_category;
+				}
+
+				return item;
+			});
+		}
+
+		clearEcommerceDataLayer();
+		dataLayer.push({event, ecommerce});
 	}
 }
 
@@ -4031,7 +4182,8 @@ new MMXPromotionTracker();
 			this.adprButton = this.options?.adprButton ?? document.querySelector(this.options.adprButtonSelector);
 			this.atwlButton = this.options?.atwlButton ?? document.querySelector(this.options.atwlButtonSelector);
 
-			if (this.adprForm?.nodeName !== 'FORM') {
+			if (this.adprForm?.nodeName !== 'FORM' ||
+				this.adprForm?.querySelector('mmx-product-details')) {
 				return;
 			}
 
@@ -4645,58 +4797,6 @@ new MMXPromotionTracker();
 				"telephone": "&mvtj:store:phone;"
 			}
 		</mvt:if>
-		<mvt:if expr="l.settings:product:id GT 0 AND NOT ISNULL l.settings:product_display">
-			<mvt:assign name="l.settings:product:stripped_descrip" value="miva_html_strip( l.settings:product:descrip, '' )"/>
-			,{
-				"@type": "Product",
-				"name": "&mvtj:product:name;",
-				"image": "&mvtj:global:socialImage;",
-				"description": "&mvtj:product:stripped_descrip;",
-				<mvt:if expr="NOT ISNULL l.settings:product:sku">
-					"sku": "&mvtj:product:sku;",
-					"mpn": "&mvtj:product:sku;",
-				<mvt:else>
-					"sku": "&mvtj:product:code;",
-					"mpn": "&mvtj:product:code;",
-				</mvt:if>
-				"category": "&mvtj:category:name;",
-				"brand": {
-					"@type": "Brand",
-					<mvt:if expr="NOT ISNULL l.settings:product:customfield_values:customfields:brand">
-						"name": "&mvtj:product:customfield_values:customfields:brand;"
-					<mvt:else>
-						"name": "&mvtj:store:name;"
-					</mvt:if>
-				},
-				"offers": {
-					"@type": "Offer",
-					"url": "&mvtj:product:link;",
-					<mvt:if expr="NOT ISNULL l.settings:product:sku">
-						"sku": "&mvtj:product:sku;",
-					<mvt:else>
-						"sku": "&mvtj:product:code;",
-					</mvt:if>
-					"name": "&mvtj:product:name;",
-					"description": "&mvtj:product:stripped_descrip;",
-					"seller": "&mvtj:store:name;",
-					"itemCondition": "https://schema.org/NewCondition",
-					<mvt:if expr="NOT ISNUll l.settings:attributemachine:product:price AND NOT ISNULL l.settings:attributes">
-						"price": "&mvtj:attributemachine:product:price;",
-					<mvt:else>
-						"price": "&mvtj:product:price;",
-					</mvt:if>
-					<mvt:assign name="l.availability_inv_level" value="ternary(NOT ISNULL l.settings:attributemachine:product:inv_level, l.settings:attributemachine:product:inv_level, l.settings:product:inv_level)" />
-					<mvt:if expr="l.availability_inv_level EQ 'low'">
-						"availability": "https://schema.org/LimitedAvailability",
-					<mvt:elseif expr="l.availability_inv_level EQ 'out'">
-						"availability": "https://schema.org/OutOfStock",
-					<mvt:else>
-						"availability": "https://schema.org/InStock",
-					</mvt:if>
-					"priceCurrency": "USD"
-				}
-			}
-		</mvt:if>
 	]
 }
 ]]></Template>
@@ -4943,6 +5043,1969 @@ new MMXPromotionTracker();
 		<JavaScriptResourceXGroup_Assign code="edit-basket-attributes" group_code="footer_js" />
 		<JavaScriptResourceXPage_Assign code="edit-basket-attributes" page_code="BASK" />
 	</Resources>
+	<Fonts>
+		<Font_Delete code="abril_fatface" />
+		<Font_Add>
+			<Code>abril_fatface</Code>
+			<Name>Abril Fatface</Name>
+			<Family>"Abril Fatface", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Abril Fatface</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="alegreya_sans" />
+		<Font_Add>
+			<Code>alegreya_sans</Code>
+			<Name>Alegreya Sans</Name>
+			<Family>"Alegreya Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Alegreya Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="alegreya" />
+		<Font_Add>
+			<Code>alegreya</Code>
+			<Name>Alegreya</Name>
+			<Family>Alegreya, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Alegreya</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="aleo" />
+		<Font_Add>
+			<Code>aleo</Code>
+			<Name>Aleo</Name>
+			<Family>Aleo, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Aleo</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="arial" />
+		<Font_Add>
+			<Code>arial</Code>
+			<Name>Arial</Name>
+			<Family>Arial, Helvetica, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="arial_black" />
+		<Font_Add>
+			<Code>arial_black</Code>
+			<Name>Arial Black</Name>
+			<Family>"Arial Black", Gadget, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="arapey" />
+		<Font_Add>
+			<Code>arapey</Code>
+			<Name>Arapey</Name>
+			<Family>Arapey, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Arapey</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="archivo_narrow" />
+		<Font_Add>
+			<Code>archivo_narrow</Code>
+			<Name>Archivo Narrow</Name>
+			<Family>"Archivo Narrow", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Archivo Narrow</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="atkinson_hyperlegible_next" />
+		<Font_Add>
+			<Code>atkinson_hyperlegible_next</Code>
+			<Name>Atkinson Hyperlegible Next</Name>
+			<Family>"Atkinson Hyperlegible Next", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Atkinson Hyperlegible Next</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="azeret_mono" />
+		<Font_Add>
+			<Code>azeret_mono</Code>
+			<Name>Azeret Mono</Name>
+			<Family>"Azeret Mono", mono</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Azeret Mono</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="barlow_condensed" />
+		<Font_Add>
+			<Code>barlow_condensed</Code>
+			<Name>Barlow Condensed</Name>
+			<Family>"Barlow Condensed", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Barlow Condensed</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="barlow" />
+		<Font_Add>
+			<Code>barlow</Code>
+			<Name>Barlow</Name>
+			<Family>Barlow, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Barlow</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="bebas_neue" />
+		<Font_Add>
+			<Code>bebas_neue</Code>
+			<Name>Bebas Neue</Name>
+			<Family>"Bebas Neue", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Bebas Neue</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="biorhyme" />
+		<Font_Add>
+			<Code>biorhyme</Code>
+			<Name>BioRhyme</Name>
+			<Family>BioRhyme, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>BioRhyme</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="bitter" />
+		<Font_Add>
+			<Code>bitter</Code>
+			<Name>Bitter</Name>
+			<Family>Bitter, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Bitter</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="bricolage_grotesque" />
+		<Font_Add>
+			<Code>bricolage_grotesque</Code>
+			<Name>Bricolage Grotesque</Name>
+			<Family>"Bricolage Grotesque", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Bricolage Grotesque</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="cardo" />
+		<Font_Add>
+			<Code>cardo</Code>
+			<Name>Cardo</Name>
+			<Family>Cardo, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Cardo</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="chivo" />
+		<Font_Add>
+			<Code>chivo</Code>
+			<Name>Chivo</Name>
+			<Family>Chivo, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Chivo</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="comic_sans_ms" />
+		<Font_Add>
+			<Code>comic_sans_ms</Code>
+			<Name>Comic Sans Ms</Name>
+			<Family>"Comic Sans MS", cursive, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="cormorant" />
+		<Font_Add>
+			<Code>cormorant</Code>
+			<Name>Cormorant</Name>
+			<Family>Cormorant, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Cormorant</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="courier_new" />
+		<Font_Add>
+			<Code>courier_new</Code>
+			<Name>Courier New</Name>
+			<Family>"Courier New", Courier, monospace</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="dancing_script" />
+		<Font_Add>
+			<Code>dancing_script</Code>
+			<Name>Dancing Script</Name>
+			<Family>"Dancing Script", cursive</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Dancing Script</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="dm_sans" />
+		<Font_Add>
+			<Code>dm_sans</Code>
+			<Name>DM Sans</Name>
+			<Family>"DM Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>DM Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="dm_serif_display" />
+		<Font_Add>
+			<Code>dm_serif_display</Code>
+			<Name>DM Serif Display</Name>
+			<Family>"DM Serif Display", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>DM Serif Display</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="dm_serif_text" />
+		<Font_Add>
+			<Code>dm_serif_text</Code>
+			<Name>DM Serif Text</Name>
+			<Family>"DM Serif Text", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>DM Serif Text</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="eczar" />
+		<Font_Add>
+			<Code>eczar</Code>
+			<Name>Eczar</Name>
+			<Family>Eczar, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Eczar</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="fira_sans" />
+		<Font_Add>
+			<Code>fira_sans</Code>
+			<Name>Fira Sans</Name>
+			<Family>"Fira Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Fira Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="fraunces" />
+		<Font_Add>
+			<Code>fraunces</Code>
+			<Name>Fraunces</Name>
+			<Family>Fraunces, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Fraunces</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="georgia" />
+		<Font_Add>
+			<Code>georgia</Code>
+			<Name>Georgia</Name>
+			<Family>Georgia, serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="helvetica" />
+		<Font_Add>
+			<Code>helvetica</Code>
+			<Name>Helvetica</Name>
+			<Family>Helvetica, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="ibm_plex_sans" />
+		<Font_Add>
+			<Code>ibm_plex_sans</Code>
+			<Name>IBM Plex Sans</Name>
+			<Family>"IBM Plex Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>IBM Plex Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="impact" />
+		<Font_Add>
+			<Code>impact</Code>
+			<Name>Impact</Name>
+			<Family>Impact, Charcoal, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="inconsolata" />
+		<Font_Add>
+			<Code>inconsolata</Code>
+			<Name>Inconsolata</Name>
+			<Family>Inconsolata, monospace</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Inconsolata</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="inknut_antiqua" />
+		<Font_Add>
+			<Code>inknut_antiqua</Code>
+			<Name>Inknut Antiqua</Name>
+			<Family>"Inknut Antiqua", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Inknut Antiqua</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="instrument_sans" />
+		<Font_Add>
+			<Code>instrument_sans</Code>
+			<Name>Instrument Sans</Name>
+			<Family>"Instrument Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Instrument Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="inter" />
+		<Font_Add>
+			<Code>inter</Code>
+			<Name>Inter</Name>
+			<Family>Inter, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Inter</GoogleFontName>
+			<Weights>
+				<Weight value="300" />
+				<Weight value="400" />
+				<Weight value="500" />
+				<Weight value="600" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="josefin_sans" />
+		<Font_Add>
+			<Code>josefin_sans</Code>
+			<Name>Josefin Sans</Name>
+			<Family>"Josefin Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Josefin Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="josefin_slab" />
+		<Font_Add>
+			<Code>josefin_slab</Code>
+			<Name>Josefin Slab</Name>
+			<Family>"Josefin Slab", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Josefin Slab</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="karla" />
+		<Font_Add>
+			<Code>karla</Code>
+			<Name>Karla</Name>
+			<Family>Karla, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Karla</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="lato" />
+		<Font_Add>
+			<Code>lato</Code>
+			<Name>Lato</Name>
+			<Family>Lato, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Lato</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="libre_baskerville" />
+		<Font_Add>
+			<Code>libre_baskerville</Code>
+			<Name>Libre Baskerville</Name>
+			<Family>"Libre Baskerville", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Libre Baskerville</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="libre_franklin" />
+		<Font_Add>
+			<Code>libre_franklin</Code>
+			<Name>Libre Franklin</Name>
+			<Family>"Libre Franklin", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Libre Franklin</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="liter" />
+		<Font_Add>
+			<Code>liter</Code>
+			<Name>Liter</Name>
+			<Family>Liter, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Liter</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="lora" />
+		<Font_Add>
+			<Code>lora</Code>
+			<Name>Lora</Name>
+			<Family>Lora, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Lora</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="lucida_console" />
+		<Font_Add>
+			<Code>lucida_console</Code>
+			<Name>Lucida Console</Name>
+			<Family>"Lucida Console", Monaco, monospace</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="lucida_sans_unicode" />
+		<Font_Add>
+			<Code>lucida_sans_unicode</Code>
+			<Name>Lucida Sans Unicode</Name>
+			<Family>"Lucida Sans Unicode", "Lucida Grande", sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="manrope" />
+		<Font_Add>
+			<Code>manrope</Code>
+			<Name>Manrope</Name>
+			<Family>Manrope, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Manrope</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="merriweather" />
+		<Font_Add>
+			<Code>merriweather</Code>
+			<Name>Merriweather</Name>
+			<Family>Merriweather, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Merriweather</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="montserrat" />
+		<Font_Add>
+			<Code>montserrat</Code>
+			<Name>Montserrat</Name>
+			<Family>Montserrat, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Montserrat</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="neuton" />
+		<Font_Add>
+			<Code>neuton</Code>
+			<Name>Neuton</Name>
+			<Family>Neuton, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Neuton</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="newsreader" />
+		<Font_Add>
+			<Code>newsreader</Code>
+			<Name>Newsreader</Name>
+			<Family>Newsreader, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Newsreader</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="nunito_sans" />
+		<Font_Add>
+			<Code>nunito_sans</Code>
+			<Name>Nunito Sans</Name>
+			<Family>"Nunito Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Nunito Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="open_sans" />
+		<Font_Add>
+			<Code>open_sans</Code>
+			<Name>Open Sans</Name>
+			<Family>"Open Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Open Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="oswald" />
+		<Font_Add>
+			<Code>oswald</Code>
+			<Name>Oswald</Name>
+			<Family>Oswald, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Oswald</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="outfit" />
+		<Font_Add>
+			<Code>outfit</Code>
+			<Name>Outfit</Name>
+			<Family>Outfit, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Outfit</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="palatino_linotype" />
+		<Font_Add>
+			<Code>palatino_linotype</Code>
+			<Name>Palatino Linotype</Name>
+			<Family>"Palatino Linotype", "Book Antiqua", Palatino, serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="playfair_display" />
+		<Font_Add>
+			<Code>playfair_display</Code>
+			<Name>Playfair Display</Name>
+			<Family>"Playfair Display", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Playfair Display</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="poppins" />
+		<Font_Add>
+			<Code>poppins</Code>
+			<Name>Poppins</Name>
+			<Family>Poppins, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Poppins</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="proza_libre" />
+		<Font_Add>
+			<Code>proza_libre</Code>
+			<Name>Proza Libre</Name>
+			<Family>"Proza Libre", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Proza Libre</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="pt_sans" />
+		<Font_Add>
+			<Code>pt_sans</Code>
+			<Name>PT Sans</Name>
+			<Family>"PT Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>PT Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="pt_serif" />
+		<Font_Add>
+			<Code>pt_serif</Code>
+			<Name>PT Serif</Name>
+			<Family>"PT Serif", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>PT Serif</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="raleway" />
+		<Font_Add>
+			<Code>raleway</Code>
+			<Name>Raleway</Name>
+			<Family>Raleway, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Raleway</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="roboto_condensed" />
+		<Font_Add>
+			<Code>roboto_condensed</Code>
+			<Name>Roboto Condensed</Name>
+			<Family>"Roboto Condensed", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Roboto Condensed</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="roboto_serif" />
+		<Font_Add>
+			<Code>roboto_serif</Code>
+			<Name>Roboto Serif</Name>
+			<Family>"Roboto Serif", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Roboto Serif</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="roboto" />
+		<Font_Add>
+			<Code>roboto</Code>
+			<Name>Roboto</Name>
+			<Family>Roboto, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Roboto</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="rubik" />
+		<Font_Add>
+			<Code>rubik</Code>
+			<Name>Rubik</Name>
+			<Family>Rubik, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Rubik</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="source_sans_pro" />
+		<Font_Add>
+			<Code>source_sans_pro</Code>
+			<Name>Source Sans Pro</Name>
+			<Family>"Source Sans Pro", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Source Sans Pro</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="source_serif_pro" />
+		<Font_Add>
+			<Code>source_serif_pro</Code>
+			<Name>Source Serif Pro</Name>
+			<Family>"Source Serif Pro", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Source Serif Pro</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="space_grotesk" />
+		<Font_Add>
+			<Code>space_grotesk</Code>
+			<Name>Space Grotesk</Name>
+			<Family>"Space Grotesk", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Space Grotesk</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="space_mono" />
+		<Font_Add>
+			<Code>space_mono</Code>
+			<Name>Space Mono</Name>
+			<Family>"Space Mono", monospace</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Space Mono</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="spectral" />
+		<Font_Add>
+			<Code>spectral</Code>
+			<Name>Spectral</Name>
+			<Family>Spectral, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Spectral</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="syne" />
+		<Font_Add>
+			<Code>syne</Code>
+			<Name>Syne</Name>
+			<Family>Syne, sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Syne</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="tahoma" />
+		<Font_Add>
+			<Code>tahoma</Code>
+			<Name>Tahoma</Name>
+			<Family>Tahoma, Geneva, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="tangerine" />
+		<Font_Add>
+			<Code>tangerine</Code>
+			<Name>Tangerine</Name>
+			<Family>Tangerine, cursive</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Tangerine</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="times_new_roman" />
+		<Font_Add>
+			<Code>times_new_roman</Code>
+			<Name>Times New Roman</Name>
+			<Family>"Times New Roman", Times, serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="trebuchet_ms" />
+		<Font_Add>
+			<Code>trebuchet_ms</Code>
+			<Name>Trebuchet Ms</Name>
+			<Family>"Trebuchet MS", Helvetica, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="ultra" />
+		<Font_Add>
+			<Code>ultra</Code>
+			<Name>Ultra</Name>
+			<Family>Ultra, serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Ultra</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="varela_round" />
+		<Font_Add>
+			<Code>varela_round</Code>
+			<Name>Varela Round</Name>
+			<Family>"Varela Round", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Varela Round</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="verdana" />
+		<Font_Add>
+			<Code>verdana</Code>
+			<Name>Verdana</Name>
+			<Family>Verdana, Geneva, sans-serif</Family>
+			<Active>Yes</Active>
+			<Type>Standard</Type>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="work_sans" />
+		<Font_Add>
+			<Code>work_sans</Code>
+			<Name>Work Sans</Name>
+			<Family>"Work Sans", sans-serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Work Sans</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+		<Font_Delete code="zilla_slab" />
+		<Font_Add>
+			<Code>zilla_slab</Code>
+			<Name>Zilla Slab</Name>
+			<Family>"Zilla Slab", serif</Family>
+			<Active>No</Active>
+			<Type>Google</Type>
+			<GoogleFontName>Zilla Slab</GoogleFontName>
+			<Weights>
+				<Weight value="400" />
+				<Weight value="700" />
+			</Weights>
+			<Styles>
+				<Style value="normal" />
+				<Style value="italic" />
+			</Styles>
+		</Font_Add>
+	</Fonts>
+	<Theme>
+		<ThemeLayout_Update>
+			<Breakpoints>
+				<Breakpoint>
+					<Code>mobile</Code>
+					<Name>Mobile</Name>
+					<End unit="em">39.999</End>
+				</Breakpoint>
+				<Breakpoint>
+					<Code>tablet</Code>
+					<Name>Tablet</Name>
+					<End unit="em">59.999</End>
+				</Breakpoint>
+			</Breakpoints>
+		</ThemeLayout_Update>
+		<ThemeTypography_Delete code="display-1" />
+		<ThemeTypography_Add>
+			<Code>display-1</Code>
+			<Name>Display One</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">76</FontSize>
+				<LineHeight unit="em">1.1</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">32</FontSize>
+					<LineHeight unit="em">1.25</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">40</FontSize>
+					<LineHeight unit="em">1.2</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="display-2" />
+		<ThemeTypography_Add>
+			<Code>display-2</Code>
+			<Name>Display Two</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">60</FontSize>
+				<LineHeight unit="em">1.13</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">32</FontSize>
+					<LineHeight unit="em">1.25</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">40</FontSize>
+					<LineHeight unit="em">1.2</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="display-3" />
+		<ThemeTypography_Add>
+			<Code>display-3</Code>
+			<Name>Display Three</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">48</FontSize>
+				<LineHeight unit="em">1.16</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">24</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">32</FontSize>
+					<LineHeight unit="em">1.25</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="title-1" />
+		<ThemeTypography_Add>
+			<Code>title-1</Code>
+			<Name>Title One</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">40</FontSize>
+				<LineHeight unit="em">1.2</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">24</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">24</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="title-2" />
+		<ThemeTypography_Add>
+			<Code>title-2</Code>
+			<Name>Title Two</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">32</FontSize>
+				<LineHeight unit="em">1.25</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">24</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">24</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="title-3" />
+		<ThemeTypography_Add>
+			<Code>title-3</Code>
+			<Name>Title Three</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">24</FontSize>
+				<LineHeight unit="em">1.33</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">20</FontSize>
+					<LineHeight unit="em">1.44</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">20</FontSize>
+					<LineHeight unit="em">1.44</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="title-4" />
+		<ThemeTypography_Add>
+			<Code>title-4</Code>
+			<Name>Title Four</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">20</FontSize>
+				<LineHeight unit="em">1.44</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="subheading-l" />
+		<ThemeTypography_Add>
+			<Code>subheading-l</Code>
+			<Name>Subheading Large</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">20</FontSize>
+				<LineHeight unit="em">1.4</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">16</FontSize>
+					<LineHeight unit="em">1.5</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">18</FontSize>
+					<LineHeight unit="em">1.33</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="subheading-s" />
+		<ThemeTypography_Add>
+			<Code>subheading-s</Code>
+			<Name>Subheading Small</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">18</FontSize>
+				<LineHeight unit="em">1.33</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">16</FontSize>
+					<LineHeight unit="em">1.5</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">16</FontSize>
+					<LineHeight unit="em">1.5</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="subheading-xs" />
+		<ThemeTypography_Add>
+			<Code>subheading-xs</Code>
+			<Name>Subheading Extra-Small</Name>
+			<Type>Heading</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">16</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="paragraph-l" />
+		<ThemeTypography_Add>
+			<Code>paragraph-l</Code>
+			<Name>Paragraph Large</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">16</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+			<BreakpointStyles>
+				<Breakpoint code="mobile">
+					<FontSize unit="px">14</FontSize>
+					<LineHeight unit="em">1.42</LineHeight>
+				</Breakpoint>
+				<Breakpoint code="tablet">
+					<FontSize unit="px">14</FontSize>
+					<LineHeight unit="em">1.42</LineHeight>
+				</Breakpoint>
+			</BreakpointStyles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="paragraph-s" />
+		<ThemeTypography_Add>
+			<Code>paragraph-s</Code>
+			<Name>Paragraph Small</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">14</FontSize>
+				<LineHeight unit="em">1.42</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="paragraph-xs" />
+		<ThemeTypography_Add>
+			<Code>paragraph-xs</Code>
+			<Name>Paragraph Extra-Small</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">12</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeButton_Delete code="primary" />
+		<ThemeButton_Add>
+			<Code>primary</Code>
+			<Name>Primary</Name>
+			<Styles>
+				<BackgroundColor>#111111</BackgroundColor>
+				<Border>
+					<BorderColor>#111111</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="px">4</BorderRadius>
+				<Color>#FFFFFF</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">14</FontSize>
+			</Styles>
+			<HoverStyles>
+				<BackgroundColor>#FFFFFF</BackgroundColor>
+				<Border>
+					<BorderColor>#111111</BorderColor>
+				</Border>
+				<Color>#111111</Color>
+			</HoverStyles>
+			<DisabledStyles>
+				<BackgroundColor>#CCCCCC</BackgroundColor>
+				<Border>
+					<BorderColor>#CCCCCC</BorderColor>
+				</Border>
+				<Color>#FFFFFF</Color>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+						<PaddingTop unit="px">22</PaddingTop>
+						<PaddingBottom unit="px">22</PaddingBottom>
+						<PaddingLeft unit="px">38</PaddingLeft>
+						<PaddingRight unit="px">38</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+						<PaddingTop unit="px">19</PaddingTop>
+						<PaddingBottom unit="px">19</PaddingBottom>
+						<PaddingLeft unit="px">32</PaddingLeft>
+						<PaddingRight unit="px">32</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="px">15</PaddingTop>
+						<PaddingBottom unit="px">15</PaddingBottom>
+						<PaddingLeft unit="px">20</PaddingLeft>
+						<PaddingRight unit="px">20</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="px">12</PaddingTop>
+						<PaddingBottom unit="px">12</PaddingBottom>
+						<PaddingLeft unit="px">14</PaddingLeft>
+						<PaddingRight unit="px">14</PaddingRight>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="secondary" />
+		<ThemeButton_Add>
+			<Code>secondary</Code>
+			<Name>Secondary</Name>
+			<Styles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Border>
+					<BorderColor>#111111</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="px">4</BorderRadius>
+				<Color>#111111</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">14</FontSize>
+			</Styles>
+			<HoverStyles>
+				<BackgroundColor>#111111</BackgroundColor>
+				<Border>
+					<BorderColor>#111111</BorderColor>
+				</Border>
+				<Color>#FFFFFF</Color>
+			</HoverStyles>
+			<DisabledStyles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Border>
+					<BorderColor>#898989</BorderColor>
+				</Border>
+				<Color>#767676</Color>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+						<PaddingTop unit="px">22</PaddingTop>
+						<PaddingBottom unit="px">22</PaddingBottom>
+						<PaddingLeft unit="px">38</PaddingLeft>
+						<PaddingRight unit="px">38</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+						<PaddingTop unit="px">19</PaddingTop>
+						<PaddingBottom unit="px">19</PaddingBottom>
+						<PaddingLeft unit="px">32</PaddingLeft>
+						<PaddingRight unit="px">32</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="px">15</PaddingTop>
+						<PaddingBottom unit="px">15</PaddingBottom>
+						<PaddingLeft unit="px">20</PaddingLeft>
+						<PaddingRight unit="px">20</PaddingRight>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="px">12</PaddingTop>
+						<PaddingBottom unit="px">12</PaddingBottom>
+						<PaddingLeft unit="px">14</PaddingLeft>
+						<PaddingRight unit="px">14</PaddingRight>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="display-link" />
+		<ThemeButton_Add>
+			<Code>display-link</Code>
+			<Name>Display Link</Name>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="700" style="normal">inter</Font>
+				<FontSize unit="px">14</FontSize>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</Styles>
+			<HoverStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">3</TextUnderlineThickness>
+				</TextUnderline>
+			</HoverStyles>
+			<DisabledStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="primary-link" />
+		<ThemeButton_Add>
+			<Code>primary-link</Code>
+			<Name>Primary Link</Name>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</Styles>
+			<HoverStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">3</TextUnderlineThickness>
+				</TextUnderline>
+			</HoverStyles>
+			<DisabledStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">4</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="secondary-link" />
+		<ThemeButton_Add>
+			<Code>secondary-link</Code>
+			<Name>Secondary Link</Name>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="400" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
+				</TextUnderline>
+			</Styles>
+			<HoverStyles>
+				<Color>#575A5D</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</HoverStyles>
+			<DisabledStyles>
+				<Color>#575A5D</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
+				</TextUnderline>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+	</Theme>
 	<ExternalFiles>
 		<File>
 			<Name>/%STORE_BASEHREF%/404.html</Name>

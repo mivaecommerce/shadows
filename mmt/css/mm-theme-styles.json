@@ -1,0 +1,28 @@
+{
+    "code": "mm-theme-styles",
+    "type": "Z",
+    "is_global": true,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        },
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-lWOXBr8vqpiy3pliCN1FmPIYkHdcr8Y0nc2BRMranrA= sha384-0K5gx4GPe3B0+RaqthenpKbJBAscHbhUuTd+ZmjJoHkRs98Ms3Pm2S4BvJqkmBdh sha512-wrhf+QxqNNvI+O73Y1XxplLd/Bt2GG2kDlyCGfeByKkupyZlAKZKAHXE2TM9/awtFar6eWl+W9hNO6Mz2QrA6Q=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ]
+}

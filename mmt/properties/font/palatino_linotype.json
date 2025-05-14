@@ -1,0 +1,14 @@
+{
+    "active": 1,
+    "family": "\"Palatino Linotype\", \"Book Antiqua\", Palatino, serif",
+    "name": "Palatino Linotype",
+    "styles": {
+        "italic": 1,
+        "normal": 1
+    },
+    "type": "standard",
+    "weights": {
+        "400": 1,
+        "700": 1
+    }
+}

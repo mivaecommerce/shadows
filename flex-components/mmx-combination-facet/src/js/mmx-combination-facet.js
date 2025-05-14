@@ -42,6 +42,15 @@ class MMX_CombinationFacet extends MMX_Element {
 				default: 'm',
 				options: ['s', 'm', 'l']
 			},
+			'label-applied-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'label-applied-theme-class': {
+				allowAny: true,
+				default: ''
+			},
 			'label-applied-style': {
 				allowAny: true,
 				default: 'paragraph-s'
@@ -51,6 +60,15 @@ class MMX_CombinationFacet extends MMX_Element {
 				default: ''
 			},
 			'label-applied-text': {
+				allowAny: true,
+				default: ''
+			},
+			'label-inactive-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'label-inactive-theme-class': {
 				allowAny: true,
 				default: ''
 			},
@@ -70,13 +88,43 @@ class MMX_CombinationFacet extends MMX_Element {
 				allowAny: true,
 				default: 'Reset'
 			},
-			'submit-style': {
+			'reset-style': {
 				allowAny: true,
 				default: 'primary'
+			},
+			'reset-size': {
+				allowAny: true,
+				default: 'm'
+			},
+			'reset-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'reset-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'submit-text': {
 				allowAny: true,
 				default: 'Submit'
+			},
+			'submit-style': {
+				allowAny: true,
+				default: 'primary'
+			},
+			'submit-size': {
+				allowAny: true,
+				default: 'm'
+			},
+			'submit-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'submit-theme-class': {
+				allowAny: true,
+				default: ''
 			},
 			'text-align': {
 				default: 'center',
@@ -102,25 +150,59 @@ class MMX_CombinationFacet extends MMX_Element {
 				allowAny: true,
 				default: 'Add'
 			},
-			'application-dialog-add-button': {
+			'application-dialog-add-button-text': {
 				allowAny: true,
 				default: 'Add'
+			},
+			'application-dialog-add-button-style': {
+				allowAny: true,
+				default: 'primary'
+			},
+			'application-dialog-add-button-size': {
+				allowAny: true,
+				default: 'm'
+			},
+			'application-dialog-add-button-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'application-dialog-add-button-theme-class': {
+				allowAny: true,
+				default: ''
+			},
+			'application-dialog-add-button-theme-width': {
+				allowAny: true,
+				default: 'full'
 			},
 			'application-dialog-edit-heading': {
 				allowAny: true,
 				default: 'Edit'
 			},
-			'application-dialog-edit-button': {
+			'application-dialog-edit-button-text': {
 				allowAny: true,
 				default: 'Save'
 			},
-			'application-dialog-button-style': {
+			'application-dialog-edit-button-style': {
 				allowAny: true,
 				default: 'primary'
 			},
-			'application-dialog-button-size': {
+			'application-dialog-edit-button-size': {
 				allowAny: true,
 				default: 'm'
+			},
+			'application-dialog-edit-button-theme': {
+				allowAny: true,
+				isBoolean: true,
+				default: false
+			},
+			'application-dialog-edit-button-theme-class': {
+				allowAny: true,
+				default: ''
+			},
+			'application-dialog-edit-button-theme-width': {
+				allowAny: true,
+				default: 'full'
 			},
 			'application-delete-confirmation-text': {
 				allowAny: true,
@@ -282,25 +364,44 @@ class MMX_CombinationFacet extends MMX_Element {
 			'data-destination-target': this.data?.controls?.submit_destination?.new_tab ? '_blank' : undefined,
 			'data-facet-code': this.data?.controls?.facet_code?.value,
 			'data-input-size': this.data?.controls?.input_size?.value,
+			'data-label-applied-theme': this.data?.controls?.label_applied?.textsettings?.fields?.normal?.typography_theme?.theme_available,
+			'data-label-applied-theme-class': this.data?.controls?.label_applied?.textsettings?.fields?.normal?.typography_theme?.classname,
 			'data-label-applied-style': this.data?.controls?.label_applied?.textsettings?.fields?.normal?.label_applied_style?.value,
 			'data-label-applied-styles': this.data?.controls?.label_applied?.textsettings?.styles?.normal,
 			'data-label-applied-text': this?.data?.controls?.label_applied?.value,
+			'data-label-inactive-theme': this.data?.controls?.label_inactive?.textsettings?.fields?.normal?.typography_theme?.theme_available,
+			'data-label-inactive-theme-class': this.data?.controls?.label_inactive?.textsettings?.fields?.normal?.typography_theme?.classname,
 			'data-label-inactive-style': this.data?.controls?.label_inactive?.textsettings?.fields?.normal?.label_inactive_style?.value,
 			'data-label-inactive-styles': this.data?.controls?.label_inactive?.textsettings?.styles?.normal,
 			'data-label-inactive-text': this?.data?.controls?.label_inactive?.value,
-			'data-reset-text': this?.data?.controls?.reset_text?.value,
-			'data-submit-style': this.data?.controls?.submit_button_style?.value,
-			'data-submit-text': this?.data?.controls?.submit_text?.value,
+			'data-reset-text': this?.data?.controls?.reset_button?.value,
+			'data-reset-style': this?.data?.controls?.reset_button?.textsettings?.fields?.normal?.button_style?.value,
+			'data-reset-size': this?.data?.controls?.reset_button?.textsettings?.fields?.normal?.button_size?.value,
+			'data-reset-theme': this?.data?.controls?.reset_button?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-reset-theme-class': this?.data?.controls?.reset_button?.textsettings?.fields?.normal?.button_theme?.classname,
+			'data-submit-text': this?.data?.controls?.submit_button?.value,
+			'data-submit-style': this?.data?.controls?.submit_button?.textsettings?.fields?.normal?.button_style?.value,
+			'data-submit-size': this?.data?.controls?.submit_button?.textsettings?.fields?.normal?.button_size?.value,
+			'data-submit-theme': this?.data?.controls?.submit_button?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-submit-theme-class': this?.data?.controls?.submit_button?.textsettings?.fields?.normal?.button_theme?.classname,
 			'data-text-align': this.data?.content?.align?.value,
 			'data-application-label-unapplied': this.data?.application?.label_unapplied?.value,
 			'data-application-select-menu-title-text': this.data?.application?.menu_title_text?.value,
 			'data-application-add-text': this.data?.application?.add_text?.value,
 			'data-application-dialog-add-heading': this.data?.application?.dialog_add_heading?.value,
-			'data-application-dialog-add-button': this.data?.application?.dialog_add_button?.value,
+			'data-application-dialog-add-button-text': this?.data?.application?.dialog_add_button?.value,
+			'data-application-dialog-add-button-style': this?.data?.application?.dialog_add_button?.textsettings?.fields?.normal?.button_style?.value,
+			'data-application-dialog-add-button-size': this?.data?.application?.dialog_add_button?.textsettings?.fields?.normal?.button_size?.value,
+			'data-application-dialog-add-button-theme': this?.data?.application?.dialog_add_button?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-application-dialog-add-button-theme-class': this?.data?.application?.dialog_add_button?.textsettings?.fields?.normal?.button_theme?.classname,
+			'data-application-dialog-add-button-theme-width': this?.data?.application?.dialog_add_button?.textsettings?.fields?.normal?.button_width?.value,
 			'data-application-dialog-edit-heading': this.data?.application?.dialog_edit_heading?.value,
-			'data-application-dialog-edit-button': this.data?.application?.dialog_edit_button?.value,
-			'data-application-dialog-button-style': this.data?.application?.dialog_button_style?.value,
-			'data-application-dialog-button-size': this.data?.application?.dialog_button_size?.value,
+			'data-application-dialog-edit-button-text': this?.data?.application?.dialog_edit_button?.value,
+			'data-application-dialog-edit-button-style': this?.data?.application?.dialog_edit_button?.textsettings?.fields?.normal?.button_style?.value,
+			'data-application-dialog-edit-button-size': this?.data?.application?.dialog_edit_button?.textsettings?.fields?.normal?.button_size?.value,
+			'data-application-dialog-edit-button-theme': this?.data?.application?.dialog_edit_button?.textsettings?.fields?.normal?.button_theme?.theme_available,
+			'data-application-dialog-edit-button-theme-class': this?.data?.application?.dialog_edit_button?.textsettings?.fields?.normal?.button_theme?.classname,
+			'data-application-dialog-edit-button-theme-width': this?.data?.application?.dialog_edit_button?.textsettings?.fields?.normal?.button_width?.value,
 			'data-application-delete-confirmation-text': this.data?.application?.delete_confirmation_text?.value,
 			'data-application-width': this.data?.application?.width?.value,
 			'data-application-select-menu-background-color': this.data?.background?.background_color?.value
@@ -580,6 +681,7 @@ class MMX_CombinationFacet extends MMX_Element {
 
 	#renderApplicationAddDialog() {
 		const disabled = this.#applicationIsAdding ? 'disabled' : '';
+		const theme_available = this.getPropValue('application-dialog-add-button-theme');
 
 		return /*html*/`
 			<dialog class="mmx-combination-facet__application-add-dialog" part="application-add-dialog">
@@ -608,12 +710,15 @@ class MMX_CombinationFacet extends MMX_Element {
 					part="application-dialog-add-button"
 					exportparts="button: button__inner"
 					class="mmx-combination-facet__application-add-dialog-save"
-					data-width="full"
-					data-style="${MMX.encodeEntities(this.getPropValue('application-dialog-button-style'))}"
-					data-size="${MMX.encodeEntities(this.getPropValue('application-dialog-button-size'))}"
+					data-style="${MMX.encodeEntities(this.getPropValue('application-dialog-add-button-style'))}"
+					data-size="${MMX.encodeEntities(this.getPropValue('application-dialog-add-button-size'))}"
+					data-theme="${MMX.encodeEntities(theme_available)}"
+					data-theme-class="${MMX.encodeEntities(this.getPropValue('application-dialog-add-button-theme-class'))}"
+					data-width="${!theme_available ? 'full' : MMX.encodeEntities(this.getPropValue('application-dialog-add-button-theme-width'))}"
 					${disabled}
 				>
-					${this.#applicationIsAdding ? 'Saving' : MMX.encodeEntities(this.getPropValue('application-dialog-add-button'))}
+					${this.renderThemeStylesheetTemplate(theme_available)}
+					${this.#applicationIsAdding ? 'Saving' : MMX.encodeEntities(this.getPropValue('application-dialog-add-button-text'))}
 				</mmx-button>
 			</dialog>
 		`;
@@ -621,6 +726,7 @@ class MMX_CombinationFacet extends MMX_Element {
 
 	#renderApplicationEditDialog() {
 		const disabled = this.#applicationIsAdding ? 'disabled' : '';
+		const theme_available = this.getPropValue('application-dialog-edit-button-theme');
 
 		return /*html*/`
 			<dialog class="mmx-combination-facet__application-edit-dialog" part="application-edit-dialog">
@@ -649,12 +755,15 @@ class MMX_CombinationFacet extends MMX_Element {
 					part="application-dialog-edit-button"
 					exportparts="button: button__inner"
 					class="mmx-combination-facet__application-edit-dialog-save"
-					data-width="full"
-					data-style="${MMX.encodeEntities(this.getPropValue('application-dialog-button-style'))}"
-					data-size="${MMX.encodeEntities(this.getPropValue('application-dialog-button-size'))}"
+					data-style="${MMX.encodeEntities(this.getPropValue('application-dialog-edit-button-style'))}"
+					data-size="${MMX.encodeEntities(this.getPropValue('application-dialog-edit-button-size'))}"
+					data-theme="${MMX.encodeEntities(theme_available)}"
+					data-theme-class="${MMX.encodeEntities(this.getPropValue('application-dialog-edit-button-theme-class'))}"
+					data-width="${!theme_available ? 'full' : MMX.encodeEntities(this.getPropValue('application-dialog-edit-button-theme-width'))}"
 					${disabled}
 				>
-					${this.#applicationIsUpdating ? 'Saving' : MMX.encodeEntities(this.getPropValue('application-dialog-edit-button'))}
+					${this.renderThemeStylesheetTemplate(theme_available)}
+					${this.#applicationIsUpdating ? 'Saving' : MMX.encodeEntities(this.getPropValue('application-dialog-edit-button-text'))}
 				</mmx-button>
 			</dialog>
 		`;
@@ -668,33 +777,67 @@ class MMX_CombinationFacet extends MMX_Element {
 			return '';
 		}
 
+		const theme_available = this.getPropValue(`label-${labelType}-theme`);
+
 		return /*html*/`
 			<mmx-text
 				part="label label-${labelType}"
 				class="mmx-combination-facet__label"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue(`label-${labelType}-theme-class`))}"
 				data-style="${MMX.encodeEntities(this.getPropValue(`label-${labelType}-style`))}"
-				style="${MMX.encodeEntities(this.getPropValue(`label-${labelType}-styles`))}"
 			>
+				${this.renderLegacyStylesTemplate(theme_available, this.getPropValue(`label-${labelType}-styles`))}
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${MMX.encodeEntities(labelText)}
 			</mmx-text>
 		`;
 	}
 
 	#renderSubmitButton() {
+		if (!this.#hasApplications() && this.#hasAppliedValues()) {
+			return this.#renderResetButton();
+		}
+
 		const disabled = this.#facetStatus() === 'loading' ? 'disabled' : '';
-		const buttonText = !this.#hasApplications() && this.#hasAppliedValues() ? this.getPropValue('reset-text') : this.getPropValue('submit-text');
 
 		return /*html*/`
 			<mmx-button
-				part="submit ${this.#hasAppliedValues() ? 'submit-reset' : 'submit-apply'}"
+				part="submit submit-apply"
 				class="mmx-combination-facet__submit"
 				exportparts="button: submit__inner"
 				data-type="submit"
 				data-style="${MMX.encodeEntities(this.getPropValue('submit-style'))}"
+				data-size="${MMX.encodeEntities(this.getPropValue('submit-size'))}"
+				data-theme="${MMX.encodeEntities(this.getPropValue('submit-theme'))}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('submit-theme-class'))}"
 				data-width="full"
 				${disabled}
 			>
-				${MMX.encodeEntities(buttonText)}
+				${this.renderThemeStylesheetTemplate(this.getPropValue('submit-theme'))}
+				${MMX.encodeEntities(this.getPropValue('submit-text'))}
+			</mmx-button>
+		`;
+	}
+
+	#renderResetButton() {
+		const disabled = this.#facetStatus() === 'loading' ? 'disabled' : '';
+
+		return /*html*/`
+			<mmx-button
+				part="submit submit-reset"
+				class="mmx-combination-facet__submit"
+				exportparts="button: submit__inner"
+				data-type="submit"
+				data-style="${MMX.encodeEntities(this.getPropValue('reset-style'))}"
+				data-size="${MMX.encodeEntities(this.getPropValue('reset-size'))}"
+				data-theme="${MMX.encodeEntities(this.getPropValue('reset-theme'))}"
+				data-theme-class="${MMX.encodeEntities(this.getPropValue('reset-theme-class'))}"
+				data-width="full"
+				${disabled}
+			>
+				${this.renderThemeStylesheetTemplate(this.getPropValue('reset-theme'))}
+				${MMX.encodeEntities(this.getPropValue('reset-text'))}
 			</mmx-button>
 		`;
 	}
@@ -1178,7 +1321,7 @@ class MMX_CombinationFacet extends MMX_Element {
 
 		if (button) {
 			button.removeAttribute('disabled');
-			button.textContent = this.getPropValue('application-dialog-add-button');
+			button.textContent = this.getPropValue('application-dialog-add-button-text');
 		}
 	}
 
@@ -1196,7 +1339,7 @@ class MMX_CombinationFacet extends MMX_Element {
 
 		if (button) {
 			button.removeAttribute('disabled');
-			button.textContent = this.getPropValue('application-dialog-edit-button');
+			button.textContent = this.getPropValue('application-dialog-edit-button-text');
 		}
 	}
 

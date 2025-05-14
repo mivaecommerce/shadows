@@ -33,6 +33,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-hero-slider'];
 	loadedCategories = {};
+	categories = [];
 
 	constructor() {
 		super();
@@ -60,8 +61,6 @@ class MMX_CategoryCarousel extends MMX_Element {
 	}
 
 	onDataChange() {
-		this.loadCategories();
-
 		MMX.setElementAttributes(this, {
 			'data-per-page': this.data?.advanced?.slide_controls?.per_page?.value,
 			'data-per-move': this.data?.advanced?.slide_controls?.per_move?.value,
@@ -69,6 +68,13 @@ class MMX_CategoryCarousel extends MMX_Element {
 			'data-size': this.data?.category_group?.image_size?.value,
 			'data-image-fit': this.data?.category_group?.image_fit?.value
 		});
+
+		this.displayCategories();
+	}
+
+	displayCategories() {
+		if ( this.data?.category_group?.source?.value == 'manual' )	this.loadCategories();
+		else														this.loadChildCategories();
 	}
 
 	getCategoryCodesToLoad() {
@@ -96,8 +102,8 @@ class MMX_CategoryCarousel extends MMX_Element {
 
 		MMX.Runtime_JSON_API_Call({
 			params: {
-				function: 'Runtime_CategoryList_Load_Query',
-				filter: [
+				Function: 'Runtime_CategoryList_Load_Query',
+				Filter: [
 					{
 						name: 'search',
 						value: [
@@ -132,8 +138,78 @@ class MMX_CategoryCarousel extends MMX_Element {
 		.catch(response => {});
 	}
 
+	loadChildCategories() {
+		if (MMX.valueIsEmpty(this?.data?.category_id)) {
+			return;
+		}
+
+		var filters = [];
+
+		if (this.data?.category_group?.category_image?.settings?.enabled) {
+			filters = [
+				{
+					name: 'ondemandcolumns',
+					value: [
+						'CustomField_Values:cmp-cssui-cattitle:category_title_image',
+						'CustomField_Values:cmp-cssui-cattree:category_tree_image'
+					]
+				}
+			];
+		}
+
+		this.categories = [];
+
+		MMX.Runtime_JSON_API_Call({
+			params: {
+				Function: 'Runtime_CategoryList_Load_Query',
+				Parent_ID: this.data.category_id,
+				Filter: filters
+			}
+		})
+		.then(response => {
+			if(!response?.data?.data?.length) {
+				return;
+			}
+
+			response.data.data.forEach(category => {
+				this.loadedCategories[category.id] = category;
+				this.categories.push({
+					category: {
+						category: { 
+							link: category.url,
+							...category,
+						},
+						category_code: category.code
+					},
+					image: {
+						category_image: {
+							image: {
+								value: this.data?.category_group?.category_image?.image?.value
+							},
+							settings: {
+								enabled: this.data?.category_group?.category_image?.settings?.enabled
+							}
+						}
+					}
+				});
+			});
+
+			this.forceUpdate();
+		})
+		.catch(response => {});
+	}
+
 	renderCategories() {
-		const children = MMX.copy(this?.data?.category_group?.categories?.children || []);
+		var children;
+
+		if (this.data?.category_group?.source?.value == 'auto' )
+		{
+			children = this.categories;
+		}
+		else
+		{
+			children = MMX.copy(this?.data?.category_group?.categories?.children || []);
+		}
 
 		if (!children?.length){
 			return '';
@@ -166,6 +242,8 @@ class MMX_CategoryCarousel extends MMX_Element {
 			return '';
 		}
 
+		const theme_available = this.data?.text_styles?.category_name?.typography_theme?.theme_available;
+
 		return /*html*/`
 			<mmx-hero
 				slot="hero_slide"
@@ -177,15 +255,13 @@ class MMX_CategoryCarousel extends MMX_Element {
 				<mmx-text
 					slot="heading"
 					part="hero_slide__heading"
+					data-theme="${MMX.encodeEntities(theme_available)}"
+					data-theme-class="${MMX.encodeEntities(this.data?.text_styles?.category_name?.typography_theme?.classname ?? '')}"
 					data-style="${this.data?.text_styles?.category_name?.style?.value ?? ''}"
 					data-align="${this.data?.text_styles?.align?.value ?? ''}"
-					style="
-						font-family: ${MMX.encodeEntities(this.data?.text_styles?.category_name?.font_family?.value ?? '')};
-						font-size: ${this.data?.text_styles?.category_name?.font_size?.value ?? ''}px;
-						font-weight: ${this.data?.text_styles?.category_name?.font_weight?.value ?? ''};
-						color: ${this.data?.text_styles?.category_name?.font_color?.value ?? ''};
-					"
 				>
+					${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(this.data?.text_styles?.category_name))}
+					${this.renderThemeStylesheetTemplate(theme_available)}
 					${child.category.category.name}
 				</mmx-text>
 			</mmx-hero>

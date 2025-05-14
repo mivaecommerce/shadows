@@ -1,0 +1,23 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.00'">
+	<mvt:comment> Theme Buttons </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:product:button:button_text:textsettings:fields:normal:button_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:product:button:button_text:textsettings:fields:normal:button_width:visible" value="0" />
+
+	<mvt:comment> Theme Typography </mvt:comment>
+	<mvt:assign name="l.settings:instance:text:product_name:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:text:subheading:text:textsettings:fields:normal:typography_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:text:description:typography_theme:theme_mode" value="0" />
+
+	<mvt:comment> Upgrade MMX Font Family Settings to Font Property Setting </mvt:comment>
+	<mvt:do name="l.settings:instance:text:product_name:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:text:product_name:font_family:value )" />
+	<mvt:do name="l.settings:instance:text:subheading:text:textsettings:fields:normal:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:text:subheading:text:textsettings:fields:normal:font_family:value )" />
+	<mvt:do name="l.settings:instance:text:description:font:code" file="g.Module_Feature_PGB_UT" value="MMXFontFamily_To_FontProperty( l.settings:instance:text:description:font_family:value )" />
+
+	<mvt:assign name="l.settings:instance:text:product_name:font:weight" value="l.settings:instance:text:product_name:font_weight:value" />
+	<mvt:assign name="l.settings:instance:text:subheading:text:textsettings:fields:normal:font:weight" value="l.settings:instance:text:subheading:text:textsettings:fields:normal:font_weight:value" />
+	<mvt:assign name="l.settings:instance:text:description:font:weight" value="l.settings:instance:text:description:font_weight:value" />
+
+	<mvt:assign name="l.settings:instance:text:product_name:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:text:subheading:text:textsettings:fields:normal:font:style" value="''" />
+	<mvt:assign name="l.settings:instance:text:description:font:style" value="''" />
+</mvt:if>
