@@ -62,10 +62,17 @@
 	border: 1px solid var(--mmx-color-blue-02);
 	color: var(--mmx-color-blue-04);
 	font-size: 0.875rem;
+	display: flex;
+	flex-direction: column;
+	gap: 0.875em;
 }
 
 .mmx-featured-product__product-inventory_message:empty {
 	display: none;
+}
+
+.mmx-featured-product__product-inventory_message p {
+	margin: 0;
 }
 
 .mmx-featured-product__product-attributes {

@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.12.02</Version>
-	<MinimumMerchantVersion>10.12.00</MinimumMerchantVersion>
+	<Version>10.12.03</Version>
+	<MinimumMerchantVersion>10.12.03</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.12.02
+	<Description>Shadows ReadyTheme v10.12.03
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -2348,6 +2348,7 @@
 			<Source>email_abandoned_basket.mvt</Source>
 			<ItemList>
 				<Item>buttons</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_basket_contents</Item>
 				<Item>tokenlist</Item>
@@ -2361,6 +2362,7 @@
 			<ItemList>
 				<Item>backorder</Item>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>urls</Item>
 			</ItemList>
@@ -2370,6 +2372,7 @@
 			<Name>Customer Created</Name>
 			<Source>email_customer_created.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2381,6 +2384,7 @@
 			<Source>email_digitaldownload_created.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_digitaldownloads</Item>
 				<Item>urls</Item>
@@ -2392,6 +2396,7 @@
 			<Source>email_giftcertificate_created.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_giftcertificates</Item>
 				<Item>urls</Item>
@@ -2403,6 +2408,7 @@
 			<Source>email_orderconf_customer.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_order_contents</Item>
 				<Item>tokenlist</Item>
@@ -2415,6 +2421,7 @@
 			<Source>email_orderconf_merchant.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_order_contents</Item>
 				<Item>tokenlist</Item>
@@ -2426,6 +2433,7 @@
 			<Name>Payment Card Expiring</Name>
 			<Source>email_paymentcard_expiring.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>urls</Item>
 			</ItemList>
@@ -2436,6 +2444,7 @@
 			<Source>email_return_received.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>return</Item>
 				<Item>store</Item>
 				<Item>urls</Item>
@@ -2447,6 +2456,7 @@
 			<Source>email_rma_issued.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>return</Item>
 				<Item>store</Item>
 				<Item>urls</Item>
@@ -2458,6 +2468,7 @@
 			<Source>email_shipment_shipped.mvt</Source>
 			<ItemList>
 				<Item>order</Item>
+				<Item>readytheme</Item>
 				<Item>shipment</Item>
 				<Item>store</Item>
 				<Item>urls</Item>
@@ -2468,6 +2479,7 @@
 			<Name>Subscription Authorization Failure</Name>
 			<Source>email_subscription_auth_failure.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscriptions</Item>
 				<Item>urls</Item>
@@ -2478,6 +2490,7 @@
 			<Name>Subscription Cancelled</Name>
 			<Source>email_subscription_cancelled.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscription_fields</Item>
 				<Item>urls</Item>
@@ -2488,6 +2501,7 @@
 			<Name>Subscription Changed</Name>
 			<Source>email_subscription_changed.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscription_fields</Item>
 				<Item>urls</Item>
@@ -2498,6 +2512,7 @@
 			<Name>Subscription Created</Name>
 			<Source>email_subscription_created.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscriptions</Item>
 				<Item>urls</Item>
@@ -2508,6 +2523,7 @@
 			<Name>Subscription Out of Stock</Name>
 			<Source>email_subscription_outofstock.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscriptions</Item>
 				<Item>urls</Item>
@@ -2518,6 +2534,7 @@
 			<Name>Subscription Reminder</Name>
 			<Source>email_subscription_reminder.mvt</Source>
 			<ItemList>
+				<Item>readytheme</Item>
 				<Item>store</Item>
 				<Item>toe_subscriptions</Item>
 				<Item>urls</Item>
@@ -3515,7 +3532,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.12.02';
+	mivaJS.ReadyThemeVersion = '10.12.03';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -3590,7 +3607,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			<Attributes />
 			<Template><![CDATA[<mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.3.0
+Version: 1.3.1
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -3615,9 +3632,6 @@ var clearEcommerceDataLayer = () => {
 	<mvt:assign name="l.flags:sep" value="1" />
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
 	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:data_layer:canonical_url $ 'Search=' $ encodeattribute( g.Search )" />
-<mvt:elseif expr="l.settings:page:code EQ 'NTFD' OR l.settings:page:code EQ 'MNTN'">
-	<mvt:do file="g.Module_Feature_URI_DB" name="l.null" value="URISettings_Load_Cached( l.urisettings )" />
-	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="URL_Build_URI( l.urisettings, l.flags, s.request_uri, '' )" />
 <mvt:else>
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
 </mvt:if>
@@ -3629,8 +3643,10 @@ var clearEcommerceDataLayer = () => {
 |
 </mvt:comment>
 dataLayer.push({
-	canonicalUri: '&mvtj:data_layer:canonical_uri;',
-	canonicalUrl: '&mvtj:data_layer:canonical_url;',
+	<mvt:if expr="l.settings:page:code NE 'NTFD' AND l.settings:page:code NE 'MNTN'">
+		canonicalUri: '&mvtj:data_layer:canonical_uri;',
+		canonicalUrl: '&mvtj:data_layer:canonical_url;',
+	</mvt:if>
 	category: {
 		code: '&mvtj:category:code;',
 		name: '&mvtj:category:name;'
@@ -4013,6 +4029,9 @@ new MMXPromotionTracker();
 		<mvt:if expr="l.settings:item_list_product:product:cancat_id">
 			<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:item_list_product:product:cancat_id, l.settings:item_list_product:cancat )" />
 			<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:item_list_product:cancat:name" />
+		<mvt:elseif expr="l.settings:item_list_product:cancat_id">
+			<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:item_list_product:cancat_id, l.settings:item_list_product:cancat )" />
+			<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:item_list_product:cancat:name" />
 		</mvt:if>
 
 		<mvt:comment>Determine item_variant</mvt:comment>
@@ -4264,12 +4283,15 @@ new MMXPromotionTracker();
 				additionalPrice = this.productData.additional_price ?? this.productData.price;
 			}
 
+			let quantity = Number(this.adprForm?.elements?.Quantity?.value);
+			quantity = isNaN(quantity) ? 1 : quantity;
+
 			clearEcommerceDataLayer();
 			dataLayerItem.event = event;
-			dataLayerItem.ecommerce.value = price;
+			dataLayerItem.ecommerce.value = price * quantity;
 			dataLayerItem.ecommerce.items[0].price = price;
 			dataLayerItem.ecommerce.items[0].discount = Number((additionalPrice - price).toFixed(2));
-			dataLayerItem.ecommerce.items[0].quantity = this.adprForm.elements.Quantity.value;
+			dataLayerItem.ecommerce.items[0].quantity = quantity;
 			dataLayerItem.ecommerce.items[0].item_variant = this.getItemVariant();
 			dataLayer.push(dataLayerItem);
 
@@ -4317,7 +4339,10 @@ new MMXPromotionTracker();
 		getItemVariant() {
 			const attributeValueInputs = [...this.adprForm.querySelectorAll('[name*="Product_Attributes"][name*=":value"]:is(:checked, select, [type="text"], textarea)')];
 			const itemVariant = attributeValueInputs.reduce((values, input) => {
-				const attributeCode = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':code')}"]`)?.value;
+				const attributeInput = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':code')}"]`);
+				const templateAttributeInput = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':template_code')}"]`);
+				const attributeCode = templateAttributeInput?.value ?? attributeInput?.value;
+
 				if (input?.type === 'checkbox') {
 					values.push(attributeCode);
 				}
@@ -4656,7 +4681,7 @@ new MMXPromotionTracker();
 			dataLayer.push({
 				event,
 				ecommerce: {
-					currency: 'USD',
+					currency: '&mvtj:currency;',
 					value: this.determineItemsValue(items),
 					items
 				}

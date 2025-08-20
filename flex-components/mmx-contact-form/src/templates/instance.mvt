@@ -220,15 +220,34 @@
 	<mvt:comment>Background Image</mvt:comment>
 	<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:image">
 		<picture slot="image">
-			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_images:mobile">
-				<mvt:assign name="l.settings:instance:form:background:img:responsive_images:mobile" value="glosub( l.settings:instance:form:background:img:responsive_images:mobile, ' ', '%20' )" />
-				<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:instance:form:background:img:responsive_images:mobile;">
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:mobile:image">
+				<mvt:assign name="l.settings:instance:form:background:img:responsive_image_data:mobile:image" value="glosub( l.settings:instance:form:background:img:responsive_image_data:mobile:image, ' ', '%20' )" />
+				<source
+					class="source__mobile"
+					media="(max-width: 39.999em)"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:mobile:image;"
+					width="&mvte:instance:form:background:img:responsive_image_data:mobile:width;"
+					height="&mvte:instance:form:background:img:responsive_image_data:mobile:height;"
+				>
 			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_images:tablet">
-				<mvt:assign name="l.settings:instance:form:background:img:responsive_images:tablet" value="glosub( l.settings:instance:form:background:img:responsive_images:tablet, ' ', '%20' )" />
-				<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:instance:form:background:img:responsive_images:tablet;">
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:tablet:image">
+				<mvt:assign name="l.settings:instance:form:background:img:responsive_image_data:tablet:image" value="glosub( l.settings:instance:form:background:img:responsive_image_data:tablet:image, ' ', '%20' )" />
+				<source
+					class="source__tablet"
+					media="(max-width: 59.999em)"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:tablet:image;"
+					width="&mvte:instance:form:background:img:responsive_image_data:tablet:width;"
+					height="&mvte:instance:form:background:img:responsive_image_data:tablet:height;"
+				>
 			</mvt:if>
-			<img src="&mvte:instance:form:background:img:image;" alt="&mvte:instance:form:background:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
+			<img
+				src="&mvte:instance:form:background:img:image;"
+				alt="&mvte:instance:form:background:img:alt;"
+				width="&mvte:instance:form:background:img:width;"
+				height="&mvte:instance:form:background:img:height;"
+				loading="&mvte:instance:loading;"
+				fetchpriority="&mvte:instance:fetchpriority;"
+			>
 		</picture>
 	</mvt:if>
 

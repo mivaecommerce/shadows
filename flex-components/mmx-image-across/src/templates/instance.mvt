@@ -81,20 +81,37 @@
 			data-overflow="&mvte:instance:advanced:mobile:overflow_behavior:value;"
 			data-fit="&mvte:instance:images_group:image_fit:value;"
 		>
-			<mvt:comment>Slotted Image</mvt:comment>
-			<picture slot="image">
-				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:mobile">
-					<mvt:assign name="l.settings:image_across:img:responsive_images:mobile" value="glosub( l.settings:image_across:img:responsive_images:mobile, ' ', '%20' )" />
-					<source class="source__mobile" media="(max-width: 39.999em)" srcset="&mvte:image_across:img:responsive_images:mobile;">
-				</mvt:if>
-				<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_images:tablet">
-					<mvt:assign name="l.settings:image_across:img:responsive_images:tablet" value="glosub( l.settings:image_across:img:responsive_images:tablet, ' ', '%20' )" />
-					<source class="source__tablet" media="(max-width: 59.999em)" srcset="&mvte:image_across:img:responsive_images:tablet;">
-				</mvt:if>
-				<img src="&mvte:image_across:img:image;" alt="&mvte:image_across:img:alt;" loading="&mvte:instance:loading;" fetchpriority="&mvte:instance:fetchpriority;">
-			</picture>
-
-			<mvt:comment>Slotted Content</mvt:comment>
+		<mvt:comment>Slotted Image</mvt:comment>
+		<picture slot="image">
+			<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_image_data:mobile:image">
+				<mvt:assign name="l.settings:image_across:img:responsive_image_data:mobile:image" value="glosub( l.settings:image_across:img:responsive_image_data:mobile:image, ' ', '%20' )" />
+				<source
+					class="source__mobile"
+					media="(max-width: 39.999em)"
+					srcset="&mvte:image_across:img:responsive_image_data:mobile:image;"
+					width="&mvte:image_across:img:responsive_image_data:mobile:width;"
+					height="&mvte:image_across:img:responsive_image_data:mobile:height;"
+				>
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.settings:image_across:img:responsive_image_data:tablet:image">
+				<mvt:assign name="l.settings:image_across:img:responsive_image_data:tablet:image" value="glosub( l.settings:image_across:img:responsive_image_data:tablet:image, ' ', '%20' )" />
+				<source
+					class="source__tablet"
+					media="(max-width: 59.999em)"
+					srcset="&mvte:image_across:img:responsive_image_data:tablet:image;"
+					width="&mvte:image_across:img:responsive_image_data:tablet:width;"
+					height="&mvte:image_across:img:responsive_image_data:tablet:height;"
+				>
+			</mvt:if>
+			<img
+				src="&mvte:image_across:img:image;"
+				alt="&mvte:image_across:img:alt;"
+				width="&mvte:image_across:img:width;"
+				height="&mvte:image_across:img:height;"
+				loading="&mvte:instance:loading;"
+				fetchpriority="&mvte:instance:fetchpriority;"
+			>
+		</picture>			<mvt:comment>Slotted Content</mvt:comment>
 			<mvt:if expr="l.settings:image_across:text:settings:enabled">
 				<mvt:if expr="NOT ISNULL l.settings:image_across:text:subheading:value">
 					<mmx-text

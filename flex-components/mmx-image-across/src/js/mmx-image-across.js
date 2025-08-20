@@ -164,7 +164,6 @@ class MMX_ImageAcross extends MMX_Element {
 		}
 
 		this.#auto_image_height = 0;
-		this.imageLoadedCount = 0;
 
 		this.imageElements().forEach(image => {
 			const img = image?.slottedImage?.() ?? image?.shadowImage?.();
@@ -184,13 +183,30 @@ class MMX_ImageAcross extends MMX_Element {
 	checkLoadedImage(image) {
 		const last_auto_image_height = this.#auto_image_height;
 
-		this.imageLoadedCount++;
-
 		this.calculateMinImageHeight(this.getResponsiveImageHeight(image));
 
 		if (last_auto_image_height !== this.#auto_image_height) {
 			this.updateImageHeight(this.#auto_image_height + 'px');
 		}
+
+		this.#updateRenderStatus();
+	}
+
+	#updateRenderStatus() {
+		if (this.imageLoadedCount === this.getImageCount()) {
+			this.classList.add('mmx-image-across--images-loaded');
+		} else {
+			this.classList.remove('mmx-image-across--images-loaded');
+		}
+	}
+
+	get imageLoadedCount() {
+		const loadedImages = this.imageElements().filter(image => {
+			const img = image?.slottedImage?.() ?? image?.shadowImage?.();
+			return img?.complete;
+		});
+
+		return loadedImages.length;
 	}
 
 	updateImageHeight(size) {

@@ -1,6 +1,6 @@
 <mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.3.0
+Version: 1.3.1
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
@@ -25,9 +25,6 @@ var clearEcommerceDataLayer = () => {
 	<mvt:assign name="l.flags:sep" value="1" />
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
 	<mvt:assign name="l.settings:data_layer:canonical_url" value="l.settings:data_layer:canonical_url $ 'Search=' $ encodeattribute( g.Search )" />
-<mvt:elseif expr="l.settings:page:code EQ 'NTFD' OR l.settings:page:code EQ 'MNTN'">
-	<mvt:do file="g.Module_Feature_URI_DB" name="l.null" value="URISettings_Load_Cached( l.urisettings )" />
-	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="URL_Build_URI( l.urisettings, l.flags, s.request_uri, '' )" />
 <mvt:else>
 	<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:data_layer:canonical_url" value="Store_Page_URL( l.settings:page, l.flags )" />
 </mvt:if>
@@ -39,8 +36,10 @@ var clearEcommerceDataLayer = () => {
 |
 </mvt:comment>
 dataLayer.push({
-	canonicalUri: '&mvtj:data_layer:canonical_uri;',
-	canonicalUrl: '&mvtj:data_layer:canonical_url;',
+	<mvt:if expr="l.settings:page:code NE 'NTFD' AND l.settings:page:code NE 'MNTN'">
+		canonicalUri: '&mvtj:data_layer:canonical_uri;',
+		canonicalUrl: '&mvtj:data_layer:canonical_url;',
+	</mvt:if>
 	category: {
 		code: '&mvtj:category:code;',
 		name: '&mvtj:category:name;'
@@ -423,6 +422,9 @@ new MMXPromotionTracker();
 		<mvt:if expr="l.settings:item_list_product:product:cancat_id">
 			<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:item_list_product:product:cancat_id, l.settings:item_list_product:cancat )" />
 			<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:item_list_product:cancat:name" />
+		<mvt:elseif expr="l.settings:item_list_product:cancat_id">
+			<mvt:do file="g.Module_Library_DB" name="l.null" value="Runtime_Category_Load_ID_Cached( l.settings:item_list_product:cancat_id, l.settings:item_list_product:cancat )" />
+			<mvt:assign name="l.ecommerce_item:item_category" value="l.settings:item_list_product:cancat:name" />
 		</mvt:if>
 
 		<mvt:comment>Determine item_variant</mvt:comment>
@@ -674,12 +676,15 @@ new MMXPromotionTracker();
 				additionalPrice = this.productData.additional_price ?? this.productData.price;
 			}
 
+			let quantity = Number(this.adprForm?.elements?.Quantity?.value);
+			quantity = isNaN(quantity) ? 1 : quantity;
+
 			clearEcommerceDataLayer();
 			dataLayerItem.event = event;
-			dataLayerItem.ecommerce.value = price;
+			dataLayerItem.ecommerce.value = price * quantity;
 			dataLayerItem.ecommerce.items[0].price = price;
 			dataLayerItem.ecommerce.items[0].discount = Number((additionalPrice - price).toFixed(2));
-			dataLayerItem.ecommerce.items[0].quantity = this.adprForm.elements.Quantity.value;
+			dataLayerItem.ecommerce.items[0].quantity = quantity;
 			dataLayerItem.ecommerce.items[0].item_variant = this.getItemVariant();
 			dataLayer.push(dataLayerItem);
 
@@ -727,7 +732,10 @@ new MMXPromotionTracker();
 		getItemVariant() {
 			const attributeValueInputs = [...this.adprForm.querySelectorAll('[name*="Product_Attributes"][name*=":value"]:is(:checked, select, [type="text"], textarea)')];
 			const itemVariant = attributeValueInputs.reduce((values, input) => {
-				const attributeCode = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':code')}"]`)?.value;
+				const attributeInput = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':code')}"]`);
+				const templateAttributeInput = this.adprForm.querySelector(`[name="${input.name.replace(':value', ':template_code')}"]`);
+				const attributeCode = templateAttributeInput?.value ?? attributeInput?.value;
+
 				if (input?.type === 'checkbox') {
 					values.push(attributeCode);
 				}
@@ -1066,7 +1074,7 @@ new MMXPromotionTracker();
 			dataLayer.push({
 				event,
 				ecommerce: {
-					currency: 'USD',
+					currency: '&mvtj:currency;',
 					value: this.determineItemsValue(items),
 					items
 				}

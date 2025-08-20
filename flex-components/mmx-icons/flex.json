@@ -2,7 +2,7 @@
 	"code": "mmx-icons",
 	"name": "MMX Icons",
 	"type": "library",
-	"version": "10.12.02",
+	"version": "10.12.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-icons",
 	"scripts": [
@@ -26,6 +26,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.02"
+		"mmx-base": "=10.12.03"
 	}
 }

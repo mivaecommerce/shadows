@@ -273,8 +273,12 @@ class MMX_ProductDetails extends MMX_Element {
 			return attributes;
 		}
 
-		return attributes.map((attribute, attributeIndex) => {
-			return this.#setAttributeValue({attribute, index: index + attributeIndex});
+		return attributes.map((attribute) => {
+			attribute = this.#setAttributeValue({attribute, index});
+
+			index += attribute.type === 'template' ? attribute.attributes.length : 1;
+
+			return attribute;
 		});
 	}
 
@@ -624,6 +628,8 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#getProductMachineConfig() {
+		const attributesDetail = this.#flatDetails.find(detail => detail?.type?.value === 'attributes');
+
 		return {
 			advanced: {
 				product: {
@@ -635,6 +641,20 @@ class MMX_ProductDetails extends MMX_Element {
 					discount: { value: true },
 					multiple_images: { value: false }
 				},
+				attribute_messages: {
+					invalid_msg: {
+						source: attributesDetail?.attribute_messages?.invalid_msg?.source,
+						value: attributesDetail?.attribute_messages?.invalid_msg?.value
+					},
+					missing_text_msg: {
+						source: attributesDetail?.attribute_messages?.missing_text_msg?.source,
+						value: attributesDetail?.attribute_messages?.missing_text_msg?.value
+					},
+					missing_radio_msg: {
+						source: attributesDetail?.attribute_messages?.missing_radio_msg?.source,
+						value: attributesDetail?.attribute_messages?.missing_radio_msg?.value
+					}
+				}
 			},
 			product: {
 				product: {
@@ -999,6 +1019,12 @@ class MMX_ProductDetails extends MMX_Element {
 	#onDisablePurchaseButtons() {
 		this.#elementsThatCanBeDisabled().forEach(element => {
 			element.disabled = true;
+		});
+
+		// Update inventory message details
+		requestAnimationFrame(() => {
+			this.#updateDetailsOfType('inv_short');
+			this.#updateDetailsOfType('inv_long');
 		});
 	}
 
@@ -1459,6 +1485,7 @@ class MMX_ProductDetails extends MMX_Element {
 				data-hide-on-empty="false"
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
 			>
 				${this.renderThemeStylesheetTemplate(theme_available)}
 				${fragmentContent}
@@ -1494,32 +1521,52 @@ class MMX_ProductDetails extends MMX_Element {
 
 	// Render: Inventory Message
 	#renderInventoryMessage(detail = {}) {
-		if (!this.#product?.inv_active) {
-			return '';
-		}
-
 		let style = detail?.message_styles?.style?.value || 'auto';
+		const variant = detail?.message_styles?.variant?.value;
+		const size = detail?.message_styles?.size?.value;
+		const display = detail?.message_styles?.display?.value;
 
-		if (style === 'auto') {
-			if (this.#product.inv_level === 'in') {
-				style = 'success';
+		if (this.#product?.inv_active) {
+			if (style === 'auto') {
+				if (this.#product.inv_level === 'in') {
+					style = 'success';
+				}
+				else if (this.#product.inv_level === 'low') {
+					style = 'warning';
+				}
+				else if (this.#product.inv_level === 'out') {
+					style = 'error';
+				}
 			}
-			else if (this.#product.inv_level === 'low') {
-				style = 'warning';
-			}
-			else if (this.#product.inv_level === 'out') {
-				style = 'error';
-			}
+
+			return this.#renderMessage({
+				part: `inventory-message ${this.#product.inv_level}`,
+				style,
+				variant,
+				size,
+				display,
+				text: this.#product?.[detail?.type?.value] || this.#attributesProductMachine()?.inventoryMessageHtml
+			});
 		}
 
-		return this.#renderMessage({
-			part: `inventory-message ${this.#product.inv_level}`,
-			style,
-			variant: detail?.message_styles?.variant?.value,
-			size: detail?.message_styles?.size?.value,
-			display: detail?.message_styles?.display?.value,
-			text: this.#product?.[detail?.type?.value]
-		});
+		// Fallback to attribute machine inventory message when product inventory is not active
+		const attributeMachineMessage = this.#attributesProductMachine()?.inventoryMessageHtml;
+		if (attributeMachineMessage) {
+			if (style === 'auto') {
+				style = 'info';
+			}
+
+			return this.#renderMessage({
+				part: 'inventory-message',
+				style,
+				variant,
+				size,
+				display,
+				text: attributeMachineMessage
+			});
+		}
+
+		return '';
 	}
 
 	// Render: Message
@@ -1565,6 +1612,7 @@ class MMX_ProductDetails extends MMX_Element {
 				part="price-${MMX.encodeEntities(displayType)} ${displayType === 'sale' && priceIsDiscounted ? 'price-sale--discounted' : ''}"
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
 			>
 				${this.renderThemeStylesheetTemplate(theme_available)}
 				${this.#renderProductDetailSpan('prefix', detail?.prefix?.value)}

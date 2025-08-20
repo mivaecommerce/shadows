@@ -288,6 +288,27 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'show-product-images': {
 				isBoolean: true,
 				default: true
+			},
+			'invalid-msg': {
+				allowAny: true,
+				default: ''
+			},
+			'invalid-msg-source': {
+				allowAny: true
+			},
+			'missing-text-msg': {
+				allowAny: true,
+				default: ''
+			},
+			'missing-text-msg-source': {
+				allowAny: true
+			},
+			'missing-radio-msg': {
+				allowAny: true,
+				default: ''
+			},
+			'missing-radio-msg-source': {
+				allowAny: true
 			}
 		};
 	}
@@ -747,9 +768,17 @@ class MMX_FeaturedProduct extends MMX_Element {
 			return '';
 		}
 
+		let index = 1;
+
 		return /*html*/`
 			<div part="product-attributes" class="mmx-featured-product__product-attributes">
-				${this.product.attributes.map((attribute, index) => this.renderProductContentAttribute(attribute, index + 1, null)).join('')}
+				${this.product.attributes.map(attribute => {
+					const content = this.renderProductContentAttribute(attribute, index, null);
+
+					index += attribute.type === 'template' ? attribute.attributes.length : 1;
+
+					return content;
+				}).join('')}
 				${this.renderProductContentAttributeSubscription()}
 			</div>
 		`;
@@ -1107,6 +1136,10 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return this.shadowRoot.getElementById('inv-message')?.textContent?.trim() ?? '';
 	}
 
+	get inventoryMessageHtml() {
+		return this.shadowRoot.getElementById('inv-message')?.innerHTML?.trim() ?? '';
+	}
+
 	get quantity() {
 		return MMX.coerceNumber(this.shadowRoot.querySelector('[name="Quantity"]').value, 1);
 	}
@@ -1191,9 +1224,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 			displaydiscounts:				discount,
 			predictdiscounts:				discount,
 			product_code:					this.getPropValue('product-code'),
-			invalid_msg:					'',
-			missing_text_msg:				'',
-			missing_radio_msg:				'',
+			invalid_msg:					this.getPropValue('invalid-msg-source') === 'markdown' ? this.getPropValue('invalid-msg') : MMX.encodeEntities(this.getPropValue('invalid-msg')),
+			missing_text_msg:				this.getPropValue('missing-text-msg-source') === 'markdown' ? this.getPropValue('missing-text-msg') : MMX.encodeEntities(this.getPropValue('missing-text-msg')),
+			missing_radio_msg:				this.getPropValue('missing-radio-msg-source') === 'markdown' ? this.getPropValue('missing-radio-msg') : MMX.encodeEntities(this.getPropValue('missing-radio-msg')),
 
 			getElementById:					(id) => this.shadowRoot.getElementById(id),
 			getElementsByTagName:			(tagName) => this.shadowRoot.querySelector('.mmx-featured-product').getElementsByTagName(tagName)
@@ -1336,6 +1369,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			if (button = self.getButton()) {
 				button.disabled = true;
 			}
+
+			self.debouncedDispatchContentUpdated();
 		};
 
 		attributemachine.Enable_Purchase_Buttons = function() {
@@ -1511,6 +1546,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-fallback-product-image-mobile': this.data?.fallback_product_image_mobile,
 			'data-fragment-code': this.data?.advanced?.product?.fragment_code?.value,
 			'data-nav-button-size': this.data?.advanced?.product?.nav_button_size?.value ?? '',
+			'data-invalid-msg-source': this.data?.advanced?.attribute_messages?.invalid_msg?.source,
+			'data-invalid-msg': this.data?.advanced?.attribute_messages?.invalid_msg?.value,
+			'data-missing-text-msg-source': this.data?.advanced?.attribute_messages?.missing_text_msg?.source,
+			'data-missing-text-msg': this.data?.advanced?.attribute_messages?.missing_text_msg?.value,
+			'data-missing-radio-msg-source': this.data?.advanced?.attribute_messages?.missing_radio_msg?.source,
+			'data-missing-radio-msg': this.data?.advanced?.attribute_messages?.missing_radio_msg?.value,
 			'data-product-code': this.data?.product?.product?.product_code // this should always be last so that loadProduct() is called once the previous attribute-values/props are set
 		});
 	}

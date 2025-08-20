@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "10.12.02",
+	"version": "10.12.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -702,20 +702,10 @@
 													"label": "px",
 													"min": 0,
 													"placeholder": 16,
-													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index%",
 													"prompt": "Gap",
 													"step": 0.1,
 													"text_type": "number",
-													"type": "text",
-													"visibility_conditions": {
-														"type": {
-															"value": [
-																"side-by-side-group",
-																"inline-group",
-																"vertical-group"
-															]
-														}
-													}
+													"type": "text"
 												},
 												{
 													"code": "vertical_breakpoint",
@@ -1235,6 +1225,46 @@
 														"type": {
 															"value": [
 																"add-to-cart-button"
+															]
+														}
+													}
+												},
+												{
+													"can_disable": 1,
+													"code": "attribute_messages",
+													"collapsed": 1,
+													"prompt": "Attribute Messages",
+													"properties": [
+														{
+															"code": "invalid_msg",
+															"markdown": 1,
+															"placeholder": "Please select a valid combination of attributes.",
+															"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+															"prompt": "Invalid Attribute Combination",
+															"type": "textarea"
+														},
+														{
+															"code": "missing_text_msg",
+															"markdown": 1,
+															"placeholder": "A value must be entered for **%attribute_prompt%**.",
+															"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+															"prompt": "Missing Text Field Value",
+															"type": "textarea"
+														},
+														{
+															"code": "missing_radio_msg",
+															"markdown": 1,
+															"placeholder": "An option must be selected for **%attribute_prompt%**.",
+															"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+															"prompt": "Missing Radio Selection",
+															"type": "textarea"
+														}
+													],
+													"type": "group",
+													"visibility_conditions": {
+														"type": {
+															"value": [
+																"attributes"
 															]
 														}
 													}
@@ -2350,20 +2380,10 @@
 											"label": "px",
 											"min": 0,
 											"placeholder": 16,
-											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%",
 											"prompt": "Gap",
 											"step": 0.1,
 											"text_type": "number",
-											"type": "text",
-											"visibility_conditions": {
-												"type": {
-													"value": [
-														"side-by-side-group",
-														"inline-group",
-														"vertical-group"
-													]
-												}
-											}
+											"type": "text"
 										},
 										{
 											"code": "vertical_breakpoint",
@@ -2883,6 +2903,46 @@
 												"type": {
 													"value": [
 														"add-to-cart-button"
+													]
+												}
+											}
+										},
+										{
+											"can_disable": 1,
+											"code": "attribute_messages",
+											"collapsed": 1,
+											"prompt": "Attribute Messages",
+											"properties": [
+												{
+													"code": "invalid_msg",
+													"markdown": 1,
+													"placeholder": "Please select a valid combination of attributes.",
+													"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+													"prompt": "Invalid Attribute Combination",
+													"type": "textarea"
+												},
+												{
+													"code": "missing_text_msg",
+													"markdown": 1,
+													"placeholder": "A value must be entered for **%attribute_prompt%**.",
+													"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+													"prompt": "Missing Text Field Value",
+													"type": "textarea"
+												},
+												{
+													"code": "missing_radio_msg",
+													"markdown": 1,
+													"placeholder": "An option must be selected for **%attribute_prompt%**.",
+													"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+													"prompt": "Missing Radio Selection",
+													"type": "textarea"
+												}
+											],
+											"type": "group",
+											"visibility_conditions": {
+												"type": {
+													"value": [
+														"attributes"
 													]
 												}
 											}
@@ -3998,20 +4058,10 @@
 									"label": "px",
 									"min": 0,
 									"placeholder": 16,
-									"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%",
 									"prompt": "Gap",
 									"step": 0.1,
 									"text_type": "number",
-									"type": "text",
-									"visibility_conditions": {
-										"type": {
-											"value": [
-												"side-by-side-group",
-												"inline-group",
-												"vertical-group"
-											]
-										}
-									}
+									"type": "text"
 								},
 								{
 									"code": "vertical_breakpoint",
@@ -4531,6 +4581,46 @@
 										"type": {
 											"value": [
 												"add-to-cart-button"
+											]
+										}
+									}
+								},
+								{
+									"can_disable": 1,
+									"code": "attribute_messages",
+									"collapsed": 1,
+									"prompt": "Attribute Messages",
+									"properties": [
+										{
+											"code": "invalid_msg",
+											"markdown": 1,
+											"placeholder": "Please select a valid combination of attributes.",
+											"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+											"prompt": "Invalid Attribute Combination",
+											"type": "textarea"
+										},
+										{
+											"code": "missing_text_msg",
+											"markdown": 1,
+											"placeholder": "A value must be entered for **%attribute_prompt%**.",
+											"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+											"prompt": "Missing Text Field Value",
+											"type": "textarea"
+										},
+										{
+											"code": "missing_radio_msg",
+											"markdown": 1,
+											"placeholder": "An option must be selected for **%attribute_prompt%**.",
+											"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+											"prompt": "Missing Radio Selection",
+											"type": "textarea"
+										}
+									],
+									"type": "group",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"attributes"
 											]
 										}
 									}
@@ -5646,20 +5736,10 @@
 							"label": "px",
 							"min": 0,
 							"placeholder": 16,
-							"preview_property_selector": ":shadow #detail__child-%index%__child-%index%",
 							"prompt": "Gap",
 							"step": 0.1,
 							"text_type": "number",
-							"type": "text",
-							"visibility_conditions": {
-								"type": {
-									"value": [
-										"side-by-side-group",
-										"inline-group",
-										"vertical-group"
-									]
-								}
-							}
+							"type": "text"
 						},
 						{
 							"code": "vertical_breakpoint",
@@ -6179,6 +6259,46 @@
 								"type": {
 									"value": [
 										"add-to-cart-button"
+									]
+								}
+							}
+						},
+						{
+							"can_disable": 1,
+							"code": "attribute_messages",
+							"collapsed": 1,
+							"prompt": "Attribute Messages",
+							"properties": [
+								{
+									"code": "invalid_msg",
+									"markdown": 1,
+									"placeholder": "Please select a valid combination of attributes.",
+									"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+									"prompt": "Invalid Attribute Combination",
+									"type": "textarea"
+								},
+								{
+									"code": "missing_text_msg",
+									"markdown": 1,
+									"placeholder": "A value must be entered for **%attribute_prompt%**.",
+									"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+									"prompt": "Missing Text Field Value",
+									"type": "textarea"
+								},
+								{
+									"code": "missing_radio_msg",
+									"markdown": 1,
+									"placeholder": "An option must be selected for **%attribute_prompt%**.",
+									"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+									"prompt": "Missing Radio Selection",
+									"type": "textarea"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"attributes"
 									]
 								}
 							}
@@ -7294,20 +7414,10 @@
 					"label": "px",
 					"min": 0,
 					"placeholder": 16,
-					"preview_property_selector": ":shadow #detail__child-%index%",
 					"prompt": "Gap",
 					"step": 0.1,
 					"text_type": "number",
-					"type": "text",
-					"visibility_conditions": {
-						"type": {
-							"value": [
-								"side-by-side-group",
-								"inline-group",
-								"vertical-group"
-							]
-						}
-					}
+					"type": "text"
 				},
 				{
 					"code": "vertical_breakpoint",
@@ -7827,6 +7937,46 @@
 						"type": {
 							"value": [
 								"add-to-cart-button"
+							]
+						}
+					}
+				},
+				{
+					"can_disable": 1,
+					"code": "attribute_messages",
+					"collapsed": 1,
+					"prompt": "Attribute Messages",
+					"properties": [
+						{
+							"code": "invalid_msg",
+							"markdown": 1,
+							"placeholder": "Please select a valid combination of attributes.",
+							"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+							"prompt": "Invalid Attribute Combination",
+							"type": "textarea"
+						},
+						{
+							"code": "missing_text_msg",
+							"markdown": 1,
+							"placeholder": "A value must be entered for **%attribute_prompt%**.",
+							"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+							"prompt": "Missing Text Field Value",
+							"type": "textarea"
+						},
+						{
+							"code": "missing_radio_msg",
+							"markdown": 1,
+							"placeholder": "An option must be selected for **%attribute_prompt%**.",
+							"preview_property_selector": ":shadow [part~=\"inventory-message\"] :shadow p",
+							"prompt": "Missing Radio Selection",
+							"type": "textarea"
+						}
+					],
+					"type": "group",
+					"visibility_conditions": {
+						"type": {
+							"value": [
+								"attributes"
 							]
 						}
 					}
@@ -9263,6 +9413,23 @@
 											}
 										},
 										{
+											"attribute_messages": {
+												"invalid_msg": {
+													"source": "markdown",
+													"value": "Please select a valid combination of attributes."
+												},
+												"missing_radio_msg": {
+													"source": "markdown",
+													"value": "An option must be selected for **%attribute_prompt%**."
+												},
+												"missing_text_msg": {
+													"source": "markdown",
+													"value": "A value must be entered for **%attribute_prompt%**."
+												},
+												"settings": {
+													"enabled": 1
+												}
+											},
 											"container_styles": {
 												"settings": {
 													"enabled": 0
@@ -9653,7 +9820,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-bjPQJ8i8TWpctKiQZa0gBypxX8G30wgSJhWjf2/stXE= sha384-cnwld/GoUh6g2ntlzOZWAyUOajUdO8v+Ksm2Xnb65szd/zv/yFcUKpQvFw7ANPMT sha512-m+RTlWm91ZegAnb7zU8arOsdZ31Okx8bgV4AX7G4CLc5hapZR0vKYyEgnhzt1V5rOOGsnxjwnDnAgTU4efqHKQ=="
+					"value": "sha256-VmHD9VOCZEIcwa6Db2h+K/+o/kFc+cxIYIbK2MSLr6Q= sha384-wb1mkgnkHVthHQn2AeETHLC7syGXfxE4LwymC332+vXs9XUp/sCFqsWzbjzXikcq sha512-RBVTrxyK0j3NHqwFuAU31DYa5jkVdKCDsGYAAG1/F7Oj6MJQdmwpimj9bdjCKNi1xzPzC/90Pl5/AGq1i7TWkA=="
 				},
 				{
 					"name": "crossorigin",
@@ -9691,16 +9858,16 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.12.02",
-		"mmx-base": "=10.12.02",
-		"mmx-button": "=10.12.02",
-		"mmx-dialog": "=10.12.02",
-		"mmx-featured-product": "=10.12.02",
-		"mmx-forms": "=10.12.02",
-		"mmx-icons": "=10.12.02",
-		"mmx-image-gallery": "=10.12.02",
-		"mmx-messages": "=10.12.02",
-		"mmx-tabs": "=10.12.02",
-		"mmx-text": "=10.12.02"
+		"mmx-accordion": "=10.12.03",
+		"mmx-base": "=10.12.03",
+		"mmx-button": "=10.12.03",
+		"mmx-dialog": "=10.12.03",
+		"mmx-featured-product": "=10.12.03",
+		"mmx-forms": "=10.12.03",
+		"mmx-icons": "=10.12.03",
+		"mmx-image-gallery": "=10.12.03",
+		"mmx-messages": "=10.12.03",
+		"mmx-tabs": "=10.12.03",
+		"mmx-text": "=10.12.03"
 	}
 }

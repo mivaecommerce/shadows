@@ -7,7 +7,7 @@
 			<fieldset>
 				<legend>&mvt:page:name;</legend>
 				<input type="hidden" name="Action" value="IAFL" />
-				<input type="hidden" name="NewAccount" value="1" />
+				<input type="hidden" name="NewAffiliate" value="1" />
 
 				<p class="c-heading-foxtrot">Log In Information</p>
 				<div class="c-form-list o-layout">

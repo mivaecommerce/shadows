@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.12,
-                    "settings_version": "10.12.02"
+                    "flex_version": 10.1203,
+                    "settings_version": "10.12.03"
                 },
                 "advanced": {
                     "form_name": {
@@ -304,6 +304,23 @@
                                                     }
                                                 },
                                                 {
+                                                    "attribute_messages": {
+                                                        "invalid_msg": {
+                                                            "source": "markdown",
+                                                            "value": "Please select a valid combination of attributes."
+                                                        },
+                                                        "missing_radio_msg": {
+                                                            "source": "markdown",
+                                                            "value": "An option must be selected for **%attribute_prompt%**."
+                                                        },
+                                                        "missing_text_msg": {
+                                                            "source": "markdown",
+                                                            "value": "A value must be entered for **%attribute_prompt%**."
+                                                        },
+                                                        "settings": {
+                                                            "enabled": 1
+                                                        }
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
@@ -677,8 +694,8 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.12,
-                    "settings_version": "10.12.02"
+                    "flex_version": 10.1203,
+                    "settings_version": "10.12.03"
                 },
                 "advanced": {
                     "empty_results_message": {

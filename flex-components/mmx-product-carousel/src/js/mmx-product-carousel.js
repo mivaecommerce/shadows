@@ -407,7 +407,8 @@ class MMX_ProductCarousel extends MMX_Element {
 
 	renderProduct(product) {
 		const imageType = this.getImageType();
-		product.imgSrc = product.imagetypes?.[imageType]?.sizes?.[this.getPropValue('image-dimensions')]?.url ?? product?.imagetypes?.[imageType]?.sizes?.original?.url ?? '';
+		const image = product.imagetypes?.[imageType]?.sizes?.[this.getPropValue('image-dimensions')] ?? product?.imagetypes?.[imageType]?.sizes?.original;
+		product.imgSrc = image?.url ?? '';
 
 		return /*html*/`
 			<mmx-hero
@@ -416,6 +417,8 @@ class MMX_ProductCarousel extends MMX_Element {
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(product.url)}"
 				data-img-src="${MMX.encodeEntities(product.imgSrc)}"
+				data-img-width="${MMX.encodeEntities(image?.width)}"
+				data-img-height="${MMX.encodeEntities(image?.height)}"
 			>
 				<div slot="content">
 					<div part="product-name" class="type-product-name">${product.name}</div>

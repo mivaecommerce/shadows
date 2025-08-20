@@ -88,7 +88,13 @@
 																<table width="100%" border="0" cellspacing="0" cellpadding="0">
 																	<tr>
 																		<td>
-																			<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center"><!-- Uncomment to add a logo to this email <a href="&mvte:urls:SFNT:auto;" target="_blank"><img src="images/logo.png" border="0" width="130" height="35" alt="" /></a> --></div>
+																			<div class="img-center" style="font-size:0pt; line-height:0pt; text-align:center">
+																				<mvt:if expr="NOT ISNULL l.settings:readytheme:logo_image">
+																					<a href="&mvte:urls:SFNT:auto;" target="_blank">
+																						<img src="&mvte:global:basehref;&mvte:readytheme:logo_image;" width="&mvte:readytheme:logo_image_width;" height="&mvte:readytheme:logo_image_height;" alt="&mvte:readytheme:logo_alt;" border="0" />
+																					</a>
+																				</mvt:if>
+																			</div>
 																		</td>
 																	</tr>
 																</table>
@@ -309,10 +315,34 @@
 															<td align="center">
 																<table border="0" cellspacing="0" cellpadding="0">
 																	<tr>
-																		<!-- Uncomment to add facebook to this email <td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42"><a href="#" target="_blank"><img src="&mvte:global:basehref;graphics/en-US/email/ico_facebook.png" border="0" width="38" height="38" alt="" /></a></td> -->
-																		<!-- Uncomment to add twitter to this email <td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42"><a href="#" target="_blank"><img src="&mvte:global:basehref;graphics/en-US/email/ico_twitter.png" border="0" width="38" height="38" alt="" /></a></td> -->
-																		<!-- Uncomment to add pinterest to this email <td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42"><a href="#" target="_blank"><img src="&mvte:global:basehref;graphics/en-US/email/ico_pinterest.png" border="0" width="38" height="38" alt="" /></a></td> -->
-																		<!-- Uncomment to add instagram to this email <td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42"><a href="#" target="_blank"><img src="&mvte:global:basehref;graphics/en-US/email/ico_instagram.png" border="0" width="38" height="38" alt="" /></a></td> -->
+																		<mvt:if expr="NOT ISNULL l.settings:readytheme:social_facebook">
+																			<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42">
+																				<a href="&mvte:readytheme:social_facebook;" target="_blank">
+																					<img src="&mvte:global:basehref;graphics/en-US/email/ico_facebook.png" border="0" width="38" height="38" alt="" />
+																				</a>
+																			</td>
+																		</mvt:if>
+																		<mvt:if expr="NOT ISNULL l.settings:readytheme:social_twitter">
+																			<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42">
+																				<a href="&mvte:readytheme:social_twitter;" target="_blank">
+																					<img src="&mvte:global:basehref;graphics/en-US/email/ico_twitter.png" border="0" width="38" height="38" alt="" />
+																				</a>
+																			</td>
+																		</mvt:if>
+																		<mvt:if expr="NOT ISNULL l.settings:readytheme:social_pinterest">
+																			<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42">
+																				<a href="&mvte:readytheme:social_pinterest;" target="_blank">
+																					<img src="&mvte:global:basehref;graphics/en-US/email/ico_pinterest.png" border="0" width="38" height="38" alt="" />
+																				</a>
+																			</td>
+																		</mvt:if>
+																		<mvt:if expr="NOT ISNULL l.settings:readytheme:social_instagram">
+																			<td class="img-center" style="font-size:0pt; line-height:0pt; text-align:center" width="42">
+																				<a href="&mvte:readytheme:social_instagram;" target="_blank">
+																					<img src="&mvte:global:basehref;graphics/en-US/email/ico_instagram.png" border="0" width="38" height="38" alt="" />
+																				</a>
+																			</td>
+																		</mvt:if>
 																	</tr>
 																</table>
 															</td>

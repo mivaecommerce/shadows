@@ -190,16 +190,20 @@ class MMX_HeroSlider extends MMX_Element {
 	}
 
 	renderSliderArrowSVGCaret() {
-		return `<svg xmlns="http://www.w3.org/2000/svg" width="20" height="32.641" viewBox="0 0 20 32.641">
-			<path class="mmx-hero-slider__arrow-inner" d="M3.415,15.732l-.218.218.218.22L17.441,30.237l.01-.01,1.733-1.754-1.739-1.744L6.7,15.951,17.489,5.127l1.74-1.745L17.495,1.628l-.007-.007Z" transform="translate(0.771 0.391)" />
-			<path class="mmx-hero-slider__arrow-outer" d="M16.268,0,14.517,1.759.265,16.075,0,16.342H0L14.472,30.882l1.751,1.759.01-.01,1.98-2L4.186,16.56l-.218-.218.218-.218L18.259,2.012l-1.983-2Z" transform="translate(0 0)" />
-		</svg>`;
+		return /*html*/`
+			<svg part="arrow-svg arrow-svg--caret" xmlns="http://www.w3.org/2000/svg" width="20" height="32.641" viewBox="0 0 20 32.641">
+				<path part="arrow-path arrow-path--inner" class="mmx-hero-slider__arrow-inner" d="M3.415,15.732l-.218.218.218.22L17.441,30.237l.01-.01,1.733-1.754-1.739-1.744L6.7,15.951,17.489,5.127l1.74-1.745L17.495,1.628l-.007-.007Z" transform="translate(0.771 0.391)" />
+				<path part="arrow-path arrow-path--outer" class="mmx-hero-slider__arrow-outer" d="M16.268,0,14.517,1.759.265,16.075,0,16.342H0L14.472,30.882l1.751,1.759.01-.01,1.98-2L4.186,16.56l-.218-.218.218-.218L18.259,2.012l-1.983-2Z" transform="translate(0 0)" />
+			</svg>
+		`;
 	}
 
 	renderSliderArrowSVGButton() {
-		return `<svg xmlns="http://www.w3.org/2000/svg" width="7.197" height="11.831" viewBox="0 0 7.197 11.831">
-			<path class="mmx-hero-slider__arrow-button" d="M1.31,0,0,1.3,5.916,7.2l5.916-5.9L10.521,0,5.916,4.606Z" transform="translate(7.197) rotate(90)" />
-		</svg>`;
+		return /*html*/`
+			<svg part="arrow-svg arrow-svg--button" xmlns="http://www.w3.org/2000/svg" width="7.197" height="11.831" viewBox="0 0 7.197 11.831">
+				<path part="arrow-path arrow-path--button" class="mmx-hero-slider__arrow-button" d="M1.31,0,0,1.3,5.916,7.2l5.916-5.9L10.521,0,5.916,4.606Z" transform="translate(7.197) rotate(90)" />
+			</svg>
+		`;
 	}
 
 	styles() {
@@ -750,7 +754,8 @@ class MMX_HeroSlider extends MMX_Element {
 			return this.createElement({
 				type: 'button',
 				attributes: {
-					title: `Move slider to page #${i + 1}`
+					title: `Move slider to page #${i + 1}`,
+					part: 'slider-navigation-button'
 				}
 			}).outerHTML;
 		})).join('');
@@ -779,7 +784,6 @@ class MMX_HeroSlider extends MMX_Element {
 		}
 
 		this.#auto_image_height = 0;
-		this.imageLoadedCount = 0;
 
 		slides.forEach(slide => {
 			const img = slide?.slottedImage?.() ?? slide?.shadowImage?.();
@@ -830,8 +834,6 @@ class MMX_HeroSlider extends MMX_Element {
 	}
 
 	checkLoadedImage(image) {
-		this.imageLoadedCount++;
-
 		const last_auto_image_height = this.#auto_image_height;
 
 		this.calculateMinImageHeight(this.getResponsiveImageHeight(image));
@@ -839,6 +841,25 @@ class MMX_HeroSlider extends MMX_Element {
 		if (last_auto_image_height !== this.#auto_image_height) {
 			this.updateSlideHeight(this.#auto_image_height + 'px');
 		}
+
+		this.#updateRenderStatus();
+	}
+
+	#updateRenderStatus() {
+		if (this.imageLoadedCount === this.getSlideCount()) {
+			this.classList.add('mmx-hero-slider--images-loaded');
+		} else {
+			this.classList.remove('mmx-hero-slider--images-loaded');
+		}
+	}
+
+	get imageLoadedCount() {
+		const loadedSlides = Array.from(this.slottedSlides()).filter(slide => {
+			const img = slide?.slottedImage?.() ?? slide?.shadowImage?.();
+			return img?.complete;
+		});
+
+		return loadedSlides.length;
 	}
 
 	updateSlideHeight(size) {

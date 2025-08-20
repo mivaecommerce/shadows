@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.12.02",
+	"version": "10.12.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -1334,7 +1334,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-jRZfXUCODql377uJIYk4ewnRMA3GjCxnb7rsFhu6C18= sha384-ejWZDoKPbTEpUyrTXjDvXl435JCKrRVs9FA2ieq5Jy1A0gZRutoRyU3NEH5FIK/Q sha512-ZU9TfLss22OOoU53WN59fzJsL4Sa9PQevzqL5Om9pGZAKqu7vyoXr+OdaJCqaLxnaC7mL/AaqjsdUUYPSLSGGA=="
+					"value": "sha256-ZfNHS8FF7rm/41GAji8wqHGmhSdR8U+IvXm+rquENBA= sha384-lVEJ6jslOQHk3XLkePY/Cnm9mvKcTxlNVwP2hICq7SeOTchnafOxtdIm+S9Gn5bW sha512-YBsva1Ssf2k5l41U1PlnuVyqIT7JshyLYRqYgvfhqnRH+jL9sbrTATW2/OFOMsuRjw3GLzmArT61o10og/o2UQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1372,9 +1372,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.02",
-		"mmx-button": "=10.12.02",
-		"mmx-hero": "=10.12.02",
-		"mmx-text": "=10.12.02"
+		"mmx-base": "=10.12.03",
+		"mmx-button": "=10.12.03",
+		"mmx-hero": "=10.12.03",
+		"mmx-text": "=10.12.03"
 	}
 }

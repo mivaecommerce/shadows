@@ -6,6 +6,7 @@ This repo contains copies of the extracted shadows.pkg as well as code from `$ m
 
 ### 10.12
 
+* 10.12.03 -  [Diff](https://github.com/mivaecommerce/shadows/compare/10.12.02...10.12.03) | [mmt source](https://github.com/mivaecommerce/shadows/tree/10.12.03/mmt) | [pkg source](https://github.com/mivaecommerce/shadows/tree/10.12.03/pkg/shadows) | [shadows.pkg](https://github.com/mivaecommerce/shadows/raw/10.12.03/pkg/shadows.pkg) | [Flex Components](https://github.com/mivaecommerce/shadows/tree/10.12.03/flex-components)
 * 10.12.02 -  [Diff](https://github.com/mivaecommerce/shadows/compare/10.12.00...10.12.02) | [mmt source](https://github.com/mivaecommerce/shadows/tree/10.12.02/mmt) | [pkg source](https://github.com/mivaecommerce/shadows/tree/10.12.02/pkg/shadows) | [shadows.pkg](https://github.com/mivaecommerce/shadows/raw/10.12.02/pkg/shadows.pkg) | [Flex Components](https://github.com/mivaecommerce/shadows/tree/10.12.02/flex-components)
 * 10.12.00 -  [Diff](https://github.com/mivaecommerce/shadows/compare/10.11.03...10.12.00) | [mmt source](https://github.com/mivaecommerce/shadows/tree/10.12.00/mmt) | [pkg source](https://github.com/mivaecommerce/shadows/tree/10.12.00/pkg/shadows) | [shadows.pkg](https://github.com/mivaecommerce/shadows/raw/10.12.00/pkg/shadows.pkg) | [Flex Components](https://github.com/mivaecommerce/shadows/tree/10.12.00/flex-components)
 

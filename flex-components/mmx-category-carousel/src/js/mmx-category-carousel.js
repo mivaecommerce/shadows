@@ -175,7 +175,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				this.loadedCategories[category.id] = category;
 				this.categories.push({
 					category: {
-						category: { 
+						category: {
 							link: category.url,
 							...category,
 						},
@@ -278,12 +278,28 @@ class MMX_CategoryCarousel extends MMX_Element {
 		if (MMX.isTruthy(child?.image?.custom_image?.settings?.enabled) && child?.image?.custom_image?.image?.image?.length ) {
 			child.image.url = child.image.custom_image.image.image;
 
-			if (child?.image?.custom_image?.image?.responsive_images?.mobile) {
-				mobileSource = /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntities(MMX.encodeSrcset(child.image.custom_image.image.responsive_images.mobile))}">`;
+			const mobileImage = this.#getResponsiveImageData('mobile', child?.image?.custom_image?.image);
+
+			if (mobileImage) {
+				mobileSource = /*html*/`<source
+					class="source__mobile"
+					media="(max-width: 39.999em)"
+					srcset="${MMX.encodeEntities(MMX.encodeSrcset(mobileImage.image))}"
+					width="${MMX.encodeEntities(mobileImage.width)}"
+					height="${MMX.encodeEntities(mobileImage.height)}"
+				>`;
 			}
 
-			if (child?.image?.custom_image?.image?.responsive_images?.tablet) {
-				tabletSource = /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${MMX.encodeEntities(MMX.encodeSrcset(child.image.custom_image.image.responsive_images.tablet))}">`;
+			const tabletImage = this.#getResponsiveImageData('tablet', child?.image?.custom_image?.image);
+
+			if (tabletImage) {
+				tabletSource = /*html*/`<source
+					class="source__tablet"
+					media="(max-width: 59.999em)"
+					srcset="${MMX.encodeEntities(MMX.encodeSrcset(tabletImage.image))}"
+					width="${MMX.encodeEntities(tabletImage.width)}"
+					height="${MMX.encodeEntities(tabletImage.height)}"
+				>`;
 			}
 		}
 		// Category Image (tree or title)
@@ -308,9 +324,32 @@ class MMX_CategoryCarousel extends MMX_Element {
 			>
 				${mobileSource}
 				${tabletSource}
-				<img src="${child.image.url}" alt="${child.image?.custom_image?.image?.alt ?? ''}" ${this.getLoadingAttributeString()}>
+				<img
+					src="${MMX.encodeEntities(child.image.url)}"
+					alt="${MMX.encodeEntities(child.image.custom_image?.image?.alt)}"
+					width="${MMX.encodeEntities(child.image.custom_image?.image?.width)}"
+					height="${MMX.encodeEntities(child.image.custom_image?.image?.height)}"
+					${this.getLoadingAttributeString()}
+				>
 			</picture>
 		`;
+	}
+
+	#getResponsiveImageData(device, image) {
+		const responsiveImageData = image?.responsive_image_data?.[device];
+		const responsiveImage = image?.responsive_images?.[device];
+
+		if (!MMX.valueIsEmpty(responsiveImageData?.image)) {
+			return responsiveImageData;
+		}
+		else if (!MMX.valueIsEmpty(responsiveImage)) {
+			return {
+				image: responsiveImage
+			};
+		}
+		else {
+			return undefined;
+		}
 	}
 
 	slider() {

@@ -5,8 +5,8 @@
             "item_code": "content",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.12,
-                    "settings_version": "10.12.02"
+                    "flex_version": 10.1203,
+                    "settings_version": "10.12.03"
                 },
                 "content": {
                     "value": "<p>Orders are generally shipped in 1 day after your order is processed and they normally take an additional 3 - 5 business days to arrive.</p>\r\n<p>Orders are processed Mon-Fri during normal business hours.</p>\r\n<p>You may return damaged or defective merchandise within 10 days of the original purchase date for a full refund minus shipping charges. We will also be glad to exchange the damaged merchandise for anything on our site of equal or lesser value.</p>"

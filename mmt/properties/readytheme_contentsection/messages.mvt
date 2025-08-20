@@ -1,9 +1,9 @@
 <mvt:comment><!-- Customer/Affiliate Creation/Editing --></mvt:comment>
 <mvt:if expr="g.NewAccount AND NOT l.settings:messages:error_message_count">
-	<p class="x-messages x-messages--success">Hello <mvt:eval expr="miva_html_strip(g.Customer_ShipFirstName, '')"/>. Your new account has been created. Please click here to <mvt:item name="cssui_links" param="storefront">Start Shopping</mvt:item>.</p>
+	<p class="x-messages x-messages--success">Hello &mvte:global:Customer_ShipFirstName;. Your new account has been created. Please click here to <mvt:item name="cssui_links" param="storefront">Start Shopping</mvt:item>.</p>
 </mvt:if>
 <mvt:if expr="g.NewAffiliate AND NOT l.settings:messages:error_message_count">
-	<p class="x-messages x-messages--success">Congratulations <mvt:eval expr="miva_html_strip(g.Affiliate_ContactName, '')"/>. Your new account has been created.</p>
+	<p class="x-messages x-messages--success">Congratulations &mvte:global:Affiliate_ContactName;. Your new account has been created.</p>
 </mvt:if>
 <mvt:if expr="g.updated EQ 'true' AND NOT l.settings:messages:information_message_count AND NOT l.settings:messages:error_message_count">
 	<p class="x-messages x-messages--success">Your Account Setting Have Been Updated</p>

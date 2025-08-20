@@ -1,20 +1,3 @@
-<mvt:comment>
-	/**
-	 * This controls the data return for the AJAX add-to-cart call.
-	*/
-</mvt:comment>
-<mvt:if expr="g.ajax EQ 1">
-	<mvt:item name="html_profile" />
-	<head>
-		<meta charset="utf-8">
-	</head>
-	<body id="js-&mvte:page:code;">
-		<mvt:item name="readytheme" param="contentsection( 'mini_basket' )" />
-	</body>
-	</html>
-	<mvt:exit>
-</mvt:if>
-
 <mvt:item name="html_profile" />
 <head>
 	<meta charset="utf-8">
@@ -41,7 +24,7 @@
 	</section>
 
 	<mvt:item name="basket" />
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

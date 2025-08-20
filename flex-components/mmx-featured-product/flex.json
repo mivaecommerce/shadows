@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.12.02",
+	"version": "10.12.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -776,10 +776,59 @@
 				}
 			],
 			"type": "group"
+		},
+		{
+			"can_disable": 1,
+			"code": "attribute_messages",
+			"prompt": "Attribute Messages",
+			"properties": [
+				{
+					"code": "invalid_msg",
+					"markdown": 1,
+					"placeholder": "Please select a valid combination of attributes.",
+					"preview_property_selector": ":shadow [part~=\"inventory-message\"] p",
+					"prompt": "Invalid Attribute Combination",
+					"type": "textarea"
+				},
+				{
+					"code": "missing_text_msg",
+					"markdown": 1,
+					"placeholder": "A value must be entered for **%attribute_prompt%**.",
+					"preview_property_selector": ":shadow [part~=\"inventory-message\"] p",
+					"prompt": "Missing Text Field Value",
+					"type": "textarea"
+				},
+				{
+					"code": "missing_radio_msg",
+					"markdown": 1,
+					"placeholder": "An option must be selected for **%attribute_prompt%**.",
+					"preview_property_selector": ":shadow [part~=\"inventory-message\"] p",
+					"prompt": "Missing Radio Selection",
+					"type": "textarea"
+				}
+			],
+			"type": "group"
 		}
 	],
 	"defaults": {
 		"advanced": {
+			"attribute_messages": {
+				"invalid_msg": {
+					"source": "markdown",
+					"value": "Please select a valid combination of attributes."
+				},
+				"missing_radio_msg": {
+					"source": "markdown",
+					"value": "An option must be selected for **%attribute_prompt%**."
+				},
+				"missing_text_msg": {
+					"source": "markdown",
+					"value": "A value must be entered for **%attribute_prompt%**."
+				},
+				"settings": {
+					"enabled": 1
+				}
+			},
 			"product": {
 				"button": {
 					"button_text": {
@@ -880,7 +929,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-GdWF1s+ozULPwNebhNNJecIe8x3Xm8OJBNjRq8B1l84= sha384-50MElBMS9u9qWuP7bNIhEjf1Y6dG9Qz4oU5yBVJ/Ik7cZRuy2OuIyfLLS2q41HZ5 sha512-FrFhoxOgF5z2ybVAWsilfSpZLTfvcTEijo/9zetQAQLO1RiPM14TwQqJ+Z1Rv3k+B3dRR2rQPHGP789EFlnFyg=="
+					"value": "sha256-HaPHJdj9N13+5VcWoFiNkujt/mRVPDVuhPzF0jaZ5+Q= sha384-s3y3nu18sqtnGvk8C/4l8WbMe+K5mcVfCfqI32mY9MYAzqKUNHhYx5VJkk8Wayl/ sha512-kYV+xOVMCyj3Jy9gE6Eit9rtZvo7HUp2CJj6JmXkiUFBxoMjvT1THFgFT0rbvVS3A1FcpeAOfVzy9JrzbWBDqw=="
 				},
 				{
 					"name": "crossorigin",
@@ -908,7 +957,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-kRKMKUU4G8J0DcRG/TscQNv48Jx11CG+Cnd2WiSj0Go= sha384-VuthJQMmHnDSpN1cx2Hm+OxoKbPIZXC2X7ipY+YfVGx5L10AxjadLAo+Xf0bSJf2 sha512-Fz+RAx2WObXbFtzts3H8W5Sux4yKr2gqA1tMkY8tRBbvB+Flh418jUgqbARJkdNH0eKi/EzWfJzW/7hrHHUncQ=="
+					"value": "sha256-UUWX1dXCqc9DW0o76lDy48G345LLyzQjLnCx1ku+AyE= sha384-/+IYwdO63IdYP4ZY+K+BDryKM0c/acrJURhl4GG10khTWDK/cCgqUZ1CfNvfARzi sha512-TRs1OA4F7fl2LMnRxzOzS4G4ku0Ydw0xNm1M/sXdGcyaIdItxrYrFvuSPke00byBzDIFBZ2JZGLFQ737cigGFw=="
 				},
 				{
 					"name": "crossorigin",
@@ -918,10 +967,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.02",
-		"mmx-button": "=10.12.02",
-		"mmx-hero": "=10.12.02",
-		"mmx-hero-slider": "=10.12.02",
-		"mmx-text": "=10.12.02"
+		"mmx-base": "=10.12.03",
+		"mmx-button": "=10.12.03",
+		"mmx-hero": "=10.12.03",
+		"mmx-hero-slider": "=10.12.03",
+		"mmx-text": "=10.12.03"
 	}
 }
