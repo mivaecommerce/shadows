@@ -1322,6 +1322,7 @@ const paymentMethod = (() => {
 
 	let atResizeTimeout;
 	let internalId = 0;
+	let lastWindowWidth = 0;
 	let togglesMap = {};
 	let targetsMap = {};
 
@@ -1364,6 +1365,8 @@ const paymentMethod = (() => {
 	}
 
 	let initA11yToggle = context => {
+		setLastWindowWidth();
+
 		togglesMap = $('[data-a11y-toggle]', context).reduce((acc, toggle) => {
 			let selector = `#${toggle.getAttribute('data-a11y-toggle')}`;
 
@@ -1444,6 +1447,20 @@ const paymentMethod = (() => {
 		}
 	};
 
+	const setLastWindowWidth = () => {
+		lastWindowWidth = window.innerWidth;
+	};
+
+	const isVerticalResize = () => {
+		if (window.innerWidth === lastWindowWidth) {
+			return true;
+		}
+
+		setLastWindowWidth();
+
+		return false;
+	};
+
 	/**
 	 * Auto-initialize A11y Toggle when the document is complete.
 	 */
@@ -1456,6 +1473,10 @@ const paymentMethod = (() => {
 	 * toggles who have their display managed through media queries.
 	 */
 	window.addEventListener('resize', () => {
+		if (isVerticalResize()) {
+			return;
+		}
+
 		if (atResizeTimeout) {
 			window.cancelAnimationFrame(atResizeTimeout);
 		}

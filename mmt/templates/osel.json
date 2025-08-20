@@ -9,7 +9,7 @@
         "discounts": 1,
         "editable": 0,
         "groups": 1,
-        "handling": 1,
+        "handling": 0,
         "imagetypes": [
             "main"
         ],
@@ -17,8 +17,8 @@
         "lineitemdiscounts": 1,
         "lineitemprice": "base",
         "redeemgiftcerts": 1,
-        "salestax": 1,
-        "shipping": 1,
+        "salestax": 0,
+        "shipping": 0,
         "splitpayments": 1,
         "template_filename": "osel-basket.mvc"
     },

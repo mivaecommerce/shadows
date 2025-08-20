@@ -143,14 +143,14 @@
 							</ul>
 						</mvt:if>
 					</p>
-				</div>
-			</mvt:foreach>
+				</mvt:foreach>
+			</div>
 		</mvt:capture>
 
 		<mvt:comment>Send Email</mvt:comment>
-		<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:submission:email:sent_sucessfully" value="v9_SendEmail( l.settings:instance:submission:email )" />
+		<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:submission:email:sent_successfully" value="v9_SendEmail( l.settings:instance:submission:email )" />
 
-		<mvt:if expr="NOT l.settings:instance:submission:email:sent_sucessfully">
+		<mvt:if expr="NOT l.settings:instance:submission:email:sent_successfully">
 			<mvt:assign name="l.settings:instance:submission:status" value="'send_email_failure'" />
 		<mvt:else>
 			<mvt:assign name="g.status" value="'submitted'" />
@@ -161,6 +161,22 @@
 			</mvt:foreach>
 		</mvt:if>
 	</mvt:if>
+</mvt:if>
+
+<mvt:comment>Populate Default Values</mvt:comment>
+<mvt:if expr="NOT l.settings:instance:submission:was_submitted OR l.settings:instance:submission:status EQ 'send_email_success'">
+	<mvt:foreach iterator="field" array="instance:form:fields:children">
+		<mvt:if expr="ISNULL l.settings:field:submission:value AND miva_array_filter_ref( l.settings:field:options:children, 1, l.option, 'l.option:set_default:value', l.settings:field:set_default_options )">
+			<mvt:foreach iterator="option" array="field:set_default_options">
+				<mvt:if expr="l.settings:field:type:value EQ 'checkboxes'">
+					<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:field:submission:value, l.settings:option:label:value, -1 )" />
+				<mvt:else>
+					<mvt:assign name="l.settings:field:submission:value" value="l.settings:option:label:value" />
+					<mvt:foreachstop />
+				</mvt:if>
+			</mvt:foreach>
+		</mvt:if>
+	</mvt:foreach>
 </mvt:if>
 
 <mvt:comment>Background Type</mvt:comment>
@@ -412,7 +428,7 @@
 						>
 						<datalist id="&mvte:field:html:attr:list;">
 							<mvt:foreach iterator="option" array="field:options:children">
-								<option>&mvte:option:value;</option>
+								<option>&mvte:option:label:value;</option>
 							</mvt:foreach>
 						</datalist>
 
@@ -427,8 +443,8 @@
 							>
 								<option value="">&lt;Select One&gt;</option>
 								<mvt:foreach iterator="option" array="field:options:children">
-									<mvt:assign name="l.settings:option:html:attr:selected" value="ternary( l.settings:field:submission:value EQ l.settings:option:value, 'selected', '' )" />
-									<option &mvte:option:html:attr:selected;>&mvte:option:value;</option>
+									<mvt:assign name="l.settings:option:html:attr:selected" value="ternary( l.settings:field:submission:value EQ l.settings:option:label:value, 'selected', '' )" />
+									<option &mvte:option:html:attr:selected;>&mvte:option:label:value;</option>
 								</mvt:foreach>
 							</select>
 						</div>
@@ -438,19 +454,19 @@
 						<fieldset class="mmx-form-fieldset mmx-form-control">
 							<mvt:foreach iterator="option" array="field:options:children">
 								<mvt:assign name="l.settings:option:html:attr:id" value="ternary( l.pos2 EQ 1, 'id=\"' $ l.settings:field:html:attr:id $ '\"', '' )" />
-								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( l.settings:field:submission:value EQ l.settings:option:value, 'checked', '' )" />
+								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( l.settings:field:submission:value EQ l.settings:option:label:value, 'checked', '' )" />
 								<label class="mmx-form-radio">
 									<input
 										type="radio"
 										class="mmx-form-radio__input"
 										name="&mvte:field:html:attr:name;"
-										value="&mvte:option:value;"
+										value="&mvte:option:label:value;"
 										&mvt:option:html:attr:id;
 										&mvte:field:html:attr:required;
 										&mvte:option:html:attr:checked;
 									/>
 									<span class="mmx-form-caption">
-										&mvte:option:value;
+										&mvte:option:label:value;
 									</span>
 								</label>
 							</mvt:foreach>
@@ -462,19 +478,19 @@
 							<mvt:foreach iterator="option" array="field:options:children">
 								<mvt:assign name="l.settings:option:html:attr:id" value="ternary( l.pos2 EQ 1, 'id=\"' $ l.settings:field:html:attr:id $ '\"', '' )" />
 								<mvt:assign name="l.settings:option:html:attr:name" value="l.settings:field:html:attr:name $ '[' $ l.pos2 $ ']'" />
-								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( miva_array_find( l.settings:option:value, l.settings:field:submission:value, 1 ) , 'checked', '' )" />
+								<mvt:assign name="l.settings:option:html:attr:checked" value="ternary( miva_array_find( l.settings:option:label:value, l.settings:field:submission:value, 1 ) , 'checked', '' )" />
 								<label class="mmx-form-checkbox">
 									<input
 										type="checkbox"
 										class="mmx-form-checkbox__input"
 										name="&mvte:option:html:attr:name;"
-										value="&mvte:option:value;"
+										value="&mvte:option:label:value;"
 										&mvt:option:html:attr:id;
 										&mvte:field:html:attr:required;
 										&mvte:option:html:attr:checked;
 									/>
 									<span class="mmx-form-caption">
-										&mvte:option:value;
+										&mvte:option:label:value;
 									</span>
 								</label>
 							</mvt:foreach>

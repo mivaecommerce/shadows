@@ -952,11 +952,15 @@ class MMX_ProductDetails extends MMX_Element {
 		let prop = {};
 		let disabled = '';
 		let actionUrl = '';
+		let successMessage = '';
+		let errorMessage = '';
 
 		if (type === 'add-to-cart-button') {
 			prop = detail.add_to_cart_button;
 			text = MMX.valueIsEmpty(prop?.value) ? 'Add to Cart' : prop.value;
 			actionUrl = detail?.global_minibasket_url?.url ?? '';
+			successMessage = detail?.add_to_cart_messages?.success_message?.value;
+			errorMessage = detail?.add_to_cart_messages?.error_message?.value;
 			if (this.#productIsOutOfStock()) {
 				disabled = 'disabled';
 			}
@@ -977,6 +981,8 @@ class MMX_ProductDetails extends MMX_Element {
 				data-theme-class="${MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
 				data-width="${!theme_available ? 'full' : MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
 				data-action-url="${MMX.encodeEntities(actionUrl)}"
+				data-success-message="${MMX.encodeEntities(successMessage)}"
+				data-error-message="${MMX.encodeEntities(errorMessage)}"
 				${disabled}
 			>
 				${this.renderThemeStylesheetTemplate(theme_available)}
@@ -1022,6 +1028,7 @@ class MMX_ProductDetails extends MMX_Element {
 		}
 
 		button.disabled = true;
+		this.#removeRuntimeBasketItemInsertMessage(button);
 
 		MMX.Runtime_JSON_API_Call({
 			params: {
@@ -1043,24 +1050,36 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#runtimeBasketItemInsertFailed({button = {}, response = {}} = {}) {
-		const message = MMX.createElement({
-			type: 'mmx-message',
-			attributes: {
-				'part': 'add-to-cart-message',
-				'data-style': 'warning',
-				'data-auto-remove': 5000
-			},
-			content: response?.error_message ?? 'There was a problem adding the product to the basket.'
+		this.#showRuntimeBasketItemInsertMessage({
+			button,
+			style: 'warning',
+			text: response?.error_message ?? (button?.dataset?.errorMessage || 'There was a problem adding the product to the basket.')
 		});
+	}
 
-		if (button.nextElementSibling?.part?.contains?.('add-to-cart-message')) {
+	#showRuntimeBasketItemInsertMessage({button, style = 'info', text = ''} = {}) {
+		this.#removeRuntimeBasketItemInsertMessage(button);
+
+		button.insertAdjacentHTML('afterend', this.#renderMessage({
+			autoRemove: 5000,
+			part: 'add-to-cart-message',
+			style,
+			text
+		}));
+	}
+
+	#removeRuntimeBasketItemInsertMessage(button) {
+		if (button?.nextElementSibling?.part?.contains?.('add-to-cart-message')) {
 			button.nextElementSibling.remove();
 		}
-
-		button.after(message);
 	}
 
 	#afterRuntimeBasketItemInsert({button, productMachine} = {}) {
+		this.#showRuntimeBasketItemInsertMessage({
+			button,
+			style: 'success',
+			text: button?.dataset?.successMessage || 'Product added to basket!'
+		});
 		this.#loadMiniBasket(button);
 		this.#dispatchGtmEvent('add_to_cart');
 		productMachine?.initializeAttributeMachine?.();
@@ -1504,7 +1523,7 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	// Render: Message
-	#renderMessage({part, style, variant, size, display, text} = {}) {
+	#renderMessage({part, style, variant, size, display, text, autoRemove} = {}) {
 		const tag = style === 'none' ? 'div': 'mmx-message';
 
 		return /*html*/`
@@ -1514,6 +1533,7 @@ class MMX_ProductDetails extends MMX_Element {
 				data-variant="${MMX.encodeEntities(variant)}"
 				data-size="${MMX.encodeEntities(size)}"
 				data-display="${MMX.encodeEntities(display)}"
+				data-auto-remove="${MMX.encodeEntities(autoRemove)}"
 			>
 				${text}
 			</${tag}>

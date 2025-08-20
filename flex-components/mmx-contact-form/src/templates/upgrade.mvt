@@ -17,3 +17,27 @@
 	<mvt:assign name="l.settings:instance:form:header:subheading:textsettings:fields:normal:font:style" value="''" />
 	<mvt:assign name="l.settings:instance:form:header:body:textsettings:fields:normal:font:style" value="''" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.02'">
+	<mvt:comment> Restructure field-options from the list-text format to the list-group format </mvt:comment>
+	<mvt:foreach iterator="field" array="instance:form:fields:children">
+		<mvt:do file="g.Module_Library_Utilities" name="l.should_restructure_field" value="Value_In_List( l.settings:field:type:value, 'radio,select,datalist,checkboxes' )" />
+
+		<mvt:if expr="NOT l.should_restructure_field">
+			<mvt:foreachcontinue />
+		</mvt:if>
+
+		<mvt:assign name="l.new_children" value="''" />
+
+		<mvt:foreach iterator="option" array="field:options:children">
+			<mvt:assign name="l.new_option" value="''" />
+
+			<mvt:assign name="l.new_option:label:value" value="l.settings:option:value" />
+			<mvt:assign name="l.new_option:set_default:value" value="0" />
+
+			<mvt:assign name="l.null" value="miva_array_insert_var( l.new_children, l.new_option, -1 )" />
+		</mvt:foreach>
+
+		<mvt:assign name="l.settings:field:options:children" value="l.new_children" />
+	</mvt:foreach>
+</mvt:if>

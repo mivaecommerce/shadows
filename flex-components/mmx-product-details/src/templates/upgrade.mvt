@@ -1,0 +1,3 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.02'">
+	<mvt:assign name="l.settings:instance:advanced:form_name:value" value="'add'" />
+</mvt:if>

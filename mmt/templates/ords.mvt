@@ -11,7 +11,7 @@
 	<mvt:item name="head" param="css_list" />
 	<mvt:item name="head" param="head_tag" />
 </head>
-<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass; u-bg-gray-100">
+<body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<div class="u-printable">
 		<mvt:item name="hdft" param="global_header" />
 
@@ -23,14 +23,14 @@
 				</div>
 			</div>
 		</section>
-		
+
 		<section class="o-layout">
 			<div class="o-layout__item">
 				<mvt:item name="hdft" param="header" />
 				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 			</div>
 		</section>
-	
+
 		<section class="o-layout o-layout--flush o-layout--justify-between t-order-complete-content">
 			<div class="o-layout__item u-width-12 u-width-8--l">
 				<mvt:item name="view_order" />
@@ -39,13 +39,13 @@
 				<mvt:item name="order_customer" />
 			</aside>
 		</section>
-		
+
 		<section class="o-layout">
 			<div class="o-layout__item">
 				<mvt:item name="hdft" param="footer" />
 			</div>
 		</section>
-	
+
 		<mvt:item name="hdft" param="global_footer" />
 	</div>
 	<mvt:item name="printer_friendly_content" />

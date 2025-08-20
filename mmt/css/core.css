@@ -2657,8 +2657,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
  */
 .u-hide-visually:not(:focus):not(:active) {
 	clip: rect(0 0 0 0);
-	-webkit-clip-path: inset(50%);
-	        clip-path: inset(50%);
+	clip-path: inset(50%);
 	height: 1px;
 	margin: -1px;
 	overflow: hidden;
@@ -3561,6 +3560,18 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 
 .u-icon-youtube:before {
 	content: "P";
+}
+
+.u-icon-google:before {
+	content: "]";
+}
+
+.u-icon-vimeo:before {
+	content: "^";
+}
+
+.u-icon-flickr:before {
+	content: "_";
 }
 
 @media speech {

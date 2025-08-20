@@ -1,14 +1,17 @@
 <!DOCTYPE html>
-<mvt:if expr="l.settings:page:code CIN 'ORDL,OCST,OUS1,OUSM,UATM,UATR,OSEL,OPAY' OR (g.Customer_Temporary_Password) OR ('AMAZONPAY' CIN l.settings:page:code)">
-	<mvt:comment>This will set classes for use on checkout pages to clean up the header.</mvt:comment>
-	<mvt:assign name="g.Session:shadows:checkout_hidden" value="'u-hidden u-hide-visually'"/>
-	<mvt:assign name="g.Session:shadows:checkout_shown" value="'u-shown'"/>
-	<html lang="en" class="no-js u-bg-gray-100">
+
+<mvt:item name="customfields" param="Read_Page_ID( l.settings:page:id, 'page_style', l.settings:page:customfield_values:customfields:page_style )" />
+<mvt:if expr="NOT ISNULL l.settings:page:customfield_values:customfields:page_style">
+	<mvt:assign name="g.Session:shadows:page_style" value="slugify( tolower( l.settings:page:customfield_values:customfields:page_style ) )" />
+<mvt:elseif expr="'AMAZONPAY' CIN l.settings:page:code OR g.Customer_Temporary_Password">
+	<mvt:assign name="g.Session:shadows:page_style" value="'minimal'" />
 <mvt:else>
-	<html lang="en" class="no-js">
+	<mvt:assign name="g.Session:shadows:page_style" value="'default'" />
 </mvt:if>
 
-<mvt:comment>Release: v10.12.00</mvt:comment>
+<html lang="en" class="no-js t-page-style--&mvte:global:Session:shadows:page_style;">
+
+<mvt:comment>Release: v10.12.02</mvt:comment>
 
 <mvt:comment>Set your theme file path here.</mvt:comment>
 <mvt:assign name="g.theme_path" value="'themes/00000001/shadows'" />

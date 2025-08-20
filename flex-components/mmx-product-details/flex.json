@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "10.12.00",
+	"version": "10.12.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -1208,6 +1208,33 @@
 														"type": {
 															"value": [
 																"add-to-wishlist-button"
+															]
+														}
+													}
+												},
+												{
+													"code": "add_to_cart_messages",
+													"collapsed": 1,
+													"prompt": "Messages",
+													"properties": [
+														{
+															"code": "success_message",
+															"placeholder": "Product added to basket!",
+															"prompt": "Success Message",
+															"type": "textarea"
+														},
+														{
+															"code": "error_message",
+															"placeholder": "There was a problem adding the product to the basket.",
+															"prompt": "Error Message",
+															"type": "textarea"
+														}
+													],
+													"type": "group",
+													"visibility_conditions": {
+														"type": {
+															"value": [
+																"add-to-cart-button"
 															]
 														}
 													}
@@ -2834,6 +2861,33 @@
 											}
 										},
 										{
+											"code": "add_to_cart_messages",
+											"collapsed": 1,
+											"prompt": "Messages",
+											"properties": [
+												{
+													"code": "success_message",
+													"placeholder": "Product added to basket!",
+													"prompt": "Success Message",
+													"type": "textarea"
+												},
+												{
+													"code": "error_message",
+													"placeholder": "There was a problem adding the product to the basket.",
+													"prompt": "Error Message",
+													"type": "textarea"
+												}
+											],
+											"type": "group",
+											"visibility_conditions": {
+												"type": {
+													"value": [
+														"add-to-cart-button"
+													]
+												}
+											}
+										},
+										{
 											"can_disable": 0,
 											"code": "message_styles",
 											"collapsed": 0,
@@ -4450,6 +4504,33 @@
 										"type": {
 											"value": [
 												"add-to-wishlist-button"
+											]
+										}
+									}
+								},
+								{
+									"code": "add_to_cart_messages",
+									"collapsed": 1,
+									"prompt": "Messages",
+									"properties": [
+										{
+											"code": "success_message",
+											"placeholder": "Product added to basket!",
+											"prompt": "Success Message",
+											"type": "textarea"
+										},
+										{
+											"code": "error_message",
+											"placeholder": "There was a problem adding the product to the basket.",
+											"prompt": "Error Message",
+											"type": "textarea"
+										}
+									],
+									"type": "group",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"add-to-cart-button"
 											]
 										}
 									}
@@ -6076,6 +6157,33 @@
 							}
 						},
 						{
+							"code": "add_to_cart_messages",
+							"collapsed": 1,
+							"prompt": "Messages",
+							"properties": [
+								{
+									"code": "success_message",
+									"placeholder": "Product added to basket!",
+									"prompt": "Success Message",
+									"type": "textarea"
+								},
+								{
+									"code": "error_message",
+									"placeholder": "There was a problem adding the product to the basket.",
+									"prompt": "Error Message",
+									"type": "textarea"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"add-to-cart-button"
+									]
+								}
+							}
+						},
+						{
 							"can_disable": 0,
 							"code": "message_styles",
 							"collapsed": 0,
@@ -7697,6 +7805,33 @@
 					}
 				},
 				{
+					"code": "add_to_cart_messages",
+					"collapsed": 1,
+					"prompt": "Messages",
+					"properties": [
+						{
+							"code": "success_message",
+							"placeholder": "Product added to basket!",
+							"prompt": "Success Message",
+							"type": "textarea"
+						},
+						{
+							"code": "error_message",
+							"placeholder": "There was a problem adding the product to the basket.",
+							"prompt": "Error Message",
+							"type": "textarea"
+						}
+					],
+					"type": "group",
+					"visibility_conditions": {
+						"type": {
+							"value": [
+								"add-to-cart-button"
+							]
+						}
+					}
+				},
+				{
 					"can_disable": 0,
 					"code": "message_styles",
 					"collapsed": 0,
@@ -8826,6 +8961,12 @@
 			"code": "update_url_with_variant_id",
 			"prompt": "Update URL with Variant ID?",
 			"type": "checkbox"
+		},
+		{
+			"code": "form_name",
+			"placeholder": "add",
+			"prompt": "Form Name",
+			"type": "text"
 		}
 	],
 	"defaults": {
@@ -9184,6 +9325,14 @@
 																		},
 																		"value": "Add to Cart"
 																	},
+																	"add_to_cart_messages": {
+																		"error_message": {
+																			"value": "There was a problem adding the product to the basket."
+																		},
+																		"success_message": {
+																			"value": "Product added to basket!"
+																		}
+																	},
 																	"container_styles": {
 																		"settings": {
 																			"enabled": 0
@@ -9489,6 +9638,7 @@
 			}
 		}
 	},
+	"upgrade_template": "src/templates/upgrade.mvt",
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
@@ -9503,7 +9653,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Pw0oJPof5yaZKOt1d024N9iwzEXNRzKiJMBdcwLaqJE= sha384-w0wsvKeFLfAfEIE1sv1EJyPvOIrfwicR19WM8HXqouF5646qaHCP8XUVNka+3tCi sha512-Rmk3V4rJOZ+mXr/q/4V7HBWgPxuOCWhSiKGMjzbFQkvq0etXwAbpKqKinZNTL9NaeaIkpi2PNdYaNrcbxHaYLQ=="
+					"value": "sha256-bjPQJ8i8TWpctKiQZa0gBypxX8G30wgSJhWjf2/stXE= sha384-cnwld/GoUh6g2ntlzOZWAyUOajUdO8v+Ksm2Xnb65szd/zv/yFcUKpQvFw7ANPMT sha512-m+RTlWm91ZegAnb7zU8arOsdZ31Okx8bgV4AX7G4CLc5hapZR0vKYyEgnhzt1V5rOOGsnxjwnDnAgTU4efqHKQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -9541,16 +9691,16 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.12.00",
-		"mmx-base": "=10.12.00",
-		"mmx-button": "=10.12.00",
-		"mmx-dialog": "=10.12.00",
-		"mmx-featured-product": "=10.12.00",
-		"mmx-forms": "=10.12.00",
-		"mmx-icons": "=10.12.00",
-		"mmx-image-gallery": "=10.12.00",
-		"mmx-messages": "=10.12.00",
-		"mmx-tabs": "=10.12.00",
-		"mmx-text": "=10.12.00"
+		"mmx-accordion": "=10.12.02",
+		"mmx-base": "=10.12.02",
+		"mmx-button": "=10.12.02",
+		"mmx-dialog": "=10.12.02",
+		"mmx-featured-product": "=10.12.02",
+		"mmx-forms": "=10.12.02",
+		"mmx-icons": "=10.12.02",
+		"mmx-image-gallery": "=10.12.02",
+		"mmx-messages": "=10.12.02",
+		"mmx-tabs": "=10.12.02",
+		"mmx-text": "=10.12.02"
 	}
 }

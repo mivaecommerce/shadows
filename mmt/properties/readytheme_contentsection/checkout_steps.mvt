@@ -1,39 +1,42 @@
-<mvt:if expr="NOT (l.settings:page:code CIN 'ORDL,OCST,OUS1,OUSM,UATM,UATR,OSEL,OPAY,INVC' OR ('AMAZONPAY' CIN l.settings:page:code))">
-	<mvt:exit/>
-</mvt:if>
+<mvt:do name="l.is_OCST_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OCST,AMAZONPAY_OCST' )" />
+<mvt:do name="l.is_OSEL_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OSEL,AMAZONPAY_OSEL' )" />
+<mvt:do name="l.is_OPAY_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OPAY,AMAZONPAY_OPAY' )" />
+<mvt:do name="l.is_AMAZONPAY_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'AMAZONPAY_OCST,AMAZONPAY_OSEL,AMAZONPAY_OPAY' )" />
+
 <div class="t-checkout-steps">
-	<mvt:if expr="l.settings:page:code CIN 'OCST|OUS1|OUSM|' OR (l.settings:page:code EQ 'AMAZONPAY_OCST')">
-		<span class="t-checkout-step--mobile">1 of 3: Customer Info</span>
-	<mvt:elseif expr="l.settings:page:code CIN 'OSEL' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL')">
-		<span class="t-checkout-step--mobile">2 of 3: Shipping</span>
-	<mvt:else>
-		<span class="t-checkout-step--mobile">3 of 3: Payment</span>
-	</mvt:if>
+	<mvt:comment><!-- Mobile --></mvt:comment>
+	<span class="t-checkout-step--mobile">
+		<mvt:if expr="l.is_OCST_page">
+			1 of 3: Customer Info
+		<mvt:elseif expr="l.is_OSEL_page">
+			2 of 3: Shipping
+		<mvt:else>
+			3 of 3: Payment
+		</mvt:if>
+	</span>
 
 	<mvt:comment><!-- OCST --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OPAY|'">
-		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:urls:OCST:auto;"><span class="u-hidden u-inline--m">Customer Info</span></a>
-	<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:urls:AMAZONPAY_OCST:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:else>
+	<mvt:if expr="l.is_OCST_page">
 		<span class="t-checkout-step t-checkout-step--complete"><span class="u-hidden u-inline--m">Customer Info</span></span>
+	<mvt:else>
+		<mvt:assign name="l.settings:OCST_link" value="ternary( l.is_AMAZONPAY_page, l.settings:urls:AMAZONPAY_OCST:auto, l.settings:urls:OCST:auto )" />
+		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:OCST_link;"><span class="u-hidden u-inline--m">Customer Info</span></a>
 	</mvt:if>
 
 	<mvt:comment><!-- OSEL --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:urls:OSEL:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:urls:AMAZONPAY_OSEL:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:elseif expr="l.settings:page:code CIN 'OSEL' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL')">
+	<mvt:if expr="l.is_OPAY_page">
+		<mvt:assign name="l.settings:OSEL_link" value="ternary( l.is_AMAZONPAY_page, l.settings:urls:AMAZONPAY_OSEL:auto, l.settings:urls:OSEL:auto )" />
+		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:OSEL_link;"><span class="u-hidden u-inline--m">Shipping</span></a>
+	<mvt:elseif expr="l.is_OSEL_page">
 		<span class="t-checkout-step t-checkout-step--complete u-text-center"><span class="u-hidden u-inline--m">Shipping</span></span>
 	<mvt:else>
 		<span class="t-checkout-step u-text-center"><span class="u-hidden u-inline--m">Shipping</span></span>
 	</mvt:if>
 
 	<mvt:comment><!-- OPAY --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OCST' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OCST')">
-		<span class="t-checkout-step u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
-	<mvt:else>
+	<mvt:if expr="l.is_OPAY_page">
 		<span class="t-checkout-step t-checkout-step--complete u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
+	<mvt:else>
+		<span class="t-checkout-step u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
 	</mvt:if>
 </div>

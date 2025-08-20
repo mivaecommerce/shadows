@@ -4,7 +4,7 @@
 	<mvt:item name="navbar" />
 	<section class="o-wrapper o-wrapper--flush">
 		<div class="o-layout o-layout--align-center o-layout--flush t-site-header__masthead">
-			<div class="o-layout__item o-layout--justify-between u-flex u-width-3 u-width-1--m u-hidden--l &mvte:global:Session:shadows:checkout_hidden;">
+			<div class="o-layout__item o-layout--justify-between u-flex u-width-3 u-width-1--m u-hidden--l t-site-header__mobile-menu">
 				<button class="c-button c-button--flush c-button--full u-bg-white u-border-none u-color-black u-font-large u-icon-menu" data-hook="open-main-menu" aria-label="Open Menu"></button>
 				<button class="c-button c-button--flush c-button--full u-bg-white u-border-none u-color-black u-font-large u-icon-search" data-hook="open-header-search" aria-label="Open Search Form"></button>
 			</div>
@@ -20,7 +20,7 @@
 				</a>
 			</div>
 
-			<div class="o-layout__item u-width-3 u-width-1--m u-hidden--l u-text-right &mvte:global:Session:shadows:checkout_hidden;">
+			<div class="o-layout__item u-width-3 u-width-1--m u-hidden--l u-text-right t-site-header__mobile-mini-basket">
 				<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;">
 					<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 0">
 						<span class="u-icon-cart-full" aria-hidden="true"></span>
@@ -31,7 +31,7 @@
 				</a>
 			</div>
 
-			<div class="o-layout__item u-width-12 u-width-3--l t-site-header__search &mvte:global:Session:shadows:checkout_hidden;" data-hook="site-header__search">
+			<div class="o-layout__item u-width-12 u-width-3--l t-site-header__search" data-hook="site-header__search">
 				<form class="t-site-header__search-form" method="post" action="&mvte:urls:SRCH:rr;">
 					<fieldset>
 						<legend>Product Search</legend>
@@ -48,7 +48,7 @@
 				</form>
 			</div>
 
-			<div class="o-layout__item u-hidden u-flex--l u-width-3--l u-width-2--xl t-site-header__masthead-links &mvte:global:Session:shadows:checkout_hidden;">
+			<div class="o-layout__item u-hidden u-flex--l u-width-3--l u-width-2--xl t-site-header__masthead-links">
 				<mvt:item name="customerlink" />
 				<mvt:item name="readytheme" param="contentsection( 'global_account' )" />
 				<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;">
@@ -61,7 +61,7 @@
 				</a>
 			</div>
 
-			<div class="o-layout__item u-width-6 u-width-5--xl u-hidden u-text-right t-site-header__secure &mvte:global:Session:shadows:checkout_shown;">
+			<div class="o-layout__item u-width-6 u-width-5--xl u-text-right t-site-header__secure">
 				<span class="u-color-gray-600 u-text-medium u-text-uppercase"><span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span> <span class="u-font-small">Secure Checkout</span></span>
 			</div>
 		</div>
@@ -69,18 +69,15 @@
 </header>
 <!-- end t-site-header -->
 
-<div class="o-wrapper o-wrapper--full o-wrapper--flush u-bg-white t-site-navigation &mvte:global:Session:shadows:checkout_hidden;">
+<div class="o-wrapper o-wrapper--full o-wrapper--flush u-bg-white t-site-navigation">
 	<div class="o-layout o-layout--align-center o-layout--flush o-layout--justify-center t-site-navigation__wrap">
 		<mvt:item name="readytheme" param="navigationset( 'primary_navigation' )" />
 	</div>
 </div>
 <!-- end t-site-navigation -->
 
-<mvt:if expr="ISNULL g.Session:shadows:checkout_hidden">
+<mvt:if expr="g.Session:shadows:page_style NE 'minimal'">
 	<mvt:fragment code="global_header" />
-</mvt:if>
-
-<mvt:if expr="(l.settings:page:code NE 'SFNT' AND l.settings:page:code NE 'ACLN' AND l.settings:page:code NE 'BASK' AND l.settings:page:code NE 'BSKE' AND l.settings:page:code NE 'ORDL' AND l.settings:page:code NE 'OCST' AND l.settings:page:code NE 'OUS1' AND l.settings:page:code NE 'OUSM' AND l.settings:page:code NE 'UATM' AND l.settings:page:code NE 'UATR' AND l.settings:page:code NE 'OSEL' AND l.settings:page:code NE 'OPAY') AND (ISNULL g.Customer_Temporary_Password)">
 	<mvt:item name="breadcrumbs" />
 </mvt:if>
 

@@ -1,5 +1,5 @@
 <mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
-<section class="o-layout o-layout--align-center o-layout--wide x-fasten-header &mvte:global:Session:shadows:checkout_hidden;" data-hook="fasten-header" aria-hidden="true">
+<section class="o-layout o-layout--align-center o-layout--wide x-fasten-header" data-hook="fasten-header" aria-hidden="true">
 	<div class="o-layout__item u-width-2 u-text-left t-site-header__logo">
 		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
 			<mvt:if expr="l.settings:readytheme:fasten_header_logo:active">

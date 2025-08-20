@@ -1,13 +1,14 @@
-<mvt:if expr="'CTGY' CIN l.settings:page:code">
+<mvt:if expr="g.Screen EQ 'CTGY'">
 	<link rel="canonical" href="&mvte:category:link;">
-<mvt:elseif expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
+<mvt:elseif expr="g.Screen EQ 'PROD' OR l.settings:page:code EQ 'PATR'">
 	<link rel="canonical" href="&mvt:product:link;">
 <mvt:else>
 	<link rel="canonical" href="&mvte:urls:_self:auto;">
 </mvt:if>
-<mvt:if expr="'PROD' CIN l.settings:page:code OR l.settings:page:code EQ 'PATR'">
+
+<mvt:if expr="g.Screen EQ 'PROD' OR l.settings:page:code EQ 'PATR'">
     <mvt:item name="prodctgy_meta" param="prod" />
-<mvt:elseif expr="'CTGY' CIN l.settings:page:code AND l.settings:category:metafield_count GT 0">
+<mvt:elseif expr="g.Screen EQ 'CTGY' AND l.settings:category:metafield_count GT 0">
     <mvt:item name="prodctgy_meta" param="ctgy" />
 <mvt:else>
 	<mvt:if expr="l.settings:page_metafield_count GT 0">

@@ -27,11 +27,13 @@
 	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
 </mvt:if>
 
+<mvt:assign name="l.settings:form_name" value="ternary( ISNULL l.settings:instance:advanced:form_name:value, l.settings:component_id, l.settings:instance:advanced:form_name:value )" />
+
 <mvt:comment>Render Component</mvt:comment>
 <form
 	action="&mvte:urls:BASK:auto;"
 	method="post"
-	name="add"
+	name="&mvte:form_name;"
 >
 	<mmx-product-details
 		id="&mvte:component_id;"

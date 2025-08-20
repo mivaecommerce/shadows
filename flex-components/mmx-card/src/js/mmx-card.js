@@ -149,7 +149,7 @@ class MMX_ProductCard extends MMX_Card {
 		return /*html*/`
 			<mmx-card
 				part="wrapper"
-				exportparts="card-wrapper card-flag card-header card-main card-footer"
+				exportparts="wrapper:card-wrapper, flag:card-flag, header:card-header, main:card-main, footer:card-footer"
 				data-href="${MMX.encodeEntities(this.getPropValue('href') ?? this.#product?.url)}"
 				data-target="${MMX.encodeEntities(this.getPropValue('target'))}"
 			>

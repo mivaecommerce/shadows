@@ -2,7 +2,7 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.12.00",
+	"version": "10.12.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
@@ -1372,9 +1372,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.00",
-		"mmx-button": "=10.12.00",
-		"mmx-hero": "=10.12.00",
-		"mmx-text": "=10.12.00"
+		"mmx-base": "=10.12.02",
+		"mmx-button": "=10.12.02",
+		"mmx-hero": "=10.12.02",
+		"mmx-text": "=10.12.02"
 	}
 }

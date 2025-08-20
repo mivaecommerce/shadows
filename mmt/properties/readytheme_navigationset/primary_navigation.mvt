@@ -1,4 +1,4 @@
-<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12 &mvte:global:Session:shadows:checkout_hidden;" data-hook="transfigure-navigation">
+<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12" data-hook="transfigure-navigation">
 	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
 		<header class="x-transfigure-navigation__header o-layout--justify-between u-flex u-hidden--l" hidden>
 			<mvt:if expr="g.Basket:cust_id EQ 0">

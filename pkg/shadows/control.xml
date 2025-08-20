@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.12.00</Version>
+	<Version>10.12.02</Version>
 	<MinimumMerchantVersion>10.12.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.12.00
+	<Description>Shadows ReadyTheme v10.12.02
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -183,7 +183,6 @@
 			<ItemList>
 				<Item>affiliatelink</Item>
 				<Item>basket</Item>
-				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>content</Item>
 				<Item>countries</Item>
@@ -321,10 +320,10 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -356,6 +355,7 @@
 				<Item>cssui_links</Item>
 				<Item>customer</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -419,6 +419,7 @@
 				<Item>cssui_links</Item>
 				<Item>customer</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -460,6 +461,7 @@
 				<Item>cssui_links</Item>
 				<Item>customer</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -493,6 +495,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -525,6 +528,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -619,7 +623,6 @@
 			<ItemList>
 				<Item>addressbook</Item>
 				<Item>affiliatelink</Item>
-				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>countries</Item>
 				<Item>cssui_links</Item>
@@ -861,7 +864,6 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
@@ -1150,6 +1152,7 @@
 				<Item>countries</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1370,6 +1373,7 @@
 				<Item>countries</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1404,6 +1408,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1858,6 +1863,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1890,6 +1896,7 @@
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
+				<Item>customfields</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
@@ -1985,7 +1992,6 @@
 			<CacheSettings />
 			<ItemList>
 				<Item>affiliatelink</Item>
-				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
@@ -3481,6 +3487,9 @@ mmx-featured-product::part(button__inner) {
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</CSSResource_Add>
+		<CSSResource_Update code="minibasket">
+			<Active>No</Active>
+		</CSSResource_Update>
 		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="core" />
 		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="extensions" />
 		<CSSCombinedResourceXResource_Assign combined_code="stylesheet" resource_code="theme" />
@@ -3506,7 +3515,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.12.00';
+	mivaJS.ReadyThemeVersion = '10.12.02';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -5037,7 +5046,6 @@ new MMXPromotionTracker();
 		<JavaScriptResourceXGroup_Assign code="runtimecombofacets" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="mailchimp" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="settings" group_code="footer_js" />
-		<JavaScriptResourceXGroup_Assign code="polyfills" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="scripts" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="json-ld" group_code="footer_js" />
 		<JavaScriptResourceXGroup_Assign code="edit-basket-attributes" group_code="footer_js" />

@@ -5,13 +5,13 @@
     "constrain": "B",
     "discounts": 1,
     "groups": 1,
-    "handling": 1,
+    "handling": 0,
     "imagetypes": [
         "main"
     ],
     "ldiscount": 1,
     "lineprice": "none",
     "maxprodlen": 0,
-    "salestax": 1,
-    "shipping": 1
+    "salestax": 0,
+    "shipping": 0
 }

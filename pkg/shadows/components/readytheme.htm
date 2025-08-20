@@ -104,43 +104,46 @@
 		</div>
 	</div>
 </div>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="checkout_steps"/><ContentSection_Add><Active>true</Active><Code>checkout_steps</Code><Name>Checkout Page Steps</Name><Description/><Template><![CDATA[<mvt:if expr="NOT (l.settings:page:code CIN 'ORDL,OCST,OUS1,OUSM,UATM,UATR,OSEL,OPAY,INVC' OR ('AMAZONPAY' CIN l.settings:page:code))">
-	<mvt:exit/>
-</mvt:if>
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="checkout_steps"/><ContentSection_Add><Active>true</Active><Code>checkout_steps</Code><Name>Checkout Page Steps</Name><Description/><Template><![CDATA[<mvt:do name="l.is_OCST_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OCST,AMAZONPAY_OCST' )" />
+<mvt:do name="l.is_OSEL_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OSEL,AMAZONPAY_OSEL' )" />
+<mvt:do name="l.is_OPAY_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'OPAY,AMAZONPAY_OPAY' )" />
+<mvt:do name="l.is_AMAZONPAY_page" file="g.Module_Library_Utilities" value="Value_In_List( l.settings:page:code, 'AMAZONPAY_OCST,AMAZONPAY_OSEL,AMAZONPAY_OPAY' )" />
+
 <div class="t-checkout-steps">
-	<mvt:if expr="l.settings:page:code CIN 'OCST|OUS1|OUSM|' OR (l.settings:page:code EQ 'AMAZONPAY_OCST')">
-		<span class="t-checkout-step--mobile">1 of 3: Customer Info</span>
-	<mvt:elseif expr="l.settings:page:code CIN 'OSEL' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL')">
-		<span class="t-checkout-step--mobile">2 of 3: Shipping</span>
-	<mvt:else>
-		<span class="t-checkout-step--mobile">3 of 3: Payment</span>
-	</mvt:if>
+	<mvt:comment><!-- Mobile --></mvt:comment>
+	<span class="t-checkout-step--mobile">
+		<mvt:if expr="l.is_OCST_page">
+			1 of 3: Customer Info
+		<mvt:elseif expr="l.is_OSEL_page">
+			2 of 3: Shipping
+		<mvt:else>
+			3 of 3: Payment
+		</mvt:if>
+	</span>
 
 	<mvt:comment><!-- OCST --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OPAY|'">
-		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:urls:OCST:auto;"><span class="u-hidden u-inline--m">Customer Info</span></a>
-	<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:urls:AMAZONPAY_OCST:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:else>
+	<mvt:if expr="l.is_OCST_page">
 		<span class="t-checkout-step t-checkout-step--complete"><span class="u-hidden u-inline--m">Customer Info</span></span>
+	<mvt:else>
+		<mvt:assign name="l.settings:OCST_link" value="ternary( l.is_AMAZONPAY_page, l.settings:urls:AMAZONPAY_OCST:auto, l.settings:urls:OCST:auto )" />
+		<a class="t-checkout-step t-checkout-step--complete" href="&mvte:OCST_link;"><span class="u-hidden u-inline--m">Customer Info</span></a>
 	</mvt:if>
 
 	<mvt:comment><!-- OSEL --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:urls:OSEL:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:elseif expr="l.settings:page:code EQ 'AMAZONPAY_OPAY'">
-		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:urls:AMAZONPAY_OSEL:auto;"><span class="u-hidden u-inline--m">Shipping</span></a>
-	<mvt:elseif expr="l.settings:page:code CIN 'OSEL' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL')">
+	<mvt:if expr="l.is_OPAY_page">
+		<mvt:assign name="l.settings:OSEL_link" value="ternary( l.is_AMAZONPAY_page, l.settings:urls:AMAZONPAY_OSEL:auto, l.settings:urls:OSEL:auto )" />
+		<a class="t-checkout-step t-checkout-step--complete u-text-center" href="&mvte:OSEL_link;"><span class="u-hidden u-inline--m">Shipping</span></a>
+	<mvt:elseif expr="l.is_OSEL_page">
 		<span class="t-checkout-step t-checkout-step--complete u-text-center"><span class="u-hidden u-inline--m">Shipping</span></span>
 	<mvt:else>
 		<span class="t-checkout-step u-text-center"><span class="u-hidden u-inline--m">Shipping</span></span>
 	</mvt:if>
 
 	<mvt:comment><!-- OPAY --></mvt:comment>
-	<mvt:if expr="l.settings:page:code CIN 'OUS1|OUSM|OSEL|OCST' OR (l.settings:page:code EQ 'AMAZONPAY_OSEL' OR l.settings:page:code EQ 'AMAZONPAY_OCST')">
-		<span class="t-checkout-step u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
-	<mvt:else>
+	<mvt:if expr="l.is_OPAY_page">
 		<span class="t-checkout-step t-checkout-step--complete u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
+	<mvt:else>
+		<span class="t-checkout-step u-text-right"><span class="u-hidden u-inline--m">Payment</span></span>
 	</mvt:if>
 </div>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="checkout_basket_summary"/><ContentSection_Add><Active>true</Active><Code>checkout_basket_summary</Code><Name>Checkout Basket Summary</Name><Description/><Template><![CDATA[<table class="c-table-simple">
@@ -218,7 +221,7 @@
 			</td>
 		</tr>
 
-		<tr class="c-table-simple__row t-input-font-size u-color-gray-600">
+		<tr class="c-table-simple__row u-color-gray-600">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
 				<span>
 					<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 1">
@@ -628,7 +631,7 @@
 	</div>
 </div>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-helpful-info u-text-medium</CSS_Class></ContentSection_Add><ContentSection_Delete code="fasten_header"/><ContentSection_Add><Active>true</Active><Code>fasten_header</Code><Name>Global "Sticky" Header</Name><Description/><Template><![CDATA[<mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
-<section class="o-layout o-layout--align-center o-layout--wide x-fasten-header &mvte:global:Session:shadows:checkout_hidden;" data-hook="fasten-header" aria-hidden="true">
+<section class="o-layout o-layout--align-center o-layout--wide x-fasten-header" data-hook="fasten-header" aria-hidden="true">
 	<div class="o-layout__item u-width-2 u-text-left t-site-header__logo">
 		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
 			<mvt:if expr="l.settings:readytheme:fasten_header_logo:active">
@@ -737,12 +740,12 @@
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>x-collapsible-content</CSS_Class></ContentSection_Add><ContentSection_Delete code="copyright"/><ContentSection_Add><Active>true</Active><Code>copyright</Code><Name>Site Copyright</Name><Description/><Template><![CDATA[<section class="o-layout o-layout--flush u-color-gray-600 u-text-center t-site-footer__copyright">
 	<p class="o-layout__item">
 		&copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company; All Rights Reserved
-		<mvt:if expr="l.settings:page:code EQ 'ORDL' OR l.settings:page:code EQ 'OCST' OR l.settings:page:code EQ 'OUS1' OR l.settings:page:code EQ 'OUSM' OR l.settings:page:code EQ 'UATM' OR l.settings:page:code EQ 'UATR' OR l.settings:page:code EQ 'OSEL' OR l.settings:page:code EQ 'OPAY' OR ('AMAZONPAY' CIN l.settings:page:code)">
+		<mvt:if expr="g.Session:shadows:page_style EQ 'minimal'">
 			 | <a href="&mvte:urls:PRPO:auto;">Privacy Statement</a>
 		</mvt:if>
 	</p>
 </section>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12 &mvte:global:Session:shadows:checkout_hidden;" data-hook="transfigure-navigation">
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Alt/></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12" data-hook="transfigure-navigation">
 	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
 		<header class="x-transfigure-navigation__header o-layout--justify-between u-flex u-hidden--l" hidden>
 			<mvt:if expr="g.Basket:cust_id EQ 0">

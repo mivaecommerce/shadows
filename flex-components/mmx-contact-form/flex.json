@@ -2,7 +2,7 @@
 	"code": "mmx-contact-form",
 	"name": "Contact Form",
 	"type": "component",
-	"version": "10.12.00",
+	"version": "10.12.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-contact-form",
 	"category": "contact-form",
@@ -670,11 +670,29 @@
 						{
 							"code": "options",
 							"group_prompt": "Option",
-							"list_type": "text",
+							"item_prompt_property": "label:value",
+							"list_type": "group",
 							"min_count": 1,
 							"prompt": "Options",
+							"properties": [
+								{
+									"code": "label",
+									"placeholder": "Option goes here",
+									"prompt": "Label",
+									"required": 1,
+									"type": "text"
+								},
+								{
+									"code": "set_default",
+									"prompt": "Set Default?",
+									"type": "checkbox"
+								}
+							],
 							"template": {
-								"value": "Option goes here"
+								"default": 0,
+								"label": {
+									"value": "Option goes here"
+								}
 							},
 							"type": "list",
 							"visibility_conditions": {
@@ -1464,11 +1482,11 @@
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"depends": {
-		"mmx-base": "=10.12.00",
-		"mmx-button": "=10.12.00",
-		"mmx-forms": "=10.12.00",
-		"mmx-icons": "=10.12.00",
-		"mmx-messages": "=10.12.00",
-		"mmx-text": "=10.12.00"
+		"mmx-base": "=10.12.02",
+		"mmx-button": "=10.12.02",
+		"mmx-forms": "=10.12.02",
+		"mmx-icons": "=10.12.02",
+		"mmx-messages": "=10.12.02",
+		"mmx-text": "=10.12.02"
 	}
 }
