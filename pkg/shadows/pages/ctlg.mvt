@@ -16,76 +16,22 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<mvt:item name="header_sequence" />
-		</div>
-	</section>
-
-	<h1 class="c-heading-charlie t-category-name">&mvt:page:name;</h1><br>
-
-	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
-		<div class="o-layout__item">
-			<section class="o-layout">
-				<div class="o-layout__item">
-					<mvt:item name="hdft" param="header" />
-				</div>
-			</section>
-
-			<section class="x-product-list">
-				<mvt:comment>Define Fallback Image</mvt:comment>
-				<mvt:assign name="l.catalog_fallback_image" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__335x335.jpg'" />
-
-				<mvt:comment>Load cattree Module</mvt:comment>
-				<mvt:do name="l.cattree:module_loaded" file="g.Module_Library_DB" value="Module_Load_Code_Cached('cmp-cssui-cattree', l.cattree:module)" />
-				<mvt:if expr="l.cattree:module_loaded">
-					<mvt:do file="g.Module_Library_DB" name="l.cattree:store_module_loaded" value="StoreModule_Load_Cached(l.cattree:module:id, 'component', l.cattree:store_module)" />
-					<mvt:if expr="l.cattree:store_module_loaded">
-						<mvt:assign name="l.cattree:module_path" value="g.Module_Root $ l.cattree:module:module" />
-					</mvt:if>
-				</mvt:if>
-
-				<mvt:comment>Load Parent Categories</mvt:comment>
-				<mvt:if expr="ISNULL l.settings:parent_categories">
-					<mvt:do name="l.result" file="g.Module_Library_DB" value="Runtime_CategoryList_Load_Parent('', l.settings:parent_categories)" />
-				</mvt:if>
-
-				<mvt:foreach iterator="parent" array="parent_categories">
-					<mvt:if expr="NOT ISNULL l.cattree:module_path">
-						<mvt:do name="l.result" file="l.cattree:module_path" value="CSSUI_CatTree_Load(l.settings:parent:id, l.settings:parent:cattree)" />
-					</mvt:if>
-					<mvt:if expr="ISNULL l.settings:parent:link">
-						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
-					</mvt:if>
-					<div class="x-product-list__item">
-						<figure class="x-product-list__figure">
-							<picture class="x-product-list__picture">
-								<mvt:if expr="ISNULL l.settings:parent:cattree:image">
-									<mvt:assign name="l.settings:parent:cattree:image" value="l.catalog_fallback_image" />
-								</mvt:if>
-								<img class="x-product-list__image" src="&mvte:parent:cattree:image;" width="335" height="335" alt="" loading="lazy">
-							</picture>
-							<figcaption class="x-product-list__figure-caption">
-								<a class="x-product-list__link" href="&mvte:parent:link;">
-									<span class="x-product-list__name u-text-center u-text-medium">&mvt:parent:name;</span>
-								</a>
-							</figcaption>
-						</figure>
-					</div>
-				</mvt:foreach>
-			</section>
-
-			<section class="o-layout">
-				<div class="o-layout__item">
-					<mvt:item name="hdft" param="footer" />
-				</div>
-			</section>
+			<mvt:item name="hdft" param="header" />
 		</div>
 	</section>
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<mvt:item name="footer_sequence" />
+			<mvt:item name="sequence" />
 		</div>
 	</section>
+
+	<section class="o-layout">
+		<div class="o-layout__item">
+			<mvt:item name="hdft" param="footer" />
+		</div>
+	</section>
+
 	<mvt:item name="hdft" param="global_footer" />
 </body>
 </html>

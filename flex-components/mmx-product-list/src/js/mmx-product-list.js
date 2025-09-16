@@ -10,6 +10,7 @@ class MMX_ProductList extends MMX_Element {
 					'auto',
 					'all',
 					'category',
+					'merchandising',
 					'related',
 					'search'
 				],
@@ -19,6 +20,15 @@ class MMX_ProductList extends MMX_Element {
 				allowAny: true
 			},
 			'product-code': {
+				allowAny: true
+			},
+			'merchandisingprompt-code': {
+				allowAny: true
+			},
+			'merchandisingprompt-context-product-id': {
+				allowAny: true
+			},
+			'merchandisingprompt-context-category-id': {
 				allowAny: true
 			},
 			'search': {
@@ -257,6 +267,7 @@ class MMX_ProductList extends MMX_Element {
 					<slot name="title"></slot>
 				</div>
 				${this.#renderMain()}
+				<div part="loading-overlay" class="mmx-product-list__loading-overlay"></div>
 			</div>
 		`;
 	}
@@ -296,6 +307,9 @@ class MMX_ProductList extends MMX_Element {
 			'data-product-set': this.data?.list?.products?.product_set?.value,
 			'data-category-code': this.data?.list?.products?.category?.category_code,
 			'data-product-code': this.data?.list?.products?.product?.product_code,
+			'data-merchandisingprompt-code': this.data?.list?.products?.prompt?.code,
+			'data-merchandisingprompt-context-product-id': this.data?.list?.products?.prompt?.context?.product_id,
+			'data-merchandisingprompt-context-category-id': this.data?.list?.products?.prompt?.context?.category_id,
 			'data-search': this.data?.server?.search,
 			'data-show-sort-by': this.#sortByOptions.length > 0,
 			'data-sort-by': this.data?.list?.sort_by?.default?.value,
@@ -476,6 +490,10 @@ class MMX_ProductList extends MMX_Element {
 	#getProductSet() {
 		const productSet = this.getPropValue('product-set');
 
+		if (productSet === 'merchandising') {
+			return 'merchandising';
+		}
+
 		if (productSet === 'related' || (productSet === 'auto' && this.getPropValue('product-code'))) {
 			return 'related';
 		}
@@ -492,11 +510,24 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	// Product List Load Query Methods
+	#setLoading() {
+		this.#container()?.classList?.add?.('is-loading');
+	}
+
+	#clearLoading() {
+		this.#container()?.classList?.remove?.('is-loading');
+	}
+
+	#container() {
+		return this.shadowRoot.querySelector('.mmx-product-list');
+	}
+
 	#loadProducts() {
 		this.#products = [];
 		this.#facets = [];
 		this.#errorMessage = undefined;
 		this.#clearPagination();
+		this.#setLoading();
 
 		MMX.Runtime_JSON_API_Call({
 			params: this.#getListLoadQueryParams()
@@ -506,6 +537,9 @@ class MMX_ProductList extends MMX_Element {
 		})
 		.catch(response => {
 			this.#productsFailedToLoad(response);
+		})
+		.finally(() => {
+			this.#clearLoading();
 		});
 	}
 
@@ -575,7 +609,8 @@ class MMX_ProductList extends MMX_Element {
 			offset: this.#getOffset(),
 			filter: this.#getListLoadQueryFilters(),
 			product_code: this.getPropValue('product-code'),
-			category_code: this.getPropValue('category-code')
+			category_code: this.getPropValue('category-code'),
+			...this.#getMerchandisingParams()
 		};
 	}
 
@@ -588,6 +623,10 @@ class MMX_ProductList extends MMX_Element {
 
 		if (productSet === 'related') {
 			return 'Runtime_RelatedProductList_Load_Query';
+		}
+
+		if (productSet === 'merchandising') {
+			return 'Runtime_MerchandisingProductList_Load_Query';
 		}
 
 		return 'Runtime_ProductList_Load_Query';
@@ -675,7 +714,7 @@ class MMX_ProductList extends MMX_Element {
 
 	#getSearchFilters() {
 		const search = this.#getSearch();
-		if (MMX.valueIsEmpty(search)) {
+		if (this.#getProductSet() === 'merchandising' || MMX.valueIsEmpty(search)) {
 			return [];
 		}
 
@@ -705,6 +744,23 @@ class MMX_ProductList extends MMX_Element {
 				value: this.#getAppliedValuesFromUrl()
 			}
 		];
+	}
+
+	#getMerchandisingParams()
+	{
+		if (this.#getProductSet() !== 'merchandising') {
+			return {};
+		}
+
+		const params = {
+			MerchandisingPrompt_Code: this.getPropValue('merchandisingprompt-code'),
+			MerchandisingPrompt_Context: {
+				product_id: this.getPropValue('merchandisingprompt-context-product-id'),
+				category_id: this.getPropValue('merchandisingprompt-context-category-id')
+			}
+		};
+
+		return params;
 	}
 
 	#getAppliedValuesFromUrl() {

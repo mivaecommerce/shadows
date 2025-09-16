@@ -2,10 +2,11 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
+	"description": "## Image Across\nA versatile component that can be used to display a single large image or multiple images in a structured grid layout. Perfect for showcasing collections, promotions, or informational content such as featured blog posts.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -1288,6 +1289,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-image-across.js",
@@ -1337,9 +1339,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-hero": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-hero": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

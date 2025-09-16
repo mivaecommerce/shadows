@@ -5,8 +5,8 @@
             "item_code": "category-listing",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -306,6 +306,110 @@
                     }
                 }
             }
+        },
+        "subcategories": {
+            "component_code": "mmx-category-list",
+            "item_code": "subcategories",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
+                },
+                "card": {
+                    "details": {
+                        "children": [
+                            {
+                                "image_settings": {
+                                    "type": {
+                                        "value": "cattree"
+                                    }
+                                },
+                                "name": {
+                                    "value": "Image"
+                                },
+                                "type": {
+                                    "value": "image"
+                                }
+                            },
+                            {
+                                "name": {
+                                    "value": "Name"
+                                },
+                                "text_styles": {
+                                    "settings": {
+                                        "enabled": 1
+                                    },
+                                    "text_align": {
+                                        "value": "center"
+                                    },
+                                    "typography_theme": {
+                                        "code": "subheading-xs",
+                                        "theme_mode": 1
+                                    }
+                                },
+                                "type": {
+                                    "value": "name"
+                                }
+                            }
+                        ]
+                    },
+                    "styles": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                },
+                "heading": {
+                    "cattitle": {
+                        "value": 0
+                    },
+                    "heading_align": {
+                        "value": "center"
+                    },
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
+                        "value": "%category_name%"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    }
+                },
+                "list": {
+                    "parent_category": {
+                        "source": {
+                            "value": "auto"
+                        }
+                    },
+                    "responsive_settings": {
+                        "breakpoints": {
+                            "default": {
+                                "columns": {
+                                    "value": 7
+                                }
+                            },
+                            "mobile": {
+                                "columns": {
+                                    "value": 2
+                                }
+                            },
+                            "tablet": {
+                                "columns": {
+                                    "value": 5
+                                }
+                            }
+                        }
+                    }
+                }
+            }
         }
     },
     "hdft": {
@@ -334,6 +438,15 @@
     },
     "sequence": {
         "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Subcategories",
+                "param": "subcategories"
+            },
             {
                 "dt_end": 0,
                 "dt_start": 0,

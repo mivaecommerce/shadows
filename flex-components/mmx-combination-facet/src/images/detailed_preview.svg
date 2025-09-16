@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1344" height="397" viewBox="0 0 1344 397">
+  <g id="Group_6950" data-name="Group 6950" transform="translate(-288 -1404)">
+    <g id="Group_6937" data-name="Group 6937">
+      <g id="Rectangle_3560" data-name="Rectangle 3560" transform="translate(288 1404)" fill="#fff" stroke="#ddd" stroke-width="1">
+        <rect width="1344" height="397" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1343" height="396" rx="14.5" fill="none"/>
+      </g>
+      <text id="Subheading_Goes_Here" data-name="Subheading Goes Here" transform="translate(861 1501)" fill="#575a5d" font-size="18" font-family="Helvetica"><tspan x="0" y="0">Subheading Goes Here</tspan></text>
+      <text id="Combination_Facet" data-name="Combination Facet" transform="translate(960 1560)" fill="#111" font-size="48" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="-216.012" y="0">Combination Facet</tspan></text>
+      <text id="Lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit." data-name="Lorem ipsum dolor sit amet, consectetur adipiscing elit." transform="translate(770 1592)" fill="#575a5d" font-size="14" font-family="Helvetica"><tspan x="19.59" y="11">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</tspan></text>
+      <rect id="Rectangle_3562" data-name="Rectangle 3562" width="1264" height="80" rx="8" transform="translate(328 1641)" fill="#eaeaea"/>
+      <rect id="Rectangle_3062" data-name="Rectangle 3062" width="114" height="48" rx="4" transform="translate(1458 1657)" fill="#111"/>
+      <text id="Submit" transform="translate(1515 1686)" fill="#fff" font-size="13" font-family="Helvetica"><tspan x="-20.23" y="0">Submit</tspan></text>
+      <text id="Select_Your_Product" data-name="Select Your Product" transform="translate(348 1686)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Select Your Product</tspan></text>
+      <g id="Rectangle_3563" data-name="Rectangle 3563" transform="translate(480 1657)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="314" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="313" height="47" rx="3.5" fill="none"/>
+      </g>
+      <text id="Facet_1" data-name="Facet 1" transform="translate(496 1686)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Facet 1</tspan></text>
+      <g id="Left-arrow" transform="translate(771.617 1683.492) rotate(-90)">
+        <path id="Icons-07" d="M.817,0,0,.808,3.692,4.492,7.384.808,6.566,0,3.692,2.875Z" transform="translate(4.492) rotate(90)" fill="#575a5d"/>
+      </g>
+      <g id="Rectangle_3563-2" data-name="Rectangle 3563" transform="translate(806 1657)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="314" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="313" height="47" rx="3.5" fill="none"/>
+      </g>
+      <text id="Facet_1-2" data-name="Facet 1" transform="translate(822 1686)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Facet 1</tspan></text>
+      <g id="Left-arrow-2" data-name="Left-arrow" transform="translate(1097.617 1683.492) rotate(-90)">
+        <path id="Icons-07-2" data-name="Icons-07" d="M.817,0,0,.808,3.692,4.492,7.384.808,6.566,0,3.692,2.875Z" transform="translate(4.492) rotate(90)" fill="#575a5d"/>
+      </g>
+      <g id="Rectangle_3563-3" data-name="Rectangle 3563" transform="translate(1132 1657)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="314" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="313" height="47" rx="3.5" fill="none"/>
+      </g>
+      <text id="Facet_1-3" data-name="Facet 1" transform="translate(1148 1686)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Facet 1</tspan></text>
+      <g id="Left-arrow-3" data-name="Left-arrow" transform="translate(1423.617 1683.492) rotate(-90)">
+        <path id="Icons-07-3" data-name="Icons-07" d="M.817,0,0,.808,3.692,4.492,7.384.808,6.566,0,3.692,2.875Z" transform="translate(4.492) rotate(90)" fill="#575a5d"/>
+      </g>
+    </g>
+  </g>
+</svg>

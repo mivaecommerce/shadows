@@ -1,0 +1,736 @@
+{
+	"code": "mmx-category-list",
+	"name": "Category List",
+	"type": "component",
+	"version": "10.13.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-category-list",
+	"category": "product-list",
+	"description": "## Category List\nA responsive grid that displays categories and subcategories to help customers visually navigate your catalog. Ideal for building top-level category pages, it supports optional headings, category images, custom fields, call-to-action buttons, and breakpoint-based column layouts for flexible merchandising.",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": [
+		{
+			"conditions": {
+				"settings:category:source:value": [
+					"auto"
+				]
+			},
+			"type": "category"
+		}
+	],
+	"properties": [
+		{
+			"can_disable": 1,
+			"code": "heading",
+			"prompt": "Section Title",
+			"properties": [
+				{
+					"code": "heading_align",
+					"options": [
+						{
+							"text": "align_left",
+							"type": "icon",
+							"value": "left"
+						},
+						{
+							"text": "align_center",
+							"type": "icon",
+							"value": "center"
+						},
+						{
+							"text": "align_right",
+							"type": "icon",
+							"value": "right"
+						}
+					],
+					"preview_property_selector": "mmx-text[slot=\"title\"]",
+					"prompt": "Heading Alignment",
+					"type": "selector"
+				},
+				{
+					"code": "heading_text",
+					"preview_property_selector": "mmx-text[slot=\"title\"]",
+					"prompt": "Heading Text",
+					"textsettings": {
+						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 0,
+								"type": "typography"
+							}
+						]
+					},
+					"tooltip": {
+						"content": "You can use the %category_name% and %page_name% tokens to display dynamic content in the heading.",
+						"title": "Available Tokens"
+					},
+					"type": "text"
+				},
+				{
+					"code": "cattitle",
+					"preview_property_selector": "img[slot=\"title\"]",
+					"prompt": "Display Category Title Image",
+					"type": "checkbox"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "list",
+			"prompt": "Category List",
+			"properties": [
+				{
+					"code": "parent_category",
+					"prompt": "Parent Category",
+					"properties": [
+						{
+							"code": "source",
+							"options": [
+								{
+									"text": "Determined by Page Items",
+									"value": "auto"
+								},
+								{
+									"text": "Specific Category",
+									"value": "specific"
+								}
+							],
+							"preview_property_selector": ":shadow [part~=\"categories\"]",
+							"prompt": "Source",
+							"type": "select"
+						},
+						{
+							"code": "specific",
+							"preview_property_selector": ":shadow [part~=\"categories\"]",
+							"prompt": "Category",
+							"type": "category",
+							"visibility_conditions": {
+								"source": {
+									"value": [
+										"specific"
+									]
+								}
+							}
+						}
+					],
+					"type": "group"
+				},
+				{
+					"code": "responsive_settings",
+					"collapsed": 1,
+					"prompt": "Responsive Settings",
+					"properties": [
+						{
+							"code": "breakpoints",
+							"collapsed": 1,
+							"include_default": 1,
+							"properties": [
+								{
+									"code": "columns",
+									"placeholder": 5,
+									"preview_property_selector": ":shadow [part~=\"categories\"]",
+									"prompt": "Columns",
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "gap",
+									"placeholder": "1vw",
+									"preview_property_selector": ":shadow [part~=\"categories\"]",
+									"prompt": "Gap",
+									"type": "lengthunit"
+								}
+							],
+							"type": "breakpointgroup"
+						}
+					],
+					"type": "group"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "card",
+			"prompt": "Category Card",
+			"properties": [
+				{
+					"code": "details",
+					"group_prompt": "Detail",
+					"item_prompt_property": "name:value",
+					"list_type": "group",
+					"prompt": "Details",
+					"properties": [
+						{
+							"code": "name",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Detail Name",
+							"required": 1,
+							"type": "text"
+						},
+						{
+							"code": "type",
+							"options": [
+								{
+									"text": "<Select One>"
+								},
+								{
+									"text": "Detail: Custom Field",
+									"value": "customfield"
+								},
+								{
+									"text": "Detail: Name",
+									"value": "name"
+								},
+								{
+									"text": "Button: View Category",
+									"value": "button__view-category"
+								},
+								{
+									"text": "Feature: Fragment",
+									"value": "fragment"
+								},
+								{
+									"text": "Feature: Image",
+									"value": "image"
+								}
+							],
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Type",
+							"type": "select"
+						},
+						{
+							"code": "button",
+							"prompt": "Button",
+							"properties": [
+								{
+									"code": "text",
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Button Text",
+									"textsettings": {
+										"fields": [
+											{
+												"code": "button_theme",
+												"prompt": "Button Theme",
+												"pseudoclasses": [
+													"normal"
+												],
+												"supports_customization": 1,
+												"supports_legacy": 0,
+												"type": "button"
+											},
+											{
+												"code": "button_width",
+												"options": [
+													{
+														"text": "Auto",
+														"value": "auto"
+													},
+													{
+														"text": "Full",
+														"value": "full"
+													}
+												],
+												"prompt": "Button Width",
+												"pseudoclasses": [
+													"normal"
+												],
+												"type": "select"
+											}
+										]
+									},
+									"type": "text"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"button__view-category"
+									]
+								}
+							}
+						},
+						{
+							"code": "customfield",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Custom Field",
+							"type": "categorycustomfieldlookup",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"customfield"
+									]
+								}
+							}
+						},
+						{
+							"code": "fragment",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Fragment",
+							"type": "fragment",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"fragment"
+									]
+								}
+							}
+						},
+						{
+							"code": "image_settings",
+							"prompt": "Image Settings",
+							"properties": [
+								{
+									"code": "type",
+									"options": [
+										{
+											"text": "Category Tree",
+											"value": "cattree"
+										},
+										{
+											"text": "Category Title",
+											"value": "cattitle"
+										}
+									],
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Image Type",
+									"type": "select"
+								},
+								{
+									"code": "fit",
+									"options": [
+										{
+											"text": "Cover",
+											"value": "cover"
+										},
+										{
+											"text": "Contain",
+											"value": "contain"
+										},
+										{
+											"text": "Fill",
+											"value": "fill"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										},
+										{
+											"text": "Scale Down",
+											"value": "scale-down"
+										}
+									],
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Image Fit",
+									"type": "select"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"image"
+									]
+								}
+							}
+						},
+						{
+							"code": "prefix",
+							"placeholder": "SKU:, Weight:, etc.",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Prefix",
+							"type": "text",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"customfield",
+										"name"
+									]
+								}
+							}
+						},
+						{
+							"code": "suffix",
+							"placeholder": "lbs., in. etc.",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Suffix",
+							"type": "text",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"customfield",
+										"name"
+									]
+								}
+							}
+						},
+						{
+							"can_disable": 1,
+							"code": "text_styles",
+							"collapsed": 1,
+							"prompt": "Text Styles",
+							"properties": [
+								{
+									"code": "text_align",
+									"options": [
+										{
+											"text": "align_left",
+											"type": "icon",
+											"value": "left"
+										},
+										{
+											"text": "align_center",
+											"type": "icon",
+											"value": "center"
+										},
+										{
+											"text": "align_right",
+											"type": "icon",
+											"value": "right"
+										}
+									],
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Text Alignment",
+									"type": "selector"
+								},
+								{
+									"code": "typography_theme",
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Typography",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "typography"
+								},
+								{
+									"code": "text_transform",
+									"options": [
+										{
+											"text": "Default"
+										},
+										{
+											"text": "Capitalize",
+											"value": "capitalize"
+										},
+										{
+											"text": "Uppercase",
+											"value": "uppercase"
+										},
+										{
+											"text": "Lowercase",
+											"value": "lowercase"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										}
+									],
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Text Transform",
+									"type": "select",
+									"visibility_conditions": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"customfield",
+										"fragment",
+										"name"
+									]
+								}
+							}
+						}
+					],
+					"template": {
+						"button": {
+							"text": {
+								"textsettings": {
+									"fields": {
+										"normal": {
+											"button_theme": {
+												"code": "display-link",
+												"size": "m"
+											},
+											"button_width": {
+												"value": "full"
+											}
+										}
+									}
+								},
+								"value": "Shop Now"
+							}
+						},
+						"name": {
+							"value": "Detail Name Here"
+						},
+						"styles": {
+							"settings": {
+								"enabled": 0
+							}
+						},
+						"text_styles": {
+							"settings": {
+								"enabled": 0
+							},
+							"typography_theme": {
+								"code": "paragraph-s"
+							}
+						}
+					},
+					"type": "list"
+				},
+				{
+					"can_disable": 1,
+					"code": "styles",
+					"collapsed": 1,
+					"prompt": "Styles",
+					"properties": [
+						{
+							"code": "padding",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Padding",
+							"type": "padding"
+						},
+						{
+							"code": "margin",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Margin",
+							"type": "padding"
+						},
+						{
+							"code": "background_color",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Background Color",
+							"style": "color",
+							"type": "color"
+						},
+						{
+							"code": "box_shadow",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Drop Shadow",
+							"type": "dropshadow"
+						},
+						{
+							"code": "border_radius",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Corner Radius",
+							"type": "cornerradius"
+						},
+						{
+							"code": "border_width",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Border Thickness",
+							"type": "borderthickness"
+						},
+						{
+							"code": "border_color",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+							"prompt": "Border Color",
+							"style": "color",
+							"type": "color"
+						}
+					],
+					"type": "group"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"advanced_properties": [
+		{
+			"code": "spacing",
+			"prompt": "Spacing",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"defaults": {
+		"card": {
+			"details": {
+				"children": [
+					{
+						"image_settings": {
+							"type": {
+								"value": "cattree"
+							}
+						},
+						"name": {
+							"value": "Image"
+						},
+						"type": {
+							"value": "image"
+						}
+					},
+					{
+						"name": {
+							"value": "Name"
+						},
+						"text_styles": {
+							"settings": {
+								"enabled": 1
+							},
+							"text_align": {
+								"value": "center"
+							},
+							"typography_theme": {
+								"code": "subheading-xs",
+								"theme_mode": 1
+							}
+						},
+						"type": {
+							"value": "name"
+						}
+					}
+				]
+			},
+			"styles": {
+				"settings": {
+					"enabled": 0
+				}
+			}
+		},
+		"heading": {
+			"heading_align": {
+				"value": "center"
+			},
+			"heading_text": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-1",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
+				"value": "Category List Heading"
+			},
+			"settings": {
+				"enabled": 1
+			}
+		},
+		"list": {
+			"parent_category": {
+				"source": {
+					"value": "auto"
+				}
+			},
+			"responsive_settings": {
+				"breakpoints": {
+					"default": {
+						"columns": {
+							"value": 5
+						}
+					},
+					"mobile": {
+						"columns": {
+							"value": 2
+						}
+					},
+					"tablet": {
+						"columns": {
+							"value": 3
+						}
+					}
+				}
+			}
+		}
+	},
+	"initialization_template": "src/templates/init.mvt",
+	"instance_template": "src/templates/instance.mvt",
+	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-category-list.js",
+			"resource_code": "mmx-category-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-Vy1py9GDj0CEkL6YMYoNJJoGpv0G/B5BqU7IOD/sjMs= sha384-7VrN8hDiDWg7tjXfmn/MzuY2g5Bhz0/zz9wWRvvtOv0iMV61ujFhk4+8jS6iL5XE sha512-u+4MiQ7adGWe5KboUWRM2TAvX1/mUgLe1b6ZiMO+fDArrrkK6L9x9jCfapQ59LGnF4TMlxnKvI29q2EFN0stdg=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-category-list.css",
+			"resource_code": "mmx-category-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-UjZAwskwNUK0PVQZynKw9XYbQMBxRQOOUqAQj/zbHX4= sha384-XNPKdRS7+V4q5Qw9pk1ROIsn7pBu7syZ/KSOSj2IU+/GuBWI5jAmDHO9r+PVui7X sha512-tjyondoWediIAgNnQ1oYC342tGt5jtbSheVaHvCLtXkTH8f0kQBwm6CseGYBrkA9UlK7TrH4G2S/5cbIEyKEIg=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-card": "=10.13.00",
+		"mmx-messages": "=10.13.00",
+		"mmx-text": "=10.13.00"
+	}
+}

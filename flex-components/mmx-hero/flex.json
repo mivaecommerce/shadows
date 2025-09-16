@@ -2,10 +2,11 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
+	"description": "## Hero\nA prominent full-width banner typically placed at the top of the page, designed to capture attention with bold visuals and messaging. Ideal for showcasing top promotions, brand highlights, or new products.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -1016,6 +1017,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-hero.js",
@@ -1065,8 +1067,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

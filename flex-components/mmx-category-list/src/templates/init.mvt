@@ -1,0 +1,27 @@
+<mvt:comment>mmx-base</mvt:comment>
+<mvt:item name="head" param="css:mmx-base" />
+<mvt:item name="head" param="js:mmx-base" />
+
+<template class="mmx-resources">
+	<mvt:comment>mmx libraries</mvt:comment>
+	<mvt:item name="head" param="css:mmx-text" />
+	<mvt:item name="head" param="css:mmx-button" />
+	<mvt:item name="head" param="css:mmx-card" />
+	<mvt:item name="head" param="css:mmx-messages" />
+	<mvt:item name="head" param="css:mmx-category-list" />
+</template>
+
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
+
+<mvt:comment>mmx libraries</mvt:comment>
+<mvt:item name="head" param="js:mmx-text" />
+<mvt:item name="head" param="js:mmx-button" />
+<mvt:item name="head" param="js:mmx-card" />
+<mvt:item name="head" param="js:mmx-messages" />
+<mvt:item name="head" param="js:mmx-category-list" />
+
+<mvt:comment>Theme Editor stylesheet</mvt:comment>
+<mvt:item name="head" param="css:mm-theme-styles" />
+
+<mvt:comment>mmx-customizations</mvt:comment>
+<mvt:item name="head" param="css:mmx-customizations" />

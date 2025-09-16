@@ -16,49 +16,6 @@
 <body id="js-&mvte:page:code;" class="o-site-wrapper t-page-&mvte:global:pageClass;">
 	<mvt:item name="hdft" param="global_header" />
 
-	<mvt:foreach array="cattree_categories" iterator="category_children">
-		<mvt:if expr="l.settings:category_children:parent_id EQ l.settings:category:id">
-			<mvt:assign name="l.null" value="miva_array_insert(l.settings:subcategories, l.settings:category_children, -1)" />
-		</mvt:if>
-	</mvt:foreach>
-	<mvt:assign name="l.settings:subcategory_count" value="miva_array_elements(l.settings:subcategories)" />
-	<mvt:if expr="l.settings:subcategories GT 0">
-		<h1 class="c-heading-charlie t-category-name u-text-center">&mvt:category:name;</h1><br>
-		<section class="x-subcategory-list">
-			<mvt:assign name="l.subcategory_fallback_image" value="'graphics/' $ padl( g.Store:id, 8, '0' ) $ '/catalog-fallback-image__200x200.jpg'" />
-			<mvt:foreach iterator="subcategory" array="subcategories">
-				<div class="x-subcategory-list__item">
-					<figure class="x-subcategory-list__figure">
-						<picture class="x-subcategory-list__picture">
-							<mvt:if expr="ISNULL l.settings:subcategory:image">
-								<mvt:assign name="l.settings:subcategory:image" value="l.subcategory_fallback_image" />
-							</mvt:if>
-							<img class="x-subcategory-list__image" src="&mvte:subcategory:image;" width="152" height="152" alt="">
-						</picture>
-						<figcaption class="x-subcategory-list__figure-caption">
-							<a class="x-subcategory-list__link" href="&mvte:subcategory:link;">
-								<span class="x-subcategory-list__name">&mvt:subcategory:name;</span>
-							</a>
-						</figcaption>
-					</figure>
-				</div>
-			</mvt:foreach>
-		</section>
-	<mvt:else>
-		<h1 class="c-heading-charlie t-category-name">&mvt:category:name;</h1><br>
-	</mvt:if>
-
-	<mvt:if expr="NOT ISNULL l.settings:category_title:image">
-		<section class="o-layout u-hidden u-flex--l">
-			<div class="o-layout__item">
-				<div class="x-hero" title="&mvte:category:name;">
-					<img src="&mvte:category_title:image;" alt="&mvte:category:name;" loading="lazy">
-				</div>
-				<br>
-			</div>
-		</section>
-	</mvt:if>
-
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />

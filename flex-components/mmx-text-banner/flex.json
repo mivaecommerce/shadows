@@ -2,10 +2,11 @@
 	"code": "mmx-text-banner",
 	"name": "Text Banner",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-banner",
 	"category": "text-banner",
+	"description": "## Text Banner\nA text-based banner section designed for important announcements, promotional messages, or urgent notifications. Customize with branded colored or image backgrounds. Typically placed prominently to ensure visibility.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -723,10 +724,11 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-hero": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-hero": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

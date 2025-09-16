@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1344" height="716" viewBox="0 0 1344 716">
+  <g id="Group_6951" data-name="Group 6951" transform="translate(-288 -1851)">
+    <g id="Group_6936" data-name="Group 6936">
+      <g id="Rectangle_3566" data-name="Rectangle 3566" transform="translate(288 1851)" fill="#fff" stroke="#ddd" stroke-width="1">
+        <rect width="1344" height="716" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1343" height="715" rx="14.5" fill="none"/>
+      </g>
+      <text id="Subheading_Goes_Here" data-name="Subheading Goes Here" transform="translate(861 1948)" fill="#575a5d" font-size="18" font-family="Helvetica"><tspan x="0" y="0">Subheading Goes Here</tspan></text>
+      <text id="Heading_Goes_Here" data-name="Heading Goes Here" transform="translate(960 2007)" fill="#111" font-size="48" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="-221.402" y="0">Heading Goes Here</tspan></text>
+      <text id="Lorem_ipsum_dolor_sit_amet_consectetur_adipiscing_elit." data-name="Lorem ipsum dolor sit amet, consectetur adipiscing elit." transform="translate(770 2039)" fill="#575a5d" font-size="14" font-family="Helvetica"><tspan x="19.59" y="11">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</tspan></text>
+      <g id="Primary_Button_CTA" data-name="Primary Button CTA" transform="translate(1255 2472)">
+        <rect id="Rectangle_3062" data-name="Rectangle 3062" width="100" height="48" rx="4" fill="#111"/>
+        <text id="Submit" transform="translate(50 29)" fill="#fff" font-size="13" font-family="Helvetica"><tspan x="-20.23" y="0">Submit</tspan></text>
+      </g>
+      <g id="Rectangle_3568" data-name="Rectangle 3568" transform="translate(566 2119)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="789" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="788" height="47" rx="3.5" fill="none"/>
+      </g>
+      <g id="Rectangle_3569" data-name="Rectangle 3569" transform="translate(566 2214)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="789" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="788" height="47" rx="3.5" fill="none"/>
+      </g>
+      <g id="Rectangle_3571" data-name="Rectangle 3571" transform="translate(566 2404)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="789" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="788" height="47" rx="3.5" fill="none"/>
+      </g>
+      <g id="Rectangle_3570" data-name="Rectangle 3570" transform="translate(566 2309)" fill="#fff" stroke="#ccc" stroke-width="1">
+        <rect width="789" height="48" rx="4" stroke="none"/>
+        <rect x="0.5" y="0.5" width="788" height="47" rx="3.5" fill="none"/>
+      </g>
+      <text id="example_gmail.com" data-name="example@gmail.com" transform="translate(582 2243)" fill="#ccc" font-size="13" font-family="Helvetica"><tspan x="0" y="0">example@gmail.com</tspan></text>
+      <text id="Type_your_message_here_" data-name="Type your message here…" transform="translate(582 2433)" fill="#ccc" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Type your message here…</tspan></text>
+      <text id="Your_name" data-name="Your name" transform="translate(566 2105)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Your name</tspan></text>
+      <text id="Your_email_address" data-name="Your email address" transform="translate(566 2200)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Your email address</tspan></text>
+      <text id="Your_email_address-2" data-name="Your email address" transform="translate(566 2390)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Your email address</tspan></text>
+      <text id="Subject" transform="translate(566 2295)" fill="#111" font-size="13" font-family="Helvetica"><tspan x="0" y="0">Subject</tspan></text>
+    </g>
+  </g>
+</svg>

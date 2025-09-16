@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1344" height="308" viewBox="0 0 1344 308">
+  <g id="Group_6961" data-name="Group 6961" transform="translate(-288 -9231)">
+    <g id="Group_6945" data-name="Group 6945">
+      <g id="Rectangle_3622" data-name="Rectangle 3622" transform="translate(288 9231)" fill="#fff" stroke="#ddd" stroke-width="1">
+        <rect width="1344" height="308" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1343" height="307" rx="14.5" fill="none"/>
+      </g>
+      <rect id="Rectangle_3255" data-name="Rectangle 3255" width="1264" height="148" transform="translate(328 9311)" fill="#f5f5f5"/>
+      <g id="Group_6162" data-name="Group 6162" transform="translate(160 7740)">
+        <g id="Group_6145" data-name="Group 6145" transform="translate(1297 1625)">
+          <rect id="Rectangle_3237" data-name="Rectangle 3237" width="104" height="40" rx="4" fill="#111"/>
+          <text id="Shop_Now" data-name="Shop Now" transform="translate(52 25)" fill="#fff" font-size="13" font-family="Helvetica"><tspan x="-29.99" y="0">Shop Now</tspan></text>
+        </g>
+        <text id="Short_Main_Heading_Here" data-name="Short Main Heading Here" transform="translate(200 1654)" fill="#111" font-size="24" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="0">Short Main Heading Here</tspan></text>
+        <text id="Etiam_pharetra_nunc_at_sapien_dictum_a_accumsan_mauris_viverra._Nam_finibus_erat_et_fringilla_fermentum_sem_elit_porttitor_nunc_sed_congue_urna_urna_id_nibh._Integer_nec_dignissim_quam._" data-name="Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. " transform="translate(544 1623)" fill="#575a5d" font-size="16" font-family="Helvetica"><tspan x="0" y="12">Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat </tspan><tspan x="0" y="36">et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer </tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

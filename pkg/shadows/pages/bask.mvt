@@ -17,7 +17,6 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<mvt:item name="header_sequence" />
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -28,7 +27,6 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />
-			<mvt:item name="footer_sequence" />
 		</div>
 	</section>
 

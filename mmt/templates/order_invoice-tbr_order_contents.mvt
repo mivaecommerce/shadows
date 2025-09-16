@@ -18,7 +18,7 @@
 			<td class="quantity highlighted">&mvte:item:quantity;</td>
 
 			<td class="total highlighted">
-				&mvt:item:formatted_subtotal;
+				&mvt:item:formatted_total;
 			</td>
 		</tr>
 
@@ -38,11 +38,7 @@
 				</td>
 				<td class="quantity">&nbsp;</td>
 				<td class="total">
-					<mvt:if expr="l.settings:option:subtotal">
-						&mvt:option:formatted_subtotal;
-					<mvt:else>
-						&nbsp;
-					</mvt:if>
+					&nbsp;
 				</td>
 			</tr>
 		</mvt:foreach>

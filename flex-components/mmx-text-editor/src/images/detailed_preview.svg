@@ -1,0 +1,143 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1344" height="755" viewBox="0 0 1344 755">
+  <g id="Group_6962" data-name="Group 6962" transform="translate(-288 -9589)">
+    <g id="Group_6946" data-name="Group 6946">
+      <g id="Rectangle_3623" data-name="Rectangle 3623" transform="translate(288 9589)" fill="#fff" stroke="#ddd" stroke-width="1">
+        <rect width="1344" height="755" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1343" height="754" rx="14.5" fill="none"/>
+      </g>
+      <g id="Group_6785" data-name="Group 6785" transform="translate(-2242 4884)">
+        <g id="Group_5956" data-name="Group 5956" transform="translate(-291 50)">
+          <g id="Path_5586" data-name="Path 5586" transform="translate(3003 4735)" fill="#fff">
+            <path d="M 972 594.5 L 8 594.5 C 3.864500045776367 594.5 0.5 589.9366455078125 0.5 584.327392578125 L 0.5 10.6726245880127 C 0.5 5.063374996185303 3.864500045776367 0.5 8 0.5 L 972 0.5 C 976.135498046875 0.5 979.5 5.063374996185303 979.5 10.6726245880127 L 979.5 584.327392578125 C 979.5 589.9366455078125 976.135498046875 594.5 972 594.5 Z" stroke="none"/>
+            <path d="M 8 1 C 6.18560791015625 1 4.46087646484375 1.968017578125 3.14337158203125 3.72576904296875 C 1.7611083984375 5.56964111328125 1 8.0367431640625 1 10.672607421875 L 1 584.327392578125 C 1 586.9632568359375 1.7611083984375 589.4303588867188 3.14337158203125 591.2742309570312 C 4.46087646484375 593.031982421875 6.18560791015625 594 8 594 L 972 594 C 973.8143920898438 594 975.5391235351562 593.031982421875 976.8566284179688 591.2742309570312 C 978.2388916015625 589.4303588867188 979 586.9632568359375 979 584.327392578125 L 979 10.672607421875 C 979 8.0367431640625 978.2388916015625 5.56964111328125 976.8566284179688 3.72576904296875 C 975.5391235351562 1.968017578125 973.8143920898438 1 972 1 L 8 1 M 8 0 L 972 0 C 976.4182739257812 0 980 4.77825927734375 980 10.672607421875 L 980 584.327392578125 C 980 590.2217407226562 976.4182739257812 595 972 595 L 8 595 C 3.58172607421875 595 0 590.2217407226562 0 584.327392578125 L 0 10.672607421875 C 0 4.77825927734375 3.58172607421875 0 8 0 Z" stroke="none" fill="#e9ecf0"/>
+          </g>
+          <text id="Rich_Text_Editor" data-name="Rich Text Editor" transform="translate(3033 4795)" fill="#494a53" font-size="22" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="0" y="0">Rich Text Editor</tspan></text>
+          <g id="Group_4490" data-name="Group 4490" transform="translate(3033 4831)">
+            <g id="Rectangle_162" data-name="Rectangle 162" fill="#fff" stroke="#dfe4eb" stroke-width="1">
+              <rect width="920" height="459" rx="4" stroke="none"/>
+              <rect x="0.5" y="0.5" width="919" height="458" rx="3.5" fill="none"/>
+            </g>
+            <g id="Group_4489" data-name="Group 4489" transform="translate(25 49)">
+              <rect id="Rectangle_218" data-name="Rectangle 218" width="869" height="48" rx="6" fill="#f5f7fa"/>
+              <text id="B" transform="translate(27 29)" fill="#6a6e79" font-size="13" font-family="Usual-Bold, Usual" font-weight="700"><tspan x="0" y="0">B</tspan></text>
+              <text id="F" transform="translate(150 29)" fill="#6a6e79" font-size="13" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">F</tspan></text>
+              <text id="I" transform="translate(51 29)" fill="#6a6e79" font-size="13" font-family="Usual-MediumItalic, Usual" font-weight="500" font-style="italic"><tspan x="0" y="0">I</tspan></text>
+              <text id="U" transform="translate(70 29)" fill="#6a6e79" font-size="13" font-family="Usual-Medium, Usual" font-weight="500" text-decoration="underline"><tspan x="0" y="0">U</tspan></text>
+              <g id="Group_399" data-name="Group 399" transform="translate(94 16)">
+                <text id="S" transform="translate(1 13)" fill="#6a6e79" font-size="13" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">S</tspan></text>
+                <g id="Rectangle_219" data-name="Rectangle 219" transform="translate(0 8)" fill="none" stroke="#6a6e79" stroke-width="1">
+                  <rect width="11" height="1" stroke="none"/>
+                  <rect x="0.5" y="0.5" width="10" fill="none"/>
+                </g>
+              </g>
+              <rect id="Rectangle_220" data-name="Rectangle 220" width="1" height="18.521" transform="translate(126 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_221" data-name="Rectangle 221" width="1" height="18.521" transform="translate(209 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_224" data-name="Rectangle 224" width="1" height="18.521" transform="translate(304 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_237" data-name="Rectangle 237" width="1" height="18.521" transform="translate(454 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_238" data-name="Rectangle 238" width="1" height="18.521" transform="translate(549 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_241" data-name="Rectangle 241" width="1" height="18.521" transform="translate(700 15)" fill="#e2e6ea"/>
+              <rect id="Rectangle_240" data-name="Rectangle 240" width="1" height="18.521" transform="translate(796 15)" fill="#e2e6ea"/>
+              <g id="Group_401" data-name="Group 401" transform="translate(173 16)">
+                <text id="T" transform="translate(0 13)" fill="#6a6e79" font-size="13" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">T</tspan></text>
+                <path id="np_arrow_1776260_000000" d="M25.489,35.945a.3.3,0,0,0-.175.083l-1.32,1.254a.359.359,0,0,0-.116.239.375.375,0,0,0,.074.259.305.305,0,0,0,.22.121.3.3,0,0,0,.231-.091l1.116-1.06,1.116,1.06a.3.3,0,0,0,.231.091.3.3,0,0,0,.22-.121.375.375,0,0,0,.074-.259.359.359,0,0,0-.116-.239l-1.32-1.254A.3.3,0,0,0,25.489,35.945Z" transform="translate(-14.161 -29.3)" fill="#6a6e79"/>
+                <path id="np_arrow_1776260_000000-2" data-name="np_arrow_1776260_000000" d="M1.613,0a.3.3,0,0,0-.175.083L.118,1.338A.359.359,0,0,0,0,1.577a.375.375,0,0,0,.074.259.305.305,0,0,0,.22.121.3.3,0,0,0,.231-.091L1.642.807l1.116,1.06a.3.3,0,0,0,.231.091.3.3,0,0,0,.22-.121.375.375,0,0,0,.074-.259.359.359,0,0,0-.116-.239L1.846.084A.3.3,0,0,0,1.613,0Z" transform="translate(13 12.601) rotate(180)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_398" data-name="Group 398" transform="translate(233 16)">
+                <text id="A" transform="translate(3 13)" fill="#6a6e79" font-size="13" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">A</tspan></text>
+                <rect id="Rectangle_222" data-name="Rectangle 222" width="16" height="2" transform="translate(0 14)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_400" data-name="Group 400" transform="translate(263 15)">
+                <rect id="Rectangle_223" data-name="Rectangle 223" width="18" height="18" rx="4" fill="#6a6e79"/>
+                <text id="A-2" data-name="A" transform="translate(4 14)" fill="#fff" font-size="13" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">A</tspan></text>
+              </g>
+              <g id="Group_402" data-name="Group 402" transform="translate(328 18)">
+                <rect id="Rectangle_225" data-name="Rectangle 225" width="16" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_227" data-name="Rectangle 227" width="16" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_226" data-name="Rectangle 226" width="9" height="2" rx="1" transform="translate(0 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_403" data-name="Group 403" transform="translate(358 18)">
+                <rect id="Rectangle_229" data-name="Rectangle 229" width="16" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_230" data-name="Rectangle 230" width="16" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_228" data-name="Rectangle 228" width="9" height="2" rx="1" transform="translate(4 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_404" data-name="Group 404" transform="translate(385 18)">
+                <rect id="Rectangle_232" data-name="Rectangle 232" width="16" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_233" data-name="Rectangle 233" width="16" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_231" data-name="Rectangle 231" width="9" height="2" rx="1" transform="translate(7 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_405" data-name="Group 405" transform="translate(415 18)">
+                <rect id="Rectangle_235" data-name="Rectangle 235" width="16" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_236" data-name="Rectangle 236" width="16" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_234" data-name="Rectangle 234" width="16" height="2" rx="1" transform="translate(0 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_406" data-name="Group 406" transform="translate(512 18)">
+                <rect id="Rectangle_235-2" data-name="Rectangle 235" width="13.921" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_236-2" data-name="Rectangle 236" width="13.921" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_234-2" data-name="Rectangle 234" width="13.921" height="2" rx="1" transform="translate(0 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_408" data-name="Group 408" transform="translate(481 18)">
+                <rect id="Rectangle_235-3" data-name="Rectangle 235" width="13.921" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_236-3" data-name="Rectangle 236" width="13.921" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_234-3" data-name="Rectangle 234" width="13.921" height="2" rx="1" transform="translate(0 5)" fill="#6a6e79"/>
+              </g>
+              <g id="Group_407" data-name="Group 407" transform="translate(509 18)">
+                <rect id="Rectangle_235-4" data-name="Rectangle 235" width="2.053" height="2" rx="1" fill="#6a6e79"/>
+                <rect id="Rectangle_236-4" data-name="Rectangle 236" width="2.053" height="2" rx="1" transform="translate(0 10)" fill="#6a6e79"/>
+                <rect id="Rectangle_234-4" data-name="Rectangle 234" width="2.053" height="2" rx="1" transform="translate(0 5)" fill="#6a6e79"/>
+              </g>
+              <text id="_1" data-name="1" transform="translate(478 20)" fill="#6a6e79" font-size="3" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">1</tspan></text>
+              <text id="_2" data-name="2" transform="translate(478 25)" fill="#6a6e79" font-size="3" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">2</tspan></text>
+              <text id="_3" data-name="3" transform="translate(478 30)" fill="#6a6e79" font-size="3" font-family="Usual-Medium, Usual" font-weight="500"><tspan x="0" y="0">3</tspan></text>
+              <g id="Group_409" data-name="Group 409" transform="translate(567 15)">
+                <g id="Rectangle_239" data-name="Rectangle 239" fill="none" stroke="#707070" stroke-width="1">
+                  <rect width="19" height="19" stroke="none"/>
+                  <rect x="0.5" y="0.5" width="18" height="18" fill="none"/>
+                </g>
+                <line id="Line_13" data-name="Line 13" x2="18" transform="translate(0.5 6.5)" fill="none" stroke="#707070" stroke-width="1"/>
+                <line id="Line_14" data-name="Line 14" x2="18" transform="translate(0.5 12.5)" fill="none" stroke="#707070" stroke-width="1"/>
+                <line id="Line_15" data-name="Line 15" x2="18" transform="translate(12.5 0.5) rotate(90)" fill="none" stroke="#707070" stroke-width="1"/>
+                <line id="Line_16" data-name="Line 16" x2="18" transform="translate(6.5 0.5) rotate(90)" fill="none" stroke="#707070" stroke-width="1"/>
+              </g>
+              <g id="More_Menu" data-name="More Menu" transform="translate(819 22)">
+                <ellipse id="Ellipse_8" data-name="Ellipse 8" cx="2.41" cy="2.5" rx="2.41" ry="2.5" fill="#6a6e79"/>
+                <ellipse id="Ellipse_8_copy" data-name="Ellipse 8 copy" cx="2.41" cy="2.5" rx="2.41" ry="2.5" transform="translate(8.6)" fill="#6a6e79"/>
+                <ellipse id="Ellipse_8_copy_2" data-name="Ellipse 8 copy 2" cx="2.41" cy="2.5" rx="2.41" ry="2.5" transform="translate(17.189)" fill="#6a6e79"/>
+              </g>
+              <path id="np_paragraph_793611_000000" d="M26.733,0h-6.7a5.028,5.028,0,1,0,0,10.057v6.7H21.7V1.676h1.676V16.761h1.676V1.676h1.676ZM16.676,5.028a3.362,3.362,0,0,1,3.352-3.352v6.7A3.362,3.362,0,0,1,16.676,5.028Z" transform="translate(585.267 16.239)" fill="#707070"/>
+              <path id="np_link_1703115_000000" d="M1.132,9.779a3.873,3.873,0,1,0,5.477,5.477l2.882-2.882a3.878,3.878,0,0,0,0-5.477.611.611,0,1,0-.865.865,2.63,2.63,0,0,1,0,3.747L5.744,14.39A2.649,2.649,0,0,1,2,10.643L4.879,7.761A.612.612,0,1,0,4.014,6.9ZM6.9,4.014a3.878,3.878,0,0,0,0,5.477.611.611,0,1,0,.865-.865,2.63,2.63,0,0,1,0-3.747L10.643,2A2.649,2.649,0,0,1,14.39,5.744L11.508,8.626a.612.612,0,1,0,.865.865l2.882-2.882A3.873,3.873,0,0,0,9.779,1.132Z" transform="translate(643.05 16.84) rotate(90)" fill="#707070"/>
+              <g id="np_image_655983_000000" transform="translate(658 15)">
+                <path id="Path_163" data-name="Path 163" d="M26.669,9.4H11.1A1.716,1.716,0,0,0,9.4,11.1V26.692A1.716,1.716,0,0,0,11.1,28.4H26.692A1.716,1.716,0,0,0,28.4,26.692V11.1A1.721,1.721,0,0,0,26.669,9.4ZM11.1,10.848H26.692a.234.234,0,0,1,.234.234V21.973l-4.6-4.581a.733.733,0,0,0-1.028,0l-4.347,4.346-1.426-1.426a.733.733,0,0,0-1.028,0l-3.645,3.623V11.082a.256.256,0,0,1,.257-.234Zm-.257,15.821v-.677l4.136-4.136,5.071,5.07H11.1a.259.259,0,0,1-.257-.257Zm15.821.257H22.112L17.976,22.79l3.832-3.832,5.118,5.118v2.617a.256.256,0,0,1-.257.234Z" transform="translate(-9.398 -9.398)" fill="#707070"/>
+                <path id="Path_164" data-name="Path 164" d="M36.83,31.413a1.215,1.215,0,0,1-2.431,0,1.215,1.215,0,0,1,2.431,0" transform="translate(-28.556 -25.337)" fill="#707070"/>
+              </g>
+              <path id="np_code_45869_000000" d="M9.27,19.531,5.765,29.263H6.821l3.505-9.732Zm-4.531,1.4-.273.175L.224,23.855,0,24v.53l.211.152L4.45,27.676l.289.2v-1.22L1.389,24.288,4.739,22.12Zm6.488,0V22.12l3.349,2.168-3.349,2.367v1.22l.289-.2,4.242-2.994.211-.152V24l-.226-.144L11.5,21.11Z" transform="translate(723.503 -0.229)" fill="#6a6e79"/>
+              <g id="np_focus_2160572_000000" transform="translate(754.288 15.288)">
+                <path id="Path_166" data-name="Path 166" d="M12.192,12.192h3.4v-1.1H11.642a.55.55,0,0,0-.549.549V15.6h1.1Z" transform="translate(-11.093 -11.093)" fill="#707070" stroke="#707070" stroke-width="0.3"/>
+                <path id="Path_167" data-name="Path 167" d="M73.641,11.094H69.687v1.1h3.4v3.4h1.1V11.643a.55.55,0,0,0-.549-.549Z" transform="translate(-55.957 -11.094)" fill="#707070" stroke="#707070" stroke-width="0.3"/>
+                <path id="Path_168" data-name="Path 168" d="M11.644,74.191H15.6v-1.1h-3.4v-3.4h-1.1V73.64a.55.55,0,0,0,.549.551Z" transform="translate(-11.094 -55.957)" fill="#707070" stroke="#707070" stroke-width="0.3"/>
+                <path id="Path_169" data-name="Path 169" d="M73.093,73.093h-3.4v1.1h3.954a.55.55,0,0,0,.549-.549V69.688h-1.1Z" transform="translate(-55.958 -55.958)" fill="#707070" stroke="#707070" stroke-width="0.3"/>
+              </g>
+            </g>
+            <text id="Take_an_extra_30_on_top_designer_brands_Aliquam_erat_volutpat._Etiam_non_condimentum_diam._Cras_a_purus_sapien._Curabitur_ex_metus_rutrum_ac_Leo_ut_porta_consequat_tellus._Interdum_et_malesuada_fames_ac_ante_ipsum_primis_in_faucibus._Donec_laoreet_con" data-name="Take an extra 30% on top designer brands 
+
+Aliquam erat volutpat. Etiam non condimentum diam. Cras a purus sapien. Curabitur ex metus, rutrum ac Leo ut, porta consequat tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec laoreet con" transform="translate(28 127)" fill="#494a53" font-size="21" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="16">Take an extra 30% on top designer brands </tspan><tspan fill="#6a6e79" font-size="15" font-family="Helvetica" font-weight="400"><tspan x="0" y="40"></tspan><tspan x="0" y="64">Aliquam erat volutpat. Etiam non condimentum diam. Cras a purus sapien. Curabitur ex metus, rutrum ac Leo ut, porta consequat </tspan><tspan x="0" y="88">tellus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec laoreet consectetur ullamcorper. Mauris purus </tspan><tspan x="0" y="112">lectus, tristique vel lacinia in, posuere ac purus. Etiam vel nulla </tspan><tspan y="112" fill="#111" text-decoration="underline">massa</tspan><tspan y="112">. Donec non enim bibendum, ultricies orci nec, dignissim </tspan><tspan x="0" y="136">ante. Praesent eget justo lectus. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Aenean </tspan><tspan x="0" y="160">pulvinar scelerisque velit sed laoreet. Pellentesque a venenatis orci. Pellentesque vulputate dapibus luctus.</tspan><tspan x="0" y="184"></tspan><tspan x="0" y="208">Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec laoreet consectetur ullamcorper. Mauris purus lectus, </tspan><tspan x="0" y="232">tristique vel lacinia in, posuere ac purus. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec laoreet </tspan><tspan x="0" y="256">consectetur ullamcorper. Mauris purus lectus, tristique vel lacinia in, posuere ac purus. Interdum et malesuada fames ac ante </tspan><tspan x="0" y="280">ipsum primis in faucibus. Donec laoreet consectetur ullamcorper. Mauris purus lectus, tristique vel lacinia in, posuere ac purus. </tspan><tspan x="0" y="304">Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec laoreet consectetur ullamcorper. Mauris purus lectus, </tspan></tspan></text>
+            <g id="Group_2655" data-name="Group 2655" transform="translate(28 18)">
+              <text id="Edit" transform="translate(12 13)" fill="#6a6e79" font-size="14" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="-13.431" y="0">Edit</tspan></text>
+              <path id="np_arrow_1776260_000000-3" data-name="np_arrow_1776260_000000" d="M4.692,0a.871.871,0,0,0-.509.241L.343,3.893a1.046,1.046,0,0,0-.339.7,1.09,1.09,0,0,0,.216.754A.888.888,0,0,0,.858,5.7a.863.863,0,0,0,.673-.264L4.778,2.348,8.024,5.432A.863.863,0,0,0,8.7,5.7a.887.887,0,0,0,.639-.352,1.092,1.092,0,0,0,.216-.754,1.046,1.046,0,0,0-.339-.7L5.372.245A.858.858,0,0,0,4.692,0Z" transform="translate(45.627 10.627) rotate(180)" fill="#6a6e79"/>
+              <text id="Insert" transform="translate(104 13)" fill="#6a6e79" font-size="14" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="-19.412" y="0">Insert</tspan></text>
+              <path id="np_arrow_1776260_000000-4" data-name="np_arrow_1776260_000000" d="M4.692,0a.871.871,0,0,0-.509.241L.343,3.893a1.046,1.046,0,0,0-.339.7,1.09,1.09,0,0,0,.216.754A.888.888,0,0,0,.858,5.7a.863.863,0,0,0,.673-.264L4.778,2.348,8.024,5.432A.863.863,0,0,0,8.7,5.7a.887.887,0,0,0,.639-.352,1.092,1.092,0,0,0,.216-.754,1.046,1.046,0,0,0-.339-.7L5.372.245A.858.858,0,0,0,4.692,0Z" transform="translate(143.627 10.627) rotate(180)" fill="#6a6e79"/>
+              <text id="Style" transform="translate(200 13)" fill="#6a6e79" font-size="14" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="-17.011" y="0">Style</tspan></text>
+              <path id="np_arrow_1776260_000000-5" data-name="np_arrow_1776260_000000" d="M4.692,0a.871.871,0,0,0-.509.241L.343,3.893a1.046,1.046,0,0,0-.339.7,1.09,1.09,0,0,0,.216.754A.888.888,0,0,0,.858,5.7a.863.863,0,0,0,.673-.264L4.778,2.348,8.024,5.432A.863.863,0,0,0,8.7,5.7a.887.887,0,0,0,.639-.352,1.092,1.092,0,0,0,.216-.754,1.046,1.046,0,0,0-.339-.7L5.372.245A.858.858,0,0,0,4.692,0Z" transform="translate(237.627 10.627) rotate(180)" fill="#6a6e79"/>
+              <text id="Format" transform="translate(300 13)" fill="#6a6e79" font-size="14" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="-24.074" y="0">Format</tspan></text>
+              <path id="np_arrow_1776260_000000-6" data-name="np_arrow_1776260_000000" d="M4.692,0a.871.871,0,0,0-.509.241L.343,3.893a1.046,1.046,0,0,0-.339.7,1.09,1.09,0,0,0,.216.754A.888.888,0,0,0,.858,5.7a.863.863,0,0,0,.673-.264L4.778,2.348,8.024,5.432A.863.863,0,0,0,8.7,5.7a.887.887,0,0,0,.639-.352,1.092,1.092,0,0,0,.216-.754,1.046,1.046,0,0,0-.339-.7L5.372.245A.858.858,0,0,0,4.692,0Z" transform="translate(343.627 10.627) rotate(180)" fill="#6a6e79"/>
+              <text id="View" transform="translate(399 13)" fill="#6a6e79" font-size="14" font-family="Helvetica-Bold, Helvetica" font-weight="700" letter-spacing="0.01em"><tspan x="-16.039" y="0">View</tspan></text>
+              <path id="np_arrow_1776260_000000-7" data-name="np_arrow_1776260_000000" d="M4.692,0a.871.871,0,0,0-.509.241L.343,3.893a1.046,1.046,0,0,0-.339.7,1.09,1.09,0,0,0,.216.754A.888.888,0,0,0,.858,5.7a.863.863,0,0,0,.673-.264L4.778,2.348,8.024,5.432A.863.863,0,0,0,8.7,5.7a.887.887,0,0,0,.639-.352,1.092,1.092,0,0,0,.216-.754,1.046,1.046,0,0,0-.339-.7L5.372.245A.858.858,0,0,0,4.692,0Z" transform="translate(435.627 10.627) rotate(180)" fill="#6a6e79"/>
+            </g>
+          </g>
+          <g id="Close" transform="translate(3949 4750.003)">
+            <path id="np_close_721755_000000" d="M40.655,39.478l4.991-4.952a1.158,1.158,0,0,0-1.637-1.637l-4.991,4.952-5.029-4.991a1.158,1.158,0,0,0-1.637,1.637l4.991,4.952L32.35,44.431a1.131,1.131,0,0,0,0,1.637,1.186,1.186,0,0,0,.819.35,1.127,1.127,0,0,0,.819-.35l5.029-4.952,4.991,4.952a1.186,1.186,0,0,0,.819.35,1.169,1.169,0,0,0,.819-1.988Z" transform="translate(-31.999 -32.498)" fill="#8b8f98"/>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

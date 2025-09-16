@@ -15,9 +15,11 @@
 	<section class="o-layout o-layout--wide t-basket">
 		<div class="o-layout__item">
 			<div class="t-basket__product-contents">
+				<mvt:item name="header_sequence" />
 				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 				<p>Your shopping cart is currently empty.</p>
 				<a class="c-button" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
+				<mvt:item name="footer_sequence" />
 			</div>
 		</div>
 	</section>
@@ -33,7 +35,9 @@
 				<span>&mvt:global_minibasket:formatted_total;</span>
 			</p>
 		</div>
+
 		<div class="t-basket__product-contents">
+			<mvt:item name="header_sequence" />
 			<h1 class="c-heading-echo u-hidden u-shown--l">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 			<table class="o-table t-basket__table" data-basket-table>
 				<thead class="c-table-responsive_thead u-text-left">
@@ -205,6 +209,8 @@
 				<a href="&mvte:urls:BASK:secure_sep;Action=CBSK" onclick="return confirm('Are you sure you would like to delete your entire cart?')">Clear Cart</a>
 				<a href="&mvte:urls:WISH:secure_sep;Action=MAWL">Save for Later</a>
 			</div>
+
+			<mvt:item name="footer_sequence" />
 		</div>
 	</div>
 

@@ -77,6 +77,9 @@
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'volume-pricing-table'">
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'fitment-list'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'code'				OR
 								  l.settings:level_1_detail:type:value EQ 'customfield'			OR
 								  l.settings:level_1_detail:type:value EQ 'custom-text'			OR
@@ -120,6 +123,9 @@
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'volume-pricing-table'">
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'fitment-list'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'code'				OR
 									  l.settings:level_2_detail:type:value EQ 'customfield'			OR
 									  l.settings:level_2_detail:type:value EQ 'custom-text'			OR
@@ -163,6 +169,9 @@
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'volume-pricing-table'">
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'fitment-list'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'code'				OR
 										  l.settings:level_3_detail:type:value EQ 'customfield'			OR
 										  l.settings:level_3_detail:type:value EQ 'custom-text'			OR
@@ -206,6 +215,9 @@
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'volume-pricing-table'">
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'fitment-list'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'code'				OR
 											  l.settings:level_4_detail:type:value EQ 'customfield'			OR
 											  l.settings:level_4_detail:type:value EQ 'custom-text'			OR
@@ -249,6 +261,9 @@
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'volume-pricing-table'">
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'fitment-list'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'code'				OR
 												  l.settings:level_5_detail:type:value EQ 'customfield'			OR
 												  l.settings:level_5_detail:type:value EQ 'custom-text'			OR

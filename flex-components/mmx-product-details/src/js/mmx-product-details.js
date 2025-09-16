@@ -373,6 +373,9 @@ class MMX_ProductDetails extends MMX_Element {
 			else if (type === 'fitment' && !MMX.valueIsEmpty(detail?.fitment_settings?.facet_code?.value)) {
 				filtersMap.ondemandcolumns.add(`CustomField_Values:combofacets:${detail.fitment_settings.facet_code.value}_fit`);
 			}
+			else if (type === 'fitment-list' && !MMX.valueIsEmpty(detail?.fitment_list_settings?.facet_code?.value)) {
+				filtersMap.ondemandcolumns.add(`CustomField_Values:combofacets:${detail.fitment_list_settings.facet_code.value}_fitment_list`);
+			}
 			else if (type === 'fragment' && !MMX.valueIsEmpty(detail?.fragment?.value)) {
 				filtersMap.fragments.add(detail.fragment.value);
 			}
@@ -455,6 +458,188 @@ class MMX_ProductDetails extends MMX_Element {
 		`;
 	}
 
+	// Will Render Detail
+	#willRenderDetail(detail = {}) {
+		switch (detail?.type?.value) {
+			case 'accordion-group':
+				return this.#willRenderAccordionGroup(detail);
+			case 'attributes':
+				return this.#willRenderAttributes(detail);
+			case 'add-to-cart-button':
+			case 'add-to-wishlist-button':
+				return this.#willRenderButton(detail);
+			case 'custom-text':
+				return this.#willRenderCustomText(detail);
+			case 'customfield':
+				return this.#willRenderCustomField(detail);
+			case 'discounts':
+				return this.#willRenderDiscounts(detail);
+			case 'fitment':
+				return this.#willRenderFitment(detail);
+			case 'fitment-list':
+				return this.#willRenderFitmentList(detail);
+			case 'fragment':
+				return this.#willRenderFragmentDetail(detail);
+			case 'images':
+				return this.#willRenderImages(detail);
+			case 'inline-group':
+				return this.#willRenderInlineGroup(detail);
+			case 'inv_available':
+				return this.#willRenderInventoryAvailable(detail);
+			case 'inv_short':
+			case 'inv_long':
+				return this.#willRenderInventoryMessage(detail);
+			case 'price':
+				return this.#willRenderPrice(detail);
+			case 'product-charges':
+				return this.#willRenderProductCharges(detail);
+			case 'quantity-in-basket':
+				return this.#willRenderQuantityInBasket(detail);
+			case 'quantity-input':
+				return this.#willRenderQuantityInput(detail);
+			case 'side-by-side-group':
+				return this.#willRenderSideBySideGroup(detail);
+			case 'tab-group':
+				return this.#willRenderTabGroup(detail);
+			case 'vertical-group':
+				return this.#willRenderVerticalGroup(detail);
+			case 'volume-pricing-table':
+				return this.#willRenderVolumePricingTable(detail);
+			case 'weight':
+				return this.#willRenderWeight(detail);
+			default:
+				return this.#willRenderCoreDetail(detail);
+		}
+	}
+
+	#willRenderSideBySideGroup(detail = {}) {
+		return this.#willRenderGroupLowLevel(detail);
+	}
+
+	#willRenderInlineGroup(detail = {}) {
+		return this.#willRenderGroupLowLevel(detail);
+	}
+
+	#willRenderVerticalGroup(detail = {}) {
+		return this.#willRenderGroupLowLevel(detail);
+	}
+
+	#willRenderAccordionGroup(detail = {}) {
+		return this.#willRenderGroupLowLevel(detail);
+	}
+
+	#willRenderTabGroup(detail = {}) {
+		return this.#willRenderGroupLowLevel(detail);
+	}
+
+	#willRenderGroupLowLevel(detail = {}) {
+		if (!MMX.arrayIsEmpty(detail.details?.children)) {
+			for (const child of detail.details.children) {
+				if (this.#willRenderDetail(child)) {
+					return true;
+				}
+			}
+		}
+
+		return false;
+	}
+
+	#willRenderCoreDetail(detail = {}) {
+		return !MMX.valueIsEmpty(this.#product?.[detail?.type?.value]);
+	}
+	
+	#willRenderAttributes(detail = {}) {
+		if (this.#renderedAttributes) {
+			// Attributes can only be rendered once 
+			return false;
+		}
+
+		return !MMX.arrayIsEmpty(this.#product?.attributes) || !MMX.arrayIsEmpty(this.#product?.subscriptionterms);
+	}
+
+	#willRenderButton(detail = {}) {
+		return true;
+	}
+
+	#willRenderFitment(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderFitmentList(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderCustomText(detail = {}) {
+		return !MMX.valueIsEmpty(detail?.custom_text?.value);
+	}
+
+	#willRenderCustomField(detail = {}) {
+		const customFieldParts = detail?.customfield?.value?.split?.(':');
+		const [moduleCode, fieldCode] = customFieldParts;
+
+		if (customFieldParts?.length !== 2 || MMX.valueIsEmpty(this.#product?.CustomField_Values?.[moduleCode]?.[fieldCode])) {
+			return false;
+		}
+
+		return true;
+	}
+
+	#willRenderDiscounts(detail) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderFragmentDetail(detail = {}) {
+		const fragmentCode = detail?.fragment?.value;
+		const fragmentContent = this.#product?.fragments?.[fragmentCode]?.trim?.();
+
+		return !MMX.valueIsEmpty(fragmentContent);
+	}
+
+	#willRenderImages(detail = {}) {
+		return !MMX.arrayIsEmpty(this.#product.images);
+	}
+
+	#willRenderInventoryAvailable(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderInventoryMessage(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderPrice(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderProductCharges(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
+	#willRenderQuantityInBasket(detail = {}) {
+		return !MMX.valueIsEmpty(this.#product?.quantity);
+	}
+
+	#willRenderQuantityInput(detail = {}) {
+		// Quantity input can only be rendered once
+		return !this.#renderedQuantity;
+	}
+
+	#willRenderWeight(detail = {}) {
+		return !MMX.valueIsEmpty(this.#product?.formatted_weight);
+	}
+
+	#willRenderVolumePricingTable(detail = {}) {
+		// Content may be dynamically updated with variant data
+		return true;
+	}
+
 	// Details
 	#renderDetails(details = []) {
 		if (MMX.arrayIsEmpty(details)) {
@@ -492,6 +677,9 @@ class MMX_ProductDetails extends MMX_Element {
 				break;
 			case 'fitment':
 				content = this.#renderFitment(detail);
+				break;
+			case 'fitment-list':
+				content = this.#renderFitmentList(detail);
 				break;
 			case 'fragment':
 				content = this.#renderFragmentDetail(detail);
@@ -577,17 +765,12 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#updateDetailsOfType(type = '') {
-		const elements = Array.from(this.#getDetailElementsByType(type));
-		this.#getDetailsByType(type).forEach((detail, index) => {
-			const element = elements.at(index);
+		this.#getDetailsByType(type).forEach(detail => {
+			const element = this.shadowRoot.querySelector(`#${detail._detailSelector}`);
 			this.#replaceElementWithContent(element, this.#renderDetail(detail));
 		});
 
 		this.debouncedDispatchContentUpdated();
-	}
-
-	#getDetailElementsByType(type = '') {
-		return this.shadowRoot.querySelectorAll(`[part~="${type}"]`);
 	}
 
 	#replaceElementWithContent(element = {}, content = '') {
@@ -892,6 +1075,10 @@ class MMX_ProductDetails extends MMX_Element {
 			>
 				<mmx-tabs part="tabs">
 					${detail.details.children.map(child => {
+						if (!this.#willRenderDetail(child)) {
+							return '';
+						}
+
 						return /*html*/`
 							<mmx-tab part="tab">
 								<mmx-text
@@ -1321,6 +1508,33 @@ class MMX_ProductDetails extends MMX_Element {
 
 	#imageGalleries() {
 		return this.shadowRoot.querySelectorAll('[part~="images"] mmx-image-gallery');
+	}
+	
+	// Render: Combination Facet Fitment
+	#renderFitmentList(detail = {}) {
+		const facetCode = detail?.fitment_list_settings?.facet_code?.value;
+
+		if (typeof facetCode === 'undefined') {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-product-fitment-list data-init="script">
+				<script type="application/json">
+					${MMX.scriptSafeJSONStringify({
+						fitment_data: this.#product?.CustomField_Values?.combofacets?.[`${facetCode}_fitment_list`],
+						settings: {
+							facet_code: {
+								value: facetCode
+							},
+							breakpoint: detail?.fitment_list_settings?.breakpoint,
+							show_empty_results: true
+						},
+						table_styles: detail?.fitment_list_table_styles
+					})}
+				</script>
+			</mmx-product-fitment-list>
+		`;
 	}
 
 	// Render: Combination Facet Fitment

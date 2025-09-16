@@ -17,6 +17,7 @@
 		"footer";
 	position: relative;
 	text-decoration: none;
+	height: 100%;
 }
 
 .mmx-card__flag {
@@ -48,7 +49,8 @@
 	--mmx-message__margin-bottom: 0;
 }
 
-.mmx-card ::slotted(img) {
+.mmx-card ::slotted(img),
+mmx-card [slot="main"] > img {
     aspect-ratio: var(--mmx-card__aspect-ratio, 1 / 1);
     height: auto;
     object-fit: var(--mmx-card__object-fit, contain);

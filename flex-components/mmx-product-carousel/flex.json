@@ -2,10 +2,11 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
+	"description": "## Product Carousel\nA rotating display of products that allows users to scroll through featured, trending, or recommended items. This component is great for increasing visibility to popular, relevant, or related products within a limited space.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
 		{
@@ -373,6 +374,10 @@
 						{
 							"text": "Specific Category / Product Selection",
 							"value": "hybrid"
+						},
+						{
+							"text": "Vexture Merchandising",
+							"value": "merchandising"
 						}
 					],
 					"prompt": "Product Set",
@@ -468,6 +473,18 @@
 							"value": [
 								"products",
 								"hybrid"
+							]
+						}
+					}
+				},
+				{
+					"code": "prompt",
+					"prompt": "Merchandising Prompt",
+					"type": "merchandisingprompt",
+					"visibility_conditions": {
+						"product_set": {
+							"value": [
+								"merchandising"
 							]
 						}
 					}
@@ -978,6 +995,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-product-carousel.js",
@@ -989,7 +1007,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-1i0udwsIqkiXM1iJRUMQL42/4fMv2ChL59hdilCKjM8= sha384-5Mb2Lv4akR/FoNtSBxoBO+J41cjcTujtGbaJTE2mCNHgmnedb8dJI8o8N2GBe8wc sha512-PQCtpunmWfjHUXpQip2htepIIc3/ghc1cUp3BjYBU6/WlmDus1TS82wDBQHdnWZtGqvJ86nkmx91ntvMz/5Lgw=="
+					"value": "sha256-7UMcVh/YP0T/cnob0mKT5qF7rjnKeYFxvmGoPdZUHAQ= sha384-4VGuO7kjyubdfkRqhoX415FojrtWZywIDN2Zzknzcr9vYcMzW5BmeNzljQ4nKTry sha512-QXwIjVLrjo0jxaFz+SvEVm/7+r9CIOLO2bgkYT7Nn7xVtaMiQFUiKrNAQPso5kIXKbPob9mrVhV5y51C+si0Eg=="
 				},
 				{
 					"name": "crossorigin",
@@ -999,10 +1017,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-hero": "=10.12.03",
-		"mmx-hero-slider": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-hero": "=10.13.00",
+		"mmx-hero-slider": "=10.13.00",
+		"mmx-messages": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

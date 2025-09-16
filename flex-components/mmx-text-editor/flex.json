@@ -2,10 +2,11 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
+	"description": "## Rich Text Editor\nA text section that supports formatting, links, images, and multimedia content. Used for detailed descriptions, blog-like content, or any text-heavy sections requiring additional styling.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -55,6 +56,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-text-editor.js",
@@ -104,6 +106,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03"
+		"mmx-base": "=10.13.00"
 	}
 }

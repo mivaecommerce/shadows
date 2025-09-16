@@ -98,6 +98,17 @@
 		<mvt:assign name="l.settings:instance:submission:email:headers" value="'Content-type: text/html; charset=' $ g.Store:charset" />
 		<mvt:assign name="l.settings:instance:submission:email:from" value="g.Store:email" />
 
+		<mvt:comment>Set email "Reply-To" Header to the first email field value</mvt:comment>
+		<mvt:foreach iterator="field" array="instance:form:fields:children">
+			<mvt:if expr="l.settings:field:type:control EQ 'input' AND l.settings:field:type:control_type EQ 'email' AND NOT ISNULL l.settings:field:submission:value">
+				<mvt:do file="g.Module_Library_Utilities" name="l.email_valid" value="Email_Validate( l.settings:field:submission:value )" />
+				<mvt:if expr="l.email_valid">
+					<mvt:assign name="l.settings:instance:submission:email:headers" value="l.settings:instance:submission:email:headers $ asciichar( 13 ) $ asciichar( 10 ) $ 'Reply-To: ' $ l.settings:field:submission:value" />
+					<mvt:foreachstop />
+				</mvt:if>
+			</mvt:if>
+		</mvt:foreach>
+
 		<mvt:comment>Email To</mvt:comment>
 		<mvt:foreach iterator="recipient" array="instance:email:to:children">
 			<mvt:if expr="NOT ISNULL l.settings:recipient:email:value">

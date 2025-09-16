@@ -1,0 +1,20 @@
+/* ==========================================================================
+   MMX / CATEGORY LIST
+   ========================================================================== */
+
+:host {
+	--mmx-category-list__columns: 3;
+	--mmx-category-list__gap: 1vw;
+}
+
+slot[name="title"]::slotted(*) {
+	margin: 0 auto 3%;
+}
+
+/* Categories */
+.mmx-category-list__categories slot::slotted(*) {
+	align-content: start;
+	display: grid;
+	gap: var(--mmx-category-list__gap, 1vw);
+	grid-template-columns: repeat(var(--mmx-category-list__columns, 3), minmax(0, 1fr));
+}

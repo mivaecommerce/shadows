@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.12.03</Version>
-	<MinimumMerchantVersion>10.12.03</MinimumMerchantVersion>
+	<Version>10.13.00</Version>
+	<MinimumMerchantVersion>10.13.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.12.03
+	<Description>Shadows ReadyTheme v10.13.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -226,7 +226,6 @@
 				<Item>breadcrumbs</Item>
 				<Item>buttons</Item>
 				<Item>category</Item>
-				<Item>category_title</Item>
 				<Item>category_tree</Item>
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
@@ -1440,16 +1439,15 @@
 				<Item>cssui_links</Item>
 				<Item>customerlink</Item>
 				<Item>flex</Item>
-				<Item>footer_sequence</Item>
 				<Item>global_minibasket</Item>
 				<Item>hdft</Item>
 				<Item>head</Item>
-				<Item>header_sequence</Item>
 				<Item>html_profile</Item>
 				<Item>mm_theme</Item>
 				<Item>navbar</Item>
 				<Item>prodctgy_meta</Item>
 				<Item>readytheme</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -2279,6 +2277,39 @@
 				<Item>prod_ctgy_hdft</Item>
 				<Item>readytheme</Item>
 				<Item>searchfield</Item>
+				<Item>store</Item>
+				<Item>tokenlist</Item>
+				<Item>urls</Item>
+			</ItemList>
+		</Page>
+		<Page>
+			<Code>LAYOUT_CTGY</Code>
+			<Name>Category Display</Name>
+			<Layout>Yes</Layout>
+			<Secure>Yes</Secure>
+			<Source>layout_ctgy.mvt</Source>
+			<Cache>AnonymousEmptyBasket</Cache>
+			<CacheSettings />
+			<ItemList>
+				<Item>affiliatelink</Item>
+				<Item>breadcrumbs</Item>
+				<Item>buttons</Item>
+				<Item>category</Item>
+				<Item>category_tree</Item>
+				<Item>cssui_links</Item>
+				<Item>customerlink</Item>
+				<Item>flex</Item>
+				<Item>global_minibasket</Item>
+				<Item>hdft</Item>
+				<Item>head</Item>
+				<Item>html_profile</Item>
+				<Item>mm_theme</Item>
+				<Item>navbar</Item>
+				<Item>prodctgy_meta</Item>
+				<Item>prod_ctgy_hdft</Item>
+				<Item>readytheme</Item>
+				<Item>searchfield</Item>
+				<Item>sequence</Item>
 				<Item>store</Item>
 				<Item>tokenlist</Item>
 				<Item>urls</Item>
@@ -3532,7 +3563,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.12.03';
+	mivaJS.ReadyThemeVersion = '10.13.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -6448,14 +6479,14 @@ new MMXPromotionTracker();
 		<ThemeLayout_Update>
 			<Breakpoints>
 				<Breakpoint>
-					<Code>mobile</Code>
-					<Name>Mobile</Name>
-					<End unit="em">39.999</End>
-				</Breakpoint>
-				<Breakpoint>
 					<Code>tablet</Code>
 					<Name>Tablet</Name>
 					<End unit="em">59.999</End>
+				</Breakpoint>
+				<Breakpoint>
+					<Code>mobile</Code>
+					<Name>Mobile</Name>
+					<End unit="em">39.999</End>
 				</Breakpoint>
 			</Breakpoints>
 		</ThemeLayout_Update>

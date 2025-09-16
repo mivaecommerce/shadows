@@ -1,0 +1,21 @@
+{
+    "code": "mmx-product-fitment-list",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-Qm1LxZDCntFmq7GXQvLz+2lI8UdlhTQoLUVORH13dI8= sha384-Kf299oMkarp4ugOIg3Ljb//AuWmRzC024EO+7erOblqcvD4WGPnIdt8z7dBfYK5W sha512-NIDPiqyzdie3/PI/PuLuoGugdJgh5vyrjBW7GBTIh8isqZ242VxNixZfAHOkXNIysCBztR/f7fg8e0gJaf9BWg=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

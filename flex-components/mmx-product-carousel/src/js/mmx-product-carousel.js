@@ -23,7 +23,8 @@ class MMX_ProductCarousel extends MMX_Element {
 				'related',
 				'search',
 				'products',
-				'hybrid'
+				'hybrid',
+				'merchandising'
 			],
 			default: 'auto'
 		},
@@ -31,6 +32,15 @@ class MMX_ProductCarousel extends MMX_Element {
 			allowAny: true
 		},
 		'product-code': {
+			allowAny: true
+		},
+		'merchandisingprompt-code': {
+			allowAny: true
+		},
+		'merchandisingprompt-context-product-id': {
+			allowAny: true
+		},
+		'merchandisingprompt-context-category-id': {
 			allowAny: true
 		},
 		'search': {
@@ -130,6 +140,9 @@ class MMX_ProductCarousel extends MMX_Element {
 			'data-product-set': this.data?.products?.product_set?.value,
 			'data-category-code': this.data?.products?.category?.category_code,
 			'data-product-code': this.data?.products?.product?.product_code,
+			'data-merchandisingprompt-code': this.data?.products?.prompt?.code,
+			'data-merchandisingprompt-context-product-id': this.data?.products?.prompt?.context?.product_id,
+			'data-merchandisingprompt-context-category-id': this.data?.products?.prompt?.context?.category_id,
 			'data-search': this.data?.server?.search,
 			'data-count': this.data?.products?.count?.value,
 			'data-sort-by': this.data?.products?.sort?.value,
@@ -163,6 +176,10 @@ class MMX_ProductCarousel extends MMX_Element {
 			return 'hybrid';
 		}
 
+		if (productSet === 'merchandising') {
+			return 'merchandising';
+		}
+
 		return 'all';
 	}
 
@@ -174,6 +191,10 @@ class MMX_ProductCarousel extends MMX_Element {
 		}
 
 		if (productSet == 'related' && !this?.data?.products?.product?.product_code?.length) {
+			return false;
+		}
+
+		if (productSet == 'merchandising' && !this?.data?.products?.prompt?.code?.length) {
 			return false;
 		}
 
@@ -223,6 +244,10 @@ class MMX_ProductCarousel extends MMX_Element {
 			return 'Runtime_RelatedProductList_Load_Query';
 		}
 
+		if (productSet === 'merchandising') {
+			return 'Runtime_MerchandisingProductList_Load_Query';
+		}
+
 		return 'Runtime_ProductList_Load_Query';
 	}
 
@@ -233,7 +258,8 @@ class MMX_ProductCarousel extends MMX_Element {
 			Sort: this.getPropValue('sort-by'),
 			Filter: this.#getListLoadQueryFilters(),
 			Product_Code: this.getPropValue('product-code'),
-			Category_Code: this.getPropValue('category-code')
+			Category_Code: this.getPropValue('category-code'),
+			...this.#getMerchandisingParams()
 		};
 	}
 
@@ -285,6 +311,22 @@ class MMX_ProductCarousel extends MMX_Element {
 				index: this.#searchIndex
 			}
 		}];
+	}
+
+	#getMerchandisingParams()
+	{
+		if (this.#getProductSet() !== 'merchandising') {
+			return {};
+		}
+
+		const params = {
+			MerchandisingPrompt_Code: this.getPropValue('merchandisingprompt-code'),
+			MerchandisingPrompt_Context: {
+				product_id: this.getPropValue('merchandisingprompt-context-product-id'),
+				category_id: this.getPropValue('merchandisingprompt-context-category-id')
+			}
+		};
+		return params;
 	}
 
 	loadProductsFromCategory(category_code) {
@@ -371,7 +413,10 @@ class MMX_ProductCarousel extends MMX_Element {
 	}
 
 	renderProducts() {
-		if (!this.products?.length){
+		if (this.#errorMessage) {
+			return this.#renderMainError();
+		}
+		else if (!this.products?.length){
 			return '';
 		}
 
@@ -394,6 +439,14 @@ class MMX_ProductCarousel extends MMX_Element {
 			>
 				${this.products.map(product => this.renderProduct(product)).join('')}
 			</mmx-hero-slider>
+		`;
+	}
+
+	#renderMainError() {
+		return /*html*/`
+			<div part="error" class="mmx-product-carousel__error">
+				<mmx-message data-style="warning">We're unable to display the products: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the products')}</mmx-message>
+			</div>
 		`;
 	}
 

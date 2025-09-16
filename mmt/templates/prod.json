@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "form_name": {
@@ -694,8 +694,8 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "empty_results_message": {

@@ -1,6 +1,109 @@
 {
-    "footer_sequence": {
-        "title": "Page Builder Footer"
+    "flex": {
+        "top-level-categories": {
+            "component_code": "mmx-category-list",
+            "item_code": "top-level-categories",
+            "settings": {
+                "_flex": {
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
+                },
+                "card": {
+                    "details": {
+                        "children": [
+                            {
+                                "image_settings": {
+                                    "type": {
+                                        "value": "cattree"
+                                    }
+                                },
+                                "name": {
+                                    "value": "Image"
+                                },
+                                "type": {
+                                    "value": "image"
+                                }
+                            },
+                            {
+                                "name": {
+                                    "value": "Name"
+                                },
+                                "text_styles": {
+                                    "settings": {
+                                        "enabled": 1
+                                    },
+                                    "text_align": {
+                                        "value": "center"
+                                    },
+                                    "typography_theme": {
+                                        "code": "subheading-xs",
+                                        "theme_mode": 1
+                                    }
+                                },
+                                "type": {
+                                    "value": "name"
+                                }
+                            }
+                        ]
+                    },
+                    "styles": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    }
+                },
+                "heading": {
+                    "cattitle": {
+                        "value": 0
+                    },
+                    "heading_align": {
+                        "value": "left"
+                    },
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
+                        "value": "%page_name%"
+                    },
+                    "settings": {
+                        "enabled": 1
+                    }
+                },
+                "list": {
+                    "parent_category": {
+                        "source": {
+                            "value": "auto"
+                        }
+                    },
+                    "responsive_settings": {
+                        "breakpoints": {
+                            "default": {
+                                "columns": {
+                                    "value": 4
+                                }
+                            },
+                            "mobile": {
+                                "columns": {
+                                    "value": 2
+                                }
+                            },
+                            "tablet": {
+                                "columns": {
+                                    "value": 3
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
     },
     "hdft": {
         "footer": {
@@ -9,9 +112,6 @@
         "header": {
             "template_filename": "ctlg-header.mvc"
         }
-    },
-    "header_sequence": {
-        "title": "Page Builder Header"
     },
     "seo_settings": {
         "cat_lit": "category",
@@ -28,5 +128,19 @@
         "surlprefix": "https://local.coolcommerce.net/",
         "url_delim": "/",
         "urlprefix": "http://local.coolcommerce.net/"
+    },
+    "sequence": {
+        "sequence": [
+            {
+                "dt_end": 0,
+                "dt_start": 0,
+                "enabled": 1,
+                "id": "",
+                "item": "flex",
+                "name": "Top Level Categories",
+                "param": "top-level-categories"
+            }
+        ],
+        "title": "Sequence"
     }
 }

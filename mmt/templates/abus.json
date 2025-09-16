@@ -5,8 +5,8 @@
             "item_code": "image-and-text",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -94,8 +94,8 @@
             "item_code": "image-and-text-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -183,8 +183,8 @@
             "item_code": "one-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -297,8 +297,8 @@
             "item_code": "text-area",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "desktop": {
@@ -363,8 +363,8 @@
             "item_code": "text-area-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "desktop": {

@@ -1,0 +1,66 @@
+<mvt:assign name="l.settings:instance:product:product_code" value="l.settings:product:code" />
+
+<mvt:comment>Determine component id & page-code</mvt:comment>
+<mvt:if expr="NOT ISNULL l.settings:fragment:code">
+	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:page_code $ '__' $ l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:page_code"		value="l.settings:page:code" />
+	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
+</mvt:if>
+
+<mvt:comment>Render Component</mvt:comment>
+<mmx-product-fitment-list
+	id="&mvte:component_id;"
+	data-page-code="&mvte:page_code;"
+	data-flex-component="&mvte:instance_item:component_code;"
+	data-flex-item="&mvte:instance_item:item_code;"
+	data-init="script"
+	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	class="mmx-wrapper"
+>
+	<mvt:comment>Init Script</mvt:comment>
+	<script type="application/json">
+		<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
+	</script>
+
+	<mvt:comment>Render Section Heading</mvt:comment>
+	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
+		<mvt:if expr="ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value OR l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value EQ 'default'">
+			<mvt:assign name="l.settings:instance:heading:heading_text:textsettings:fields:normal:heading_style:value" value="'title-1'" />
+		</mvt:if>
+		<mmx-text
+			slot="title"
+			data-theme="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available;"
+			data-theme-class="&mvte:instance:heading:heading_text:textsettings:fields:normal:typography_theme:classname;"
+			data-style="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_style:value;"
+			data-tag="&mvte:instance:heading:heading_text:textsettings:fields:normal:heading_tag:value;"
+			data-align="&mvte:instance:heading:heading_align:value;"
+		>
+			<mvt:if expr="l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:theme_available">
+				<mvt:if expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet">
+					<template data-theme-stylesheet>
+						&mvt:instance:heading:heading_text:textsettings:fields:normal:typography_theme:stylesheet;
+					</template>
+				</mvt:if>
+			<mvt:elseif expr="NOT ISNULL l.settings:instance:heading:heading_text:textsettings:styles:normal">
+				<template data-legacy-styles>
+					&mvt:instance:heading:heading_text:textsettings:styles:normal;
+				</template>
+			</mvt:if>
+
+			&mvte:instance:heading:heading_text:value;
+		</mmx-text>
+	</mvt:if>
+
+	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:if expr="NOT ISNULL l.settings:instance:table_styles:header_typography:stylesheet">	<mvt:eval expr="l.settings:instance:table_styles:header_typography:stylesheet" />	</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:instance:table_styles:content_typography:stylesheet" />	</mvt:if>
+	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+	<mvt:if expr="NOT ISNULL l.theme_stylesheet">
+		<template data-theme-stylesheet>
+			<mvt:eval expr="l.theme_stylesheet" />
+		</template>
+	</mvt:if>
+</mmx-product-fitment-list>

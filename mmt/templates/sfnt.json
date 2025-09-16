@@ -5,8 +5,8 @@
             "item_code": "hero",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -128,8 +128,8 @@
             "item_code": "hero-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -243,8 +243,8 @@
             "item_code": "product-carousel",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "settings": {
@@ -344,8 +344,8 @@
             "item_code": "six-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -558,8 +558,8 @@
             "item_code": "text-banner",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -643,8 +643,8 @@
             "item_code": "text-banner-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -724,8 +724,8 @@
             "item_code": "text-banner-3",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -805,8 +805,8 @@
             "item_code": "three-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -971,8 +971,8 @@
             "item_code": "two-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1203,
-                    "settings_version": "10.12.03"
+                    "flex_version": 10.13,
+                    "settings_version": "10.13.00"
                 },
                 "advanced": {
                     "content_theme": {

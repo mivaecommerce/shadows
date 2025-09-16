@@ -1,0 +1,35 @@
+.mmx-product-fitment-list {
+	display: block;
+}
+
+slot[name="title"]::slotted(*) {
+	margin: 0 auto 3%;
+}
+
+.mmx-product-fitment-list__list {
+	display: grid;
+	grid-template-columns: repeat(var(--mmx-product-fitment-list__list-column-count, 0), 1fr);
+	column-gap: 26px;
+	overflow: auto;
+}
+
+.mmx-product-fitment-list__list-header,
+.mmx-product-fitment-list__list-content {
+	--mmx-text-margin-bottom: 0;
+	display: grid;
+	padding: 16px 20px;
+	grid-template-columns: subgrid;
+	grid-column: 1 / calc(var(--mmx-product-fitment-list__list-column-count, 0) + 1);
+}
+
+.mmx-product-fitment-list__list-header {
+	border-bottom: 1px solid var(--mmx-product-fitment-list__list-header-divider-color, transparent);
+}
+
+.mmx-product-fitment-list__list-content:nth-child(odd) {
+	background-color: var(--mmx-product-fitment-list__list-background-color, transparent);
+}
+
+.mmx-product-fitment-list__list-content-column-header {
+	display: none;
+}

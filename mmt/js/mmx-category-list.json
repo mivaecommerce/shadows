@@ -1,0 +1,21 @@
+{
+    "code": "mmx-category-list",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-Vy1py9GDj0CEkL6YMYoNJJoGpv0G/B5BqU7IOD/sjMs= sha384-7VrN8hDiDWg7tjXfmn/MzuY2g5Bhz0/zz9wWRvvtOv0iMV61ujFhk4+8jS6iL5XE sha512-u+4MiQ7adGWe5KboUWRM2TAvX1/mUgLe1b6ZiMO+fDArrrkK6L9x9jCfapQ59LGnF4TMlxnKvI29q2EFN0stdg=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

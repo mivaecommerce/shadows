@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1344" height="557" viewBox="0 0 1344 557">
+  <g id="Group_6960" data-name="Group 6960" transform="translate(-288 -8624)">
+    <g id="Group_6944" data-name="Group 6944">
+      <g id="Rectangle_3621" data-name="Rectangle 3621" transform="translate(288 8624)" fill="#fff" stroke="#ddd" stroke-width="1">
+        <rect width="1344" height="557" rx="15" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1343" height="556" rx="14.5" fill="none"/>
+      </g>
+      <g id="Group_6696" data-name="Group 6696" transform="translate(484 8409)">
+        <g id="Primary_Button_CTA" data-name="Primary Button CTA" transform="translate(120 644)">
+          <rect id="Rectangle_3062" data-name="Rectangle 3062" width="120" height="48" rx="4" fill="#111"/>
+          <text id="Shop_Now" data-name="Shop Now" transform="translate(60 29)" fill="#fff" font-size="13" font-family="Helvetica"><tspan x="-29.99" y="0">Shop Now</tspan></text>
+        </g>
+        <text id="Etiam_pharetra_nunc_at_sapien_dictum_a_accumsan_mauris_viverra._Nam_finibus_erat_et_fringilla_fermentum_sem_elit_porttitor_nunc_sed_congue_urna_urna_id_nibh._Integer_nec_dignissim_quam._Cras_vestibulum_enim_eu_tempus_commodo._Nullam_quis_facilisis_augu" data-name="Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augu" transform="translate(120 393)" fill="#575a5d" font-size="14" font-family="Helvetica"><tspan x="0" y="11">Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit </tspan><tspan x="0" y="32">porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus </tspan><tspan x="0" y="53">commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo.</tspan><tspan x="0" y="74"></tspan><tspan x="0" y="95">Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit </tspan><tspan x="0" y="116">porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus </tspan><tspan x="0" y="137">commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo.</tspan><tspan x="0" y="158"></tspan><tspan x="0" y="179">Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit </tspan><tspan x="0" y="200">porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus </tspan><tspan x="0" y="221">commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo.</tspan></text>
+        <text id="Heading_Goes_In_This_Space" data-name="Heading Goes In This Space" transform="translate(120 320)" fill="#111" font-size="40" font-family="Helvetica-Bold, Helvetica" font-weight="700"><tspan x="0" y="31">Heading Goes In This Space</tspan></text>
+        <text id="Subheading_Goes_Here" data-name="Subheading Goes Here" transform="translate(120 312)" fill="#575a5d" font-size="18" font-family="Helvetica"><tspan x="0" y="0">Subheading Goes Here</tspan></text>
+      </g>
+    </g>
+  </g>
+</svg>

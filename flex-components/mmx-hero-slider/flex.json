@@ -2,10 +2,11 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
+	"description": "## Hero Slider\nA dynamic rotating banner that allows multiple images and messages to be displayed in a slideshow format. Perfect for highlighting a variety of promotions, seasonal offers, or new arrivals in an engaging way.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -757,6 +758,16 @@
 							},
 							"body": {
 								"source": "markdown",
+								"textsettings": {
+									"fields": {
+										"normal": {
+											"typography_theme": {
+												"code": "paragraph-s",
+												"theme_mode": 1
+											}
+										}
+									}
+								},
 								"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
 							},
 							"button": {
@@ -780,8 +791,9 @@
 								"textsettings": {
 									"fields": {
 										"normal": {
-											"heading_style": {
-												"value": "display-3"
+											"typography_theme": {
+												"code": "display-3",
+												"theme_mode": 1
 											}
 										}
 									}
@@ -795,8 +807,9 @@
 								"textsettings": {
 									"fields": {
 										"normal": {
-											"subheading_style": {
-												"value": "subheading-s"
+											"typography_theme": {
+												"code": "subheading-s",
+												"theme_mode": 1
 											}
 										}
 									}
@@ -1323,6 +1336,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-hero-slider.js",
@@ -1372,9 +1386,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-hero": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-hero": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

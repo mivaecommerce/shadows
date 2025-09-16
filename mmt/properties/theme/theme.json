@@ -725,23 +725,23 @@
         "breakpoint_count": 2,
         "breakpoints": [
             {
-                "code": "mobile",
-                "end": {
-                    "unit": "em",
-                    "value": 39.999
-                },
-                "name": "Mobile",
-                "start": {
-                    "unit": "px"
-                }
-            },
-            {
                 "code": "tablet",
                 "end": {
                     "unit": "em",
                     "value": 59.999
                 },
                 "name": "Tablet",
+                "start": {
+                    "unit": "px"
+                }
+            },
+            {
+                "code": "mobile",
+                "end": {
+                    "unit": "em",
+                    "value": 39.999
+                },
+                "name": "Mobile",
                 "start": {
                     "unit": "px"
                 }

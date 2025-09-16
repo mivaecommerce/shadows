@@ -18,6 +18,22 @@
 }
 
 .mmx-product-list {
+	position: relative;
+	display: block;
+}
+
+/* Loading overlay */
+.mmx-product-list__loading-overlay {
+	position: absolute;
+	display: none;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background-color: transparent;
+}
+
+.mmx-product-list.is-loading .mmx-product-list__loading-overlay {
 	display: block;
 }
 
@@ -31,6 +47,7 @@
 	align-content: start;
 	display: grid;
 	gap: var(--mmx-product-list__gap);
+	transition: opacity 0.2s linear;
 }
 
 .mmx-product-list__main {
@@ -39,6 +56,10 @@
 		"header"
 		"products"
 		"footer";
+}
+
+.mmx-product-list.is-loading .mmx-product-list__main {
+	opacity: 0.5;
 }
 
 /* Main: Desktop */

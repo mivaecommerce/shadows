@@ -2,10 +2,11 @@
 	"code": "mmx-accordion",
 	"name": "Accordion",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-accordion",
 	"category": "accordion",
+	"description": "## Accordion\nA collapsible content component that helps organize information into expandable sections. Useful for FAQs, detailed product descriptions, or any content that benefits from a structured layout without overwhelming the page.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
 	"properties": [
@@ -914,6 +915,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-accordion.js",
@@ -963,8 +965,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.12.03",
-		"mmx-icons": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-base": "=10.13.00",
+		"mmx-icons": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

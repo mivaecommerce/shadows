@@ -29,6 +29,7 @@ class MMX_Card extends MMX_Element {
 				class="mmx-card"
 				${this.#renderHref()}
 				${this.#renderTarget()}
+				${this.inheritAttrs()}
 			>
 				<slot name="flag" part="flag" class="mmx-card__flag"></slot>
 				<slot name="header" part="header" class="mmx-card__header"></slot>
@@ -46,6 +47,18 @@ class MMX_Card extends MMX_Element {
 	#renderTarget() {
 		const target = this.getPropValue('target');
 		return typeof target === 'string' ? `target="${MMX.encodeEntities(target)}"` : '';
+	}
+
+	getCustomFieldValueFromRecord(customField = '', record = {}) {
+		const customFieldParts = customField?.split?.(':');
+
+		if (customFieldParts?.length !== 2) {
+			return '';
+		}
+
+		const [moduleCode, fieldCode] = customFieldParts;
+
+		return record?.CustomField_Values?.[moduleCode]?.[fieldCode];
 	}
 }
 
@@ -245,7 +258,9 @@ class MMX_ProductCard extends MMX_Card {
 
 	// Render: Empty Detail (keeps index-based preview_property_selectors working)
 	#renderEmptyDetail() {
-		return /*html*/`<div slot="main" part="detail empty" class="mmx-product-card__detail--empty"></div>`;
+		return /*html*/`
+			<div slot="main" part="detail empty" class="mmx-product-card__detail--empty"></div>
+		`;
 	}
 
 	// Render: Image
@@ -368,7 +383,7 @@ class MMX_ProductCard extends MMX_Card {
 			text = MMX.valueIsEmpty(text) ? 'View Details' : text;
 		}
 
-		const theme_available = detail.button?.text?.textsettings?.fields?.normal?.button_theme?.theme_available || false;
+		const theme_available = detail.button?.text?.textsettings?.fields?.normal?.button_theme?.theme_available ?? false;
 
 		return /*html*/`
 			<mmx-button
@@ -399,16 +414,8 @@ class MMX_ProductCard extends MMX_Card {
 
 	// Render: Custom Field
 	#renderCustomField(detail = {}) {
-		const customFieldParts = detail?.customfield?.value?.split?.(':');
-
-		if (customFieldParts?.length !== 2) {
-			return this.#renderEmptyDetail();
-		}
-
-		const [moduleCode, fieldCode] = customFieldParts;
-		const value = this.#product?.CustomField_Values?.[moduleCode]?.[fieldCode];
 		return this.#renderTextDetail({
-			value,
+			value: this.getCustomFieldValueFromRecord(detail?.customfield?.value, this.#product),
 			detail
 		});
 	}
@@ -515,4 +522,299 @@ class MMX_ProductCard extends MMX_Card {
 
 if (!customElements.get('mmx-product-card')) {
 	customElements.define('mmx-product-card', MMX_ProductCard);
+}
+
+/**
+ * MMX / CATEGORY CARD
+ */
+class MMX_CategoryCard extends MMX_Card {
+
+	static get props() {
+		return MMX.assign(MMX_CategoryCard.categoryCardProps, MMX_Card.props);
+	}
+
+	static categoryCardProps = {
+		'fallback-image': {
+			allowAny: true,
+			default: 'graphics/en-US/cssui/blank.gif'
+		},
+		'image-type': {
+			allowAny: true,
+			options: [
+				'cattree',
+				'cattitle',
+				'customfield'
+			],
+			default: 'cattree'
+		},
+		'image-fit': {
+			allowAny: true,
+			options: [
+				'cover',
+				'contain',
+				'fill',
+				'none',
+				'scale-down'
+			],
+			default: 'contain'
+		}
+	};
+
+	styleResourceCodes = ['mmx-base', 'mmx-text', 'mmx-card'];
+	renderUniquely = true;
+
+	#category;
+	#details = [
+		{
+			type: { value: 'image' }
+		},
+		{
+			type: { value: 'name' }
+		}
+	];
+	#styles = {};
+
+	constructor() {
+		super();
+	}
+
+	static create({category, details, styles, ...options}) {
+		return MMX.createElement({
+			type: 'mmx-category-card',
+			data: {
+				category,
+				details,
+				styles
+			},
+			...options
+		});
+	}
+
+	render() {
+		if (!this.#category) {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-card
+				part="wrapper"
+				exportparts="wrapper:card-wrapper, flag:card-flag, header:card-header, main:card-main, footer:card-footer"
+				data-href="${MMX.encodeEntities(this.getPropValue('href') ?? this.#category?.url)}"
+				data-target="${MMX.encodeEntities(this.getPropValue('target'))}"
+				style="${MMX.encodeEntities(this.#getStyles())}"
+			>
+				${this.#renderCategoryDetails()}
+			</mmx-card>
+		`;
+	}
+
+	onDataChange() {
+		this.#category = this.data?.category ?? this.#category;
+		this.#details = this.data?.details ?? this.#details;
+		this.#styles = this.data?.styles ?? this.#styles;
+	}
+
+	// Details
+	#renderCategoryDetails() {
+		return this.#details?.map?.(detail => {
+			return this.#renderCategoryDetail(detail);
+		}).join('');
+	}
+
+	#renderCategoryDetail(detail = {}) {
+		switch (detail?.type?.value) {
+			case 'button__view-category':
+				return this.#renderButton(detail);
+			case 'customfield':
+				return this.#renderCustomField(detail);
+			case 'fragment':
+				return this.#renderFragmentDetail(detail);
+			case 'image':
+				return this.#renderImage(detail);
+			default:
+				return this.#renderCoreDetail(detail);
+		}
+	}
+
+	// Render: Button
+	#renderButton(detail = {}) {
+		const className = MMX.coerceString(detail.button?.text?.textsettings?.fields?.normal?.button_theme?.classname);
+		const link = this.#category.url;
+		const size = MMX.coerceString(detail.button?.text?.textsettings?.fields?.normal?.button_size?.value, {fallback: 'm'});
+		const style = MMX.coerceString(detail.button?.text?.textsettings?.fields?.normal?.button_style?.value, {fallback: 'display-link'});
+		const text = MMX.coerceString(detail.button?.text?.value, {fallback: 'Shop Now'});
+		const theme_available = detail.button?.text?.textsettings?.fields?.normal?.button_theme?.theme_available ?? false;
+		const width = MMX.coerceString(detail.button?.text?.textsettings?.fields?.normal?.button_width?.value, {fallback: 'auto'});
+
+		return /*html*/`
+			<mmx-button
+				slot="main"
+				part="detail button ${MMX.encodeEntities(detail?.type?.value)}"
+				exportparts="button: button-wrapper"
+				href="${MMX.encodeEntities(link)}"
+				data-style="${MMX.encodeEntities(style)}"
+				data-size="${MMX.encodeEntities(size)}"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(className)}"
+				data-width="${!theme_available ? 'full' : MMX.encodeEntities(width)}"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${MMX.encodeEntities(text)}
+			</mmx-button>`;
+	}
+
+	// Render: Core Detail
+	#renderCoreDetail(detail = {}) {
+		const type = detail?.type?.value;
+		const value = this.#category?.[type];
+
+		return this.#renderTextDetail({value, detail});
+	}
+
+	// Render: Custom Field
+	#renderCustomField(detail = {}) {
+		return this.#renderTextDetail({
+			value: this.getCustomFieldValueFromRecord(detail?.customfield?.value, this.#category),
+			detail
+		});
+	}
+
+	// Render: Empty Detail (keeps index-based preview_property_selectors working)
+	#renderEmptyDetail() {
+		return /*html*/`
+			<div slot="main" part="detail empty"></div>
+		`;
+	}
+
+	// Render: Fragment
+	#renderFragmentDetail(detail = {}) {
+		const fragmentCode = detail?.fragment?.value;
+		const fragmentContent = this.renderProductFragment({
+			product: this.#category,
+			fragmentCode
+		});
+
+		if (MMX.valueIsEmpty(fragmentContent)){
+			return this.#renderEmptyDetail();
+		}
+
+		let classname = '';
+		const theme_available = detail?.text_styles?.typography_theme?.theme_available ?? false;
+
+		if (!theme_available) {
+			classname = `class="type-${MMX.encodeEntities(detail?.text_styles?.style?.value)}"`;
+		}
+
+		return /*html*/`
+			<mmx-text
+				slot="main"
+				part="detail fragment fragment__${MMX.encodeEntities(fragmentCode)}"
+				${classname}
+				data-hide-on-empty="false"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${fragmentContent}
+			</mmx-text>
+		`;
+	}
+
+	// Render: Image
+	#renderImage(detail) {
+		const imageType = detail?.image_settings?.type?.value ?? 'cattree';
+		const imageFit = detail?.image_settings?.fit?.value ?? 'cover';
+
+		let image = '';
+
+		if (imageType === 'cattree') {
+			image = this.#category?.CustomField_Values?.['cmp-cssui-cattree'].category_tree_image;
+		} else if (imageType === 'cattitle') {
+			image = this.#category?.CustomField_Values?.['cmp-cssui-cattitle'].category_title_image;
+		}
+
+		if (MMX.valueIsEmpty(image)) {
+			image = this.getPropValue('fallback-image');
+		}
+
+		const content = /*html*/`
+			<img
+				slot="main"
+				part="detail ${MMX.encodeEntities(detail?.type?.value)}"
+				src="${MMX.encodeEntities(image)}"
+				alt=""
+				style="
+					object-fit: ${MMX.encodeEntities(imageFit)};
+				"
+			>
+		`;
+
+		return content;
+	}
+
+	// Render: Text Detail
+	#renderTextDetail({value, detail} = {}) {
+		const prefix = detail?.prefix?.value;
+		const suffix = detail?.suffix?.value;
+
+		if (MMX.valueIsEmpty(value)) {
+			return this.#renderEmptyDetail();
+		}
+
+		const theme_available = detail?.text_styles?.typography_theme?.theme_available ?? false;
+
+		return /*html*/`
+			<mmx-text
+				slot="main"
+				part="detail ${MMX.encodeEntities(detail?.type?.value)}"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
+				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${this.#renderTextDetailSpan('prefix', prefix)}
+				${value}
+				${this.#renderTextDetailSpan('suffix', suffix)}
+			</mmx-text>
+		`;
+	}
+
+	#renderTextDetailSpan(type, value) {
+		if (MMX.valueIsEmpty(value)) {
+			return '';
+		}
+
+		return /*html*/`
+			<span part="detail-${MMX.encodeEntities(type)}">
+				${MMX.encodeEntities(value)}
+			</span>
+		`;
+	}
+
+	// Styles
+	#getStyles() {
+		return MMX.objectToInlineStyles(this.#getStylesObject());
+	}
+
+	#getStylesObject() {
+		const borderWidth = MMX.objectToCssShorthand(this.#styles?.border_width, {key: 'border_%side%_width'});
+
+		return {
+			margin: MMX.objectToCssShorthand(this.#styles?.margin),
+			padding: MMX.objectToCssShorthand(this.#styles?.padding),
+			backgroundColor: MMX.coerceString(this.#styles?.background_color?.value),
+			borderRadius: MMX.objectToCssShorthand(this.#styles?.border_radius, {key: 'border_%corner%_radius'}),
+			borderColor: MMX.coerceString(this.#styles?.border_color?.value),
+			boxShadow: MMX.boxShadowObjectToCssValue(this.#styles?.box_shadow),
+			borderStyle: borderWidth ? 'solid' : undefined,
+			borderWidth
+		};
+	}
+}
+
+if (!customElements.get('mmx-category-card')) {
+	customElements.define('mmx-category-card', MMX_CategoryCard);
 }

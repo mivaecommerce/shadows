@@ -2,10 +2,11 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "10.12.03",
+	"version": "10.13.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
+	"description": "## Product Details\nA customizable component that allows for flexible design and layout of individual product page templates. Showcase product images, descriptions, pricing, specifications, call-to-action buttons, and more in a way that best suits a particular set of products.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
 		{
@@ -161,6 +162,10 @@
 							"value": "fitment"
 						},
 						{
+							"text": "Feature: Combination Facet Fitment List",
+							"value": "fitment-list"
+						},
+						{
 							"text": "Feature: Custom Text",
 							"value": "custom-text"
 						},
@@ -292,6 +297,10 @@
 								{
 									"text": "Feature: Combination Facet Fitment",
 									"value": "fitment"
+								},
+								{
+									"text": "Feature: Combination Facet Fitment List",
+									"value": "fitment-list"
 								},
 								{
 									"text": "Feature: Custom Text",
@@ -427,6 +436,10 @@
 											"value": "fitment"
 										},
 										{
+											"text": "Feature: Combination Facet Fitment List",
+											"value": "fitment-list"
+										},
+										{
 											"text": "Feature: Custom Text",
 											"value": "custom-text"
 										},
@@ -560,6 +573,10 @@
 													"value": "fitment"
 												},
 												{
+													"text": "Feature: Combination Facet Fitment List",
+													"value": "fitment-list"
+												},
+												{
 													"text": "Feature: Custom Text",
 													"value": "custom-text"
 												},
@@ -671,6 +688,10 @@
 														{
 															"text": "Feature: Combination Facet Fitment",
 															"value": "fitment"
+														},
+														{
+															"text": "Feature: Combination Facet Fitment List",
+															"value": "fitment-list"
 														},
 														{
 															"text": "Feature: Custom Text",
@@ -1811,6 +1832,93 @@
 													}
 												},
 												{
+													"code": "fitment_list_settings",
+													"prompt": "Fitment List Settings",
+													"properties": [
+														{
+															"code": "facet_code",
+															"lookup": {
+																"columns": [
+																	{
+																		"code": "code",
+																		"header": "Code",
+																		"type": "code"
+																	},
+																	{
+																		"code": "name",
+																		"header": "Name",
+																		"type": "name"
+																	}
+																],
+																"module_code": "combofacets",
+																"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+																"selection_column": "code",
+																"title": "Combination Facet Lookup"
+															},
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index%",
+															"prompt": "Combination Facet Code",
+															"type": "customlookup"
+														},
+														{
+															"code": "breakpoint",
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index%",
+															"prompt": "Vertical Breakpoint",
+															"type": "breakpoint"
+														}
+													],
+													"type": "group",
+													"visibility_conditions": {
+														"type": {
+															"value": [
+																"fitment-list"
+															]
+														}
+													}
+												},
+												{
+													"code": "fitment_list_table_styles",
+													"collapsed": 1,
+													"prompt": "Fitment List Table Styles",
+													"properties": [
+														{
+															"code": "header_typography",
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header-column, :shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-header",
+															"prompt": "Header Typography",
+															"supports_customization": 1,
+															"supports_legacy": 0,
+															"type": "typography"
+														},
+														{
+															"code": "content_typography",
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-value",
+															"prompt": "Content Typography",
+															"supports_customization": 1,
+															"supports_legacy": 0,
+															"type": "typography"
+														},
+														{
+															"code": "header_divider_color",
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header",
+															"prompt": "Header Divider Color",
+															"type": "color"
+														},
+														{
+															"code": "striped_background_color",
+															"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+															"prompt": "Striped Background Color",
+															"type": "color"
+														}
+													],
+													"type": "group",
+													"visibility_conditions": {
+														"type": {
+															"value": [
+																"fitment-list"
+															]
+														}
+													}
+												},
+												{
 													"code": "quantity_input_size",
 													"options": [
 														{
@@ -2255,6 +2363,25 @@
 												},
 												"custom_text": {
 													"source": "markdown"
+												},
+												"fitment_list_settings": {
+													"breakpoint": {
+														"code": "mobile"
+													}
+												},
+												"fitment_list_table_styles": {
+													"content_typography": {
+														"code": "paragraph-l"
+													},
+													"header_divider_color": {
+														"value": "#DDDDDD"
+													},
+													"header_typography": {
+														"code": "subheading-xs"
+													},
+													"striped_background_color": {
+														"value": "#F9F9F9"
+													}
 												},
 												"global_minibasket_url": {
 													"type": "page",
@@ -3489,6 +3616,93 @@
 											}
 										},
 										{
+											"code": "fitment_list_settings",
+											"prompt": "Fitment List Settings",
+											"properties": [
+												{
+													"code": "facet_code",
+													"lookup": {
+														"columns": [
+															{
+																"code": "code",
+																"header": "Code",
+																"type": "code"
+															},
+															{
+																"code": "name",
+																"header": "Name",
+																"type": "name"
+															}
+														],
+														"module_code": "combofacets",
+														"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+														"selection_column": "code",
+														"title": "Combination Facet Lookup"
+													},
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%",
+													"prompt": "Combination Facet Code",
+													"type": "customlookup"
+												},
+												{
+													"code": "breakpoint",
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%",
+													"prompt": "Vertical Breakpoint",
+													"type": "breakpoint"
+												}
+											],
+											"type": "group",
+											"visibility_conditions": {
+												"type": {
+													"value": [
+														"fitment-list"
+													]
+												}
+											}
+										},
+										{
+											"code": "fitment_list_table_styles",
+											"collapsed": 1,
+											"prompt": "Fitment List Table Styles",
+											"properties": [
+												{
+													"code": "header_typography",
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header-column, :shadow #detail__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-header",
+													"prompt": "Header Typography",
+													"supports_customization": 1,
+													"supports_legacy": 0,
+													"type": "typography"
+												},
+												{
+													"code": "content_typography",
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-value",
+													"prompt": "Content Typography",
+													"supports_customization": 1,
+													"supports_legacy": 0,
+													"type": "typography"
+												},
+												{
+													"code": "header_divider_color",
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header",
+													"prompt": "Header Divider Color",
+													"type": "color"
+												},
+												{
+													"code": "striped_background_color",
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+													"prompt": "Striped Background Color",
+													"type": "color"
+												}
+											],
+											"type": "group",
+											"visibility_conditions": {
+												"type": {
+													"value": [
+														"fitment-list"
+													]
+												}
+											}
+										},
+										{
 											"code": "quantity_input_size",
 											"options": [
 												{
@@ -3933,6 +4147,25 @@
 										},
 										"custom_text": {
 											"source": "markdown"
+										},
+										"fitment_list_settings": {
+											"breakpoint": {
+												"code": "mobile"
+											}
+										},
+										"fitment_list_table_styles": {
+											"content_typography": {
+												"code": "paragraph-l"
+											},
+											"header_divider_color": {
+												"value": "#DDDDDD"
+											},
+											"header_typography": {
+												"code": "subheading-xs"
+											},
+											"striped_background_color": {
+												"value": "#F9F9F9"
+											}
 										},
 										"global_minibasket_url": {
 											"type": "page",
@@ -5167,6 +5400,93 @@
 									}
 								},
 								{
+									"code": "fitment_list_settings",
+									"prompt": "Fitment List Settings",
+									"properties": [
+										{
+											"code": "facet_code",
+											"lookup": {
+												"columns": [
+													{
+														"code": "code",
+														"header": "Code",
+														"type": "code"
+													},
+													{
+														"code": "name",
+														"header": "Name",
+														"type": "name"
+													}
+												],
+												"module_code": "combofacets",
+												"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+												"selection_column": "code",
+												"title": "Combination Facet Lookup"
+											},
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%",
+											"prompt": "Combination Facet Code",
+											"type": "customlookup"
+										},
+										{
+											"code": "breakpoint",
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%",
+											"prompt": "Vertical Breakpoint",
+											"type": "breakpoint"
+										}
+									],
+									"type": "group",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"fitment-list"
+											]
+										}
+									}
+								},
+								{
+									"code": "fitment_list_table_styles",
+									"collapsed": 1,
+									"prompt": "Fitment List Table Styles",
+									"properties": [
+										{
+											"code": "header_typography",
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header-column, :shadow #detail__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-header",
+											"prompt": "Header Typography",
+											"supports_customization": 1,
+											"supports_legacy": 0,
+											"type": "typography"
+										},
+										{
+											"code": "content_typography",
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-value",
+											"prompt": "Content Typography",
+											"supports_customization": 1,
+											"supports_legacy": 0,
+											"type": "typography"
+										},
+										{
+											"code": "header_divider_color",
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header",
+											"prompt": "Header Divider Color",
+											"type": "color"
+										},
+										{
+											"code": "striped_background_color",
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+											"prompt": "Striped Background Color",
+											"type": "color"
+										}
+									],
+									"type": "group",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"fitment-list"
+											]
+										}
+									}
+								},
+								{
 									"code": "quantity_input_size",
 									"options": [
 										{
@@ -5611,6 +5931,25 @@
 								},
 								"custom_text": {
 									"source": "markdown"
+								},
+								"fitment_list_settings": {
+									"breakpoint": {
+										"code": "mobile"
+									}
+								},
+								"fitment_list_table_styles": {
+									"content_typography": {
+										"code": "paragraph-l"
+									},
+									"header_divider_color": {
+										"value": "#DDDDDD"
+									},
+									"header_typography": {
+										"code": "subheading-xs"
+									},
+									"striped_background_color": {
+										"value": "#F9F9F9"
+									}
 								},
 								"global_minibasket_url": {
 									"type": "page",
@@ -6845,6 +7184,93 @@
 							}
 						},
 						{
+							"code": "fitment_list_settings",
+							"prompt": "Fitment List Settings",
+							"properties": [
+								{
+									"code": "facet_code",
+									"lookup": {
+										"columns": [
+											{
+												"code": "code",
+												"header": "Code",
+												"type": "code"
+											},
+											{
+												"code": "name",
+												"header": "Name",
+												"type": "name"
+											}
+										],
+										"module_code": "combofacets",
+										"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+										"selection_column": "code",
+										"title": "Combination Facet Lookup"
+									},
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index%",
+									"prompt": "Combination Facet Code",
+									"type": "customlookup"
+								},
+								{
+									"code": "breakpoint",
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index%",
+									"prompt": "Vertical Breakpoint",
+									"type": "breakpoint"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"fitment-list"
+									]
+								}
+							}
+						},
+						{
+							"code": "fitment_list_table_styles",
+							"collapsed": 1,
+							"prompt": "Fitment List Table Styles",
+							"properties": [
+								{
+									"code": "header_typography",
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header-column, :shadow #detail__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-header",
+									"prompt": "Header Typography",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "typography"
+								},
+								{
+									"code": "content_typography",
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-value",
+									"prompt": "Content Typography",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "typography"
+								},
+								{
+									"code": "header_divider_color",
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header",
+									"prompt": "Header Divider Color",
+									"type": "color"
+								},
+								{
+									"code": "striped_background_color",
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+									"prompt": "Striped Background Color",
+									"type": "color"
+								}
+							],
+							"type": "group",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"fitment-list"
+									]
+								}
+							}
+						},
+						{
 							"code": "quantity_input_size",
 							"options": [
 								{
@@ -7289,6 +7715,25 @@
 						},
 						"custom_text": {
 							"source": "markdown"
+						},
+						"fitment_list_settings": {
+							"breakpoint": {
+								"code": "mobile"
+							}
+						},
+						"fitment_list_table_styles": {
+							"content_typography": {
+								"code": "paragraph-l"
+							},
+							"header_divider_color": {
+								"value": "#DDDDDD"
+							},
+							"header_typography": {
+								"code": "subheading-xs"
+							},
+							"striped_background_color": {
+								"value": "#F9F9F9"
+							}
 						},
 						"global_minibasket_url": {
 							"type": "page",
@@ -8523,6 +8968,93 @@
 					}
 				},
 				{
+					"code": "fitment_list_settings",
+					"prompt": "Fitment List Settings",
+					"properties": [
+						{
+							"code": "facet_code",
+							"lookup": {
+								"columns": [
+									{
+										"code": "code",
+										"header": "Code",
+										"type": "code"
+									},
+									{
+										"code": "name",
+										"header": "Name",
+										"type": "name"
+									}
+								],
+								"module_code": "combofacets",
+								"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+								"selection_column": "code",
+								"title": "Combination Facet Lookup"
+							},
+							"preview_property_selector": ":shadow #detail__child-%index%",
+							"prompt": "Combination Facet Code",
+							"type": "customlookup"
+						},
+						{
+							"code": "breakpoint",
+							"preview_property_selector": ":shadow #detail__child-%index%",
+							"prompt": "Vertical Breakpoint",
+							"type": "breakpoint"
+						}
+					],
+					"type": "group",
+					"visibility_conditions": {
+						"type": {
+							"value": [
+								"fitment-list"
+							]
+						}
+					}
+				},
+				{
+					"code": "fitment_list_table_styles",
+					"collapsed": 1,
+					"prompt": "Fitment List Table Styles",
+					"properties": [
+						{
+							"code": "header_typography",
+							"preview_property_selector": ":shadow #detail__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header-column, :shadow #detail__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-header",
+							"prompt": "Header Typography",
+							"supports_customization": 1,
+							"supports_legacy": 0,
+							"type": "typography"
+						},
+						{
+							"code": "content_typography",
+							"preview_property_selector": ":shadow #detail__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content-column-value",
+							"prompt": "Content Typography",
+							"supports_customization": 1,
+							"supports_legacy": 0,
+							"type": "typography"
+						},
+						{
+							"code": "header_divider_color",
+							"preview_property_selector": ":shadow #detail__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-header",
+							"prompt": "Header Divider Color",
+							"type": "color"
+						},
+						{
+							"code": "striped_background_color",
+							"preview_property_selector": ":shadow #detail__child-%index% mmx-product-fitment-list :shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+							"prompt": "Striped Background Color",
+							"type": "color"
+						}
+					],
+					"type": "group",
+					"visibility_conditions": {
+						"type": {
+							"value": [
+								"fitment-list"
+							]
+						}
+					}
+				},
+				{
 					"code": "quantity_input_size",
 					"options": [
 						{
@@ -8957,6 +9489,25 @@
 				},
 				"custom_text": {
 					"source": "markdown"
+				},
+				"fitment_list_settings": {
+					"breakpoint": {
+						"code": "mobile"
+					}
+				},
+				"fitment_list_table_styles": {
+					"content_typography": {
+						"code": "paragraph-l"
+					},
+					"header_divider_color": {
+						"value": "#DDDDDD"
+					},
+					"header_typography": {
+						"code": "subheading-xs"
+					},
+					"striped_background_color": {
+						"value": "#F9F9F9"
+					}
 				},
 				"global_minibasket_url": {
 					"type": "page",
@@ -9809,6 +10360,7 @@
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-product-details.js",
@@ -9820,7 +10372,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-VmHD9VOCZEIcwa6Db2h+K/+o/kFc+cxIYIbK2MSLr6Q= sha384-wb1mkgnkHVthHQn2AeETHLC7syGXfxE4LwymC332+vXs9XUp/sCFqsWzbjzXikcq sha512-RBVTrxyK0j3NHqwFuAU31DYa5jkVdKCDsGYAAG1/F7Oj6MJQdmwpimj9bdjCKNi1xzPzC/90Pl5/AGq1i7TWkA=="
+					"value": "sha256-EP19GB3wRGLjcErrFjpwbMp455xAQroHvrfzcAalFOA= sha384-ijjhnb3VIiLv8YT2P2NtO1hZAihoRoN5yqCKTD7JdjReQ90X80tcP/NCy0dwHm/I sha512-lxezpxilpsWdlCXy3QDP56NlCWQahbjo6c7BIGLoeNpFsjfxcTDnNvwgnfmO85y/oEIpdgU2oD3Yo1lY4upldQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -9858,16 +10410,17 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.12.03",
-		"mmx-base": "=10.12.03",
-		"mmx-button": "=10.12.03",
-		"mmx-dialog": "=10.12.03",
-		"mmx-featured-product": "=10.12.03",
-		"mmx-forms": "=10.12.03",
-		"mmx-icons": "=10.12.03",
-		"mmx-image-gallery": "=10.12.03",
-		"mmx-messages": "=10.12.03",
-		"mmx-tabs": "=10.12.03",
-		"mmx-text": "=10.12.03"
+		"mmx-accordion": "=10.13.00",
+		"mmx-base": "=10.13.00",
+		"mmx-button": "=10.13.00",
+		"mmx-dialog": "=10.13.00",
+		"mmx-featured-product": "=10.13.00",
+		"mmx-forms": "=10.13.00",
+		"mmx-icons": "=10.13.00",
+		"mmx-image-gallery": "=10.13.00",
+		"mmx-messages": "=10.13.00",
+		"mmx-product-fitment-list": "=10.13.00",
+		"mmx-tabs": "=10.13.00",
+		"mmx-text": "=10.13.00"
 	}
 }

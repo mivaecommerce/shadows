@@ -114,7 +114,7 @@ MMX.objectToCssShorthand = (obj, {key = 'padding_%side%'} = {}) => {
 };
 
 MMX.composeUnitValue = (obj, {fallbackUnit = 'px'} = {}) => {
-	if (typeof obj?.value !== 'number') {
+	if (MMX.valueIsEmpty(obj?.value)) {
 		return undefined;
 	}
 
@@ -169,6 +169,14 @@ MMX.renderBreakpointStyle = ({selector = ':root', breakpoint = {}, match = {}} =
 			}
 		</style>
 	`;
+};
+
+MMX.getBreakpoints = () => {
+	return structuredClone(window.MMThemeBreakpoints ?? []);
+};
+
+MMX.getBreakpoint = (code) => {
+	return MMX.getBreakpoints().find(breakpoint => String(breakpoint.code) === String(code));
 };
 
 MMX.buildMediaQuery = (rules = {}) => {
@@ -993,7 +1001,7 @@ class MMX_Element extends HTMLElement {
 					if (key === 'font_color') {
 						key = 'color';
 					}
-					
+
 					newStyles.push(`${MMX.snakeToKebabCase(key)}: ${value}`);
 				}
 			}

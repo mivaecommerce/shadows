@@ -1,0 +1,463 @@
+{
+	"code": "mmx-product-fitment-list",
+	"name": "Product Fitment List",
+	"type": "component",
+	"version": "10.13.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-product-fitment-list",
+	"category": "product-fitment-list",
+	"description": "## Product Fitment List\nA customizable table designed to clearly display product compatibility with specific units. Commonly used on product detail pages for vehicle fitment (year, make, model), HVAC systems, hardware, appliances, and machinery. It provides customers with a quick way to confirm whether a product works with their equipment, reducing uncertainty and improving purchase confidence.",
+	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
+	"sample_data_types": [
+		{
+			"type": "product"
+		}
+	],
+	"properties": [
+		{
+			"code": "settings",
+			"prompt": "Settings",
+			"properties": [
+				{
+					"code": "facet_code",
+					"lookup": {
+						"columns": [
+							{
+								"code": "code",
+								"header": "Code",
+								"type": "code"
+							},
+							{
+								"code": "name",
+								"header": "Name",
+								"type": "name"
+							}
+						],
+						"module_code": "combofacets",
+						"module_function": "PageBuilder_CombinationFacetList_Load_Query",
+						"selection_column": "code",
+						"title": "Combination Facet Lookup"
+					},
+					"prompt": "Combination Facet Code",
+					"type": "customlookup"
+				},
+				{
+					"code": "breakpoint",
+					"prompt": "Vertical Breakpoint",
+					"type": "breakpoint"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"can_disable": 1,
+			"code": "heading",
+			"prompt": "Section Title",
+			"properties": [
+				{
+					"code": "heading_align",
+					"options": [
+						{
+							"text": "align_left",
+							"type": "icon",
+							"value": "left"
+						},
+						{
+							"text": "align_center",
+							"type": "icon",
+							"value": "center"
+						},
+						{
+							"text": "align_right",
+							"type": "icon",
+							"value": "right"
+						}
+					],
+					"preview_property_selector": "[slot=\"title\"]",
+					"prompt": "Heading Alignment",
+					"type": "selector"
+				},
+				{
+					"code": "heading_text",
+					"preview_property_selector": "[slot=\"title\"]",
+					"prompt": "Heading Text",
+					"textsettings": {
+						"fields": [
+							{
+								"code": "typography_theme",
+								"prompt": "Typography",
+								"pseudoclasses": [
+									"normal"
+								],
+								"supports_customization": 1,
+								"supports_legacy": 1,
+								"type": "typography"
+							},
+							{
+								"code": "heading_style",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "Display One",
+										"value": "display-1"
+									},
+									{
+										"text": "Display Two",
+										"value": "display-2"
+									},
+									{
+										"text": "Display Three",
+										"value": "display-3"
+									},
+									{
+										"text": "Title One",
+										"value": "title-1"
+									},
+									{
+										"text": "Title Two",
+										"value": "title-2"
+									},
+									{
+										"text": "Title Three",
+										"value": "title-3"
+									},
+									{
+										"text": "Title Four",
+										"value": "title-4"
+									},
+									{
+										"text": "Subheading Large",
+										"value": "subheading-l"
+									},
+									{
+										"text": "Subheading Small",
+										"value": "subheading-s"
+									},
+									{
+										"text": "Subheading Extra-Small",
+										"value": "subheading-xs"
+									},
+									{
+										"text": "Paragraph Large",
+										"value": "paragraph-l"
+									},
+									{
+										"text": "Paragraph Small",
+										"value": "paragraph-s"
+									},
+									{
+										"text": "Paragraph Extra-Small",
+										"value": "paragraph-xs"
+									}
+								],
+								"prompt": "Heading Style",
+								"pseudoclasses": [
+									"normal"
+								],
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							},
+							{
+								"code": "font",
+								"prompt": "Font",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": 1,
+								"type": "font",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							},
+							{
+								"code": "font_size",
+								"label": "px",
+								"min": 1,
+								"prompt": "Font Size",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "font-size",
+								"style_suffix": "px",
+								"text_type": "number",
+								"type": "text",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							},
+							{
+								"code": "font_color",
+								"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+								"prompt": "Font Color",
+								"pseudoclasses": [
+									"normal"
+								],
+								"style": "color",
+								"type": "color",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							},
+							{
+								"code": "heading_tag",
+								"options": [
+									{
+										"text": "Default"
+									},
+									{
+										"text": "h1",
+										"value": "h1"
+									},
+									{
+										"text": "h2",
+										"value": "h2"
+									},
+									{
+										"text": "h3",
+										"value": "h3"
+									},
+									{
+										"text": "h4",
+										"value": "h4"
+									},
+									{
+										"text": "h5",
+										"value": "h5"
+									},
+									{
+										"text": "h6",
+										"value": "h6"
+									},
+									{
+										"text": "p",
+										"value": "p"
+									}
+								],
+								"prompt": "Heading Tag",
+								"pseudoclasses": [
+									"normal"
+								],
+								"type": "select",
+								"visibility_conditions": {
+									"normal": {
+										"typography_theme": {
+											"theme_mode": [
+												0
+											]
+										}
+									}
+								}
+							}
+						]
+					},
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "table_styles",
+			"collapsed": 1,
+			"prompt": "Table Styles",
+			"properties": [
+				{
+					"code": "header_typography",
+					"preview_property_selector": ":shadow .mmx-product-fitment-list__list-header-column, :shadow .mmx-product-fitment-list__list-content-column-header",
+					"prompt": "Header Typography",
+					"supports_customization": 1,
+					"supports_legacy": 0,
+					"type": "typography"
+				},
+				{
+					"code": "content_typography",
+					"preview_property_selector": ":shadow .mmx-product-fitment-list__list-content-column-value",
+					"prompt": "Content Typography",
+					"supports_customization": 1,
+					"supports_legacy": 0,
+					"type": "typography"
+				},
+				{
+					"code": "header_divider_color",
+					"preview_property_selector": ":shadow .mmx-product-fitment-list__list-header",
+					"prompt": "Header Divider Color",
+					"type": "color"
+				},
+				{
+					"code": "striped_background_color",
+					"preview_property_selector": ":shadow .mmx-product-fitment-list__list-content:nth-child(odd)",
+					"prompt": "Striped Background Color",
+					"type": "color"
+				}
+			],
+			"type": "group"
+		}
+	],
+	"advanced_properties": [
+		{
+			"code": "spacing",
+			"prompt": "Spacing",
+			"properties": [
+				{
+					"code": "top",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Top",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				},
+				{
+					"code": "bottom",
+					"label": "px",
+					"max": 200,
+					"min": -50,
+					"prompt": "Bottom",
+					"required": 0,
+					"step": 1,
+					"text_type": "number",
+					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "show_empty_results",
+			"prompt": "Display Empty Results",
+			"type": "checkbox"
+		}
+	],
+	"defaults": {
+		"advanced": {
+			"show_empty_results": {
+				"value": 1
+			}
+		},
+		"heading": {
+			"heading_align": {
+				"value": "center"
+			},
+			"heading_text": {
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"typography_theme": {
+								"code": "title-1",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
+				"value": "Product Fitment List"
+			},
+			"settings": {
+				"enabled": 1
+			}
+		},
+		"settings": {
+			"breakpoint": {
+				"code": "mobile"
+			}
+		},
+		"table_styles": {
+			"content_typography": {
+				"code": "paragraph-l"
+			},
+			"header_divider_color": {
+				"value": "#DDDDDD"
+			},
+			"header_typography": {
+				"code": "subheading-xs"
+			},
+			"striped_background_color": {
+				"value": "#F9F9F9"
+			}
+		}
+	},
+	"initialization_template": "src/templates/init.mvt",
+	"instance_template": "src/templates/instance.mvt",
+	"preview": "src/images/preview.svg",
+	"detailed_preview": "src/images/detailed_preview.svg",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-product-fitment-list.js",
+			"resource_code": "mmx-product-fitment-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-Qm1LxZDCntFmq7GXQvLz+2lI8UdlhTQoLUVORH13dI8= sha384-Kf299oMkarp4ugOIg3Ljb//AuWmRzC024EO+7erOblqcvD4WGPnIdt8z7dBfYK5W sha512-NIDPiqyzdie3/PI/PuLuoGugdJgh5vyrjBW7GBTIh8isqZ242VxNixZfAHOkXNIysCBztR/f7fg8e0gJaf9BWg=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-product-fitment-list.css",
+			"resource_code": "mmx-product-fitment-list",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-D1urtgrLw+yjQA/WzOewoDcNFs7OeXFV0tAuWiq3yH8= sha384-kMYdGUCop54UTIAErHutZ0Rt3x7lzWB0PaJXalRIvWlc3iNSZfxrfuY+7UCnOQi3 sha512-1bZ9ZJorMZVYKXIaBQJa2D38hnIrzyupkEIYzIHXOy6yHVqqjmT5+LE4kjOcjQ6bFRGb4B7NV6Ir8A25IE8htw=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.13.00",
+		"mmx-messages": "=10.13.00",
+		"mmx-text": "=10.13.00"
+	}
+}
