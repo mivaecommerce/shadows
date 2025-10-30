@@ -59,27 +59,28 @@
 		<mvt:comment>Slotted Image</mvt:comment>
 		<picture slot="image">
 			<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:mobile:image">
-				<mvt:assign name="l.settings:hero_image:image:img:responsive_image_data:mobile:image" value="glosub( l.settings:hero_image:image:img:responsive_image_data:mobile:image, ' ', '%20' )" />
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:responsive_image_data:mobile:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:responsive_image_data:mobile:image )" />
 				<source
 					class="source__mobile"
 					media="(max-width: 39.999em)"
-					srcset="&mvte:hero_image:image:img:responsive_image_data:mobile:image;"
+					srcset="&mvte:hero_image:image:img:responsive_image_data:mobile:uri_encoded_image;"
 					width="&mvte:hero_image:image:img:responsive_image_data:mobile:width;"
 					height="&mvte:hero_image:image:img:responsive_image_data:mobile:height;"
 				>
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:tablet:image">
-				<mvt:assign name="l.settings:hero_image:image:img:responsive_image_data:tablet:image" value="glosub( l.settings:hero_image:image:img:responsive_image_data:tablet:image, ' ', '%20' )" />
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:responsive_image_data:tablet:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:responsive_image_data:tablet:image )" />
 				<source
 					class="source__tablet"
 					media="(max-width: 59.999em)"
-					srcset="&mvte:hero_image:image:img:responsive_image_data:tablet:image;"
+					srcset="&mvte:hero_image:image:img:responsive_image_data:tablet:uri_encoded_image;"
 					width="&mvte:hero_image:image:img:responsive_image_data:tablet:width;"
 					height="&mvte:hero_image:image:img:responsive_image_data:tablet:height;"
 				>
 			</mvt:if>
+			<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:image )" />
 			<img
-				src="&mvte:hero_image:image:img:image;"
+				src="&mvte:hero_image:image:img:uri_encoded_image;"
 				alt="&mvte:hero_image:image:img:alt;"
 				width="&mvte:hero_image:image:img:width;"
 				height="&mvte:hero_image:image:img:height;"

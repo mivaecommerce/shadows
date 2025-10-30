@@ -2,7 +2,7 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "10.13.00",
+	"version": "10.13.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-lZu3lgDo+z/A+0oT5PjRpE/SZ3DwCXEgOsn7tPs0KiM= sha384-PHZx4tyZZnkVRKPu5lpWwgqYEiGCiBEn1QezNDUht4U+uWi+dxVHwE0y8fPQcN/6 sha512-ph+CFdF/5bwGAi/xg+nefgnIrnGjmcn68R5EhvCwJ1b+hXb+WbOGED4v8vcJHCAZDoB9ZQgubFCmpURto1Y7aw=="
+					"value": "sha256-a3HthMmrbzScXCffpLMODXspohN56wez1+Abm9eY+4o= sha384-mtdXMc2hIDM9I13xi+60pAJbcIQ2GyELa0/neAWZc9GF/rdfPIg3Fl4S45HmIGt9 sha512-7JNPUmSgk9rmzyTssk5gGegmEEpBsIGuwnZeCog2lJB+JppORjOpRhBIt/uI2YKK26aZsSifOl91JHoWso0O9w=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-oLFhYo4z0Pn1+DyhHeqWn/qb83mV63lpuwJQt/bnNpA= sha384-qaOkaMijejF5JHSOi2XVQ/Ukfrd3JeDxScAYsJs0AivEclP2zaT9crr8uq5ffc4s sha512-Uk+qdojM8R79LulQ1KhzTmdGsuj5u5qrzK27pQDshtC4YKaXyTTD1IGl4Y1DeKz1fNLSRzAH4hmleNWWkSBOaQ=="
+					"value": "sha256-56yOuxqHxH453FA76yO9YfWE03zBxvq9GNNFiZhzj60= sha384-5GaOYV2ZkINEm5XAc/d3sCuBoo+G1wrwUka7j28c9c9H6MJnV7BoeW5/tR4NHKrC sha512-3Kw48oNuxV+H5/kj8s+XkYVHjTjGgXVn3SwUhhK2zJPEbM93bEt+SyJLBBEdi+KVZecB9cI7U+2JaV4xY7nThA=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,34 +54,34 @@
 		}
 	],
 	"conflicts": {
-		"mmx-accordion": "<10.13.00",
-		"mmx-button": "<10.13.00",
-		"mmx-card": "<10.13.00",
-		"mmx-category-carousel": "<10.13.00",
-		"mmx-category-list": "<10.13.00",
-		"mmx-combination-facet": "<10.13.00",
-		"mmx-contact-form": "<10.13.00",
-		"mmx-csv": "<10.13.00",
-		"mmx-dialog": "<10.13.00",
-		"mmx-featured-product": "<10.13.00",
-		"mmx-forms": "<10.13.00",
-		"mmx-hero": "<10.13.00",
-		"mmx-hero-slider": "<10.13.00",
-		"mmx-icons": "<10.13.00",
-		"mmx-image-across": "<10.13.00",
-		"mmx-image-and-text": "<10.13.00",
-		"mmx-image-gallery": "<10.13.00",
-		"mmx-messages": "<10.13.00",
-		"mmx-product-carousel": "<10.13.00",
-		"mmx-product-details": "<10.13.00",
-		"mmx-product-fitment-list": "<10.13.00",
-		"mmx-product-list": "<10.13.00",
-		"mmx-quick-order": "<10.13.00",
-		"mmx-tabs": "<10.13.00",
-		"mmx-text": "<10.13.00",
-		"mmx-text-area": "<10.13.00",
-		"mmx-text-banner": "<10.13.00",
-		"mmx-text-editor": "<10.13.00",
-		"mmx-video": "<10.13.00"
+		"mmx-accordion": "<10.13.01",
+		"mmx-button": "<10.13.01",
+		"mmx-card": "<10.13.01",
+		"mmx-category-carousel": "<10.13.01",
+		"mmx-category-list": "<10.13.01",
+		"mmx-combination-facet": "<10.13.01",
+		"mmx-contact-form": "<10.13.01",
+		"mmx-csv": "<10.13.01",
+		"mmx-dialog": "<10.13.01",
+		"mmx-featured-product": "<10.13.01",
+		"mmx-forms": "<10.13.01",
+		"mmx-hero": "<10.13.01",
+		"mmx-hero-slider": "<10.13.01",
+		"mmx-icons": "<10.13.01",
+		"mmx-image-across": "<10.13.01",
+		"mmx-image-and-text": "<10.13.01",
+		"mmx-image-gallery": "<10.13.01",
+		"mmx-messages": "<10.13.01",
+		"mmx-product-carousel": "<10.13.01",
+		"mmx-product-details": "<10.13.01",
+		"mmx-product-fitment-list": "<10.13.01",
+		"mmx-product-list": "<10.13.01",
+		"mmx-quick-order": "<10.13.01",
+		"mmx-tabs": "<10.13.01",
+		"mmx-text": "<10.13.01",
+		"mmx-text-area": "<10.13.01",
+		"mmx-text-banner": "<10.13.01",
+		"mmx-text-editor": "<10.13.01",
+		"mmx-video": "<10.13.01"
 	}
 }

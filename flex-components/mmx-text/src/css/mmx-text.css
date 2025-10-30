@@ -8,6 +8,7 @@
 	padding: 0;
 	margin: 0 0 var(--mmx-text-margin-bottom) 0;
 	text-align: var(--mmx-text__text-align, unset);
+	overflow-wrap: anywhere;
 }
 
 .mmx-text__inner {

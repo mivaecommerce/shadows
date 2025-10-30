@@ -328,11 +328,13 @@
 							<a class="c-button c-button--full u-flex u-text-medium" href="&mvte:urls:OINF:auto;">Checkout</a>
 							<br>
 							<mvt:item name="readytheme" param="Load_ContentSection('paypalcp_configuration', g.basket_paypal)" />
+							<mvt:item name="readytheme" param="Load_ContentSection('epmivapay_configuration', g.basket_epmivapay)" />
 							<mvt:item name="readytheme" param="Load_ContentSection('amazonpay_configuration', g.basket_amazon)" />
 							<mvt:item name="readytheme" param="Load_ContentSection('mvaffirm_configuration', g.basket_affirm)" />
-							<mvt:if expr="g.basket_paypal:active EQ 1 OR g.basket_amazon:active EQ 1 OR g.basket_affirm:active EQ 1">
+							<mvt:if expr="g.basket_paypal:active EQ 1 OR g.basket_epmivapay:active EQ 1 OR g.basket_amazon:active EQ 1 OR g.basket_affirm:active EQ 1">
 								<hr class="c-keyline u-border-gray-400" data-text="Or Use">
 								<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+								<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 								<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 								<mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />
 							</mvt:if>

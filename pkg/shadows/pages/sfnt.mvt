@@ -22,6 +22,7 @@
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+			<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 			<mvt:item name="sequence" />
 		</div>
 	</section>

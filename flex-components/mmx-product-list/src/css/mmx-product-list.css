@@ -261,7 +261,7 @@
 .mmx-product-list__facet-value {
 	display: grid;
 	gap: 0.5em;
-	grid-template-columns: min-content 1fr min-content;
+	grid-template-columns: 1fr min-content;
 	margin-left: calc(var(--mmx-product-list__gap) * var(--mmx-product-list__facet-value-depth, 0));
 }
 

@@ -710,9 +710,9 @@ class MMX_Hero extends MMX_Element {
 
 		return /*html*/`
 			<picture part="picture">
-				${this.data?.image?.img?.responsive_images?.mobile ? /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntities(MMX.encodeSrcset(this.data.image.img.responsive_images.mobile))}">` : ''}
-				${this.data?.image?.img?.responsive_images?.tablet ? /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${MMX.encodeEntities(MMX.encodeSrcset(this.data.image.img.responsive_images.tablet))}">` : ''}
-				<img src="${this.data.image.img.image}" alt="${this.data?.image?.img?.alt || ''}" ${this.getLoadingAttributeString()}>
+				${this.data?.image?.img?.responsive_images?.mobile ? /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.mobile)}">` : ''}
+				${this.data?.image?.img?.responsive_images?.tablet ? /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.tablet)}">` : ''}
+				<img src="${MMX.encodeEntitiesURI(this.data.image.img.image)}" alt="${this.data?.image?.img?.alt || ''}" ${this.getLoadingAttributeString()}>
 			</picture>
 		`;
 	}

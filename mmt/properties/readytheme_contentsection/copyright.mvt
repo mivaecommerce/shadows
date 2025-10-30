@@ -4,5 +4,7 @@
 		<mvt:if expr="g.Session:shadows:page_style EQ 'minimal'">
 			 | <a href="&mvte:urls:PRPO:auto;">Privacy Statement</a>
 		</mvt:if>
+		<mvt:assign name="l.settings:powered_by_miva_url" value="'https://www.miva.com/?utm_campaign=built%20with&utm_medium=site&utm_source=' $ encodeattribute( s.http_host ) $ '&utm_content=' $ encodeattribute( g.Screen )" />
+		 | <a href="&mvte:powered_by_miva_url;" target="_blank" rel="noreferrer">Powered by Miva</a>
 	</p>
 </section>

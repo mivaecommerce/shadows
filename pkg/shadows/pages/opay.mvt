@@ -226,6 +226,43 @@
 									</mvt:foreach>
 								</div>
 							</div>
+						<mvt:elseif expr="g.PaymentMethod EQ 'epmivapay:cc'">
+							<div id="payment-fields" class="t-payment-form t-epmivapay">
+								<div class="t-payment-form__heading">
+									<span class="u-text-medium">
+										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
+										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+									</span>
+									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+								</div>
+								<div class="t-payment-form__fields c-form-fields--compact">
+									<mvt:foreach array="payment:fields" iterator="field">
+										<mvt:assign name="l.settings:field:html:class:invalid" value="ternary( l.settings:field:invalid, 'u-color-red', '' )" />
+										<mvt:if expr="l.settings:field:code EQ 'cc_exp'">
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<mvt:item name="payment" param="field:code" />
+											</div>
+										<mvt:elseif expr="l.settings:field:code EQ 'cc_number'">
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<mvt:item name="payment" param="field:code" />
+											</div>
+										<mvt:elseif expr="l.settings:field:code EQ 'cc_cvv'">
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<mvt:item name="payment" param="field:code"/>
+												&mvt:cvv_dialog;
+											</div>
+										<mvt:else>
+											<div class="t-payment-form__field-set t-payment-form__field-&mvte:field:code;" data-hook="mvt-input" data-mvt-id="&mvte:field:code;" data-mvt-classlist="c-form-input" data-mvt-autocomplete="cc-name">
+												<label class="c-form-label &mvte:field:html:class:invalid;" for="&mvte:field:code;" title="&mvte:field:prompt;">&mvt:field:prompt;</label>
+												<mvt:item name="payment" param="field:code" />
+											</div>
+										</mvt:if>
+									</mvt:foreach>
+								</div>
+							</div>
 						<mvt:else>
 							<div class="t-payment-form t-&mvte:payment:module:code;-payment-form">
 								<div class="t-payment-form__heading">

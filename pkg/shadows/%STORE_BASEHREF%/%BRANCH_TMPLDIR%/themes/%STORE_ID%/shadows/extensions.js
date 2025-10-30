@@ -752,222 +752,235 @@ const paymentMethod = (() => {
  * This extension is the default, primary navigation layout for Shadows. On larger screens, it
  * is a horizontal navigation with drop-downs and fly-outs for categories. On smaller screens, it
  * is off-canvas with internal scrolling.
- *
- * Version: 10.05.00
  */
 
-(($, window, document) => {
-	/**
-	 * Double Tap To Go [http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly]
-	 * By: Osvaldas Valutis [http://www.osvaldas.info]
-	 * License: MIT
-	 */
-	$.fn.doubleTapToGo = function () {
-		if ('ontouchstart' in window || navigator.maxTouchPoints > 0) {
-			this.each(function () {
-				let curItem = false;
-
-				$(this).on('click', function (event) {
-					let item = $(this);
-
-					if (item[0] !== curItem[0]) {
-						event.preventDefault();
-						curItem = item;
-					}
-				});
-
-				$(document).on('click touchstart', ({target}) => {
-					let resetItem = true;
-					let parents = $(target).parents();
-
-					for (let i = 0; i < parents.length; i++) {
-						if (parents[i] === curItem[0]) {
-							resetItem = false;
-						}
-					}
-					if (resetItem) {
-						curItem = false;
-					}
-				});
-			});
-		}
-
-		return this;
+class TransfigureNavigation {
+	#settings = {
+		container: '[data-hook~="transfigure-navigation"]',
+		hasDropDown: '[data-hook~="has-drop-down"]',
+		desktopMedia: '(min-width: 60em)',
+		openMainMenu: '[data-hook~="open-main-menu"]',
+		closeMainMenu: '[data-hook~="close-main-menu"]',
+		hasChildMenuLinks: '[data-hook~="has-child-menu"] > a',
+		showPreviousMenuButtons: '[data-hook~="show-previous-menu"]'
 	};
 
+	constructor(settings = {}) {
+		this.#settings = Object.assign(this.#settings, settings);
+		this.#bindEvents();
+	}
 
-	/**
-	 * This function works if the element, or its parent, have been hidden via JavaScript, and can either
-	 * retrieve inner or outer dimensions as well as returning the offset values. The function is called
-	 * directly on the object and will insert a clone just after the original element making it possible
-	 * for the clone to maintain inherited dimensions.
-	 *
-	 * @param outer
-	 * @returns {*}
-	 *
-	 * element width: $(ELEMENT).getRealDimensions().width;
-	 * element outerWidth: $(ELEMENT).getRealDimensions(true).width;
-	 * element height: $(ELEMENT).getRealDimensions().height;
-	 * element outerHeight: $(ELEMENT).getRealDimensions(true).height;
-	 * element offsetTop: $(ELEMENT).getRealDimensions().offsetTop;
-	 * element offsetLeft: $(ELEMENT).getRealDimensions().offsetLeft;
-	 */
-	$.fn.getRealDimensions = function (outer) {
-		let $this = $(this);
+	#bindEvents() {
+		this.#listenForContainerClicks();
+		this.#listenForMobileMenuOpenCloseClicks();
+		this.#listenForSubNavigationEvents();
+		this.#listenToKeepDesktopMenuOnPage();
+	}
 
-		if ($this.length === 0) {
-			return false;
+	// Mobile Backdrop Click
+	get #container () {
+		return document.querySelector(this.#settings.container);
+	}
+
+	get #desktopBreakpoint() {
+		return window.matchMedia(this.#settings.desktopMedia);
+	}
+
+	#listenForContainerClicks() {
+		this.#container?.addEventListener('click', e => {
+			this.#detectMobileContainerClick(e);
+			this.#detectLinkClick(e);
+		}, {capture: true});
+	}
+
+	#detectMobileContainerClick(e) {
+		if (!this.#desktopBreakpoint.matches && e.target === this.#container) {
+			this.#onMobileContainerClick(e);
 		}
+	}
 
-		let $clone = $this.clone().css(
-			{
-				'display': 'block',
-				'visibility': 'hidden'
-			}
-		).insertAfter($this);
+	#onMobileContainerClick(e) {
+		e.preventDefault();
+		this.#closeMenu();
+	}
 
-		let result = {
-			width: (outer) ? $clone.outerWidth() : $clone.innerWidth(),
-			height: (outer) ? $clone.outerHeight() : $clone.innerHeight(),
-			offsetTop: $clone.offset().top,
-			offsetLeft: $clone.offset().left
-		};
+	#detectLinkClick(e) {
+		const link = this.#getEventLink(e);
 
-		$clone.remove();
-		return result;
-	};
-
-
-	/**
-	 * This function will check if navigation elements will be rendered outside
-	 * of the visible area. If they will be, a class is added to the parent
-	 * element which will change the render direction. You can pass a jQuery
-	 * object as the `container` parameter to have the visible area set to
-	 * something other than the documentElement.
-	 *
-	 * @param container
-	 */
-	$.fn.setOffsetDirection = function (container) {
-		let triggerElement = $(this);
-
-		triggerElement.on('mouseenter', function () {
-			let parentElement = $(this);
-			let childElement = parentElement.find('ul').first();
-			let grandchildElement = childElement.find('ul').first();
-			let childOffsetWidth = childElement.offset().left + childElement.width();
-			let documentWidth = container ? container.outerWidth() : document.documentElement.clientWidth;
-
-			if (grandchildElement) {
-				childOffsetWidth = childOffsetWidth + grandchildElement.getRealDimensions().width;
-			}
-
-			let isEntirelyVisible = (childOffsetWidth <= documentWidth);
-
-			if (!isEntirelyVisible) {
-				//console.log('NOT In the viewport!');
-				parentElement.addClass('is-off-screen');
-			}
-			else {
-				//console.log('In the viewport!');
-				parentElement.removeClass('is-off-screen');
-			}
-		});
-		return this;
-	};
-
-
-	/**
-	 * This function is the compiled call for all the functions contained in this extension. You can pass a jQuery
-	 * object as the `container` parameter to have the visible area set to something other than the documentElement.
-	 *
-	 * Example: $(ELEMENT).transfigureNavigation();
-	 *          $(ELEMENT).transfigureNavigation($(CONTAINER_ELEMENT));
-	 *
-	 * @param container
-	 */
-	$.fn.transfigureNavigation = function (container) {
-		const navigationExtension = document.querySelector('[data-hook="transfigure-navigation"]');
-		const topLevelLinks = navigationExtension.querySelectorAll('.x-transfigure-navigation__link');
-		let clientPort = document.documentElement.clientWidth;
-		let waitForIt;
-
-		window.addEventListener('resize', () => {
-			if (!waitForIt) {
-				waitForIt = setTimeout(() => {
-					waitForIt = null;
-					clientPort = document.documentElement.clientWidth;
-
-					if (clientPort < 960) {
-						showSubnavigation();
-					}
-				}, 66);
-			}
-		}, false);
-
-		function showSubnavigation() {
-			$.hook('has-child-menu').children('a').on('click', function (event) {
-				let selected = $(this);
-
-				event.preventDefault();
-				selected.next('ul').removeClass('is-hidden');
-				selected.parent('.has-child-menu').closest('ul').addClass('show-next');
-			});
-
-			$.hook('show-previous-menu').on('click', function (event) {
-				let selected = $(this);
-
-				event.preventDefault();
-				selected.parent('ul').addClass('is-hidden').parent('.has-child-menu').closest('ul').removeClass('show-next');
-			});
+		if (link) {
+			this.#onLinkClick({e, link});
 		}
+	}
 
-		document.querySelector('[data-hook="open-main-menu"]').addEventListener('click', event => {
-			event.preventDefault();
-			document.documentElement.classList.add('has-open-main-menu');
-			navigationExtension.classList.add('is-open');
-		});
-
-		document.querySelector('[data-hook="close-main-menu"]').addEventListener('click', event => {
-			event.preventDefault();
-			document.documentElement.classList.remove('has-open-main-menu');
-			navigationExtension.classList.remove('is-open');
-		});
-
-		if (clientPort < 960) {
-			showSubnavigation();
-
-			navigationExtension.addEventListener('click', event => {
-				if (event.target === navigationExtension) {
-					event.preventDefault();
-					document.documentElement.classList.remove('has-open-main-menu');
-					navigationExtension.classList.remove('is-open');
-				}
-			});
+	#getEventLink(e) {
+		// handle when target is: `a`
+		if (e?.target?.nodeName === 'A') {
+			return e.target;
+		}
+		// handle when target is: `a > span`
+		else if (e?.target?.parentElement?.nodeName === 'A') {
+			return e.target.parentElement;
 		}
 		else {
-			if (!!window.MSInputMethodContext && !!document.documentMode) {
-				topLevelLinks.forEach(link => {
-					if (link.nextElementSibling) {
-						link.addEventListener('focus', function () {
-							this.parentElement.classList.add('focus-within');
-						});
-
-						const subMenu = link.nextElementSibling;
-						const subMenuLinks = subMenu.querySelectorAll('a');
-						const lastLinkIndex = subMenuLinks.length - 1;
-						const lastLink = subMenuLinks[lastLinkIndex];
-
-						lastLink.addEventListener('blur', () => {
-							link.parentElement.classList.remove('focus-within');
-						});
-					}
-				});
-			}
-			return this.doubleTapToGo().setOffsetDirection(container);
-
+			return null;
 		}
-	};
-})(jQuery, window, document);
+	}
+
+	#onLinkClick({e, link} = {}) {
+		requestAnimationFrame(() => {
+			this.#lastClickedLink = link;
+		});
+	}
+
+	// Mobile Menu Toggles
+	get #openMainMenu() {
+		return document.querySelectorAll(this.#settings.openMainMenu);
+	}
+
+	get #closeMainMenu() {
+		return document.querySelectorAll(this.#settings.closeMainMenu);
+	}
+
+	#listenForMobileMenuOpenCloseClicks() {
+		this.#openMainMenu.forEach(button => {
+			button.addEventListener('click', e => {
+				e.preventDefault();
+				this.#openMenu();
+			});
+		});
+
+		this.#closeMainMenu.forEach(button => {
+			button.addEventListener('click', e => {
+				e.preventDefault();
+				this.#closeMenu();
+			});
+		});
+	}
+
+	#openMenu() {
+		document.documentElement.classList.add('has-open-main-menu');
+		this.#container.classList.add('is-open');
+	}
+
+	#closeMenu() {
+		document.documentElement.classList.remove('has-open-main-menu');
+		this.#container.classList.remove('is-open');
+	}
+
+	// Mobile Menu Navigation
+	get #hasChildMenuLinks() {
+		return this.#container.querySelectorAll(this.#settings.hasChildMenuLinks);
+	}
+
+	get #showPreviousMenuButtons() {
+		return this.#container.querySelectorAll(this.#settings.showPreviousMenuButtons);
+	}
+
+	#listenForSubNavigationEvents() {
+		this.#hasChildMenuLinks.forEach(link => {
+			link.addEventListener('click', e => {
+				this.#onParentMenuClick({e, link});
+			});
+		});
+
+		this.#showPreviousMenuButtons.forEach(button => {
+			button.addEventListener('click', e => {
+				if (this.#desktopBreakpoint.matches) return;
+				e.preventDefault();
+				this.#showPreviousMobileMenu(button);
+			});
+		});
+	}
+
+	#onParentMenuClick({e, link} = {}) {
+		if (this.#desktopBreakpoint.matches) {
+			if (this.#shouldPreventFirstLinkClick(link)) {
+				e.preventDefault();
+			}
+		}
+		else {
+			e.preventDefault();
+			this.#showNextMobileMenu(link);
+		}
+	}
+
+	#lastClickedLink;
+
+	#shouldPreventFirstLinkClick(link) {
+		const cantHover = window.matchMedia('(hover: none)').matches;
+		return cantHover && this.#lastClickedLink !== link;
+	}
+
+	#showNextMobileMenu(link) {
+		link.nextElementSibling?.classList?.remove?.('is-hidden');
+		link.parentElement?.closest?.('ul')?.classList?.add?.('show-next');
+	}
+
+	#showPreviousMobileMenu(button) {
+		const ul = button?.parentElement;
+		const parentUl = ul?.parentElement?.closest('ul');
+
+		ul?.classList?.add?.('is-hidden');
+		parentUl?.classList?.remove?.('show-next');
+	}
+
+	// Keep Desktop Menu On-Page
+	get #hasDropDown() {
+		return this.#container.querySelectorAll(this.#settings.hasDropDown);
+	}
+
+	#listenToKeepDesktopMenuOnPage() {
+		this.#hasDropDown.forEach(menu => {
+			menu.addEventListener('mouseenter', () => {
+				if (!this.#desktopBreakpoint.matches) {
+					return;
+				}
+
+				this.#onDesktopMenuMouseEnter(menu);
+			});
+		});
+	}
+
+	#onDesktopMenuMouseEnter(menu) {
+		const childMenu = menu.querySelector('ul');
+		const grandChildMenu = childMenu?.querySelector('ul');
+
+		const dimensions = {
+			documentWidth: document.documentElement.clientWidth,
+			childMenu: childMenu.getBoundingClientRect(),
+			grandChildMenu: this.#getHiddenBoundingClientRect(grandChildMenu)
+		};
+
+		dimensions.totalRight = dimensions.childMenu.right + (dimensions.grandChildMenu?.width ?? 0);
+
+		if (dimensions.totalRight > dimensions.documentWidth) {
+			menu.classList.add('is-off-screen');
+		}
+		else {
+			menu.classList.remove('is-off-screen');
+		}
+	}
+
+	#getHiddenBoundingClientRect(element) {
+		if (typeof element?.cloneNode !== 'function') {
+			return undefined;
+		}
+
+		const clone = element.cloneNode(true);
+
+		clone.style.display = 'block';
+		clone.style.visibility = 'hidden';
+		clone.style.pointerEvents = 'none';
+
+		element.after(clone);
+
+		const rect = clone.getBoundingClientRect();
+
+		clone.remove();
+
+		return rect;
+	}
+}
 /**
  * EXTENSIONS / DIALOG / DIALOG
  *
@@ -1326,7 +1339,7 @@ const paymentMethod = (() => {
 	let togglesMap = {};
 	let targetsMap = {};
 
-	function $(selector, context) {
+	function findElement(selector, context) {
 		return Array.prototype.slice.call(
 			(context || document).querySelectorAll(selector)
 		);
@@ -1367,7 +1380,7 @@ const paymentMethod = (() => {
 	let initA11yToggle = context => {
 		setLastWindowWidth();
 
-		togglesMap = $('[data-a11y-toggle]', context).reduce((acc, toggle) => {
+		togglesMap = findElement('[data-a11y-toggle]', context).reduce((acc, toggle) => {
 			let selector = `#${toggle.getAttribute('data-a11y-toggle')}`;
 
 			acc[selector] = acc[selector] || [];
@@ -1377,7 +1390,7 @@ const paymentMethod = (() => {
 
 		let targets = Object.keys(togglesMap);
 
-		targets.length && $(targets).forEach(target => {
+		targets.length && findElement(targets).forEach(target => {
 			let toggles = togglesMap[`#${target.id}`];
 			let isExpanded = target.hasAttribute('data-a11y-toggle-open');
 			let labelledby = [];
@@ -1415,7 +1428,7 @@ const paymentMethod = (() => {
 	let destroyA11yToggle = () => {
 		let targets = Object.keys(togglesMap);
 
-		targets.length && $(targets).forEach(target => {
+		targets.length && findElement(targets).forEach(target => {
 			let toggles = togglesMap[`#${target.id}`];
 
 			toggles.forEach(toggle => {

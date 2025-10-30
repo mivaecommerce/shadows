@@ -5,8 +5,8 @@
             "item_code": "accordion",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "accordion": {
                     "details": {
@@ -97,7 +97,7 @@
                             "value": "underline"
                         },
                         "radius": {
-                            "value": 8
+                            "visible": 0
                         },
                         "settings": {
                             "enabled": 1
@@ -107,12 +107,39 @@
                         }
                     },
                     "content": {
+                        "font": {
+                            "visible": 0
+                        },
+                        "font_color": {
+                            "visible": 0
+                        },
+                        "font_size": {
+                            "visible": 0
+                        },
+                        "style": {
+                            "visible": 0
+                        },
                         "typography_theme": {
                             "code": "paragraph-s",
                             "theme_mode": 1
                         }
                     },
                     "heading": {
+                        "font": {
+                            "visible": 0
+                        },
+                        "font_color": {
+                            "visible": 0
+                        },
+                        "font_size": {
+                            "visible": 0
+                        },
+                        "style": {
+                            "visible": 0
+                        },
+                        "tag": {
+                            "visible": 0
+                        },
                         "typography_theme": {
                             "code": "subheading-l",
                             "theme_mode": 1

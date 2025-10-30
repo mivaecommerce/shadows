@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "10.13.00",
+	"version": "10.13.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -9837,7 +9837,7 @@
 																"customizations": {
 																	"styles": {
 																		"color": {
-																			"value": "#111111"
+																			"value": "var(--mmx-product-price-color)"
 																		},
 																		"overwrite_color": 1
 																	}
@@ -9869,7 +9869,7 @@
 																"customizations": {
 																	"styles": {
 																		"color": {
-																			"value": "#767676"
+																			"value": "var(--mmx-product-additional-price-color)"
 																		},
 																		"overwrite_color": 1
 																	}
@@ -10372,7 +10372,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-EP19GB3wRGLjcErrFjpwbMp455xAQroHvrfzcAalFOA= sha384-ijjhnb3VIiLv8YT2P2NtO1hZAihoRoN5yqCKTD7JdjReQ90X80tcP/NCy0dwHm/I sha512-lxezpxilpsWdlCXy3QDP56NlCWQahbjo6c7BIGLoeNpFsjfxcTDnNvwgnfmO85y/oEIpdgU2oD3Yo1lY4upldQ=="
+					"value": "sha256-RfVwpT+CsqqxvtkpHpE+ZZzlV35ab8g9RyVBOWZQaeQ= sha384-8UWB7y7uikovHAdb1z3UQ5xAjmfp8jA6VlLMVmNjMKA/3JyvBfFcOkmuInHa/cjY sha512-NU8YA0XrwTrNH1NYhW5/cwwwvFN2AkNq8i7Ia9QqLVBla5yxZvpmSHUhrNUXTkBNQeg5FPOgrJmdDIwjzcqLfw=="
 				},
 				{
 					"name": "crossorigin",
@@ -10410,17 +10410,17 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.13.00",
-		"mmx-base": "=10.13.00",
-		"mmx-button": "=10.13.00",
-		"mmx-dialog": "=10.13.00",
-		"mmx-featured-product": "=10.13.00",
-		"mmx-forms": "=10.13.00",
-		"mmx-icons": "=10.13.00",
-		"mmx-image-gallery": "=10.13.00",
-		"mmx-messages": "=10.13.00",
-		"mmx-product-fitment-list": "=10.13.00",
-		"mmx-tabs": "=10.13.00",
-		"mmx-text": "=10.13.00"
+		"mmx-accordion": "=10.13.01",
+		"mmx-base": "=10.13.01",
+		"mmx-button": "=10.13.01",
+		"mmx-dialog": "=10.13.01",
+		"mmx-featured-product": "=10.13.01",
+		"mmx-forms": "=10.13.01",
+		"mmx-icons": "=10.13.01",
+		"mmx-image-gallery": "=10.13.01",
+		"mmx-messages": "=10.13.01",
+		"mmx-product-fitment-list": "=10.13.01",
+		"mmx-tabs": "=10.13.01",
+		"mmx-text": "=10.13.01"
 	}
 }

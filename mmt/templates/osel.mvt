@@ -26,6 +26,7 @@
 				<mvt:item name="readytheme" param="contentsection( 'checkout_steps' )" />
 				<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+				<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 
 				<form class="t-osel-form" method="post" action="&mvte:urls:OPAY:secure;">
 					<fieldset>

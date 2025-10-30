@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "advanced": {
                     "form_name": {
@@ -19,26 +19,116 @@
                 "details": {
                     "children": [
                         {
+                            "accordion_settings": {
+                                "visible": 0
+                            },
+                            "add_to_cart_button": {
+                                "visible": 0
+                            },
+                            "add_to_cart_messages": {
+                                "visible": 0
+                            },
+                            "add_to_wishlist_button": {
+                                "visible": 0
+                            },
+                            "attribute_messages": {
+                                "visible": 0
+                            },
+                            "atwl_url": {
+                                "visible": 0
+                            },
                             "container_styles": {
                                 "settings": {
                                     "enabled": 0
                                 }
                             },
+                            "custom_text": {
+                                "visible": 0
+                            },
+                            "customfield": {
+                                "visible": 0
+                            },
                             "details": {
                                 "children": [
                                     {
+                                        "accordion_settings": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_button": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_messages": {
+                                            "visible": 0
+                                        },
+                                        "add_to_wishlist_button": {
+                                            "visible": 0
+                                        },
+                                        "attribute_messages": {
+                                            "visible": 0
+                                        },
+                                        "atwl_url": {
+                                            "visible": 0
+                                        },
                                         "container_styles": {
                                             "settings": {
                                                 "enabled": 0
                                             }
                                         },
+                                        "custom_text": {
+                                            "visible": 0
+                                        },
+                                        "customfield": {
+                                            "visible": 0
+                                        },
                                         "details": {
                                             "children": [
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
                                                     },
                                                     "image_settings": {
                                                         "closeup": {
@@ -67,51 +157,217 @@
                                                             "settings": {
                                                                 "enabled": 1
                                                             }
-                                                        }
+                                                        },
+                                                        "visible": 1
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "Images"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "images"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "visible": 1
+                                        },
+                                        "fitment_list_settings": {
+                                            "visible": 0
+                                        },
+                                        "fitment_list_table_styles": {
+                                            "visible": 0
+                                        },
+                                        "fitment_settings": {
+                                            "visible": 0
                                         },
                                         "flex_basis": {
                                             "value": 150
                                         },
+                                        "fragment": {
+                                            "visible": 0
+                                        },
+                                        "global_minibasket_url": {
+                                            "visible": 0
+                                        },
+                                        "image_settings": {
+                                            "visible": 0
+                                        },
                                         "max_height_settings": {
                                             "settings": {
                                                 "enabled": 0
-                                            }
+                                            },
+                                            "visible": 1
+                                        },
+                                        "message_styles": {
+                                            "visible": 0
                                         },
                                         "name": {
                                             "value": "Images"
                                         },
+                                        "prefix": {
+                                            "visible": 0
+                                        },
+                                        "price": {
+                                            "visible": 0
+                                        },
+                                        "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "suffix": {
+                                            "visible": 0
+                                        },
+                                        "tab_settings": {
+                                            "visible": 0
+                                        },
+                                        "text_styles": {
+                                            "visible": 0
+                                        },
                                         "type": {
                                             "value": "vertical-group"
+                                        },
+                                        "vertical_breakpoint": {
+                                            "visible": 0
+                                        },
+                                        "volume_pricing_table_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
+                                        "accordion_settings": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_button": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_messages": {
+                                            "visible": 0
+                                        },
+                                        "add_to_wishlist_button": {
+                                            "visible": 0
+                                        },
+                                        "attribute_messages": {
+                                            "visible": 0
+                                        },
+                                        "atwl_url": {
+                                            "visible": 0
+                                        },
                                         "container_styles": {
                                             "settings": {
                                                 "enabled": 0
                                             }
                                         },
+                                        "custom_text": {
+                                            "visible": 0
+                                        },
+                                        "customfield": {
+                                            "visible": 0
+                                        },
                                         "details": {
                                             "children": [
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Code"
                                                     },
                                                     "prefix": {
-                                                        "value": "SKU: "
+                                                        "value": "SKU: ",
+                                                        "visible": 1
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 1
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
                                                     },
                                                     "text_styles": {
                                                         "settings": {
@@ -120,20 +376,93 @@
                                                         "typography_theme": {
                                                             "code": "paragraph-xs",
                                                             "theme_mode": 1
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "code"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Name"
+                                                    },
+                                                    "prefix": {
+                                                        "visible": 1
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 1
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
                                                     },
                                                     "text_styles": {
                                                         "settings": {
@@ -142,31 +471,126 @@
                                                         "typography_theme": {
                                                             "code": "title-3",
                                                             "theme_mode": 1
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "name"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
                                                     },
                                                     "details": {
                                                         "children": [
                                                             {
+                                                                "accordion_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_wishlist_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "atwl_url": {
+                                                                    "visible": 0
+                                                                },
                                                                 "container_styles": {
                                                                     "settings": {
                                                                         "enabled": 0
                                                                     }
+                                                                },
+                                                                "custom_text": {
+                                                                    "visible": 0
+                                                                },
+                                                                "customfield": {
+                                                                    "visible": 0
+                                                                },
+                                                                "details": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_table_styles": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fragment": {
+                                                                    "visible": 0
+                                                                },
+                                                                "global_minibasket_url": {
+                                                                    "visible": 0
+                                                                },
+                                                                "image_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "max_height_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "message_styles": {
+                                                                    "visible": 0
                                                                 },
                                                                 "name": {
                                                                     "value": "Sale Price"
                                                                 },
+                                                                "prefix": {
+                                                                    "visible": 1
+                                                                },
                                                                 "price": {
-                                                                    "value": "sale"
+                                                                    "value": "sale",
+                                                                    "visible": 1
+                                                                },
+                                                                "quantity_input_size": {
+                                                                    "visible": 0
+                                                                },
+                                                                "suffix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "tab_settings": {
+                                                                    "visible": 0
                                                                 },
                                                                 "text_styles": {
                                                                     "settings": {
@@ -177,28 +601,99 @@
                                                                         "customizations": {
                                                                             "styles": {
                                                                                 "color": {
-                                                                                    "value": "#111111"
+                                                                                    "value": "var(--mmx-product-price-color)"
                                                                                 },
                                                                                 "overwrite_color": 1
                                                                             }
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "visible": 1
                                                                 },
                                                                 "type": {
                                                                     "value": "price"
+                                                                },
+                                                                "vertical_breakpoint": {
+                                                                    "visible": 0
+                                                                },
+                                                                "volume_pricing_table_settings": {
+                                                                    "visible": 0
                                                                 }
                                                             },
                                                             {
+                                                                "accordion_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_wishlist_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "atwl_url": {
+                                                                    "visible": 0
+                                                                },
                                                                 "container_styles": {
                                                                     "settings": {
                                                                         "enabled": 0
                                                                     }
                                                                 },
+                                                                "custom_text": {
+                                                                    "visible": 0
+                                                                },
+                                                                "customfield": {
+                                                                    "visible": 0
+                                                                },
+                                                                "details": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_table_styles": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fragment": {
+                                                                    "visible": 0
+                                                                },
+                                                                "global_minibasket_url": {
+                                                                    "visible": 0
+                                                                },
+                                                                "image_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "max_height_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "message_styles": {
+                                                                    "visible": 0
+                                                                },
                                                                 "name": {
                                                                     "value": "Additional Price"
                                                                 },
+                                                                "prefix": {
+                                                                    "visible": 1
+                                                                },
                                                                 "price": {
-                                                                    "value": "retail"
+                                                                    "value": "retail",
+                                                                    "visible": 1
+                                                                },
+                                                                "quantity_input_size": {
+                                                                    "visible": 0
+                                                                },
+                                                                "suffix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "tab_settings": {
+                                                                    "visible": 0
                                                                 },
                                                                 "text_styles": {
                                                                     "settings": {
@@ -209,50 +704,253 @@
                                                                         "customizations": {
                                                                             "styles": {
                                                                                 "color": {
-                                                                                    "value": "#767676"
+                                                                                    "value": "var(--mmx-product-additional-price-color)"
                                                                                 },
                                                                                 "overwrite_color": 1
                                                                             }
                                                                         }
-                                                                    }
+                                                                    },
+                                                                    "visible": 1
                                                                 },
                                                                 "type": {
                                                                     "value": "price"
+                                                                },
+                                                                "vertical_breakpoint": {
+                                                                    "visible": 0
+                                                                },
+                                                                "volume_pricing_table_settings": {
+                                                                    "visible": 0
                                                                 }
                                                             }
-                                                        ]
+                                                        ],
+                                                        "visible": 1
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "Prices"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "inline-group"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "Product Charges"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "product-charges"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Volume Pricing Table"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "volume-pricing-table"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
                                                     },
                                                     "volume_pricing_table_settings": {
                                                         "price": {
@@ -276,14 +974,63 @@
                                                                     }
                                                                 }
                                                             }
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
                                                     },
                                                     "message_styles": {
                                                         "display": {
@@ -294,16 +1041,53 @@
                                                         },
                                                         "variant": {
                                                             "value": "minimal"
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "name": {
                                                         "value": "Inventory Message"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "inv_short"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
                                                     "attribute_messages": {
                                                         "invalid_msg": {
                                                             "source": "markdown",
@@ -319,53 +1103,240 @@
                                                         },
                                                         "settings": {
                                                             "enabled": 1
-                                                        }
+                                                        },
+                                                        "visible": 1
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
                                                     },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "Attributes"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "attributes"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
                                                     "details": {
                                                         "children": [
                                                             {
+                                                                "accordion_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_wishlist_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "atwl_url": {
+                                                                    "visible": 0
+                                                                },
                                                                 "container_styles": {
                                                                     "settings": {
                                                                         "enabled": 0
                                                                     }
+                                                                },
+                                                                "custom_text": {
+                                                                    "visible": 0
+                                                                },
+                                                                "customfield": {
+                                                                    "visible": 0
+                                                                },
+                                                                "details": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_table_styles": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_settings": {
+                                                                    "visible": 0
                                                                 },
                                                                 "flex_basis": {
                                                                     "value": 40
                                                                 },
+                                                                "fragment": {
+                                                                    "visible": 0
+                                                                },
+                                                                "global_minibasket_url": {
+                                                                    "visible": 0
+                                                                },
+                                                                "image_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "max_height_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "message_styles": {
+                                                                    "visible": 0
+                                                                },
                                                                 "name": {
                                                                     "value": "Quantity Input"
                                                                 },
+                                                                "prefix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "price": {
+                                                                    "visible": 0
+                                                                },
+                                                                "quantity_input_size": {
+                                                                    "visible": 1
+                                                                },
+                                                                "suffix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "tab_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "text_styles": {
+                                                                    "visible": 0
+                                                                },
                                                                 "type": {
                                                                     "value": "quantity-input"
+                                                                },
+                                                                "vertical_breakpoint": {
+                                                                    "visible": 0
+                                                                },
+                                                                "volume_pricing_table_settings": {
+                                                                    "visible": 0
                                                                 }
                                                             },
                                                             {
+                                                                "accordion_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_cart_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "add_to_wishlist_button": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "atwl_url": {
+                                                                    "visible": 0
+                                                                },
                                                                 "container_styles": {
                                                                     "settings": {
                                                                         "enabled": 0
                                                                     }
                                                                 },
+                                                                "custom_text": {
+                                                                    "visible": 0
+                                                                },
+                                                                "customfield": {
+                                                                    "visible": 0
+                                                                },
                                                                 "details": {
                                                                     "children": [
                                                                         {
+                                                                            "accordion_settings": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "add_to_cart_button": {
                                                                                 "textsettings": {
                                                                                     "fields": {
@@ -381,25 +1352,99 @@
                                                                                         }
                                                                                     }
                                                                                 },
-                                                                                "value": "Add to Cart"
+                                                                                "value": "Add to Cart",
+                                                                                "visible": 1
+                                                                            },
+                                                                            "add_to_cart_messages": {
+                                                                                "visible": 1
+                                                                            },
+                                                                            "add_to_wishlist_button": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "attribute_messages": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "atwl_url": {
+                                                                                "visible": 0
                                                                             },
                                                                             "container_styles": {
                                                                                 "settings": {
                                                                                     "enabled": 0
                                                                                 }
                                                                             },
+                                                                            "custom_text": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "customfield": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_table_styles": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fragment": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "global_minibasket_url": {
                                                                                 "type": "page",
-                                                                                "value": "BASK"
+                                                                                "value": "BASK",
+                                                                                "visible": 1
+                                                                            },
+                                                                            "image_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "max_height_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "message_styles": {
+                                                                                "visible": 0
                                                                             },
                                                                             "name": {
                                                                                 "value": "Add To Cart Button"
                                                                             },
+                                                                            "prefix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "price": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "quantity_input_size": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "suffix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "tab_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "text_styles": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "type": {
                                                                                 "value": "add-to-cart-button"
+                                                                            },
+                                                                            "vertical_breakpoint": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "volume_pricing_table_settings": {
+                                                                                "visible": 0
                                                                             }
                                                                         },
                                                                         {
+                                                                            "accordion_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "add_to_cart_button": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "add_to_cart_messages": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "add_to_wishlist_button": {
                                                                                 "textsettings": {
                                                                                     "fields": {
@@ -415,119 +1460,549 @@
                                                                                         }
                                                                                     }
                                                                                 },
-                                                                                "value": "Add to Wishlist"
+                                                                                "value": "Add to Wishlist",
+                                                                                "visible": 1
+                                                                            },
+                                                                            "attribute_messages": {
+                                                                                "visible": 0
                                                                             },
                                                                             "atwl_url": {
                                                                                 "type": "page",
-                                                                                "value": "WISH"
+                                                                                "value": "WISH",
+                                                                                "visible": 1
                                                                             },
                                                                             "container_styles": {
                                                                                 "settings": {
                                                                                     "enabled": 0
                                                                                 }
+                                                                            },
+                                                                            "custom_text": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "customfield": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_table_styles": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fragment": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "global_minibasket_url": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "image_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "max_height_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "message_styles": {
+                                                                                "visible": 0
                                                                             },
                                                                             "name": {
                                                                                 "value": "Add To Wishlist Button"
                                                                             },
+                                                                            "prefix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "price": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "quantity_input_size": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "suffix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "tab_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "text_styles": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "type": {
                                                                                 "value": "add-to-wishlist-button"
+                                                                            },
+                                                                            "vertical_breakpoint": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "volume_pricing_table_settings": {
+                                                                                "visible": 0
                                                                             }
                                                                         },
                                                                         {
+                                                                            "accordion_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "add_to_cart_button": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "add_to_cart_messages": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "add_to_wishlist_button": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "attribute_messages": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "atwl_url": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "container_styles": {
                                                                                 "settings": {
                                                                                     "enabled": 0
                                                                                 }
                                                                             },
+                                                                            "custom_text": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "customfield": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_list_table_styles": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "fitment_settings": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "fragment": {
-                                                                                "value": "product_details_additional_data"
+                                                                                "value": "product_details_additional_data",
+                                                                                "visible": 1
+                                                                            },
+                                                                            "global_minibasket_url": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "image_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "max_height_settings": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "message_styles": {
+                                                                                "visible": 0
                                                                             },
                                                                             "name": {
                                                                                 "value": "Fragment"
                                                                             },
+                                                                            "prefix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "price": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "quantity_input_size": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "suffix": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "tab_settings": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "text_styles": {
                                                                                 "settings": {
                                                                                     "enabled": 0
-                                                                                }
+                                                                                },
+                                                                                "visible": 1
                                                                             },
                                                                             "type": {
                                                                                 "value": "fragment"
+                                                                            },
+                                                                            "vertical_breakpoint": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "volume_pricing_table_settings": {
+                                                                                "visible": 0
                                                                             }
                                                                         }
-                                                                    ]
+                                                                    ],
+                                                                    "visible": 1
+                                                                },
+                                                                "fitment_list_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_list_table_styles": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fitment_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "fragment": {
+                                                                    "visible": 0
+                                                                },
+                                                                "global_minibasket_url": {
+                                                                    "visible": 0
+                                                                },
+                                                                "image_settings": {
+                                                                    "visible": 0
                                                                 },
                                                                 "max_height_settings": {
                                                                     "settings": {
                                                                         "enabled": 0
-                                                                    }
+                                                                    },
+                                                                    "visible": 1
+                                                                },
+                                                                "message_styles": {
+                                                                    "visible": 0
                                                                 },
                                                                 "name": {
                                                                     "value": "Call to Actions"
                                                                 },
+                                                                "prefix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "price": {
+                                                                    "visible": 0
+                                                                },
+                                                                "quantity_input_size": {
+                                                                    "visible": 0
+                                                                },
+                                                                "suffix": {
+                                                                    "visible": 0
+                                                                },
+                                                                "tab_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "text_styles": {
+                                                                    "visible": 0
+                                                                },
                                                                 "type": {
                                                                     "value": "vertical-group"
+                                                                },
+                                                                "vertical_breakpoint": {
+                                                                    "visible": 0
+                                                                },
+                                                                "volume_pricing_table_settings": {
+                                                                    "visible": 0
                                                                 }
                                                             }
                                                         ],
                                                         "visible": 1
                                                     },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Quantity & CTAs"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "text_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "type": {
                                                         "value": "side-by-side-group"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 1
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "visible": 1
+                                        },
+                                        "fitment_list_settings": {
+                                            "visible": 0
+                                        },
+                                        "fitment_list_table_styles": {
+                                            "visible": 0
+                                        },
+                                        "fitment_settings": {
+                                            "visible": 0
+                                        },
+                                        "fragment": {
+                                            "visible": 0
+                                        },
+                                        "global_minibasket_url": {
+                                            "visible": 0
+                                        },
+                                        "image_settings": {
+                                            "visible": 0
                                         },
                                         "max_height_settings": {
                                             "settings": {
                                                 "enabled": 0
-                                            }
+                                            },
+                                            "visible": 1
+                                        },
+                                        "message_styles": {
+                                            "visible": 0
                                         },
                                         "name": {
                                             "value": "Details"
                                         },
+                                        "prefix": {
+                                            "visible": 0
+                                        },
+                                        "price": {
+                                            "visible": 0
+                                        },
+                                        "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "suffix": {
+                                            "visible": 0
+                                        },
+                                        "tab_settings": {
+                                            "visible": 0
+                                        },
+                                        "text_styles": {
+                                            "visible": 0
+                                        },
                                         "type": {
                                             "value": "vertical-group"
+                                        },
+                                        "vertical_breakpoint": {
+                                            "visible": 0
+                                        },
+                                        "volume_pricing_table_settings": {
+                                            "visible": 0
                                         }
                                     }
-                                ]
+                                ],
+                                "visible": 1
+                            },
+                            "fitment_list_settings": {
+                                "visible": 0
+                            },
+                            "fitment_list_table_styles": {
+                                "visible": 0
+                            },
+                            "fitment_settings": {
+                                "visible": 0
+                            },
+                            "fragment": {
+                                "visible": 0
+                            },
+                            "global_minibasket_url": {
+                                "visible": 0
+                            },
+                            "image_settings": {
+                                "visible": 0
+                            },
+                            "max_height_settings": {
+                                "visible": 0
+                            },
+                            "message_styles": {
+                                "visible": 0
                             },
                             "name": {
                                 "value": "Main Content"
+                            },
+                            "prefix": {
+                                "visible": 0
+                            },
+                            "price": {
+                                "visible": 0
+                            },
+                            "quantity_input_size": {
+                                "visible": 0
+                            },
+                            "suffix": {
+                                "visible": 0
+                            },
+                            "tab_settings": {
+                                "visible": 0
+                            },
+                            "text_styles": {
+                                "visible": 0
                             },
                             "type": {
                                 "value": "side-by-side-group"
                             },
                             "vertical_breakpoint": {
-                                "code": "tablet"
+                                "code": "tablet",
+                                "visible": 1
+                            },
+                            "volume_pricing_table_settings": {
+                                "visible": 0
                             }
                         },
                         {
+                            "accordion_settings": {
+                                "visible": 0
+                            },
+                            "add_to_cart_button": {
+                                "visible": 0
+                            },
+                            "add_to_cart_messages": {
+                                "visible": 0
+                            },
+                            "add_to_wishlist_button": {
+                                "visible": 0
+                            },
+                            "attribute_messages": {
+                                "visible": 0
+                            },
+                            "atwl_url": {
+                                "visible": 0
+                            },
                             "container_styles": {
                                 "settings": {
                                     "enabled": 0
                                 }
                             },
+                            "custom_text": {
+                                "visible": 0
+                            },
+                            "customfield": {
+                                "visible": 0
+                            },
                             "details": {
                                 "children": [
                                     {
+                                        "accordion_settings": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_button": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_messages": {
+                                            "visible": 0
+                                        },
+                                        "add_to_wishlist_button": {
+                                            "visible": 0
+                                        },
+                                        "attribute_messages": {
+                                            "visible": 0
+                                        },
+                                        "atwl_url": {
+                                            "visible": 0
+                                        },
                                         "container_styles": {
                                             "settings": {
                                                 "enabled": 0
                                             }
                                         },
+                                        "custom_text": {
+                                            "visible": 0
+                                        },
+                                        "customfield": {
+                                            "visible": 0
+                                        },
                                         "details": {
                                             "children": [
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Description"
+                                                    },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
                                                     },
                                                     "text_styles": {
                                                         "settings": {
@@ -536,148 +2011,601 @@
                                                         "typography_theme": {
                                                             "code": "paragraph-s",
                                                             "theme_mode": 1
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "descrip"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "visible": 1
+                                        },
+                                        "fitment_list_settings": {
+                                            "visible": 0
+                                        },
+                                        "fitment_list_table_styles": {
+                                            "visible": 0
+                                        },
+                                        "fitment_settings": {
+                                            "visible": 0
+                                        },
+                                        "fragment": {
+                                            "visible": 0
+                                        },
+                                        "global_minibasket_url": {
+                                            "visible": 0
+                                        },
+                                        "image_settings": {
+                                            "visible": 0
                                         },
                                         "max_height_settings": {
                                             "settings": {
                                                 "enabled": 0
-                                            }
+                                            },
+                                            "visible": 1
+                                        },
+                                        "message_styles": {
+                                            "visible": 0
                                         },
                                         "name": {
                                             "value": "Description"
                                         },
+                                        "prefix": {
+                                            "visible": 0
+                                        },
+                                        "price": {
+                                            "visible": 0
+                                        },
+                                        "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "suffix": {
+                                            "visible": 0
+                                        },
+                                        "tab_settings": {
+                                            "visible": 0
+                                        },
                                         "text_styles": {
-                                            "settings": {
-                                                "enabled": 0
-                                            }
+                                            "visible": 0
                                         },
                                         "type": {
                                             "value": "vertical-group"
+                                        },
+                                        "vertical_breakpoint": {
+                                            "visible": 0
+                                        },
+                                        "volume_pricing_table_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
+                                        "accordion_settings": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_button": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_messages": {
+                                            "visible": 0
+                                        },
+                                        "add_to_wishlist_button": {
+                                            "visible": 0
+                                        },
+                                        "attribute_messages": {
+                                            "visible": 0
+                                        },
+                                        "atwl_url": {
+                                            "visible": 0
+                                        },
                                         "container_styles": {
                                             "settings": {
                                                 "enabled": 0
                                             }
                                         },
+                                        "custom_text": {
+                                            "visible": 0
+                                        },
+                                        "customfield": {
+                                            "visible": 0
+                                        },
                                         "details": {
                                             "children": [
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
+                                                    },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "SKU"
                                                     },
+                                                    "prefix": {
+                                                        "visible": 1
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
+                                                    },
                                                     "text_styles": {
                                                         "settings": {
                                                             "enabled": 0
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "sku"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 },
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
                                                     "customfield": {
-                                                        "value": "customfields:brand"
+                                                        "value": "customfields:brand",
+                                                        "visible": 1
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 0
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
                                                     },
                                                     "name": {
                                                         "value": "Brand"
                                                     },
                                                     "prefix": {
-                                                        "value": "Brand:"
+                                                        "value": "Brand:",
+                                                        "visible": 1
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 1
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
                                                     },
                                                     "text_styles": {
                                                         "settings": {
                                                             "enabled": 0
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "customfield"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "visible": 1
+                                        },
+                                        "fitment_list_settings": {
+                                            "visible": 0
+                                        },
+                                        "fitment_list_table_styles": {
+                                            "visible": 0
+                                        },
+                                        "fitment_settings": {
+                                            "visible": 0
+                                        },
+                                        "fragment": {
+                                            "visible": 0
+                                        },
+                                        "global_minibasket_url": {
+                                            "visible": 0
+                                        },
+                                        "image_settings": {
+                                            "visible": 0
                                         },
                                         "max_height_settings": {
                                             "settings": {
                                                 "enabled": 0
-                                            }
+                                            },
+                                            "visible": 1
+                                        },
+                                        "message_styles": {
+                                            "visible": 0
                                         },
                                         "name": {
                                             "value": "Technical Specs"
                                         },
+                                        "prefix": {
+                                            "visible": 0
+                                        },
+                                        "price": {
+                                            "visible": 0
+                                        },
+                                        "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "suffix": {
+                                            "visible": 0
+                                        },
+                                        "tab_settings": {
+                                            "visible": 0
+                                        },
+                                        "text_styles": {
+                                            "visible": 0
+                                        },
                                         "type": {
                                             "value": "vertical-group"
+                                        },
+                                        "vertical_breakpoint": {
+                                            "visible": 0
+                                        },
+                                        "volume_pricing_table_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
+                                        "accordion_settings": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_button": {
+                                            "visible": 0
+                                        },
+                                        "add_to_cart_messages": {
+                                            "visible": 0
+                                        },
+                                        "add_to_wishlist_button": {
+                                            "visible": 0
+                                        },
+                                        "attribute_messages": {
+                                            "visible": 0
+                                        },
+                                        "atwl_url": {
+                                            "visible": 0
+                                        },
                                         "container_styles": {
                                             "settings": {
                                                 "enabled": 0
                                             }
                                         },
+                                        "custom_text": {
+                                            "visible": 0
+                                        },
+                                        "customfield": {
+                                            "visible": 0
+                                        },
                                         "details": {
                                             "children": [
                                                 {
+                                                    "accordion_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_cart_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "add_to_wishlist_button": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "atwl_url": {
+                                                        "visible": 0
+                                                    },
                                                     "container_styles": {
                                                         "settings": {
                                                             "enabled": 0
                                                         }
                                                     },
+                                                    "custom_text": {
+                                                        "visible": 0
+                                                    },
+                                                    "customfield": {
+                                                        "visible": 0
+                                                    },
+                                                    "details": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_list_table_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "fitment_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "fragment": {
+                                                        "visible": 1
+                                                    },
+                                                    "global_minibasket_url": {
+                                                        "visible": 0
+                                                    },
+                                                    "image_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "max_height_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "message_styles": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Reviews"
+                                                    },
+                                                    "prefix": {
+                                                        "visible": 0
+                                                    },
+                                                    "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "suffix": {
+                                                        "visible": 0
+                                                    },
+                                                    "tab_settings": {
+                                                        "visible": 0
                                                     },
                                                     "text_styles": {
                                                         "settings": {
                                                             "enabled": 0
-                                                        }
+                                                        },
+                                                        "visible": 1
                                                     },
                                                     "type": {
                                                         "value": "fragment"
+                                                    },
+                                                    "vertical_breakpoint": {
+                                                        "visible": 0
+                                                    },
+                                                    "volume_pricing_table_settings": {
+                                                        "visible": 0
                                                     }
                                                 }
-                                            ]
+                                            ],
+                                            "visible": 1
+                                        },
+                                        "fitment_list_settings": {
+                                            "visible": 0
+                                        },
+                                        "fitment_list_table_styles": {
+                                            "visible": 0
+                                        },
+                                        "fitment_settings": {
+                                            "visible": 0
+                                        },
+                                        "fragment": {
+                                            "visible": 0
+                                        },
+                                        "global_minibasket_url": {
+                                            "visible": 0
+                                        },
+                                        "image_settings": {
+                                            "visible": 0
                                         },
                                         "max_height_settings": {
                                             "settings": {
                                                 "enabled": 0
-                                            }
+                                            },
+                                            "visible": 1
+                                        },
+                                        "message_styles": {
+                                            "visible": 0
                                         },
                                         "name": {
                                             "value": "Reviews"
                                         },
+                                        "prefix": {
+                                            "visible": 0
+                                        },
+                                        "price": {
+                                            "visible": 0
+                                        },
+                                        "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "suffix": {
+                                            "visible": 0
+                                        },
+                                        "tab_settings": {
+                                            "visible": 0
+                                        },
+                                        "text_styles": {
+                                            "visible": 0
+                                        },
                                         "type": {
                                             "value": "vertical-group"
+                                        },
+                                        "vertical_breakpoint": {
+                                            "visible": 0
+                                        },
+                                        "volume_pricing_table_settings": {
+                                            "visible": 0
                                         }
                                     }
-                                ]
+                                ],
+                                "visible": 1
+                            },
+                            "fitment_list_settings": {
+                                "visible": 0
+                            },
+                            "fitment_list_table_styles": {
+                                "visible": 0
+                            },
+                            "fitment_settings": {
+                                "visible": 0
+                            },
+                            "fragment": {
+                                "visible": 0
+                            },
+                            "global_minibasket_url": {
+                                "visible": 0
+                            },
+                            "image_settings": {
+                                "visible": 0
+                            },
+                            "max_height_settings": {
+                                "visible": 0
+                            },
+                            "message_styles": {
+                                "visible": 0
                             },
                             "name": {
                                 "value": "Product Tabs"
+                            },
+                            "prefix": {
+                                "visible": 0
+                            },
+                            "price": {
+                                "visible": 0
+                            },
+                            "quantity_input_size": {
+                                "visible": 0
+                            },
+                            "suffix": {
+                                "visible": 0
                             },
                             "tab_settings": {
                                 "typography_theme": {
                                     "code": "subheading-xs",
                                     "theme_mode": 1
-                                }
+                                },
+                                "visible": 1
+                            },
+                            "text_styles": {
+                                "visible": 0
                             },
                             "type": {
                                 "value": "tab-group"
+                            },
+                            "vertical_breakpoint": {
+                                "visible": 0
+                            },
+                            "volume_pricing_table_settings": {
+                                "visible": 0
                             }
                         }
                     ]
@@ -685,6 +2613,9 @@
                 "product": {
                     "source": {
                         "value": "auto"
+                    },
+                    "specific": {
+                        "visible": 0
                     }
                 }
             }
@@ -694,14 +2625,17 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "advanced": {
                     "empty_results_message": {
-                        "source": "markdown"
+                        "visible": 0
                     },
                     "search": {
+                        "index": {
+                            "visible": 0
+                        },
                         "origin": {
                             "value": "Runtime API"
                         },
@@ -717,22 +2651,83 @@
                     "details": {
                         "children": [
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
                                 "name": {
                                     "value": "Name"
                                 },
+                                "prefix": {
+                                    "visible": 1
+                                },
+                                "price": {
+                                    "visible": 0
+                                },
+                                "price_text_styles": {
+                                    "visible": 0
+                                },
+                                "suffix": {
+                                    "visible": 1
+                                },
                                 "text_styles": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "style": {
+                                        "visible": 0
+                                    },
+                                    "text_transform": {
+                                        "visible": 0
+                                    },
                                     "typography_theme": {
                                         "code": "paragraph-s",
                                         "theme_mode": 1
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "type": {
                                     "value": "name"
                                 }
                             },
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
                                 "name": {
                                     "value": "Price"
+                                },
+                                "prefix": {
+                                    "visible": 0
                                 },
                                 "price": {
                                     "additional": {
@@ -740,19 +2735,35 @@
                                     },
                                     "displayed": {
                                         "value": "sale"
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "price_text_styles": {
                                     "additional": {
+                                        "font": {
+                                            "visible": 0
+                                        },
+                                        "font_color": {
+                                            "visible": 0
+                                        },
+                                        "font_size": {
+                                            "visible": 0
+                                        },
+                                        "style": {
+                                            "visible": 0
+                                        },
                                         "text_align": {
                                             "value": "left"
+                                        },
+                                        "text_transform": {
+                                            "visible": 0
                                         },
                                         "typography_theme": {
                                             "code": "paragraph-s",
                                             "customizations": {
                                                 "styles": {
                                                     "color": {
-                                                        "value": "#767676"
+                                                        "value": "var(--mmx-product-additional-price-color)"
                                                     },
                                                     "overwrite_color": 1
                                                 }
@@ -761,39 +2772,102 @@
                                         }
                                     },
                                     "displayed": {
+                                        "font": {
+                                            "visible": 0
+                                        },
+                                        "font_color": {
+                                            "visible": 0
+                                        },
+                                        "font_size": {
+                                            "visible": 0
+                                        },
+                                        "style": {
+                                            "visible": 0
+                                        },
                                         "text_align": {
                                             "value": "left"
+                                        },
+                                        "text_transform": {
+                                            "visible": 0
                                         },
                                         "typography_theme": {
                                             "code": "paragraph-s",
                                             "customizations": {
                                                 "styles": {
                                                     "color": {
-                                                        "value": "#111111"
+                                                        "value": "var(--mmx-product-price-color)"
                                                     },
                                                     "overwrite_color": 1
                                                 }
                                             },
                                             "theme_mode": 1
                                         }
-                                    }
+                                    },
+                                    "visible": 1
+                                },
+                                "suffix": {
+                                    "visible": 0
+                                },
+                                "text_styles": {
+                                    "visible": 0
                                 },
                                 "type": {
                                     "value": "price"
                                 }
                             },
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
                                 "fragment": {
-                                    "value": "product_list_additional_data"
+                                    "value": "product_list_additional_data",
+                                    "visible": 1
                                 },
                                 "name": {
                                     "value": "Additional Data Fragment"
                                 },
+                                "prefix": {
+                                    "visible": 0
+                                },
+                                "price": {
+                                    "visible": 0
+                                },
+                                "price_text_styles": {
+                                    "visible": 0
+                                },
+                                "suffix": {
+                                    "visible": 0
+                                },
                                 "text_styles": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "style": {
+                                        "visible": 0
+                                    },
+                                    "text_transform": {
+                                        "visible": 0
+                                    },
                                     "typography_theme": {
                                         "code": "paragraph-s",
                                         "theme_mode": 1
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "type": {
                                     "value": "fragment"
@@ -824,8 +2898,20 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "heading_style": {
+                                        "visible": 0
+                                    },
                                     "heading_tag": {
-                                        "value": "h2"
+                                        "visible": 0
                                     },
                                     "typography_theme": {
                                         "code": "title-3",
@@ -891,8 +2977,23 @@
                         }
                     },
                     "products": {
+                        "category": {
+                            "visible": 0
+                        },
+                        "category_source": {
+                            "visible": 0
+                        },
+                        "product": {
+                            "visible": 0
+                        },
                         "product_set": {
                             "value": "auto"
+                        },
+                        "prompt": {
+                            "visible": 0
+                        },
+                        "related_source": {
+                            "visible": 0
                         }
                     },
                     "sort_by": {

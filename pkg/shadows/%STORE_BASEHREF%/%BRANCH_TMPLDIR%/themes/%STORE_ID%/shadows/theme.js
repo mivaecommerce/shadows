@@ -141,11 +141,10 @@ const themeFunctionality = {
 		 */
 		miniBasket?.init?.();
 
-
 		/**
 		 * Initialize the Transfigure Navigation extension
 		 */
-		$.hook('has-drop-down').transfigureNavigation();
+		new TransfigureNavigation();
 
 	},
 	stateDatalist() {
@@ -284,6 +283,10 @@ const themeFunctionality = {
 				})();
 			}
 		}
+	},
+	// Local utility to convert dashed/slug ids to camelCase; avoids modifying String.prototype
+	toCamelCase(value) {
+		return String(value).replace(/-+([^-])/g, (a, b) => b.toUpperCase());
 	},
     jsSFNT() {
 	},
@@ -537,14 +540,7 @@ const themeFunctionality = {
 	}
 };
 
-
 (() => {
-	String.prototype.toCamelCase = function (cap1st) {
-        return ((cap1st ? '-' : '') + this).replace(/-+([^-])/g, (a, b) => b.toUpperCase());
-	};
-
-	let pageID = document.body.id.toCamelCase();
-
 	/**
 	 * Initialize Global Site Functions
 	 */
@@ -558,8 +554,6 @@ const themeFunctionality = {
 	/**
 	 * Initialize Page Specific Functions
 	 */
-	if (themeFunctionality[pageID]) {
-		themeFunctionality[pageID]();
-	}
-
+	const pageID = themeFunctionality.toCamelCase(document.body.id);
+	themeFunctionality?.[pageID]?.();
 })();

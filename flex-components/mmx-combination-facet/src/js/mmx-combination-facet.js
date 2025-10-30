@@ -1619,35 +1619,22 @@ class MMX_CombinationFacetFields extends MMX_Element {
 	#renderDropdown(field, index = 0) {
 		const required = index < this.#fieldCount() - this.#optionalDropdownCount() ? 'required' : '';
 		const disabled = field.values.length > 0 ? '' : 'disabled';
+		const label = field.appliedValue ?? field.name;
 
 		return /*html*/`
-			<div
+			<mmx-combobox
 				part="dropdown"
 				class="mmx-combination-facet__dropdown"
+				title="${MMX.encodeEntities(field.name)}"
+				data-field-code="${MMX.encodeEntities(field.code)}"
+				data-options="${MMX.encodeEntities(JSON.stringify(field.values))}"
+				data-label="${MMX.encodeEntities(label)}"
+				data-value="${MMX.encodeEntities(field.selection)}"
+				${required}
+				${disabled}
 			>
-				<select
-					part="dropdown-select"
-					class="mmx-combination-facet__dropdown-select"
-					data-field-code="${MMX.encodeEntities(field.code)}"
-					title="${MMX.encodeEntities(field.name)}"
-					${required}
-					${disabled}
-				>
-					${this.#renderDropdownOptions(field)}
-				</select>
-			</div>
+			</mmx-combobox>
 		`;
-	}
-
-	#renderDropdownOptions(field) {
-		const firstOption = field.appliedValue ?? field.name;
-		let options = /*html*/`<option value="">${MMX.encodeEntities(firstOption)}</option>`;
-
-		return field.values.reduce((options, value) => {
-			const selected = field.selection === value ? 'selected' : '';
-			options += /*html*/`<option ${selected}>${MMX.encodeEntities(value)}</option>`;
-			return options;
-		}, options);
 	}
 
 	// Fields
@@ -1713,7 +1700,7 @@ class MMX_CombinationFacetFields extends MMX_Element {
 	// Dropdowns
 
 	#dropdowns() {
-		return this.querySelectorAll('.mmx-combination-facet__dropdown-select');
+		return this.querySelectorAll('.mmx-combination-facet__dropdown');
 	}
 
 	#optionalDropdownCount() {
@@ -1733,20 +1720,20 @@ class MMX_CombinationFacetFields extends MMX_Element {
 	}
 
 	#reduceDependentCombinationFacetValue(values, dropdown) {
-		values.push(dropdown.value);
+		values.push(dropdown.selectedOption?.value);
 		return values;
 	}
 
 	#reduceDropdownValue(values, dropdown) {
-		if (dropdown.value) {
-			values.push(dropdown.value);
+		if (dropdown.selectedOption?.value) {
+			values.push(dropdown.selectedOption.value);
 		}
 		return values;
 	}
 
 	#onDropdownChange({dropdown, index} = {}) {
 		const field = this.#getFieldByIndex(index);
-		field.selection = dropdown.value;
+		field.selection = MMX.coerceString(dropdown?.selectedOption?.value);
 		this.#clearDependentDropdowns(index);
 
 		if (this.getPropValue('auto-submit') && this.#allDropdownsHaveValues()) {
@@ -1770,7 +1757,7 @@ class MMX_CombinationFacetFields extends MMX_Element {
 
 			const dropdown = this.#getDropdownByFieldCode(field.code);
 			dropdown.value = '';
-			dropdown.innerHTML = this.#renderDropdownOptions(field);
+			dropdown.setOptions(field.values);
 			dropdown.disabled = true;
 		});
 	}

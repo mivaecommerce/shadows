@@ -153,7 +153,7 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#productFailedToLoad(response = {}) {
-		this.#errorMessage = MMX.coerceString(response?.error_message, 'There was a problem loading the product');
+		this.#errorMessage = MMX.coerceString(response?.error_message, {fallback: 'There was a problem loading the product'});
 		this.forceUpdate();
 	}
 

@@ -2,7 +2,7 @@
 	"code": "mmx-video",
 	"name": "Video",
 	"type": "component",
-	"version": "10.13.00",
+	"version": "10.13.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-video",
 	"category": "video",
@@ -1048,7 +1048,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-uN3fVb4RU4CrDdsi20cxJVYCfDnkAFD5RQrnDAZryUM= sha384-Km22/uGecGZNv9nHS8wfSuytRUwYqEwly8qQ1efzbEKBZcPWwewu7xt/jWKQFfWF sha512-3VALblGMucDWhlRzs+Nc3hIoEGXdk99qjr66ESO1jZOkiq2nGC4V6Lyz6Ht7PIrveS8xGLPYnc2y3TaQydi7XQ=="
+					"value": "sha256-//xsV7iepcBxGzrUQl0EvOYB+S1zNcL7DJUBgSL3TaA= sha384-4nle8ygiy2UsTNCHopnzb5vh/e4cblJw/1dBVz94SUtB8Y4/Q9ZiWTF3WcFKFcty sha512-AI6F16E/0wZPQKSA1nU+vZyU7+39R97bypg2y8xrU6Ri6dA2RNC03vS37q/ZwQeFHHkf1hEFG/I3OYUKoG13Aw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1058,10 +1058,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.00",
-		"mmx-button": "=10.13.00",
-		"mmx-hero": "=10.13.00",
-		"mmx-icons": "=10.13.00",
-		"mmx-text": "=10.13.00"
+		"mmx-base": "=10.13.01",
+		"mmx-button": "=10.13.01",
+		"mmx-hero": "=10.13.01",
+		"mmx-icons": "=10.13.01",
+		"mmx-text": "=10.13.01"
 	}
 }

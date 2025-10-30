@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.13.00",
+	"version": "10.13.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -931,7 +931,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-HaPHJdj9N13+5VcWoFiNkujt/mRVPDVuhPzF0jaZ5+Q= sha384-s3y3nu18sqtnGvk8C/4l8WbMe+K5mcVfCfqI32mY9MYAzqKUNHhYx5VJkk8Wayl/ sha512-kYV+xOVMCyj3Jy9gE6Eit9rtZvo7HUp2CJj6JmXkiUFBxoMjvT1THFgFT0rbvVS3A1FcpeAOfVzy9JrzbWBDqw=="
+					"value": "sha256-gGrscs1kZK96v3HKLnjcTyyIcABCVJyCXjfX2RmhsVE= sha384-1PZ2TOkpwanq7tk64qJVF/jCJGwr1aMUwFuTndqF4NIGQYWuK1vJ7oWsFScFZJo3 sha512-hiu4YBwBVWbRbR1JIWiO/muJNVhPnNLQthrjqIbQSSzA6SARC3IJRBnS3Kse9f85v4Xo+E97mQKrqVapZebIHw=="
 				},
 				{
 					"name": "crossorigin",
@@ -959,7 +959,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-UUWX1dXCqc9DW0o76lDy48G345LLyzQjLnCx1ku+AyE= sha384-/+IYwdO63IdYP4ZY+K+BDryKM0c/acrJURhl4GG10khTWDK/cCgqUZ1CfNvfARzi sha512-TRs1OA4F7fl2LMnRxzOzS4G4ku0Ydw0xNm1M/sXdGcyaIdItxrYrFvuSPke00byBzDIFBZ2JZGLFQ737cigGFw=="
+					"value": "sha256-TjfJ/ICR+DwOx/RbWxA1McpkYRNwmS6JqZsgqkzgRyk= sha384-z1+uia+hAGwWkF4sBuz1M5SPlkOTLfaBQHvgATzdqj9UrE30W2HTkRdyX2o6YV3C sha512-NPOV191ZJmybevkCT2TEJzj8Ij8Z/BHOv7Qu/RfVF4js6fFrdsBboKWfoz9FSjURTQeiJ4FLJ457vSPiHIB2HQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -969,10 +969,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.00",
-		"mmx-button": "=10.13.00",
-		"mmx-hero": "=10.13.00",
-		"mmx-hero-slider": "=10.13.00",
-		"mmx-text": "=10.13.00"
+		"mmx-base": "=10.13.01",
+		"mmx-button": "=10.13.01",
+		"mmx-forms": "=10.13.01",
+		"mmx-hero": "=10.13.01",
+		"mmx-hero-slider": "=10.13.01",
+		"mmx-text": "=10.13.01"
 	}
 }

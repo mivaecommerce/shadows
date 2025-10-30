@@ -48,6 +48,7 @@
   =========================================== */
 .mmx-quick-order__dialog {
 	border-radius: var(--mmx-spacing-s);
+	background: var(--mmx-color-modal-dialog-background);
 	border: 0;
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
 	outline: 0;
@@ -87,6 +88,7 @@
 	right: var(--mmx-spacing-m);
 	top: var(--mmx-spacing-m);
 	border-radius: 100%;
+	color: var(--mmx-color-modal-dialog-close);
 	width: var(--mmx-quick-order-dialog-close-size);
 	height: var(--mmx-quick-order-dialog-close-size);
 }
@@ -121,7 +123,7 @@
 .mmx-quick-order__row {
 	align-items: center;
 	border-radius: var(--mmx-spacing-xs);
-	border: 1px solid var(--mmx-color-grey-02);
+	border: 1px solid var(--mmx-color-input-border);
 	display: grid;
 	gap: 0 var(--mmx-spacing-xs);
 	grid-template-areas:
@@ -189,9 +191,10 @@
 input,
 textarea {
 	appearance: none;
-	background-color: var(--mmx-color-white);
+	background-color: var(--mmx-color-input-background);
+	border: 1px solid var(--mmx-color-input-border);
 	border-radius: var(--mmx-spacing-xs);
-	border: 1px solid var(--mmx-color-grey-02);
+	color: var(--mmx-color-input-color);
 	display: inline-block;
 	font-family: inherit;
 	font-size: 0.8125rem;
@@ -209,9 +212,9 @@ a[target="_blank"]::after {
 /* Search Results
   =========================================== */
 .mmx-quick-order__search-results-container {
-	background: white;
+	background: var(--mmx-color-input-background);
 	border-radius: var(--mmx-spacing-xs);
-	border: 1px solid var(--mmx-color-grey-02);
+	border: 1px solid var(--mmx-color-input-border);
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
 	display: grid;
 	gap: var(--mmx-spacing-m);
@@ -227,7 +230,7 @@ a[target="_blank"]::after {
 }
 
 .mmx-quick-order__search-result {
-	background: #ffffff;
+	background: transparent;
 	border: none;
 	border-radius: var(--mmx-spacing-xs);
 	padding: var(--mmx-spacing-s);
@@ -254,7 +257,7 @@ a[target="_blank"]::after {
 }
 
 .mmx-quick-order__search-results-container .mmx-quick-order__search-result:is(:hover, :active) {
-	background: var(--mmx-color-grey-01);
+	background: var(--mmx-color-input-border);
 }
 
 [class*="mmx-quick-order__search-result-inv-level"],
@@ -337,7 +340,8 @@ mmx-featured-product::part(product-attribute) {
 	margin-bottom: var(--mmx-spacing-xs);
 }
 
-mmx-featured-product::part(product-add-to-cart) {
+mmx-featured-product::part(product-add-to-cart),
+mmx-featured-product::part(product-description) {
 	display: none;
 }
 

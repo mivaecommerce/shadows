@@ -156,7 +156,7 @@ class MMX_QuickOrder extends MMX_Element {
 		};
 	}
 
-	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-text', 'mmx-quick-order'];
+	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-text', 'mmx-forms', 'mmx-quick-order'];
 	renderUniquely = true;
 
 	loadedProducts = new Map();
@@ -305,7 +305,7 @@ class MMX_QuickOrder extends MMX_Element {
 					className: 'mmx-quick-order__dialog-body',
 					defaultStyle: ''
 				})}
-				<textarea class="mmx-quick-order__bulk-textarea" part="bulk-textarea" placeholder="${MMX.encodeEntities(this.csvArrayToString(this.exampleRows))}" required></textarea>
+				<textarea class="mmx-quick-order__bulk-textarea mmx-form-textarea" part="bulk-textarea" placeholder="${MMX.encodeEntities(this.csvArrayToString(this.exampleRows))}" required></textarea>
 				${this.renderButtonProperty(this?.data?.bulk?.button, {
 					className: 'mmx-quick-order__load-bulk'
 				})}
@@ -1440,7 +1440,7 @@ class MMX_QuickOrder extends MMX_Element {
 			<img
 				part="search-result-image"
 				class="mmx-quick-order__search-result-image"
-				src="${MMX.encodeEntities(product.image.url)}"
+				src="${MMX.encodeEntitiesURI(product.image.url)}"
 				width="${MMX.encodeEntities(product.image.width)}"
 				height="${MMX.encodeEntities(product.image.height)}"
 				loading="lazy"

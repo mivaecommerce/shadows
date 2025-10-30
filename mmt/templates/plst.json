@@ -5,14 +5,18 @@
             "item_code": "all-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "advanced": {
                     "empty_results_message": {
-                        "source": "markdown"
+                        "source": "markdown",
+                        "visible": 1
                     },
                     "search": {
+                        "index": {
+                            "visible": 0
+                        },
                         "origin": {
                             "value": "Runtime API"
                         },
@@ -28,22 +32,83 @@
                     "details": {
                         "children": [
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
                                 "name": {
                                     "value": "Name"
                                 },
+                                "prefix": {
+                                    "visible": 1
+                                },
+                                "price": {
+                                    "visible": 0
+                                },
+                                "price_text_styles": {
+                                    "visible": 0
+                                },
+                                "suffix": {
+                                    "visible": 1
+                                },
                                 "text_styles": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "style": {
+                                        "visible": 0
+                                    },
+                                    "text_transform": {
+                                        "visible": 0
+                                    },
                                     "typography_theme": {
                                         "code": "paragraph-s",
                                         "theme_mode": 1
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "type": {
                                     "value": "name"
                                 }
                             },
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
                                 "name": {
                                     "value": "Price"
+                                },
+                                "prefix": {
+                                    "visible": 0
                                 },
                                 "price": {
                                     "additional": {
@@ -51,19 +116,35 @@
                                     },
                                     "displayed": {
                                         "value": "sale"
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "price_text_styles": {
                                     "additional": {
+                                        "font": {
+                                            "visible": 0
+                                        },
+                                        "font_color": {
+                                            "visible": 0
+                                        },
+                                        "font_size": {
+                                            "visible": 0
+                                        },
+                                        "style": {
+                                            "visible": 0
+                                        },
                                         "text_align": {
                                             "value": "left"
+                                        },
+                                        "text_transform": {
+                                            "visible": 0
                                         },
                                         "typography_theme": {
                                             "code": "paragraph-s",
                                             "customizations": {
                                                 "styles": {
                                                     "color": {
-                                                        "value": "#767676"
+                                                        "value": "var(--mmx-product-additional-price-color)"
                                                     },
                                                     "overwrite_color": 1
                                                 }
@@ -72,39 +153,102 @@
                                         }
                                     },
                                     "displayed": {
+                                        "font": {
+                                            "visible": 0
+                                        },
+                                        "font_color": {
+                                            "visible": 0
+                                        },
+                                        "font_size": {
+                                            "visible": 0
+                                        },
+                                        "style": {
+                                            "visible": 0
+                                        },
                                         "text_align": {
                                             "value": "left"
+                                        },
+                                        "text_transform": {
+                                            "visible": 0
                                         },
                                         "typography_theme": {
                                             "code": "paragraph-s",
                                             "customizations": {
                                                 "styles": {
                                                     "color": {
-                                                        "value": "#111111"
+                                                        "value": "var(--mmx-product-price-color)"
                                                     },
                                                     "overwrite_color": 1
                                                 }
                                             },
                                             "theme_mode": 1
                                         }
-                                    }
+                                    },
+                                    "visible": 1
+                                },
+                                "suffix": {
+                                    "visible": 0
+                                },
+                                "text_styles": {
+                                    "visible": 0
                                 },
                                 "type": {
                                     "value": "price"
                                 }
                             },
                             {
+                                "ADPR_url": {
+                                    "visible": 0
+                                },
+                                "ATWL_url": {
+                                    "visible": 0
+                                },
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
                                 "fragment": {
-                                    "value": "product_list_additional_data"
+                                    "value": "product_list_additional_data",
+                                    "visible": 1
                                 },
                                 "name": {
                                     "value": "Additional Data Fragment"
                                 },
+                                "prefix": {
+                                    "visible": 0
+                                },
+                                "price": {
+                                    "visible": 0
+                                },
+                                "price_text_styles": {
+                                    "visible": 0
+                                },
+                                "suffix": {
+                                    "visible": 0
+                                },
                                 "text_styles": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "style": {
+                                        "visible": 0
+                                    },
+                                    "text_transform": {
+                                        "visible": 0
+                                    },
                                     "typography_theme": {
                                         "code": "paragraph-s",
                                         "theme_mode": 1
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "type": {
                                     "value": "fragment"
@@ -135,8 +279,20 @@
                         "textsettings": {
                             "fields": {
                                 "normal": {
+                                    "font": {
+                                        "visible": 0
+                                    },
+                                    "font_color": {
+                                        "visible": 0
+                                    },
+                                    "font_size": {
+                                        "visible": 0
+                                    },
+                                    "heading_style": {
+                                        "visible": 0
+                                    },
                                     "heading_tag": {
-                                        "value": "h1"
+                                        "visible": 0
                                     },
                                     "typography_theme": {
                                         "code": "title-1",
@@ -179,6 +335,18 @@
                     },
                     "facets": {
                         "facet_styles": {
+                            "facet_style": {
+                                "visible": 0
+                            },
+                            "font": {
+                                "visible": 0
+                            },
+                            "font_color": {
+                                "visible": 0
+                            },
+                            "font_size": {
+                                "visible": 0
+                            },
                             "typography_theme": {
                                 "code": "subheading-s",
                                 "theme_mode": 1
@@ -197,6 +365,18 @@
                             "textsettings": {
                                 "fields": {
                                     "normal": {
+                                        "font": {
+                                            "visible": 0
+                                        },
+                                        "font_color": {
+                                            "visible": 0
+                                        },
+                                        "font_size": {
+                                            "visible": 0
+                                        },
+                                        "title_style": {
+                                            "visible": 0
+                                        },
                                         "typography_theme": {
                                             "code": "title-4",
                                             "theme_mode": 1
@@ -215,16 +395,17 @@
                             "value": "arrows"
                         },
                         "next_text": {
-                            "value": "Next"
+                            "visible": 0
                         },
                         "page_link_count": {
-                            "value": 7
+                            "value": 7,
+                            "visible": 1
                         },
                         "page_numbers": {
                             "value": "links"
                         },
                         "previous_text": {
-                            "value": "Previous"
+                            "visible": 0
                         },
                         "settings": {
                             "enabled": 1
@@ -267,8 +448,23 @@
                         }
                     },
                     "products": {
+                        "category": {
+                            "visible": 0
+                        },
+                        "category_source": {
+                            "visible": 0
+                        },
+                        "product": {
+                            "visible": 0
+                        },
                         "product_set": {
                             "value": "auto"
+                        },
+                        "prompt": {
+                            "visible": 0
+                        },
+                        "related_source": {
+                            "visible": 0
                         }
                     },
                     "sort_by": {

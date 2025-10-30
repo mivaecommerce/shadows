@@ -2,7 +2,7 @@
 	"code": "mmx-image-gallery",
 	"name": "MMX Image Gallery",
 	"type": "library",
-	"version": "10.13.00",
+	"version": "10.13.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-gallery",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-JFnJB4z6iL9RUCv43FFzlY/5JG8JqIIjGUtWW9BovfY= sha384-0tmsM+3MCnoIfm7za1KTCgKZRiOLiqvBlktZFIO8n49R0yAb8fzzZQX/+UarAmjO sha512-elyuxe45YiNWopsm17QWSe3YQFdMr17X5LAHvexplXo1UZmcHSPGoNLIC+WuiC1tPWfVwxmxldiP8cmq7mRISw=="
+					"value": "sha256-8R39KI48vGeaLrShSaA2iRX+UkbcGXnLkAYDk9kT0oA= sha384-yyPgXUdRgWblsHVXruYDtHGztXayznjDev+Kju7IE7utecyQdn2PHJ0ugJXyiI01 sha512-FAFbhn9j/FA+xfmPuYAS604XYbhc7DjHquizxXYe11UzSYrxVjv3slGrV75igCtCgyrJ9i6WVho6Ksz5Zff+AQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,8 +54,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.00",
-		"mmx-hero": "=10.13.00",
-		"mmx-hero-slider": "=10.13.00"
+		"mmx-base": "=10.13.01",
+		"mmx-hero": "=10.13.01",
+		"mmx-hero-slider": "=10.13.01"
 	}
 }

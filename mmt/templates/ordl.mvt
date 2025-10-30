@@ -29,6 +29,7 @@
 				<p><a class="c-button c-button--full" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
 				<p class="u-color-gray-600">You can create an account at Order Confirmation</p>
 				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+				<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 				<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 			</div>
 		</mvt:if>

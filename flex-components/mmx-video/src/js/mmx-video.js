@@ -99,7 +99,7 @@ class MMX_Video extends MMX_Hero {
 			const embedUrl = `https://www.youtube.com/embed/${videoId}?${defaultEmbedParameters}&${controls}&${autoplay}&${muted}&${loop}&start=${options?.start}`;
 
 			return /*html*/`
-				<iframe part="video" src="${embedUrl}" title="YouTube Video"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
+				<iframe part="video" src="${MMX.encodeEntitiesURI(embedUrl)}" title="YouTube Video"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture;" allowfullscreen></iframe>
 			`;
 		}
 	};
@@ -126,7 +126,7 @@ class MMX_Video extends MMX_Hero {
 			const embedUrl = `https://player.vimeo.com/video/${videoId}?playsinline=1&${loop}&${autoplay}&${controls}&${muted}#t=${options?.start}`;
 
 			return /*html*/`
-				<iframe part="video" src="${embedUrl}" title="Vimeo Video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+				<iframe part="video" src="${MMX.encodeEntitiesURI(embedUrl)}" title="Vimeo Video" frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
 			`;
 		}
 	};
@@ -146,7 +146,7 @@ class MMX_Video extends MMX_Hero {
 
 			return /*html*/`
 				<video part="video" playsinline ${autoplay} ${loop} ${muted} ${controls}>
-					<source src="${embedUrl}">
+					<source src="${MMX.encodeEntitiesURI(embedUrl)}">
 				</video>
 			`;
 		}

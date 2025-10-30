@@ -469,7 +469,7 @@ class MMX_ProductCarousel extends MMX_Element {
 				part="hero_slide product ${product.isIndividual ? 'product--individual' : 'product--category'}"
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(product.url)}"
-				data-img-src="${MMX.encodeEntities(product.imgSrc)}"
+				data-img-src="${MMX.encodeEntitiesURI(product.imgSrc)}"
 				data-img-width="${MMX.encodeEntities(image?.width)}"
 				data-img-height="${MMX.encodeEntities(image?.height)}"
 			>

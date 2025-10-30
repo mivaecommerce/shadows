@@ -11,7 +11,7 @@
 
 <html lang="en" class="no-js t-page-style--&mvte:global:Session:shadows:page_style;">
 
-<mvt:comment>Release: v10.13.00</mvt:comment>
+<mvt:comment>Release: v10.13.01</mvt:comment>
 
 <mvt:comment>Set your theme file path here.</mvt:comment>
 <mvt:assign name="g.theme_path" value="'themes/00000001/shadows'" />

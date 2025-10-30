@@ -1,4 +1,5 @@
 <mvt:item name="readytheme" param="thirdpartysharing" />
 <mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
+<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 <mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 <mvt:item name="readytheme" param="contentsection( 'mvaffirm_configuration' )" />

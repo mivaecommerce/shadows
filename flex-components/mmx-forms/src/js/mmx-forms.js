@@ -780,17 +780,17 @@ class MMX_FormInputQuantity extends MMX_Element {
 			this.#onInput(e);
 		});
 
-		this.addEventListener('click', (e) => {
-			this.#onClick(e);
+		this.#increaseButton().addEventListener('click', () => {
+			this.#increaseQuantity();
+		});
+
+		this.#decreaseButton().addEventListener('click', () => {
+			this.#decreaseQuantity();
 		});
 	}
 
 	#onInput() {
 		this.#handleChanges();
-	}
-
-	#onClick() {
-		this.#increaseDecreaseQuantity();
 	}
 
 	// Public Values
@@ -899,17 +899,14 @@ class MMX_FormInputQuantity extends MMX_Element {
 		this.#inputQuantity().dispatchEvent(inputEvent);
 	}
 
-	#increaseDecreaseQuantity() {
-		switch (this.shadowRoot.activeElement?.id) {
-			case 'increase':
-				this.#inputQuantity().stepUp();
-				this.#dispatchInputEvent();
-				break;
-			case 'decrease':
-				this.#inputQuantity().stepDown();
-				this.#dispatchInputEvent();
-				break;
-		}
+	#increaseQuantity() {
+		this.#inputQuantity().stepUp();
+		this.#dispatchInputEvent();
+	}
+
+	#decreaseQuantity() {
+		this.#inputQuantity().stepDown();
+		this.#dispatchInputEvent();
 	}
 
 	#updateButtons() {
@@ -920,4 +917,723 @@ class MMX_FormInputQuantity extends MMX_Element {
 
 if (!customElements.get('mmx-form-input-quantity')) {
 	customElements.define('mmx-form-input-quantity', MMX_FormInputQuantity);
+}
+
+class MMX_Combobox extends MMX_Element {
+	#value = '';
+	#dispatchedValue = '';
+	#option = {};
+	#options = [];
+	#internals;
+	static formAssociated = true;
+
+	static get props () {
+		return {
+			name: {
+				allowAny: true,
+				default: ''
+			},
+			label: {
+				allowAny: true,
+				default: 'Please select an option'
+			},
+			value: {
+				allowAny: true,
+				default: ''
+			},
+			size: {
+				options: ['xs', 's', 'm', 'l'],
+				default: 'm'
+			},
+			minimal: {
+				isBoolean: true,
+				default: false
+			},
+			options: {
+				isObject: true,
+				isJson: true,
+				options: [
+					'script',
+					'innerHTML'
+				],
+				default: null
+			}
+		};
+	}
+
+	constructor() {
+		super();
+		this.makeShadow();
+		this.#internals = this.attachInternals();
+		this.#bindEvents();
+		this.#setOptions();
+		this.#setValue(this.getPropValue('value'));
+		this.#dispatchedValue = this.#value;
+	}
+
+	styleResourceCodes = ['mmx-base', 'mmx-forms'];
+	renderUniquely = true;
+
+	// Render Methods
+	render() {
+		const value = this.#value;
+		const label = this.getPropValue('label');
+		const disabled = this.disabled ? 'disabled' : '';
+		const minimal = this.getPropValue('minimal') === true ? 'minimal' : 'regular';
+
+		return /*html*/`
+			<div
+				id="wrapper"
+				part="wrapper"
+				class="mmx-combobox"
+			>
+				<div
+					id="select"
+					part="select"
+					class="mmx-combobox__select mmx-form-select mmx-form-input--${minimal}"
+					${disabled}
+				>
+					<button
+						id="select-button"
+						part="select-button input"
+						class="mmx-combobox__select-button mmx-form-select__dropdown"
+						popovertarget="popover"
+						type="button"
+						${disabled}
+					>
+						${MMX.encodeEntities(this.#getSelectButtonLabel())}
+					</button>
+				</div>
+				<div
+					id="popover"
+					part="popover"
+					class="mmx-combobox__popover"
+					popover
+				>
+					<input
+						id="search"
+						part="search input"
+						role="combobox"
+						class="mmx-combobox__search mmx-form-input"
+						type="search"
+						aria-controls="listbox"
+						aria-haspopup="listbox"
+						aria-autocomplete="list"
+						aria-expanded="true"
+						aria-label="${MMX.encodeEntities(label)}"
+						value="${MMX.encodeEntities(value)}"
+						autocomplete="off"
+						autofocus
+					/>
+					<button
+						id="hide-popover"
+						part="hide-popover input"
+						class="mmx-combobox__hide-popover mmx-form-select__picker-icon"
+						type="button"
+						popovertarget="popover"
+						popovertargetaction="hide"
+						title="Close options"
+						tabindex="-1"
+					>
+					</button>
+					<ul
+						id="listbox"
+						part="listbox"
+						role="listbox"
+						class="mmx-combobox__listbox"
+						tabindex="-1"
+					>
+						${this.#renderListBoxOptions()}
+					</ul>
+				</div>
+			</div>
+		`;
+	}
+
+	#getSelectButtonLabel() {
+		return this.#value.length ? this.#value : this.getPropValue('label');
+	}
+
+	#renderListBoxOptions() {
+		return this.#renderListBoxOptionLabel() + this.#options.map(option => {
+			return this.#renderListBoxOption(option);
+		}).join('');
+	}
+
+	#renderListBoxOptionLabel() {
+		if (this.#search()?.value?.length) {
+			return '';
+		}
+
+		return /*html*/`
+			<li
+				part="option"
+				role="option"
+				class="mmx-combobox__option mmx-combobox__option--label"
+				aria-selected="false"
+				disabled
+			>
+				${MMX.encodeEntities(this.getPropValue('label'))}
+			</li>
+		`;
+	}
+
+	#renderListBoxOption(option = {}) {
+		const match = this.#determineOptionMatch(option);
+		const ariaSelected = match?.CEQ === true ? true : false;
+		const searchIsActiveElement = this.shadowRoot.activeElement === this.#search();
+		const hidden = searchIsActiveElement && match?.CIN === false ? 'hidden' : '';
+
+		return /*html*/`
+			<li
+				id="option-${MMX.encodeEntities(option.index)}"
+				data-option-index="${MMX.encodeEntities(option.index)}"
+				part="option"
+				role="option"
+				class="mmx-combobox__option"
+				aria-selected="${ariaSelected}"
+				${hidden}
+			>
+				${MMX.encodeEntities(option.prompt)}
+			</li>
+		`;
+	}
+
+	afterRender() {
+		this.#setFormValue();
+		this.#bindRenderEvents();
+		this.#updatePopoverLocation();
+	}
+
+	#updateListBox() {
+		if (!this.#listBox()) {
+			return;
+		}
+
+		this.#listBox().innerHTML = this.#renderListBoxOptions();
+		this.#bindListBoxOptionEvents();
+		this.#scrollOptionIntoView();
+	}
+
+	// Attributes
+	static get observedAttributes() {
+		return ['disabled', 'required', ...this.propsToAttributeNames];
+	}
+
+	// Elements
+	#select() {
+		return this.shadowRoot.getElementById('select');
+	}
+
+	#selectButton() {
+		return this.shadowRoot.getElementById('select-button');
+	}
+
+	#popover() {
+		return this.shadowRoot.getElementById('popover');
+	}
+
+	#search() {
+		return this.shadowRoot.getElementById('search');
+	}
+
+	#listBox() {
+		return this.shadowRoot.getElementById('listbox');
+	}
+
+	#listBoxOptions() {
+		return this.shadowRoot.querySelectorAll('[part~="option"]');
+	}
+
+	#selectedListBoxOption() {
+		return this.shadowRoot.querySelector('[part~="option"][aria-selected="true"]');
+	}
+
+	#availableListBoxOptions() {
+		return this.shadowRoot.querySelectorAll('[part~="option"]:not([hidden], [disabled])');
+	}
+
+	// Events
+	#bindEvents() {
+		this.addEventListener('focus', e => {
+			this.#onFocus(e);
+		});
+
+		this.addEventListener('blur', e => {
+			this.#onBlur(e);
+		});
+
+		this.addEventListener('keydown', e => {
+			this.#onKeyDown(e);
+		});
+	}
+
+	#bindRenderEvents() {
+		this.#search().addEventListener('keyup', e => {
+			this.#onSearchKeyUp(e);
+		});
+
+		this.#search().addEventListener('input', e => {
+			this.#onSearchInput(e);
+		});
+
+		this.#bindListBoxOptionEvents();
+		this.#bindAnchorPositionPolyfill();
+	}
+
+	#bindListBoxOptionEvents() {
+		this.#listBoxOptions()?.forEach(option => {
+			option.addEventListener('click', e => {
+				this.#onOptionClick({option, e});
+			});
+		});
+	}
+
+	#onSearchKeyUp(e) {
+		if (e.key === 'Enter') {
+			this.#onSearchKeyUpEnter();
+		}
+	}
+
+	#onSearchKeyUpEnter() {
+		const option = this.#selectedListBoxOption();
+
+		if (!(option instanceof HTMLElement)) {
+			return;
+		}
+
+		this.#setValueFromListBoxOption(option);
+	}
+
+	#onSearchInput(e) {
+		if (e.key === 'Enter') {
+			return;
+		}
+
+		this.#updateListBox();
+		this.#setValue(this.#search().value);
+	}
+
+	#onFocus(e) {
+		this.showPopover();
+	}
+
+	#onBlur(e) {
+		this.hidePopover();
+
+		if (this.#search().value !== this.#dispatchedValue) {
+			this.#dispatchEvents();
+		}
+	}
+
+	#onOptionClick({option, e}) {
+		this.#setValueFromListBoxOption(option);
+	}
+
+	#onKeyDown(e) {
+		const activeElement = e.target.shadowRoot.activeElement;
+		const isOption = activeElement.part.contains('option');
+		const isSearch = activeElement.id === 'search';
+		const isSelectButton = activeElement.id === 'select-button';
+
+		switch(e.key) {
+			case 'ArrowDown':
+				if (isOption || isSearch) {
+					this.#onSearchKeyDownArrowDown(e);
+				}
+				else if (isSelectButton) {
+					this.#onSelectButtonKeyDown(e);
+				}
+				break;
+			case 'ArrowUp':
+				if (isOption || isSearch) {
+					this.#onSearchKeyDownArrowUp(e);
+				}
+				else if (isSelectButton) {
+					this.#onSelectButtonKeyDown(e);
+				}
+				break;
+			case 'Escape':
+				if (isSearch) {
+					this.#onSearchKeyDownEscape(e);
+				}
+				break;
+		}
+	}
+
+	#onSelectButtonKeyDown(e) {
+		this.showPopover();
+		this.#search().focus();
+	}
+
+	#onSearchKeyDownArrowDown(e) {
+		e.preventDefault();
+		this.#selectNextListBoxOption();
+	}
+
+	#onSearchKeyDownArrowUp(e) {
+		e.preventDefault();
+		this.#selectPreviousListBoxOption();
+	}
+
+	#onSearchKeyDownEscape(e) {
+		this.#setValue('');
+		this.#selectButton().focus();
+	}
+
+	// UI Interaction Methods
+	#selectNextListBoxOption() {
+		this.#moveSelectedListBoxOption(1);
+	}
+
+	#selectPreviousListBoxOption() {
+		this.#moveSelectedListBoxOption(-1);
+	}
+
+	#moveSelectedListBoxOption(amount = 1) {
+		const selectedOptionIndex = Array.from(this.#availableListBoxOptions()).indexOf(this.#selectedListBoxOption());
+		const availableListBoxOptionsLength = this.#availableListBoxOptions()?.length ?? 0;
+
+		let newIndex = selectedOptionIndex + MMX.coerceNumber(amount, 1);
+
+		if (newIndex > availableListBoxOptionsLength - 1) {
+			newIndex = 0;
+		} else if (newIndex < 0) {
+			newIndex = availableListBoxOptionsLength - 1;
+		}
+
+		this.#selectListBoxOption(this.#availableListBoxOptions()?.[newIndex]);
+	}
+
+	#selectListBoxOption(option) {
+		if (!(option instanceof HTMLElement)) {
+			this.#setActiveDescendant(null);
+			return;
+		}
+
+		const selectedOption = this.#selectedListBoxOption();
+
+		if (selectedOption) {
+			selectedOption.ariaSelected = false;
+		}
+
+		option.ariaSelected = true;
+		this.#setActiveDescendant(option);
+		this.#scrollOptionIntoView(option);
+	}
+
+	#scrollOptionIntoView(option = this.#availableListBoxOptions()?.[0]) {
+		option?.scrollIntoView?.({block: 'nearest'});
+	}
+
+	#setActiveDescendant(option) {
+		if (!(option instanceof HTMLElement)) {
+			this.#search().removeAttribute('aria-activedescendant');
+			return;
+		}
+
+		this.#search().setAttribute('aria-activedescendant', option.id);
+	}
+
+	#setValueFromListBoxOption(listBoxOption) {
+		this.#selectListBoxOption(listBoxOption);
+		const option = this.#getOptionFromListBoxOption(listBoxOption);
+		this.#setValue(option?.prompt);
+		this.hidePopover();
+		this.#selectButton().focus();
+		this.#dispatchEvents();
+	}
+
+	#getOptionFromListBoxOption(listBoxOption) {
+		const optionIndex = this.#getListBoxOptionIndex(listBoxOption);
+		return this.#options[optionIndex];
+	}
+
+	#getListBoxOptionIndex(option) {
+		return MMX.coerceNumber(option?.dataset?.optionIndex, -1);
+	}
+
+	// Value Methods
+	get value() {
+		return this.#value;
+	}
+
+	set value(value) {
+		this.#setValue(value);
+	}
+
+	#setValue(value) {
+		this.#value = MMX.coerceString(value);
+		this.#option = this.#findOptionByPrompt(this.#value);
+
+		if (this.#search()) {
+			this.#search().value = this.#value;
+		}
+
+		if (this.#selectButton()) {
+			this.#selectButton().textContent = this.#getSelectButtonLabel();
+		}
+
+		this.#updateListBox();
+		this.#setFormValue();
+	}
+
+	#dispatchEvents() {
+		this.#dispatchedValue = this.#value;
+
+		const eventOptions = {
+			bubbles: true,
+			composed: true
+		};
+
+		this.dispatchEvent(new Event('input', eventOptions));
+		this.dispatchEvent(new Event('change', eventOptions));
+	}
+
+	// Option Methods
+	get selectedOption() {
+		return this.#option;
+	}
+
+	setOptions(options = []) {
+		this.#setOptions(options);
+		this.#setValue(this.#value);
+		this.#updateListBox();
+	}
+
+	#setOptions(options = this.getPropValue('options')) {
+		options = Array.isArray(options) ? options : [];
+		let index = 0;
+
+		this.#options = options.reduce((options, option) => {
+			if (typeof option === 'string') {
+				options.push({
+					prompt: option,
+					value: option,
+					index: index++
+				});
+			}
+			else if (typeof option === 'object' && option !== null) {
+				const prompt = MMX.coerceString(option.prompt);
+				const value = MMX.coerceString(option.value ?? prompt);
+
+				options.push({
+					prompt,
+					value,
+					index: index++
+				});
+			}
+
+			return options;
+		}, []);
+	}
+
+	#determineOptionMatch(option = {}) {
+		if (!this.value) {
+			return null;
+		}
+
+		const result = {
+			value: {
+				CIN: this.#determineValueCIN(option.value, this.value),
+				CEQ: this.#determineValueCEQ(option.value, this.value)
+			},
+			prompt: {
+				CIN: this.#determineValueCIN(option.prompt, this.value),
+				CEQ: this.#determineValueCEQ(option.prompt, this.value)
+			}
+		};
+
+		result.CIN = result.value.CIN || result.prompt.CIN;
+		result.CEQ = result.value.CEQ || result.prompt.CEQ;
+
+		return result;
+	}
+
+	#determineValueCIN(haystack = '', needle = '') {
+		return haystack.toLowerCase().includes(needle.toLowerCase());
+	}
+
+	#determineValueCEQ(a = '', b = '') {
+		return a.toLowerCase() === b.toLowerCase();
+	}
+
+	#findOptionByValue(value = '') {
+		return this.#options.find(option => {
+			return this.#determineValueCEQ(option.value, value);
+		});
+	}
+
+	#findOptionByPrompt(prompt = '') {
+		return this.#options.find(option => {
+			return this.#determineValueCEQ(option.prompt, prompt);
+		});
+	}
+
+	#setValueFromOption(option = {}) {
+		const value = typeof option?.value === 'string' ? option.value : '';
+		this.#setValue(value);
+		this.#dispatchEvents();
+	}
+
+	// Form Methods
+	#setFormValue() {
+		this.#setValidity();
+		const formData = new FormData();
+		formData.append(this.name, this.value);
+		this.#internals.setFormValue(formData);
+	}
+
+	#setValidity() {
+		const hasValue = this.value.trim().length > 0;
+		const hasOption = Boolean(this.#option);
+		const isMissing = this.required && !hasValue;
+		const isInvalidSelection = hasValue && !hasOption; // user typed something not in list
+		const selectButton = this.#selectButton() ?? undefined;
+
+		if (isMissing) {
+			this.#internals.setValidity({ valueMissing: true }, 'Please select an option.', selectButton);
+		}
+		else if (isInvalidSelection) {
+			this.#internals.setValidity({ customError: true }, 'Please select a valid option.', selectButton);
+		}
+		else {
+			this.#internals.setValidity({});
+		}
+	}
+
+	checkValidity() {
+		return this.#internals.checkValidity();
+	}
+
+	reportValidity() {
+		return this.#internals.reportValidity();
+	}
+
+	setValidity(...args) {
+		return this.#internals.setValidity(...args);
+	}
+
+	get validationMessage() {
+		return this.#internals.validationMessage;
+	}
+
+	get validity() {
+		return this.#internals.validity;
+	}
+
+	get name() {
+		return this.getPropValue('name');
+	}
+
+	get disabled() {
+		return this.hasAttribute('disabled');
+	}
+
+	set disabled(disabled) {
+		disabled = Boolean(disabled);
+
+		if (disabled) {
+			this.setAttribute('disabled', '');
+		}
+		else {
+			this.removeAttribute('disabled');
+		}
+
+		this.#select().disabled = disabled;
+		this.#selectButton().disabled = disabled;
+		this.#search().disabled = disabled;
+	}
+
+	get required() {
+		return this.hasAttribute('required');
+	}
+
+	// Misc. Public Methods
+	focus() {
+		this.showPopover();
+		this.#search().focus();
+	}
+
+	get selectedIndex() {
+		return this.#options.findIndex(option => {
+			return this.#determineValueCEQ(option.prompt, this.#value);
+		});
+	}
+
+	set selectedIndex(index) {
+		const option = this.#options[index];
+		this.#setValueFromOption(option);
+	}
+
+	selectValue(value) {
+		const option = this.#findOptionByValue(value);
+		this.#setValueFromOption(option);
+	}
+
+	selectPrompt(prompt) {
+		const option = this.#findOptionByPrompt(prompt);
+		this.#setValueFromOption(option);
+	}
+
+	showPopover() {
+		this.#selectButton().inert = true;
+		this.#updatePopoverLocation();
+		this.#popover()?.showPopover?.({
+			source: this.#selectButton()
+		});
+		this.#scrollOptionIntoView(this.#selectedListBoxOption());
+	}
+
+	hidePopover() {
+		this.#popover()?.hidePopover?.();
+		this.#selectButton().inert = false;
+	}
+
+	// Anchor Positioning Polyfill
+	#bindAnchorPositionPolyfill() {
+		if (this.#supportsAnchorPositioning()) {
+			return;
+		}
+
+		window.addEventListener('resize', () => {
+			this.#updatePopoverLocation();
+		});
+
+		window.addEventListener('scroll', () => {
+			this.#updatePopoverLocation();
+		});
+	}
+
+	#supportsAnchorPositioning() {
+		return CSS.supports('justify-self', 'anchor-center');
+	}
+
+	#updatePopoverLocation() {
+		if (this.#supportsAnchorPositioning()) {
+			return;
+		}
+
+		this.#positionElementToAnchor(this.#popover(), this);
+	}
+
+	#positionElementToAnchor(element, anchor, root = document.body) {
+		if (!(element instanceof HTMLElement) || !(anchor instanceof HTMLElement)) {
+			return;
+		}
+
+		const anchorRect = anchor.getBoundingClientRect();
+		const rootRect = root.getBoundingClientRect();
+		const overflowY = window.getComputedStyle(root)?.overflowY;
+		const scrollFromTop = ((overflowY === 'scroll' || overflowY === 'auto') ? root.scrollTop : 0);
+
+		element.style.position = 'absolute';
+		element.style.top = ((anchorRect.top - rootRect.top) - scrollFromTop) + 'px';
+		element.style.left = (anchorRect.left - rootRect.left) + 'px';
+		element.style.width = (anchorRect.width) + 'px';
+	}
+}
+
+if (!customElements.get('mmx-combobox')) {
+	customElements.define('mmx-combobox', MMX_Combobox);
 }

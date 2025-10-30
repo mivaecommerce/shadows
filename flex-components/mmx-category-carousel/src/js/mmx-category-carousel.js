@@ -284,7 +284,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				mobileSource = /*html*/`<source
 					class="source__mobile"
 					media="(max-width: 39.999em)"
-					srcset="${MMX.encodeEntities(MMX.encodeSrcset(mobileImage.image))}"
+					srcset="${MMX.encodeEntitiesURI(mobileImage.image)}"
 					width="${MMX.encodeEntities(mobileImage.width)}"
 					height="${MMX.encodeEntities(mobileImage.height)}"
 				>`;
@@ -296,7 +296,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				tabletSource = /*html*/`<source
 					class="source__tablet"
 					media="(max-width: 59.999em)"
-					srcset="${MMX.encodeEntities(MMX.encodeSrcset(tabletImage.image))}"
+					srcset="${MMX.encodeEntitiesURI(tabletImage.image)}"
 					width="${MMX.encodeEntities(tabletImage.width)}"
 					height="${MMX.encodeEntities(tabletImage.height)}"
 				>`;
@@ -325,7 +325,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 				${mobileSource}
 				${tabletSource}
 				<img
-					src="${MMX.encodeEntities(child.image.url)}"
+					src="${MMX.encodeEntitiesURI(child.image.url)}"
 					alt="${MMX.encodeEntities(child.image.custom_image?.image?.alt)}"
 					width="${MMX.encodeEntities(child.image.custom_image?.image?.width)}"
 					height="${MMX.encodeEntities(child.image.custom_image?.image?.height)}"

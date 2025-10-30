@@ -5,28 +5,65 @@
             "item_code": "top-level-categories",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "card": {
                     "details": {
                         "children": [
                             {
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
                                 "image_settings": {
                                     "type": {
                                         "value": "cattree"
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "name": {
                                     "value": "Image"
+                                },
+                                "prefix": {
+                                    "visible": 0
+                                },
+                                "suffix": {
+                                    "visible": 0
+                                },
+                                "text_styles": {
+                                    "visible": 0
                                 },
                                 "type": {
                                     "value": "image"
                                 }
                             },
                             {
+                                "button": {
+                                    "visible": 0
+                                },
+                                "customfield": {
+                                    "visible": 0
+                                },
+                                "fragment": {
+                                    "visible": 0
+                                },
+                                "image_settings": {
+                                    "visible": 0
+                                },
                                 "name": {
                                     "value": "Name"
+                                },
+                                "prefix": {
+                                    "visible": 1
+                                },
+                                "suffix": {
+                                    "visible": 1
                                 },
                                 "text_styles": {
                                     "settings": {
@@ -35,10 +72,14 @@
                                     "text_align": {
                                         "value": "center"
                                     },
+                                    "text_transform": {
+                                        "visible": 0
+                                    },
                                     "typography_theme": {
                                         "code": "subheading-xs",
                                         "theme_mode": 1
-                                    }
+                                    },
+                                    "visible": 1
                                 },
                                 "type": {
                                     "value": "name"
@@ -80,6 +121,9 @@
                     "parent_category": {
                         "source": {
                             "value": "auto"
+                        },
+                        "specific": {
+                            "visible": 0
                         }
                     },
                     "responsive_settings": {

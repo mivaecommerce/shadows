@@ -232,27 +232,28 @@
 	<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:image">
 		<picture slot="image">
 			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:mobile:image">
-				<mvt:assign name="l.settings:instance:form:background:img:responsive_image_data:mobile:image" value="glosub( l.settings:instance:form:background:img:responsive_image_data:mobile:image, ' ', '%20' )" />
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:responsive_image_data:mobile:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:responsive_image_data:mobile:image )" />
 				<source
 					class="source__mobile"
 					media="(max-width: 39.999em)"
-					srcset="&mvte:instance:form:background:img:responsive_image_data:mobile:image;"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:mobile:uri_encoded_image;"
 					width="&mvte:instance:form:background:img:responsive_image_data:mobile:width;"
 					height="&mvte:instance:form:background:img:responsive_image_data:mobile:height;"
 				>
 			</mvt:if>
 			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:tablet:image">
-				<mvt:assign name="l.settings:instance:form:background:img:responsive_image_data:tablet:image" value="glosub( l.settings:instance:form:background:img:responsive_image_data:tablet:image, ' ', '%20' )" />
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:responsive_image_data:tablet:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:responsive_image_data:tablet:image )" />
 				<source
 					class="source__tablet"
 					media="(max-width: 59.999em)"
-					srcset="&mvte:instance:form:background:img:responsive_image_data:tablet:image;"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:tablet:uri_encoded_image;"
 					width="&mvte:instance:form:background:img:responsive_image_data:tablet:width;"
 					height="&mvte:instance:form:background:img:responsive_image_data:tablet:height;"
 				>
 			</mvt:if>
+			<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:image )" />
 			<img
-				src="&mvte:instance:form:background:img:image;"
+				src="&mvte:instance:form:background:img:uri_encoded_image;"
 				alt="&mvte:instance:form:background:img:alt;"
 				width="&mvte:instance:form:background:img:width;"
 				height="&mvte:instance:form:background:img:height;"
@@ -495,7 +496,7 @@
 										&mvte:field:html:attr:required;
 										&mvte:option:html:attr:checked;
 									/>
-									<span class="mmx-form-caption">
+									<span class="mmx-form-caption mmx-form-radio__caption">
 										&mvte:option:label:value;
 									</span>
 								</label>
@@ -519,7 +520,7 @@
 										&mvte:field:html:attr:required;
 										&mvte:option:html:attr:checked;
 									/>
-									<span class="mmx-form-caption">
+									<span class="mmx-form-caption mmx-form-checkbox__caption">
 										&mvte:option:label:value;
 									</span>
 								</label>

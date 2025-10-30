@@ -5,8 +5,8 @@
             "item_code": "contact-form",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "advanced": {
                     "spacing": {
@@ -31,8 +31,17 @@
                                 "label": {
                                     "value": "Your name"
                                 },
+                                "number_validation": {
+                                    "visible": 0
+                                },
+                                "options": {
+                                    "visible": 0
+                                },
                                 "pattern_validation": {
                                     "visible": 1
+                                },
+                                "phone_validation": {
+                                    "visible": 0
                                 },
                                 "placeholder": {
                                     "visible": 1
@@ -54,8 +63,17 @@
                                 "label": {
                                     "value": "Your email address"
                                 },
+                                "number_validation": {
+                                    "visible": 0
+                                },
+                                "options": {
+                                    "visible": 0
+                                },
                                 "pattern_validation": {
                                     "visible": 1
+                                },
+                                "phone_validation": {
+                                    "visible": 0
                                 },
                                 "placeholder": {
                                     "value": "example@email.com",
@@ -78,8 +96,17 @@
                                 "label": {
                                     "value": "Subject"
                                 },
+                                "number_validation": {
+                                    "visible": 0
+                                },
+                                "options": {
+                                    "visible": 0
+                                },
                                 "pattern_validation": {
                                     "visible": 1
+                                },
+                                "phone_validation": {
+                                    "visible": 0
                                 },
                                 "placeholder": {
                                     "visible": 1
@@ -101,8 +128,17 @@
                                 "label": {
                                     "value": "Message"
                                 },
+                                "number_validation": {
+                                    "visible": 0
+                                },
+                                "options": {
+                                    "visible": 0
+                                },
                                 "pattern_validation": {
-                                    "visible": 1
+                                    "visible": 0
+                                },
+                                "phone_validation": {
+                                    "visible": 0
                                 },
                                 "placeholder": {
                                     "value": "Type your message here...",
@@ -152,6 +188,12 @@
                             "textsettings": {
                                 "fields": {
                                     "normal": {
+                                        "button_size": {
+                                            "visible": 0
+                                        },
+                                        "button_style": {
+                                            "visible": 0
+                                        },
                                         "button_theme": {
                                             "code": "primary",
                                             "size": "m",
@@ -174,8 +216,8 @@
             "item_code": "text-editor",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.13,
-                    "settings_version": "10.13.00"
+                    "flex_version": 10.1301,
+                    "settings_version": "10.13.01"
                 },
                 "advanced": {
                     "spacing": {

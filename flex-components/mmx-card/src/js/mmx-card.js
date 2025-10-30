@@ -234,6 +234,7 @@ class MMX_ProductCard extends MMX_Card {
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
 			>
 				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
 				${this.renderThemeStylesheetTemplate(theme_available)}
@@ -289,7 +290,7 @@ class MMX_ProductCard extends MMX_Card {
 			<img
 				slot="main"
 				part="image"
-				src="${MMX.encodeEntities(resizedImage.url)}"
+				src="${MMX.encodeEntitiesURI(resizedImage.url)}"
 				alt=""
 				style="
 					object-fit: ${MMX.encodeEntities(fit)};
@@ -448,6 +449,7 @@ class MMX_ProductCard extends MMX_Card {
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
 			>
 				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
 				${this.renderThemeStylesheetTemplate(theme_available)}
@@ -491,6 +493,7 @@ class MMX_ProductCard extends MMX_Card {
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"
+				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
 			>
 				${this.renderLegacyStylesTemplate(theme_available, this.getStylesFromGroup(detail?.text_styles))}
 				${this.renderThemeStylesheetTemplate(theme_available)}
@@ -743,7 +746,7 @@ class MMX_CategoryCard extends MMX_Card {
 			<img
 				slot="main"
 				part="detail ${MMX.encodeEntities(detail?.type?.value)}"
-				src="${MMX.encodeEntities(image)}"
+				src="${MMX.encodeEntitiesURI(image)}"
 				alt=""
 				style="
 					object-fit: ${MMX.encodeEntities(imageFit)};

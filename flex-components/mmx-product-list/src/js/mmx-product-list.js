@@ -289,7 +289,7 @@ class MMX_ProductList extends MMX_Element {
 				--mmx-product-list__columns--mobile: ${columns.mobile};
 				--mmx-product-list__columns--tablet: ${columns.tablet};
 				--mmx-product-list__columns--desktop: ${columns.desktop};
-				--mmx-product-list__facets-width: ${facetsWidth}% ${productsWidth}%;
+				--mmx-product-list__facets-width: ${facetsWidth}fr ${productsWidth}fr;
 			}
 		`;
 	}
@@ -1556,6 +1556,14 @@ class MMX_ProductList extends MMX_Element {
 			facetArray.push(facet);
 		}
 
+		facetArray.sort((left, right) => {
+			if (left.priority < right.priority)			return 1;
+			else if	(left.priority > right.priority)	return -1;
+			else if (left.name < right.name)			return -1;
+			else if	(left.name > right.name)			return 1;
+			else										return 0;
+		});
+
 		this.#facets = facetArray;
 	}
 
@@ -1904,7 +1912,7 @@ class MMX_ProductList extends MMX_Element {
 					value="${MMX.encodeEntities(facetValue.value)}"
 					${checked}
 				>
-				<span class="mmx-form-caption">${facetValue.prompt}</span>
+				<span class="mmx-form-caption mmx-form-${controlType}__caption">${facetValue.prompt}</span>
 				${this.#renderFacetValueCount(facetValue)}
 			</label>
 		`;

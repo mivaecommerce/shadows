@@ -363,8 +363,12 @@ MMX.encodeEntities = (input) => {
 			.replace(/™/g, '&trade;');
 };
 
+MMX.encodeEntitiesURI = (input) => {
+	return MMX.encodeEntities(encodeURI(input));
+};
+
 MMX.encodeSrcset = (input) => {
-	return String(input).replace(/ /g, '%20');
+	return encodeURI(input);
 };
 
 MMX.isEqual = (a, b) => {

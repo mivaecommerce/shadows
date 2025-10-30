@@ -313,7 +313,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		};
 	}
 
-	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-hero', 'mmx-hero-slider', 'mmx-featured-product'];
+	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-forms', 'mmx-hero', 'mmx-hero-slider', 'mmx-featured-product'];
 	#buttonEnabled = true;
 	renderUniquely = true;
 
@@ -593,7 +593,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<picture slot="image">
 				${this.renderProductMobileImage(image)}
-				<img src="${MMX.encodeEntities(image.default)}" alt="">
+				<img src="${MMX.encodeEntitiesURI(image.default)}" alt="">
 			</picture>
 		`;
 	}
@@ -604,7 +604,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		}
 
 		return /*html*/`
-			<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntities(MMX.encodeSrcset(image.mobile))}">
+			<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntitiesURI(image.mobile)}">
 		`;
 	}
 
@@ -815,7 +815,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<input id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="text" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(attribute.value ?? '')}" placeholder="" ${required} />
+				<input id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-input mmx-form-input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="text" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(attribute.value ?? '')}" placeholder="" ${required} />
 			</div>
 		`;
 	}
@@ -828,7 +828,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${required}>${MMX.encodeEntities(attribute.value ?? '')}</textarea>
+				<textarea id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-textarea mmx-form-textarea" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" placeholder="" ${required}>${MMX.encodeEntities(attribute.value ?? '')}</textarea>
 			</div>
 		`;
 	}
@@ -840,7 +840,9 @@ class MMX_FeaturedProduct extends MMX_Element {
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<span class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</span>
-				${attribute.options.map(option => this.renderProductContentAttributeRadioOption(attribute, index, option)).join('')}
+				<fieldset class="mmx-form-fieldset">
+					${attribute.options.map(option => this.renderProductContentAttributeRadioOption(attribute, index, option)).join('')}
+				</fieldset>
 			</div>
 		`;
 	}
@@ -860,13 +862,13 @@ class MMX_FeaturedProduct extends MMX_Element {
 		const required	= attribute.required ? 'required' : '';
 		const checked	= this.shouldSelectAttributeOption(attribute, option) ? 'checked' : '';
 
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
+		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
 
 		return /*html*/`
-			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio" title="${MMX.encodeEntities(option.prompt)}">
-				<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" type="radio" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(option.code)}" ${checked} ${required}>
-				<span class="mmx-featured-product__product-attribute-checkbox__caption">${encoded_image_template}</span>
+			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio mmx-form-radio" title="${MMX.encodeEntities(option.prompt)}">
+				<input class="mmx-featured-product__product-attribute-checkbox__input mmx-form-radio__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" type="radio" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(option.code)}" ${checked} ${required}>
+				<span class="mmx-featured-product__product-attribute-checkbox__caption mmx-form-radio__caption">${encoded_image_template}</span>
 			</label>
 		`;
 	}
@@ -879,8 +881,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
-				<div class="mmx-featured-product__product-attribute-select">
-					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
+				<div class="mmx-featured-product__product-attribute-select mmx-form-select">
+					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown mmx-form-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
 						${attribute.options.map(option => this.renderProductContentAttributeSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
@@ -892,7 +894,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		var encoded_image_template;
 		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
 
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
+		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
 
 		return /*html*/`
@@ -924,7 +926,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		var encoded_image_template;
 		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
 
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
+		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
 		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
 
 		return /*html*/`
@@ -939,15 +941,15 @@ class MMX_FeaturedProduct extends MMX_Element {
 		const required = attribute.required ? 'required' : '';
 		const checked  = this.#attributeValueIsTruthy(attribute.value) ? 'checked' : '';
 
-		if (attribute.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntities(attribute.image)}" alt="${MMX.encodeEntities(attribute.prompt)}" loading="lazy" />`;
+		if (attribute.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(attribute.image)}" alt="${MMX.encodeEntities(attribute.prompt)}" loading="lazy" />`;
 		else							encoded_image_template = `${attribute.prompt} ${attribute.price ? attribute.formatted_price : ''}`;
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
-				<label class="mmx-featured-product__product-attribute-checkbox" title="${MMX.encodeEntities(attribute.prompt)}">
-					<input class="mmx-featured-product__product-attribute-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="checkbox" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required} ${checked}>
-					<span class="mmx-featured-product__product-attribute-checkbox__caption">${encoded_image_template}</span>
+				<label class="mmx-featured-product__product-attribute-checkbox mmx-form-checkbox" title="${MMX.encodeEntities(attribute.prompt)}">
+					<input class="mmx-featured-product__product-attribute-checkbox__input mmx-form-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="checkbox" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required} ${checked}>
+					<span class="mmx-featured-product__product-attribute-checkbox__caption mmx-form-checkbox__caption">${encoded_image_template}</span>
 				</label>
 			</div>
 		`;
@@ -973,8 +975,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 		if (this.product.subscriptionsettings.mandatory) {
 			return /*html*/`
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="l-subscription" title="Subscribe">Select Subscription</label>
-				<div class="mmx-featured-product__product-attribute-select">
-					<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
+				<div class="mmx-featured-product__product-attribute-select mmx-form-select">
+					<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown mmx-form-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
 						${this.product.subscriptionterms.map(term => this.renderProductContentAttributeSubscriptionOption(term)).join('')}
 					</select>
 				</div>
@@ -983,8 +985,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="l-subscription" title="Subscribe">Select Subscription</label>
-			<div class="mmx-featured-product__product-attribute-select">
-				<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
+			<div class="mmx-featured-product__product-attribute-select mmx-form-select">
+				<select id="l-subscription" class="mmx-featured-product__product-attribute-select__dropdown mmx-form-select__dropdown" name="Product_Subscription_Term_ID" ${required}>
 					<option value="0">One Time Purchase</option>
 					${this.product.subscriptionterms.map(term => this.renderProductContentAttributeSubscriptionOption(term)).join('')}
 				</select>
@@ -1267,7 +1269,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			swatch_container	= self.shadowRoot.getElementById('swatches');
 
 			img					= document.createElement('img');
-			img.src				= option.image;
+			img.src				= encodeURI(option.image);
 			img.setAttribute('alt', option.prompt);
 
 			swatch_button		= document.createElement('button');

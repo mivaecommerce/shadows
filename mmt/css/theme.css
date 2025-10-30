@@ -121,11 +121,6 @@
 	margin-bottom: 0;
 }
 
-.t-site-header__logo img {
-	max-height: 32px;
-	width: auto;
-}
-
 .t-site-header__search-form {
 	border: var(--default-border-width) solid var(--gray-400);
 	border-radius: var(--default-border-radius);
@@ -902,6 +897,14 @@
 		max-width: calc(20% - 1em);
 	}
 }
+.t-epmivapay .t-payment-form__field-set {
+	flex-basis: clamp(20rem, 50% - 1rem, 100%);
+}
+
+.t-epmivapay#payment-fields label {
+	max-width: none;
+}
+
 .t-paypalcp .t-payment-form__field-set {
 	flex-basis: clamp(20rem, 50% - 1rem, 100%);
 }

@@ -203,7 +203,7 @@ class MMX_ImageGallery extends MMX_Element {
 
 		return typeof resizedImage?.url !== 'string' ? '' : /*html*/`
 			<mmx-hero slot="hero_slide" data-fit="${MMX.encodeEntities(imageFit)}" data-tag="div">
-				<img slot="image" src="${MMX.encodeEntities(resizedImage.url)}" loading="lazy" alt="" ${tabIndex} />
+				<img slot="image" src="${MMX.encodeEntitiesURI(resizedImage.url)}" loading="lazy" alt="" ${tabIndex} />
 			</mmx-hero>
 		`;
 	}

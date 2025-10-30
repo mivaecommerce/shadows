@@ -423,7 +423,7 @@
 	--mmx-color-primary-bg: var(--mmx-color-white);
 	--mmx-color-primary-text: var(--mmx-color-black);
 	--mmx-color-primary-disabled-text: var(--mmx-color-white);
-	--mmx-color-secondary-disabled-text: #767676;
+	--mmx-color-secondary-disabled-text: var(--mmx-color-grey-05);
 	--mmx-color-secondary-disabled-border: #898989;
 	--mmx-heading-color: var(--mmx-color-white);
 	--mmx-color-body-copy: var(--mmx-color-white);
@@ -443,6 +443,9 @@
 	--mmx-title-2-color: var(--mmx-heading-color);
 	--mmx-title-3-color: var(--mmx-heading-color);
 	--mmx-title-4-color: var(--mmx-heading-color);
+	--mmx-product-name-color: var(--mmx-paragraph-color);
+	--mmx-product-price-color: var(--mmx-paragraph-color);
+	--mmx-product-additional-price-color: var(--mmx-paragraph-color);
 	--mmx-color-focus: var(--mmx-color-dark-focus);
 	--mmx-color-secondary-link: var(--mmx-color-white);
 	--mmx-color-pill-bg: rgba(255, 255, 255, 0.15);
@@ -468,7 +471,7 @@
 		--mmx-color-primary-bg: var(--mmx-color-white);
 		--mmx-color-primary-text: var(--mmx-color-black);
 		--mmx-color-primary-disabled-text: var(--mmx-color-white);
-		--mmx-color-secondary-disabled-text: #767676;
+		--mmx-color-secondary-disabled-text: var(--mmx-color-grey-05);
 		--mmx-color-secondary-disabled-border: #898989;
 		--mmx-heading-color: var(--mmx-color-white);
 		--mmx-color-body-copy: var(--mmx-color-white);
@@ -488,6 +491,9 @@
 		--mmx-title-2-color: var(--mmx-heading-color);
 		--mmx-title-3-color: var(--mmx-heading-color);
 		--mmx-title-4-color: var(--mmx-heading-color);
+		--mmx-product-name-color: var(--mmx-paragraph-color);
+		--mmx-product-price-color: var(--mmx-paragraph-color);
+		--mmx-product-additional-price-color: var(--mmx-paragraph-color);
 		--mmx-color-focus: var(--mmx-color-dark-focus);
 		--mmx-color-secondary-link: var(--mmx-color-white);
 		--mmx-color-pill-bg: rgba(255, 255, 255, 0.15);
