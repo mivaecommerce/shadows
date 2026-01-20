@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.01"
+                    "settings_version": "10.13.03"
                 },
                 "advanced": {
                     "form_name": {
@@ -32,6 +32,9 @@
                                 "visible": 0
                             },
                             "attribute_messages": {
+                                "visible": 0
+                            },
+                            "attribute_settings": {
                                 "visible": 0
                             },
                             "atwl_url": {
@@ -66,6 +69,9 @@
                                         "attribute_messages": {
                                             "visible": 0
                                         },
+                                        "attribute_settings": {
+                                            "visible": 0
+                                        },
                                         "atwl_url": {
                                             "visible": 0
                                         },
@@ -96,6 +102,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -277,6 +286,9 @@
                                         "attribute_messages": {
                                             "visible": 0
                                         },
+                                        "attribute_settings": {
+                                            "visible": 0
+                                        },
                                         "atwl_url": {
                                             "visible": 0
                                         },
@@ -307,6 +319,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -405,6 +420,9 @@
                                                     "attribute_messages": {
                                                         "visible": 0
                                                     },
+                                                    "attribute_settings": {
+                                                        "visible": 0
+                                                    },
                                                     "atwl_url": {
                                                         "visible": 0
                                                     },
@@ -500,6 +518,9 @@
                                                     "attribute_messages": {
                                                         "visible": 0
                                                     },
+                                                    "attribute_settings": {
+                                                        "visible": 0
+                                                    },
                                                     "atwl_url": {
                                                         "visible": 0
                                                     },
@@ -530,6 +551,9 @@
                                                                     "visible": 0
                                                                 },
                                                                 "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_settings": {
                                                                     "visible": 0
                                                                 },
                                                                 "atwl_url": {
@@ -633,6 +657,9 @@
                                                                     "visible": 0
                                                                 },
                                                                 "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_settings": {
                                                                     "visible": 0
                                                                 },
                                                                 "atwl_url": {
@@ -796,6 +823,9 @@
                                                     "attribute_messages": {
                                                         "visible": 0
                                                     },
+                                                    "attribute_settings": {
+                                                        "visible": 0
+                                                    },
                                                     "atwl_url": {
                                                         "visible": 0
                                                     },
@@ -882,6 +912,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -992,6 +1025,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -1106,6 +1142,15 @@
                                                         },
                                                         "visible": 1
                                                     },
+                                                    "attribute_settings": {
+                                                        "include_select_one": {
+                                                            "value": 1
+                                                        },
+                                                        "select_one_text": {
+                                                            "value": "<Select One>"
+                                                        },
+                                                        "visible": 1
+                                                    },
                                                     "atwl_url": {
                                                         "visible": 0
                                                     },
@@ -1194,6 +1239,9 @@
                                                     "attribute_messages": {
                                                         "visible": 0
                                                     },
+                                                    "attribute_settings": {
+                                                        "visible": 0
+                                                    },
                                                     "atwl_url": {
                                                         "visible": 0
                                                     },
@@ -1224,6 +1272,9 @@
                                                                     "visible": 0
                                                                 },
                                                                 "attribute_messages": {
+                                                                    "visible": 0
+                                                                },
+                                                                "attribute_settings": {
                                                                     "visible": 0
                                                                 },
                                                                 "atwl_url": {
@@ -1317,6 +1368,9 @@
                                                                 "attribute_messages": {
                                                                     "visible": 0
                                                                 },
+                                                                "attribute_settings": {
+                                                                    "visible": 0
+                                                                },
                                                                 "atwl_url": {
                                                                     "visible": 0
                                                                 },
@@ -1362,6 +1416,9 @@
                                                                                 "visible": 0
                                                                             },
                                                                             "attribute_messages": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "attribute_settings": {
                                                                                 "visible": 0
                                                                             },
                                                                             "atwl_url": {
@@ -1466,6 +1523,9 @@
                                                                             "attribute_messages": {
                                                                                 "visible": 0
                                                                             },
+                                                                            "attribute_settings": {
+                                                                                "visible": 0
+                                                                            },
                                                                             "atwl_url": {
                                                                                 "type": "page",
                                                                                 "value": "WISH",
@@ -1551,6 +1611,9 @@
                                                                                 "visible": 0
                                                                             },
                                                                             "attribute_messages": {
+                                                                                "visible": 0
+                                                                            },
+                                                                            "attribute_settings": {
                                                                                 "visible": 0
                                                                             },
                                                                             "atwl_url": {
@@ -1881,6 +1944,9 @@
                             "attribute_messages": {
                                 "visible": 0
                             },
+                            "attribute_settings": {
+                                "visible": 0
+                            },
                             "atwl_url": {
                                 "visible": 0
                             },
@@ -1913,6 +1979,9 @@
                                         "attribute_messages": {
                                             "visible": 0
                                         },
+                                        "attribute_settings": {
+                                            "visible": 0
+                                        },
                                         "atwl_url": {
                                             "visible": 0
                                         },
@@ -1943,6 +2012,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -2101,6 +2173,9 @@
                                         "attribute_messages": {
                                             "visible": 0
                                         },
+                                        "attribute_settings": {
+                                            "visible": 0
+                                        },
                                         "atwl_url": {
                                             "visible": 0
                                         },
@@ -2131,6 +2206,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -2222,6 +2300,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -2378,6 +2459,9 @@
                                         "attribute_messages": {
                                             "visible": 0
                                         },
+                                        "attribute_settings": {
+                                            "visible": 0
+                                        },
                                         "atwl_url": {
                                             "visible": 0
                                         },
@@ -2408,6 +2492,9 @@
                                                         "visible": 0
                                                     },
                                                     "attribute_messages": {
+                                                        "visible": 0
+                                                    },
+                                                    "attribute_settings": {
                                                         "visible": 0
                                                     },
                                                     "atwl_url": {
@@ -2626,7 +2713,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.01"
+                    "settings_version": "10.13.03"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -2648,6 +2735,116 @@
                     }
                 },
                 "card": {
+                    "add_to_wishlist": {
+                        "add_wishlist": {
+                            "button": {
+                                "value": "Create Wishlist"
+                            },
+                            "heading": {
+                                "value": "Create A Wishlist"
+                            }
+                        },
+                        "dialog": {
+                            "heading_typography_theme": {
+                                "code": "title-4",
+                                "theme_mode": 1
+                            },
+                            "primary_button_theme": {
+                                "code": "primary",
+                                "size": "m",
+                                "theme_mode": 1
+                            },
+                            "secondary_button_theme": {
+                                "code": "secondary",
+                                "size": "m",
+                                "theme_mode": 1
+                            },
+                            "tertiary_button_theme": {
+                                "code": "display-link",
+                                "size": "m",
+                                "theme_mode": 1
+                            },
+                            "wishlist_typography_theme": {
+                                "code": "subheading-xs",
+                                "theme_mode": 1
+                            }
+                        },
+                        "empty_wishlists": {
+                            "button": {
+                                "value": "Add Wishlist"
+                            },
+                            "heading": {
+                                "value": "Start Your Wishlist"
+                            },
+                            "message": {
+                                "value": "You don't have any wishlists yet."
+                            }
+                        },
+                        "icon": {
+                            "color": {
+                                "value": "#FFFFFF"
+                            },
+                            "set": {
+                                "value": "heart"
+                            }
+                        },
+                        "login": {
+                            "button": {
+                                "value": "Log In",
+                                "visible": 1
+                            },
+                            "forgot_password_text": {
+                                "value": "Forgot Password?",
+                                "visible": 1
+                            },
+                            "forgot_password_url": {
+                                "type": "page",
+                                "value": "FPWD",
+                                "visible": 1
+                            },
+                            "heading": {
+                                "value": "Sign In to Save to Wishlist",
+                                "visible": 1
+                            },
+                            "login_register_text": {
+                                "visible": 0
+                            },
+                            "login_register_url": {
+                                "visible": 0
+                            },
+                            "method": {
+                                "value": "form"
+                            },
+                            "register_text": {
+                                "value": "Register",
+                                "visible": 1
+                            },
+                            "register_url": {
+                                "type": "page",
+                                "value": "LOGN",
+                                "visible": 1
+                            }
+                        },
+                        "select_product_options": {
+                            "button": {
+                                "value": "Add To Wishlist"
+                            },
+                            "heading": {
+                                "value": "Select Product Options"
+                            }
+                        },
+                        "select_wishlist": {
+                            "button": {
+                                "value": "Add Wishlist"
+                            },
+                            "heading": {
+                                "value": "Select A Wishlist"
+                            }
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
                     "details": {
                         "children": [
                             {
@@ -2884,6 +3081,11 @@
                         },
                         "settings": {
                             "enabled": 1
+                        },
+                        "swatches": {
+                            "settings": {
+                                "enabled": 0
+                            }
                         },
                         "type": {
                             "value": "main"

@@ -9,7 +9,11 @@
 				<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
 					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 				<mvt:else>
-					<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
+						<span class="x-category-tree__text">&mvte:navigationitem:name;</span>
+					<mvt:else>
+						<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+					</mvt:if>
 				</mvt:if>
 			</li>
 		</mvt:foreach>

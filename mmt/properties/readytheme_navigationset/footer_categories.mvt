@@ -5,7 +5,11 @@
 		<ul id="&mvte:readytheme:code;" class="c-menu__list x-collapsible-content__item">
 			<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 				<li>
-					<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvt:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
+						<span class="c-menu__text">&mvt:navigationitem:name;</span>
+					<mvt:else>
+						<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+					</mvt:if>
 				</li>
 			</mvt:foreach>
 		</ul>

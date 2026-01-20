@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -1783,10 +1783,31 @@
 						{
 							"text": "Best Sellers",
 							"value": "bestsellers"
+						},
+						{
+							"text": "Custom Field Ascending",
+							"value": "customfield"
+						},
+						{
+							"text": "Custom Field Descending",
+							"value": "customfield_desc"
 						}
 					],
 					"prompt": "Search Sort Order",
 					"type": "select"
+				},
+				{
+					"code": "search_sort_customfield",
+					"prompt": "Search Sort Order Custom Field",
+					"type": "productcustomfieldlookup",
+					"visibility_conditions": {
+						"search_sort": {
+							"value": [
+								"customfield",
+								"customfield_desc"
+							]
+						}
+					}
 				},
 				{
 					"code": "search_placeholder_runtime",
@@ -2216,7 +2237,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-5mFPgeeLlT+v2Btix5FnEg9HvWZI67YvrBWJqMNp5qA= sha384-hEWMFriw230QaD2qqUlyMEbOYaA+cRhnsOxsmnxYphORzoe/zHNTWf++nYMWS7pR sha512-xz6gpOzCI47/eXLun7PvUHUPJcj8QGE5wirQTYVFUGtZ+cEzKRemifLBnRrJXsRIx1S4fy72J+BqKtlG0/4MpQ=="
+					"value": "sha256-kDnLP6PcJ8tjtRuJcLAAzRzswvzlvYVLWBF2UEAppE0= sha384-+yFdumi+v10Pk7FEPUnHD+VuoE2h437fnw9iGevMrZtGgg97AGMleUYI7vBewuCm sha512-oNC4ZzLAX8Z5c1fpqptURA5L55hEqeva9xAdAbhwLAb9bJNJ6OKVMCbqrKB+gTtzx40pg+MJQwKplTBvJVOSDQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -2244,7 +2265,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-i+A+LB/8X9Z9z+HCVqpYj9pnY0d1eTkOQ7Ubh3X3EFk= sha384-gHlyts4NvOeiL007drpO3pfHSEscmaYpgildy+yPyouN0KX/a+NF44TjdGssV50d sha512-Pjkc5/omCthh6YIQNd1NAP9onFFBOu38NNQ/XZ8xw3rmbKIpvQ+DrkVLhlt5y9YptgZyfcq3g9t+6QwDJbSWiA=="
+					"value": "sha256-g5vnbH1+0mXPzWGuLBoZ/5HsQzEX9BMQcA382VnFyTs= sha384-m/IgW0H1nJLqU2tpCFuS7216r/E1y/3o1Dw5E2jttS8ix4h1jGOFS5QLV0+9fpuR sha512-vzk48iSkRck6aORVgNiXtjNOj8VjgpGM3NVin8/I91z2vTTdWPS03jTr+NptnTfysxRDC8g1y6napzTqW0QS0Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -2254,11 +2275,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01",
-		"mmx-button": "=10.13.01",
-		"mmx-csv": "=10.13.01",
-		"mmx-featured-product": "=10.13.01",
-		"mmx-icons": "=10.13.01",
-		"mmx-text": "=10.13.01"
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-csv": "=10.13.03",
+		"mmx-featured-product": "=10.13.03",
+		"mmx-icons": "=10.13.03",
+		"mmx-text": "=10.13.03"
 	}
 }

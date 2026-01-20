@@ -9,6 +9,7 @@
 /* Fields */
 .mmx-form-fields {
 	--mmx-form-fields__column-count: 1;
+
 	display: grid;
 	gap: var(--mmx-form__size);
 	grid-template-columns: repeat(var(--mmx-form-fields__column-count), 1fr);
@@ -60,7 +61,7 @@
 	color: var(--mmx-color-input-color);
 	cursor: pointer;
 	font-family: var(--mmx-font-family-1);
-	font-size: calc(var(--mmx-form__size) * 0.8);
+	font-size: var(--mmx-form__size);
 	padding: calc(var(--mmx-form__size) * 0.8);
 	position: relative;
 	transition: box-shadow 0.25s ease, border-color 0.25s ease;
@@ -306,6 +307,7 @@
 
 			&::after {
 				--mmx-form__checkbox-shape: 86.94% 12.50%, 80.36% 18.89%, 35.36% 63.14%, 11.54% 44.39%, 0% 58.59%, 30.33% 82.50%, 36.75% 87.50%, 42.68% 81.75%, 100% 25.36%;
+
 				background: var(--mmx-color-primary-text);
 				border: none;
 				clip-path: polygon(var(--mmx-form__checkbox-shape));
@@ -442,6 +444,7 @@
 	color: var(--mmx-color-input-color);
 	cursor: pointer;
 	font-family: var(--mmx-font-family-1);
+	font-size: var(--mmx-form__size);
 	position: relative;
 	width: 100%;
 	text-align: center;
@@ -453,33 +456,29 @@
 
 .mmx-form-input-quantity__input::-webkit-outer-spin-button,
 .mmx-form-input-quantity__input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
 
-.mmx-form-input-quantity__input[type=number] {
-  -moz-appearance: textfield;
+.mmx-form-input-quantity__input[type="number"] {
+  appearance: textfield;
 }
 
 /* Input Quantity: Sizes
    =========================================== */
 .mmx-form-input-quantity__size--xs .mmx-form-input-quantity__control {
-	font-size: calc(var(--mmx-form__size) * 0.7);
 	padding: calc(var(--mmx-form__size) * 0.75) 0;
 }
 
 .mmx-form-input-quantity__size--s .mmx-form-input-quantity__control{
-	font-size: calc(var(--mmx-form__size) * 0.75);
 	padding: calc(var(--mmx-form__size) * 0.9) 0;
 }
 
 .mmx-form-input-quantity__size--m .mmx-form-input-quantity__control {
-	font-size: calc(var(--mmx-form__size) * 0.8);
 	padding: calc(var(--mmx-form__size) * 1.1) 0;
 }
 
 .mmx-form-input-quantity__size--l .mmx-form-input-quantity__control{
-	font-size: var(--mmx-form__size);
 	padding: calc(var(--mmx-form__size) * 1.30) 0;
 }
 
@@ -488,6 +487,7 @@
 	display: grid;
 	grid-template: "input";
 	position: relative;
+	font-size: var(--mmx-form__size);
 
 	> * {
 		grid-area: input;
@@ -519,7 +519,6 @@
 	cursor: text;
 
 	&::-webkit-search-cancel-button {
-		-webkit-appearance: none;
 		appearance: none;
 		display: none;
 	}
@@ -546,7 +545,7 @@
 	width: anchor-size(width);
 
 	&:popover-open {
-		box-shadow: 0px 3px 25px rgba(0, 0, 0, 0.05);
+		box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
 		display: block;
 		outline-color: var(--mmx-color-input-color);
 	}
@@ -580,8 +579,24 @@
 }
 
 .mmx-combobox__option--label {
+	color: #9D9D9D;
 	cursor: default;
 	font: var(--mmx-call-to-action-font);
+	font-size: calc(var(--mmx-form__size) * 0.6875);
+	font-weight: var(--mmx-font-weight-bold);
+	text-transform: uppercase;
+	position: relative;
+
+	&::after {
+		background-color: var(--mmx-color-grey-02);
+		bottom: -1px;
+		content: "";
+		height: 1px;
+		left: calc(var(--mmx-form__size) * 0.75);
+		position: absolute;
+		right: calc(var(--mmx-form__size) * 0.75);
+		z-index: -1;
+	}
 }
 
 .mmx-combobox__hide-popover {

@@ -2,7 +2,7 @@
 	"code": "mmx-combination-facet",
 	"name": "Combination Facet",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-combination-facet",
 	"category": "combination-facet",
@@ -39,8 +39,13 @@
 				},
 				{
 					"code": "submit_destination",
+					"placeholder": "Current Page",
 					"prompt": "Submit Destination",
 					"supports_new_tab": 1,
+					"tooltip": {
+						"content": "Use this field to submit the form to a different location. Leaving it blank will submit to the current URL.",
+						"title": "Note"
+					},
 					"type": "link"
 				},
 				{
@@ -1929,8 +1934,7 @@
 				"value": "Submit"
 			},
 			"submit_destination": {
-				"type": "page",
-				"value": "PLST"
+				"type": "page"
 			}
 		}
 	},
@@ -1950,7 +1954,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-07hkg9Gq87SDSueb8BUp2a2EUkcGZZ5/nHF672x6Pk8= sha384-N7FwZfU58eHRhHC4CXB15yNElwjvym2S0r/tpCcVrFdcNLjqsOAidECRqQnv3Aqr sha512-J5SougXsihrUlcky7MgMkLU254jy9mgeueJp5VLkQIw01RS8SjA83+qp8gxdxoysYi6gTr8dtfvaKoST79ikpw=="
+					"value": "sha256-tdLv5FGEqD86bej9s2tCZByRjsJJJqUeNkADhF57HIo= sha384-IfjN7i2U+J2sFbCvIZqRaZcQYFJKMv+FJgLJJA9E5TTs2XUOeys+Z64vtFdHjxfH sha512-DvW93s/gqTmgBPOKoRWD+zf6ASEuB8DqcnTU7fLD/3HEbSiQNyNCL3ED0WZ+Cx0woDrbKC6TOZtDNho+k8W6OQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1978,7 +1982,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-0C5MfNtZwmcAPv9bECFakbBB3FwdEztJ5b/ZsRBMCpM= sha384-Wa7M8HRXE0ue2wXedm28C62wnkD5S9G/HzMKj1JwfS3gTTbxzu1L7AMfj/cdKn2M sha512-zT90Ull7/LxHgYQ0AvppYbO57bm6xs6PUzn5Gdqt25v2tmk895PBnVy9bpFBb6zPSVLR9nrmuYNrCZ+4X3B+tw=="
+					"value": "sha256-E/f2wIfNND4jCYQVEK/y/fwE9VTMFZlLx9SmlUvk5sc= sha384-dIpFo7YIkw0FpZ1eiMSkuYLF349GISteKbhy5C3uvImqiiTLUbuaxAmcVpm9O0qH sha512-uAGBoPwkrr7Pqh6tqBFQK51biJmc2jssPqpj9ZjH41WLqVmsFEX4aDqgwPtXseAE9hZfaiLksR6lo5y54raA4A=="
 				},
 				{
 					"name": "crossorigin",
@@ -1988,11 +1992,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01",
-		"mmx-button": "=10.13.01",
-		"mmx-forms": "=10.13.01",
-		"mmx-hero": "=10.13.01",
-		"mmx-icons": "=10.13.01",
-		"mmx-text": "=10.13.01"
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-forms": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-icons": "=10.13.03",
+		"mmx-text": "=10.13.03"
 	}
 }

@@ -1,0 +1,68 @@
+{
+	"code": "mmx-wishlist",
+	"name": "MMX Wishlist",
+	"type": "library",
+	"version": "10.13.03",
+	"managed": true,
+	"resourcegroup_code": "mmx-wishlist",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-wishlist.js",
+			"resource_code": "mmx-wishlist",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-h84GEubXqgACRLJHKToEntNvEJJeKBIFx1WEyLvFNkg= sha384-jWEDsNOD0nqULH9W/v8N74+NKfQydDXK9Y8LB5QCqP5QBSwFBFFlKw6uR6rI2fFJ sha512-D2ZIGmS0aaQaD/ayFYkikAjMwnZmgCKLBqK6KJZ3GHV+6QvXWbzZXw8SBxWR2kuPBnMGPKtMC/VZSXQ6Rh7KGA=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-wishlist.css",
+			"resource_code": "mmx-wishlist",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-yTG6Cq5jqYUjKmq6unc5f9n7d7uex23c2lrkzWDAFyk= sha384-xCWv/0lmtqFLYsHWcyxFRf2YQJFh7GVs+BwWf3fJVoNJEIGmUrSDRbYyX+d9Mzoe sha512-Y60DL01Siqw4ddnt4LjWipqCRA54G6Z7epwS5J+tsJYjCTl4fVJ5feT4NgxuQ2zVpgwR6KAYhO7vwo7qK1sFNA=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-dialog": "=10.13.03",
+		"mmx-featured-product": "=10.13.03",
+		"mmx-forms": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-hero-slider": "=10.13.03",
+		"mmx-icons": "=10.13.03",
+		"mmx-messages": "=10.13.03",
+		"mmx-text": "=10.13.03"
+	}
+}

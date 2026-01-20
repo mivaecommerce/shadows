@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -780,6 +780,82 @@
 		},
 		{
 			"can_disable": 1,
+			"code": "attribute_settings",
+			"prompt": "Attribute Settings",
+			"properties": [
+				{
+					"code": "attribute_prices",
+					"options": [
+						{
+							"text": "Show"
+						},
+						{
+							"text": "Hide",
+							"value": "hide"
+						}
+					],
+					"prompt": "Attribute Prices",
+					"type": "selector"
+				},
+				{
+					"code": "include_select_one",
+					"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-select",
+					"prompt": "Include \"Select One\" in dropdowns?",
+					"type": "checkbox"
+				},
+				{
+					"code": "select_one_text",
+					"placeholder": "<Select One>",
+					"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-select",
+					"prompt": "Select One Text",
+					"type": "text",
+					"visibility_conditions": {
+						"include_select_one": {
+							"value": [
+								1
+							]
+						}
+					}
+				},
+				{
+					"code": "swatches",
+					"collapsed": 1,
+					"prompt": "Attribute Swatches",
+					"properties": [
+						{
+							"code": "size",
+							"placeholder": "40px",
+							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"prompt": "Image Size",
+							"type": "lengthunit"
+						},
+						{
+							"code": "border_radius",
+							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"prompt": "Corner Radius",
+							"type": "cornerradius"
+						},
+						{
+							"code": "border_width",
+							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"prompt": "Border Thickness",
+							"type": "borderthickness"
+						},
+						{
+							"code": "border_color",
+							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"prompt": "Border Color",
+							"type": "color"
+						}
+					],
+					"type": "group"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"can_disable": 1,
 			"code": "attribute_messages",
 			"prompt": "Attribute Messages",
 			"properties": [
@@ -828,6 +904,14 @@
 				},
 				"settings": {
 					"enabled": 1
+				}
+			},
+			"attribute_settings": {
+				"include_select_one": {
+					"value": 1
+				},
+				"select_one_text": {
+					"value": "<Select One>"
 				}
 			},
 			"product": {
@@ -931,7 +1015,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-gGrscs1kZK96v3HKLnjcTyyIcABCVJyCXjfX2RmhsVE= sha384-1PZ2TOkpwanq7tk64qJVF/jCJGwr1aMUwFuTndqF4NIGQYWuK1vJ7oWsFScFZJo3 sha512-hiu4YBwBVWbRbR1JIWiO/muJNVhPnNLQthrjqIbQSSzA6SARC3IJRBnS3Kse9f85v4Xo+E97mQKrqVapZebIHw=="
+					"value": "sha256-VWAFOmGgAxMRWG9aSaj46IzipYoZDgYiytFaFMxrW6o= sha384-FhoQHaCFBBXuMriMI8OakcWMyTxFKTTe0oa4GtiWw7TPq0kp8t1l9Sa9D/tya+TV sha512-bKCNuW58SVVyPTgqEEhnFSDOFJQegAbkGVDdvMfQJ7rnFyki3YvruxKlTtpZf+YbAGh0ValShwj19v+vH7RbUQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -959,7 +1043,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-TjfJ/ICR+DwOx/RbWxA1McpkYRNwmS6JqZsgqkzgRyk= sha384-z1+uia+hAGwWkF4sBuz1M5SPlkOTLfaBQHvgATzdqj9UrE30W2HTkRdyX2o6YV3C sha512-NPOV191ZJmybevkCT2TEJzj8Ij8Z/BHOv7Qu/RfVF4js6fFrdsBboKWfoz9FSjURTQeiJ4FLJ457vSPiHIB2HQ=="
+					"value": "sha256-3ctVU4A7ppRJVe2kiOPjdSZZBMZ5RkwjLzanenhpdQ4= sha384-N1QPwDSINHrHgiVxSoge3zdXopbC7P0H2BryXKZKoXpmS5hZSynBq0KoXm9bhP14 sha512-bTpMBI/7gin0E1NVLoQ4B+EAtLVDPrAr9eHsTp+40NqIMwGmrg20epVpjPya86foMTdM0/7gkRkSvBkZD7qvYw=="
 				},
 				{
 					"name": "crossorigin",
@@ -969,11 +1053,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01",
-		"mmx-button": "=10.13.01",
-		"mmx-forms": "=10.13.01",
-		"mmx-hero": "=10.13.01",
-		"mmx-hero-slider": "=10.13.01",
-		"mmx-text": "=10.13.01"
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-forms": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-hero-slider": "=10.13.03",
+		"mmx-text": "=10.13.03"
 	}
 }

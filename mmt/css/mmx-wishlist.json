@@ -1,0 +1,29 @@
+{
+    "code": "mmx-wishlist",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "media",
+            "value": "all"
+        },
+        {
+            "name": "rel",
+            "value": "stylesheet"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-yTG6Cq5jqYUjKmq6unc5f9n7d7uex23c2lrkzWDAFyk= sha384-xCWv/0lmtqFLYsHWcyxFRf2YQJFh7GVs+BwWf3fJVoNJEIGmUrSDRbYyX+d9Mzoe sha512-Y60DL01Siqw4ddnt4LjWipqCRA54G6Z7epwS5J+tsJYjCTl4fVJ5feT4NgxuQ2zVpgwR6KAYhO7vwo7qK1sFNA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -584,6 +584,72 @@
 							"type": "slider"
 						},
 						{
+							"code": "expanded_facets",
+							"options": [
+								{
+									"text": "Expand All",
+									"value": "expand_all"
+								},
+								{
+									"text": "Expand First...",
+									"value": "expand_first_number"
+								},
+								{
+									"text": "Collapse All",
+									"value": "collapse_all"
+								}
+							],
+							"prompt": "Expanded Facets",
+							"type": "select"
+						},
+						{
+							"code": "expanded_facet_count",
+							"default": 3,
+							"min": 1,
+							"placeholder": 1,
+							"prompt": "Expanded Facet Count",
+							"text_type": "number",
+							"type": "text",
+							"visibility_conditions": {
+								"expanded_facets": {
+									"value": [
+										"expand_first_number"
+									]
+								}
+							}
+						},
+						{
+							"code": "hide_facets_on_desktop",
+							"prompt": "Hide Facets On Desktop",
+							"type": "checkbox"
+						},
+						{
+							"code": "show_facets_prefix",
+							"placeholder": "Show",
+							"prompt": "Show Facets Prefix",
+							"type": "text",
+							"visibility_conditions": {
+								"hide_facets_on_desktop": {
+									"value": [
+										1
+									]
+								}
+							}
+						},
+						{
+							"code": "hide_facets_prefix",
+							"placeholder": "Hide",
+							"prompt": "Hide Facets Prefix",
+							"type": "text",
+							"visibility_conditions": {
+								"hide_facets_on_desktop": {
+									"value": [
+										1
+									]
+								}
+							}
+						},
+						{
 							"code": "show_value_counts",
 							"prompt": "Display Facet Value Counts",
 							"type": "checkbox"
@@ -593,6 +659,53 @@
 							"preview_property_selector": "[slot=\"category-tree\"]",
 							"prompt": "Display Category Tree",
 							"type": "checkbox"
+						},
+						{
+							"code": "display_show_more_links",
+							"prompt": "Display Show More Links",
+							"type": "checkbox"
+						},
+						{
+							"code": "show_more_threshold",
+							"default": 8,
+							"min": 1,
+							"placeholder": 8,
+							"prompt": "Show More Threshold",
+							"text_type": "number",
+							"type": "text",
+							"visibility_conditions": {
+								"display_show_more_links": {
+									"value": [
+										1
+									]
+								}
+							}
+						},
+						{
+							"code": "show_more_text",
+							"placeholder": "Show More",
+							"prompt": "Show More Text",
+							"type": "text",
+							"visibility_conditions": {
+								"display_show_more_links": {
+									"value": [
+										1
+									]
+								}
+							}
+						},
+						{
+							"code": "show_less_text",
+							"placeholder": "Show Less",
+							"prompt": "Show Less Text",
+							"type": "text",
+							"visibility_conditions": {
+								"display_show_more_links": {
+									"value": [
+										1
+									]
+								}
+							}
 						},
 						{
 							"code": "facet_styles",
@@ -790,11 +903,33 @@
 								{
 									"text": "Best Sellers",
 									"value": "bestsellers"
+								},
+								{
+									"text": "Custom Field Ascending",
+									"value": "customfield"
+								},
+								{
+									"text": "Custom Field Descending",
+									"value": "customfield_desc"
 								}
 							],
 							"preview_property_selector": ":shadow [part~=\"sort-by\"]",
 							"prompt": "Default Sort",
 							"type": "select"
+						},
+						{
+							"code": "default_customfield",
+							"preview_property_selector": ":shadow [part~=\"sort-by\"]",
+							"prompt": "Default Sort Custom Field",
+							"type": "productcustomfieldlookup",
+							"visibility_conditions": {
+								"default": {
+									"value": [
+										"customfield",
+										"customfield_desc"
+									]
+								}
+							}
 						},
 						{
 							"code": "options",
@@ -857,11 +992,33 @@
 										{
 											"text": "Best Sellers",
 											"value": "bestsellers"
+										},
+										{
+											"text": "Custom Field Ascending",
+											"value": "customfield"
+										},
+										{
+											"text": "Custom Field Descending",
+											"value": "customfield_desc"
 										}
 									],
 									"preview_property_selector": ":shadow [part~=\"sort-by\"]",
 									"prompt": "Sorting Method",
 									"type": "select"
+								},
+								{
+									"code": "code_customfield",
+									"preview_property_selector": ":shadow [part~=\"sort-by\"]",
+									"prompt": "Sorting Method Custom Field",
+									"type": "productcustomfieldlookup",
+									"visibility_conditions": {
+										"code": {
+											"value": [
+												"customfield",
+												"customfield_desc"
+											]
+										}
+									}
 								},
 								{
 									"code": "label",
@@ -1113,6 +1270,367 @@
 							"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
 							"prompt": "Image Fit",
 							"type": "select"
+						},
+						{
+							"can_disable": 1,
+							"code": "swatches",
+							"collapsed": 1,
+							"prompt": "Attribute Swatches",
+							"properties": [
+								{
+									"code": "attribute_codes",
+									"placeholder": "color, pattern, style, etc.",
+									"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+									"prompt": "Attribute Codes",
+									"tooltip": {
+										"content": "The first attribute with option-images and inventory enabled will be used for the swatches. Enter a comma-separated list of attribute-codes if you would like to only display swatches for certain attributes.",
+										"title": "Note"
+									},
+									"type": "textarea"
+								},
+								{
+									"code": "attribute_types",
+									"placeholder": "radio, select, swatch-select",
+									"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+									"prompt": "Attribute Types",
+									"tooltip": {
+										"content": "The first attribute with option-images and inventory enabled will be used for the swatches. Enter a comma-separated list of attribute-types if you would like to only display swatches for certain attribute types. The options are: radio, select, & swatch-select.",
+										"title": "Note"
+									},
+									"type": "textarea"
+								},
+								{
+									"code": "max_swatches",
+									"min": 1,
+									"placeholder": 3,
+									"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+									"prompt": "Maximum Swatches to Show",
+									"step": 1,
+									"text_type": "number",
+									"type": "text"
+								},
+								{
+									"code": "size",
+									"placeholder": "20px",
+									"prompt": "Image Size",
+									"type": "lengthunit"
+								},
+								{
+									"code": "border_radius",
+									"prompt": "Corner Radius",
+									"type": "cornerradius"
+								},
+								{
+									"code": "border_width",
+									"prompt": "Border Thickness",
+									"type": "borderthickness"
+								},
+								{
+									"code": "border_color",
+									"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+									"prompt": "Border Color",
+									"type": "color"
+								}
+							],
+							"type": "group"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "add_to_wishlist",
+					"collapsed": 1,
+					"prompt": "Add to Wishlist",
+					"properties": [
+						{
+							"code": "icon",
+							"collapsed": 1,
+							"prompt": "Icon",
+							"properties": [
+								{
+									"code": "set",
+									"options": [
+										{
+											"text": "Heart",
+											"value": "heart"
+										},
+										{
+											"text": "Flag",
+											"value": "flag"
+										},
+										{
+											"text": "Star",
+											"value": "star"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow mmx-atwl-button",
+									"prompt": "Icon Set",
+									"type": "select"
+								},
+								{
+									"code": "color",
+									"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
+									"preview_property_selector": "mmx-product-card :shadow mmx-atwl-button",
+									"prompt": "Icon Color",
+									"style": "color",
+									"type": "color"
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "login",
+							"collapsed": 1,
+							"prompt": "Login",
+							"properties": [
+								{
+									"code": "method",
+									"options": [
+										{
+											"text": "Form",
+											"value": "form"
+										},
+										{
+											"text": "Link",
+											"value": "link"
+										},
+										{
+											"text": "None",
+											"value": "none"
+										}
+									],
+									"prompt": "Login Method",
+									"tooltip": {
+										"content": "Selecting: \"Form\" displays a login form within the wishlist dialog, \"Link\" displays a button that when clicked will take people to a login page, and \"None\" does not provide any login option, so only logged in users will see the \"Add to Wishlist\" button.",
+										"title": "Login Method"
+									},
+									"type": "select"
+								},
+								{
+									"code": "heading",
+									"prompt": "Heading Text",
+									"type": "text",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form",
+												"link"
+											]
+										}
+									}
+								},
+								{
+									"code": "button",
+									"prompt": "Login Text",
+									"type": "text",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form"
+											]
+										}
+									}
+								},
+								{
+									"code": "register_text",
+									"prompt": "Register Text",
+									"type": "text",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form"
+											]
+										}
+									}
+								},
+								{
+									"code": "register_url",
+									"placeholder": "LOGN",
+									"prompt": "Register URL",
+									"type": "link",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form"
+											]
+										}
+									}
+								},
+								{
+									"code": "forgot_password_text",
+									"prompt": "Forgot Password Text",
+									"type": "text",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form"
+											]
+										}
+									}
+								},
+								{
+									"code": "forgot_password_url",
+									"placeholder": "FPWD",
+									"prompt": "Forgot Password URL",
+									"type": "link",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"form"
+											]
+										}
+									}
+								},
+								{
+									"code": "login_register_text",
+									"prompt": "Login/Register Text",
+									"type": "text",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"link"
+											]
+										}
+									}
+								},
+								{
+									"code": "login_register_url",
+									"prompt": "Login/Register URL",
+									"type": "link",
+									"visibility_conditions": {
+										"method": {
+											"value": [
+												"link"
+											]
+										}
+									}
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "empty_wishlists",
+							"collapsed": 1,
+							"prompt": "Empty Wishlists",
+							"properties": [
+								{
+									"code": "heading",
+									"placeholder": "Start Your Wishlist",
+									"prompt": "Heading Text",
+									"type": "text"
+								},
+								{
+									"code": "message",
+									"placeholder": "You don't have any wishlists yet.",
+									"prompt": "Message Text",
+									"type": "text"
+								},
+								{
+									"code": "button",
+									"placeholder": "Add Wishlist",
+									"prompt": "Button Text",
+									"type": "text"
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "add_wishlist",
+							"collapsed": 1,
+							"prompt": "Create Wishlist",
+							"properties": [
+								{
+									"code": "heading",
+									"placeholder": "Create A Wishlist",
+									"prompt": "Heading Text",
+									"type": "text"
+								},
+								{
+									"code": "button",
+									"placeholder": "Create Wishlist",
+									"prompt": "Button Text",
+									"type": "text"
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "select_wishlist",
+							"collapsed": 1,
+							"prompt": "Select a Wishlist",
+							"properties": [
+								{
+									"code": "heading",
+									"placeholder": "Select A Wishlist",
+									"prompt": "Heading Text",
+									"type": "text"
+								},
+								{
+									"code": "button",
+									"placeholder": "Add Wishlist",
+									"prompt": "Button Text",
+									"type": "text"
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "select_product_options",
+							"collapsed": 1,
+							"prompt": "Select Product Options",
+							"properties": [
+								{
+									"code": "heading",
+									"placeholder": "Select Product Options",
+									"prompt": "Heading Text",
+									"type": "text"
+								},
+								{
+									"code": "button",
+									"placeholder": "Add To Wishlist",
+									"prompt": "Button Text",
+									"type": "text"
+								}
+							],
+							"type": "group"
+						},
+						{
+							"code": "dialog",
+							"collapsed": 1,
+							"prompt": "Dialog Settings",
+							"properties": [
+								{
+									"code": "heading_typography_theme",
+									"prompt": "Heading Typography",
+									"supports_customization": 0,
+									"supports_legacy": 0,
+									"type": "typography"
+								},
+								{
+									"code": "wishlist_typography_theme",
+									"prompt": "Wishlist Typography",
+									"supports_customization": 0,
+									"supports_legacy": 0,
+									"type": "typography"
+								},
+								{
+									"code": "primary_button_theme",
+									"prompt": "Primary Button",
+									"type": "button"
+								},
+								{
+									"code": "secondary_button_theme",
+									"prompt": "Secondary Button",
+									"type": "button"
+								},
+								{
+									"code": "tertiary_button_theme",
+									"prompt": "Tertiary Button",
+									"type": "button"
+								}
+							],
+							"type": "group"
 						}
 					],
 					"type": "group"
@@ -2303,6 +2821,111 @@
 			}
 		},
 		"card": {
+			"add_to_wishlist": {
+				"add_wishlist": {
+					"button": {
+						"value": "Create Wishlist"
+					},
+					"heading": {
+						"value": "Create A Wishlist"
+					}
+				},
+				"dialog": {
+					"heading_typography_theme": {
+						"code": "title-4",
+						"theme_mode": 1
+					},
+					"primary_button_theme": {
+						"code": "primary",
+						"size": "m",
+						"theme_mode": 1
+					},
+					"secondary_button_theme": {
+						"code": "secondary",
+						"size": "m",
+						"theme_mode": 1
+					},
+					"tertiary_button_theme": {
+						"code": "display-link",
+						"size": "m",
+						"theme_mode": 1
+					},
+					"wishlist_typography_theme": {
+						"code": "subheading-xs",
+						"theme_mode": 1
+					}
+				},
+				"empty_wishlists": {
+					"button": {
+						"value": "Add Wishlist"
+					},
+					"heading": {
+						"value": "Start Your Wishlist"
+					},
+					"message": {
+						"value": "You don't have any wishlists yet."
+					}
+				},
+				"icon": {
+					"color": {
+						"value": "#FFFFFF"
+					},
+					"set": {
+						"value": "heart"
+					}
+				},
+				"login": {
+					"button": {
+						"value": "Log In"
+					},
+					"forgot_password_text": {
+						"value": "Forgot Password?"
+					},
+					"forgot_password_url": {
+						"type": "page",
+						"value": "FPWD"
+					},
+					"heading": {
+						"value": "Sign In to Save to Wishlist"
+					},
+					"login_register_text": {
+						"value": "Sign In or Register"
+					},
+					"login_register_url": {
+						"type": "page",
+						"value": "LOGN"
+					},
+					"method": {
+						"value": "form"
+					},
+					"register_text": {
+						"value": "Register"
+					},
+					"register_url": {
+						"type": "page",
+						"value": "LOGN"
+					}
+				},
+				"select_product_options": {
+					"button": {
+						"value": "Add To Wishlist"
+					},
+					"heading": {
+						"value": "Select Product Options"
+					}
+				},
+				"select_wishlist": {
+					"button": {
+						"value": "Add Wishlist"
+					},
+					"heading": {
+						"value": "Select A Wishlist"
+					}
+				},
+				"settings": {
+					"enabled": 1
+				}
+			},
 			"details": {
 				"children": [
 					{
@@ -2400,6 +3023,11 @@
 				"settings": {
 					"enabled": 1
 				},
+				"swatches": {
+					"settings": {
+						"enabled": 0
+					}
+				},
 				"type": {
 					"value": "main"
 				}
@@ -2453,17 +3081,44 @@
 				}
 			},
 			"facets": {
+				"display_show_more_links": {
+					"value": 1
+				},
+				"expanded_facet_count": {
+					"value": 3
+				},
+				"expanded_facets": {
+					"value": "expand_all"
+				},
 				"facet_styles": {
 					"typography_theme": {
 						"code": "subheading-s",
 						"theme_mode": 1
 					}
 				},
+				"hide_facets_on_desktop": {
+					"value": 0
+				},
+				"hide_facets_prefix": {
+					"value": "Hide"
+				},
 				"settings": {
 					"enabled": 1
 				},
 				"show_category_tree": {
 					"value": 1
+				},
+				"show_facets_prefix": {
+					"value": "Show"
+				},
+				"show_less_text": {
+					"value": "Show Less"
+				},
+				"show_more_text": {
+					"value": "Show More"
+				},
+				"show_more_threshold": {
+					"value": 8
 				},
 				"show_value_counts": {
 					"value": 1
@@ -2548,16 +3203,16 @@
 			},
 			"sort_by": {
 				"default": {
-					"value": "disp_order"
+					"value": "relevance"
 				},
 				"options": {
 					"children": [
 						{
 							"code": {
-								"value": "disp_order"
+								"value": "relevance"
 							},
 							"label": {
-								"value": "Featured"
+								"value": "Relevance"
 							}
 						},
 						{
@@ -2616,7 +3271,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-uvVZQsQoJn4OjBY/y44XNzX0Vc5eUFszGjVA/Ylw9y0= sha384-v2p78FdMIqz9lpDMfADhmKvD8UqWxlNZpumyx4Qc0nOCDXQvtTMr/l6s3ZfCVvyy sha512-tdlPHeCwAquRW7CAUjB4z6f/ym4sadzwvxvI6PtcPqzD+kfWTqeRMznbEO2Yp2BB22MbXR5fXlH5DHu9QxhgmA=="
+					"value": "sha256-ymMG3fU5WQVcGJ4y3FMWJsMCELh92LO+C0e/KEYO7hE= sha384-mTcPu9uqwgBEVu7qlpnhuPLfbyYHi0bce3HS08kL6Hp8ciQMtBtVj35l5oRcS998 sha512-usBiQ5/zsyz7EuXmDV9T6Zf2QDvT3MlTBesaI+D0Y3bRUBP/qzGVGjLCuAj0qSMv2sic5QVzRxAhXYRmsGH3Xw=="
 				},
 				{
 					"name": "crossorigin",
@@ -2644,7 +3299,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-X48WRSq1YLNa67SDrghR8ldyV7zE4BdLIKYFsS10+/k= sha384-bzj2rdoDehW5n0jHEpt1QbzPARzqb1qC4PXOJsRN0Mo0a3xZKTQcIK0tPh0WlroB sha512-60vvYh623QTNorBWT60t0DY9smCR6ct4oitd/e9OrWs+9RgZS0Lj7Udlw8RO+VwMi6/Oy5s8c3JDNQW+jiI+yQ=="
+					"value": "sha256-Gf+GvT/Xtwl0GrCa3wnbo6tZG1M+2PpnKE5Aub1nMck= sha384-OuWy1Betyr/8lNTRoBeQtnBSQvUY6HG5yCbCOEKfA/ooVZhQfBzzaYNBpuyAIGav sha512-11t18A6gw1mwcJcxgTd63NFBv0fAq5HqqAhfRgAF7ohyW4lai3+J2j8Qrxse6i85jv7oD73B306R4e3ClAnL+A=="
 				},
 				{
 					"name": "crossorigin",
@@ -2654,13 +3309,18 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.13.01",
-		"mmx-base": "=10.13.01",
-		"mmx-button": "=10.13.01",
-		"mmx-card": "=10.13.01",
-		"mmx-forms": "=10.13.01",
-		"mmx-icons": "=10.13.01",
-		"mmx-messages": "=10.13.01",
-		"mmx-text": "=10.13.01"
+		"mmx-accordion": "=10.13.03",
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-card": "=10.13.03",
+		"mmx-dialog": "=10.13.03",
+		"mmx-featured-product": "=10.13.03",
+		"mmx-forms": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-hero-slider": "=10.13.03",
+		"mmx-icons": "=10.13.03",
+		"mmx-messages": "=10.13.03",
+		"mmx-text": "=10.13.03",
+		"mmx-wishlist": "=10.13.03"
 	}
 }

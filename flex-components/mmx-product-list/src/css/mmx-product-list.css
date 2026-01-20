@@ -244,6 +244,7 @@
 
 .mmx-product-list__facets-header {
 	--mmx-text-margin-bottom: 0;
+
     align-items: center;
 	display: grid;
 	grid-area: header;
@@ -374,4 +375,61 @@
 
 .mmx-product-list__facets .mmx-accordion__details:last-of-type {
 	border-bottom: 0;
+}
+
+.mmx-product-list__facet-values-hidden[hidden] {
+	display: none;
+}
+
+.mmx-product-list__facet-values-toggle::part(button):focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+.mmx-product-list__facet-values-hidden {
+	overflow: hidden;
+	height: 0;
+	opacity: 0;
+	transition: height 220ms ease, opacity 220ms ease;
+}
+
+.mmx-product-list__facet-values-hidden.is-open {
+	opacity: 1;
+}
+
+/* Hide Facets on Desktop */
+.mmx-product-list__facets-title-button {
+	background: transparent;
+	border: none;
+	font: inherit;
+	padding: 0;
+	text-align: left;
+	cursor: pointer;
+}
+
+.hide-facets-on-desktop--true {
+	&.has-facets--true .mmx-product-list__facets-title-prefix::after {
+		content: attr(data-hide-facets-prefix);
+	}
+
+	&.has-facets--false .mmx-product-list__facets-title-prefix::after {
+		content: attr(data-show-facets-prefix);
+	}
+
+	.mmx-product-list__header .mmx-product-list__facets-title-button {
+		display: none;
+	}
+
+	@media (min-width: 60em) {
+		&.has-facets--true .mmx-product-list__main {
+			grid-template-areas:
+				"header header"
+				"facets products"
+				"facets footer";
+		}
+
+		.mmx-product-list__header .mmx-product-list__facets-title-button {
+			display: initial;
+		}
+	}
 }

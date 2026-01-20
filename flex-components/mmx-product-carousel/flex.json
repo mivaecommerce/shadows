@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -566,10 +566,31 @@
 						{
 							"text": "Best Sellers",
 							"value": "bestsellers"
+						},
+						{
+							"text": "Custom Field Ascending",
+							"value": "customfield"
+						},
+						{
+							"text": "Custom Field Descending",
+							"value": "customfield_desc"
 						}
 					],
 					"prompt": "Sort Order",
 					"type": "select"
+				},
+				{
+					"code": "sort_customfield",
+					"prompt": "Sort Order Custom Field",
+					"type": "productcustomfieldlookup",
+					"visibility_conditions": {
+						"sort": {
+							"value": [
+								"customfield",
+								"customfield_desc"
+							]
+						}
+					}
 				}
 			],
 			"type": "group"
@@ -987,7 +1008,7 @@
 				"value": "category"
 			},
 			"sort": {
-				"value": "disp_order"
+				"value": "relevance"
 			}
 		}
 	},
@@ -1007,7 +1028,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-4YKOXpy1loY8s8Y/c8ZPHm5ioshXIT7JuhUhrG6EpsY= sha384-WpEuBMjSSy9OyVHec5rvPIDzDcPK/Ad0vWSIpC6BI7ZKcR8RxXwM6ceyqElhHnPZ sha512-0eDsH0w0QRpGNdVxiSnc5SyTTpXf3TAFdMzILQRwhimhfbTV70Utw0oWfMh9xaMLhtgsTUkM1GtKMHpVNsCcIw=="
+					"value": "sha256-ffkRAuZD3idVmvLEOoW+ATHp4J3VLIeXQgrAACMNW0M= sha384-99ZTVbdwEg3GRyUsh8Iv3hnfWnEvzpVp1MFqE9V101GdPi7urg845FN4N26y+zdv sha512-EP+yQMOPV3GnwkoMv4wJBTz07pJgj9CW3o05c0TszxH3asYU3dMwWnR6LjfuE6suuIPQTZ9URLXoGv5x97Y3SQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1017,11 +1038,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01",
-		"mmx-button": "=10.13.01",
-		"mmx-hero": "=10.13.01",
-		"mmx-hero-slider": "=10.13.01",
-		"mmx-messages": "=10.13.01",
-		"mmx-text": "=10.13.01"
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-hero-slider": "=10.13.03",
+		"mmx-messages": "=10.13.03",
+		"mmx-text": "=10.13.03"
 	}
 }

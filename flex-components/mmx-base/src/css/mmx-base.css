@@ -409,7 +409,6 @@
 	--mmx-color-modal-dialog-background: var(--mmx-color-white);
 	--mmx-color-modal-dialog-close: var(--mmx-color-grey-05);
 	--mmx-color-modal-backdrop-background: rgba(0, 0, 0, 0.8);
-
 	--mmx-color-input-color--error: var(--mmx-color-error-text);
 	--mmx-color-input-border--error: var(--mmx-color-red-004);
 	--mmx-color-input-background--error: var(--mmx-color-input-background);

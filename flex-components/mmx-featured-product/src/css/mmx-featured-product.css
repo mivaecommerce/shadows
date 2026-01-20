@@ -2,6 +2,14 @@
    MMX / FEATURED PRODUCT
    ========================================================================== */
 
+:host {
+	--mmx-featured-product__swatch-border-radius: 50%;
+	--mmx-featured-product__swatch-size: 40px;
+	--mmx-featured-product__swatch-border-width: 1px;
+	--mmx-featured-product__swatch-border-color: var(--mmx-color-primary-text);
+	--mmx-featured-product__swatch-border-style: solid;
+}
+
 .mmx-featured-product {
 	position: relative;
 	display: flex;
@@ -112,8 +120,8 @@
 }
 
 .mmx-featured-product__product-attribute-swatch__swatches button {
-	width: 40px;
-	height: 40px;
+	width: var(--mmx-featured-product__swatch-size);
+	height: var(--mmx-featured-product__swatch-size);
 	background-color: transparent;
 	border: 0 none;
 	padding: 0;
@@ -121,10 +129,12 @@
 }
 
 .mmx-featured-product__product-attribute-swatch__swatches img {
-	border: 1px solid var(--mmx-color-primary-text);
-	border-radius: 50%;
-	height: 40px;
-	width: 40px;
+	border-color: var(--mmx-featured-product__swatch-border-color);
+	border-radius: var(--mmx-featured-product__swatch-border-radius);
+	border-style: var(--mmx-featured-product__swatch-border-style);
+	border-width: var(--mmx-featured-product__swatch-border-width);
+	height: var(--mmx-featured-product__swatch-size);
+	width: var(--mmx-featured-product__swatch-size);
 }
 
 .mmx-featured-product__product-attribute-swatch__swatches ul {
@@ -139,13 +149,13 @@
 }
 
 .mmx-featured-product__product-attribute-swatch__swatches--active {
-	border-radius: 50%;
+	border-radius: var(--mmx-featured-product__swatch-border-radius);
 	outline: 1px solid var(--mmx-color-primary-bg);
 	outline-offset: 0.25rem;
 }
 
 .mmx-featured-product__product-attribute-swatch__swatches button:focus-visible {
-	border-radius: 50%;
+	border-radius: var(--mmx-featured-product__swatch-border-radius);
 	outline: 2px solid var(--mmx-color-focus);
 	outline-offset: 0.25rem;
 }

@@ -2,7 +2,7 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
@@ -106,6 +106,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01"
+		"mmx-base": "=10.13.03"
 	}
 }

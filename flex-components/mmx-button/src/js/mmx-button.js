@@ -7,7 +7,7 @@ class MMX_Button extends MMX_Element {
 	static get props() {
 		return {
 			style: {
-				options: ['primary', 'secondary', 'display-link', 'primary-link', 'secondary-link', 'dark-primary', 'dark-secondary', 'dark-display-link', 'dark-primary-link', 'dark-secondary-link', 'pill'],
+				options: ['primary', 'secondary', 'display-link', 'primary-link', 'secondary-link', 'dark-primary', 'dark-secondary', 'dark-display-link', 'dark-primary-link', 'dark-secondary-link', 'pill', 'close'],
 				default: 'primary'
 			},
 			size: {
@@ -165,7 +165,9 @@ class MMX_Button extends MMX_Element {
 		const style = this.getPropValue('style');
 		let result = `mmx-button__${style}`;
 
-		if ( style.indexOf('pill') > -1 ) {
+		if ( style.indexOf('close') > -1 ) {
+			result += ' mmx-button__close';
+		} else if ( style.indexOf('pill') > -1 ) {
 			result += ' mmx-button__pill';
 		} else if ( style.indexOf('link') > -1 ) {
 			result += ' mmx-button__link';

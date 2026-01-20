@@ -19,7 +19,11 @@
 						<mvt:assign name="l.settings:show:child" value="''"/>
 					</mvt:if>
 					<li class="c-navigation__list &mvt:has:children;">
-						<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
+						<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
+							<span class="c-navigation__text">&mvt:navigationitem:name; &mvt:show:child;</span>
+						<mvt:else>
+							<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
+						</mvt:if>
 						<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
 							<ul class="c-navigation__row is-hidden">
 								<mvt:assign name="l.settings:has:children" value="''"/>
@@ -38,7 +42,11 @@
 										<mvt:assign name="l.settings:show:child" value="''"/>
 									</mvt:if>
 									<li class="c-navigation__list &mvt:has:children;">
-										<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
+										<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
+											<span class="c-navigation__text">&mvt:navigationitem_level2:name; &mvt:show:child;</span>
+										<mvt:else>
+											<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
+										</mvt:if>
 										<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
 											<ul class="c-navigation__row is-hidden">
 												<li class="c-navigation__list u-font-small u-hidden--l" data-hook="show-previous-menu">
@@ -49,19 +57,27 @@
 												</li>
 												<mvt:foreach iterator="navigationitem_level3" array="navigationitem_level2:items">
 													<li class="c-navigation__list">
-														<a class="c-navigation__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
+														<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
+															<span class="c-navigation__text">&mvt:navigationitem_level3:name;</span>
+														<mvt:else>
+															<a class="c-navigation__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
+														</mvt:if>
 													</li>
 												</mvt:foreach>
-												<li class="c-navigation__list u-hidden--l">
-													<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
-												</li>
+												<mvt:if expr="l.settings:navigationitem_level2:link_type NE 'N'">
+													<li class="c-navigation__list u-hidden--l">
+														<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
+													</li>
+												</mvt:if>
 											</ul>
 										</mvt:if>
 									</li>
 								</mvt:foreach>
-								<li class="c-navigation__list u-hidden--l">
-									<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
-								</li>
+								<mvt:if expr="l.settings:navigationitem:link_type NE 'N'">
+									<li class="c-navigation__list u-hidden--l">
+										<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
+									</li>
+								</mvt:if>
 							</ul>
 						</mvt:if>
 					</li>

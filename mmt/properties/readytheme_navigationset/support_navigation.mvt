@@ -5,6 +5,10 @@
 		<a class="x-transfigure-navigation__footer-link u-hidden--l" href="&mvte:urls:ACLN:secure;">My Account</a>
 	</mvt:if>
 	<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
-		<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+		<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
+			<span class="x-transfigure-navigation__footer-text">&mvt:navigationitem:name;</span>
+		<mvt:else>
+			<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+		</mvt:if>
 	</mvt:foreach>
 </div>

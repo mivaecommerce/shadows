@@ -57,6 +57,10 @@ MMX.coerceString = (value = '', {prefix = '', suffix = '', fallback = ''} = {}) 
 	return fallback;
 };
 
+MMX.splitString = (value, {separator = ',', trim = true} = {}) => {
+	return String(value).split(separator).map(part => trim ? part.trim() : part);
+};
+
 MMX.normalizeCode = (value) => {
 	const valueType = MMX.variableType(value);
 
@@ -424,6 +428,15 @@ MMX.debounce = (func, timeout = 100) => {
 		clearTimeout(timer);
 		timer = setTimeout(() => { func.apply(this, args); }, timeout);
 	};
+};
+
+MMX.concatenateSortBy = (sortBy, customField) => {
+	if (MMX.valueIsEmpty(customField)) {
+		return sortBy;
+	}
+	else {
+		return `${sortBy}:${customField}`;
+	}
 };
 
 class MMX_FetchQueue {

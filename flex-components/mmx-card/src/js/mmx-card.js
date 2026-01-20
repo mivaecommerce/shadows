@@ -117,6 +117,7 @@ class MMX_ProductCard extends MMX_Card {
 	renderUniquely = true;
 
 	#product;
+	#card;
 	#details = [
 		{
 			type: { value: 'name' }
@@ -138,20 +139,25 @@ class MMX_ProductCard extends MMX_Card {
 		super();
 	}
 
-	static create({product, details, ...options}) {
+	static create({product, card, details, ...options} = {}) {
 		return MMX.createElement({
 			type: 'mmx-product-card',
 			data: {
 				product,
+				card,
 				details
 			},
 			...options
 		});
 	}
 
+	#swatchAttribute = {};
+
 	onDataChange() {
 		this.#product = this.data?.product ?? this.#product;
-		this.#details = this.data?.details ?? this.#details;
+		this.#swatchAttribute = this.#getSwatchAttribute();
+		this.#card = this.data?.card ?? this.#card;
+		this.#details = this.data?.details ?? this.#card?.details?.children ?? this.#details;
 	}
 
 	render() {
@@ -168,8 +174,17 @@ class MMX_ProductCard extends MMX_Card {
 			>
 				${this.#renderImage()}
 				${this.#details?.map?.(detail => this.#renderProductDetail(detail)).join('')}
+				${this.#renderAddToWishlist()}
 			</mmx-card>
 		`;
+	}
+
+	afterRender() {
+		this.#bindEvents();
+	}
+
+	#bindEvents() {
+		this.#listenForSwatchButtonClicks();
 	}
 
 	#renderProductDetail(detail) {
@@ -270,21 +285,14 @@ class MMX_ProductCard extends MMX_Card {
 			return '';
 		}
 
-		const type = this.getPropValue('image-type');
-		const fit = this.getPropValue('image-fit');
-		const dimensions = this.getPropValue('image-dimensions');
-		const [width, height] = dimensions?.split?.('x') ?? [1, 1];
-
-		const image = this.#product?.imagetypes?.[type];
-		const resizedImage = image?.sizes?.[dimensions] ?? image?.sizes?.original ?? {
-			url: this.getPropValue('fallback-image'),
-			height: '',
-			width: ''
-		};
+		const resizedImage = this.#getProductResizedImage();
 
 		if (typeof resizedImage?.url !== 'string') {
 			return '';
 		}
+		const fit = this.getPropValue('image-fit');
+		const dimensions = this.getPropValue('image-dimensions');
+		const [width, height] = dimensions?.split?.('x') ?? [1, 1];
 
 		return /*html*/`
 			<img
@@ -297,6 +305,251 @@ class MMX_ProductCard extends MMX_Card {
 					aspect-ratio: ${MMX.encodeEntities(width + ' / ' + height)};
 				"
 			>
+			${this.#renderAttributeSwatches()}
+		`;
+	}
+
+	#getProductResizedImage() {
+		const type = this.getPropValue('image-type');
+		const dimensions = this.getPropValue('image-dimensions');
+
+		const image = this.#product?.imagetypes?.[type];
+		return image?.sizes?.[dimensions] ?? image?.sizes?.original ?? {
+			url: this.getPropValue('fallback-image'),
+			height: '',
+			width: ''
+		};
+	}
+
+	// Attribute Swatches
+	#renderAttributeSwatches() {
+		if (!this.#swatchAttribute) {
+			return '';
+		}
+
+		return /*html*/`
+			<div
+				slot="main"
+				part="attribute-swatches"
+				class="mmx-product-card__attribute-swatches"
+				data-avoid-navigation="true"
+			>
+				${this.#swatchAttribute?.options?.map(this.#renderAttributeSwatch.bind(this)).join('')}
+				${this.#renderMoreSwatches()}
+			</div>
+			${this.#renderAttributeSwatchStyles()}
+		`;
+	}
+
+	#renderAttributeSwatchStyles() {
+		const swatchSize = MMX.composeUnitValue(this.#card?.image?.swatches?.size) ?? '20px';
+		const swatchBorderRadius = MMX.objectToCssShorthand(this.#card?.image?.swatches?.border_radius, {key: 'border_%corner%_radius'}) ?? '50%';
+		const swatchBorderWidth = MMX.objectToCssShorthand(this.#card?.image?.swatches?.border_width, {key: 'border_%side%_width'}) ?? '1px';
+		const swatchBorderColor = this.#card?.image?.swatches?.border_color?.value ?? 'var(--mmx-color-primary-text)';
+
+		return /*html*/`
+			<style>
+				.mmx-product-card__attribute-swatches {
+					--mmx-product-card__swatch-size: ${MMX.encodeEntities(swatchSize)};
+					--mmx-product-card__swatch-border-radius: ${MMX.encodeEntities(swatchBorderRadius)};
+					--mmx-product-card__swatch-border-width: ${MMX.encodeEntities(swatchBorderWidth)};
+					--mmx-product-card__swatch-border-color: ${MMX.encodeEntities(swatchBorderColor)};
+				}
+			</style>
+		`;
+	}
+
+	#getSwatchAttribute() {
+		if (MMX.isFalsy(this.#card?.image?.swatches?.settings?.enabled) || MMX.arrayIsEmpty(this.#product?.attributes)) {
+			return undefined;
+		}
+
+		for (const attribute of this.#product.attributes) {
+			if (attribute.type === 'template') {
+				for (const templateAttribute of attribute.attributes) {
+					if (this.#isSwatchAttribute(templateAttribute)) {
+						return {
+							id: attribute.id,
+							type: templateAttribute.type,
+							options: templateAttribute.options,
+							templateAttributeId: templateAttribute.id,
+						};
+					}
+				}
+			}
+			else if (this.#isSwatchAttribute(attribute)) {
+				return {
+					id: attribute.id,
+					type: attribute.type,
+					options: attribute.options
+				};
+			}
+		}
+
+		return undefined;
+	}
+
+	#isSwatchAttribute(attribute = {}) {
+		if (MMX.isFalsy(attribute?.inventory)) {
+			return false;
+		}
+
+		if (!MMX.valueIsEmpty(this.#card.image?.swatches?.attribute_codes?.value)) {
+			const includedAttributeCodes = MMX.splitString(this.#card.image.swatches.attribute_codes.value);
+			if (!includedAttributeCodes.includes(attribute.code)) {
+				return false;
+			}
+		}
+
+		if (!MMX.valueIsEmpty(this.#card.image?.swatches?.attribute_types?.value)) {
+			const includedAttributeTypes = MMX.splitString(this.#card.image.swatches.attribute_types.value);
+			if (!includedAttributeTypes.includes(attribute.type)) {
+				return false;
+			}
+		}
+
+		return attribute.options?.some?.(option => option.image);
+	}
+
+	#renderAttributeSwatch(option, index) {
+		if (index >= this.#getMaxSwatchCount()) {
+			return '';
+		}
+
+		return /*html*/`
+			<button
+				type="button"
+				part="attribute-swatch-button"
+				class="mmx-product-card__attribute-swatch-button"
+				data-option-code="${MMX.encodeEntities(option.code)}"
+				title="${MMX.encodeEntities(option.prompt)}"
+			>
+				<img
+					part="attribute-swatch-image"
+					class="mmx-product-card__attribute-swatch-image"
+					src="${MMX.encodeEntitiesURI(option.image)}"
+					alt=""
+					loading="lazy"
+				>
+			</button>
+		`;
+	}
+
+	#renderMoreSwatches() {
+		const remainingCount = this.#swatchAttribute.options.length - this.#getMaxSwatchCount();
+
+		if (remainingCount <= 0) {
+			return '';
+		}
+
+		return /*html*/`
+			<span part="attribute-swatch-more" class="mmx-product-card__attribute-swatch-more">+${remainingCount} more</span>
+		`;
+	}
+
+	#getMaxSwatchCount() {
+		return MMX.coerceNumber(this.#card?.image?.swatches?.max_swatches?.value, 3);
+	}
+
+	#listenForSwatchButtonClicks() {
+		const swatches = this.shadowRoot.querySelector('.mmx-product-card__attribute-swatches');
+		swatches?.addEventListener?.('click', this.#onSwatchesClick.bind(this), {capture: true});
+	}
+
+	#onSwatchesClick(e) {
+		this.#checkForSwatchButtonClick(e);
+	}
+
+	#checkForSwatchButtonClick(e) {
+		const target = e?.composedPath?.().at?.(0);
+		const button = target?.closest?.('.mmx-product-card__attribute-swatch-button');
+
+		if (button) {
+			this.#onSwatchButtonClick(e, button);
+		}
+	}
+
+	#onSwatchButtonClick(e, button) {
+		e.preventDefault();
+		e.stopPropagation();
+		this.#loadVariantFromSelectedSwatchButton(button);
+	}
+
+	#loadVariantFromSelectedSwatchButton(button) {
+		const option = this.#getOptionFromSwatchButton(button);
+
+		MMX.Runtime_JSON_API_Call({
+			params: {
+				Function: 'Runtime_AttributeList_Load_ProductVariant_Possible',
+				Product_Code: this.#product.code,
+				Selected_Attribute_IDs: this.#swatchAttribute?.id,
+				Selected_AttributeTemplateAttribute_IDs: this.#swatchAttribute?.templateAttributeId,
+				Selected_Option_IDs: option.id,
+				Selected_Attribute_Types: this.#swatchAttribute?.type
+			}
+		})
+			.then(response => {
+				this.#handleLoadedVariant(response);
+			});
+	}
+
+	#getOptionFromSwatchButton(button) {
+		return this.#swatchAttribute?.options.find(option => option.code === button.dataset.optionCode);
+	}
+
+	#handleLoadedVariant(response) {
+		this.#loadVariantImages(response?.data?.variant?.variant_id);
+	}
+
+	#loadVariantImages(Variant_ID) {
+		MMX.Runtime_JSON_API_Call({
+			params: {
+				Function: 'Runtime_ProductImageList_Load_Product_Variant',
+				Product_Code: this.#product.code,
+				Variant_ID,
+				Image_Sizes: this.getPropValue('image-dimensions')
+			}
+		})
+			.then(response => {
+				this.#handleLoadedVariantImages(response);
+			});
+	}
+
+	#handleLoadedVariantImages(response) {
+		const variantImage = response?.data?.find?.(image => image?.type_code === this.getPropValue('image-type'));
+		this.#updateImageSrc(variantImage?.image_data?.[0]);
+	}
+
+	#updateImageSrc(src) {
+		this.#image().src = src ?? this.#getProductResizedImage().url;
+	}
+
+	#image() {
+		return this.shadowRoot.querySelector('[part~="image"]');
+	}
+
+	// Render: Add to Wishlist
+	#renderAddToWishlist() {
+		if (!MMX.isTruthy(this.#card?.add_to_wishlist?.settings?.enabled)) {
+			return '';
+		}
+
+		if (this.#card?.add_to_wishlist?.login?.method?.value === 'none' && MMX.isTruthy(this.#card?.add_to_wishlist?.needs_login)) {
+			return '';
+		}
+
+		const added = this.#product?.quantity_in_wishlists > 0 ? true : false;
+
+		return /*html*/`
+			<mmx-atwl-button
+				slot="flag"
+				part="wishlist-button"
+				data-product-code="${MMX.encodeEntities(this.#product.code)}"
+				data-icon-set="${MMX.encodeEntities(this.#card?.add_to_wishlist?.icon?.set?.value)}"
+				data-color="${MMX.encodeEntities(this.#card?.add_to_wishlist?.icon?.color?.value)}"
+				data-added="${added}"
+			>
+			</mmx-atwl-button>
 		`;
 	}
 
@@ -304,19 +557,19 @@ class MMX_ProductCard extends MMX_Card {
 	#renderPrice(detail = {}) {
 		// Price Display
 		this.#product.price_display = this.#product.formatted_sale_price;
-		if (detail.price?.displayed?.value === 'base'){
+		if (detail.price?.displayed?.value === 'base') {
 			this.#product.price_display = this.#product.formatted_base_price;
 		}
-		else if (detail.price?.displayed?.value === 'retail'){
+		else if (detail.price?.displayed?.value === 'retail') {
 			this.#product.price_display = this.#product.formatted_retail;
 		}
 
 		// Additional Price Display
 		this.#product.additional_price_display = '';
-		if (detail.price?.additional?.value === 'base'){
+		if (detail.price?.additional?.value === 'base') {
 			this.#product.additional_price_display = this.#product.formatted_base_price;
 		}
-		else if (detail.price?.additional?.value === 'retail'){
+		else if (detail.price?.additional?.value === 'retail') {
 			this.#product.additional_price_display = this.#product.formatted_retail;
 		}
 
@@ -429,7 +682,7 @@ class MMX_ProductCard extends MMX_Card {
 			fragmentCode
 		});
 
-		if (MMX.valueIsEmpty(fragmentContent)){
+		if (MMX.valueIsEmpty(fragmentContent)) {
 			return this.#renderEmptyDetail();
 		}
 
@@ -697,7 +950,7 @@ class MMX_CategoryCard extends MMX_Card {
 			fragmentCode
 		});
 
-		if (MMX.valueIsEmpty(fragmentContent)){
+		if (MMX.valueIsEmpty(fragmentContent)) {
 			return this.#renderEmptyDetail();
 		}
 

@@ -309,6 +309,30 @@ class MMX_FeaturedProduct extends MMX_Element {
 			},
 			'missing-radio-msg-source': {
 				allowAny: true
+			},
+			'select-one-text': {
+				allowAny: true,
+				default: ''
+			},
+			'show-attribute-prices': {
+				isBoolean: true,
+				default: true
+			},
+			'swatch-size': {
+				allowAny: true,
+				default: '40px'
+			},
+			'swatch-border-radius': {
+				allowAny: true,
+				default: '50%'
+			},
+			'swatch-border-width': {
+				allowAny: true,
+				default: '1px'
+			},
+			'swatch-border-color': {
+				allowAny: true,
+				default: 'var(--mmx-color-primary-text)'
 			}
 		};
 	}
@@ -863,7 +887,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		const checked	= this.shouldSelectAttributeOption(attribute, option) ? 'checked' : '';
 
 		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
-		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
+		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${this.#renderProductAttributePrice(option)}`;
 
 		return /*html*/`
 			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio mmx-form-radio" title="${MMX.encodeEntities(option.prompt)}">
@@ -883,6 +907,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
 				<div class="mmx-featured-product__product-attribute-select mmx-form-select">
 					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown mmx-form-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
+						${this.#renderProductContentAttributeSelectOneOption()}
 						${attribute.options.map(option => this.renderProductContentAttributeSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
@@ -890,16 +915,24 @@ class MMX_FeaturedProduct extends MMX_Element {
 		`;
 	}
 
-	renderProductContentAttributeSelectOption(attribute, index, option) {
-		var encoded_image_template;
-		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
+	#renderProductContentAttributeSelectOneOption() {
+		const selectOneText = this.getPropValue('select-one-text');
 
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
-		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
+		if (MMX.valueIsEmpty(selectOneText)) {
+			return '';
+		}
+
+		return /*html*/`
+			<option value="">${MMX.encodeEntities(selectOneText)}</option>
+		`;
+	}
+
+	renderProductContentAttributeSelectOption(attribute, index, option) {
+		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
 
 		return /*html*/`
 			<option value="${MMX.encodeEntities(option.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" ${selected}>
-				${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}
+				${MMX.encodeEntities(option.prompt)} ${this.#renderProductAttributePrice(option)}
 			</option>
 		`;
 	}
@@ -913,7 +946,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}:&nbsp;<span data-hook="attribute-swatch-name"></span></label>
 				<div class="mmx-featured-product__product-attribute-select mmx-featured-product__product-attribute-select__swatch">
-					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
+					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select" name="Product_Attributes[${MMX.encodeEntities(index)}]:value">
+						${this.#renderProductContentAttributeSelectOneOption()}
 						${attribute.options.map(option => this.renderProductContentAttributeSwatchSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
@@ -923,15 +957,11 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContentAttributeSwatchSelectOption(attribute, index, option) {
-		var encoded_image_template;
 		const selected = this.shouldSelectAttributeOption(attribute, option) ? 'selected' : '';
-
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
-		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}`;
 
 		return /*html*/`
 			<option value="${MMX.encodeEntities(option.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" ${selected}>
-				${MMX.encodeEntities(option.prompt)} ${option.price ? option.formatted_price : ''}
+				${MMX.encodeEntities(option.prompt)} ${this.#renderProductAttributePrice(option)}
 			</option>
 		`;
 	}
@@ -942,7 +972,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		const checked  = this.#attributeValueIsTruthy(attribute.value) ? 'checked' : '';
 
 		if (attribute.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(attribute.image)}" alt="${MMX.encodeEntities(attribute.prompt)}" loading="lazy" />`;
-		else							encoded_image_template = `${attribute.prompt} ${attribute.price ? attribute.formatted_price : ''}`;
+		else							encoded_image_template = `${attribute.prompt} ${this.#renderProductAttributePrice(attribute)}`;
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
@@ -957,6 +987,14 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	#attributeValueIsTruthy(value) {
 		return !MMX.valueIsEmpty(value) && String(value) !== '0';
+	}
+
+	#renderProductAttributePrice(attributeOrOption) {
+		if (this.getPropValue('show-attribute-prices')) {
+			return attributeOrOption.price ? attributeOrOption.formatted_price : '';
+		}
+
+		return '';
 	}
 
 	renderProductContentAttributeTemplate(attribute, index) {
@@ -1299,36 +1337,56 @@ class MMX_FeaturedProduct extends MMX_Element {
 			};
 
 			setTimeout(function() {
-				var swatch_select, swatch_list_element, swatch_name_element;
+				var swatch_select, swatch_list_element, swatch_name_element, selected_swatch_option;
 
-				if (swatch_container) {
-					if (!(swatch_select = self.shadowRoot.querySelector('[data-hook="attribute-swatch-select"]'))) {
-						return;
-					}
+				if (!swatch_container) {
+					return;
+				}
 
-					if (swatch_name_element = self.shadowRoot.querySelector('[data-hook="attribute-swatch-name"]')) {
-						swatch_name_element.textContent = swatch_select.options[swatch_select.selectedIndex].text;
-					}
+				if (!(swatch_select = self.shadowRoot.querySelector('[data-hook="attribute-swatch-select"]'))) {
+					return;
+				}
 
-					if (swatch_list_element = swatch_container.querySelector('ul')) {
-						swatch_list_element.removeAttribute('style');
-						swatch_list_element.classList.add('o-list-inline');
-						swatch_list_element.querySelectorAll('li').forEach(function(swatch_element) {
-							var swatch_color, element_swatch_image;
+				selected_swatch_option = swatch_select.options[swatch_select.selectedIndex];
 
-							element_swatch_image	= swatch_element.querySelector('button');
-							swatch_color			= swatch_element.getAttribute('data-code');
+				if (swatch_name_element = self.shadowRoot.querySelector('[data-hook="attribute-swatch-name"]')) {
+					swatch_name_element.textContent = MMX.valueIsEmpty(selected_swatch_option.value) ? '' : selected_swatch_option.text;
+				}
 
-							if (element_swatch_image && swatch_color === swatch_select.options[swatch_select.selectedIndex].value) {
-								element_swatch_image.classList.add('mmx-featured-product__product-attribute-swatch__swatches--active');
-							}
-						});
-					}
+				if (swatch_list_element = swatch_container.querySelector('ul')) {
+					swatch_list_element.removeAttribute('style');
+					swatch_list_element.classList.add('o-list-inline');
+					swatch_list_element.querySelectorAll('li').forEach(function(swatch_element) {
+						var swatch_color, element_swatch_image;
+
+						element_swatch_image	= swatch_element.querySelector('button');
+						swatch_color			= swatch_element.getAttribute('data-code');
+
+						if (element_swatch_image && swatch_color === selected_swatch_option.value) {
+							element_swatch_image.classList.add('mmx-featured-product__product-attribute-swatch__swatches--active');
+						}
+					});
 				}
 			}, 0);
 
 			return swatch;
 		};
+	}
+
+	styles() {
+		const swatchSize = this.getPropValue('swatch-size');
+		const swatchBorderRadius = this.getPropValue('swatch-border-radius');
+		const swatchBorderWidth = this.getPropValue('swatch-border-width');
+		const swatchBorderColor = this.getPropValue('swatch-border-color');
+
+		return /*css*/`
+			:host {
+				--mmx-featured-product__swatch-size: ${MMX.encodeEntities(swatchSize)};
+				--mmx-featured-product__swatch-border-radius: ${MMX.encodeEntities(swatchBorderRadius)};
+				--mmx-featured-product__swatch-border-width: ${MMX.encodeEntities(swatchBorderWidth)};
+				--mmx-featured-product__swatch-border-color: ${MMX.encodeEntities(swatchBorderColor)};
+			}
+		`;
 	}
 
 	initializeAttributeMachine_OverwriteSwatchClick(attributemachine) {
@@ -1554,6 +1612,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 			'data-missing-text-msg': this.data?.advanced?.attribute_messages?.missing_text_msg?.value,
 			'data-missing-radio-msg-source': this.data?.advanced?.attribute_messages?.missing_radio_msg?.source,
 			'data-missing-radio-msg': this.data?.advanced?.attribute_messages?.missing_radio_msg?.value,
+			'data-select-one-text': MMX.isTruthy(this.data?.advanced?.attribute_settings?.include_select_one?.value) ? MMX.coerceString(this.data?.advanced?.attribute_settings?.select_one_text?.value, {fallback: '<Select One>'}) : undefined,
+			'data-show-attribute-prices': this.data?.advanced?.attribute_settings?.attribute_prices?.value === 'hide' ? false : true,
+			'data-swatch-size': MMX.composeUnitValue(this.data?.advanced?.attribute_settings?.swatches?.size),
+			'data-swatch-border-radius': MMX.objectToCssShorthand(this.data?.advanced?.attribute_settings?.swatches?.border_radius, {key: 'border_%corner%_radius'}),
+			'data-swatch-border-width': `${MMX.objectToCssShorthand(this.data?.advanced?.attribute_settings?.swatches?.border_width, {key: 'border_%side%_width'})}`,
+			'data-swatch-border-color': this.data?.advanced?.attribute_settings?.swatches?.border_color?.value,
 			'data-product-code': this.data?.product?.product?.product_code // this should always be last so that loadProduct() is called once the previous attribute-values/props are set
 		});
 	}

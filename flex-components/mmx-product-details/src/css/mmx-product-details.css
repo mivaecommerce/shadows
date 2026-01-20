@@ -5,6 +5,7 @@
 :host {
 	--mmx-form__size: var(--mmx-product-details__size);
 	--mmx-product-details__size: 1rem;
+
 	display: block;
 }
 

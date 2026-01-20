@@ -320,7 +320,7 @@ class MMX_HeroSlider extends MMX_Element {
 				position
 			}
 		}));
-	}
+	};
 
 	bindNavigation() {
 		var navigation_left, navigation_right;

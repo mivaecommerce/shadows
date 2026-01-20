@@ -97,6 +97,7 @@
 /* Variant */
 .mmx-message--variant-flag {
 	--mmx-message__size: 0.75rem;
+
 	background: none;
 	border-color: currentColor;
 	text-transform: uppercase;
@@ -104,6 +105,7 @@
 
 .mmx-message--variant-minimal {
 	--mmx-message__size: 0.75rem;
+
 	border: none;
 	text-transform: uppercase;
 }

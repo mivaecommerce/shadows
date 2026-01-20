@@ -16,6 +16,7 @@ slot[name="title"]::slotted(*) {
 .mmx-product-fitment-list__list-header,
 .mmx-product-fitment-list__list-content {
 	--mmx-text-margin-bottom: 0;
+
 	display: grid;
 	padding: 16px 20px;
 	grid-template-columns: subgrid;

@@ -82,3 +82,8 @@
 		</mvt:if>
 	</mvt:foreach>
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.13.03'">
+	<mvt:assign name="l.settings:instance:card:add_to_wishlist:settings:enabled" value="0" />
+	<mvt:assign name="l.settings:instance:card:image:swatches:settings:enabled" value="0" />
+</mvt:if>

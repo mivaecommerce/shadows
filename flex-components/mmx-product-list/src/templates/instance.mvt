@@ -35,6 +35,11 @@
 	<mvt:assign name="l.settings:component_id"	value="l.settings:instance_item:component_code $ '__' $ l.settings:instance_item:item_code" />
 </mvt:if>
 
+<mvt:comment>Determine if customer is logged in or not</mvt:comment>
+<mvt:if expr="l.settings:instance:card:add_to_wishlist:settings:enabled">
+	<mvt:assign name="l.settings:instance:card:add_to_wishlist:needs_login" value="g.Basket:cust_id EQ 0" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-product-list
 	id="&mvte:component_id;"

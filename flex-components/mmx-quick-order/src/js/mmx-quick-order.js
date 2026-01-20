@@ -424,7 +424,7 @@ class MMX_QuickOrder extends MMX_Element {
 			'data-message-product-unavailable-short': this?.data?.advanced?.settings?.messages?.product_unavailable_short.value,
 			'data-message-product-unavailable-long': this?.data?.advanced?.settings?.messages?.product_unavailable_long.value,
 			'data-search-method': this?.data?.advanced?.settings?.search_method?.value,
-			'data-search-sort': this?.data?.advanced?.settings?.search_sort?.value,
+			'data-search-sort': MMX.concatenateSortBy(this?.data?.advanced?.settings?.search_sort?.value, this?.data?.advanced?.settings?.search_sort_customfield?.value),
 			'data-search-placeholder-code': this?.data?.advanced?.settings?.search_placeholder_code?.value,
 			'data-search-placeholder-runtime': this?.data?.advanced?.settings?.search_placeholder_runtime?.value,
 			'data-search-results-title': this?.data?.advanced?.settings?.search_results_title?.value,

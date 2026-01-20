@@ -100,7 +100,7 @@ const themeFunctionality = {
 		 */
 		const continueShopping = () => {
 			const isListingPage = ['CTLG', 'CTGY', 'PLST', 'SRCH'].includes(mivaJS.Screen);
-			const isValidPROD = mivaJS.Screen === 'PROD' && !['MNTN', 'NTFD', 'PATR', 'PLMT', 'POUT'].includes(mivaJS.Page)
+			const isValidPROD = mivaJS.Screen === 'PROD' && !['MNTN', 'NTFD', 'PATR', 'PLMT', 'POUT'].includes(mivaJS.Page);
 			const shouldSaveContinueShopping = isListingPage || isValidPROD;
 			const links = document.querySelectorAll('[data-hook="continue-shopping"]');
 
@@ -169,11 +169,11 @@ const themeFunctionality = {
 
 		// [1]
 		function checkOption(entry, list) {
-            let datalist = document.querySelector(`#${list}`);
+			let datalist = document.querySelector(`#${list}`);
 			let datalistOptions = datalist.querySelectorAll('option');
 			let value = '';
 
-            for (let option of datalistOptions) {
+			for (let option of datalistOptions) {
 				if (entry.toLowerCase() === option.value.toLowerCase() || entry.toLowerCase() === option.text.toLowerCase()) {
 					value = option.value;
 				}
@@ -200,7 +200,7 @@ const themeFunctionality = {
 
 		if (datalist.length > 0) {
 			for (let list of datalist) {
-                list.addEventListener('blur', () => {
+				list.addEventListener('blur', () => {
 					let thisDatalist = list.getAttribute('list');
 					let checkValue = checkOption(list.value, thisDatalist);
 
@@ -288,17 +288,17 @@ const themeFunctionality = {
 	toCamelCase(value) {
 		return String(value).replace(/-+([^-])/g, (a, b) => b.toUpperCase());
 	},
-    jsSFNT() {
+	jsSFNT() {
 	},
-    jsCTGY() {
+	jsCTGY() {
 	},
-    jsPROD() {
+	jsPROD() {
 	},
-    jsPLST() {
+	jsPLST() {
 	},
-    jsSRCH() {
+	jsSRCH() {
 	},
-    jsBASK() {
+	jsBASK() {
 		/**
 		 * Estimate Shipping
 		 */
@@ -349,7 +349,7 @@ const themeFunctionality = {
 			}
 		})(document);
 	},
-    jsORDL() {
+	jsORDL() {
 		document.addEventListener('click', event => {
 			if (!event.target.hasAttribute('data-disclosure')) return;
 
@@ -368,12 +368,12 @@ const themeFunctionality = {
 			targetContent.classList.remove('u-hidden');
 		});
 	},
-    jsOCST() {
+	jsOCST() {
 		themeFunctionality.stateDatalist();
 	},
-    jsOSEL() {
+	jsOSEL() {
 	},
-    jsOPAY() {
+	jsOPAY() {
 		/**
 		 * Added functionality to help style the default Miva output payment
 		 * fields.
@@ -479,7 +479,7 @@ const themeFunctionality = {
 			cvvDialog.prepend(cvvMessage);
 		})();
 	},
-    jsINVC() {
+	jsINVC() {
 		const toggle = _hook('toggle-login-options');
 
 		if (toggle.length !== 0) {
@@ -505,38 +505,38 @@ const themeFunctionality = {
 			window.print();
 		});
 	},
-    jsLOGN() {
+	jsLOGN() {
 	},
-    jsACAD() {
+	jsACAD() {
 		themeFunctionality.stateDatalist();
 	},
-    jsACED() {
+	jsACED() {
 		themeFunctionality.stateDatalist();
 	},
-    jsCABK() {
+	jsCABK() {
 	},
-    jsCADA() {
+	jsCADA() {
 		themeFunctionality.stateDatalist();
 	},
-    jsCADE() {
+	jsCADE() {
 		themeFunctionality.stateDatalist();
 	},
-    jsAFCL() {
+	jsAFCL() {
 	},
-    jsAFAD() {
+	jsAFAD() {
 		themeFunctionality.stateDatalist();
 	},
-    jsAFED() {
+	jsAFED() {
 	},
-    jsORHL() {
+	jsORHL() {
 	},
-    jsORDS() {
+	jsORDS() {
 		_hook('print-invoice').addEventListener('click', element => {
 			element.preventDefault();
 			window.print();
 		});
 	},
-    jsCTUS() {
+	jsCTUS() {
 	}
 };
 

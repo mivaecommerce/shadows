@@ -232,7 +232,7 @@ class MMX_CombinationFacet extends MMX_Element {
 	constructor() {
 		super();
 		this.makeShadow();
-		this.#eventOnWindowResize = (event) => { this.#repositionApplicationMenu(); }
+		this.#eventOnWindowResize = (event) => { this.#repositionApplicationMenu(); };
 	}
 
 	render() {
@@ -618,7 +618,7 @@ class MMX_CombinationFacet extends MMX_Element {
 	}
 
 	#renderApplicationSelectMenuOptions() {
-		let options = /*html*/``;
+		let options = '';
 
 		return this.#applications.reduce((i, application) => {
 			const checked = this.#currentApplication?.id === application.id ? 'checked' : '';

@@ -547,10 +547,10 @@ class MMX_ProductDetails extends MMX_Element {
 	#willRenderCoreDetail(detail = {}) {
 		return !MMX.valueIsEmpty(this.#product?.[detail?.type?.value]);
 	}
-	
+
 	#willRenderAttributes(detail = {}) {
 		if (this.#renderedAttributes) {
-			// Attributes can only be rendered once 
+			// Attributes can only be rendered once
 			return false;
 		}
 
@@ -824,6 +824,7 @@ class MMX_ProductDetails extends MMX_Element {
 					discount: { value: true },
 					multiple_images: { value: false }
 				},
+				attribute_settings: attributesDetail?.attribute_settings,
 				attribute_messages: {
 					invalid_msg: {
 						source: attributesDetail?.attribute_messages?.invalid_msg?.source,
@@ -1509,7 +1510,7 @@ class MMX_ProductDetails extends MMX_Element {
 	#imageGalleries() {
 		return this.shadowRoot.querySelectorAll('[part~="images"] mmx-image-gallery');
 	}
-	
+
 	// Render: Combination Facet Fitment
 	#renderFitmentList(detail = {}) {
 		const facetCode = detail?.fitment_list_settings?.facet_code?.value;

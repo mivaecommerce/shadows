@@ -29,8 +29,7 @@ class MMX_Dialog extends MMX_Element {
 			<dialog part="dialog">
 				<mmx-button
 					part="dialog-close"
-					data-style="secondary"
-					data-shape="round"
+					data-style="close"
 					data-size="xs"
 					title="Close Dialog"
 				>

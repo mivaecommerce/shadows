@@ -2,7 +2,7 @@
 	"code": "mmx-card",
 	"name": "MMX Card",
 	"type": "library",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-card",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-4G8j82kfqcNqUMBig1wWeCRbhICz53hiAMGy01uuhdg= sha384-zfwAT/lpX/Q4twKg1D9IfGQ7mWTTKWavRbXkkKFMonLFBWevejS4oa3fFQVR7Ls/ sha512-NTcapNHQQ4o5Y+hPFYuZjIYeOFGBF4n/eP+kSUbIV4iNxw8rgzMddKMrYLpotFGcv3PFeVHU3Q+s7YZ2Uv0LsQ=="
+					"value": "sha256-1I2054eUU9P8b0BnsleuponJ4xFL3oOkal2Dq2lDXXY= sha384-7V4jp3I6vjnb2vTh8p+J83x/qW4DEGJP5JmrvnvzmcbjAgKCLNEhicRCSi8CwyWL sha512-AVjTP7WurGqbfibetshY5m+Crhn26ekSdrScZm1Pqd8HuwO+k/xV6tTTdKttREPwCXPIkkD0aMDPnWvxc17pvA=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-t8TB8gcaTPEtjteZNRGCqzagARcPuJJQxgDvQHrt/pc= sha384-WFwn0im+/OyQI8+huJwCLuoLTxJUjWwvfOrfiduXRJXyr+hB0DzH6SOFx4COLWba sha512-yN/bEWmzT6AzYZ7ZVjOYd159+ABQNeRHcNCgSuKc4YRIjVWrhOry9yqhjZkEf3+RYqgeCLP7B9CRBDdL3Z+C7Q=="
+					"value": "sha256-QV9rFtgUjLp1vAdeu46eCspzdmRYKkaUH+TAsyv1aC8= sha384-8OFuu5ZhasPpw1v5GlD4nxfBKvbCLoKEilMjLsie9Gf6I1seHp4GGj0VNXXy9vk0 sha512-WRH4wQEoHPpoD1H4TWBev5IfGcHRi6BhV12tjOm965Amm9yvOEAH2osuwMgJ6ytbbtXGUNAkYn9VwP9h3VIYHw=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,16 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01"
+		"mmx-base": "=10.13.03",
+		"mmx-button": "=10.13.03",
+		"mmx-dialog": "=10.13.03",
+		"mmx-featured-product": "=10.13.03",
+		"mmx-forms": "=10.13.03",
+		"mmx-hero": "=10.13.03",
+		"mmx-hero-slider": "=10.13.03",
+		"mmx-icons": "=10.13.03",
+		"mmx-messages": "=10.13.03",
+		"mmx-text": "=10.13.03",
+		"mmx-wishlist": "=10.13.03"
 	}
 }

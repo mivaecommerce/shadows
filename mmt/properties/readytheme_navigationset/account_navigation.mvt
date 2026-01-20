@@ -25,7 +25,11 @@
 							<mvt:if expr="l.settings:navigationitem_level2:link_dest EQ l.settings:page:code">
 								<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level2:url;">&mvt:navigationitem_level2:name;</a>
 							<mvt:else>
-								<a class="x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
+								<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
+									<span class="x-category-tree__text">&mvt:navigationitem_level2:name;</span>
+								<mvt:else>
+									<a class="x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
+								</mvt:if>
 							</mvt:if>
 						</li>
 						<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
@@ -34,7 +38,11 @@
 									<mvt:if expr="l.settings:navigationitem_level3:link_dest EQ l.settings:page:code">
 										<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level3:url;">&mvt:navigationitem_level3:name;</a>
 									<mvt:else>
-										<a class="x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+										<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
+											<span class="x-category-tree__text">&mvt:navigationitem_level3:name;</span>
+										<mvt:else>
+											<a class="x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+										</mvt:if>
 									</mvt:if>
 								</li>
 							</mvt:foreach>

@@ -61,6 +61,14 @@ mmx-card [slot="main"] > img {
 /* ==========================================================================
    MMX / PRODUCT CARD
    ========================================================================== */
+:host {
+	--mmx-product-card__swatch-size: 20px;
+	--mmx-product-card__swatch-border-radius: 50%;
+	--mmx-product-card__swatch-border-width: 1px;
+	--mmx-product-card__swatch-border-color: var(--mmx-color-primary-text);
+	--mmx-product-card__swatch-border-style: solid;
+}
+
 .mmx-product-card mmx-button {
 	margin-top: unset;
 }
@@ -70,10 +78,52 @@ mmx-card [slot="main"] > img {
 }
 
 .mmx-product-card__additional-price {
-	margin-left: 0.5em;
 	--mmx-text__text-decoration: line-through;
+
+	margin-left: 0.5em;
 }
 
 .mmx-product-card__detail--empty {
 	display: none;
+}
+
+.mmx-product-card__attribute-swatches {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.5rem;
+	justify-content: flex-start;
+	overflow: hidden;
+}
+
+.mmx-product-card__attribute-swatch-more {
+	font-size: smaller;
+	margin-left: auto;
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+.mmx-product-card__attribute-swatch-button {
+	background-color: transparent;
+	border: 0 none;
+	cursor: pointer;
+	height: var(--mmx-product-card__swatch-size);
+	padding: 0;
+	width: var(--mmx-product-card__swatch-size);
+
+	&:focus-visible {
+		border-radius: var(--mmx-product-card__swatch-border-radius);
+		outline-offset: 0.25rem;
+		outline: 2px solid var(--mmx-color-focus);
+	}
+}
+
+.mmx-product-card__attribute-swatch-image {
+	border-color: var(--mmx-product-card__swatch-border-color);
+	border-radius: var(--mmx-product-card__swatch-border-radius);
+	border-style: var(--mmx-product-card__swatch-border-style);
+	border-width: var(--mmx-product-card__swatch-border-width);
+	height: var(--mmx-product-card__swatch-size);
+	width: var(--mmx-product-card__swatch-size);
 }

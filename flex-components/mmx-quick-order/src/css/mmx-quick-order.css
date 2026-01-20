@@ -163,7 +163,7 @@
 
 	.mmx-quick-order__quantity::-webkit-outer-spin-button,
 	.mmx-quick-order__quantity::-webkit-inner-spin-button {
-		-webkit-appearance: none;
+		appearance: none;
 		margin: 0;
 	}
 }
@@ -197,7 +197,7 @@ textarea {
 	color: var(--mmx-color-input-color);
 	display: inline-block;
 	font-family: inherit;
-	font-size: 0.8125rem;
+	font-size: var(--mmx-form__size);
 	line-height: 1;
 	padding: calc(1.35em - 1px) calc(1.7em - 1px);
 	width: 100%;

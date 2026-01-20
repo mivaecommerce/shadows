@@ -145,7 +145,7 @@ class MMX_ProductCarousel extends MMX_Element {
 			'data-merchandisingprompt-context-category-id': this.data?.products?.prompt?.context?.category_id,
 			'data-search': this.data?.server?.search,
 			'data-count': this.data?.products?.count?.value,
-			'data-sort-by': this.data?.products?.sort?.value,
+			'data-sort-by': MMX.concatenateSortBy(this.data?.products?.sort?.value, this.data?.products?.sort_customfield?.value),
 			'data-size': this.data?.products?.image_size?.value,
 			'data-image-fit': this.data?.products?.image_fit?.value
 		});

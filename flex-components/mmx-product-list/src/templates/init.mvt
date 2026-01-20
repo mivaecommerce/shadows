@@ -9,10 +9,18 @@
 	<mvt:item name="head" param="css:mmx-messages" />
 	<mvt:item name="head" param="css:mmx-product-list" />
 	<mvt:item name="head" param="css:mmx-card" />
+	<mvt:item name="head" param="css:mmx-dialog" />
+	<mvt:item name="head" param="css:mmx-hero" />
+	<mvt:item name="head" param="css:mmx-hero-slider" />
+	<mvt:item name="head" param="css:mmx-featured-product" />
+	<mvt:item name="head" param="css:mmx-wishlist" />
 </template>
 
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_JSON_Variables( l.settings )" />
 <mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'MivaEvents.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'ajax.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'runtime.js' )" />
+<mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Render_Clientside( l.settings, 'AttributeMachine.js' )" />
 
 <mvt:comment>MMCurrencyFormatter</mvt:comment>
 <mvt:if expr="g.Store:currncy_mod:api_ver GE 9.07">
@@ -40,6 +48,11 @@
 <mvt:item name="head" param="js:mmx-card" />
 <mvt:item name="head" param="css:mmx-accordion" />
 <mvt:item name="head" param="js:mmx-accordion" />
+<mvt:item name="head" param="js:mmx-dialog" />
+<mvt:item name="head" param="js:mmx-hero" />
+<mvt:item name="head" param="js:mmx-hero-slider" />
+<mvt:item name="head" param="js:mmx-featured-product" />
+<mvt:item name="head" param="js:mmx-wishlist" />
 
 <mvt:comment>Theme Editor stylesheet</mvt:comment>
 <mvt:item name="head" param="css:mm-theme-styles" />

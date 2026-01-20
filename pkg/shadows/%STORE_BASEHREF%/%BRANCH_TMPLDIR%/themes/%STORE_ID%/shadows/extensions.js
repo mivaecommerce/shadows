@@ -761,7 +761,7 @@ class TransfigureNavigation {
 		desktopMedia: '(min-width: 60em)',
 		openMainMenu: '[data-hook~="open-main-menu"]',
 		closeMainMenu: '[data-hook~="close-main-menu"]',
-		hasChildMenuLinks: '[data-hook~="has-child-menu"] > a',
+		childMenuToggles: '[data-hook~="has-child-menu"] > .c-navigation__link, [data-hook~="has-child-menu"] > .c-navigation__text',
 		showPreviousMenuButtons: '[data-hook~="show-previous-menu"]'
 	};
 
@@ -868,8 +868,8 @@ class TransfigureNavigation {
 	}
 
 	// Mobile Menu Navigation
-	get #hasChildMenuLinks() {
-		return this.#container.querySelectorAll(this.#settings.hasChildMenuLinks);
+	get #childMenuToggles() {
+		return this.#container.querySelectorAll(this.#settings.childMenuToggles);
 	}
 
 	get #showPreviousMenuButtons() {
@@ -877,9 +877,9 @@ class TransfigureNavigation {
 	}
 
 	#listenForSubNavigationEvents() {
-		this.#hasChildMenuLinks.forEach(link => {
-			link.addEventListener('click', e => {
-				this.#onParentMenuClick({e, link});
+		this.#childMenuToggles.forEach(toggle => {
+			toggle.addEventListener('click', e => {
+				this.#onParentMenuClick({e, link: toggle});
 			});
 		});
 
@@ -1020,7 +1020,6 @@ class TransfigureNavigation {
 		}
 	};
 
-
 	/**
 	 * Validates whether a dialog of the given `data-dialog` exists in the DOM
 	 * @param {string} id The data-dialog of the dialog
@@ -1029,16 +1028,14 @@ class TransfigureNavigation {
 	const validateDialogPresence = function validateDialogPresence(id) {
 		if (!document.querySelector(`[data-dialog=${id}]`)) {
 			console.warn("Dialog: \u2757Seems like you have missed %c'".concat(id, "'"), 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', 'data-dialog somewhere in your code. Refer example below to resolve it.');
-			console.warn("%cExample:", 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', "<div class=\"c-dialog\" aria-hidden=\"true\" data-dialog=\"".concat(id, "\"></div>"));
+			console.warn('%cExample:', 'background-color: #f8f9fa;color: #50596c;font-weight: bold;', '<div class="c-dialog" aria-hidden="true" data-dialog="'.concat(id, '"></div>'));
 			return false;
 		}
 	};
 
-
 	const getDialogs = function getDialogs() {
 		return Array.from(document.querySelectorAll('[data-dialog]'));
 	};
-
 
 	/**
 	 * Handle dialog related click events
@@ -1070,7 +1067,6 @@ class TransfigureNavigation {
 		}
 	});
 
-
 	/**
 	 * Initialize the dialogs
 	 */
@@ -1079,7 +1075,6 @@ class TransfigureNavigation {
 			dialog.setAttribute('aria-hidden', 'true');
 		});
 	};
-
 
 	/**
 	 * Capture the current focused element so that you can set focus back to it
@@ -1107,7 +1102,6 @@ class TransfigureNavigation {
 		dialog.el.dispatchEvent(new CustomEvent('show'));
 	};
 
-
 	/**
 	 * Remove `body` classes that were added.
 	 * Reset `aria-hidden` values from container.
@@ -1122,7 +1116,6 @@ class TransfigureNavigation {
 		dialog.focused.focus();
 		dialog.el.dispatchEvent(new CustomEvent('hide'));
 	};
-
 
 	/**
 	 * Traps the tab key inside of the context, so the user can't accidentally get stuck behind it.
@@ -1162,7 +1155,6 @@ class TransfigureNavigation {
 		}
 	};
 
-
 	/**
 	 * Get all focusable elements inside of the dialog.
 	 * @returns {Array} Array of focusable elements
@@ -1178,7 +1170,6 @@ class TransfigureNavigation {
 
 		return focusable[0];
 	};
-
 
 	/**
 	 * Toggles an 'inert' attribute on all direct children of the <body> that are not the element you passed in. The
@@ -1209,7 +1200,6 @@ class TransfigureNavigation {
 		});
 	};
 
-
 	/**
 	 * This is a helper function we will put into `window` to allow for opening of a specific dialog.
 	 * @param targetDialog
@@ -1222,7 +1212,6 @@ class TransfigureNavigation {
 	};
 	window && (window.openDialog = openDialog);
 
-
 	/**
 	 * This is a helper function we will put into `window` to allow for closing of a specific dialog.
 	 */
@@ -1230,7 +1219,6 @@ class TransfigureNavigation {
 		dialog.hide();
 	};
 	window && (window.closeDialog = closeDialog);
-
 
 	/**
 	 * This is a helper function we will put into `window` to allow for rescanning of the page when
@@ -1240,7 +1228,6 @@ class TransfigureNavigation {
 		dialog.init();
 	};
 	window && (window.reloadDialog = reloadDialog);
-
 
 	/**
 	 * Initialize the dialog.

@@ -244,7 +244,7 @@ mmx-combobox::part(input) {
 	margin: 0 calc(var(--mmx-combination-facet--size) * 0.5);
 	padding: 18px 16px;
 	align-items: flex-start;
-	border-radius: calc(var(--mmx-combination-facet--size)* 0.25);
+	border-radius: calc(var(--mmx-combination-facet--size) * 0.25);
 }
 
 .mmx-combination-facet__application-select-menu-option.selected {
@@ -329,7 +329,7 @@ mmx-combobox::part(input) {
 	margin: 0 calc(var(--mmx-combination-facet--size) * 0.5) 16px;
 	padding: 18px 16px;
 	align-items: center;
-	border-radius: calc(var(--mmx-combination-facet--size)* 0.25);
+	border-radius: calc(var(--mmx-combination-facet--size) * 0.25);
 	text-decoration: none;
 	font-weight: medium;
 }

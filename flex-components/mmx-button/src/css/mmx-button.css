@@ -163,6 +163,30 @@
 	opacity: 0.5;
 }
 
+/* Style: Close
+   =========================================== */
+.mmx-button__close {
+	background: transparent;
+	border: 1px solid var(--mmx-color-input-border);
+	border-radius: 100%;
+	color: var(--mmx-color-input-color);
+	text-decoration: none;
+	vertical-align: middle;
+	width: 3em;
+	height: 3em;
+}
+
+.mmx-button__close:hover,
+:host(.hover) .mmx-button__close {
+	border-color: color-mix(in srgb, var(--mmx-color-input-border), var(--mmx-color-black) 30%);
+	color: color-mix(in srgb, var(--mmx-color-input-color), var(--mmx-color-black) 30%);
+}
+
+.mmx-button__close:disabled,
+:host(.disabled) .mmx-button__close {
+	opacity: 0.5;
+}
+
 /* Style: Display Link
    =========================================== */
 .mmx-button__display-link,
@@ -248,6 +272,7 @@
 	vertical-align: middle;
 	width: 3em;
 }
+
 	.mmx-button__link.mmx-button__shape--round:hover,
 	:host(.hover) .mmx-button__link.mmx-button__shape--round{
 		background: color-mix(in srgb, var(--mmx-color-primary-bg) 5%, var(--mmx-color-primary-text));

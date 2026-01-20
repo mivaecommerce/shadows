@@ -11,41 +11,41 @@
 	--breakpoint-x-large: 1200;
 	--breakpoint-wide: 1440;
 	/* COLORS */
-	--black: #111;
-	--blue-100: #f3f9fe;
-	--blue-200: #8fbbe6;
-	--blue-400: #2e669e;
-	--focus: #3a58fc;
-	--gray-100: #f5f5f5;
-	--gray-200: #eaeaea;
-	--gray-300: #ddd;
-	--gray-400: #ccc;
+	--black: #111111;
+	--blue-100: #F3F9FE;
+	--blue-200: #8FBBE6;
+	--blue-400: #2E669E;
+	--focus: #3A58FC;
+	--gray-100: #F5F5F5;
+	--gray-200: #EAEAEA;
+	--gray-300: #DDDDDD;
+	--gray-400: #CCCCCC;
 	--gray-500: #767676;
-	--gray-600: #575a5d;
-	--green-100: #daf5eb;
-	--green-200: #bbe1d3;
-	--green-400: #0a7448;
-	--red-100: #fbe3e3;
-	--red-200: #f9c4c7;
-	--red-400: #b13138;
+	--gray-600: #575A5D;
+	--green-100: #DAF5EB;
+	--green-200: #BBE1D3;
+	--green-400: #0A7448;
+	--red-100: #FBE3E3;
+	--red-200: #F9C4C7;
+	--red-400: #B13138;
 	--transparent: transparent;
-	--yellow-100: #f8f8e1;
-	--yellow-200: #e6e086;
-	--yellow-400: #65602e;
-	--white: #fff;
+	--yellow-100: #F8F8E1;
+	--yellow-200: #E6E086;
+	--yellow-400: #65602E;
+	--white: #FFFFFF;
 	/* BUTTON HOVER COLORS */
-	--black--tinted: #4d4d4d;
-	--blue-400--shaded: #234d77;
-	--gray-100--shaded: #b8b8b8;
-	--gray-200--shaded: #b0b0b0;
-	--gray-300--shaded: #a6a6a6;
-	--gray-400--tinted: #d9d9d9;
+	--black--tinted: #4D4D4D;
+	--blue-400--shaded: #234D77;
+	--gray-100--shaded: #B8B8B8;
+	--gray-200--shaded: #B0B0B0;
+	--gray-300--shaded: #A6A6A6;
+	--gray-400--tinted: #D9D9D9;
 	--gray-500--shaded: #595959;
 	--gray-600--shaded: #414446;
 	--green-400--shaded: #085736;
-	--red-400--shaded: #85252a;
-	--yellow-400--shaded: #4c4823;
-	--white--shaded: #f5f5f5;
+	--red-400--shaded: #85252A;
+	--yellow-400--shaded: #4C4823;
+	--white--shaded: #F5F5F5;
 	/* DEFAULTS */
 	--default-border-radius: 0.25rem;
 	--default-border-width: 1px;
@@ -193,6 +193,7 @@ Correct the inability to style buttons in iOS and Safari.
 */
 :where(button, input:is([type=button i], [type=reset i], [type=submit i])) {
 	-webkit-appearance: button;
+	        appearance: button;
 }
 
 /**
@@ -214,7 +215,8 @@ Remove the margin in Firefox and Safari.
 2. Correct the outline style in Safari.
 */
 :where(input[type=search i]) {
-	-webkit-appearance: textfield; /* 1 */
+	-webkit-appearance: textfield;
+	        appearance: textfield; /* 1 */
 	outline-offset: -2px; /* 2 */
 }
 
@@ -229,7 +231,7 @@ Correct the cursor style of increment and decrement buttons in Safari.
 /**
 Correct the text style of placeholders in Chrome, Edge, and Safari.
 */
-::-webkit-input-placeholder {
+::placeholder {
 	color: inherit;
 	opacity: 0.54;
 }
@@ -239,6 +241,7 @@ Remove the inner padding in Chrome, Edge, and Safari on macOS.
 */
 ::-webkit-search-decoration {
 	-webkit-appearance: none;
+	        appearance: none;
 }
 
 /**
@@ -246,7 +249,8 @@ Remove the inner padding in Chrome, Edge, and Safari on macOS.
 2. Change font properties to `inherit` in Safari.
 */
 ::-webkit-file-upload-button {
-	-webkit-appearance: button; /* 1 */
+	-webkit-appearance: button;
+	        appearance: button; /* 1 */
 	font: inherit; /* 2 */
 }
 
@@ -630,7 +634,7 @@ small {
  *	<div class="o-layout  o-layout--[right|center]">
  *
  * This will cause the system to fill up from either the centre or the right
- * hand side. Default behaviour is to fill up the layout system from the left.
+ * hand side. Default behavior is to fill up the layout system from the left.
  *
  * There are plenty more options available to us: explore them below.
  */
@@ -1456,10 +1460,10 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	display: none;
 }
 
-/**************************\
-  Animation Style
-\**************************/
-@keyframes dialogFadeIn {
+/**
+ * Animation Style
+ */
+@keyframes dialog-fade-in {
 	from {
 		opacity: 0;
 	}
@@ -1467,7 +1471,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 		opacity: 1;
 	}
 }
-@keyframes dialogFadeOut {
+@keyframes dialog-fade-out {
 	from {
 		opacity: 1;
 	}
@@ -1475,7 +1479,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 		opacity: 0;
 	}
 }
-@keyframes dialogSlideIn {
+@keyframes dialog-slide-in {
 	from {
 		transform: translateY(15%);
 	}
@@ -1483,7 +1487,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 		transform: translateY(0);
 	}
 }
-@keyframes dialogSlideOut {
+@keyframes dialog-slide-out {
 	from {
 		transform: translateY(0);
 	}
@@ -1492,19 +1496,19 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	}
 }
 .c-dialog[aria-hidden=false] .c-dialog__overlay {
-	animation: dialogFadeIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+	animation: dialog-fade-in 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .c-dialog[aria-hidden=false] .c-dialog__container {
-	animation: dialogSlideIn 0.3s cubic-bezier(0, 0, 0.2, 1);
+	animation: dialog-slide-in 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .c-dialog[aria-hidden=true] .c-dialog__overlay {
-	animation: dialogFadeOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+	animation: dialog-fade-out 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 .c-dialog[aria-hidden=true] .c-dialog__container {
-	animation: dialogSlideOut 0.3s cubic-bezier(0, 0, 0.2, 1);
+	animation: dialog-slide-out 0.3s cubic-bezier(0, 0, 0.2, 1);
 }
 
 @media screen and (prefers-reduced-motion: reduce) {
@@ -1908,7 +1912,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	line-height: inherit;
 }
 
-@media screen and (-webkit-min-device-pixel-ratio: 2) {
+@media screen and (min-resolution: 2x) {
 	.c-form-input,
 	.c-form-select {
 		font-size: var(--paragraph-large);
@@ -2016,13 +2020,13 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	margin-left: 0;
 }
 
-.c-menu__link {
+.c-menu__link, .c-menu__text {
 	color: currentColor;
 	display: block;
 }
 
 @media (min-width: 48em) {
-	.c-menu__link {
+	.c-menu__link, .c-menu__text {
 		display: inline-block;
 	}
 }
@@ -2090,7 +2094,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	width: 100%;
 }
 
-.c-navigation__link {
+.c-navigation__link, .c-navigation__text {
 	background-color: var(--white);
 	color: var(--black);
 	display: block;
@@ -2103,11 +2107,11 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	transition: box-shadow ease-in 0.2s;
 }
 
-.c-navigation__row:nth-child(2) .c-navigation__link {
+.c-navigation__row:nth-child(2) .c-navigation__link, .c-navigation__row:nth-child(2) .c-navigation__text {
 	padding-left: 2em;
 }
 
-.c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+.c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link, .c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__text {
 	padding-left: 3em;
 }
 
@@ -2143,7 +2147,9 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 		z-index: 200;
 	}
 	.c-navigation__row:nth-child(2) .c-navigation__link,
-	.c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link {
+	.c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__link,
+	.c-navigation__row:nth-child(2) .c-navigation__text,
+	.c-navigation__row:nth-child(2) .c-navigation__row:last-of-type .c-navigation__text {
 		padding-left: 1em;
 	}
 	.c-navigation__row:nth-child(2) .c-navigation__link:hover {
@@ -2155,11 +2161,13 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 		display: table;
 		box-shadow: 1px 1px 0.25em 0 var(--black);
 	}
-	.c-navigation__link {
+	.c-navigation__link, .c-navigation__text {
 		border-right: 0 solid var(--black); /* Change to 1px to add a right-border */
 	}
 	.c-navigation__list:last-of-type .c-navigation__link,
-	.c-navigation__row:nth-child(2) .c-navigation__list .c-navigation__link {
+	.c-navigation__row:nth-child(2) .c-navigation__list .c-navigation__link,
+	.c-navigation__list:last-of-type .c-navigation__text,
+	.c-navigation__row:nth-child(2) .c-navigation__list .c-navigation__text {
 		border-right: 0;
 	}
 }
@@ -3254,323 +3262,323 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	background-color: rgba(0, 0, 0, 0);
 }
 
-.u-icon-add:before {
+.u-icon-add::before {
 	content: "=";
 }
 
-.u-icon-add-circle:before {
+.u-icon-add-circle::before {
 	content: "\e901";
 }
 
-.u-icon-alert:before {
+.u-icon-alert::before {
 	content: "\e902";
 }
 
-.u-icon-arrow-down:before {
+.u-icon-arrow-down::before {
 	content: "9";
 }
 
-.u-icon-arrow-left:before {
+.u-icon-arrow-left::before {
 	content: ":";
 }
 
-.u-icon-arrow-right:before {
+.u-icon-arrow-right::before {
 	content: ";";
 }
 
-.u-icon-arrow-up:before {
+.u-icon-arrow-up::before {
 	content: "8";
 }
 
-.u-icon-bag:before {
+.u-icon-bag::before {
 	content: "X";
 }
 
-.u-icon-bag-full:before {
+.u-icon-bag-full::before {
 	content: "Y";
 }
 
-.u-icon-balance:before {
+.u-icon-balance::before {
 	content: "-";
 }
 
-.u-icon-calendar:before {
+.u-icon-calendar::before {
 	content: "W";
 }
 
-.u-icon-cart-add:before {
+.u-icon-cart-add::before {
 	content: "/";
 }
 
-.u-icon-cart-empty:before {
+.u-icon-cart-empty::before {
 	content: "Z";
 }
 
-.u-icon-cart-full:before {
+.u-icon-cart-full::before {
 	content: "[";
 }
 
-.u-icon-check:before {
+.u-icon-check::before {
 	content: "?";
 }
 
-.u-icon-chevron-down:before {
+.u-icon-chevron-down::before {
 	content: "1";
 }
 
-.u-icon-chevron-left:before {
+.u-icon-chevron-left::before {
 	content: "2";
 }
 
-.u-icon-chevron-right:before {
+.u-icon-chevron-right::before {
 	content: "3";
 }
 
-.u-icon-chevron-up:before {
+.u-icon-chevron-up::before {
 	content: "0";
 }
 
-.u-icon-contact:before {
+.u-icon-contact::before {
 	content: "\e913";
 }
 
-.u-icon-credit-card:before {
+.u-icon-credit-card::before {
 	content: "C";
 }
 
-.u-icon-cross:before {
+.u-icon-cross::before {
 	content: ">";
 }
 
-.u-icon-customer-credit:before {
+.u-icon-customer-credit::before {
 	content: "\e916";
 }
 
-.u-icon-document:before {
+.u-icon-document::before {
 	content: "U";
 }
 
-.u-icon-edit:before {
+.u-icon-edit::before {
 	content: "\e918";
 }
 
-.u-icon-envelope:before {
+.u-icon-envelope::before {
 	content: ")";
 }
 
-.u-icon-error:before {
+.u-icon-error::before {
 	content: "!";
 }
 
-.u-icon-exit-circle:before {
+.u-icon-exit-circle::before {
 	content: "\e91b";
 }
 
-.u-icon-eye-closed:before {
+.u-icon-eye-closed::before {
 	content: "\e91c";
 }
 
-.u-icon-eye-open:before {
+.u-icon-eye-open::before {
 	content: "\e91d";
 }
 
-.u-icon-filter:before {
+.u-icon-filter::before {
 	content: "\e91e";
 }
 
-.u-icon-flag-empty:before {
+.u-icon-flag-empty::before {
 	content: "\e91f";
 }
 
-.u-icon-flag-full:before {
+.u-icon-flag-full::before {
 	content: "\e920";
 }
 
-.u-icon-gift:before {
+.u-icon-gift::before {
 	content: "%";
 }
 
-.u-icon-globe:before {
+.u-icon-globe::before {
 	content: "+";
 }
 
-.u-icon-heart-empty:before {
+.u-icon-heart-empty::before {
 	content: "D";
 }
 
-.u-icon-heart-full:before {
+.u-icon-heart-full::before {
 	content: "E";
 }
 
-.u-icon-heart-half:before {
+.u-icon-heart-half::before {
 	content: "\e925";
 }
 
-.u-icon-history:before {
+.u-icon-history::before {
 	content: ",";
 }
 
-.u-icon-home:before {
+.u-icon-home::before {
 	content: "H";
 }
 
-.u-icon-info:before {
+.u-icon-info::before {
 	content: "$";
 }
 
-.u-icon-location:before {
+.u-icon-location::before {
 	content: "\\";
 }
 
-.u-icon-lock:before {
+.u-icon-lock::before {
 	content: "\e92a";
 }
 
-.u-icon-menu:before {
+.u-icon-menu::before {
 	content: "V";
 }
 
-.u-icon-minus-circle:before {
+.u-icon-minus-circle::before {
 	content: "\e92c";
 }
 
-.u-icon-phone:before {
+.u-icon-phone::before {
 	content: "J";
 }
 
-.u-icon-play:before {
+.u-icon-play::before {
 	content: "\e92e";
 }
 
-.u-icon-print:before {
+.u-icon-print::before {
 	content: "S";
 }
 
-.u-icon-question:before {
+.u-icon-question::before {
 	content: "#";
 }
 
-.u-icon-remove:before {
+.u-icon-remove::before {
 	content: ".";
 }
 
-.u-icon-search:before {
+.u-icon-search::before {
 	content: "B";
 }
 
-.u-icon-secure:before {
+.u-icon-secure::before {
 	content: "(";
 }
 
-.u-icon-settings:before {
+.u-icon-settings::before {
 	content: "&";
 }
 
-.u-icon-shield:before {
+.u-icon-shield::before {
 	content: "'";
 }
 
-.u-icon-sign-out:before {
+.u-icon-sign-out::before {
 	content: "\e936";
 }
 
-.u-icon-star-empty:before {
+.u-icon-star-empty::before {
 	content: "F";
 }
 
-.u-icon-star-full:before {
+.u-icon-star-full::before {
 	content: "G";
 }
 
-.u-icon-star-half:before {
+.u-icon-star-half::before {
 	content: "\e939";
 }
 
-.u-icon-subtract:before {
+.u-icon-subtract::before {
 	content: "<";
 }
 
-.u-icon-talk:before {
+.u-icon-talk::before {
 	content: "\e93b";
 }
 
-.u-icon-triangle-down:before {
+.u-icon-triangle-down::before {
 	content: "5";
 }
 
-.u-icon-triangle-left:before {
+.u-icon-triangle-left::before {
 	content: "6";
 }
 
-.u-icon-triangle-right:before {
+.u-icon-triangle-right::before {
 	content: "7";
 }
 
-.u-icon-triangle-up:before {
+.u-icon-triangle-up::before {
 	content: "4";
 }
 
-.u-icon-truck:before {
+.u-icon-truck::before {
 	content: "*";
 }
 
-.u-icon-user:before {
+.u-icon-user::before {
 	content: "I";
 }
 
-.u-icon-wallet:before {
+.u-icon-wallet::before {
 	content: "T";
 }
 
-.u-icon-warning:before {
+.u-icon-warning::before {
 	content: '"';
 }
 
-.u-icon-zoom-in:before {
+.u-icon-zoom-in::before {
 	content: "A";
 }
 
-.u-icon-zoom-out:before {
+.u-icon-zoom-out::before {
 	content: "@";
 }
 
-.u-icon-facebook:before {
+.u-icon-facebook::before {
 	content: "K";
 }
 
-.u-icon-instagram:before {
+.u-icon-instagram::before {
 	content: "O";
 }
 
-.u-icon-linkedin:before {
+.u-icon-linkedin::before {
 	content: "N";
 }
 
-.u-icon-pinterest:before {
+.u-icon-pinterest::before {
 	content: "M";
 }
 
-.u-icon-twitter:before {
+.u-icon-twitter::before {
 	content: "L";
 }
 
-.u-icon-twitter-x:before {
+.u-icon-twitter-x::before {
 	content: "\e904";
 }
 
-.u-icon-youtube:before {
+.u-icon-youtube::before {
 	content: "P";
 }
 
-.u-icon-google:before {
+.u-icon-google::before {
 	content: "]";
 }
 
-.u-icon-vimeo:before {
+.u-icon-vimeo::before {
 	content: "^";
 }
 
-.u-icon-flickr:before {
+.u-icon-flickr::before {
 	content: "_";
 }
 
@@ -3603,10 +3611,10 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	* 1. Black prints faster: http://www.sanbeiji.com/archives/953
 	*/
 	*,
-	*:before,
-	*:after {
+	*::before,
+	*::after {
 		background: transparent !important;
-		color: #000 !important; /* [1] */
+		color: #000000 !important; /* [1] */
 		box-shadow: none !important;
 		text-shadow: none !important;
 	}
@@ -3622,7 +3630,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	}
 	pre,
 	blockquote {
-		border: 1px solid #999;
+		border: 1px solid #999999;
 		page-break-inside: avoid;
 	}
 	/*

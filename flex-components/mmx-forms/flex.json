@@ -2,7 +2,7 @@
 	"code": "mmx-forms",
 	"name": "MMX Forms",
 	"type": "library",
-	"version": "10.13.01",
+	"version": "10.13.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-forms",
 	"scripts": [
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-weWT/PpVm4d0x8hCvZb443sKuNOpS9WEBwxMYmydTeM= sha384-sd1fJ7WDjVDJBPBn1pS74ADHuXppfwcMDPGU3oOLoiYIg7rlVTCyv0+9m0/uvzU9 sha512-GenBfSM8YBWlodti5P6oi3hvMO11OKnMRubBoEjct/p3l6xWE2zVxzA6o0zBnXI9PhtN3U3XoyErxYjHQFEnAA=="
+					"value": "sha256-F/yMhvlpQmk9yResgJzPbzxTGqG5s5qJKNYO3sxk12E= sha384-hnceyWea1T8p7paY/Tkdo7P1RmiAEIQDdCjzX9BsS9JaJLXPnmWpFaQgE6jmTYcg sha512-GYzQp4sS25BpIVVbDv29OuRQHSaOLj4958/vFH5L3PihZ8538m806LryNxg7MEx6S4Vm11GaeP2wwILiJGU0cg=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.01"
+		"mmx-base": "=10.13.03"
 	}
 }
