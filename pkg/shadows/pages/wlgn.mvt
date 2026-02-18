@@ -29,13 +29,13 @@
 			<p class="c-heading-foxtrot">Welcome Back</p>
 			<form method="post" action="&mvte:urls:WISH:secure;" autocomplete="off">
 				<fieldset>
-					<legend>&mvt:page:name;</legend>
+					<legend>Customer Login</legend>
 					<mvt:if expr="ISNULL g.Action">
-						<mvt:assign name="g.Action" value="'LOGN,ATWL'" />
+						<mvt:assign name="l.settings:logn_action" value="'LOGN,ATWL'" />
 					<mvt:else>
-						<mvt:assign name = "g.Action" value="'LOGN,' $ g.Action" />
+						<mvt:assign name = "l.settings:logn_action" value="'LOGN,' $ g.Action" />
 					</mvt:if>
-					<input type="hidden" name="Action" value="&mvte:global:Action;" />
+					<input type="hidden" name="Action" value="&mvte:logn_action;" />
 					<input type="hidden" name="Quantity" value="&mvte:global:Quantity;" />
 					<input type="hidden" name="Line_ID" value="&mvte:global:Line_ID;" />
 					<input type="hidden" name="Group_ID" value="&mvte:global:Group_ID;" />
@@ -56,7 +56,7 @@
 							<input id="l-Customer_LoginEmail" class="c-form-input" type="text" inputmode="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<label class="c-form-label u-font-small u-text-bold u-text-uppercase is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
+							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Customer_Password">Password:</label>
 							<mvt:if expr="g.Customer_Temporary_Password">
 								<input type="hidden" name="Customer_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;">
 								<input id="l-Customer_Password" class="c-form-input" type="password" name="Customer_Password" value="&mvte:global:Customer_Temporary_Password;" required>
@@ -80,13 +80,13 @@
 			<p class="c-heading-foxtrot">New Customers</p>
 			<form class="o-layout" method="post" action="&mvte:urls:WISH:secure;">
 				<fieldset class="o-layout__item">
-					<legend>Customer Log In</legend>
+					<legend>Create Customer</legend>
 					<mvt:if expr="ISNULL g.Action">
-						<mvt:assign name="g.Action" value="'ICSQ,ATWL'" />
+						<mvt:assign name="l.settings:icsq_action" value="'ICSQ,ATWL'" />
 					<mvt:else>
-						<mvt:assign name = "g.Action" value="'ICSQ,' $ g.Action" />
+						<mvt:assign name = "l.settings:icsq_action" value="'ICSQ,' $ g.Action" />
 					</mvt:if>
-					<input type="hidden" name="Action" value="&mvte:global:Action;" />
+					<input type="hidden" name="Action" value="&mvte:icsq_action;" />
 					<input type="hidden" name="Quantity" value="&mvte:global:Quantity;" />
 					<input type="hidden" name="Line_ID" value="&mvte:global:Line_ID;" />
 					<input type="hidden" name="Group_ID" value="&mvte:global:Group_ID;" />
@@ -129,7 +129,7 @@
 			<br>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

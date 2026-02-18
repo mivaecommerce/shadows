@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "content_theme": {
@@ -134,7 +134,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "content_theme": {
@@ -262,7 +262,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "content_theme": {
@@ -418,7 +418,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "desktop": {
@@ -523,7 +523,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "desktop": {

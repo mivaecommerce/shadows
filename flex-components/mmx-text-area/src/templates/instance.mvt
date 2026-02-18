@@ -16,6 +16,7 @@
 	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
 	data-align="&mvte:instance:content:align:value;"
 	data-content-width="&mvte:instance:advanced:desktop:width:value;"
+	data-padding="&mvte:instance:advanced:padding:value;"
 	data-content-location="center"
 	data-content-layout="text-area"
 	data-size="content"

@@ -20,3 +20,7 @@
 	<mvt:assign name="l.settings:instance:content:subheading:textsettings:fields:normal:font:style" value="''" />
 	<mvt:assign name="l.settings:instance:content:body:textsettings:fields:normal:font:style" value="''" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.13.04'">
+	<mvt:assign name="l.settings:instance:advanced:padding:value" value="'auto'" />
+</mvt:if>

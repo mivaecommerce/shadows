@@ -302,52 +302,40 @@ const themeFunctionality = {
 		/**
 		 * Estimate Shipping
 		 */
-		(document => {
-			let formElement = _hook('shipping-estimate-form');
+		(() => {
+			const form = _hook('shipping-estimate-form');
 
-			if (formElement.length > 0) {
-				let formButton = _hook('calculate-shipping-estimate', formElement);
-
-				function createCalculation() {
-					let processor = document.createElement('iframe');
-
-					processor.id = 'calculate-shipping';
-					processor.name = 'calculate-shipping';
-					processor.style.display = 'none';
-					formElement.before(processor);
-					processor.addEventListener('load', () => {
-						displayResults(processor);
-					});
-					formElement.submit();
-				}
-
-				function displayResults(source) {
-					let content = source.contentWindow.document.body.innerHTML;
-
-					_hook('shipping-estimate-fields', formElement).classList.add('u-hidden');
-					_hook('shipping-estimate-results', formElement).innerHTML = content;
-					_hook('shipping-estimate-recalculate', formElement).classList.remove('u-hidden');
-					formElement.setAttribute('data-status', 'idle');
-
-					_hook('shipping-estimate-recalculate', formElement).addEventListener('click', () => {
-						_hook('shipping-estimate-recalculate', formElement).classList.add('u-hidden');
-						_hook('shipping-estimate-results', formElement).innerHTML = '';
-						_hook('shipping-estimate-fields', formElement).classList.remove('u-hidden');
-					});
-
-					setTimeout(
-						() => {
-							source.parentNode.removeChild(source);
-						}, 1
-					);
-				}
-
-				formButton.addEventListener('click', event => {
-					event.preventDefault();
-					createCalculation();
-				}, false);
+			if (!form.length) {
+				return;
 			}
-		})(document);
+
+			const displayResults = (results) => {
+				_hook('shipping-estimate-fields', form).classList.add('u-hidden');
+				_hook('shipping-estimate-results', form).innerHTML = results;
+				_hook('shipping-estimate-recalculate', form).classList.remove('u-hidden');
+
+				_hook('shipping-estimate-recalculate', form).addEventListener('click', () => {
+					_hook('shipping-estimate-recalculate', form).classList.add('u-hidden');
+					_hook('shipping-estimate-results', form).innerHTML = '';
+					_hook('shipping-estimate-fields', form).classList.remove('u-hidden');
+				});
+			};
+
+			const onFormSubmit = event => {
+				event.preventDefault();
+
+				fetch(form.action, {
+					method: form.method,
+					body: new FormData(form)
+				})
+				.then(response => response.text())
+				.then(responseText => {
+					displayResults(responseText);
+				});
+			};
+
+			form.addEventListener('submit', onFormSubmit);
+		})();
 	},
 	jsORDL() {
 		document.addEventListener('click', event => {
@@ -427,7 +415,6 @@ const themeFunctionality = {
 								cardInput.classList.add('has-error');
 							}
 						});
-
 					});
 				});
 			}

@@ -25,7 +25,7 @@
 							<div class="c-dialog__overlay" tabindex="-1">
 								<div class="c-dialog__container u-width-10 u-width-8--s u-width-6--l u-width-4--xl" aria-modal="true" role="alertdialog">
 									<header class="c-dialog__header">
-										<h2 id="address-validation-title" class="c-dialog__title c-heading-echo">
+										<h2 id="address-validation-title" class="c-dialog__title c-heading-echo mm-theme-typography-title-three">
 											&mvte:charge:name;
 										</h2>
 										<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>

@@ -6,7 +6,7 @@
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 			</header>
 			<div class="c-dialog__content">
-				<form data-hook="shipping-estimate-form" method="post" name="shipestimate_form" action="&mvte:urls:SERT:auto;" target="calculate-shipping">
+				<form data-hook="shipping-estimate-form" method="post" name="shipestimate_form" action="&mvte:urls:SERT:auto;">
 					<fieldset>
 						<legend>Estimate Shipping</legend>
 						<div class="c-form-list" data-hook="shipping-estimate-fields">

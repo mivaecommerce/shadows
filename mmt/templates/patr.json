@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 10.1301,
-                    "settings_version": "10.13.03"
+                    "settings_version": "10.13.04"
                 },
                 "advanced": {
                     "update_url_with_variant_id": {
@@ -118,6 +118,9 @@
                                             "visible": 1
                                         },
                                         "price": {
+                                            "visible": 0
+                                        },
+                                        "product_charges_table_width": {
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
@@ -255,6 +258,9 @@
                                                         "value": "sale",
                                                         "visible": 1
                                                     },
+                                                    "product_charges_table_width": {
+                                                        "visible": 0
+                                                    },
                                                     "quantity_input_size": {
                                                         "visible": 0
                                                     },
@@ -361,6 +367,9 @@
                                                         "value": "retail",
                                                         "visible": 1
                                                     },
+                                                    "product_charges_table_width": {
+                                                        "visible": 0
+                                                    },
                                                     "quantity_input_size": {
                                                         "visible": 0
                                                     },
@@ -431,6 +440,9 @@
                                             "visible": 0
                                         },
                                         "price": {
+                                            "visible": 0
+                                        },
+                                        "product_charges_table_width": {
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
@@ -524,6 +536,9 @@
                                         "price": {
                                             "visible": 0
                                         },
+                                        "product_charges_table_width": {
+                                            "visible": 1
+                                        },
                                         "quantity_input_size": {
                                             "visible": 0
                                         },
@@ -613,6 +628,9 @@
                                             "visible": 0
                                         },
                                         "price": {
+                                            "visible": 0
+                                        },
+                                        "product_charges_table_width": {
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
@@ -737,6 +755,9 @@
                                         "price": {
                                             "visible": 0
                                         },
+                                        "product_charges_table_width": {
+                                            "visible": 0
+                                        },
                                         "quantity_input_size": {
                                             "visible": 0
                                         },
@@ -847,6 +868,9 @@
                                             "visible": 0
                                         },
                                         "price": {
+                                            "visible": 0
+                                        },
+                                        "product_charges_table_width": {
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
@@ -976,6 +1000,9 @@
                                                         "visible": 0
                                                     },
                                                     "price": {
+                                                        "visible": 0
+                                                    },
+                                                    "product_charges_table_width": {
                                                         "visible": 0
                                                     },
                                                     "quantity_input_size": {
@@ -1121,6 +1148,9 @@
                                                                 "price": {
                                                                     "visible": 0
                                                                 },
+                                                                "product_charges_table_width": {
+                                                                    "visible": 0
+                                                                },
                                                                 "quantity_input_size": {
                                                                     "visible": 0
                                                                 },
@@ -1182,6 +1212,9 @@
                                                     "price": {
                                                         "visible": 0
                                                     },
+                                                    "product_charges_table_width": {
+                                                        "visible": 0
+                                                    },
                                                     "quantity_input_size": {
                                                         "visible": 0
                                                     },
@@ -1238,6 +1271,9 @@
                                             "visible": 0
                                         },
                                         "price": {
+                                            "visible": 0
+                                        },
+                                        "product_charges_table_width": {
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
@@ -1299,6 +1335,9 @@
                                 "visible": 0
                             },
                             "price": {
+                                "visible": 0
+                            },
+                            "product_charges_table_width": {
                                 "visible": 0
                             },
                             "quantity_input_size": {

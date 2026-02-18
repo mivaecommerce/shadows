@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "10.13.03",
+	"version": "10.13.04",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -2240,6 +2240,29 @@
 													}
 												},
 												{
+													"code": "product_charges_table_width",
+													"options": [
+														{
+															"text": "Full",
+															"value": "full"
+														},
+														{
+															"text": "Narrow",
+															"value": "narrow"
+														}
+													],
+													"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%__child-%index%",
+													"prompt": "Table Width",
+													"type": "select",
+													"visibility_conditions": {
+														"type": {
+															"value": [
+																"product-charges"
+															]
+														}
+													}
+												},
+												{
 													"code": "volume_pricing_table_settings",
 													"prompt": "Volume Pricing Settings",
 													"properties": [
@@ -4110,6 +4133,29 @@
 												"type": {
 													"value": [
 														"images"
+													]
+												}
+											}
+										},
+										{
+											"code": "product_charges_table_width",
+											"options": [
+												{
+													"text": "Full",
+													"value": "full"
+												},
+												{
+													"text": "Narrow",
+													"value": "narrow"
+												}
+											],
+											"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%__child-%index%",
+											"prompt": "Table Width",
+											"type": "select",
+											"visibility_conditions": {
+												"type": {
+													"value": [
+														"product-charges"
 													]
 												}
 											}
@@ -5990,6 +6036,29 @@
 									}
 								},
 								{
+									"code": "product_charges_table_width",
+									"options": [
+										{
+											"text": "Full",
+											"value": "full"
+										},
+										{
+											"text": "Narrow",
+											"value": "narrow"
+										}
+									],
+									"preview_property_selector": ":shadow #detail__child-%index%__child-%index%__child-%index%",
+									"prompt": "Table Width",
+									"type": "select",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"product-charges"
+											]
+										}
+									}
+								},
+								{
 									"code": "volume_pricing_table_settings",
 									"prompt": "Volume Pricing Settings",
 									"properties": [
@@ -7860,6 +7929,29 @@
 								"type": {
 									"value": [
 										"images"
+									]
+								}
+							}
+						},
+						{
+							"code": "product_charges_table_width",
+							"options": [
+								{
+									"text": "Full",
+									"value": "full"
+								},
+								{
+									"text": "Narrow",
+									"value": "narrow"
+								}
+							],
+							"preview_property_selector": ":shadow #detail__child-%index%__child-%index%",
+							"prompt": "Table Width",
+							"type": "select",
+							"visibility_conditions": {
+								"type": {
+									"value": [
+										"product-charges"
 									]
 								}
 							}
@@ -9740,6 +9832,29 @@
 					}
 				},
 				{
+					"code": "product_charges_table_width",
+					"options": [
+						{
+							"text": "Full",
+							"value": "full"
+						},
+						{
+							"text": "Narrow",
+							"value": "narrow"
+						}
+					],
+					"preview_property_selector": ":shadow #detail__child-%index%",
+					"prompt": "Table Width",
+					"type": "select",
+					"visibility_conditions": {
+						"type": {
+							"value": [
+								"product-charges"
+							]
+						}
+					}
+				},
+				{
 					"code": "volume_pricing_table_settings",
 					"prompt": "Volume Pricing Settings",
 					"properties": [
@@ -10835,7 +10950,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-0cvPxIULHXcH1LDEtnwpU9K+Gjlsc1qNBXGnSr91IdA= sha384-H6z+BAeDoj+Us1gdMimhY7iCiNyrWOKwIywjn0jFS8gAY6ZjCJOpaiD45X3g40OD sha512-b1PbG5GTBztWJBJEbVoXDa48pOGgiT0jb3uhbWXpG7mF3jhsxomI/+/L9iuaE7O03bdEtvI92ITUPhiwK3J/Pg=="
+					"value": "sha256-BS/w71X1P5yVYfBfUr6mUnhkaH6x0bspaQHH8CluRuk= sha384-38k7Up6qUQ53rl7+FBuG+Tf9mCGHQMDstHpgS+wQs+KgvURxrHIlOCKCshevJAhy sha512-N0iwTwGDJaGjytVg7Vxnc1NJ3whkYl8tCMDDHJ8KFByRhAWFUK5yMFut8sO2oi0JSdBqH6XcdZWBM7dVR1szNw=="
 				},
 				{
 					"name": "crossorigin",
@@ -10863,7 +10978,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-/AQ7a5Cfh35Q96LBkCLlPO71aOhWabekBqw3yw9P4hY= sha384-eJe7eyoaVMeQPoJT0WXkl6neUqRFmf1t31mK1T9ZrHLtz9GtnvqNcF/QCHsCDhYf sha512-g5twgs8tJi2AsVotOtp+os4hWvaZwBs200EHWfQpx8eF/vanr7mrDIB0+EWeh6qbRUxT0rFSpU1mY5ln58xPIA=="
+					"value": "sha256-O/5YKKgW+XFuzkqp/7EPTbIMtz2hYWrP8V303gGSUiU= sha384-VNk0kpwXikvxTyvdh/biWi7B7ya6UO7pNQJAgTCaRdOflUu+FPkdvVEKLm9JdLxB sha512-u2NIn+9265LGHqb1pmfODR+nVBBh9Rmj8QEarCxGFSVLxKHYNDVkaNxOBX2yawjGGc1wPdEMNvvIB+R41zL85w=="
 				},
 				{
 					"name": "crossorigin",
@@ -10873,17 +10988,17 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=10.13.03",
-		"mmx-base": "=10.13.03",
-		"mmx-button": "=10.13.03",
-		"mmx-dialog": "=10.13.03",
-		"mmx-featured-product": "=10.13.03",
-		"mmx-forms": "=10.13.03",
-		"mmx-icons": "=10.13.03",
-		"mmx-image-gallery": "=10.13.03",
-		"mmx-messages": "=10.13.03",
-		"mmx-product-fitment-list": "=10.13.03",
-		"mmx-tabs": "=10.13.03",
-		"mmx-text": "=10.13.03"
+		"mmx-accordion": "=10.13.04",
+		"mmx-base": "=10.13.04",
+		"mmx-button": "=10.13.04",
+		"mmx-dialog": "=10.13.04",
+		"mmx-featured-product": "=10.13.04",
+		"mmx-forms": "=10.13.04",
+		"mmx-icons": "=10.13.04",
+		"mmx-image-gallery": "=10.13.04",
+		"mmx-messages": "=10.13.04",
+		"mmx-product-fitment-list": "=10.13.04",
+		"mmx-tabs": "=10.13.04",
+		"mmx-text": "=10.13.04"
 	}
 }

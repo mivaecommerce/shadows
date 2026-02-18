@@ -2,7 +2,7 @@
 	"code": "mmx-text-area",
 	"name": "Text Area",
 	"type": "component",
-	"version": "10.13.03",
+	"version": "10.13.04",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-area",
 	"category": "text-area",
@@ -713,6 +713,33 @@
 				}
 			],
 			"type": "group"
+		},
+		{
+			"code": "padding",
+			"options": [
+				{
+					"text": "Auto",
+					"value": "auto"
+				},
+				{
+					"text": "Large",
+					"value": "l"
+				},
+				{
+					"text": "Medium",
+					"value": "m"
+				},
+				{
+					"text": "Small",
+					"value": "s"
+				},
+				{
+					"text": "None",
+					"value": "none"
+				}
+			],
+			"prompt": "Padding",
+			"type": "select"
 		}
 	],
 	"defaults": {
@@ -798,9 +825,9 @@
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
 	"depends": {
-		"mmx-base": "=10.13.03",
-		"mmx-button": "=10.13.03",
-		"mmx-hero": "=10.13.03",
-		"mmx-text": "=10.13.03"
+		"mmx-base": "=10.13.04",
+		"mmx-button": "=10.13.04",
+		"mmx-hero": "=10.13.04",
+		"mmx-text": "=10.13.04"
 	}
 }

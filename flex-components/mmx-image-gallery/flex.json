@@ -2,7 +2,7 @@
 	"code": "mmx-image-gallery",
 	"name": "MMX Image Gallery",
 	"type": "library",
-	"version": "10.13.03",
+	"version": "10.13.04",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-gallery",
 	"scripts": [
@@ -54,8 +54,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.03",
-		"mmx-hero": "=10.13.03",
-		"mmx-hero-slider": "=10.13.03"
+		"mmx-base": "=10.13.04",
+		"mmx-hero": "=10.13.04",
+		"mmx-hero-slider": "=10.13.04"
 	}
 }

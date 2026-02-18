@@ -80,6 +80,10 @@
 	width: 100%;
 }
 
+[part~="fragment"] mmx-text::part(text__inner) {
+	display: block;
+}
+
 [part~="add-to-cart-message"] {
 	display: block;
 	margin-top: var(--mmx-product-details__size);
@@ -147,11 +151,20 @@
 	color: var(--mmx-color-grey-05);
 }
 
+[part~="product-charges__group"],
 [part~="product-charges__list"] {
 	color: var(--mmx-color-grey-06);
 	display: grid;
 	gap: 0 0.5rem;
 	grid-template-columns: repeat(2, auto);
+}
+
+[part~="product-charges__group--narrow"] {
+	grid-template-columns: minmax(0, max-content) max-content;
+}
+
+[part~="product-charges__group"] > [part~="product-charges__list"] {
+	display: contents;
 }
 
 [part~="product-charges__charge"] {

@@ -1845,17 +1845,21 @@ class MMX_ProductDetails extends MMX_Element {
 		totals.productCharges = this.#product.price + totals.charges;
 		totals.productChargesOriginal = this.#product.base_price + totals.charges;
 
+		const width = detail?.product_charges_table_width?.value === 'narrow' ? 'narrow' : 'full';
+
 		return /*html*/`
-			${this.#renderProductChargesBaseProduct(totals)}
-			<div part="product-charges__list">
-				${this.#renderProductChargesDiscounts(detail)}
-			</div>
-			<div part="product-charges__list">
-				${charges.map(charge => {
-					return this.#renderProductCharge({charge, detail});
-				}).join('')}
-				${this.#renderProductChargesSubtotal(totals)}
-			</div>
+				<div part="product-charges__group product-charges__group--${width}">
+					${this.#renderProductChargesBaseProduct(totals)}
+					<div part="product-charges__list">
+						${this.#renderProductChargesDiscounts(detail)}
+					</div>
+					<div part="product-charges__list">
+						${charges.map(charge => {
+							return this.#renderProductCharge({charge, detail});
+						}).join('')}
+						${this.#renderProductChargesSubtotal(totals)}
+					</div>
+				</div>
 		`;
 	}
 

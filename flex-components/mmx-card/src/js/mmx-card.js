@@ -155,9 +155,9 @@ class MMX_ProductCard extends MMX_Card {
 
 	onDataChange() {
 		this.#product = this.data?.product ?? this.#product;
-		this.#swatchAttribute = this.#getSwatchAttribute();
 		this.#card = this.data?.card ?? this.#card;
 		this.#details = this.data?.details ?? this.#card?.details?.children ?? this.#details;
+		this.#swatchAttribute = this.#getSwatchAttribute();
 	}
 
 	render() {
@@ -364,29 +364,30 @@ class MMX_ProductCard extends MMX_Card {
 			return undefined;
 		}
 
+		return this.#getFlatAttributes().find(attribute => this.#isSwatchAttribute(attribute));
+	}
+
+	#getFlatAttributes() {
+		const flatAttributes = [];
+
 		for (const attribute of this.#product.attributes) {
 			if (attribute.type === 'template') {
 				for (const templateAttribute of attribute.attributes) {
-					if (this.#isSwatchAttribute(templateAttribute)) {
-						return {
-							id: attribute.id,
-							type: templateAttribute.type,
-							options: templateAttribute.options,
-							templateAttributeId: templateAttribute.id,
-						};
-					}
+					flatAttributes.push({
+						...templateAttribute,
+						id: attribute.id,
+						templateAttributeId: templateAttribute.id
+					});
 				}
 			}
-			else if (this.#isSwatchAttribute(attribute)) {
-				return {
-					id: attribute.id,
-					type: attribute.type,
-					options: attribute.options
-				};
+			else {
+				flatAttributes.push({
+					...attribute
+				});
 			}
 		}
 
-		return undefined;
+		return flatAttributes;
 	}
 
 	#isSwatchAttribute(attribute = {}) {
@@ -476,21 +477,60 @@ class MMX_ProductCard extends MMX_Card {
 	}
 
 	#loadVariantFromSelectedSwatchButton(button) {
-		const option = this.#getOptionFromSwatchButton(button);
+		const selections = this.#getSelections(button);
 
 		MMX.Runtime_JSON_API_Call({
 			params: {
 				Function: 'Runtime_AttributeList_Load_ProductVariant_Possible',
 				Product_Code: this.#product.code,
-				Selected_Attribute_IDs: this.#swatchAttribute?.id,
-				Selected_AttributeTemplateAttribute_IDs: this.#swatchAttribute?.templateAttributeId,
-				Selected_Option_IDs: option.id,
-				Selected_Attribute_Types: this.#swatchAttribute?.type
+				Selected_Attribute_IDs: selections.attributeIds,
+				Selected_AttributeTemplateAttribute_IDs: selections.templateAttributeIds,
+				Selected_Option_IDs: selections.optionIds,
+				Selected_Attribute_Types: selections.attributeTypes
 			}
 		})
 			.then(response => {
 				this.#handleLoadedVariant(response);
 			});
+	}
+
+	#getSelections(button) {
+		const selections = {
+			attributeTypes: [],
+			attributeIds: [],
+			templateAttributeIds: [],
+			optionIds: []
+		};
+
+		this.#getFlatAttributes().forEach(attribute => {
+			if (MMX.isFalsy(attribute?.inventory)) {
+				return;
+			}
+
+			selections.attributeTypes.push(attribute.type);
+			selections.attributeIds.push(attribute.id);
+
+			if (attribute.templateAttributeId) {
+				selections.templateAttributeIds.push(attribute.templateAttributeId);
+			}
+
+			if (attribute.options) {
+				const isSwatchAttribute = attribute.disp_order === this.#swatchAttribute.disp_order;
+				const option = isSwatchAttribute ? this.#getOptionFromSwatchButton(button) : this.#getOptionFromAttribute(attribute);
+
+				selections.optionIds.push(option?.id);
+			}
+		});
+
+		return selections;
+	}
+
+	#getOptionFromAttribute(attribute) {
+		if (attribute.default_id > 0) {
+			return attribute.options.find(option => option.id === attribute.default_id);
+		} else {
+			return attribute.options.at(0);
+		}
 	}
 
 	#getOptionFromSwatchButton(button) {

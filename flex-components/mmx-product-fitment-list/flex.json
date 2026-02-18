@@ -2,7 +2,7 @@
 	"code": "mmx-product-fitment-list",
 	"name": "Product Fitment List",
 	"type": "component",
-	"version": "10.13.03",
+	"version": "10.13.04",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-fitment-list",
 	"category": "product-fitment-list",
@@ -456,8 +456,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.03",
-		"mmx-messages": "=10.13.03",
-		"mmx-text": "=10.13.03"
+		"mmx-base": "=10.13.04",
+		"mmx-messages": "=10.13.04",
+		"mmx-text": "=10.13.04"
 	}
 }

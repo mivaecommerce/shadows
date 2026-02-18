@@ -713,6 +713,11 @@
 		grid-area: 3/1/4/6;
 	}
 }
+.apple-pay-button {
+	width: 100%;
+	height: 3.5rem;
+}
+
 /* Checkout Pages
     =========================================== */
 .t-logn-block {

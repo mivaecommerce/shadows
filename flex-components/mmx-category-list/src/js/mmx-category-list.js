@@ -188,6 +188,10 @@ class MMX_CategoryList extends MMX_Element {
 
 	// Categories
 	#renderCategories() {
+		if (MMX.arrayIsEmpty(this.#categories)) {
+			return '';
+		}
+
 		return /*html*/`
 			<div
 				class="mmx-category-list__categories"
@@ -208,7 +212,7 @@ class MMX_CategoryList extends MMX_Element {
 	}
 
 	#createCategories() {
-		if (!Array.isArray(this.#categories)){
+		if (!Array.isArray(this.#categories)) {
 			return '';
 		}
 

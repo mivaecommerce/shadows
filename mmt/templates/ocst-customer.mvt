@@ -389,6 +389,8 @@
 			</script>
 		</mvt:if>
 
+		<mvt:item name="readytheme" param="contentsection( 'mvsendlane_configuration' )" />
+
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--m">
 				<input class="c-button c-button--full-small" type="submit" value="Continue to Shipping">
