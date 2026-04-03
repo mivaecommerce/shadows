@@ -14,7 +14,7 @@
 }
 
 :focus-visible {
-	outline: 2px solid var(--mmx-color-focus);
+	outline: var(--mmx-button-outline--focus);
 }
 
 .mmx-product-list {

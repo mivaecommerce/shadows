@@ -23,13 +23,13 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l o-layout--no-wrap">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<h1 class="c-heading-delta">
+			<h1 class="mm-theme-typography-title-two">
 				&mvte:wishlist:title;
 				<mvt:if expr="l.settings:wishlist:cust_id EQ g.Basket:cust_id AND g.Customer_Session_Verified">
 					<mvt:if expr="l.settings:wishlist:shared">
-						<strong class="c-heading--subheading--x-small"> [Public]</strong>
+						<strong class="mm-theme-typography-subheading-extra-small"> [Public]</strong>
 					<mvt:else>
-						<strong class="c-heading--subheading--x-small u-color-red"> [Private]</strong>
+						<strong class="mm-theme-typography-subheading-extra-small u-color-red"> [Private]</strong>
 					</mvt:if>
 				</mvt:if>
 			</h1>
@@ -38,8 +38,8 @@
 			</mvt:if>
 			<mvt:if expr="l.settings:wishlist:cust_id EQ g.Basket:cust_id AND g.Customer_Session_Verified">
 				<p class="c-form-inline-set">
-					<a class="c-button" href="&mvte:urls:WLED:auto_sep;WishList_ID=&mvta:wishlist:id;">Edit</a>
-					<a class="c-button c-button--secondary" href="&mvte:urls:WLST:secure_sep;Action=DWSH&WishList_ID=&mvta:wishlist:id;" onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone\x0A\x0AContinue?' ) ) return false;">Delete</a>
+					<a class="mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:WLED:auto_sep;WishList_ID=&mvta:wishlist:id;">Edit</a>
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small" href="&mvte:urls:WLST:secure_sep;Action=DWSH&WishList_ID=&mvta:wishlist:id;" onClick="if ( !confirm( 'Are you sure you want to delete your wish list? This action cannot be undone\x0A\x0AContinue?' ) ) return false;">Delete</a>
 				</p>
 				<mvt:if expr="l.settings:wishlist:shared">
 					<p class="x-messages x-messages--info">
@@ -47,9 +47,9 @@
 					</p>
 				</mvt:if>
 			</mvt:if>
-			
+
 			<mvt:item name="wishlistitems" />
-			
+
 			<mvt:if expr="l.settings:wishlistitems:item_count AND ISNULL g.Edit_Wish">
 				<form method="post" action="&mvte:urls:BASK:secure;">
 					<fieldset>
@@ -71,7 +71,7 @@
 			</mvt:if>
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

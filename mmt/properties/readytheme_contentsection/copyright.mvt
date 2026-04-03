@@ -1,4 +1,4 @@
-<section class="o-layout o-layout--flush u-color-gray-600 u-text-center t-site-footer__copyright">
+<section class="o-layout o-layout--flush t-site-footer__copyright">
 	<p class="o-layout__item">
 		&copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company; All Rights Reserved
 		<mvt:if expr="g.Session:shadows:page_style EQ 'minimal'">

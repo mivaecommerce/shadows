@@ -16,11 +16,11 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="header" />
@@ -32,7 +32,7 @@
 			<mvt:item name="sitemap" />
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

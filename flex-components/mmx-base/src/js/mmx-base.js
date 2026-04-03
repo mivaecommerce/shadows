@@ -75,6 +75,18 @@ MMX.scriptSafeJSONStringify = (data) => {
 	return JSON.stringify(data).replace(/\//gi, '\\/');
 };
 
+MMX.getCustomFieldValueFromRecord = (customField = '', record = {}) => {
+	const customFieldParts = customField?.split?.(':');
+
+	if (customFieldParts?.length !== 2) {
+		return '';
+	}
+
+	const [moduleCode, fieldCode] = customFieldParts;
+
+	return record?.CustomField_Values?.[moduleCode]?.[fieldCode];
+};
+
 MMX.valueIsEmpty = (value) => {
 	if (value === null)											return true;
 	else if (typeof value === 'object')							return Object.keys(value).length === 0 && value.constructor === Object;

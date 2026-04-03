@@ -5,8 +5,8 @@
             "item_code": "hero",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -170,8 +170,8 @@
             "item_code": "hero-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -330,13 +330,26 @@
             "item_code": "product-carousel",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "settings": {
                         "additional_price": {
                             "value": "base",
+                            "visible": 1
+                        },
+                        "additional_price_typography": {
+                            "code": "paragraph-s",
+                            "customizations": {
+                                "styles": {
+                                    "color": {
+                                        "value": "var(--mmx-product-additional-price-color)"
+                                    },
+                                    "overwrite_color": 1
+                                }
+                            },
+                            "theme_mode": 1,
                             "visible": 1
                         },
                         "button": {
@@ -364,6 +377,19 @@
                         "displayed_price": {
                             "value": "sale"
                         },
+                        "displayed_price_typography": {
+                            "code": "paragraph-s",
+                            "customizations": {
+                                "styles": {
+                                    "color": {
+                                        "value": "var(--mmx-product-price-color)"
+                                    },
+                                    "overwrite_color": 1
+                                }
+                            },
+                            "theme_mode": 1,
+                            "visible": 1
+                        },
                         "fragment_code": {
                             "value": "product_list_additional_data"
                         },
@@ -378,6 +404,10 @@
                         },
                         "per_page": {
                             "value": "1,3,5"
+                        },
+                        "product_name_typography": {
+                            "code": "paragraph-s",
+                            "theme_mode": 1
                         }
                     }
                 },
@@ -464,8 +494,8 @@
             "item_code": "six-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -720,8 +750,8 @@
             "item_code": "text-banner",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -838,8 +868,8 @@
             "item_code": "text-banner-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -952,8 +982,8 @@
             "item_code": "text-banner-3",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -1066,8 +1096,8 @@
             "item_code": "three-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -1274,8 +1304,8 @@
             "item_code": "two-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "content_theme": {

@@ -3,7 +3,7 @@
 <mvt:else>
 	<table class="c-table-simple">
 		<thead>
-			<tr class="c-table-simple__row">
+			<tr class="c-table-simple__row mm-theme-typography-subheading-extra-small">
 				<th class="u-text-left" scope="col">Shipping Method</th>
 				<th class="u-text-right" scope="col">Price</th>
 			</tr>

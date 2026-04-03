@@ -15,7 +15,7 @@
 	l.settings:instance:products:product_set:value EQ 'auto' OR
 	(
 		(
-			l.settings:instance:products:product_set:value EQ 'category' OR 
+			l.settings:instance:products:product_set:value EQ 'category' OR
 			l.settings:instance:products:product_set:value EQ 'hybrid'
 		) AND l.settings:instance:products:category_source:value EQ 'auto'
 	)
@@ -83,9 +83,29 @@
 		</mmx-text>
 	</mvt:if>
 
-	<mvt:if expr="l.settings:instance:advanced:settings:button:settings:enabled AND l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:theme_available AND NOT ISNULL l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet">
+	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:comment> Theme Buttons </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet" />
+		</mvt:if>
+
+		<mvt:comment> Theme Typography </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:settings:product_name_typography:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:settings:product_name_typography:stylesheet" />
+		</mvt:if>
+
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:settings:displayed_price_typography:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:settings:displayed_price_typography:stylesheet" />
+		</mvt:if>
+
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:settings:additional_price_typography:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:settings:additional_price_typography:stylesheet" />
+		</mvt:if>
+	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+	<mvt:if expr="NOT ISNULL l.theme_stylesheet">
 		<template data-theme-stylesheet>
-			&mvt:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet;
+			<mvt:eval expr="l.theme_stylesheet" />
 		</template>
 	</mvt:if>
 </mmx-product-carousel>

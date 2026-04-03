@@ -1,0 +1,60 @@
+{
+	"code": "mmx-rating",
+	"name": "MMX Rating",
+	"type": "library",
+	"version": "26.01.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-rating",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-rating.js",
+			"resource_code": "mmx-rating",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-jupf+RghTUwKdU9pB5XEtQmjBDUNtIjxUwP6egRK1xo= sha384-t7Ks36Sh2s0Pri2EtiZbOi9bHWFDDdjR+ZeXpvmrmGS6GG58SkyD2IdeTFpQRQen sha512-rybsFQDpaZtAaexoue4TWC/H4/UINYYQZ60b78sVIlR5b0k1qptRc6lgDTQgSzIYcHkfLoSH8mNMJYRKb5tUJQ=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-rating.css",
+			"resource_code": "mmx-rating",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "media",
+					"value": "all"
+				},
+				{
+					"name": "rel",
+					"value": "stylesheet"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-5FF9MkcZexeBiDisSCUE4VmxxP8prvDVnGknrbKz960= sha384-8BTX6Ahvedf7qTk6ivm0OXY6j5Xk1ng74fdZqZeQC6GiymPK+Iu6i+ZpsKNi3HVK sha512-c8EytjnUixoo9Sm8NJWRRR7kbrs/i6c7vhrYKAuth/e8w/Bs2iMg/St5TUO/r3tGBLAUmkExPF8a0UwgYACHeA=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=26.01.00",
+		"mmx-icons": "=26.01.00"
+	}
+}

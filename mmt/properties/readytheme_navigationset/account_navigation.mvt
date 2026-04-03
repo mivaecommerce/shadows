@@ -2,33 +2,33 @@
 	<section class="x-category-tree x-collapsible-content t-account-landing-section">
 		<div class="x-category-tree__title">
 			<mvt:if expr="l.settings:page:code NE 'ACLN'">
-				<a class="x-category-tree__heading" href="&mvte:urls:ACLN:auto;">My Dashboard</a>
+				<a class="x-category-tree__heading mm-theme-typography-title-four" href="&mvte:urls:ACLN:auto;">My Dashboard</a>
 			</mvt:if>
 		</div>
-		<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Account Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<button class="x-category-tree__label x-collapsible-content__toggle mm-theme-typography-subheading-extra-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Account Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<ul id="&mvte:readytheme:code;" class="x-category-tree__row x-collapsible-content__item t-account-landing-section__content">
 			<mvt:foreach array="readytheme:navigationitems" iterator="navigationitem">
 				<li class="x-category-tree__list x-category-tree__list--level-1 x-category-tree__section-title">
 					<mvt:if expr="l.settings:navigationitem:url">
 						<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
-							<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem:url;">&mvt:navigationitem:name;</a>
+							<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem:url;">&mvt:navigationitem:name;</a>
 						<mvt:else>
-							<a class="x-category-tree__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+							<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
 						</mvt:if>
 					<mvt:else>
-						<span class="x-category-tree__link-set">&mvt:navigationitem:name;</span>
+						<span class="mm-theme-typography-subheading-small">&mvt:navigationitem:name;</span>
 					</mvt:if>
 				</li>
 				<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
 					<mvt:foreach array="navigationitem:items" iterator="navigationitem_level2">
 						<li class="x-category-tree__list x-category-tree__list--level-1">
 							<mvt:if expr="l.settings:navigationitem_level2:link_dest EQ l.settings:page:code">
-								<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level2:url;">&mvt:navigationitem_level2:name;</a>
+								<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level2:url;">&mvt:navigationitem_level2:name;</a>
 							<mvt:else>
 								<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
-									<span class="x-category-tree__text">&mvt:navigationitem_level2:name;</span>
+									<span class="mm-theme-typography-subheading-extra-small">&mvt:navigationitem_level2:name;</span>
 								<mvt:else>
-									<a class="x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
+									<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
 								</mvt:if>
 							</mvt:if>
 						</li>
@@ -36,12 +36,12 @@
 							<mvt:foreach array="navigationitem_level2:items" iterator="navigationitem_level3">
 								<li class="x-category-tree__list x-category-tree__list--level-1">
 									<mvt:if expr="l.settings:navigationitem_level3:link_dest EQ l.settings:page:code">
-										<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level3:url;">&mvt:navigationitem_level3:name;</a>
+										<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level3:url;">&mvt:navigationitem_level3:name;</a>
 									<mvt:else>
 										<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
-											<span class="x-category-tree__text">&mvt:navigationitem_level3:name;</span>
+											<span class="mm-theme-typography-paragraph-small">&mvt:navigationitem_level3:name;</span>
 										<mvt:else>
-											<a class="x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+											<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
 										</mvt:if>
 									</mvt:if>
 								</li>
@@ -51,7 +51,7 @@
 				</mvt:if>
 			</mvt:foreach>
 			<li class="x-category-tree__list x-category-tree__list--level-1 x-category-tree__section-title">
-				<a class="x-category-tree__link u-text-underline" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Out">Log Out</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium x-category-tree__link" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Out">Log Out</a>
 			</li>
 			<li class="x-category-tree__list">
 				<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />

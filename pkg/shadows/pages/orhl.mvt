@@ -16,7 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -24,7 +24,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">Sign in to view your order history.</p>
+			<p class="mm-theme-typography-title-four">Sign in to view your order history.</p>
 			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off">
 				<fieldset>
 					<legend>&mvt:page:name; Account Log In</legend>
@@ -45,7 +45,7 @@
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<p>
-								<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+								<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
 							</p>
 							<p>
 								<mvt:item name="buttons" param="Login" />
@@ -56,7 +56,7 @@
 			</form>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">Find your order</p>
+			<p class="mm-theme-typography-title-four">Find your order</p>
 			<form method="post" action="&mvte:urls:ORDS:secure;" autocomplete="off">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
@@ -70,14 +70,14 @@
 							<input id="l-Order_BillEmail" class="c-form-input" type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<input class="c-button c-button--secondary c-button--full" type="submit" value="Find Order">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Find Order">
 						</div>
 					</div>
 				</fieldset>
 			</form>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

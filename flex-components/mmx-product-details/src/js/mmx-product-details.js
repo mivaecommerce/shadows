@@ -176,14 +176,8 @@ class MMX_ProductDetails extends MMX_Element {
 	#getSearchFilters() {
 		return [
 			{
-				name: 'search',
-				value: [
-					{
-						field: 'code',
-						operator: 'EQ',
-						value: this.getPropValue('product-code')
-					}
-				]
+				name: 'product_display',
+				value: this.getPropValue('product-code')
 			}
 		];
 	}
@@ -357,7 +351,7 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#flatDetails.forEach(detail => {
 			const type = detail?.type?.value;
 
-			if (typeof type !== 'string'){
+			if (typeof type !== 'string') {
 				return;
 			}
 
@@ -576,14 +570,10 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#willRenderCustomField(detail = {}) {
-		const customFieldParts = detail?.customfield?.value?.split?.(':');
-		const [moduleCode, fieldCode] = customFieldParts;
+		const customField = detail?.customfield?.value;
+		const value = MMX.getCustomFieldValueFromRecord(customField, this.#product);
 
-		if (customFieldParts?.length !== 2 || MMX.valueIsEmpty(this.#product?.CustomField_Values?.[moduleCode]?.[fieldCode])) {
-			return false;
-		}
-
-		return true;
+		return !MMX.valueIsEmpty(value);
 	}
 
 	#willRenderDiscounts(detail) {
@@ -783,11 +773,7 @@ class MMX_ProductDetails extends MMX_Element {
 	// Render: Attributes
 	#renderedAttributes = false;
 	#renderAttributes(detail = {}) {
-		if (MMX.arrayIsEmpty(this.#product?.attributes) && MMX.arrayIsEmpty(this.#product?.subscriptionterms)) {
-			return '';
-		}
-
-		if (this.#renderedAttributes) {
+		if (!this.#willRenderAttributes(detail)) {
 			return '';
 		}
 
@@ -928,7 +914,6 @@ class MMX_ProductDetails extends MMX_Element {
 					this.#onReadMoreButtonClick(button);
 				});
 			}
-
 		});
 	}
 
@@ -1172,7 +1157,6 @@ class MMX_ProductDetails extends MMX_Element {
 			if (this.#productIsOutOfStock()) {
 				disabled = 'disabled';
 			}
-
 		} else if (type === 'add-to-wishlist-button') {
 			prop = detail.add_to_wishlist_button;
 			text = MMX.valueIsEmpty(prop?.value) ? 'Add to Wishlist' : prop.value;
@@ -1635,14 +1619,13 @@ class MMX_ProductDetails extends MMX_Element {
 
 	// Render: Custom Field
 	#renderCustomField(detail = {}) {
-		const customFieldParts = detail?.customfield?.value?.split?.(':');
+		const customField = detail?.customfield?.value;
+		const value = MMX.getCustomFieldValueFromRecord(customField, this.#product);
 
-		if (customFieldParts?.length !== 2) {
+		if (MMX.valueIsEmpty(value)) {
 			return '';
 		}
 
-		const [moduleCode, fieldCode] = customFieldParts;
-		const value = this.#product?.CustomField_Values?.[moduleCode]?.[fieldCode];
 		return this.#renderTextDetail({
 			value,
 			detail
@@ -1682,13 +1665,13 @@ class MMX_ProductDetails extends MMX_Element {
 
 	// Render: Fragment
 	#renderFragmentDetail(detail = {}) {
-		const fragmentCode = detail?.fragment?.value;
+    	const fragmentCode = detail?.fragment?.value;
 		const fragmentContent = this.renderProductFragment({
 			product: this.#product,
 			fragmentCode
 		});
 
-		if (MMX.valueIsEmpty(fragmentContent)){
+		if (MMX.valueIsEmpty(fragmentContent)) {
 			return '';
 		}
 
@@ -1698,6 +1681,7 @@ class MMX_ProductDetails extends MMX_Element {
 			<mmx-text
 				part="fragment__${MMX.encodeEntities(fragmentCode)}"
 				data-hide-on-empty="false"
+				data-spacing="none"
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-align="${MMX.encodeEntities(detail?.text_styles?.text_align?.value)}"
@@ -1809,10 +1793,10 @@ class MMX_ProductDetails extends MMX_Element {
 		const priceIsDiscounted = salePrice !== this.#product.formatted_retail;
 		let displayPrice = salePrice;
 
-		if (displayType === 'base'){
+		if (displayType === 'base') {
 			displayPrice = this.#product.formatted_base_price;
 		}
-		else if (displayType === 'retail'){
+		else if (displayType === 'retail') {
 			displayPrice = this.#product.formatted_retail;
 		}
 
@@ -1977,7 +1961,7 @@ class MMX_ProductDetails extends MMX_Element {
 		const disabled = this.#productIsOutOfStock() ? 'disabled' : '';
 		const quantity = MMX.coerceNumber(this.#getRequestParam('Quantity'), 1);
 
-		if (this.#renderedQuantity) {
+		if (!this.#willRenderQuantityInput(detail)) {
 			return '';
 		}
 
@@ -2029,7 +2013,9 @@ class MMX_ProductDetails extends MMX_Element {
 
 		if (element?.part?.contains?.('closeup')) {
 			const imageGallery = element.getRootNode().host;
-			imageGallery.openCloseup();
+			imageGallery.openCloseup({
+				focus: false
+			});
 		}
 	}
 
@@ -2122,7 +2108,6 @@ class MMX_ProductDetails extends MMX_Element {
 				</td>
 			</tr>
 		`;
-
 	}
 
 	// JSON+LD

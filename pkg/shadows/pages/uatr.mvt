@@ -23,7 +23,7 @@
 	<section class="o-layout o-layout--justify-center o-layout--wide t-order-complete-content">
 		<div class="o-layout__item u-width-12">
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
-			<p class="c-heading-foxtrot u-text-center">There are some required attributes you need to select to continue adding &mvt:product:name; to your cart.</p>
+			<p class="mm-theme-typography-title-four u-text-center">There are some required attributes you need to select to continue adding &mvt:product:name; to your cart.</p>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
 			<form method="post" action="&mvte:urls:_self:rr;">
@@ -34,7 +34,7 @@
 					<mvt:item name="tax" />
 					<div class="c-form-list">
 						<p class="u-font-small"><strong>Bold</strong> fields are required!</p>
-						<div class="o-layout c-form-list__item x-product-layout-purchase__options u-color-gray-40">
+						<div class="o-layout c-form-list__item x-product-layout-purchase__options">
 							<mvt:item name="product_attributes" param="product:id" />
 						</div>
 						<div class="c-form-list__item u-text-right">
@@ -45,7 +45,7 @@
 			</form>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

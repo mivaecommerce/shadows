@@ -4,5 +4,5 @@
 			<img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:searchfield:b_width;" height="&mvte:searchfield:b_height;">
 		</mvt:if>
 	</figure>
-	<span class="x-search-preview__item-name">&mvte:product:name;</span>
+	<span class="x-search-preview__item-name mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvte:product:name;</span>
 </div>

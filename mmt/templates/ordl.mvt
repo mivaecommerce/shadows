@@ -24,17 +24,17 @@
 	<section class="o-layout o-layout--justify-center u-bg-white">
 		<mvt:if expr="g.Basket:sub_count EQ 0">
 			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-input-font-size t-logn-block">
-				<p class="c-heading-foxtrot">Guest Checkout</p>
+				<p class="mm-theme-typography-title-four">Guest Checkout</p>
 				<br>
-				<p><a class="c-button c-button--full" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
-				<p class="u-color-gray-600">You can create an account at Order Confirmation</p>
+				<p><a class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:OCST:secure;" title="Continue As A Guest">Continue As A Guest</a></p>
+				<p>You can create an account at Order Confirmation</p>
 				<mvt:item name="readytheme" param="contentsection( 'paypalcp_configuration' )" />
 				<mvt:item name="readytheme" param="contentsection( 'epmivapay_configuration' )" />
 				<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 			</div>
 		</mvt:if>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-input-font-size t-logn-block">
-			<p class="c-heading-foxtrot">Sign In or Register</p>
+			<p class="mm-theme-typography-title-four">Sign In or Register</p>
 			<div id="sign-in-form" class="t-ordl-form-wrapper" aria-labelledby="register-action" role="region">
 				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
 					<fieldset>
@@ -51,10 +51,10 @@
 							</div>
 							<div class="c-form-list__item c-form-list__item--full">
 								<p>
-									<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+									<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
 								</p>
 								<p>
-									<input class="c-button c-button--full c-button--secondary" type="submit" value="Sign In and Checkout">
+									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Sign In and Checkout">
 								</p>
 							</div>
 						</div>
@@ -79,7 +79,7 @@
 							</div>
 							<div class="c-form-list__item c-form-list__item--full">
 								<p>
-									<input class="c-button c-button--full c-button--secondary" type="submit" value="Register and Checkout">
+									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Register and Checkout">
 								</p>
 							</div>
 						</div>
@@ -87,12 +87,12 @@
 				</form>
 			</div>
 			<p class="u-text-center">
-				<button id="register-action" class="c-button c-button--as-link" aria-controls="register-form" aria-expanded="true" data-disclosure>Register Now</button>
-				<button id="sign-in-action" class="c-button c-button--as-link u-hidden" aria-controls="sign-in-form" aria-expanded="false" data-disclosure>Sign In Instead</button>
+				<button id="register-action" class="mm-theme-button-display-link mm-theme-button-display-link__medium" aria-controls="register-form" aria-expanded="true" data-disclosure>Register Now</button>
+				<button id="sign-in-action" class="mm-theme-button-display-link mm-theme-button-display-link__medium u-hidden" aria-controls="sign-in-form" aria-expanded="false" data-disclosure>Sign In Instead</button>
 			</p>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

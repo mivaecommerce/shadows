@@ -94,6 +94,10 @@ class MMX_Text extends MMX_Element {
 				allowAny: true,
 				isBoolean: true,
 				default: true
+			},
+			spacing: {
+				options: ['auto', 'none'],
+				default: 'auto'
 			}
 		};
 	}
@@ -130,8 +134,7 @@ class MMX_Text extends MMX_Element {
 		else		return this.#renderLegacy();
 	}
 
-	get hideOnEmpty()
-	{
+	get hideOnEmpty() {
 		return this.getPropValue('hide-on-empty');
 	}
 
@@ -144,7 +147,7 @@ class MMX_Text extends MMX_Element {
 		}
 
 		return /*html*/`
-			<${tag} class="mmx-text type-${this.getStyleProp()} ${this.getStyleState()}" part="text" ${this.inheritAttrs()}>
+			<${tag} class="mmx-text type-${this.getStyleProp()} ${this.getStyleState()} ${this.#getSpacingClass()}" part="text" ${this.inheritAttrs()}>
 				<span class="mmx-text__inner" part="text__inner">
 					${this.renderContent()}
 				</span>
@@ -162,7 +165,7 @@ class MMX_Text extends MMX_Element {
 
 		return /*html*/`
 			${this.#renderThemeStylesheet()}
-			<${tag} class="mmx-theme-text ${MMX.encodeEntities(theme_class)}" ${this.inheritAttrs()}>
+			<${tag} class="mmx-theme-text ${MMX.encodeEntities(theme_class)} ${this.#getSpacingClass()}" ${this.inheritAttrs()}>
 				<span class="mmx-text__inner" part="text__inner">
 					${this.renderContent()}
 				</span>
@@ -253,17 +256,17 @@ class MMX_Text extends MMX_Element {
 	getInnerMaxWidth() {
 		const charsPerLine = this.getPropValue('chars-per-line');
 
-		if (charsPerLine === 'none'){
+		if (charsPerLine === 'none') {
 			return 'unset';
 		}
-		else if (charsPerLine === 'ideal'){
+		else if (charsPerLine === 'ideal') {
 			return this.idealCharsPerLine + 'ch';
 		}
-		else if (charsPerLine === 'auto'){
+		else if (charsPerLine === 'auto') {
 			const type = this.getPropValue('style');
 			const isCopyType = this.copyTypes.includes(type);
 
-			if (isCopyType){
+			if (isCopyType) {
 				return 'unset';
 			} else {
 				return this.idealCharsPerLine + 'ch';
@@ -302,8 +305,12 @@ class MMX_Text extends MMX_Element {
 
 		return 'mmx-text--unstyled';
 	}
+
+	#getSpacingClass() {
+		return 'mmx-text__spacing--' + this.getPropValue('spacing');
+	}
 }
 
-if (!customElements.get('mmx-text')){
+if (!customElements.get('mmx-text')) {
 	customElements.define('mmx-text', MMX_Text);
 }

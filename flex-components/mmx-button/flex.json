@@ -2,7 +2,7 @@
 	"code": "mmx-button",
 	"name": "MMX Button",
 	"type": "library",
-	"version": "10.13.04",
+	"version": "26.01.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-button",
 	"scripts": [
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ZP4zq2kIefYOEjmKacCvj9tAx7MQvJi/ou9/Rz2dDSs= sha384-P2uowiZvkbRs7tlw19y3RxhzbmDNLT29J1djUjPDZbheyGS0fMhpRdFkuUSDYgyT sha512-n5Q8mSSzLoqe/p97IvJbmLTXjp+9Le8vdBZCr9+hqu/EFMou+ACwsd97V8svkl3a6Z55FWL3wPO1tZckPxZBeg=="
+					"value": "sha256-OGOMpuhf03C8NNN2FsXOAdDu0r6EeiQ3K8ozMz+Ke6U= sha384-wi9odn4dVNRCdYgcdIXamX8B8XRBU2nFPS09wj778rD+ahqnJbIEaHBXPoO4YmYg sha512-dDHmdFg4FSPHVRAijlYXqWtUncJzjSDOKtT5wUm1hAwojzE8qpQIfRHSGUsBZ8oz0no+mXA+f+WbFOfBeB+a5Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.04"
+		"mmx-base": "=26.01.00"
 	}
 }

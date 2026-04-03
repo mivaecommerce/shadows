@@ -49,8 +49,11 @@
 	/* DEFAULTS */
 	--default-border-radius: 0.25rem;
 	--default-border-width: 1px;
+	--default-button-outline--focus: calc(var(--default-border-width) * 2) solid var(--focus);
 	--default-content-width: 90rem;
 	--default-font-size: var(--paragraph-small);
+	--default-input-border: var(--default-border-width) solid var(--gray-400);
+	--default-input-border--focus: var(--default-border-width) solid var(--gray-600);
 	--default-input-font-size: 0.8125rem;
 	--default-line-height: 1.5;
 	--default-site-width: 100vw;
@@ -279,6 +282,9 @@ Add the correct display in all browsers.
 :where(summary) {
 	display: list-item;
 }
+:where(summary):focus-visible {
+	outline: var(--default-button-outline--focus);
+}
 
 /* ==========================================================================
    BASE / RESETS
@@ -305,12 +311,10 @@ Add the correct display in all browsers.
 }
 
 /**
-1. Improve consistency of default fonts in all browsers. (https://github.com/sindresorhus/modern-normalize/issues/3)
-2. Remove the margin in all browsers.
+Remove the margin in all browsers.
 */
 :where(body) {
-	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; /* 1 */
-	margin: 0; /* 2 */
+	margin: 0;
 }
 
 /**
@@ -337,13 +341,13 @@ so that we get nice and consistent vertical rhythm very cheaply.
 http://csswizardry.com/2012/06/single-direction-margin-declarations/
 */
 :where(address, blockquote, dl, fieldset, figure, form, h1, h2, h3, h4, h5, h6, menu, ol, p, pre, summary, table, ul) {
-	margin-top: 0;
 	margin-bottom: var(--default-spacing-unit);
+	margin-top: 0;
 }
 
 :where(fieldset, figure) {
-	margin-right: 0;
 	margin-left: 0;
+	margin-right: 0;
 	padding: 0;
 }
 
@@ -393,6 +397,18 @@ Allow for smooth scrolling in an accessible way.
 		scroll-behavior: smooth;
 	}
 }
+/**
+Theme Editor Navigation Buttons should layout like links
+*/
+.mm-theme-button-primary-navigation,
+.mm-theme-button-secondary-navigation {
+	align-items: left;
+	display: inline-block;
+	justify-content: left;
+	position: static;
+	white-space: inherit;
+}
+
 /* ==========================================================================
    ELEMENTS / FORMS
    ========================================================================== */
@@ -425,8 +441,11 @@ legend { /* [1] */
  * them to use ours. This may need reverting as more design information becomes
  * available, and we start putting together more complete forms.
  */
-input {
+input,
+select,
+button {
 	font: inherit;
+	color: inherit;
 }
 
 /* ==========================================================================
@@ -510,7 +529,7 @@ img {
  * High-level, page-level styling.
  */
 html {
-	font-size: 16px;
+	font-size: 16px !important; /* Keep 1rem = 16px for consistency across browsers and to prevent issues with zooming. */
 	height: 100%;
 	line-height: var(--default-line-height);
 	min-height: 100%;
@@ -521,10 +540,8 @@ html {
 }
 
 body {
-	color: var(--black);
 	display: flex;
 	flex-direction: column;
-	font-family: var(--primary-font-family);
 	font-size: var(--default-font-size);
 	min-height: 100%;
 }
@@ -1205,13 +1222,14 @@ small {
 	cursor: not-allowed;
 }
 
-.c-button:focus:not(:focus-visible) {
+.c-button:focus:not(:focus-visible),
+[class*=mm-theme-button-]:focus:not(:focus-visible) {
 	outline: none;
 }
-
-.c-button:focus-visible {
-	outline: calc(var(--default-border-width) * 2) solid var(--focus);
-	outline-offset: var(--default-border-width);
+.c-button:focus-visible,
+[class*=mm-theme-button-]:focus-visible {
+	outline: var(--default-button-outline--focus);
+	outline-offset: calc(2 * var(--default-border-width));
 	transition: none;
 }
 
@@ -1221,7 +1239,7 @@ small {
 		background-color: var(--white);
 		border-color: var(--black);
 		color: var(--black);
-		outline: var(--default-border-width) solid var(--black);
+		outline: var(--default-input-border--focus);
 	}
 	.c-button-dark:hover:not(:disabled):not([aria-disabled=true]):not(.c-button--as-link) {
 		background-color: var(--transparent);
@@ -1412,8 +1430,6 @@ small {
 
 .c-dialog__title {
 	flex-basis: calc(100% - 1.75rem);
-	font-size: 1.25rem;
-	font-weight: 700;
 	margin: 0;
 }
 
@@ -1655,8 +1671,9 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	-webkit-appearance: none;
 	        appearance: none;
 	background-color: var(--white);
-	border: var(--default-border-width) solid var(--gray-400);
+	border: var(--default-input-border);
 	border-radius: var(--default-border-radius);
+	color: inherit;
 	display: inline-block;
 	font-family: inherit;
 	font-size: var(--default-input-font-size);
@@ -1731,7 +1748,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	-webkit-appearance: none;
 	        appearance: none;
 	background-color: var(--white);
-	border: var(--default-border-width) solid var(--gray-400);
+	border: var(--default-input-border);
 	border-radius: var(--default-border-radius);
 	box-shadow: 0 0 0 0 rgba(var(--black), 0.2);
 	cursor: pointer;
@@ -1805,7 +1822,7 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 
 .c-form-checkbox__caption::before {
 	background-color: var(--white);
-	border: var(--default-border-width) solid var(--gray-400);
+	border: var(--default-input-border);
 	border-radius: var(--default-border-radius);
 	content: "";
 	display: inline-block;
@@ -1877,11 +1894,14 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 }
 
 .c-form-input:focus-visible,
-.c-form-select__dropdown:focus-visible,
-.c-form-checkbox:focus-within {
-	outline: calc(var(--default-border-width) * 2) solid var(--focus);
-	outline-offset: var(--default-border-width);
-	transition: none;
+.c-form-select__dropdown:focus-visible {
+	border: var(--default-input-border--focus);
+	outline: none;
+}
+
+.c-form-checkbox:focus-within,
+.c-form-radio:focus-within {
+	outline: var(--default-button-outline--focus);
 }
 
 /* Form errors
@@ -1928,6 +1948,9 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	display: flex;
 	gap: 0.5rem;
 	line-height: initial;
+}
+.c-form-inline-set .c-form-input {
+	margin-bottom: 0;
 }
 
 /* ==========================================================================
@@ -2010,23 +2033,20 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 /* ==========================================================================
    COMPONENTS / MENU
    ========================================================================== */
-.c-menu__title {
-	font-weight: 700;
-}
-
 .c-menu__list {
 	line-height: 2;
 	list-style: none;
 	margin-left: 0;
 }
 
-.c-menu__link, .c-menu__text {
-	color: currentColor;
+.c-menu__link,
+.c-menu__text {
 	display: block;
 }
 
 @media (min-width: 48em) {
-	.c-menu__link, .c-menu__text {
+	.c-menu__link,
+	.c-menu__text {
 		display: inline-block;
 	}
 }
@@ -2046,46 +2066,6 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 	display: block;
 }
 
-.c-navigation__label {
-	background-color: var(--gray-500);
-	color: var(--white);
-	display: block;
-	font-style: normal;
-	margin: 0;
-	min-height: 2em;
-	padding: 1em;
-	position: relative;
-}
-
-.c-navigation__label::after,
-.c-navigation__label::before {
-	position: absolute;
-	right: 1em;
-	transition: 0.4s cubic-bezier(0.2, 0.6, 0.3, 1.1);
-}
-
-.c-navigation__label::after {
-	content: "−";
-	opacity: 0;
-	transform: scale(0);
-}
-
-.c-navigation__label::before {
-	content: "≡";
-	opacity: 1;
-	transform: scale(2);
-}
-
-.c-navigation__trigger:checked ~ .c-navigation__label::after {
-	opacity: 1;
-	transform: scale(2);
-}
-
-.c-navigation__trigger:checked ~ .c-navigation__label::before {
-	opacity: 0;
-	transform: scale(0);
-}
-
 .c-navigation__row {
 	display: none;
 	list-style: none;
@@ -2096,7 +2076,6 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 
 .c-navigation__link, .c-navigation__text {
 	background-color: var(--white);
-	color: var(--black);
 	display: block;
 	padding: 0.5em 1em;
 }
@@ -2116,9 +2095,6 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 }
 
 @media (min-width: 48em) {
-	.c-navigation__label {
-		display: none;
-	}
 	.c-navigation__row,
 	.c-navigation__trigger:checked ~ .c-navigation__row,
 	.c-navigation__trigger:checked ~ .c-navigation__row .c-navigation__row {
@@ -2616,6 +2592,14 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 
 .u-color-transparent {
 	color: var(--transparent);
+}
+
+.u-color-darker {
+	color: color-mix(in srgb, currentColor 25%, var(--black) 75%);
+}
+
+.u-color-lighter {
+	color: color-mix(in srgb, currentColor 25%, var(--white) 75%);
 }
 
 /**
@@ -3707,16 +3691,6 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 /* ==========================================================================
    UTILITIES / TYPOGRAPHY
    ========================================================================== */
-/* Set font-family options
-   =========================================== */
-.u-font-primary {
-	font-family: var(--primary-font-family);
-}
-
-.u-font-secondary {
-	font-family: var(--secondary-font-family);
-}
-
 /* Text alignment utilities
    =========================================== */
 .u-text-left {
@@ -3819,14 +3793,6 @@ label.c-dialog__option > :is([type=radio], [type=checkbox]) {
 
 .u-font-huge {
 	font-size: 1.75em;
-}
-
-.u-paragraph-large {
-	font-size: var(--paragraph-large);
-}
-
-.u-paragraph-small {
-	font-size: var(--paragraph-small);
 }
 
 /* Font style utilities

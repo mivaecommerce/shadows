@@ -1,9 +1,9 @@
 <form class="t-newsletter-form x-collapsible-content" aria-labelledby="newsletter-form-label">
-	<p id="newsletter-form-label" class="c-menu__title">Join Our Newsletter</p>
-	<button class="x-collapsible-content__toggle" data-a11y-toggle="newsletter-form" type="button">Join Our Newsletter <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<p id="newsletter-form-label" class="c-menu__title mm-theme-typography-subheading-small">Join Our Newsletter</p>
+	<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="newsletter-form" type="button">Join Our Newsletter <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 	<fieldset id="newsletter-form" class="x-collapsible-content__item">
 		<legend>Join Our Newsletter</legend>
 		<input class="c-form-input t-newsletter-form__input" type="email" name="email" value="" placeholder="Enter Your Email" aria-label="Enter your email">
-		<button class="c-button t-newsletter-form__input" aria-label="Submit to join our newsletter">Join</button>
+		<button class="mm-theme-button-primary mm-theme-button-primary__small t-newsletter-form__input" aria-label="Submit to join our newsletter">Join</button>
 	</fieldset>
 </form>

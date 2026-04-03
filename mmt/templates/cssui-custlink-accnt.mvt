@@ -1,3 +1,3 @@
-<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle">
-	My Account <span class="u-icon-user"  aria-hidden="true"></span>
+<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">
+	My Account <span class="u-icon-user" aria-hidden="true"></span>
 </a>

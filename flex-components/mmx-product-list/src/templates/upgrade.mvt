@@ -87,3 +87,24 @@
 	<mvt:assign name="l.settings:instance:card:add_to_wishlist:settings:enabled" value="0" />
 	<mvt:assign name="l.settings:instance:card:image:swatches:settings:enabled" value="0" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.00'">
+	<mvt:assign name="l.settings:instance:card:image:hover_image:settings:enabled" value="0" />
+	
+	<mvt:foreach iterator="detail" array="instance:card:details:children">
+		<mvt:if expr="l.settings:detail:type:value EQ 'name'			OR
+					  l.settings:detail:type:value EQ 'code'			OR
+					  l.settings:detail:type:value EQ 'sku'				OR
+					  l.settings:detail:type:value EQ 'descrip'			OR
+					  l.settings:detail:type:value EQ 'weight'			OR
+					  l.settings:detail:type:value EQ 'customfield'		OR
+					  l.settings:detail:type:value EQ 'fragment'		OR
+					  l.settings:detail:type:value EQ 'inv_short'		OR
+					  l.settings:detail:type:value EQ 'inv_long'		OR
+					  l.settings:detail:type:value EQ 'inv_available'	OR
+					  l.settings:detail:type:value EQ 'quantity'		OR
+					  l.settings:detail:type:value EQ 'discounts'">
+			<mvt:assign name="l.settings:detail:text_styles:settings:enabled" value="1" />
+		</mvt:if>
+	</mvt:foreach>
+</mvt:if>

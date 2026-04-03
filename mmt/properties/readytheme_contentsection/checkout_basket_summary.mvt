@@ -2,13 +2,13 @@
 	<thead>
 		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
-				<span class="c-heading-foxtrot">Order Summary</span>
-				<a class="u-color-gray-600" href="&mvte:urls:BASK:auto;" aria-label="Edit Your Cart">Edit</a>
+				<span class="mm-theme-typography-title-four">Order Summary</span>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:BASK:auto;" aria-label="Edit Your Cart">Edit</a>
 			</td>
 		</tr>
 	</thead>
-	<tbody class="u-text-medium">
-		<tr class="c-table-simple__row u-color-gray-600">
+	<tbody>
+		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell">
 				<div class="x-mini-basket__list">
 					<mvt:foreach iterator="group" array="basket:groups">
@@ -21,10 +21,12 @@
 								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 							</figure>
 							<div class="x-mini-basket__item">
-								<span class="x-mini-basket__item-name">
-									&mvt:group:name;
-								</span>
-								<span class="x-mini-basket__item-attributes u-text-regular">
+								<mvt:if expr="ISNULL l.settings:group:link">
+									<span class="x-mini-basket__item-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</span>
+								<mvt:else>
+									<a href="&mvte:group:link;" class="x-mini-basket__item-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</a>
+								</mvt:if>
+								<span class="x-mini-basket__item-attributes mm-theme-typography-paragraph-extra-small">
 									<mvt:foreach iterator="option" array="group:options">
 										<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
 											<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
@@ -48,20 +50,20 @@
 									</mvt:if>
 									<mvt:foreach iterator="discount" array="group:discounts">
 										<mvt:if expr="l.settings:discount:display">
-											<span class="u-flex u-color-red">
+											<span class="u-flex mm-theme-typography-discount-extra-small">
 												&mvt:discount:descrip;
 											</span>
 										</mvt:if>
 									</mvt:foreach>
 									<mvt:if expr="l.settings:group:upsold">
-										<span class="u-flex u-color-red">
+										<span class="u-flex mm-theme-typography-discount-extra-small">
 											Special Offer
 										</span>
 									</mvt:if>
 								</span>
 
 								<div class="x-mini-basket__item-total">
-									<span class="u-font-small">Qty: &mvte:group:quantity;</span>
+									<span class="mm-theme-typography-paragraph-extra-small">Qty: &mvte:group:quantity;</span>
 									<div class="x-mini-basket__item-price">
 										<mvt:fragment code="group_productcharges" />
 									</div>
@@ -73,7 +75,7 @@
 			</td>
 		</tr>
 
-		<tr class="c-table-simple__row u-color-gray-600">
+		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
 				<span>
 					<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 1">
@@ -82,18 +84,18 @@
 						<span>Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
 					</mvt:if>
 				</span>
-				<span class="u-color-black">&mvt:global_minibasket:formatted_subtotal;</span>
+				<span class="u-color-darker">&mvt:global_minibasket:formatted_subtotal;</span>
 			</td>
 		</tr>
 
 		<mvt:if expr="ISNULL l.settings:basket:charges">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Shipping</span>
 					<span>TBD</span>
 				</td>
 			</tr>
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Tax</span>
 					<span>TBD</span>
@@ -101,17 +103,17 @@
 			</tr>
 		<mvt:else>
 			<mvt:foreach iterator="charge" array="basket:charges">
-				<tr class="c-table-simple__row u-color-gray-600">
+				<tr class="c-table-simple__row">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
 						<span>&mvt:charge:descrip;</span>
-						<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+						<span class="u-color-darker">&mvt:charge:formatted_disp_amt;</span>
 					</td>
 				</tr>
 			</mvt:foreach>
 		</mvt:if>
 
 		<mvt:foreach iterator="coupon" array="basket:coupons">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<form method="post" action="&mvte:urls:BASK:auto;">
 						<fieldset>
@@ -120,7 +122,7 @@
 								<div class="c-form-list__item c-form-list__item--full">
 									<input type="hidden" name="Action" value="RCPN"/>
 									<input type="hidden" name="Coupon_Code" value="&mvte:coupon:code;"/>
-									<button class="c-button c-button--as-link u-color-red" type="submit">&mvte:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
+									<button class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium  u-color-red" type="submit">&mvte:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
 								</div>
 							</div>
 						</fieldset>
@@ -143,7 +145,7 @@
 								<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 								<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 									<input id="Coupon_Code" class="c-form-input" type="text" name="Coupon_Code" required>
-									<input class="c-button u-color-black u-bg-gray-400" type="submit" value="Apply">
+									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
 								</div>
 							</div>
 						</fieldset>
@@ -153,15 +155,18 @@
 		</mvt:if>
 
 		<mvt:if expr="l.settings:basket:redeemgiftcerts">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell">
 					<mvt:if expr="g.Basket:cust_id EQ 0">
-						<p>Have A Gift Card? <a href="&mvte:urls:GFTL:auto;" data-dialog-trigger="gftl-sign-in" title="Sign In to Redeem Gift Certificate">Sign In to Use</a></p>
+						<p>
+							Have A Gift Card?
+							<a href="&mvte:urls:GFTL:auto;" data-dialog-trigger="gftl-sign-in" title="Sign In to Redeem Gift Certificate" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Sign In to Use</a>
+						</p>
 						<div class="c-dialog" data-dialog="gftl-sign-in" aria-hidden="true">
 							<div class="c-dialog__overlay" tabindex="-1">
 								<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sign-in-title" aria-modal="true" role="dialog">
 									<header class="c-dialog__header">
-										<p id="sign-in-title" class="c-dialog__title c-heading-foxtrot">Sign In</p>
+										<p id="sign-in-title" class="c-dialog__title mm-theme-typography-title-four">Sign In</p>
 										<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 									</header>
 									<div class="c-dialog__content c-dialog__container--fit">
@@ -181,12 +186,13 @@
 													</div>
 													<div class="c-form-list__item">
 														<p>
-															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
+															<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 														</p>
 														<p>
-															<input class="c-button c-button--full c-button--secondary" type="submit" value="Sign In and Redeem">
+															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem">
 														</p>
-														<a class="u-block u-text-center" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
+														<a class="c-button--full mm-theme-button-display-link mm-theme-button-display-link__medium" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
 													</div>
 												</div>
 											</fieldset>
@@ -204,7 +210,7 @@
 									<label class="c-form-label" for="GiftCertificate_Code">Gift Certificate</label>
 									<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 										<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" required>
-										<input class="c-button u-color-black u-bg-gray-400" type="submit" value="Apply">
+										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
 									</div>
 								</div>
 							</fieldset>
@@ -215,25 +221,25 @@
 		</mvt:if>
 
 		<tr class="c-table-simple__row u-color-black t-basket__order-total">
-			<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
+			<td class="c-table-simple__cell o-layout--justify-between u-flex mm-theme-typography-subheading-small">
 				<span>Total</span>
 				<span>&mvt:basket:formatted_total;</span>
 			</td>
 		</tr>
 		<mvt:foreach iterator="split" array="splitpayment:splits">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Pending Payment: &mvt:split:desc;</span>
-					<span class="u-color-black">&mvt:split:formatted_amount_negative;</span>
+					<span class="u-color-darker">&mvt:split:formatted_amount_negative;</span>
 				</td>
 			</tr>
 		</mvt:foreach>
 
 		<mvt:if expr="( NOT ISNULL l.settings:splitpayment:remaining ) AND ( l.settings:splitpayment:remaining NE l.settings:basket:total )">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Total Remaining</span>
-					<span class="u-color-black">&mvt:splitpayment:formatted_remaining;</span>
+					<span class="u-color-darker">&mvt:splitpayment:formatted_remaining;</span>
 				</td>
 			</tr>
 		</mvt:if>

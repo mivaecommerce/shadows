@@ -1,10 +1,10 @@
 <Image_Add filepath="graphics/%STORE_ID%/shadows-logo.png"/><Category_Add><Code>category_01</Code><Name>Category 1</Name><Active>true</Active></Category_Add><Category_Add><Code>category_02</Code><Name>Category 2</Name><Active>true</Active></Category_Add><Category_Add><Code>category_03</Code><Name>Category 3</Name><Active>true</Active></Category_Add><Category_Add><Code>category_04</Code><Name>Category 4</Name><Active>true</Active></Category_Add><Category_Add><Code>sub-cat-1</Code><Name>Sub Category 1</Name><Active>true</Active></Category_Add><Category_Add><Code>sub-cat-2</Code><Name>Sub Category 2</Name><Active>true</Active></Category_Add><Category_Add><Code>sub-cat-3</Code><Name>Sub Category 3</Name><Active>true</Active></Category_Add><Category_Add><Code>sub-cat-4</Code><Name>Sub Category 4</Name><Active>true</Active></Category_Add><Category_Add><Code>sale</Code><Name>Sale</Name><Active>true</Active></Category_Add><Category_Add><Code>featured</Code><Name>Featured Products</Name><Active>true</Active></Category_Add><Category_Update code="sub-cat-1"><ParentCategoryCode>category_01</ParentCategoryCode></Category_Update><Category_Update code="sub-cat-2"><ParentCategoryCode>category_01</ParentCategoryCode></Category_Update><Category_Update code="sub-cat-3"><ParentCategoryCode>category_02</ParentCategoryCode></Category_Update><Category_Update code="sub-cat-4"><ParentCategoryCode>category_02</ParentCategoryCode></Category_Update><ImageType_Add><Code>main</Code><Description>Main</Description></ImageType_Add><Module code="readytheme" feature="component"><Banner_Delete code="header_message"/><Banner_Add><Active>true</Active><Code>header_message</Code><Description>Global Site Header Message</Description><Message>Free Ground Shipping On All Orders</Message><Link type="None" target="_self"/><CSS_ID/><CSS_Class>t-site-header__message</CSS_Class></Banner_Add><ContentSection_Delete code="newsletter_form"/><ContentSection_Add><Active>true</Active><Code>newsletter_form</Code><Name>Global Footer Newsletter Form</Name><Description>You will need to customize the form actions to match the service you use.</Description><Template><![CDATA[<form class="t-newsletter-form x-collapsible-content" aria-labelledby="newsletter-form-label">
-	<p id="newsletter-form-label" class="c-menu__title">Join Our Newsletter</p>
-	<button class="x-collapsible-content__toggle" data-a11y-toggle="newsletter-form" type="button">Join Our Newsletter <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<p id="newsletter-form-label" class="c-menu__title mm-theme-typography-subheading-small">Join Our Newsletter</p>
+	<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="newsletter-form" type="button">Join Our Newsletter <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 	<fieldset id="newsletter-form" class="x-collapsible-content__item">
 		<legend>Join Our Newsletter</legend>
 		<input class="c-form-input t-newsletter-form__input" type="email" name="email" value="" placeholder="Enter Your Email" aria-label="Enter your email">
-		<button class="c-button t-newsletter-form__input" aria-label="Submit to join our newsletter">Join</button>
+		<button class="mm-theme-button-primary mm-theme-button-primary__small t-newsletter-form__input" aria-label="Submit to join our newsletter">Join</button>
 	</fieldset>
 </form>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="messages"/><ContentSection_Add><Active>true</Active><Code>messages</Code><Name>Error and Information Messages</Name><Description/><Template><![CDATA[<mvt:comment><!-- Customer/Affiliate Creation/Editing --></mvt:comment>
@@ -68,7 +68,7 @@
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container" aria-labelledby="forgot-password-title" aria-modal="true" role="dialog">
 			<header class="c-dialog__header">
-				<p id="forgot-password-title" class="c-dialog__title c-heading-foxtrot">Password Lookup</p>
+				<p id="forgot-password-title" class="c-dialog__title mm-theme-typography-title-four">Password Lookup</p>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 			</header>
 			<div class="c-dialog__content">
@@ -95,7 +95,7 @@
 								</div>
 							</mvt:if>
 							<div class="c-form-list__item c-form-list__item--full">
-								<input class="c-button c-button--full" type="submit" value="Submit" title="Submit">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Submit" title="Submit">
 							</div>
 						</div>
 					</fieldset>
@@ -150,13 +150,13 @@
 	<thead>
 		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
-				<span class="c-heading-foxtrot">Order Summary</span>
-				<a class="u-color-gray-600" href="&mvte:urls:BASK:auto;" aria-label="Edit Your Cart">Edit</a>
+				<span class="mm-theme-typography-title-four">Order Summary</span>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:BASK:auto;" aria-label="Edit Your Cart">Edit</a>
 			</td>
 		</tr>
 	</thead>
-	<tbody class="u-text-medium">
-		<tr class="c-table-simple__row u-color-gray-600">
+	<tbody>
+		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell">
 				<div class="x-mini-basket__list">
 					<mvt:foreach iterator="group" array="basket:groups">
@@ -169,10 +169,12 @@
 								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 							</figure>
 							<div class="x-mini-basket__item">
-								<span class="x-mini-basket__item-name">
-									&mvt:group:name;
-								</span>
-								<span class="x-mini-basket__item-attributes u-text-regular">
+								<mvt:if expr="ISNULL l.settings:group:link">
+									<span class="x-mini-basket__item-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</span>
+								<mvt:else>
+									<a href="&mvte:group:link;" class="x-mini-basket__item-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</a>
+								</mvt:if>
+								<span class="x-mini-basket__item-attributes mm-theme-typography-paragraph-extra-small">
 									<mvt:foreach iterator="option" array="group:options">
 										<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
 											<mvt:assign name="l.settings:option:attr_prompt" value="l.settings:option:attr_code" />
@@ -196,20 +198,20 @@
 									</mvt:if>
 									<mvt:foreach iterator="discount" array="group:discounts">
 										<mvt:if expr="l.settings:discount:display">
-											<span class="u-flex u-color-red">
+											<span class="u-flex mm-theme-typography-discount-extra-small">
 												&mvt:discount:descrip;
 											</span>
 										</mvt:if>
 									</mvt:foreach>
 									<mvt:if expr="l.settings:group:upsold">
-										<span class="u-flex u-color-red">
+										<span class="u-flex mm-theme-typography-discount-extra-small">
 											Special Offer
 										</span>
 									</mvt:if>
 								</span>
 
 								<div class="x-mini-basket__item-total">
-									<span class="u-font-small">Qty: &mvte:group:quantity;</span>
+									<span class="mm-theme-typography-paragraph-extra-small">Qty: &mvte:group:quantity;</span>
 									<div class="x-mini-basket__item-price">
 										<mvt:fragment code="group_productcharges" />
 									</div>
@@ -221,7 +223,7 @@
 			</td>
 		</tr>
 
-		<tr class="c-table-simple__row u-color-gray-600">
+		<tr class="c-table-simple__row">
 			<td class="c-table-simple__cell u-flex o-layout--justify-between">
 				<span>
 					<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 1">
@@ -230,18 +232,18 @@
 						<span>Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
 					</mvt:if>
 				</span>
-				<span class="u-color-black">&mvt:global_minibasket:formatted_subtotal;</span>
+				<span class="u-color-darker">&mvt:global_minibasket:formatted_subtotal;</span>
 			</td>
 		</tr>
 
 		<mvt:if expr="ISNULL l.settings:basket:charges">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Shipping</span>
 					<span>TBD</span>
 				</td>
 			</tr>
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Tax</span>
 					<span>TBD</span>
@@ -249,17 +251,17 @@
 			</tr>
 		<mvt:else>
 			<mvt:foreach iterator="charge" array="basket:charges">
-				<tr class="c-table-simple__row u-color-gray-600">
+				<tr class="c-table-simple__row">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
 						<span>&mvt:charge:descrip;</span>
-						<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+						<span class="u-color-darker">&mvt:charge:formatted_disp_amt;</span>
 					</td>
 				</tr>
 			</mvt:foreach>
 		</mvt:if>
 
 		<mvt:foreach iterator="coupon" array="basket:coupons">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<form method="post" action="&mvte:urls:BASK:auto;">
 						<fieldset>
@@ -268,7 +270,7 @@
 								<div class="c-form-list__item c-form-list__item--full">
 									<input type="hidden" name="Action" value="RCPN"/>
 									<input type="hidden" name="Coupon_Code" value="&mvte:coupon:code;"/>
-									<button class="c-button c-button--as-link u-color-red" type="submit">&mvte:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
+									<button class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium  u-color-red" type="submit">&mvte:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
 								</div>
 							</div>
 						</fieldset>
@@ -291,7 +293,7 @@
 								<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 								<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 									<input id="Coupon_Code" class="c-form-input" type="text" name="Coupon_Code" required>
-									<input class="c-button u-color-black u-bg-gray-400" type="submit" value="Apply">
+									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
 								</div>
 							</div>
 						</fieldset>
@@ -301,15 +303,18 @@
 		</mvt:if>
 
 		<mvt:if expr="l.settings:basket:redeemgiftcerts">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell">
 					<mvt:if expr="g.Basket:cust_id EQ 0">
-						<p>Have A Gift Card? <a href="&mvte:urls:GFTL:auto;" data-dialog-trigger="gftl-sign-in" title="Sign In to Redeem Gift Certificate">Sign In to Use</a></p>
+						<p>
+							Have A Gift Card?
+							<a href="&mvte:urls:GFTL:auto;" data-dialog-trigger="gftl-sign-in" title="Sign In to Redeem Gift Certificate" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Sign In to Use</a>
+						</p>
 						<div class="c-dialog" data-dialog="gftl-sign-in" aria-hidden="true">
 							<div class="c-dialog__overlay" tabindex="-1">
 								<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sign-in-title" aria-modal="true" role="dialog">
 									<header class="c-dialog__header">
-										<p id="sign-in-title" class="c-dialog__title c-heading-foxtrot">Sign In</p>
+										<p id="sign-in-title" class="c-dialog__title mm-theme-typography-title-four">Sign In</p>
 										<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 									</header>
 									<div class="c-dialog__content c-dialog__container--fit">
@@ -329,12 +334,13 @@
 													</div>
 													<div class="c-form-list__item">
 														<p>
-															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
+															<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 														</p>
 														<p>
-															<input class="c-button c-button--full c-button--secondary" type="submit" value="Sign In and Redeem">
+															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem">
 														</p>
-														<a class="u-block u-text-center" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
+														<a class="c-button--full mm-theme-button-display-link mm-theme-button-display-link__medium" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
 													</div>
 												</div>
 											</fieldset>
@@ -352,7 +358,7 @@
 									<label class="c-form-label" for="GiftCertificate_Code">Gift Certificate</label>
 									<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 										<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" required>
-										<input class="c-button u-color-black u-bg-gray-400" type="submit" value="Apply">
+										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
 									</div>
 								</div>
 							</fieldset>
@@ -363,25 +369,25 @@
 		</mvt:if>
 
 		<tr class="c-table-simple__row u-color-black t-basket__order-total">
-			<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
+			<td class="c-table-simple__cell o-layout--justify-between u-flex mm-theme-typography-subheading-small">
 				<span>Total</span>
 				<span>&mvt:basket:formatted_total;</span>
 			</td>
 		</tr>
 		<mvt:foreach iterator="split" array="splitpayment:splits">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Pending Payment: &mvt:split:desc;</span>
-					<span class="u-color-black">&mvt:split:formatted_amount_negative;</span>
+					<span class="u-color-darker">&mvt:split:formatted_amount_negative;</span>
 				</td>
 			</tr>
 		</mvt:foreach>
 
 		<mvt:if expr="( NOT ISNULL l.settings:splitpayment:remaining ) AND ( l.settings:splitpayment:remaining NE l.settings:basket:total )">
-			<tr class="c-table-simple__row u-color-gray-600">
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>Total Remaining</span>
-					<span class="u-color-black">&mvt:splitpayment:formatted_remaining;</span>
+					<span class="u-color-darker">&mvt:splitpayment:formatted_remaining;</span>
 				</td>
 			</tr>
 		</mvt:if>
@@ -429,7 +435,7 @@
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container u-width-10 u-width-6--s u-width-4--l u-width-3--xl" aria-labelledby="address-validation-title" aria-modal="true" role="alertdialog">
 			<header class="c-dialog__header">
-				<h2 id="address-validation-title" class="c-dialog__title c-heading-echo">
+				<h2 id="address-validation-title" class="c-dialog__title mm-theme-typography-title-three">
 					Address Verification
 				</h2>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
@@ -441,7 +447,7 @@
 				</p>
 				<mvt:foreach iterator="address_validation_group" array="address_validation:groups">
 					<mvt:if expr="l.settings:address_validation:group_count GT 1">
-						<h3 class="c-dialog__options-title c-heading-foxtrot">&mvte:address_validation_group:name;</h3>
+						<h3 class="c-dialog__options-title mm-theme-typography-title-four">&mvte:address_validation_group:name;</h3>
 					</mvt:if>
 					<div class="c-dialog__options">
 						<mvt:foreach iterator="address" array="address_validation_group:addresses">
@@ -449,7 +455,7 @@
 							<mvt:assign name="l.settings:address:html:attr:checked" value="ternary( l.settings:address:should_check_by_default, 'checked', '' )" />
 							<label class="c-dialog__option">
 								<input type="radio" name="&mvte:address_validation_group:prefix;ValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_resdntl="&mvte:address:resdntl;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" &mvte:address:html:attr:checked;>
-								<span class="c-dialog__option-title u-text-bold">
+								<span class="c-dialog__option-title mm-theme-typography-subheading-extra-small">
 									<mvt:if expr="l.settings:address:validated">
 										Suggested Address
 									<mvt:else>
@@ -479,7 +485,7 @@
 						</mvt:foreach>
 					</div>
 				</mvt:foreach>
-				<button class="c-dialog__continue c-button c-button--full" data-update-address>Save & Continue</button>
+				<button class="c-dialog__continue c-button--full mm-theme-button-primary mm-theme-button-primary__small" data-update-address>Save & Continue</button>
 			</div>
 		</div>
 	</div>
@@ -495,48 +501,33 @@
 		const billingToShow = document.querySelector('#billing_to_show');
 		const dialogElement = document.querySelector('[data-dialog="address-validation"]');
 		const formElement = document.querySelector('[data-validate-address]');
-		const action = formElement?.elements?.Action?.value;
+		const actions = formElement?.elements?.Action?.value?.split?.(',') ?? [];
 		const shipAddresses = document.querySelectorAll('[name="ShipValidatedSelector"]');
 		const update = document.querySelector('[data-update-address]');
 		let billPrefix;
 		let shipPrefix;
 
-		if (action === 'ORDR') {
+		if (actions.includes('ORDR')) {
 			billPrefix = 'Bill';
 			shipPrefix = 'Ship';
 		}
-		else if (['ICST', 'UCST'].includes(action)) {
+		else if (actions.includes('ICST') || actions.includes('UCST')) {
 			billPrefix = 'Customer_Bill';
 			shipPrefix = 'Customer_Ship';
 		}
-		else if (['ICSA', 'UCSA'].includes(action)) {
+		else if (actions.includes('ICSA') || actions.includes('UCSA')) {
 			billPrefix = null;
 			shipPrefix = 'Address_';
 		}
 
-		function findFormInputs(form, prefix) {
-			return {
-				billing: {
-					addr1: form.elements[prefix + 'Address1'],
-					addr2: form.elements[prefix + 'Address2'],
-					city: form.elements[prefix + 'City'],
-					state: form.elements[prefix + 'State'],
-					stateSelect: form.elements[prefix + 'StateSelect'],
-					country: form.elements[prefix + 'Country'],
-					zip: form.elements[prefix + 'Zip'],
-					validated: form.elements[prefix + 'Validated']
-				},
-				shipping: {
-					addr1: form.elements[prefix + 'Address1'],
-					addr2: form.elements[prefix + 'Address2'],
-					city: form.elements[prefix + 'City'],
-					state: form.elements[prefix + 'State'],
-					stateSelect: form.elements[prefix + 'StateSelect'],
-					country: form.elements[prefix + 'Country'],
-					zip: form.elements[prefix + 'Zip'],
-					validated: form.elements[prefix + 'Validated']
-				}
-			};
+		function setFormInputValue(form, prefix, field, value) {
+			const input = form?.elements?.[prefix + field];
+
+			if (!input) {
+				return;
+			}
+
+			input.value = value;
 		}
 
 		function getSelectedAddress(addresses = shipAddresses) {
@@ -559,43 +550,43 @@
 
 			const selectedShipAddress = getSelectedAddress(shipAddresses);
 
-			findFormInputs(formElement, shipPrefix).shipping.addr1.value = selectedShipAddress.addr1;
-			findFormInputs(formElement, shipPrefix).shipping.addr2.value = selectedShipAddress.addr2;
-			findFormInputs(formElement, shipPrefix).shipping.city.value = selectedShipAddress.city;
-			findFormInputs(formElement, shipPrefix).shipping.state.value = selectedShipAddress.state;
-			findFormInputs(formElement, shipPrefix).shipping.stateSelect.value = selectedShipAddress.state;
-			findFormInputs(formElement, shipPrefix).shipping.country.value = selectedShipAddress.country;
-			findFormInputs(formElement, shipPrefix).shipping.zip.value = selectedShipAddress.zip;
+			setFormInputValue(formElement, shipPrefix, 'Address1', selectedShipAddress.addr1);
+			setFormInputValue(formElement, shipPrefix, 'Address2', selectedShipAddress.addr2);
+			setFormInputValue(formElement, shipPrefix, 'City', selectedShipAddress.city);
+			setFormInputValue(formElement, shipPrefix, 'State', selectedShipAddress.state);
+			setFormInputValue(formElement, shipPrefix, 'StateSelect', selectedShipAddress.state);
+			setFormInputValue(formElement, shipPrefix, 'Country', selectedShipAddress.country);
+			setFormInputValue(formElement, shipPrefix, 'Zip', selectedShipAddress.zip);
 
 			if (billPrefix !== null) {
 				const selectedBillAddress = hasBillAddresses ? getSelectedAddress(billAddresses) : selectedShipAddress;
 
-				findFormInputs(formElement, billPrefix).billing.addr1.value = selectedBillAddress.addr1;
-				findFormInputs(formElement, billPrefix).billing.addr2.value = selectedBillAddress.addr2;
-				findFormInputs(formElement, billPrefix).billing.city.value = selectedBillAddress.city;
-				findFormInputs(formElement, billPrefix).billing.state.value = selectedBillAddress.state;
-				findFormInputs(formElement, billPrefix).billing.stateSelect.value = selectedBillAddress.state;
-				findFormInputs(formElement, billPrefix).billing.country.value = selectedBillAddress.country;
-				findFormInputs(formElement, billPrefix).billing.zip.value = selectedBillAddress.zip;
+				setFormInputValue(formElement, billPrefix, 'Address1', selectedBillAddress.addr1);
+				setFormInputValue(formElement, billPrefix, 'Address2', selectedBillAddress.addr2);
+				setFormInputValue(formElement, billPrefix, 'City', selectedBillAddress.city);
+				setFormInputValue(formElement, billPrefix, 'State', selectedBillAddress.state);
+				setFormInputValue(formElement, billPrefix, 'StateSelect', selectedBillAddress.state);
+				setFormInputValue(formElement, billPrefix, 'Country', selectedBillAddress.country);
+				setFormInputValue(formElement, billPrefix, 'Zip', selectedBillAddress.zip);
 			}
 
 			formElement.submit();
 		});
 
 		/**
-			 * When closing the dialog, set the hidden input confirming that
-			 * the address has been validated to `0`.
-			 */
+		 * When closing the dialog, set the hidden input confirming that
+		 * the address has been validated to `0`.
+		 */
 		dialogElement.addEventListener('hide', function () {
-			findFormInputs(formElement, shipPrefix).shipping.validated.value = 0;
+			setFormInputValue(formElement, shipPrefix, 'Validated', 0);
 			if (hasBillAddresses) {
-				findFormInputs(formElement, billPrefix).billing.validated.value = 0;
+				setFormInputValue(formElement, billPrefix, 'Validated', 0);
 			}
 		});
 
 		/**
-			* On page load, open the dialog
-			*/
+		 * On page load, open the dialog
+		 */
 		window.addEventListener('load', function () {
 			const billMatchesShip = billingToShow && !hasBillAddresses;
 			if (billMatchesShip) {
@@ -607,19 +598,22 @@
 		});
 	}());
 </script>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="mini_basket"/><ContentSection_Add><Active>true</Active><Code>mini_basket</Code><Name>Extension: Global Mini-Basket</Name><Description/><Template><![CDATA[<mvt:item name="global_minibasket" />]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="helpful_info"/><ContentSection_Add><Active>true</Active><Code>helpful_info</Code><Name>Helpful Info</Name><Description>This section appears on the basket and checkout pages.</Description><Template><![CDATA[<p class="c-heading--subheading--small">Need Help?</p>
-<p class="u-color-gray-600"><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
-<p class="u-color-gray-600"><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="mini_basket"/><ContentSection_Add><Active>true</Active><Code>mini_basket</Code><Name>Extension: Global Mini-Basket</Name><Description/><Template><![CDATA[<mvt:item name="global_minibasket" />]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="helpful_info"/><ContentSection_Add><Active>true</Active><Code>helpful_info</Code><Name>Helpful Info</Name><Description>This section appears on the basket and checkout pages.</Description><Template><![CDATA[<p class="mm-theme-typography-subheading-small">Need Help?</p>
+<p><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
+<p><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
 <mvt:if expr="g.Basket:basket_id GT 0">
-	<p class="u-color-gray-600"><span class="u-icon-cart-empty" aria-hidden="true"></span>Basket ID: &mvte:global:Basket:basket_id;</p>
+	<p><span class="u-icon-cart-empty" aria-hidden="true"></span>Basket ID: &mvte:global:Basket:basket_id;</p>
 </mvt:if>
-<p class="u-color-gray-600"><span class="u-icon-document" aria-hidden="true"></span><a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp">Shipping & Return Policy</a></p>
+<p>
+	<span class="u-icon-document" aria-hidden="true"></span>
+	<a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Shipping & Return Policy</a>
+</p>
 
 <div class="c-dialog" data-dialog="sarp" aria-hidden="true">
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sarp-title" aria-modal="true" role="dialog">
 			<header class="c-dialog__header">
-				<p id="sarp-title" class="c-dialog__title c-heading-foxtrot">Shipping &amp; Return Policy</p>
+				<p id="sarp-title" class="c-dialog__title mm-theme-typography-title-four">Shipping &amp; Return Policy</p>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 			</header>
 			<div class="c-dialog__content">
@@ -630,7 +624,7 @@
 		</div>
 	</div>
 </div>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-helpful-info u-text-medium</CSS_Class></ContentSection_Add><ContentSection_Delete code="fasten_header"/><ContentSection_Add><Active>true</Active><Code>fasten_header</Code><Name>Global "Sticky" Header</Name><Description/><Template><![CDATA[<mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>t-helpful-info</CSS_Class></ContentSection_Add><ContentSection_Delete code="fasten_header"/><ContentSection_Add><Active>true</Active><Code>fasten_header</Code><Name>Global "Sticky" Header</Name><Description/><Template><![CDATA[<mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
 <section class="o-layout o-layout--align-center o-layout--wide x-fasten-header" data-hook="fasten-header" aria-hidden="true">
 	<div class="o-layout__item u-width-2 u-text-left t-site-header__logo">
 		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
@@ -649,7 +643,9 @@
 
 	<div class="o-layout__item u-width-3 u-width-2--xl x-fasten-header__navigation">
 		<details class="x-fasten-header__navigation-element" tabindex="-1">
-			<summary tabindex="-1"><span>Shop Categories</span></summary>
+			<summary tabindex="-1">
+				<span class="mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">Shop Categories</span>
+			</summary>
 			<nav>
 				<mvt:do name="l.result" file="g.Module_Library_DB" value="Runtime_CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
 				<ul class="x-fasten-header__navigation-list">
@@ -660,12 +656,12 @@
 
 						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
 						<li class="x-fasten-header__navigation-item">
-							<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
+							<a class="x-fasten-header__navigation-link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
 						</li>
 					</mvt:foreach>
 					<mvt:if expr="miva_array_elements(l.settings:parent_categories) GT 5">
 						<li class="x-fasten-header__navigation-item">
-							<a class="x-fasten-header__navigation-link" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop All</a>
+							<a class="x-fasten-header__navigation-link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop All</a>
 						</li>
 					</mvt:if>
 				</ul>
@@ -685,21 +681,21 @@
 					</div>
 				</div>
 			</fieldset>
-			<span class="x-search-preview u-color-gray-50" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview--fasten"></span>
+			<span class="x-search-preview" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview--fasten"></span>
 		</form>
 	</div>
 
 	<div class="o-layout__item u-flex u-width-3 u-width-4--xl t-site-header__masthead-links">
 		<mvt:if expr="g.Basket:cust_id EQ 0">
-			<a href="&mvte:urls:LOGN:secure;" class="t-global-account-toggle" tabindex="-1">
+			<a href="&mvte:urls:LOGN:secure;" class="t-global-account-toggle mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" tabindex="-1">
 				Sign In <span class="u-icon-chevron-down"  aria-hidden="true"></span>
 			</a>
 		<mvt:else>
-			<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle" tabindex="-1">
+			<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" tabindex="-1">
 				My Account <span class="u-icon-user"  aria-hidden="true"></span>
 			</a>
 		</mvt:if>
-		<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
+		<a class="t-site-header__basket-link mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
 			<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 0">
 				<span class="u-icon-cart-full" aria-hidden="true"></span>
 			<mvt:else>
@@ -728,16 +724,16 @@
 						<input id="global-Customer_Password" class="c-form-input c-form-input--large" type="password" name="Customer_Password" autocomplete="current-password" placeholder="Password">
 					</div>
 					<div class="c-form-list__item c-form-list__item--full">
-						<p><a class="t-input-font-size" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
-						<p><input class="c-button c-button--full" type="submit" value="Sign In"></p>
-						<a class="t-input-font-size u-block u-text-center u-text-medium" href="&mvte:urls:LOGN:secure;">Register</a>
+						<p><a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
+						<p><input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Sign In"></p>
+						<a class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" href="&mvte:urls:LOGN:secure;">Register</a>
 					</div>
 				</div>
 			</fieldset>
 		</form>
 	</div>
 </mvt:if>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>x-collapsible-content</CSS_Class></ContentSection_Add><ContentSection_Delete code="copyright"/><ContentSection_Add><Active>true</Active><Code>copyright</Code><Name>Site Copyright</Name><Description/><Template><![CDATA[<section class="o-layout o-layout--flush u-color-gray-600 u-text-center t-site-footer__copyright">
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class>x-collapsible-content</CSS_Class></ContentSection_Add><ContentSection_Delete code="copyright"/><ContentSection_Add><Active>true</Active><Code>copyright</Code><Name>Site Copyright</Name><Description/><Template><![CDATA[<section class="o-layout o-layout--flush t-site-footer__copyright">
 	<p class="o-layout__item">
 		&copy; <mvt:eval expr="s.tm_year" /> &mvt:global:store:company; All Rights Reserved
 		<mvt:if expr="g.Session:shadows:page_style EQ 'minimal'">
@@ -747,20 +743,26 @@
 		 | <a href="&mvte:powered_by_miva_url;" target="_blank" rel="noreferrer">Powered by Miva</a>
 	</p>
 </section>
-]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Resize>true</Resize><Width>154</Width><Height>32</Height><Alt/><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Resize>true</Resize><Width>154</Width><Height>32</Height><Alt/></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12" data-hook="transfigure-navigation">
+]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><Image_Delete code="fasten_header_logo"/><Image_Add><Active>false</Active><Code>fasten_header_logo</Code><Name>Fasten Header Logo</Name><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Resize>true</Resize><Width>154</Width><Height>32</Height><Alt/><Link type="Page" target="_self">SFNT</Link><CSS_ID/><CSS_Class/></Image_Add><LookAndFeel_Update><LogoType>image</LogoType><ImageLogo><Image>graphics/%STORE_ID%/shadows-logo.png</Image><Resize>true</Resize><Width>154</Width><Height>32</Height><Alt/></ImageLogo><Font/><Background><Image/><Color/><Repeat>no-repeat</Repeat><HorizontalPosition>center</HorizontalPosition><VerticalPosition>center</VerticalPosition></Background><SocialIcons><Active>true</Active><Facebook>https://www.facebook.com/</Facebook><Twitter>https://twitter.com/</Twitter><Instagram>https://www.instagram.com/</Instagram><GooglePlus/><Pinterest/><Vimeo/><YouTube/><Flickr/></SocialIcons><ThirdPartySharing><Active>false</Active><Code><![CDATA[<span class="o-layout__item">Place your social sharing code here.</span>]]></Code></ThirdPartySharing><TrustSymbol><Active>false</Active><Code/></TrustSymbol></LookAndFeel_Update><NavigationSet_Delete code="primary_navigation"/><NavigationSet_Add><Code>primary_navigation</Code><Name>Primary Site Navigation Bar</Name><Description/><Template><![CDATA[<nav class="o-layout__item c-navigation x-transfigure-navigation u-width-12" data-hook="transfigure-navigation">
 	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
 		<header class="x-transfigure-navigation__header o-layout--justify-between u-flex u-hidden--l" hidden>
 			<mvt:if expr="g.Basket:cust_id EQ 0">
-				<a class="c-button c-button--as-link c-form-inline-set u-color-gray-600" href="&mvte:urls:LOGN:secure;"><span class="u-font-large u-icon-user" aria-hidden="true"></span> Sign In</a>
+				<a class="c-form-inline-set mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:urls:LOGN:secure;">
+					<span class="u-font-large u-icon-user" aria-hidden="true"></span> Sign In
+				</a>
 			<mvt:else>
-				<a class="c-button c-button--as-link c-form-inline-set u-color-gray-600" href="&mvte:urls:ACLN:secure;"><span class="u-font-large u-icon-user" aria-hidden="true"></span> My Account</a>
+				<a class="c-form-inline-set mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:urls:ACLN:secure;">
+					<span class="u-font-large u-icon-user" aria-hidden="true"></span> My Account
+				</a>
 			</mvt:if>
-			<button class="c-button u-bg-transparent u-color-gray-600 u-font-small u-icon-cross" data-hook="close-main-menu" aria-label="Close Menu"></button>
+			<button class="c-button u-bg-transparent" data-hook="close-main-menu" aria-label="Close Menu">
+				<span class="u-icon-cross mm-theme-button-primary-navigation mm-theme-button-primary-navigation__extra-small" aria-hidden="true"></span>
+			</button>
 		</header>
 		<div class="x-transfigure-navigation__content">
 			<ul class="c-navigation__row x-transfigure-navigation__row">
 				<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
-					<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+					<mvt:if expr="miva_array_elements( l.settings:navigationitem:items )">
 						<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-drop-down has-child-menu'"/>
 						<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right u-hidden--l' $ asciichar(34) $ ' aria-hidden=' $ asciichar(34) $ 'true' $ asciichar(34) $ '></span></span>'"/>
 					<mvt:else>
@@ -769,21 +771,21 @@
 					</mvt:if>
 					<li class="c-navigation__list &mvt:has:children;">
 						<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-							<span class="c-navigation__text">&mvt:navigationitem:name; &mvt:show:child;</span>
+							<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem:name; &mvt:show:child;</span>
 						<mvt:else>
-							<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
+							<a class="c-navigation__link mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
 						</mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+						<mvt:if expr="miva_array_elements( l.settings:navigationitem:items )">
 							<ul class="c-navigation__row is-hidden">
 								<mvt:assign name="l.settings:has:children" value="''"/>
 								<li class="c-navigation__list u-font-small u-hidden--l" data-hook="show-previous-menu">
-									<span class="c-navigation__link u-text-uppercase"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
+									<span class="c-navigation__link u-text-uppercase mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
 								</li>
 								<li class="c-navigation__list u-hidden--l">
-									<span class="c-navigation__link u-font-large u-text-bold">&mvt:navigationitem:name;</span>
+									<span class="c-navigation__link mm-theme-typography-title-four">&mvt:navigationitem:name;</span>
 								</li>
 								<mvt:foreach iterator="navigationitem_level2" array="navigationitem:items">
-									<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+									<mvt:if expr="miva_array_elements( l.settings:navigationitem_level2:items ) ">
 										<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-child-menu'"/>
 										<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right u-hidden--l' $ asciichar(34) $ '></span></span>'"/>
 									<mvt:else>
@@ -792,30 +794,30 @@
 									</mvt:if>
 									<li class="c-navigation__list &mvt:has:children;">
 										<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
-											<span class="c-navigation__text">&mvt:navigationitem_level2:name; &mvt:show:child;</span>
+											<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem_level2:name; &mvt:show:child;</span>
 										<mvt:else>
-											<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
+											<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
 										</mvt:if>
-										<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+										<mvt:if expr="miva_array_elements( l.settings:navigationitem_level2:items ) ">
 											<ul class="c-navigation__row is-hidden">
 												<li class="c-navigation__list u-font-small u-hidden--l" data-hook="show-previous-menu">
-													<span class="c-navigation__link u-text-uppercase"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
+													<span class="c-navigation__link u-text-uppercase mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
 												</li>
 												<li class="c-navigation__list u-hidden--l">
-													<span class="c-navigation__link u-font-large u-text-bold">&mvt:navigationitem_level2:name;</span>
+													<span class="c-navigation__link mm-theme-typography-title-four">&mvt:navigationitem_level2:name;</span>
 												</li>
 												<mvt:foreach iterator="navigationitem_level3" array="navigationitem_level2:items">
 													<li class="c-navigation__list">
 														<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
-															<span class="c-navigation__text">&mvt:navigationitem_level3:name;</span>
+															<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem_level3:name;</span>
 														<mvt:else>
-															<a class="c-navigation__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
+															<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
 														</mvt:if>
 													</li>
 												</mvt:foreach>
 												<mvt:if expr="l.settings:navigationitem_level2:link_type NE 'N'">
 													<li class="c-navigation__list u-hidden--l">
-														<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
+														<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
 													</li>
 												</mvt:if>
 											</ul>
@@ -824,7 +826,7 @@
 								</mvt:foreach>
 								<mvt:if expr="l.settings:navigationitem:link_type NE 'N'">
 									<li class="c-navigation__list u-hidden--l">
-										<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
+										<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
 									</li>
 								</mvt:if>
 							</ul>
@@ -840,15 +842,15 @@
 </nav>
 ]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Horizontal Drop-Down</Layout><Items><Item><Active>true</Active><Name>Shop All</Name><Link type="Page" target="_self">CTLG</Link></Item><Item><Active>true</Active><Name>Category 1</Name><Link type="Category" target="_self">category_01</Link><SubItems><Item><Active>true</Active><Name>Subcategory 1</Name><Link type="Category" target="_self">sub-cat-1</Link></Item><Item><Active>true</Active><Name>Subcategory 2</Name><Link type="Category" target="_self">sub-cat-2</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Category 2</Name><Link type="Category" target="_self">category_02</Link><SubItems><Item><Active>true</Active><Name>Subcategory 3</Name><Link type="Category" target="_self">sub-cat-3</Link></Item><Item><Active>true</Active><Name>Subcategory 4</Name><Link type="Category" target="_self">Sub-cat-4</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Category 3</Name><Link type="Category" target="_self">category_03</Link></Item><Item><Active>true</Active><Name>Category 4</Name><Link type="Category" target="_self">category_04</Link></Item><Item><Active>true</Active><Name>Sale</Name><Link type="Category" target="_self">sale</Link></Item><Item><Active>true</Active><Name>Featured Products</Name><Link type="Category" target="_self">featured</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="footer_categories"/><NavigationSet_Add><Code>footer_categories</Code><Name>Global Footer Category Menu</Name><Description/><Template><![CDATA[<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
 	<nav class="c-menu x-collapsible-content" aria-labelledby="&mvte:readytheme:code;-label">
-		<p id="&mvte:readytheme:code;-label" class="c-menu__title">Category</p>
-		<button class="x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Category <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<p id="&mvte:readytheme:code;-label" class="c-menu__title mm-theme-typography-subheading-small">Category</p>
+		<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Category <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<ul id="&mvte:readytheme:code;" class="c-menu__list x-collapsible-content__item">
 			<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 				<li>
 					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-						<span class="c-menu__text">&mvt:navigationitem:name;</span>
+						<span class="c-menu__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem:name;</span>
 					<mvt:else>
-						<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+						<a class="c-menu__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
 					</mvt:if>
 				</li>
 			</mvt:foreach>
@@ -857,15 +859,15 @@
 </mvt:if>
 ]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Single Column</Layout><Items><Item><Active>true</Active><Name>Category 1</Name><Link type="Category" target="_self">category_01</Link></Item><Item><Active>true</Active><Name>Category 2</Name><Link type="Category" target="_self">category_02</Link></Item><Item><Active>true</Active><Name>Category 3</Name><Link type="Category" target="_self">category_03</Link></Item><Item><Active>true</Active><Name>Category 4</Name><Link type="Category" target="_self">category_04</Link></Item><Item><Active>true</Active><Name>Sale</Name><Link type="Category" target="_self">sale</Link></Item><Item><Active>true</Active><Name>Featured Products</Name><Link type="Category" target="_self">featured</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="quick_links"/><NavigationSet_Add><Code>quick_links</Code><Name>Global Footer Quick Links</Name><Description/><Template><![CDATA[<mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
 	<nav class="c-menu x-collapsible-content" aria-labelledby="&mvte:readytheme:code;-label">
-		<p id="&mvte:readytheme:code;-label" class="c-menu__title">Quick Links</p>
-		<button class="x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Quick Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<p id="&mvte:readytheme:code;-label" class="c-menu__title mm-theme-typography-subheading-small">Quick Links</p>
+		<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Quick Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<ul id="&mvte:readytheme:code;" class="c-menu__list x-collapsible-content__item">
 			<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 				<li>
 					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-						<span class="c-menu__text">&mvt:navigationitem:name;</span>
+						<span class="c-menu__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem:name;</span>
 					<mvt:else>
-						<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+						<a class="c-menu__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
 					</mvt:if>
 				</li>
 			</mvt:foreach>
@@ -875,19 +877,19 @@
 </mvt:if>
 ]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Single Column</Layout><Items><Item><Active>true</Active><Name>About Us</Name><Link type="Page" target="_self">ABUS</Link></Item><Item><Active>true</Active><Name>Account</Name><Link type="Page" target="_self">ACLN</Link></Item><Item><Active>true</Active><Name>Contact Us</Name><Link type="Page" target="_self">CTUS</Link></Item><Item><Active>true</Active><Name>FAQS</Name><Link type="Page" target="_self">FAQS</Link></Item><Item><Active>true</Active><Name>Order Status</Name><Link type="Page" target="_self">ORDH</Link></Item><Item><Active>true</Active><Name>Wish Lists</Name><Link type="Page" target="_self">WLST</Link></Item><Item><Active>true</Active><Name>Privacy Policy</Name><Link type="Page" target="_self">PRPO</Link></Item><Item><Active>true</Active><Name><![CDATA[Shipping &amp; Returns]]></Name><Link type="Page" target="_self">SARP</Link></Item><Item><Active>true</Active><Name>Site Map</Name><Link type="Page" target="_self">SMAP</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="static_navigation"/><NavigationSet_Add><Code>static_navigation</Code><Name>Static Page Navigation</Name><Description>This is the side navigation for all static content pages.</Description><Template><![CDATA[<nav class="x-category-tree x-collapsible-content" aria-labelledby="support-navigation-label">
 	<div class="x-category-tree__title">
-		<p id="support-navigation-label" class="x-category-tree__heading">Support</p>
+		<p id="support-navigation-label" class="x-category-tree__heading mm-theme-typography-title-four">Support</p>
 	</div>
-	<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Support <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<button class="x-category-tree__label x-collapsible-content__toggle mm-theme-typography-subheading-extra-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Support <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 	<ul id="&mvte:readytheme:code;" class="x-category-tree__row x-collapsible-content__item">
 		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 			<li class="x-category-tree__list x-category-tree__list--level-1">
 				<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
-					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+					<a class="x-category-tree__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 				<mvt:else>
 					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-						<span class="x-category-tree__text">&mvte:navigationitem:name;</span>
+						<span class="x-category-tree__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvte:navigationitem:name;</span>
 					<mvt:else>
-						<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+						<a class="x-category-tree__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 					</mvt:if>
 				</mvt:if>
 			</li>
@@ -899,33 +901,33 @@
 	<section class="x-category-tree x-collapsible-content t-account-landing-section">
 		<div class="x-category-tree__title">
 			<mvt:if expr="l.settings:page:code NE 'ACLN'">
-				<a class="x-category-tree__heading" href="&mvte:urls:ACLN:auto;">My Dashboard</a>
+				<a class="x-category-tree__heading mm-theme-typography-title-four" href="&mvte:urls:ACLN:auto;">My Dashboard</a>
 			</mvt:if>
 		</div>
-		<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Account Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<button class="x-category-tree__label x-collapsible-content__toggle mm-theme-typography-subheading-extra-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Account Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<ul id="&mvte:readytheme:code;" class="x-category-tree__row x-collapsible-content__item t-account-landing-section__content">
 			<mvt:foreach array="readytheme:navigationitems" iterator="navigationitem">
 				<li class="x-category-tree__list x-category-tree__list--level-1 x-category-tree__section-title">
 					<mvt:if expr="l.settings:navigationitem:url">
 						<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
-							<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem:url;">&mvt:navigationitem:name;</a>
+							<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem:url;">&mvt:navigationitem:name;</a>
 						<mvt:else>
-							<a class="x-category-tree__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+							<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
 						</mvt:if>
 					<mvt:else>
-						<span class="x-category-tree__link-set">&mvt:navigationitem:name;</span>
+						<span class="mm-theme-typography-subheading-small">&mvt:navigationitem:name;</span>
 					</mvt:if>
 				</li>
 				<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
 					<mvt:foreach array="navigationitem:items" iterator="navigationitem_level2">
 						<li class="x-category-tree__list x-category-tree__list--level-1">
 							<mvt:if expr="l.settings:navigationitem_level2:link_dest EQ l.settings:page:code">
-								<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level2:url;">&mvt:navigationitem_level2:name;</a>
+								<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level2:url;">&mvt:navigationitem_level2:name;</a>
 							<mvt:else>
 								<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
-									<span class="x-category-tree__text">&mvt:navigationitem_level2:name;</span>
+									<span class="mm-theme-typography-subheading-extra-small">&mvt:navigationitem_level2:name;</span>
 								<mvt:else>
-									<a class="x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
+									<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">&mvt:navigationitem_level2:name;</a>
 								</mvt:if>
 							</mvt:if>
 						</li>
@@ -933,12 +935,12 @@
 							<mvt:foreach array="navigationitem_level2:items" iterator="navigationitem_level3">
 								<li class="x-category-tree__list x-category-tree__list--level-1">
 									<mvt:if expr="l.settings:navigationitem_level3:link_dest EQ l.settings:page:code">
-										<a class="x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level3:url;">&mvt:navigationitem_level3:name;</a>
+										<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link x-category-tree__link--current" href="&mvte:navigationitem_level3:url;">&mvt:navigationitem_level3:name;</a>
 									<mvt:else>
 										<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
-											<span class="x-category-tree__text">&mvt:navigationitem_level3:name;</span>
+											<span class="mm-theme-typography-paragraph-small">&mvt:navigationitem_level3:name;</span>
 										<mvt:else>
-											<a class="x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
+											<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;">&mvt:navigationitem_level3:name;</a>
 										</mvt:if>
 									</mvt:if>
 								</li>
@@ -948,7 +950,7 @@
 				</mvt:if>
 			</mvt:foreach>
 			<li class="x-category-tree__list x-category-tree__list--level-1 x-category-tree__section-title">
-				<a class="x-category-tree__link u-text-underline" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Out">Log Out</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium x-category-tree__link" href="&mvte:urls:SFNT:secure_sep;Action=LOGO" title="Log Out">Log Out</a>
 			</li>
 			<li class="x-category-tree__list">
 				<mvt:item name="readytheme" param="contentsection( 'helpful_info' )" />
@@ -959,15 +961,15 @@
 </mvt:if>
 ]]></Template><Notes>#Set_Current_Time#</Notes><Layout>Single Column</Layout><Items><Item><Active>true</Active><Name>Personal Information</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Information</Name><Link type="Page" target="_self">ACED</Link></Item><Item><Active>true</Active><Name>Change Email</Name><Link type="Page" target="_self">CEML</Link></Item><Item><Active>true</Active><Name>Change Password</Name><Link type="Page" target="_self">CPWD</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Payment Options</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Cards</Name><Link type="Page" target="_self">CPCD</Link></Item><Item><Active>true</Active><Name>Add New Card</Name><Link type="Page" target="_self">CPCA</Link></Item></SubItems></Item><Item><Active>true</Active><Name>My Orders</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Order History</Name><Link type="Page" target="_self">ORDH</Link></Item><Item><Active>true</Active><Name>Manage Subscriptions</Name><Link type="Page" target="_self">CSUB</Link></Item><Item><Active>true</Active><Name>Wish Lists</Name><Link type="Page" target="_self">WLST</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Customer Credit</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Check Your Balance</Name><Link type="Page" target="_self">ABAL</Link></Item><Item><Active>true</Active><Name>Redeem Gift Certificate</Name><Link type="Page" target="_self">RGFT</Link></Item></SubItems></Item><Item><Active>true</Active><Name>Address Book</Name><Link type="None" target="_self"/><SubItems><Item><Active>true</Active><Name>Edit Addresses</Name><Link type="Page" target="_self">CABK</Link></Item><Item><Active>true</Active><Name>Add New Address</Name><Link type="Page" target="_self">CADA</Link></Item></SubItems></Item><Item><Active>false</Active><Name>Affiliate Information</Name><Link type="Page" target="_self">AFED</Link></Item></Items></NavigationSet_Add><NavigationSet_Delete code="support_navigation"/><NavigationSet_Add><Code>support_navigation</Code><Name>Support Pages Navigation</Name><Description/><Template><![CDATA[<div class="x-transfigure-navigation__footer">
 	<mvt:if expr="g.Basket:cust_id EQ 0">
-		<a class="x-transfigure-navigation__footer-link u-hidden--l" href="&mvte:urls:LOGN:secure;">Sign In</a>
+		<a class="x-transfigure-navigation__footer-link u-hidden--l mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:urls:LOGN:secure;">Sign In</a>
 	<mvt:else>
-		<a class="x-transfigure-navigation__footer-link u-hidden--l" href="&mvte:urls:ACLN:secure;">My Account</a>
+		<a class="x-transfigure-navigation__footer-link u-hidden--l mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:urls:ACLN:secure;">My Account</a>
 	</mvt:if>
 	<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 		<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
 			<span class="x-transfigure-navigation__footer-text">&mvt:navigationitem:name;</span>
 		<mvt:else>
-			<a class="x-transfigure-navigation__footer-link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+			<a class="x-transfigure-navigation__footer-link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 		</mvt:if>
 	</mvt:foreach>
 </div>

@@ -1,0 +1,40 @@
+/* ==========================================================================
+	MMX / Rating
+	========================================================================== */
+
+:host {
+	--mmx-rating__active-color: var(--mmx-color-rating--active);
+	--mmx-rating__inactive-color: var(--mmx-color-rating--inactive);
+}
+
+[part~="track"] {
+	position: relative;
+	display: inline-block;
+	line-height: 1;
+}
+
+[part~="row"] {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.15em;
+}
+
+[part~="row-inactive"] {
+	position: relative;
+}
+
+[part~="row-active"] {
+	position: absolute;
+	left: 0;
+	top: 0;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+[part~="icon-active"] {
+	color: var(--mmx-rating__active-color);
+}
+
+[part~="icon-inactive"] {
+	color: var(--mmx-rating__inactive-color);
+}

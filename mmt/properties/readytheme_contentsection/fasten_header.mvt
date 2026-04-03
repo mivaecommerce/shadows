@@ -17,7 +17,9 @@
 
 	<div class="o-layout__item u-width-3 u-width-2--xl x-fasten-header__navigation">
 		<details class="x-fasten-header__navigation-element" tabindex="-1">
-			<summary tabindex="-1"><span>Shop Categories</span></summary>
+			<summary tabindex="-1">
+				<span class="mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">Shop Categories</span>
+			</summary>
 			<nav>
 				<mvt:do name="l.result" file="g.Module_Library_DB" value="Runtime_CategoryList_Load_Parent( 0, l.settings:parent_categories )" />
 				<ul class="x-fasten-header__navigation-list">
@@ -28,12 +30,12 @@
 
 						<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:parent:link" value="Store_Category_URL(l.settings:parent, l.null)" />
 						<li class="x-fasten-header__navigation-item">
-							<a class="x-fasten-header__navigation-link" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
+							<a class="x-fasten-header__navigation-link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:parent:link;" tabindex="-1">&mvte:parent:name;</a>
 						</li>
 					</mvt:foreach>
 					<mvt:if expr="miva_array_elements(l.settings:parent_categories) GT 5">
 						<li class="x-fasten-header__navigation-item">
-							<a class="x-fasten-header__navigation-link" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop All</a>
+							<a class="x-fasten-header__navigation-link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:urls:CTLG:auto;" tabindex="-1">Shop All</a>
 						</li>
 					</mvt:if>
 				</ul>
@@ -53,21 +55,21 @@
 					</div>
 				</div>
 			</fieldset>
-			<span class="x-search-preview u-color-gray-50" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview--fasten"></span>
+			<span class="x-search-preview" data-mm_searchfield_menu="Yes" data-mm_searchfield_id="x-search-preview--fasten"></span>
 		</form>
 	</div>
 
 	<div class="o-layout__item u-flex u-width-3 u-width-4--xl t-site-header__masthead-links">
 		<mvt:if expr="g.Basket:cust_id EQ 0">
-			<a href="&mvte:urls:LOGN:secure;" class="t-global-account-toggle" tabindex="-1">
+			<a href="&mvte:urls:LOGN:secure;" class="t-global-account-toggle mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" tabindex="-1">
 				Sign In <span class="u-icon-chevron-down"  aria-hidden="true"></span>
 			</a>
 		<mvt:else>
-			<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle" tabindex="-1">
+			<a href="&mvte:urls:ACLN:secure;" class="t-global-account-toggle mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" tabindex="-1">
 				My Account <span class="u-icon-user"  aria-hidden="true"></span>
 			</a>
 		</mvt:if>
-		<a class="t-site-header__basket-link" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
+		<a class="t-site-header__basket-link mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" data-hook="open-mini-basket" aria-label="Open Mini-Basket" href="&mvte:urls:BASK:auto;" tabindex="-1">
 			<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 0">
 				<span class="u-icon-cart-full" aria-hidden="true"></span>
 			<mvt:else>

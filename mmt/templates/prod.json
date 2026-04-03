@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "form_name": {
@@ -2793,8 +2793,8 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 10.1301,
-                    "settings_version": "10.13.04"
+                    "flex_version": 26.01,
+                    "settings_version": "26.01.00"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -2956,6 +2956,9 @@
                                 "price_text_styles": {
                                     "visible": 0
                                 },
+                                "rating_settings": {
+                                    "visible": 0
+                                },
                                 "suffix": {
                                     "visible": 1
                                 },
@@ -2968,6 +2971,9 @@
                                     },
                                     "font_size": {
                                         "visible": 0
+                                    },
+                                    "settings": {
+                                        "enabled": 1
                                     },
                                     "style": {
                                         "visible": 0
@@ -3083,6 +3089,9 @@
                                     },
                                     "visible": 1
                                 },
+                                "rating_settings": {
+                                    "visible": 0
+                                },
                                 "suffix": {
                                     "visible": 0
                                 },
@@ -3122,6 +3131,9 @@
                                 "price_text_styles": {
                                     "visible": 0
                                 },
+                                "rating_settings": {
+                                    "visible": 0
+                                },
                                 "suffix": {
                                     "visible": 0
                                 },
@@ -3134,6 +3146,9 @@
                                     },
                                     "font_size": {
                                         "visible": 0
+                                    },
+                                    "settings": {
+                                        "enabled": 1
                                     },
                                     "style": {
                                         "visible": 0
@@ -3159,6 +3174,11 @@
                         },
                         "fit": {
                             "value": "contain"
+                        },
+                        "hover_image": {
+                            "settings": {
+                                "enabled": 0
+                            }
                         },
                         "settings": {
                             "enabled": 1

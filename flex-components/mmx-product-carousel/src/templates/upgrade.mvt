@@ -50,3 +50,9 @@
 	<mvt:eval expr="miva_member_delete( l.settings:instance:products, 'from_category' )" />
 	<mvt:eval expr="miva_member_delete( l.settings:instance:products, 'from_individual' )" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.00'">
+	<mvt:assign name="l.settings:instance:advanced:settings:product_name_typography:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:settings:displayed_price_typography:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:settings:additional_price_typography:theme_mode" value="0" />
+</mvt:if>

@@ -23,6 +23,10 @@
 	&:hover {
 		background: color-mix(in srgb, var(--mmx-wishlist__icon-color) 30%, transparent);
 	}
+
+	&:focus-visible {
+		outline: var(--mmx-button-outline--focus);
+	}
 }
 
 .mmx-atwl-dialog {
@@ -44,7 +48,7 @@
 	flex-direction: column;
 
 	&:has(.mmx-atwl-dialog__wishlist) {
-		border-bottom: 1px solid var(--mmx-color-input-border);
+		border-bottom: var(--mmx-input-border);
 		margin-bottom: var(--mmx-form__size);
 		padding-bottom: var(--mmx-form__size);
 	}

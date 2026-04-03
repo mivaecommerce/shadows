@@ -24,7 +24,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--l u-width-4--w t-logn-block">
-			<p class="c-heading-foxtrot">Welcome Back</p>
+			<p class="mm-theme-typography-title-four">Welcome Back</p>
 			<mvt:if expr="NOT ISNULL g.QuoteCode">
 				<mvt:assign name="l.settings:url" value="l.settings:urls:QUOT:secure" />
 			<mvt:elseif expr="g.Customer_Temporary_Password">
@@ -56,7 +56,7 @@
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<p>
-								<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+								<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
 							</p>
 							<p>
 								<mvt:item name="buttons" param="Login" />
@@ -67,7 +67,7 @@
 			</form>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--l u-width-4--w t-logn-block">
-			<p class="c-heading-foxtrot">New Customers</p>
+			<p class="mm-theme-typography-title-four">New Customers</p>
 			<mvt:if expr="g.Order">
 				<mvt:assign name="l.settings:return_url" value="l.settings:urls:OINF:secure" />
 			<mvt:elseif expr="g.Redeem">
@@ -107,7 +107,7 @@
 							<input id="register_password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<input class="c-button c-button--full c-button--secondary" type="submit" value="Create My Account">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account">
 						</div>
 					</div>
 				</fieldset>
@@ -115,7 +115,7 @@
 			<br>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

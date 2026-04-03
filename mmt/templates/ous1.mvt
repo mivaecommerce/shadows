@@ -22,8 +22,8 @@
 
 	<section class="o-layout o-layout--wide t-order-complete-content">
 		<div class="o-layout__item">
-			<h1 class="c-heading-echo u-text-center">Special Offer</h1>
-			<h2 class="c-heading--subheading--small u-text-center">
+			<h1 class="mm-theme-typography-title-three u-text-center">Special Offer</h1>
+			<h2 class="mm-theme-typography-subheading-small u-text-center">
 				Save &mvt:upsale:formatted_upsell_savings;<br>
 				<em class="u-font-small">Offer valid for this order only</em>
 			</h2>
@@ -43,7 +43,7 @@
 				</mvt:if>
 				<br>
 				<div class="o-layout__item u-width-5--m">
-					<p class="c-heading-foxtrot">&mvt:upsale:name;</p>
+					<p class="mm-theme-typography-title-four">&mvt:upsale:name;</p>
 					<p>
 						Code: &mvt:upsale:code;<br>
 						Regular Price: &mvt:upsale:formatted_price;<br>

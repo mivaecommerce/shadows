@@ -24,8 +24,8 @@
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--m">
 		<div class="o-layout__item u-width-12 u-width-9--m">
 			<div class="o-layout--justify-between o-layout--wrap u-flex">
-				<h1 class="c-heading-delta">&mvt:page:name;</h1>
-				<p><a class="c-button" href="&mvte:urls:CPCA:secure;">Add New Card</a></p>
+				<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
+				<p><a class="mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:CPCA:secure;">Add New Card</a></p>
 			</div>
 			<hr class="c-keyline">
 			<mvt:item name="paymentcards" />
@@ -34,7 +34,7 @@
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

@@ -22,10 +22,13 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<mvt:item name="messages" />
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
+			<hr class="c-keyline">
+			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
+			<a class="mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

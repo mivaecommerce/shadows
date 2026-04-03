@@ -26,6 +26,14 @@
 	margin-bottom: 0;
 }
 
+.mmx-text__spacing--none {
+	--mmx-text-margin-bottom: 0;
+
+	.mmx-text__inner {
+		display: block;
+	}
+}
+
 /* Typography Styles: Base
    =========================================== */
 .type-display-1,
@@ -179,10 +187,11 @@ h6:where(:not(.mmx-theme-text)) {
 .type-product-additional-price {
 	color: var(--mmx-product-additional-price-color);
 	font: var(--mmx-product-additional-price-font);
-	text-decoration: line-through;
 	text-transform: var(--mmx-product-additional-price-case);
+	text-decoration: line-through;
+	
+	--mmx-text__text-decoration: line-through;
 }
-
 
 /* Typography Styles: Small Breakpoint [40em = 640px]
    =========================================== */

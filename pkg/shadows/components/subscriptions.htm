@@ -1,7 +1,7 @@
 <Page_Update code="CSUB"><Item code="subscriptions"><ItemsPerPage>12</ItemsPerPage><PageCountNumber>3</PageCountNumber><DisplayItemsPerPage>Yes</DisplayItemsPerPage><HideCancelled>Always</HideCancelled><HideCancelledDays>14</HideCancelledDays><SortBySwitch>No</SortBySwitch><SortByName>No</SortByName><SortByCode>No</SortByCode><SortByEstimatedTotal>No</SortByEstimatedTotal><SortByFirstOrderDate>No</SortByFirstOrderDate><SortByLastOrderDate>No</SortByLastOrderDate><SortByNextOrderDate>No</SortByNextOrderDate><SortByPaymentMethod>No</SortByPaymentMethod><SortByShippingMethod>No</SortByShippingMethod><SortByTermRemaining>No</SortByTermRemaining><SortByTermProcessed>No</SortByTermProcessed><DefaultSort>id_desc</DefaultSort><ReverseDefaultDisplayOrder>No</ReverseDefaultDisplayOrder><PriceDisplay>Sale</PriceDisplay><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><DisplayLineItemDiscountDetails>Yes</DisplayLineItemDiscountDetails><Fields><Code/><Name/><Options/><Quantity/><Price/><FirstOrderDate/><LastOrderDate/><NextOrderDate/><TermRemaining/><PaymentMethod/><ShippingAddress/></Fields><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>360</Width><Height>360</Height></ImageDimensions><Template><![CDATA[<mvt:if expr="l.settings:subscriptions:total_count EQ 0">
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 			<br>
 			<p class="x-messages x-messages--info">You have no current subscriptions.</p>
@@ -12,7 +12,7 @@
 
 <section class="o-layout">
 	<div class="o-layout__item">
-		<h1 class="c-heading-delta">&mvt:page:name;</h1>
+		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
 	</div>
@@ -89,12 +89,12 @@
 						</mvt:if>
 						<p>
 							<mvt:if expr="l.settings:subscription:status EQ 'C'">
-								<a class="c-button c-button--secondary c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">View Subscription</a>
+								<a class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">View Subscription</a>
 							<mvt:else>
-								<a class="c-button c-button--secondary c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit Subscription</a>
+								<a class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" href="&mvte:urls:CSBE:auto_sep;Subscription_ID=&mvta:subscription:id;&amp;CSRF_Token=&mvta:global:Basket:csrf_token;">Edit Subscription</a>
 							</mvt:if>
 						</p>
-						<div class="u-text-bold">&mvt:item:name;</div>
+						<div class="mm-theme-typography-subheading-extra-small">&mvt:item:name;</div>
 						<div>
 							<mvt:foreach iterator="option" array="item:options">
 								<div>
@@ -144,13 +144,13 @@
 			<mvt:if expr="l.settings:subscriptions:page_links:current_page NE 1">
 				<mvt:assign name="l.settings:prev_page" value="l.settings:subscriptions:page_links:current_page - 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:subscriptions:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:subscriptions:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</span>
 				</li>
@@ -171,13 +171,13 @@
 			<mvt:if expr="l.settings:subscriptions:page_links:current_page NE l.settings:subscriptions:page_links:last_page">
 				<mvt:assign name="l.settings:next_page" value="l.settings:subscriptions:page_links:current_page + 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:subscriptions:page_links:next_link_params;" aria-label="Go to page &mvte:next_page;.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:subscriptions:page_links:next_link_params;" aria-label="Go to page &mvte:next_page;.">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</span>
 				</li>

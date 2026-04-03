@@ -95,18 +95,21 @@
 				</mvt:if>
 
 				<mvt:capture variable="l.settings:cvv_dialog">
-					<button class="c-button c-button--as-link c-button--small t-data-cvv" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What is This?</button>
+					<button class="t-data-cvv mm-theme-button-secondary-link mm-theme-button-secondary-link__small" data-dialog-trigger="cvv-info" title="Card Security Code Information" type="button">What is This?</button>
 					<div class="c-dialog" data-dialog="cvv-info" aria-hidden="true">
 						<div class="c-dialog__overlay" tabindex="-1">
 							<div class="c-dialog__container" aria-labelledby="cvv-info-title" aria-modal="true" role="dialog">
 								<header class="c-dialog__header">
-									<p id="cvv-info-title" class="c-dialog__title c-heading-foxtrot">Credit Card Security Code</p>
+									<p id="cvv-info-title" class="c-dialog__title mm-theme-typography-title-four">Credit Card Security Code</p>
 									<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 								</header>
 								<div class="c-dialog__content">
-									<p><strong>What is the CVV2 and what does it look like?</strong><br />For your protection, we ask that you enter an extra 3-4 digit number called the CVV2. The CVV2 is NOT your PIN and is not the last 3 or 4 digits of your credit card number. It is an extra ID printed on your Visa, MasterCard, Discover or American Express Card.<br />We request this code as a security measure to our customers. Requiring this information helps to ensure that the credit card is present at the time of purchase. If you cannot find this code, or it is illegible, please contact your credit card issuer.</p>
-									<p><strong>Visa, MasterCard and Discover:</strong><br />On the back of the card in the top-right corner of the signature box. Enter the three-digit number following the credit card number. (See below.)</p>
-									<p><strong>American Express:</strong><br />On the front of the card. Enter the four-digit number on the right directly above the credit card number. (See below.)</p>
+									<p class="mm-theme-typography-subheading-small">What is the CVV2 and what does it look like?</p>
+									<p>For your protection, we ask that you enter an extra 3-4 digit number called the CVV2. The CVV2 is NOT your PIN and is not the last 3 or 4 digits of your credit card number. It is an extra ID printed on your Visa, MasterCard, Discover or American Express Card.<br />We request this code as a security measure to our customers. Requiring this information helps to ensure that the credit card is present at the time of purchase. If you cannot find this code, or it is illegible, please contact your credit card issuer.</p>
+									<p class="mm-theme-typography-subheading-small">Visa, MasterCard and Discover:</p>
+									<p>On the back of the card in the top-right corner of the signature box. Enter the three-digit number following the credit card number. (See below.)</p>
+									<p class="mm-theme-typography-subheading-small">American Express:</p>
+									<p>On the front of the card. Enter the four-digit number on the right directly above the credit card number. (See below.)</p>
 									<p class="u-text-center"><img src="&mvte:global:theme_path;/core/images/img_cvv.png" alt="CID/CVV/CVV2 Locations" loading="lazy"></p>
 								</div>
 							</div>
@@ -123,7 +126,7 @@
 						<mvt:item name="payment" />
 						<input data-hook="payment-method" type="hidden" name="PaymentMethod" value="&mvte:global:PaymentMethod;">
 						<input type="hidden" name="SplitPaymentData" value="&mvte:global:SplitPaymentData;" />
-						<p class="c-heading-foxtrot">Payment Information</p>
+						<p class="mm-theme-typography-title-four">Payment Information</p>
 						<mvt:if expr="NOT ISNULL l.settings:payment:message">
 							<p class="x-messages x-messages--info">&mvt:payment:message;</p>
 						</mvt:if>
@@ -132,11 +135,11 @@
 								<div class="c-form-list__item c-form-list__item--full">
 									<div class="t-payment-form t-&mvte:payment:module:code;-payment-form">
 										<div class="t-payment-form__heading">
-											<span class="u-text-medium">
+											<span>
 												Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-												<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+												<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 											</span>
-											<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+											<span class="u-icon-secure" aria-hidden="true"></span>
 										</div>
 										<div class="t-payment-form__fields">
 											<mvt:item name="mivapay"/>
@@ -159,18 +162,18 @@
 										<mvt:foreach array="payment:fields" iterator="field">
 											<mvt:item name="payment" param="field:code" />
 										</mvt:foreach>
-										<input class="c-button c-button--full" type="submit" value="Place Order">
+										<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
 									</div>
 								</div>
 							</div>
 						<mvt:elseif expr="g.PaymentMethod EQ 'amazonpayv2:'">
 							<div class="t-payment-form t-amazonpayv2">
 								<div class="t-payment-form__heading">
-									<span class="u-text-medium">
+									<span>
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 									</span>
-									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+									<span class="u-icon-secure" aria-hidden="true"></span>
 								</div>
 								<div class="t-payment-form__fields">
 									When you click the button below, you will be temporarily redirected to the Amazon Pay site to sign in and confirm your payment. You will then be returned to &mvte:store:name;.
@@ -179,11 +182,11 @@
 						<mvt:elseif expr="g.PaymentMethod EQ 'paypalcp:paypal'">
 							<div class="t-payment-form t-paypalcp">
 								<div class="t-payment-form__heading">
-									<span class="u-text-medium">
+									<span>
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 									</span>
-									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+									<span class="u-icon-secure" aria-hidden="true"></span>
 								</div>
 								<div class="t-payment-form__fields">
 									When you click "Place Order" below, you will be temporarily redirected to the PayPal site to sign in and confirm your payment. You will then be returned to &mvte:store:name;.
@@ -192,11 +195,11 @@
 						<mvt:elseif expr="g.PaymentMethod EQ 'paypalcp:cc'">
 							<div id="payment-fields" class="t-payment-form t-paypalcp">
 								<div class="t-payment-form__heading">
-									<span class="u-text-medium">
+									<span>
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 									</span>
-									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+									<span class="u-icon-secure" aria-hidden="true"></span>
 								</div>
 								<div class="t-payment-form__fields c-form-fields--compact">
 									<mvt:foreach array="payment:fields" iterator="field">
@@ -229,11 +232,11 @@
 						<mvt:elseif expr="g.PaymentMethod EQ 'epmivapay:cc'">
 							<div id="payment-fields" class="t-payment-form t-epmivapay">
 								<div class="t-payment-form__heading">
-									<span class="u-text-medium">
+									<span>
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 									</span>
-									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+									<span class="u-icon-secure" aria-hidden="true"></span>
 								</div>
 								<div class="t-payment-form__fields c-form-fields--compact">
 									<mvt:foreach array="payment:fields" iterator="field">
@@ -266,11 +269,11 @@
 						<mvt:else>
 							<div class="t-payment-form t-&mvte:payment:module:code;-payment-form">
 								<div class="t-payment-form__heading">
-									<span class="u-text-medium">
+									<span>
 										Payment Method: <span data-hook="payment-method-display">&mvte:payment:desc;</span>
-										<a class="u-text-regular" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:OSEL:secure;" title="Edit Payment Method">Edit</a>
 									</span>
-									<span class="c-heading--subheading--x-small u-icon-secure" aria-hidden="true"></span>
+									<span class="u-icon-secure" aria-hidden="true"></span>
 								</div>
 								<div class="t-payment-form__fields c-form-fields--compact">
 									<mvt:foreach array="payment:fields" iterator="field">
@@ -321,9 +324,9 @@
 							<br>
 							<div class="c-form-list">
 								<mvt:if expr="g.Amount_Invalid">
-									<p class="c-heading-foxtrot u-color-red">Payment Amount</p>
+									<p class="mm-theme-typography-title-four u-color-red">Payment Amount</p>
 								<mvt:else>
-									<p class="c-heading-foxtrot">Payment Amount</p>
+									<p class="mm-theme-typography-title-four">Payment Amount</p>
 								</mvt:if>
 
 								<div class="c-form-list__item">
@@ -383,7 +386,7 @@
 								<mvt:assign name="l.settings:display" value="'u-shown'" />
 							</mvt:if>
 							<section class="&mvt:display;" data-hook="payment-additional">
-								<p class="c-heading-foxtrot">Pay Additional Balance With</p>
+								<p class="mm-theme-typography-title-four">Pay Additional Balance With</p>
 								<div class="c-form-list">
 									<mvt:foreach array="paymentmethods" iterator="method">
 										<mvt:if expr="( l.settings:method:module NE 'customercredit' ) OR ( ( g.PaymentMethod NE 'customercredit:credit' ) AND ( NOT miva_array_search( l.settings:splitpayment:splits, 1, l.split, 'l.split:module:code EQ l.settings:method:module' ) ) )">
@@ -423,19 +426,19 @@
 											};
 										</script>
 										<span onclick="onclick_submit(); return false;">
-											<input class="c-button c-button--full-small" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
 										</span>
 									<mvt:elseif expr="'square' CIN g.PaymentMethod">
 										<mvt:comment>No button here. Button displays above</mvt:comment>
 									<mvt:elseif expr="'amazonpayv2:' CIN g.PaymentMethod">
 										<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 									<mvt:elseif expr="'brain' CIN g.PaymentMethod">
-										<input class="c-button c-button--full-small" type="submit" value="Place Order">
+										<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
 									<mvt:else>
 										<mvt:if expr="g.cc_payment EQ 1">
-											<input class="c-button c-button--full-small" data-hook="submit-form" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" data-hook="submit-form" type="submit" value="Place Order">
 										<mvt:else>
-											<input class="c-button c-button--full-small" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
 										</mvt:if>
 									</mvt:if>
 								</div>

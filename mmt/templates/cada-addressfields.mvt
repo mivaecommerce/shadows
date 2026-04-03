@@ -1,4 +1,4 @@
-<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 <hr class="c-keyline">
 <br>
 <form method="post" action="&mvte:urls:CABK:secure;" data-validate-address>
@@ -8,7 +8,7 @@
 		<input type="hidden" name="Address_Validated" value="1" />
 	</mvt:if>
 
-	<p class="c-heading-foxtrot">Recipient</p>
+	<p class="mm-theme-typography-title-four">Recipient</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:Address_Description_Row;">
 			<label class="c-form-label u-text-medium is-required" for="l-Address_Description">Nickname</label>
@@ -41,7 +41,7 @@
 	</div>
 	<hr class="c-keyline">
 
-	<p class="c-heading-foxtrot">Address</p>
+	<p class="mm-theme-typography-title-four">Address</p>
 	<div class="c-form-list o-layout">
 		<div class="c-form-list__item o-layout__item u-width-8--m &mvte:global:Address_Address1_Row;">
 			<label class="c-form-label u-text-medium is-required" for="l-Address_Address1">Address</label>
@@ -117,7 +117,7 @@
 	</div>
 
 	<div class="o-layout--justify-end c-form-inline-set">
-		<input class="c-button" type="submit" value="Save">
-		<a class="c-button c-button--secondary" href="&mvte:urls:CABK:secure;">Cancel</a>
+		<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
+		<a class="mm-theme-button-secondary mm-theme-button-secondary__small" href="&mvte:urls:CABK:secure;">Cancel</a>
 	</div>
 </form>

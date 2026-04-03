@@ -310,12 +310,21 @@ class MMX_ImageGallery extends MMX_Element {
 		this.#closeupCount().textContent = `Image ${state.position + 1} of ${state.slideCount}`;
 	}
 
-	openCloseup() {
+	openCloseup({focus = true} = {}) {
 		if (!this.#closeupEnabled()) {
 			return;
 		}
 
+		if (!focus) {
+			this.#closeupDialog().inert = true;
+		}
+
 		this.#closeupDialog().showModal();
+
+		if (!focus) {
+			this.#closeupDialog().inert = false;
+		}
+		
 		this.#closeup().updateSizing();
 		this.#updateSliders();
 	}

@@ -31,6 +31,10 @@ mmx-accordion {
 	margin: 0;
 	padding: var(--mmx-accordion__padding);
 	transition: margin var(--mmx-accordion__transition-duration);
+
+	&:focus-visible {
+		outline: var(--mmx-button-outline--focus);
+	}
 }
 
 .mmx-accordion__heading::-webkit-details-marker {

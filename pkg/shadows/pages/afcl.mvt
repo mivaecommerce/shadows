@@ -24,7 +24,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">Welcome Back</p>
+			<p class="mm-theme-typography-title-four">Welcome Back</p>
 			<form data-hook="afcl-form" method="post" action="&mvte:urls:AFED:secure;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
@@ -57,11 +57,11 @@
 			</form>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">New Affiliate</p>
-			<p><a class="c-button c-button--secondary" href="&mvte:urls:AFAD:secure;" title="Register for an Affiliate Account">Register</a></p>
+			<p class="mm-theme-typography-title-four">New Affiliate</p>
+			<p><a class="mm-theme-button-secondary mm-theme-button-secondary__small" href="&mvte:urls:AFAD:secure;" title="Register for an Affiliate Account">Register</a></p>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

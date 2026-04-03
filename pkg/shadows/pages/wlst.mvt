@@ -24,7 +24,7 @@
 	<mvt:if expr="g.Basket:cust_id AND g.Customer_Session_Verified">
 		<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 			<div class="o-layout__item u-width-12 u-width-9--l">
-				<h1 class="c-heading-delta">&mvt:page:name;</h1>
+				<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 				<form method="post" action="&mvte:urls:WLST:rr;">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
@@ -34,11 +34,11 @@
 							<div class="c-form-list__item">
 								<mvt:if expr="NOT ISNULL g.WishListSearch">
 									<p class="c-form-inline-set">
-										<a class="c-button c-button--small c-button--secondary" href="&mvte:urls:WLAD:auto;">Create Wish List</a>
-										<a class="c-button c-button--small" href="&mvte:urls:WLST:auto;">My Wish Lists</a>
+										<a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:WLAD:auto;">Create Wish List</a>
+										<a class="mm-theme-button-primary mm-theme-button-primary__extra-small" href="&mvte:urls:WLST:auto;">My Wish Lists</a>
 									</p>
 								<mvt:else>
-									<p><a class="c-button c-button--secondary" href="&mvte:urls:WLAD:auto;">Create Wish List</a></p>
+									<p><a class="mm-theme-button-secondary mm-theme-button-secondary__small" href="&mvte:urls:WLAD:auto;">Create Wish List</a></p>
 								</mvt:if>
 							</div>
 							<div class="c-form-list__item">
@@ -46,7 +46,7 @@
 							</div>
 							<div class="c-form-list__item c-form-inline-set">
 								<input id="WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-								<button class="c-button" type="submit">
+								<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit">
 									<span class="u-icon-search" aria-hidden="true"></span>
 									<span class="u-hide-visually">Search</span>
 								</button>
@@ -65,13 +65,13 @@
 	<mvt:else>
 		<section class="o-layout">
 			<div class="o-layout__item">
-				<h1 class="c-heading-delta">&mvt:page:name;</h1>
+				<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			</div>
 		</section>
 
 		<section class="o-layout o-layout--justify-center">
 			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-				<p class="c-heading-foxtrot">Please sign in to create or access your wish list.</p>
+				<p class="mm-theme-typography-title-four">Please sign in to create or access your wish list.</p>
 				<form method="post" action="&mvte:urls:WLST:secure;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
@@ -99,7 +99,7 @@
 				<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 			</div>
 			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-				<p class="c-heading-foxtrot">Find a Wish List</p>
+				<p class="mm-theme-typography-title-four">Find a Wish List</p>
 				<form class="t-wish-list-search" method="post" action="&mvte:urls:WLST:rr;">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
@@ -110,7 +110,7 @@
 								<label class="c-form-label u-text-medium is-required" for="l-WishListSearch">Search all public wish lists</label>
 								<div class="c-form-inline-set">
 									<input id="l-WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-									<button class="c-button" type="submit">
+									<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit">
 										<span class="u-icon-search" aria-hidden="true"></span>
 										<span class="u-hide-visually">Search</span>
 									</button>
@@ -125,7 +125,7 @@
 			<mvt:item name="wishlists" />
 		</mvt:if>
 	</mvt:if>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

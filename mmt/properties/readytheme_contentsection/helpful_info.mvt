@@ -1,16 +1,19 @@
-<p class="c-heading--subheading--small">Need Help?</p>
-<p class="u-color-gray-600"><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
-<p class="u-color-gray-600"><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
+<p class="mm-theme-typography-subheading-small">Need Help?</p>
+<p><span class="u-icon-contact" aria-hidden="true"></span>Live Chat</p>
+<p><span class="u-icon-phone" aria-hidden="true"></span>Call Us: &mvt:global:store:phone;</p>
 <mvt:if expr="g.Basket:basket_id GT 0">
-	<p class="u-color-gray-600"><span class="u-icon-cart-empty" aria-hidden="true"></span>Basket ID: &mvte:global:Basket:basket_id;</p>
+	<p><span class="u-icon-cart-empty" aria-hidden="true"></span>Basket ID: &mvte:global:Basket:basket_id;</p>
 </mvt:if>
-<p class="u-color-gray-600"><span class="u-icon-document" aria-hidden="true"></span><a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp">Shipping & Return Policy</a></p>
+<p>
+	<span class="u-icon-document" aria-hidden="true"></span>
+	<a href="&mvte:urls:SARP:auto;" data-dialog-trigger="sarp" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Shipping & Return Policy</a>
+</p>
 
 <div class="c-dialog" data-dialog="sarp" aria-hidden="true">
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sarp-title" aria-modal="true" role="dialog">
 			<header class="c-dialog__header">
-				<p id="sarp-title" class="c-dialog__title c-heading-foxtrot">Shipping &amp; Return Policy</p>
+				<p id="sarp-title" class="c-dialog__title mm-theme-typography-title-four">Shipping &amp; Return Policy</p>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 			</header>
 			<div class="c-dialog__content">

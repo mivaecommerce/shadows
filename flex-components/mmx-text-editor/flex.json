@@ -2,7 +2,7 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "10.13.04",
+	"version": "26.01.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
@@ -46,13 +46,39 @@
 				}
 			],
 			"type": "group"
+		},
+		{
+			"code": "desktop",
+			"prompt": "Desktop",
+			"properties": [
+				{
+					"code": "width",
+					"label": "%",
+					"precision": -1,
+					"preview_property_selector": ":shadow [part~=\"content\"]",
+					"prompt": "Width",
+					"range_high": 100,
+					"range_low": 20,
+					"scale": -1,
+					"type": "slider"
+				}
+			],
+			"type": "group"
 		}
 	],
 	"defaults": {
+		"advanced": {
+			"desktop": {
+				"width": {
+					"value": 100
+				}
+			}
+		},
 		"content": {
 			"value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies. Donec porta ante sed nulla consequat pharetra. Quisque malesuada facilisis turpis. Etiam volutpat, lectus nec rhoncus egestas, libero lectus egestas magna, sit amet eleifend nunc leo sit amet purus. Duis nec lectus maximus, posuere orci vel, dictum orci. Nullam id arcu nec neque placerat varius. Fusce aliquam magna et tellus blandit luctus."
 		}
 	},
+	"upgrade_template": "src/templates/upgrade.mvt",
 	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
@@ -68,7 +94,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-5Ow+IsFkbqqtzaKt5q//tiQQ9rT+31HGSRX9AxAJp88= sha384-LF5mF0DEfHeJpiB4mEAgS1xgHhYu9/5ulhHs6h0sJs9YvVox0M5bvsap94mNvYhm sha512-mveEqInAge8WBTMfnXdsTm9dt9+1nzX4vDLEjEYfmDdadzApjtP5QxyfvycXG7V0PR4H5ZuQ9JK7R1JwnGTp0Q=="
+					"value": "sha256-GjamnrTRJ8f5qt8J4es9zB2XQAjQ/L5mSyLguqV6bXg= sha384-SqO2limJA/606kaEaaFX/CG2W5sdGeCN27qHryo3Jux2GuQiuJ3qvNk/vCq0eUQF sha512-ASq0g7fpIbipk34dhQuJJHmEgLYbuEtOabPqdt7XusbuVuarZoIzOuWK9B7lKmxjlQuYlA4ERWAi8h6IpgDdOA=="
 				},
 				{
 					"name": "crossorigin",
@@ -96,7 +122,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ulzmRH0tuam+X9cG65dQtxv3kCUEGfXWdYXHYZhiBH8= sha384-unulE7NqpkacUJ5unVPTVCaXGgMvhb2uIf5i4FzemU9VoVLKLYVYw6I0VnQKejiy sha512-NHUztRYNh3Ui9ZVRbpHabVLzoVsWSKiZRcxEBCqLKutHTVetrbFTODO3njlFl92iKASCiGTkyZmUNi81b7sPPA=="
+					"value": "sha256-IbJeQQxY4kijxlrh60GpYnBJpaVX3ZNmOpmlQS5XAUE= sha384-35bdDKlbGx653olCcf19JPDeMj0SQXxQ89PAYiq9F8aekELEjnizfNrJbvfVkYuT sha512-/Rbc06adb5W+wkSYJM4SA2gWO+DWBUa80x4O6CJWLLIuGYmIcz9c2icfT/g8xaGNPURTeWBJc1EL0zMaBdVexQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -106,6 +132,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.04"
+		"mmx-base": "=26.01.00"
 	}
 }

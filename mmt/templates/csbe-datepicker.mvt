@@ -20,7 +20,7 @@
 		</div>
 
 		<div id="miva_datepicker_calendar_week_container_&mvte:datepicker:id_suffix;" class="miva_datepicker_calendar_week_container"></div>
-		<button id="miva_datepicker_cancel_&mvte:datepicker:id_suffix;" class="miva_datepicker_cancel c-button c-button--small c-button--clear u-color-primary">Cancel</button>
+		<button id="miva_datepicker_cancel_&mvte:datepicker:id_suffix;" class="miva_datepicker_cancel mm-theme-button-primary mm-theme-button-primary__extra-small">Cancel</button>
 	</div>
 </div>
 
@@ -202,7 +202,7 @@
 		this.element_parent.addEventListener('keydown', function (keyEvent) {
 			handleKeyboard(keyEvent);
 		});
-		
+
 	};
 
 	MivaDatePicker.prototype.Hide = function () {

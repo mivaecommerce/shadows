@@ -23,10 +23,12 @@
 
 	<section class="o-layout o-layout--justify-center o-layout--wide t-order-complete-content">
 		<div class="o-layout__item">
-			<h1 class="c-heading-echo u-text-center">
-				Special Offers<br>
-				<em class="u-font-tiny u-text-regular">Offer valid for this order only</em>
+			<h1 class="mm-theme-typography-title-three u-text-center">
+				Special Offers
 			</h1>
+			<h2 class="mm-theme-typography-subheading-small u-text-center">
+				Offer valid for this order only
+			</h2>
 			<br>
 			<mvt:if expr="g.Upsold_Product_Count LE g.Upsell_Options:prod_sell OR g.Upsell_Options:prod_sell EQ 0">
 				<p>You may select <strong>one or more</strong> of the following:</p>
@@ -42,7 +44,7 @@
 					<input type="hidden" name="Attributes" value="Yes">
 					<input type="hidden" name="Upsell_Product_Count" value="&mvte:global:Upsold_Product_Count;">
 					<mvt:item name="tax" />
-		
+
 					<table class="c-table-responsive">
 						<thead class="c-table-responsive_thead u-text-left">
 							<tr class="c-table-responsive__row u-text-uppercase u-font-tiny">
@@ -79,7 +81,7 @@
 							</mvt:foreach>
 						</tbody>
 					</table>
-		
+
 					<p class="u-text-right">
 						<mvt:item name="buttons" param="Continue" />
 					</p>
@@ -87,7 +89,7 @@
 			</form>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

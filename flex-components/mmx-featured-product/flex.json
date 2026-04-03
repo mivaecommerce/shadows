@@ -2,7 +2,7 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "10.13.04",
+	"version": "26.01.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
@@ -1043,7 +1043,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-3ctVU4A7ppRJVe2kiOPjdSZZBMZ5RkwjLzanenhpdQ4= sha384-N1QPwDSINHrHgiVxSoge3zdXopbC7P0H2BryXKZKoXpmS5hZSynBq0KoXm9bhP14 sha512-bTpMBI/7gin0E1NVLoQ4B+EAtLVDPrAr9eHsTp+40NqIMwGmrg20epVpjPya86foMTdM0/7gkRkSvBkZD7qvYw=="
+					"value": "sha256-0HuFcVdjUNH2WEUne+e73gSeS95yHf/FFxCDqDI5JI4= sha384-3LgRu7gKjfukzks9gro3aEwyq5PwWRFoWxulx2NZivGZ6cPOVNZtCi0wZXVZ3xT6 sha512-ykKsvJgeZepl97dSDYkz9XsKImyBgATDA4nyuC8prAfa38OGjGUy2nML49srehYsKuoUepgYfhCeVRBiLmTENQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1053,11 +1053,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.04",
-		"mmx-button": "=10.13.04",
-		"mmx-forms": "=10.13.04",
-		"mmx-hero": "=10.13.04",
-		"mmx-hero-slider": "=10.13.04",
-		"mmx-text": "=10.13.04"
+		"mmx-base": "=26.01.00",
+		"mmx-button": "=26.01.00",
+		"mmx-forms": "=26.01.00",
+		"mmx-hero": "=26.01.00",
+		"mmx-hero-slider": "=26.01.00",
+		"mmx-text": "=26.01.00"
 	}
 }

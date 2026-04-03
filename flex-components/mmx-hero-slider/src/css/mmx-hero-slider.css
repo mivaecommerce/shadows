@@ -129,7 +129,7 @@
 
 .mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-left:focus .mmx-hero-slider__arrow-outer,
 .mmx-hero-slider--arrow-style-caret .mmx-hero-slider__arrow-right:focus .mmx-hero-slider__arrow-outer {
-	fill: #3A58FC;
+	fill: var(--mmx-color-focus);
 }
 
 /* arrow-style-button */
@@ -154,7 +154,7 @@
 
 .mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left:focus,
 .mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-right:focus {
-	outline: 2px solid var(--mmx-color-focus);
+	outline: var(--mmx-button-outline--focus);
 }
 
 .mmx-hero-slider--arrow-style-button .mmx-hero-slider__arrow-left:hover,
@@ -263,7 +263,7 @@
 
 .mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:focus,
 .mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-minimal > button:focus {
-	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px #3A58FC;
+	box-shadow: 0 0 0 1px #B4B4B4, 0 0 0 3px var(--mmx-color-focus);
 }
 
 .mmx-hero-slider__slider-navigation.mmx-hero-slider__slider-navigation--style-normal > button:hover {

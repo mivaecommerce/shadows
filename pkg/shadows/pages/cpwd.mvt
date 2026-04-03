@@ -30,7 +30,7 @@
 	</mvt:if>
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l &mvt:global:cpwd_justify;">
 		<div class="o-layout__item u-width-12 &mvt:global:cpwd_width;">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 			<br>
 			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:ACLN:secure;" autocomplete="off">
@@ -61,7 +61,7 @@
 						</mvt:if>
 						<mvt:do file="g.Module_Feature_CUS_DB" name="l.success" value="CustomerSettings_Load(l.settings:customersettings)" />
 						<p class="x-messages x-messages--warning">
-							<span class="c-heading-foxtrot u-block u-text-center">Requirements</span>
+							<span class="mm-theme-typography-title-four u-block u-text-center">Requirements</span>
 							&bull; Minimum Password Length: &mvte:customersettings:pw_min_len;<br>
 							<mvt:if expr="l.settings:customersettings:pw_complex EQ 1">
 								&bull; At Least one Letter and one Number or Punctuation Character
@@ -99,7 +99,7 @@
 			</aside>
 		</mvt:if>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

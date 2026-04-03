@@ -66,6 +66,8 @@
 		--mmx-color-info-border: var(--mmx-color-blue-002);
 	--mmx-color-blue-003: #F3F9FE;
 		--mmx-color-info-background: var(--mmx-color-blue-003);
+	--mmx-color-rating--active: #FFD700;
+	--mmx-color-rating--inactive: var(--mmx-color-grey-04);
 
 
 	/**
@@ -365,6 +367,11 @@
 	 * Layout
 	 */
 	--mmx-site-wrapper-width: 100rem;
+
+	/**
+	 * Form Elements
+	 */
+	--mmx-input-border-width: 1px;
 }
 
 
@@ -385,7 +392,6 @@
 	--mmx-color-body-copy: var(--mmx-color-grey-06);
 	--mmx-color-text-link: var(--mmx-color-grey-06);
 	--mmx-color-subheadings: var(--mmx-color-grey-06);
-	--mmx-color-input-border--active: var(--mmx-color-grey-06);
 	--mmx-color-text--light: var(--mmx-color-grey-05);
 	--mmx-color-active-filters: var(--mmx-color-grey-05);
 	--mmx-color-default-wishlist-state: var(--mmx-color-grey-05);
@@ -402,6 +408,7 @@
 	--mmx-color-pill-bg: var(--mmx-color-grey-01);
 	--mmx-color-pill-text: var(--mmx-color-body-copy);
 	--mmx-color-input-border: var(--mmx-color-grey-03);
+	--mmx-color-input-border--focus: var(--mmx-color-grey-06);
 	--mmx-color-input-background: var(--mmx-color-white);
 	--mmx-color-input-color: var(--mmx-color-body-copy);
 	--mmx-color-input-background--disabled: var(--mmx-color-grey-01);
@@ -412,6 +419,11 @@
 	--mmx-color-input-color--error: var(--mmx-color-error-text);
 	--mmx-color-input-border--error: var(--mmx-color-red-004);
 	--mmx-color-input-background--error: var(--mmx-color-input-background);
+
+	/* Form Elements */
+	--mmx-button-outline--focus: calc(2 * var(--mmx-input-border-width)) solid var(--mmx-color-focus);
+	--mmx-input-border: var(--mmx-input-border-width) solid var(--mmx-color-input-border);
+	--mmx-input-border--focus: var(--mmx-input-border-width) solid var(--mmx-color-input-border--focus);
 }
 
 
@@ -463,6 +475,11 @@
 	--mmx-color-input-color--error: var(--mmx-color-white);
 	--mmx-color-input-border--error: var(--mmx-color-red-004);
 	--mmx-color-input-background--error: var(--mmx-color-input-background);
+
+	/* Form Elements */
+	--mmx-button-outline--focus: calc(2 * var(--mmx-input-border-width)) solid var(--mmx-color-focus);
+	--mmx-input-border: var(--mmx-input-border-width) solid var(--mmx-color-input-border);
+	--mmx-input-border--focus: var(--mmx-input-border-width) solid var(--mmx-color-input-border--focus);
 }
 
 @media (min-width: 60em) {
@@ -511,6 +528,11 @@
 		--mmx-color-input-color--error: var(--mmx-color-white);
 		--mmx-color-input-border--error: var(--mmx-color-red-004);
 		--mmx-color-input-background--error: var(--mmx-color-input-background);
+
+		/* Form Elements */
+		--mmx-button-outline--focus: calc(2 * var(--mmx-input-border-width)) solid var(--mmx-color-focus);
+		--mmx-input-border: var(--mmx-input-border-width) solid var(--mmx-color-input-border);
+		--mmx-input-border--focus: var(--mmx-input-border-width) solid var(--mmx-color-input-border--focus);
 	}
 }
 

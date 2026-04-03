@@ -131,13 +131,13 @@
 			<mvt:if expr="l.settings:wishlists:page_links:current_page NE 1">
 				<mvt:assign name="l.settings:prev_page" value="l.settings:wishlists:page_links:current_page - 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlists:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlists:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</span>
 				</li>
@@ -157,13 +157,13 @@
 			</li>
 			<mvt:if expr="l.settings:wishlists:page_links:current_page NE l.settings:wishlists:page_links:last_page">
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlists:page_links:next_link_params;" aria-label="Go to the next page.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlists:page_links:next_link_params;" aria-label="Go to the next page.">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</span>
 				</li>

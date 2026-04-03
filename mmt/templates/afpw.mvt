@@ -16,7 +16,7 @@
 
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -38,7 +38,7 @@
 							<label class="c-form-label u-text-medium is-required &mvte:global:invalid_credentials;" for="l-Affiliate_Code">Affiliate Login</label>
 							<div class="c-form-inline-set">
 								<input id="l-Affiliate_Code" class="c-form-input" type="text" name="Affiliate_Code" value="&mvte:global:Affiliate_Code;" required>
-								<input class="c-button" type="submit" value="Submit">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Submit">
 							</div>
 						</div>
 					</div>
@@ -46,7 +46,7 @@
 			</form>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

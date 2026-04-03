@@ -1,45 +1,15 @@
-<Module code="cmp-cssui-searchfield" feature="component" version="9.1300"><Search_Page>SRCH</Search_Page><DeferJavaScript>Yes</DeferJavaScript><JavaScript><Template><![CDATA[/**
- * This function allows you to prepend or append code to an existing function.
- * https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
- */
-function functionExtender(container, funcName, prepend, append) {
-	(() => {
-		let cachedFunction = container[funcName];
+<Module code="cmp-cssui-searchfield" feature="component" version="9.1300"><Search_Page>SRCH</Search_Page><DeferJavaScript>Yes</DeferJavaScript><JavaScript><Template><![CDATA[MMSearchField.prototype._Event_Keydown = MMSearchField.prototype.Event_Keydown;
+MMSearchField.prototype.Event_Keydown = function (event) {
+	this._Event_Keydown(event);
 
-		container[funcName] = function (...args) {
-			if (prepend) {
-				prepend.apply(this);
-			}
+	let tabTarget = this.selected_item;
 
-			let result = cachedFunction.apply(this, args);
-
-			if (append) {
-				append.apply(this);
-			}
-
-			return result;
-		};
-	})();
-}
-
-/**
- * This controls what happens when you click TAB on a selected search item.
- */
-functionExtender(
-	MMSearchField.prototype,
-	'Event_Keydown',
-	() => {},
-	function () {
-		let tabTarget = this.selected_item;
-
-		if (tabTarget !== null) {
-			if (event.keyCode === 9 && tabTarget !== this.menu_item_storesearch) {
-				this.element_search.value = tabTarget.childNodes[0].getAttribute('data-search');
-			}
+	if (tabTarget !== null) {
+		if (event.keyCode === 9 && tabTarget !== this.menu_item_storesearch) {
+			this.element_search.value = tabTarget.childNodes[0].getAttribute('data-search');
 		}
 	}
-);
-
+};
 
 MMSearchField.prototype.onMenuAppendHeader = () => null;
 
@@ -104,6 +74,6 @@ MMSearchField.prototype.onBlur = () => null;
 			<img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:searchfield:b_width;" height="&mvte:searchfield:b_height;">
 		</mvt:if>
 	</figure>
-	<span class="x-search-preview__item-name">&mvte:product:name;</span>
+	<span class="x-search-preview__item-name mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvte:product:name;</span>
 </div>
 ]]></Template><Notes>#Set_Current_Time#</Notes></MenuItem></Module>

@@ -50,15 +50,7 @@ class MMX_Card extends MMX_Element {
 	}
 
 	getCustomFieldValueFromRecord(customField = '', record = {}) {
-		const customFieldParts = customField?.split?.(':');
-
-		if (customFieldParts?.length !== 2) {
-			return '';
-		}
-
-		const [moduleCode, fieldCode] = customFieldParts;
-
-		return record?.CustomField_Values?.[moduleCode]?.[fieldCode];
+		return MMX.getCustomFieldValueFromRecord(customField, record);
 	}
 }
 
@@ -185,6 +177,51 @@ class MMX_ProductCard extends MMX_Card {
 
 	#bindEvents() {
 		this.#listenForSwatchButtonClicks();
+		this.#listenForHover();
+	}
+
+	#listenForHover() {
+		if (!this.#isHoverEnabled()) {
+			return;
+		}
+
+		const imageContainer = this.shadowRoot.querySelector('[part~="image-container"]');
+
+		if (!imageContainer) {
+			return;
+		}
+
+		imageContainer.addEventListener('mouseenter', () => this.#setHovered(true));
+		imageContainer.addEventListener('mouseleave', () => this.#setHovered(false));
+		imageContainer.addEventListener('touchstart', () => this.#setHovered(true));
+		imageContainer.addEventListener('touchend', () => this.#setHovered(false));
+		imageContainer.addEventListener('touchcancel', () => this.#setHovered(false));
+
+		this.#maintainHoverImageOnDrag();
+	}
+
+	#isHoverEnabled() {
+		const mainImage = this.#getProductResizedImage();
+
+		return !!this.#getHoverImage(mainImage)?.url;
+	}
+
+	#setHovered(isHovered) {
+		this.classList.toggle('mmx-product-card__is-hovered', isHovered);
+
+		if (isHovered) {
+			this.#loadHoverImage();
+		}
+	}
+
+	#maintainHoverImageOnDrag() {
+		this.style.touchAction = 'none';
+
+		const card = this.shadowRoot?.querySelector?.('mmx-card');
+
+		if (card) {
+			card.style.touchAction = 'none';
+		}
 	}
 
 	#renderProductDetail(detail) {
@@ -192,6 +229,10 @@ class MMX_ProductCard extends MMX_Card {
 
 		if (type === 'price') {
 			return this.#renderPrice(detail);
+		}
+
+		if (type === 'rating') {
+			return this.#renderRating(detail);
 		}
 
 		if (['button__view-product', 'button__add-to-cart', 'button__add-to-wishlist'].includes(type)) {
@@ -279,38 +320,138 @@ class MMX_ProductCard extends MMX_Card {
 		`;
 	}
 
+	// Render: Rating
+	#renderRating(detail = {}) {
+		const rating = this.getCustomFieldValueFromRecord(detail?.rating_settings?.rating_custom_field?.value, this.#product);
+		const count  = this.getCustomFieldValueFromRecord(detail?.rating_settings?.count_custom_field?.value, this.#product);
+		const iconSet = detail?.rating_settings?.icon?.value;
+		const maxRating = detail?.rating_settings?.max_rating?.value;
+		const activeColor = detail?.rating_settings?.active_color?.value;
+		const inactiveColor = detail?.rating_settings?.inactive_color?.value;
+		const textAlign = detail?.rating_settings?.align?.value;
+
+		return /*html*/`
+			<div
+				slot="main"
+				part="detail reviews-rating"
+				class="mmx-product-card__reviews-rating"
+				style="${textAlign ? `text-align: ${MMX.encodeEntities(textAlign)};` : ''}"
+			>
+				<mmx-rating
+					data-rating="${MMX.encodeEntities(rating)}"
+					data-count="${MMX.encodeEntities(count)}"
+					data-max-rating="${MMX.encodeEntities(maxRating)}"
+					data-icon-set="${MMX.encodeEntities(iconSet)}"
+					data-active-color="${MMX.encodeEntities(activeColor)}"
+					data-inactive-color="${MMX.encodeEntities(inactiveColor)}"
+				></mmx-rating>
+			</div>
+		`;
+	}
+
 	// Render: Image
 	#renderImage() {
 		if (!this.getPropValue('show-image')) {
 			return '';
 		}
 
-		const resizedImage = this.#getProductResizedImage();
+		const mainImage = this.#getProductResizedImage();
 
-		if (typeof resizedImage?.url !== 'string') {
+  		if (typeof mainImage?.url !== 'string') {
 			return '';
 		}
-		const fit = this.getPropValue('image-fit');
-		const dimensions = this.getPropValue('image-dimensions');
-		const [width, height] = dimensions?.split?.('x') ?? [1, 1];
+
+		const hoverImage = this.#getHoverImage(mainImage);
 
 		return /*html*/`
-			<img
+			<div
 				slot="main"
-				part="image"
-				src="${MMX.encodeEntitiesURI(resizedImage.url)}"
-				alt=""
-				style="
-					object-fit: ${MMX.encodeEntities(fit)};
-					aspect-ratio: ${MMX.encodeEntities(width + ' / ' + height)};
-				"
+				part="image-container"
+				class="mmx-product-card__image-container ${this.#getHoverTransitionClass()}"
+				style="${this.#getImageContainerStyle()}"
 			>
+				<img
+					slot="main"
+					part="image main-image"
+					src="${MMX.encodeEntitiesURI(mainImage.url)}"
+					alt=""
+				>
+				${hoverImage?.url ? /*html*/`
+					<img
+						part="image hover-image"
+						data-src="${MMX.encodeEntitiesURI(hoverImage.url)}"
+						alt=""
+					>
+				` : ''}
+			</div>
 			${this.#renderAttributeSwatches()}
 		`;
 	}
 
-	#getProductResizedImage() {
-		const type = this.getPropValue('image-type');
+	#getHoverImage(mainImage) {
+		const hoverType = this.#card?.image?.hover_image?.type?.value;
+
+		if (MMX.valueIsEmpty(hoverType)) {
+			return undefined;
+		}
+
+		const imageType = this.#product?.imagetypes?.[hoverType];
+		const dimensions = this.getPropValue('image-dimensions');
+
+		const hasImage = imageType?.sizes?.[dimensions]?.url || imageType?.sizes?.original?.url;
+
+		if (!hasImage) {
+			return undefined;
+		}
+
+		const hoverImage = this.#getProductResizedImage(hoverType);
+
+		if (hoverImage?.url && hoverImage.url === mainImage?.url) {
+			return undefined;
+		}
+
+		return hoverImage;
+	}
+
+	#getHoverTransitionClass() {
+		const transition = (this.#card?.image?.hover_image?.transition?.value ?? 'swap').toLowerCase();
+
+		return transition === 'fade' ? 'mmx-product-card__hover--fade' : '';
+	}
+
+	#getImageContainerStyle() {
+		const fit = this.getPropValue('image-fit');
+		const dimensions = this.getPropValue('image-dimensions');
+		const [width, height] = dimensions?.split?.('x') ?? [1, 1];
+
+		return `
+			--mmx-card__object-fit: ${MMX.encodeEntities(fit)};
+			--mmx-card__aspect-ratio: ${MMX.encodeEntities(`${width} / ${height}`)};
+		`.trim();
+	}
+
+	#loadHoverImage() {
+		const hoverImg = this.#hoverImage();
+
+		if (!hoverImg) {
+			return;
+		}
+
+		if (hoverImg.getAttribute('src')) {
+			return;
+		}
+
+		const dataSrc = hoverImg.getAttribute('data-src');
+
+		if (!dataSrc) {
+			return;
+		}
+
+		hoverImg.setAttribute('src', dataSrc);
+		hoverImg.removeAttribute('data-src');
+	}
+
+	#getProductResizedImage(type = this.getPropValue('image-type')) {
 		const dimensions = this.getPropValue('image-dimensions');
 
 		const image = this.#product?.imagetypes?.[type];
@@ -556,8 +697,18 @@ class MMX_ProductCard extends MMX_Card {
 	}
 
 	#handleLoadedVariantImages(response) {
-		const variantImage = response?.data?.find?.(image => image?.type_code === this.getPropValue('image-type'));
-		this.#updateImageSrc(variantImage?.image_data?.[0]);
+		const mainImage = this.#findImageByType(response?.data, this.getPropValue('image-type'));
+		this.#updateImageSrc(mainImage?.image_data?.[0]);
+
+		const hoverType = this.#card?.image?.hover_image?.type?.value;
+		const hoverImage = this.#findImageByType(response?.data, hoverType)?.image_data?.[0];
+		if (hoverImage) {
+			this.#hoverImage().src = hoverImage;
+		}
+	}
+
+	#findImageByType(images = [], type = 'main') {
+		return images?.find?.(image => image?.type_code === type);
 	}
 
 	#updateImageSrc(src) {
@@ -565,7 +716,11 @@ class MMX_ProductCard extends MMX_Card {
 	}
 
 	#image() {
-		return this.shadowRoot.querySelector('[part~="image"]');
+		return this.shadowRoot.querySelector('[part~="main-image"]');
+	}
+
+	#hoverImage() {
+		return this.shadowRoot.querySelector('[part~="hover-image"]');
 	}
 
 	// Render: Add to Wishlist
@@ -739,6 +894,7 @@ class MMX_ProductCard extends MMX_Card {
 				part="detail fragment fragment__${MMX.encodeEntities(fragmentCode)}"
 				${classname}
 				data-hide-on-empty="false"
+				data-spacing="none"
 				data-theme="${MMX.encodeEntities(theme_available)}"
 				data-theme-class="${MMX.encodeEntities(detail?.text_styles?.typography_theme?.classname ?? '')}"
 				data-style="${MMX.encodeEntities(detail?.text_styles?.style?.value)}"

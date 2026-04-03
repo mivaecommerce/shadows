@@ -1,45 +1,15 @@
-/**
- * This function allows you to prepend or append code to an existing function.
- * https://stackoverflow.com/questions/9134686/adding-code-to-a-javascript-function-programmatically
- */
-function functionExtender(container, funcName, prepend, append) {
-	(() => {
-		let cachedFunction = container[funcName];
+MMSearchField.prototype._Event_Keydown = MMSearchField.prototype.Event_Keydown;
+MMSearchField.prototype.Event_Keydown = function (event) {
+	this._Event_Keydown(event);
 
-		container[funcName] = function (...args) {
-			if (prepend) {
-				prepend.apply(this);
-			}
+	let tabTarget = this.selected_item;
 
-			let result = cachedFunction.apply(this, args);
-
-			if (append) {
-				append.apply(this);
-			}
-
-			return result;
-		};
-	})();
-}
-
-/**
- * This controls what happens when you click TAB on a selected search item.
- */
-functionExtender(
-	MMSearchField.prototype,
-	'Event_Keydown',
-	() => {},
-	function () {
-		let tabTarget = this.selected_item;
-
-		if (tabTarget !== null) {
-			if (event.keyCode === 9 && tabTarget !== this.menu_item_storesearch) {
-				this.element_search.value = tabTarget.childNodes[0].getAttribute('data-search');
-			}
+	if (tabTarget !== null) {
+		if (event.keyCode === 9 && tabTarget !== this.menu_item_storesearch) {
+			this.element_search.value = tabTarget.childNodes[0].getAttribute('data-search');
 		}
 	}
-);
-
+};
 
 MMSearchField.prototype.onMenuAppendHeader = () => null;
 

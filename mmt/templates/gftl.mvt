@@ -18,7 +18,7 @@
 		<div class="o-layout__item">
 			<h1 class="u-hide-visually">&mvt:page:name;</h1>
 			<br>
-			<p class="c-heading--subheading--large u-text-center">You must have a customer account to redeem a gift certificate.</p>
+			<p class="mm-theme-typography-subheading-large u-text-center">You must have a customer account to redeem a gift certificate.</p>
 			<mvt:item name="hdft" param="header" />
 			<mvt:item name="readytheme" param="contentsection( 'messages' )" />
 		</div>
@@ -26,7 +26,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">Sign In</p>
+			<p class="mm-theme-typography-title-four">Sign In</p>
 			<form method="post" action="&mvte:urls:RGFT:secure;" autocomplete="off">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
@@ -42,7 +42,7 @@
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
 							<p>
-								<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
+								<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;">Forgot Password?</a>
 							</p>
 							<p>
 								<mvt:item name="buttons" param="Login" />
@@ -53,7 +53,7 @@
 			</form>
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
-			<p class="c-heading-foxtrot">New Customers</p>
+			<p class="mm-theme-typography-title-four">New Customers</p>
 			<form class="o-layout" method="post" action="&mvte:urls:RGFT:secure;">
 				<fieldset class="o-layout__item">
 					<legend>Customer Log In</legend>
@@ -78,7 +78,7 @@
 							<input id="register_password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
-							<input class="c-button c-button--full c-button--secondary" type="submit" value="Create My Account">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account">
 						</div>
 					</div>
 				</fieldset>
@@ -86,7 +86,7 @@
 			<br>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

@@ -132,7 +132,7 @@ mmx-combobox::part(input) {
 	align-items: center;
 	appearance: none;
 	background-color: var(--mmx-color-input-background);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: calc(var(--mmx-combination-facet--size) * 0.25);
 	box-shadow: 0 0 0 0 rgba(var(--mmx-color-black), 0.2);
 	color: var(--mmx-color-input-color);
@@ -196,7 +196,7 @@ mmx-combobox::part(input) {
 	padding: 0;
 	background-color: var(--mmx-color-input-background);
 	color: var(--mmx-color-input-color);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: calc(var(--mmx-combination-facet--size) * 0.25);
 	box-shadow: 0 3px 25px rgba(var(--mmx-color-black), 0.05);
 	flex-direction: column;

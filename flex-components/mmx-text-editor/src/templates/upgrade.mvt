@@ -1,0 +1,3 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.00'">
+	<mvt:assign name="l.settings:instance:advanced:desktop:width:value" value="100" />
+</mvt:if>

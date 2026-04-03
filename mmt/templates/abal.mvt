@@ -23,15 +23,15 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<h1 class="c-heading-delta">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></h1>
-			<p><a class="c-button c-button--secondary c-button--small" href="&mvte:urls:RGFT:auto;" title="Redeem Gift Certificate">Redeem Gift Certificate</a></p>
+			<h1 class="mm-theme-typography-title-two">Current Balance: <span class="u-color-green">&mvt:customer:formatted_credit;</span></h1>
+			<p><a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:RGFT:auto;" title="Redeem Gift Certificate">Redeem Gift Certificate</a></p>
 			<mvt:item name="customercredithistory" />
 		</div>
 		<aside class="o-layout__item u-width-12 u-width-3--l">
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

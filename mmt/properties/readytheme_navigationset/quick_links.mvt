@@ -1,14 +1,14 @@
 <mvt:if expr="NOT ISNULL l.settings:readytheme:navigationitems">
 	<nav class="c-menu x-collapsible-content" aria-labelledby="&mvte:readytheme:code;-label">
-		<p id="&mvte:readytheme:code;-label" class="c-menu__title">Quick Links</p>
-		<button class="x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Quick Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+		<p id="&mvte:readytheme:code;-label" class="c-menu__title mm-theme-typography-subheading-small">Quick Links</p>
+		<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Quick Links <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 		<ul id="&mvte:readytheme:code;" class="c-menu__list x-collapsible-content__item">
 			<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 				<li>
 					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-						<span class="c-menu__text">&mvt:navigationitem:name;</span>
+						<span class="c-menu__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem:name;</span>
 					<mvt:else>
-						<a class="c-menu__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
+						<a class="c-menu__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">&mvt:navigationitem:name;</a>
 					</mvt:if>
 				</li>
 			</mvt:foreach>

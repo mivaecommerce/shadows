@@ -34,7 +34,7 @@
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container u-width-10 u-width-6--s u-width-4--l u-width-3--xl" aria-labelledby="address-validation-title" aria-modal="true" role="alertdialog">
 			<header class="c-dialog__header">
-				<h2 id="address-validation-title" class="c-dialog__title c-heading-echo">
+				<h2 id="address-validation-title" class="c-dialog__title mm-theme-typography-title-three">
 					Address Verification
 				</h2>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
@@ -46,7 +46,7 @@
 				</p>
 				<mvt:foreach iterator="address_validation_group" array="address_validation:groups">
 					<mvt:if expr="l.settings:address_validation:group_count GT 1">
-						<h3 class="c-dialog__options-title c-heading-foxtrot">&mvte:address_validation_group:name;</h3>
+						<h3 class="c-dialog__options-title mm-theme-typography-title-four">&mvte:address_validation_group:name;</h3>
 					</mvt:if>
 					<div class="c-dialog__options">
 						<mvt:foreach iterator="address" array="address_validation_group:addresses">
@@ -54,7 +54,7 @@
 							<mvt:assign name="l.settings:address:html:attr:checked" value="ternary( l.settings:address:should_check_by_default, 'checked', '' )" />
 							<label class="c-dialog__option">
 								<input type="radio" name="&mvte:address_validation_group:prefix;ValidatedSelector" data-mm_address_addr1="&mvte:address:addr1;" data-mm_address_addr2="&mvte:address:addr2;" data-mm_address_city="&mvte:address:city;" data-mm_address_comp="&mvte:address:comp;" data-mm_address_country="&mvte:address:country;" data-mm_address_resdntl="&mvte:address:resdntl;" data-mm_address_state="&mvte:address:state;" data-mm_address_zip="&mvte:address:zip;" &mvte:address:html:attr:checked;>
-								<span class="c-dialog__option-title u-text-bold">
+								<span class="c-dialog__option-title mm-theme-typography-subheading-extra-small">
 									<mvt:if expr="l.settings:address:validated">
 										Suggested Address
 									<mvt:else>
@@ -84,7 +84,7 @@
 						</mvt:foreach>
 					</div>
 				</mvt:foreach>
-				<button class="c-dialog__continue c-button c-button--full" data-update-address>Save & Continue</button>
+				<button class="c-dialog__continue c-button--full mm-theme-button-primary mm-theme-button-primary__small" data-update-address>Save & Continue</button>
 			</div>
 		</div>
 	</div>
@@ -100,48 +100,33 @@
 		const billingToShow = document.querySelector('#billing_to_show');
 		const dialogElement = document.querySelector('[data-dialog="address-validation"]');
 		const formElement = document.querySelector('[data-validate-address]');
-		const action = formElement?.elements?.Action?.value;
+		const actions = formElement?.elements?.Action?.value?.split?.(',') ?? [];
 		const shipAddresses = document.querySelectorAll('[name="ShipValidatedSelector"]');
 		const update = document.querySelector('[data-update-address]');
 		let billPrefix;
 		let shipPrefix;
 
-		if (action === 'ORDR') {
+		if (actions.includes('ORDR')) {
 			billPrefix = 'Bill';
 			shipPrefix = 'Ship';
 		}
-		else if (['ICST', 'UCST'].includes(action)) {
+		else if (actions.includes('ICST') || actions.includes('UCST')) {
 			billPrefix = 'Customer_Bill';
 			shipPrefix = 'Customer_Ship';
 		}
-		else if (['ICSA', 'UCSA'].includes(action)) {
+		else if (actions.includes('ICSA') || actions.includes('UCSA')) {
 			billPrefix = null;
 			shipPrefix = 'Address_';
 		}
 
-		function findFormInputs(form, prefix) {
-			return {
-				billing: {
-					addr1: form.elements[prefix + 'Address1'],
-					addr2: form.elements[prefix + 'Address2'],
-					city: form.elements[prefix + 'City'],
-					state: form.elements[prefix + 'State'],
-					stateSelect: form.elements[prefix + 'StateSelect'],
-					country: form.elements[prefix + 'Country'],
-					zip: form.elements[prefix + 'Zip'],
-					validated: form.elements[prefix + 'Validated']
-				},
-				shipping: {
-					addr1: form.elements[prefix + 'Address1'],
-					addr2: form.elements[prefix + 'Address2'],
-					city: form.elements[prefix + 'City'],
-					state: form.elements[prefix + 'State'],
-					stateSelect: form.elements[prefix + 'StateSelect'],
-					country: form.elements[prefix + 'Country'],
-					zip: form.elements[prefix + 'Zip'],
-					validated: form.elements[prefix + 'Validated']
-				}
-			};
+		function setFormInputValue(form, prefix, field, value) {
+			const input = form?.elements?.[prefix + field];
+
+			if (!input) {
+				return;
+			}
+
+			input.value = value;
 		}
 
 		function getSelectedAddress(addresses = shipAddresses) {
@@ -164,43 +149,43 @@
 
 			const selectedShipAddress = getSelectedAddress(shipAddresses);
 
-			findFormInputs(formElement, shipPrefix).shipping.addr1.value = selectedShipAddress.addr1;
-			findFormInputs(formElement, shipPrefix).shipping.addr2.value = selectedShipAddress.addr2;
-			findFormInputs(formElement, shipPrefix).shipping.city.value = selectedShipAddress.city;
-			findFormInputs(formElement, shipPrefix).shipping.state.value = selectedShipAddress.state;
-			findFormInputs(formElement, shipPrefix).shipping.stateSelect.value = selectedShipAddress.state;
-			findFormInputs(formElement, shipPrefix).shipping.country.value = selectedShipAddress.country;
-			findFormInputs(formElement, shipPrefix).shipping.zip.value = selectedShipAddress.zip;
+			setFormInputValue(formElement, shipPrefix, 'Address1', selectedShipAddress.addr1);
+			setFormInputValue(formElement, shipPrefix, 'Address2', selectedShipAddress.addr2);
+			setFormInputValue(formElement, shipPrefix, 'City', selectedShipAddress.city);
+			setFormInputValue(formElement, shipPrefix, 'State', selectedShipAddress.state);
+			setFormInputValue(formElement, shipPrefix, 'StateSelect', selectedShipAddress.state);
+			setFormInputValue(formElement, shipPrefix, 'Country', selectedShipAddress.country);
+			setFormInputValue(formElement, shipPrefix, 'Zip', selectedShipAddress.zip);
 
 			if (billPrefix !== null) {
 				const selectedBillAddress = hasBillAddresses ? getSelectedAddress(billAddresses) : selectedShipAddress;
 
-				findFormInputs(formElement, billPrefix).billing.addr1.value = selectedBillAddress.addr1;
-				findFormInputs(formElement, billPrefix).billing.addr2.value = selectedBillAddress.addr2;
-				findFormInputs(formElement, billPrefix).billing.city.value = selectedBillAddress.city;
-				findFormInputs(formElement, billPrefix).billing.state.value = selectedBillAddress.state;
-				findFormInputs(formElement, billPrefix).billing.stateSelect.value = selectedBillAddress.state;
-				findFormInputs(formElement, billPrefix).billing.country.value = selectedBillAddress.country;
-				findFormInputs(formElement, billPrefix).billing.zip.value = selectedBillAddress.zip;
+				setFormInputValue(formElement, billPrefix, 'Address1', selectedBillAddress.addr1);
+				setFormInputValue(formElement, billPrefix, 'Address2', selectedBillAddress.addr2);
+				setFormInputValue(formElement, billPrefix, 'City', selectedBillAddress.city);
+				setFormInputValue(formElement, billPrefix, 'State', selectedBillAddress.state);
+				setFormInputValue(formElement, billPrefix, 'StateSelect', selectedBillAddress.state);
+				setFormInputValue(formElement, billPrefix, 'Country', selectedBillAddress.country);
+				setFormInputValue(formElement, billPrefix, 'Zip', selectedBillAddress.zip);
 			}
 
 			formElement.submit();
 		});
 
 		/**
-			 * When closing the dialog, set the hidden input confirming that
-			 * the address has been validated to `0`.
-			 */
+		 * When closing the dialog, set the hidden input confirming that
+		 * the address has been validated to `0`.
+		 */
 		dialogElement.addEventListener('hide', function () {
-			findFormInputs(formElement, shipPrefix).shipping.validated.value = 0;
+			setFormInputValue(formElement, shipPrefix, 'Validated', 0);
 			if (hasBillAddresses) {
-				findFormInputs(formElement, billPrefix).billing.validated.value = 0;
+				setFormInputValue(formElement, billPrefix, 'Validated', 0);
 			}
 		});
 
 		/**
-			* On page load, open the dialog
-			*/
+		 * On page load, open the dialog
+		 */
 		window.addEventListener('load', function () {
 			const billMatchesShip = billingToShow && !hasBillAddresses;
 			if (billMatchesShip) {

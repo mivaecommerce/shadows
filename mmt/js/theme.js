@@ -145,7 +145,6 @@ const themeFunctionality = {
 		 * Initialize the Transfigure Navigation extension
 		 */
 		new TransfigureNavigation();
-
 	},
 	stateDatalist() {
 		/**
@@ -184,7 +183,7 @@ const themeFunctionality = {
 
 		// [2]
 		function updateRequiredStateAttributes(countrySelector, stateInput) {
-			countrySelector.addEventListener('change', () => {
+			countrySelector?.addEventListener?.('change', () => {
 				let selectedCountry = countrySelector.options[countrySelector.selectedIndex].value;
 
 				if (countriesRequiringSP.includes(selectedCountry)) {
@@ -220,68 +219,76 @@ const themeFunctionality = {
 			let billPrefix;
 			let shipPrefix;
 
-			if (formElement) {
-				if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ORDR')) {
-					billPrefix = 'Bill';
-					shipPrefix = 'Ship';
-				}
-				else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICST' || formElement.elements.Action.value === 'UCST')) {
-					billPrefix = 'Customer_Bill';
-					shipPrefix = 'Customer_Ship';
-				}
-				else if (formElement.elements.hasOwnProperty('Action') && (formElement.elements.Action.value === 'ICSA' || formElement.elements.Action.value === 'UCSA')) {
-					billPrefix = 'Address_';
-					shipPrefix = 'Address_';
+			if (!formElement) {
+				return;
+			}
+
+			const actions = formElement?.elements?.Action?.value?.split?.(',') ?? [];
+
+			if (actions.includes('ORDR')) {
+				billPrefix = 'Bill';
+				shipPrefix = 'Ship';
+			}
+			else if (actions.includes('ICST') || actions.includes('UCST')) {
+				billPrefix = 'Customer_Bill';
+				shipPrefix = 'Customer_Ship';
+			}
+			else if (actions.includes('ICSA') || actions.includes('UCSA')) {
+				billPrefix = 'Address_';
+				shipPrefix = 'Address_';
+			}
+
+			const shippingState = document.querySelector(`input[name="${shipPrefix}State"]`);
+			const billingState = document.querySelector(`input[name="${billPrefix}State"]`);
+
+			function updateState({nextElementSibling, value}) {
+				if (!nextElementSibling) {
+					return;
 				}
 
-				const shippingState = document.querySelector(`input[name="${shipPrefix}State"]`);
-				const billingState = document.querySelector(`input[name="${billPrefix}State"]`);
+				nextElementSibling.value = value;
+				nextElementSibling.blur();
+			}
 
-				function updateState({nextElementSibling, value}) {
-					nextElementSibling.value = value;
-					nextElementSibling.blur();
-				}
-
+			if (shippingState) {
 				if (shippingState.value !== '') {
 					shippingState.nextElementSibling.value = shippingState.value;
 				}
 				shippingState.nextElementSibling.blur();
+			}
 
+			updateShippingState?.addEventListener?.('change', () => {
+				updateState(shippingState);
+			});
+
+			if (billingState) {
 				if (billingState.value !== '') {
 					billingState.nextElementSibling.value = billingState.value;
 				}
 				billingState.nextElementSibling.blur();
-
-				if (updateShippingState !== null) {
-					updateShippingState.addEventListener('change', () => {
-						updateState(shippingState);
-					});
-				}
-
-				if (updateBillingState !== null) {
-					updateBillingState.addEventListener('change', () => {
-						updateState(billingState);
-					});
-				}
-
-				if (primaryAddress === 'shipping') {
-					const shippingCountrySelector = document.querySelector(`#${shipPrefix}Country`);
-					const shippingStateInput = document.querySelector(`#${shipPrefix}StateSelect`);
-
-					updateRequiredStateAttributes(shippingCountrySelector, shippingStateInput);
-				}
-				else {
-					const billingCountrySelector = document.querySelector(`#${billPrefix}Country`);
-					const billingStateInput = document.querySelector(`#${billPrefix}StateSelect`);
-
-					updateRequiredStateAttributes(billingCountrySelector, billingStateInput);
-				}
-
-				(() => {
-					document.querySelector(`#${shipPrefix}Country`).dispatchEvent(new Event('change', {'bubbles': true}));
-					document.querySelector(`#${billPrefix}Country`).dispatchEvent(new Event('change', {'bubbles': true}));
-				})();
 			}
+
+			updateBillingState?.addEventListener?.('change', () => {
+				updateState(billingState);
+			});
+
+			if (primaryAddress === 'shipping') {
+				const shippingCountrySelector = document.querySelector(`#${shipPrefix}Country`);
+				const shippingStateInput = document.querySelector(`#${shipPrefix}StateSelect`);
+
+				updateRequiredStateAttributes(shippingCountrySelector, shippingStateInput);
+			}
+			else {
+				const billingCountrySelector = document.querySelector(`#${billPrefix}Country`);
+				const billingStateInput = document.querySelector(`#${billPrefix}StateSelect`);
+
+				updateRequiredStateAttributes(billingCountrySelector, billingStateInput);
+			}
+
+			(() => {
+				document.querySelector(`#${shipPrefix}Country`)?.dispatchEvent?.(new Event('change', {bubbles: true}));
+				document.querySelector(`#${billPrefix}Country`)?.dispatchEvent?.(new Event('change', {bubbles: true}));
+			})();
 		}
 	},
 	// Local utility to convert dashed/slug ids to camelCase; avoids modifying String.prototype

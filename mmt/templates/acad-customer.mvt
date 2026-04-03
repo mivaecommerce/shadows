@@ -15,7 +15,7 @@
 		<mvt:else>
 			<mvt:assign name="l.settings:url" value="l.settings:urls:ACLN:secure" />
 		</mvt:if>
-		<h1 class="c-heading-delta">&mvt:page:name;</h1>
+		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
 		<form method="post" action="&mvte:url;" data-validate-address>
@@ -25,7 +25,7 @@
 			<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 
 			<div class="c-form-list o-layout">
-				<div id="LogInInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Log In Information</div>
+				<div id="LogInInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Log In Information</div>
 				<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:LoginEmail_Row;">
 					<label id="Customer_LoginEmail_label" class="c-form-label u-text-medium is-required" for="Customer_LoginEmail">Email Address</label>
 					<input id="Customer_LoginEmail" class="c-form-input" data-hook="Customer_LoginEmail" data-primary="&mvte:customer:primaddr;" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-describedby="LogInInformation Customer_LoginEmail_label" aria-required="true">
@@ -42,7 +42,7 @@
 			<hr class="c-keyline">
 
 			<div class="c-form-list o-layout">
-				<div id="ShippingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Shipping Information</div>
+				<div id="ShippingInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Shipping Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12 u-hidden" id="shipping_controls">
 					<label class="c-form-checkbox">
 						<mvt:if expr="g.Action AND g.shipping_to_show">
@@ -135,7 +135,7 @@
 			</section>
 
 			<div class="c-form-list o-layout">
-				<div id="BillingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Billing Information</div>
+				<div id="BillingInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Billing Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12" id="billing_controls">
 					<label class="c-form-checkbox">
 						<mvt:if expr="g.Action AND g.billing_to_show">
@@ -263,10 +263,10 @@
 			</mvt:if>
 
 			<mvt:item name="readytheme" param="contentsection( 'mvsendlane_configuration' )" />
-			
+
 			<div class="c-form-list">
 				<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-					<input class="c-button" type="submit" value="Save">
+					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
 				</div>
 			</div>
 		</form>

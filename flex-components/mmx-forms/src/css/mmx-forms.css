@@ -55,7 +55,7 @@
 .mmx-form-select__dropdown {
 	appearance: none;
 	background-color: var(--mmx-color-input-background);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: calc(var(--mmx-form__size) * 0.25);
 	box-shadow: 0 0 0 0 rgba(var(--mmx-color-black), 0.2);
 	color: var(--mmx-color-input-color);
@@ -124,6 +124,7 @@
 	--mmx-color-input-color: var(--mmx-color-input-color--error);
 	--mmx-color-input-background: var(--mmx-color-input-background--error);
 	--mmx-color-input-border: var(--mmx-color-input-border--error);
+	--mmx-input-border: var(--mmx-input-border-width) solid var(--mmx-color-input-border--error);
 }
 
 /* Control: State: Disabled */
@@ -135,13 +136,20 @@
 
 /* Control: State: Focus */
 :where(.mmx-form-input, .mmx-form-textarea, .mmx-form-select, .mmx-form-input-range__slider-button):focus:not(:focus-visible),
-:where(.mmx-form-checkbox, .mmx-form-radio):focus:not(:focus-within) {
+:where(.mmx-form-checkbox, .mmx-form-radio):focus:not(:focus-within),
+:where(.mmx-form-input-quantity__input):focus {
 	outline: none;
 }
 
-:where(.mmx-form-input, .mmx-form-textarea, .mmx-form-select, .mmx-form-input-range__slider-button):focus-visible,
+:where(.mmx-form-input, .mmx-form-textarea, .mmx-form-select__dropdown):focus-visible,
+:where(.mmx-form-input-quantity):has(.mmx-form-input-quantity__input:focus) {
+	border: var(--mmx-input-border--focus);
+	outline: none;
+}
+
+:where(.mmx-form-input-range__slider-button, .mmx-form-input-quantity__button):focus-visible,
 :where(.mmx-form-checkbox, .mmx-form-radio):focus-within {
-	outline: 2px solid var(--mmx-color-focus);
+	outline: var(--mmx-button-outline--focus);
 	outline-offset: 1px;
 	transition: none;
 }
@@ -211,7 +219,7 @@
 		&::before {
 			background: var(--mmx-color-input-background);
 			border-radius: 100%;
-			border: var(--default-border-width) solid var(--mmx-color-input-border);
+			border: var(--mmx-input-border);
 			content: "";
 			display: inline-block;
 			flex-shrink: 0;
@@ -245,9 +253,9 @@
 			&::after {
 				position: absolute;
 				top: 50%;
-				left: calc(-1rem + calc(var(--default-border-width) * 4));
-				width: calc(1rem - calc(8 * var(--default-border-width)));
-				height: calc(1rem - calc(8 * var(--default-border-width)));
+				left: calc(-1rem + calc(var(--mmx-input-border-width) * 4));
+				width: calc(1rem - calc(8 * var(--mmx-input-border-width)));
+				height: calc(1rem - calc(8 * var(--mmx-input-border-width)));
 				background: var(--mmx-color-primary-bg);
 				border: 0 none;
 				border-radius: 100%;
@@ -276,7 +284,7 @@
 		&::before {
 			background: var(--mmx-color-input-background);
 			border-radius: 2px;
-			border: var(--default-border-width) solid var(--mmx-color-input-border);
+			border: var(--mmx-input-border);
 			content: "";
 			display: inline-block;
 			flex-shrink: 0;
@@ -366,7 +374,7 @@
 
 .mmx-form-input-range__slider-button {
 	background: var(--mmx-color-input-background);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: 100%;
 	cursor: pointer;
 	height: var(--mmx-form__slider-size);
@@ -419,7 +427,7 @@
 .mmx-form-input-quantity {
 	background-color: var(--mmx-color-input-background);
 	border-radius: calc(var(--mmx-form__size) * 0.25);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	box-shadow: 0 0 0 0 rgba(var(--mmx-color-black), 0.2);
 	color: var(--mmx-color-input-color);
 	display: grid;
@@ -435,7 +443,7 @@
 }
 
 .mmx-form-input-quantity__button:hover:not([disabled]) {
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 }
 
 .mmx-form-input-quantity__control {
@@ -538,7 +546,7 @@
 	justify-self: anchor-center;
 	left: anchor(left);
 	margin: 0;
-	outline: 1px solid var(--mmx-color-input-border);
+	outline: var(--mmx-input-border--focus);
 	overflow-y: auto;
 	padding: 0;
 	top: anchor(top);
@@ -547,7 +555,6 @@
 	&:popover-open {
 		box-shadow: 0 3px 25px rgba(0, 0, 0, 0.05);
 		display: block;
-		outline-color: var(--mmx-color-input-color);
 	}
 
 	&:popover-open ~ .mmx-combobox__select-button {

@@ -21,8 +21,8 @@
 				<section class="o-layout__item o-layout--align-self-stretch u-width-4--m u-width-3--l">
 					<mvt:if expr="l.settings:readytheme:social_active">
 						<nav class="x-collapsible-content t-global-footer-social" aria-labelledby="social_active-label">
-							<p id="social_active-label" class="c-menu__title">Connect With Us</p>
-							<button class="x-collapsible-content__toggle" data-a11y-toggle="social_active" type="button">Connect With Us <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+							<p id="social_active-label" class="c-menu__title mm-theme-typography-subheading-small">Connect With Us</p>
+							<button class="x-collapsible-content__toggle mm-theme-typography-subheading-small" data-a11y-toggle="social_active" type="button">Connect With Us <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 							<ul id="social_active" class="x-collapsible-content__item t-global-footer-social__list">
 								<mvt:if expr="l.settings:readytheme:social_facebook">
 									<li class="t-global-footer-social__list-item">
@@ -69,7 +69,7 @@
 					</mvt:if>
 					<mvt:item name="readytheme" param="contentsection( 'newsletter_form' )" />
 					<mvt:if expr="g.session:cache:readytheme:lookandfeel:lookandfeel:trs_active">
-						<h5 class="c-menu__title u-text-uppercase">Safe &amp; Secure</h5>
+						<h5 class="c-menu__title mm-theme-typography-subheading-small">Safe &amp; Secure</h5>
 						<mvt:item name="readytheme" param="trustsymbol" />
 					</mvt:if>
 				</section>

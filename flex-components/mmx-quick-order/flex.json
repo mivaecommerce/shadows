@@ -2,7 +2,7 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "10.13.04",
+	"version": "26.01.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
@@ -2265,7 +2265,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-g5vnbH1+0mXPzWGuLBoZ/5HsQzEX9BMQcA382VnFyTs= sha384-m/IgW0H1nJLqU2tpCFuS7216r/E1y/3o1Dw5E2jttS8ix4h1jGOFS5QLV0+9fpuR sha512-vzk48iSkRck6aORVgNiXtjNOj8VjgpGM3NVin8/I91z2vTTdWPS03jTr+NptnTfysxRDC8g1y6napzTqW0QS0Q=="
+					"value": "sha256-KGHEeIOrcQb5VMRGYZnSYBHZND6Inxugdo+YqIySEGU= sha384-UmzKtpg9yZDQQmgeIY0uVbB7cPTc0rjmhY1gd1G3U1gJqmyZrJGzayPafTvC1eme sha512-Sqzk8qmWcrmmHmO4sH83DYTWPIsoT48dIZkiKnzmDywvwUCeGTD5FlxyTHn/py4ZeFkUEnOqKaA0LBlSW3eSpg=="
 				},
 				{
 					"name": "crossorigin",
@@ -2275,11 +2275,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.04",
-		"mmx-button": "=10.13.04",
-		"mmx-csv": "=10.13.04",
-		"mmx-featured-product": "=10.13.04",
-		"mmx-icons": "=10.13.04",
-		"mmx-text": "=10.13.04"
+		"mmx-base": "=26.01.00",
+		"mmx-button": "=26.01.00",
+		"mmx-csv": "=26.01.00",
+		"mmx-featured-product": "=26.01.00",
+		"mmx-icons": "=26.01.00",
+		"mmx-text": "=26.01.00"
 	}
 }

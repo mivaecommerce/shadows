@@ -1,7 +1,7 @@
 <section class="o-layout u-grids-2 u-grids-4--m t-checkout-customer-summary">
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Bill To</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Bill To</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.Basket:bill_fname OR g.Basket:bill_lname">
 				&mvte:global:Basket:bill_fname; &mvte:global:Basket:bill_lname;<br>
 			</mvt:if>
@@ -25,17 +25,17 @@
 				</mvt:if>
 			</span>
 		</p>
-		<p class="u-font-small">
+		<p>
 			<mvt:if expr="g.BasketPaymentGateway EQ 1">
-				<a href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Billing Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Billing Information">Edit</a>
 			<mvt:else>
-				<a href="&mvte:urls:OCST:secure;" title="Edit Billing Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OCST:secure;" title="Edit Billing Information">Edit</a>
 			</mvt:if>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Ship To</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Ship To</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.Basket:ship_fname OR g.Basket:ship_lname">
 				&mvte:global:Basket:ship_fname; &mvte:global:Basket:ship_lname;<br>
 			</mvt:if>
@@ -59,36 +59,36 @@
 				</mvt:if>
 			</span>
 		</p>
-		<p class="u-font-small">
+		<p>
 			<mvt:if expr="g.BasketPaymentGateway EQ 1">
-				<a href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Shipping Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Shipping Information">Edit</a>
 			<mvt:else>
-				<a href="&mvte:urls:OCST:secure;" title="Edit Shipping Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OCST:secure;" title="Edit Shipping Information">Edit</a>
 			</mvt:if>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Shipping Method</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Shipping Method</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:foreach iterator="charge" array="basket:charges">
 				<mvt:if expr="l.settings:charge:type EQ 'SHIPPING'">
 					<mvt:eval expr="glosub(l.settings:charge:descrip, 'Shipping:', '')"/><br>
 				</mvt:if>
 			</mvt:foreach>
 		</p>
-		<p class="u-font-small">
-			<a href="&mvte:urls:OSEL:secure;" title="Edit Shipping Method">Edit</a>
+		<p>
+			<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OSEL:secure;" title="Edit Shipping Method">Edit</a>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Delivery Notes</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Delivery Notes</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.order_instructions">
 				&mvte:global:order_instructions;<br>
 			</mvt:if>
 		</p>
-		<p class="u-font-small">
-			<a href="&mvte:urls:OSEL:secure;" title="Edit Delivery Notes">Edit</a>
+		<p>
+			<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OSEL:secure;" title="Edit Delivery Notes">Edit</a>
 		</p>
 	</div>
 </section>

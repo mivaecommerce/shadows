@@ -156,7 +156,7 @@
 
 .mmx-featured-product__product-attribute-swatch__swatches button:focus-visible {
 	border-radius: var(--mmx-featured-product__swatch-border-radius);
-	outline: 2px solid var(--mmx-color-focus);
+	outline: var(--mmx-button-outline--focus);
 	outline-offset: 0.25rem;
 }
 

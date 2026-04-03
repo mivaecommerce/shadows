@@ -16,9 +16,9 @@
 		<div class="o-layout__item">
 			<div class="t-basket__product-contents">
 				<mvt:item name="header_sequence" />
-				<h1 class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
+				<h1 class="mm-theme-typography-title-three">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 				<p>Your shopping cart is currently empty.</p>
-				<a class="c-button" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
+				<a class="mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Start Shopping</a>
 				<mvt:item name="footer_sequence" />
 			</div>
 		</div>
@@ -29,7 +29,7 @@
 <section class="o-layout o-layout--wide t-basket" data-hook="basket" data-item-count="&mvte:global_minibasket:parent_basket_count;" data-subtotal="&mvte:global_minibasket:formatted_total;">
 	<div class="o-layout__item u-width-12 u-width-8--l u-width-9--w">
 		<div class="t-basket__alt-heading u-hidden--l">
-			<p class="c-heading-echo">Your Cart (&mvte:global_minibasket:parent_basket_count;)</p>
+			<p class="mm-theme-typography-title-three">Your Cart (&mvte:global_minibasket:parent_basket_count;)</p>
 			<p class="t-basket__alt-heading-subtotal">
 				<span>Subtotal:</span>
 				<span>&mvt:global_minibasket:formatted_total;</span>
@@ -38,7 +38,7 @@
 
 		<div class="t-basket__product-contents">
 			<mvt:item name="header_sequence" />
-			<h1 class="c-heading-echo u-hidden u-shown--l">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
+			<h1 class="mm-theme-typography-title-three u-hidden u-shown--l">Your Cart (&mvte:global_minibasket:parent_basket_count;)</h1>
 			<table class="o-table t-basket__table" data-basket-table>
 				<thead class="c-table-responsive_thead u-text-left">
 					<tr class="t-basket__table-head">
@@ -70,11 +70,11 @@
 							</td>
 							<td class="t-basket__product-details" data-label="">
 								<mvt:if expr="ISNULL l.settings:group:link">
-									<span class="t-basket__product-name">&mvt:group:name;</span>
+									<span class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</span>
 								<mvt:else>
-									<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+									<a class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
 								</mvt:if>
-								<div class="t-basket__product-attributes">
+								<div class="t-basket__product-attributes mm-theme-typography-paragraph-extra-small">
 									<div class="t-basket__product-attr-options">
 										<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
 										<mvt:assign name="g.quote_item" value="'0'" />
@@ -126,13 +126,13 @@
 										</mvt:if>
 										<mvt:foreach iterator="discount" array="group:discounts">
 											<mvt:if expr="l.settings:discount:display">
-												<span class="u-flex u-color-red">
+												<span class="u-flex mm-theme-typography-discount-extra-small">
 													&mvt:discount:descrip;
 												</span>
 											</mvt:if>
 										</mvt:foreach>
 										<mvt:if expr="l.settings:group:upsold">
-											<span class="u-flex u-color-red">
+											<span class="u-flex mm-theme-typography-discount-extra-small">
 												Special Offer
 											</span>
 										</mvt:if>
@@ -162,15 +162,9 @@
 												<div class="c-form-list__item">
 													<label class="u-hide-visually" for="l-quantity-&mvte:group:group_id;">Quantity</label>
 													<div class="x-quantify" data-hook="quantify">
-														<button class="c-button c-button--secondary" data-action="decrement">
-															<span class="u-icon-subtract" aria-hidden="true"></span>
-															<span class="u-hide-visually">Decrease Quantity</span>
-														</button>
-														<input id="l-quantity-&mvte:group:group_id;" class="c-form-input u-color-gray-40 u-text-center" data-group="group-&mvte:group:group_id;" data-hook="group-quantity" data-max="" data-min="1" data-step="1" type="text" inputmode="decimal" name="Quantity" value="&mvt:group:quantity;" required>
-														<button class="c-button c-button--secondary" data-action="increment">
-															<span class="u-icon-add" aria-hidden="true"></span>
-															<span class="u-hide-visually">Increase Quantity</span>
-														</button>
+														<button class="u-icon-subtract" type="button" data-action="decrement" title="Decrease Quantity"></button>
+														<input id="l-quantity-&mvte:group:group_id;" class="c-form-input u-text-center" data-group="group-&mvte:group:group_id;" data-hook="group-quantity" data-max="" data-min="1" data-step="1" type="text" inputmode="decimal" name="Quantity" value="&mvt:group:quantity;" required>
+														<button class="u-icon-add" type="button" data-action="increment" title="Increase Quantity"></button>
 													</div>
 												</div>
 											</div>
@@ -188,17 +182,17 @@
 									<mvt:assign name="l.settings:group:selectedAttributes" value="glosub(l.settings:group:selectedAttributes, ', ' $ asciichar(125), asciichar(125))" />
 
 										<mvt:if expr="l.settings:group:product:productsubscriptionsettings:enabled OR miva_array_elements(l.settings:loaded_product_attributes) GT 0">
-											<button class="x-edit-basket-item" data-edit-basket-item data-basket-group="&mvte:group:group_id;" data-product-code="&mvte:group:code;" data-product-image="&mvte:group:imagetypes:main;" data-product-name="&mvte:group:name;" data-product-quantity="&mvte:group:quantity;" data-product-price="&mvte:group:formatted_total;" data-selected-attributes="&mvte:group:selectedAttributes;" data-selected-subscription="&mvte:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
+											<button class="x-edit-basket-item mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-edit-basket-item data-basket-group="&mvte:group:group_id;" data-product-code="&mvte:group:code;" data-product-image="&mvte:group:imagetypes:main;" data-product-name="&mvte:group:name;" data-product-quantity="&mvte:group:quantity;" data-product-price="&mvte:group:formatted_total;" data-selected-attributes="&mvte:group:selectedAttributes;" data-selected-subscription="&mvte:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
 										<template>
 											<mvt:item name="product_attributes" param="group:product_id" />
 										</template>
 									</mvt:if>
 
 									<mvt:if expr="l.settings:group:product:id AND (NOT l.settings:group:product:productsubscriptionsettings:enabled OR NOT l.settings:group:product:productsubscriptionsettings:mandatory)">
-										<a class="t-basket__product-save" href="&mvte:urls:WISH:secure_sep;Action=MPWL&Group_ID=&mvta:group:group_id;">Save for Later</a>
+										<a class="t-basket__product-save mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WISH:secure_sep;Action=MPWL&Group_ID=&mvta:group:group_id;">Save for Later</a>
 									</mvt:if>
 								</span>
-								<a class="t-basket__product-remove" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Params=&mvta:group:restore:params;&quote_item=&mvta:global:quote_item;">Remove</a>
+								<a class="t-basket__product-remove mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:BASK:auto_sep;Action=RGRP&Basket_Group=&mvta:group:group_id;&Restore_Name=&mvta:group:name;&Restore_Params=&mvta:group:restore:params;&quote_item=&mvta:global:quote_item;">Remove</a>
 							</td>
 						</tr>
 					</mvt:foreach>
@@ -206,8 +200,8 @@
 			</table>
 
 			<div class="t-basket__additional-product-actions">
-				<a href="&mvte:urls:BASK:secure_sep;Action=CBSK" onclick="return confirm('Are you sure you would like to delete your entire cart?')">Clear Cart</a>
-				<a href="&mvte:urls:WISH:secure_sep;Action=MAWL">Save for Later</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:BASK:secure_sep;Action=CBSK" onclick="return confirm('Are you sure you would like to delete your entire cart?')">Clear Cart</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WISH:secure_sep;Action=MAWL">Save for Later</a>
 			</div>
 
 			<mvt:item name="footer_sequence" />
@@ -220,29 +214,29 @@
 				<thead>
 					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell">
-							<span class="c-heading-foxtrot">Order Summary</span>
+							<span class="mm-theme-typography-title-four">Order Summary</span>
 						</td>
 					</tr>
 				</thead>
-				<tbody class="u-text-medium">
+				<tbody>
 					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell u-flex o-layout--justify-between">
-							<span class="u-color-gray-600">
+							<span>
 								<mvt:if expr="l.settings:global_minibasket:parent_basket_count GT 1">
-									<span class="">Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Items
+									<span>Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Items
 								<mvt:else>
-									<span class="">Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
+									<span>Subtotal:</span> &mvte:global_minibasket:parent_basket_count; Item
 								</mvt:if>
 							</span>
-							<span class="u-color-black">&mvt:global_minibasket:formatted_subtotal;</span>
+							<span class="u-color-darker">&mvt:global_minibasket:formatted_subtotal;</span>
 						</td>
 					</tr>
 
-					<tr class="c-table-simple__row u-color-gray-600">
+					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell u-flex o-layout--justify-between">
 							<span>Shipping</span>
 							<span>
-								<button class="c-button c-button--as-link" data-dialog-trigger="shipping-estimator">Estimate</button>
+								<button class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-dialog-trigger="shipping-estimator">Estimate</button>
 							</span>
 						</td>
 					</tr>
@@ -250,14 +244,14 @@
 					<mvt:foreach iterator="charge" array="basket:charges">
 						<tr class="c-table-simple__row">
 							<td class="c-table-simple__cell u-flex o-layout--justify-between">
-								<span class="u-color-gray-600">&mvt:charge:descrip;</span>
-								<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+								<span>&mvt:charge:descrip;</span>
+								<span class="u-color-darker">&mvt:charge:formatted_disp_amt;</span>
 							</td>
 						</tr>
 					</mvt:foreach>
 
 					<mvt:foreach iterator="coupon" array="basket:coupons">
-						<tr class="c-table-simple__row u-color-gray-600">
+						<tr class="c-table-simple__row ">
 							<td class="c-table-simple__cell u-flex o-layout--justify-between">
 								<form method="post" action="&mvte:urls:BASK:auto;">
 									<fieldset>
@@ -266,7 +260,7 @@
 											<div class="c-form-list__item c-form-list__item--full">
 												<input type="hidden" name="Action" value="RCPN"/>
 												<input type="hidden" name="Coupon_Code" value="&mvte:coupon:code;"/>
-												<button class="c-button c-button--as-link u-color-red" type="submit">&mvt:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
+												<button class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium u-color-red" type="submit">&mvt:coupon:code; <span class="u-icon-remove" aria-hidden="true"></span></button>
 											</div>
 										</div>
 									</fieldset>
@@ -278,7 +272,7 @@
 						</tr>
 					</mvt:foreach>
 
-					<tr class="c-table-simple__row u-color-gray-600">
+					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell">
 							<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
 								<mvt:if expr="g.Action EQ 'ACPN' AND NOT ISNULL l.settings:messages:error_message_count">
@@ -299,7 +293,7 @@
 										<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 										<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 											<input id="Coupon_Code" class="c-form-input &mvte:has:error;" type="text" name="Coupon_Code" required>
-											<input class="c-button" type="submit" value="Apply">
+											<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
 										</div>
 										<mvt:if expr="g.Action EQ 'ACPN' AND NOT ISNULL l.settings:messages:error_message_count">
 											<mvt:foreach iterator="error" array="messages:error_messages">
@@ -315,8 +309,8 @@
 						</td>
 					</tr>
 
-					<tr class="c-table-simple__row u-color-black t-basket__order-total">
-						<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
+					<tr class="c-table-simple__row t-basket__order-total">
+						<td class="c-table-simple__cell o-layout--justify-between u-flex mm-theme-typography-subheading-small">
 							<span>Total</span>
 							<span>&mvt:basket:formatted_total;</span>
 						</td>
@@ -325,7 +319,7 @@
 					<tr>
 						<td>
 							<br>
-							<a class="c-button c-button--full u-flex u-text-medium" href="&mvte:urls:OINF:auto;">Checkout</a>
+							<a class="c-button--full u-flex mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:OINF:auto;">Checkout</a>
 							<br>
 							<mvt:item name="readytheme" param="Load_ContentSection('paypalcp_configuration', g.basket_paypal)" />
 							<mvt:item name="readytheme" param="Load_ContentSection('epmivapay_configuration', g.basket_epmivapay)" />

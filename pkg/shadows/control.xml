@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>10.13.04</Version>
-	<MinimumMerchantVersion>10.13.04</MinimumMerchantVersion>
+	<Version>26.01.00</Version>
+	<MinimumMerchantVersion>26.01.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v10.13.04
+	<Description>Shadows ReadyTheme v26.01.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -3411,30 +3411,6 @@
 				EDIT BASKET ATTRIBUTES
 				====================== */
 
-				.x-edit-basket-item {
-				background-color: transparent;
-				border: 0 none;
-				color: currentColor;
-				cursor: pointer;
-				padding: 0;
-				text-decoration: underline;
-				width: fit-content;
-				}
-
-				.x-edit-basket-item:focus:focus:not(:focus-visible) {
-				outline: 0 none;
-				}
-
-				.x-edit-basket-item:focus-visible,
-				.x-edit-basket-item:hover {
-				text-decoration: none;
-				}
-
-				.x-edit-basket-item:focus-visible {
-				outline: max(1px, 0.1em) dotted currentColor;
-				outline-offset: max(1px, 0.1em);
-				}
-
 				.x-edit-basket-attributes .c-dialog__container {
 				max-width: 50rem;
 				}
@@ -3548,6 +3524,7 @@ mmx-featured-product::part(button__inner) {
 		<CSSResourceXGroup_Assign code="preconnect-gstatic" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="combofacets" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="mailchimp" group_code="css_list" />
+		<CSSResourceXGroup_Assign code="mm-theme-styles" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="stylesheet" group_code="css_list" />
 		<CSSResourceXGroup_Assign code="edit-basket-attributes" group_code="head_tag" />
 		<CSSResourceXPage_Assign code="square-payment" page_code="OPAY" />
@@ -3563,7 +3540,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '10.13.04';
+	mivaJS.ReadyThemeVersion = '26.01.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -6736,6 +6713,66 @@ new MMXPromotionTracker();
 				<LineHeight unit="em">1.5</LineHeight>
 			</Styles>
 		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="price-l" />
+		<ThemeTypography_Add>
+			<Code>price-l</Code>
+			<Name>Price Large</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">18</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="price-xs" />
+		<ThemeTypography_Add>
+			<Code>price-xs</Code>
+			<Name>Price Extra-Small</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="additional-price-l" />
+		<ThemeTypography_Add>
+			<Code>additional-price-l</Code>
+			<Name>Additional Price Large</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">18</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="additional-price-xs" />
+		<ThemeTypography_Add>
+			<Code>additional-price-xs</Code>
+			<Name>Additional Price Extra-Small</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
+		<ThemeTypography_Delete code="discount-xs" />
+		<ThemeTypography_Add>
+			<Code>discount-xs</Code>
+			<Name>Discount Extra-Small</Name>
+			<Type>paragraph</Type>
+			<Styles>
+				<Color>#B13138</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">12</FontSize>
+				<LineHeight unit="em">1.5</LineHeight>
+			</Styles>
+		</ThemeTypography_Add>
 		<ThemeButton_Delete code="primary" />
 		<ThemeButton_Add>
 			<Code>primary</Code>
@@ -7028,6 +7065,116 @@ new MMXPromotionTracker();
 				<TextUnderline>
 					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
 					<TextUnderlineThickness unit="px">2</TextUnderlineThickness>
+				</TextUnderline>
+			</HoverStyles>
+			<DisabledStyles>
+				<Color>#575A5D</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
+				</TextUnderline>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="primary-navigation" />
+		<ThemeButton_Add>
+			<Code>primary-navigation</Code>
+			<Name>Primary Navigation</Name>
+			<Styles>
+				<Color>#111111</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+			</Styles>
+			<HoverStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
+				</TextUnderline>
+			</HoverStyles>
+			<DisabledStyles>
+				<Color>#111111</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
+				</TextUnderline>
+			</DisabledStyles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">16</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">13</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>xs</Code>
+					<Name>Extra-Small</Name>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeButton_Add>
+		<ThemeButton_Delete code="secondary-navigation" />
+		<ThemeButton_Add>
+			<Code>secondary-navigation</Code>
+			<Name>Secondary Navigation</Name>
+			<Styles>
+				<Color>#575A5D</Color>
+				<Font weight="500" style="normal">inter</Font>
+				<FontSize unit="px">13</FontSize>
+			</Styles>
+			<HoverStyles>
+				<Color>#575A5D</Color>
+				<TextUnderline>
+					<TextUnderlineOffset unit="px">2</TextUnderlineOffset>
+					<TextUnderlineThickness unit="px">1</TextUnderlineThickness>
 				</TextUnderline>
 			</HoverStyles>
 			<DisabledStyles>

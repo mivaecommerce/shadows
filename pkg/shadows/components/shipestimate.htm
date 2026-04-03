@@ -2,7 +2,7 @@
 	<div class="c-dialog__overlay" tabindex="-1">
 		<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="shipping-estimator-title" aria-modal="true" role="dialog">
 			<header class="c-dialog__header">
-				<p id="shipping-estimator-title" class="c-dialog__title c-heading-foxtrot">Estimate Shipping</p>
+				<p id="shipping-estimator-title" class="c-dialog__title mm-theme-typography-title-four">Estimate Shipping</p>
 				<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 			</header>
 			<div class="c-dialog__content">
@@ -43,13 +43,13 @@
 								</div>
 							</div>
 							<div class="c-form-list__item c-form-list__item--full c-form-inline-set o-layout--justify-end">
-								<button class="c-button c-button--secondary" aria-label="Do Not Calculate Estimated Shipping and Close Dialog" data-dialog-close>Cancel</button>
-								<input class="c-button" data-hook="calculate-shipping-estimate" type="submit" value="Calculate" title="Calculate Estimated Shipping">
+								<button class="mm-theme-button-secondary mm-theme-button-secondary__small" aria-label="Do Not Calculate Estimated Shipping and Close Dialog" data-dialog-close>Cancel</button>
+								<input class="mm-theme-button-primary mm-theme-button-primary__small" data-hook="calculate-shipping-estimate" type="submit" value="Calculate" title="Calculate Estimated Shipping">
 							</div>
 						</div>
 						<div data-hook="shipping-estimate-results"></div>
 						<div class="u-text-center">
-							<button type="button" class="c-button u-hidden" data-hook="shipping-estimate-recalculate" title="Recalculate Shipping Estimate">Recalculate</button>
+							<button type="button" class="mm-theme-button-primary mm-theme-button-primary__small u-hidden" data-hook="shipping-estimate-recalculate" title="Recalculate Shipping Estimate">Recalculate</button>
 						</div>
 					</fieldset>
 				</form>

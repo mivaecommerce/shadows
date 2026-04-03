@@ -18,14 +18,14 @@
 			<tr class="c-table-responsive__row u-border-none">
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order #">
 					&mvt:order:id;<br>
-					<a class="u-color-gray-600 u-font-small" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
+					<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__extra-small" href="&mvte:urls:ORDS:auto_sep;Order_ID=&mvta:order:id;&amp;Order_BillEmail=&mvta:global:Order_BillEmail;&amp;Order_BillZip=&mvta:global:Order_BillZip;">Order Details</a>
 				</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Order Placed">&mvt:order:date_formatted;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Total">&mvt:order:formatted_total;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Status">&mvt:order:order_status;</td>
 				<td class="c-table-responsive__cell c-table-responsive__cell--flex" data-label="Shipments">
 					<mvt:foreach iterator="shipment" array="order:shipments">
-						<a class="u-color-gray-50 u-font-small" href="&mvte:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
+						<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__extra-small" href="&mvte:shipment:tracklink_raw;" target="_blank">&mvt:shipment:tracknum;</a><br/>
 					</mvt:foreach>
 				</td>
 			</tr>

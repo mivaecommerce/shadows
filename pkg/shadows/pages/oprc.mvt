@@ -22,9 +22,9 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<p class="x-messages x-messages--warning">Your order has already been processed. Please do not reload this page.</p>
-			<a class="c-button" href="&mvte:urls:SFNT:auto;">Return to the Storefront</a>
+			<a class="mm-theme-button-primary mm-theme-button-primary__small" href="&mvte:urls:SFNT:auto;">Return to the Storefront</a>
 		</div>
 	</section>
 

@@ -19,10 +19,10 @@
 					</mvt:if>
 				</p>
 				<div class="o-layout__item u-width-12 u-width-6--l">
-					<p class="u-color-gray-600">SKU: &mvte:item:code;</p>
-					<p class="c-heading-echo">&mvt:item:name;</p>
+					<p class="mm-theme-typography-paragraph-extra-small">SKU: &mvte:item:code;</p>
+					<p class="mm-theme-typography-title-three">&mvt:item:name;</p>
 					<mvt:if expr="l.settings:item:option_count">
-						<p>
+						<p class="mm-theme-typography-paragraph-extra-small">
 							<mvt:foreach iterator="option" array="item:options">
 								<div>
 									<mvt:if expr="l.settings:option:option_id">
@@ -200,12 +200,12 @@
 										<div>
 											&mvt:child:name;
 											<mvt:if expr="NOT ISNULL l.settings:child:product:descrip">
-												<button class="c-button--as-text u-icon-info" data-dialog-trigger="product-charge--&mvte:child:code;"></button>
+												<button class="mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium u-icon-info" data-dialog-trigger="product-charge--&mvte:child:code;"></button>
 												<div class="c-dialog" data-dialog="product-charge--&mvte:child:code;" aria-hidden="true">
 													<div class="c-dialog__overlay" tabindex="-1">
 														<div class="c-dialog__container u-width-10 u-width-8--s u-width-6--l u-width-4--xl" aria-modal="true" role="alertdialog">
 															<header class="c-dialog__header">
-																<h2 class="c-dialog__title c-heading-echo">
+																<h2 class="c-dialog__title mm-theme-typography-title-three">
 																	&mvt:child:name;
 																</h2>
 																<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
@@ -241,7 +241,7 @@
 								</tr>
 							</mvt:foreach>
 							<tr class="c-table-simple__row">
-								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between c-heading--subheading--small">
+								<td class="c-table-simple__cell c-table-simple__cell--standard u-flex o-layout--justify-between mm-theme-typography-subheading-small">
 									<span>Estimated Total</span>
 									<span>&mvt:subscriptionfields:formatted_display_total;</span>
 								</td>
@@ -302,12 +302,12 @@
 					<div>
 						<mvt:if expr="l.settings:subscriptionfields:status NE 'C' AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
 							<p>
-								<input class="c-button c-button--full" type="submit" value="Save Changes">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Save Changes">
 							</p>
 						</mvt:if>
 						<mvt:if expr="(l.settings:subscriptionfields:status NE 'C') AND l.settings:subscriptionfields:productsubscriptionsettings:can_cancel AND ((l.settings:subscriptionfields:productsubscriptionsettings:cncl_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:cncl_min))">
 							<p onclick="if ( !confirm( 'Are you sure you want to cancel your subscription? This action cannot be undone.\x0A\x0AContinue?' ) ) { return false; } else { document.forms.csbe_form.elements.Action.value = 'DCSB'; }">
-								<input class="c-button c-button--as-link c-button--full" type="submit" value="Cancel Subscription">
+								<input class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" type="submit" value="Cancel Subscription">
 							</p>
 						</mvt:if>
 					</div>

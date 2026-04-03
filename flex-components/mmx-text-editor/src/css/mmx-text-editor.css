@@ -6,3 +6,10 @@
 	position: relative;
 	display: block;
 }
+
+@media (min-width: 60em) {
+	.mmx-text-editor {
+		margin: 0 auto;
+		width: var(--mmx-text-editor__width, auto);
+	}
+}

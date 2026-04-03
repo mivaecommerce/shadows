@@ -1,18 +1,18 @@
 <nav class="x-category-tree x-collapsible-content" aria-labelledby="support-navigation-label">
 	<div class="x-category-tree__title">
-		<p id="support-navigation-label" class="x-category-tree__heading">Support</p>
+		<p id="support-navigation-label" class="x-category-tree__heading mm-theme-typography-title-four">Support</p>
 	</div>
-	<button class="x-category-tree__label x-collapsible-content__toggle" data-a11y-toggle="&mvte:readytheme:code;" type="button">Support <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
+	<button class="x-category-tree__label x-collapsible-content__toggle mm-theme-typography-subheading-extra-small" data-a11y-toggle="&mvte:readytheme:code;" type="button">Support <span class="u-icon-add" data-toggle="<" aria-hidden="true"></span></button>
 	<ul id="&mvte:readytheme:code;" class="x-category-tree__row x-collapsible-content__item">
 		<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
 			<li class="x-category-tree__list x-category-tree__list--level-1">
 				<mvt:if expr="l.settings:navigationitem:link_dest EQ l.settings:page:code">
-					<a class="x-category-tree__link x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+					<a class="x-category-tree__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium x-category-tree__link--current" href="&mvt:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 				<mvt:else>
 					<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-						<span class="x-category-tree__text">&mvte:navigationitem:name;</span>
+						<span class="x-category-tree__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvte:navigationitem:name;</span>
 					<mvt:else>
-						<a class="x-category-tree__link" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
+						<a class="x-category-tree__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" title="&mvte:navigationitem:name;" target="&mvte:navigationitem:link_targ;">&mvte:navigationitem:name;</a>
 					</mvt:if>
 				</mvt:if>
 			</li>

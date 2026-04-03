@@ -390,6 +390,10 @@ slot + slot[name="button"],
    =========================================== */
 :host .type-product-prices {
 	margin-top: 6px;
+
+	mmx-text {
+		display: inline-block;
+	}
 }
 
 :host .type-product-additional-price {

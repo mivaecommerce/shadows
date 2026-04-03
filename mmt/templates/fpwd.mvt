@@ -23,6 +23,8 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
+			<hr class="c-keyline">
 			<p class="x-messages x-messages--info x-messages--with-icon">
 				<span class="x-messages__icon u-icon-info" aria-hidden="true"></span>
 				<span>Enter the email address associated with your account.<br>If you no longer use the email address associated with your account, please contact customer support.</span>
@@ -37,7 +39,7 @@
 							<label class="c-form-label is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
 							<div class="c-form-inline-set">
 								<input id="l-Customer_LoginEmail" class="c-form-input" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
-								<input class="c-button" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">
 							</div>
 						</div>
 					</div>
@@ -45,7 +47,7 @@
 			</form>
 		</div>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

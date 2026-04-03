@@ -7,8 +7,8 @@
 			</mvt:foreach>
 			<mvt:do file="g.Module_Root $ g.Store:currncy_mod:module" name="l.settings:global_minibasket:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:Currncy_mod, l.settings:global_minibasket:subtotal)"/>
 			<div class="x-mini-basket__header">
-				<strong id="mb-description" class="x-mini-basket__summary">Your Cart (&mvte:global_minibasket:parent_basket_count;)</strong>
-				<button class="u-icon-cross" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
+				<div id="mb-description" class="x-mini-basket__summary mm-theme-typography-title-three">Your Cart (&mvte:global_minibasket:parent_basket_count;)</div>
+				<button class="u-icon-cross mm-theme-button-primary-navigation mm-theme-button-primary-navigation__extra-small" data-hook="close-mini-basket" aria-label="Close the Mini-Basket"></button>
 			</div>
 			<mvt:if expr="NOT l.settings:global_minibasket:empty">
 				<div class="x-mini-basket__subtotal">
@@ -29,8 +29,8 @@
 							<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:global_minibasket:b_width;" height="&mvte:global_minibasket:b_height;">
 						</figure>
 						<div class="x-mini-basket__item">
-							<a href="&mvt:group:link;" class="x-mini-basket__item-name">&mvt:group:name;</a>
-							<span class="x-mini-basket__item-attributes">
+							<a href="&mvt:group:link;" class="x-mini-basket__item-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</a>
+							<span class="x-mini-basket__item-attributes mm-theme-typography-paragraph-extra-small">
 								<mvt:foreach iterator="option" array="group:options">
 									<span class="u-block">
 										<mvt:if expr="l.settings:option:option_id">
@@ -49,19 +49,19 @@
 								</mvt:if>
 								<mvt:foreach iterator="discount" array="group:discounts">
 									<mvt:if expr="l.settings:discount:display">
-										<div class="u-block u-color-red">
+										<div class="u-block mm-theme-typography-discount-extra-small">
 											&mvt:discount:descrip;
 										</div>
 									</mvt:if>
 								</mvt:foreach>
 								<mvt:if expr="l.settings:group:upsold">
-									<div class="u-block u-color-red">
+									<div class="u-block mm-theme-typography-discount-extra-small">
 										Special Offer
 									</div>
 								</mvt:if>
 							</span>
 							<div class="x-mini-basket__item-total">
-								<span class="u-font-small">Qty: &mvte:group:quantity;</span>
+								<span class="mm-theme-typography-paragraph-extra-small">Qty: &mvte:group:quantity;</span>
 								<div class="x-mini-basket__item-price">
 									<mvt:fragment code="group_productcharges" />
 								</div>
@@ -75,12 +75,12 @@
 							<mvt:foreach iterator="charge" array="global_minibasket:charges">
 								<div class="x-mini-basket__charge-item">
 									<span>&mvt:charge:descrip;</span>
-									<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+									<span class="u-color-darker">&mvt:charge:formatted_disp_amt;</span>
 								</div>
 							</mvt:foreach>
 						</div>
 					</mvt:if>
-					<div class="x-mini-basket__total">
+					<div class="x-mini-basket__total mm-theme-typography-subheading-small">
 						<span>Total</span>
 						<span>&mvt:global_minibasket:formatted_total;</span>
 					</div>
@@ -88,7 +88,7 @@
 			</div>
 			<footer class="x-mini-basket__footer">
 				<div class="x-mini-basket__cta">
-					<a class="c-button c-button--full" href="&mvte:urls:BASK:auto;">Checkout</a>
+					<a class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" href="&mvte:urls:BASK:auto;">Checkout</a>
 				</div>
 			</footer>
 		<mvt:else>
@@ -107,10 +107,10 @@
 					</svg>
 				</p>
 				<br>
-				<p class="c-heading--subheading--small">Your Cart is Empty</p>
-				<p class="t-input-font-size">Add items to get started</p>
+				<p class="mm-theme-typography-subheading-small">Your Cart is Empty</p>
+				<p class="mm-theme-typography-paragraph-small">Add items to get started</p>
 				<br>
-				<a class="c-button c-button--full u-text-medium" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Continue Shopping</a>
+				<a class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" href="&mvte:urls:SFNT:auto;" data-hook="continue-shopping">Continue Shopping</a>
 			</footer>
 		</mvt:if>
 	</div>

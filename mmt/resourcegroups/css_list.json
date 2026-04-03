@@ -6,6 +6,7 @@
         "preconnect-google-analytics",
         "preconnect-google-fonts",
         "preconnect-gstatic",
+        "mm-theme-styles",
         "stylesheet"
     ]
 }

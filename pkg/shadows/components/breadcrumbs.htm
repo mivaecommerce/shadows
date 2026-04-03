@@ -1,12 +1,12 @@
 <Module code="cmp-cssui-breadcrumbs" feature="component"><MaxCatNameLength>0</MaxCatNameLength><MaxProdNameLength>0</MaxProdNameLength><MaxCatDisplay>0</MaxCatDisplay><Template><![CDATA[<nav class="x-breadcrumbs" aria-label="Breadcrumb">
 	<ul class="x-breadcrumbs__list">
 		<li class="x-breadcrumbs__item">
-			<a href="&mvte:breadcrumbs:homelink;">Home</a>
+			<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small" href="&mvte:breadcrumbs:homelink;">Home</a>
 		</li>
 		<mvt:foreach iterator="cats" array="breadcrumbs:links">
 			<mvt:assign name="l.settings:cats:html:attr:aria_current" value="ternary( l.settings:cats:code EQ l.settings:breadcrumbs:current_item:code, 'aria-current=\"page\"', '' )" />
 			<li class="x-breadcrumbs__item" &mvt:cats:html:attr:aria_current;>
-				<a href="&mvte:cats:link;">&mvt:cats:name;</a>
+				<a class="mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small" href="&mvte:cats:link;">&mvt:cats:name;</a>
 			</li>
 		</mvt:foreach>
 	</ul>

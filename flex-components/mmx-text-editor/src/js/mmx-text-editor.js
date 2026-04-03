@@ -8,6 +8,11 @@ class MMX_TextEditor extends MMX_Element {
 			content: {
 				allowAny: true,
 				default: ''
+			},
+			width: {
+				default: 'auto',
+				isPercentage: true,
+				allowAny: true
 			}
 		};
 	}
@@ -25,6 +30,14 @@ class MMX_TextEditor extends MMX_Element {
 				${this.renderContent()}
 				<slot></slot>
 			</div>
+		`;
+	}
+
+	styles() {
+		return /*css*/`
+			:host {
+				--mmx-text-editor__width: ${MMX.encodeEntities(this.getPropValue('width'))};
+			}
 		`;
 	}
 

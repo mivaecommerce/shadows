@@ -1,7 +1,7 @@
 <div class="t-basket">
 	<div class="o-layout--justify-between u-flex">
-		<h1 class="c-heading-foxtrot">Order Summary</h1>
-		<button class="c-button c-button--as-link u-color-gray-600 u-text-no-underline" data-hook="print-invoice"><span class="u-font-large u-icon-print" aria-hidden="true"></span>&nbsp;Print</button>
+		<h1 class="mm-theme-typography-title-four">Order Summary</h1>
+		<button class="mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" data-hook="print-invoice"><span class="u-font-large u-icon-print" aria-hidden="true"></span>&nbsp;Print</button>
 	</div>
 	<table class="o-table t-basket__table" data-basket-table>
 		<thead class="c-table-responsive_thead u-text-left">
@@ -27,12 +27,12 @@
 					</td>
 					<td class="t-basket__product-details" data-label="">
 						<mvt:if expr="ISNULL l.settings:group:link">
-							<span class="t-basket__product-name">&mvt:group:name;</span>
+							<span class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium">&mvt:group:name;</span>
 						<mvt:else>
-							<a class="t-basket__product-name" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
+							<a class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:group:link;" rel="nofollow">&mvt:group:name;</a>
 						</mvt:if>
 						<div class="t-basket__product-attributes">
-							<div class="t-basket__product-attr-options">
+							<div class="t-basket__product-attr-options mm-theme-typography-paragraph-extra-small">
 								<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
 								<mvt:foreach iterator="option" array="group:options">
 									<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
@@ -63,11 +63,11 @@
 								</mvt:if>
 								<mvt:foreach iterator="discount" array="group:discounts">
 									<mvt:if expr="l.settings:discount:display">
-										<span class="u-flex u-color-red">&mvt:discount:descrip;</span>
+										<span class="u-flex mm-theme-typography-discount-extra-small">&mvt:discount:descrip;</span>
 									</mvt:if>
 								</mvt:foreach>
 								<mvt:if expr="l.settings:group:upsold">
-									<span class="u-flex u-color-red">
+									<span class="u-flex mm-theme-typography-discount-extra-small">
 										Special Offer
 									</span>
 								</mvt:if>
@@ -75,7 +75,7 @@
 						</div>
 					</td>
 
-					<td class="t-basket__product-qty" data-label="Quantity">
+					<td class="t-basket__product-qty mm-theme-typography-paragraph-extra-small" data-label="Quantity">
 						<p class="u-text-center">&mvte:group:quantity;</p>
 					</td>
 
@@ -88,8 +88,8 @@
 	</table>
 	<mvt:do file="g.Module_Store_Module_Currency" name="l.settings:order:formatted_subtotal" value="CurrencyModule_AddFormatting(g.Store:currncy_mod, l.settings:order:subtotal)" />
 	<table class="c-table-simple t-order-totals-table">
-		<tbody class="u-text-medium">
-			<tr class="c-table-simple__row u-color-gray-600">
+		<tbody>
+			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
 					<span>
 						<mvt:if expr="l.settings:order:parent_order_count GT 1">
@@ -98,21 +98,21 @@
 							<span class="">Subtotal:</span> &mvte:order:parent_order_count; Item
 						</mvt:if>
 					</span>
-					<span class="u-color-black">&mvt:order:formatted_subtotal;</span>
+					<span class="u-color-darker">&mvt:order:formatted_subtotal;</span>
 				</td>
 			</tr>
 
 			<mvt:foreach iterator="charge" array="order:charges">
-				<tr class="c-table-simple__row u-color-gray-600">
+				<tr class="c-table-simple__row">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
 						<span>&mvt:charge:descrip;</span>
-						<span class="u-color-black">&mvt:charge:formatted_disp_amt;</span>
+						<span class="u-color-darker">&mvt:charge:formatted_disp_amt;</span>
 					</td>
 				</tr>
 			</mvt:foreach>
 
 			<mvt:foreach iterator="coupon" array="order:coupons">
-				<tr class="c-table-simple__row u-color-gray-600">
+				<tr class="c-table-simple__row">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
 						<span>&mvt:coupon:code;</span>
 						<mvt:if expr="NOT ISNULL l.settings:coupon:descrip">
@@ -123,21 +123,21 @@
 			</mvt:foreach>
 
 			<mvt:foreach iterator="payment" array="order:payments">
-				<tr class="c-table-simple__row u-color-gray-600">
+				<tr class="c-table-simple__row">
 					<td class="c-table-simple__cell u-flex o-layout--justify-between">
 						<mvt:if expr="l.settings:payment:type EQ 6">
 							<span>Refund: &mvte:payment:desc;</span>
-							<span class="u-color-black">&mvt:payment:formatted_amount;</span>
+							<span class="u-color-darker">&mvt:payment:formatted_amount;</span>
 						<mvt:else>
 							<span>Payment: &mvte:payment:desc;</span>
-							<span class="u-color-black">&mvt:payment:formatted_amount_negative;</span>
+							<span class="u-color-darker">&mvt:payment:formatted_amount_negative;</span>
 						</mvt:if>
 					</td>
 				</tr>
 			</mvt:foreach>
 
-			<tr class="c-table-simple__row u-color-black t-basket__order-total">
-				<td class="c-table-simple__cell c-heading--subheading--small o-layout--justify-between u-flex">
+			<tr class="c-table-simple__row t-basket__order-total">
+				<td class="c-table-simple__cell o-layout--justify-between u-flex mm-theme-typography-subheading-small">
 					<span>Total</span>
 					<span>&mvt:order:formatted_total;</span>
 				</td>

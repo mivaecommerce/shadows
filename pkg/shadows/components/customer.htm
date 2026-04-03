@@ -33,7 +33,7 @@
 		<div class="c-dialog__overlay" tabindex="-1">
 			<div class="c-dialog__container c-dialog__container--fit" aria-labelledby="sign-in-title" aria-modal="true" role="dialog">
 				<header class="c-dialog__header">
-					<p id="sign-in-title" class="c-dialog__title c-heading-foxtrot">Sign In</p>
+					<p id="sign-in-title" class="c-dialog__title mm-theme-typography-title-four">Sign In</p>
 					<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 				</header>
 				<div class="c-dialog__content">
@@ -52,8 +52,8 @@
 									<input id="Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="current-password" required aria-required="true">
 								</div>
 								<div class="c-form-list__item">
-									<p><a href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
-									<p><input class="c-button c-button--full" type="submit" value="Sign In and Checkout"></p>
+									<p><a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
+									<p><input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Checkout"></p>
 								</div>
 							</div>
 						</fieldset>
@@ -73,7 +73,7 @@
 			<mvt:item name="customfields" param="Write_Basket('BasketPaymentGateway', '1')" />
 		</mvt:if>
 		<div class="c-form-list">
-			<p id="ShippingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Shipping Information</p>
+			<p id="ShippingInformation" class="c-form-list__item c-form-list__item--full mm-theme-typography-title-four">Shipping Information</p>
 			<p class="c-form-list__item u-hidden" id="shipping_controls">
 				<label class="c-form-checkbox">
 					<input id="shipping_to_show" class="c-form-checkbox__input" type="checkbox" name="shipping_to_show" value="1">
@@ -81,7 +81,7 @@
 				</label>
 			</p>
 			<mvt:if expr="g.Basket:cust_id EQ 0">
-				<p>Have An Account? <button class="c-button c-button--as-link" data-dialog-trigger="sign-in" title="Click Here to Sign Into Your Account" type="button">Sign In</button></p>
+				<p>Have An Account? <button class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-dialog-trigger="sign-in" title="Click Here to Sign Into Your Account" type="button">Sign In</button></p>
 			<mvt:else>
 				<p><span class="u-text-bold">Welcome back &mvte:global:customer:ship_fname;!</span> Not you? <a href="&mvte:urls:OCST:secure_sep;Action=LOGO">Log Out</a>.</p>
 			</mvt:if>
@@ -154,7 +154,9 @@
 						<input id="ShipAddress2" class="c-form-input" type="text" name="ShipAddress2" value="&mvte:global:ShipAddress2;" aria-describedby="ShippingInformation ShipAddress2_label" autocomplete="address-line2">
 					<mvt:else>
 						<details class="t-customer-address-2">
-							<summary><span>Add Address Line 2 (Optional)</span></summary>
+							<summary>
+								<span class="mm-theme-button-primary-link mm-theme-button-primary-link__medium">Add Address Line 2 (Optional)</span>
+							</summary>
 							<label id="ShipAddress2_label" class="c-form-label u-font-small u-text-italic" for="ShipAddress2">Address 2</label>
 							<input id="ShipAddress2" class="c-form-input" type="text" name="ShipAddress2" value="&mvte:global:ShipAddress2;" aria-describedby="ShippingInformation ShipAddress2_label" autocomplete="address-line2">
 						</details>
@@ -198,7 +200,7 @@
 		</section>
 
 		<div class="c-form-list">
-			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Billing Information</p>
+			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full mm-theme-typography-title-four">Billing Information</p>
 			<p class="c-form-list__item" id="billing_controls">
 				<label class="c-form-checkbox">
 					<input id="billing_to_show" class="c-form-checkbox__input" type="checkbox" name="billing_to_show" value="1">
@@ -275,7 +277,9 @@
 						<input id="BillAddress2" class="c-form-input" type="text" name="BillAddress2" value="&mvte:global:BillAddress2;" aria-describedby="BillingInformation BillAddress2_label" autocomplete="address-line2">
 					<mvt:else>
 						<details class="t-customer-address-2">
-							<summary><span>Add Address Line 2 (Optional)</span></summary>
+							<summary>
+								<span class="mm-theme-button-primary-link mm-theme-button-primary-link__medium">Add Address Line 2 (Optional)</span>
+							</summary>
 							<label id="BillAddress2_label" class="c-form-label u-font-small u-text-italic" for="BillAddress2">Address 2</label>
 							<input id="BillAddress2" class="c-form-input" type="text" name="BillAddress2" value="&mvte:global:BillAddress2;" aria-describedby="BillingInformation BillAddress2_label" autocomplete="address-line2">
 						</details>
@@ -393,7 +397,7 @@
 
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--m">
-				<input class="c-button c-button--full-small" type="submit" value="Continue to Shipping">
+				<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue to Shipping">
 			</div>
 		</div>
 	</fieldset>
@@ -417,7 +421,7 @@
 		<mvt:else>
 			<mvt:assign name="l.settings:url" value="l.settings:urls:ACLN:secure" />
 		</mvt:if>
-		<h1 class="c-heading-delta">&mvt:page:name;</h1>
+		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
 		<form method="post" action="&mvte:url;" data-validate-address>
@@ -427,7 +431,7 @@
 			<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 
 			<div class="c-form-list o-layout">
-				<div id="LogInInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Log In Information</div>
+				<div id="LogInInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Log In Information</div>
 				<div class="c-form-list__item o-layout__item u-width-4--m &mvte:global:LoginEmail_Row;">
 					<label id="Customer_LoginEmail_label" class="c-form-label u-text-medium is-required" for="Customer_LoginEmail">Email Address</label>
 					<input id="Customer_LoginEmail" class="c-form-input" data-hook="Customer_LoginEmail" data-primary="&mvte:customer:primaddr;" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required aria-describedby="LogInInformation Customer_LoginEmail_label" aria-required="true">
@@ -444,7 +448,7 @@
 			<hr class="c-keyline">
 
 			<div class="c-form-list o-layout">
-				<div id="ShippingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Shipping Information</div>
+				<div id="ShippingInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Shipping Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12 u-hidden" id="shipping_controls">
 					<label class="c-form-checkbox">
 						<mvt:if expr="g.Action AND g.shipping_to_show">
@@ -537,7 +541,7 @@
 			</section>
 
 			<div class="c-form-list o-layout">
-				<div id="BillingInformation" class="c-form-list__item c-form-list__item--full o-layout__item c-heading-foxtrot">Billing Information</div>
+				<div id="BillingInformation" class="c-form-list__item c-form-list__item--full o-layout__item mm-theme-typography-title-four">Billing Information</div>
 				<div class="c-form-list__item o-layout__item u-width-12" id="billing_controls">
 					<label class="c-form-checkbox">
 						<mvt:if expr="g.Action AND g.billing_to_show">
@@ -665,10 +669,10 @@
 			</mvt:if>
 
 			<mvt:item name="readytheme" param="contentsection( 'mvsendlane_configuration' )" />
-			
+
 			<div class="c-form-list">
 				<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-					<input class="c-button" type="submit" value="Save">
+					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
 				</div>
 			</div>
 		</form>
@@ -681,7 +685,7 @@
 	<mvt:assign name="l.settings:billing_required" value="'required'" />
 </mvt:if>
 
-<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 <hr class="c-keyline">
 <br>
 <form method="post" action="&mvte:urls:ACED:secure;" data-validate-address>
@@ -693,7 +697,7 @@
 		<input type="hidden" name="CSRF_Token" value="&mvte:global:Basket:csrf_token;">
 
 		<div class="c-form-list">
-			<p id="ShippingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Shipping Information</p>
+			<p id="ShippingInformation" class="c-form-list__item c-form-list__item--full mm-theme-typography-title-four">Shipping Information</p>
 			<p class="c-form-list__item u-hidden" id="shipping_controls">
 				<mvt:if expr="g.Action AND g.shipping_to_show">
 					<label class="c-form-checkbox">
@@ -808,7 +812,7 @@
 		</section>
 
 		<div class="c-form-list">
-			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full c-heading-foxtrot">Billing Information</p>
+			<p id="BillingInformation" class="c-form-list__item c-form-list__item--full mm-theme-typography-title-four">Billing Information</p>
 			<p class="c-form-list__item" id="billing_controls">
 				<mvt:if expr="g.Action AND g.billing_to_show">
 					<label class="c-form-checkbox">
@@ -959,7 +963,7 @@
 
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-				<input class="c-button" type="submit" value="Save">
+				<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
 			</div>
 		</div>
 	</fieldset>
@@ -967,8 +971,8 @@
 <script src="&mvte:global:clientside_url;Store_Code=&mvta:store:code;&amp;Filename=ToggleDetails.js&amp;Primaddr=shipping&amp;Shipping=D&amp;Billing=O"></script>
 ]]></Template><Mode>customer_edit</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ABAL"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="RGFT"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OSEL"><Item code="customer"><Template/><Mode>checkout_display_only</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="OPAY"><Item code="customer"><Template><![CDATA[<section class="o-layout u-grids-2 u-grids-4--m t-checkout-customer-summary">
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Bill To</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Bill To</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.Basket:bill_fname OR g.Basket:bill_lname">
 				&mvte:global:Basket:bill_fname; &mvte:global:Basket:bill_lname;<br>
 			</mvt:if>
@@ -992,17 +996,17 @@
 				</mvt:if>
 			</span>
 		</p>
-		<p class="u-font-small">
+		<p>
 			<mvt:if expr="g.BasketPaymentGateway EQ 1">
-				<a href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Billing Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Billing Information">Edit</a>
 			<mvt:else>
-				<a href="&mvte:urls:OCST:secure;" title="Edit Billing Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OCST:secure;" title="Edit Billing Information">Edit</a>
 			</mvt:if>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Ship To</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Ship To</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.Basket:ship_fname OR g.Basket:ship_lname">
 				&mvte:global:Basket:ship_fname; &mvte:global:Basket:ship_lname;<br>
 			</mvt:if>
@@ -1026,36 +1030,37 @@
 				</mvt:if>
 			</span>
 		</p>
-		<p class="u-font-small">
+		<p>
 			<mvt:if expr="g.BasketPaymentGateway EQ 1">
-				<a href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Shipping Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:global:secure_sessionurl;Store_Code=&mvta:global:Store_Code;&amp;Action=PAL1&amp;Screen=PAL1&amp;NextScreen=&mvta:global:Screen;&amp;CancelScreen=&mvta:global:Screen;" title="Edit Shipping Information">Edit</a>
 			<mvt:else>
-				<a href="&mvte:urls:OCST:secure;" title="Edit Shipping Information">Edit</a>
+				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OCST:secure;" title="Edit Shipping Information">Edit</a>
 			</mvt:if>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Shipping Method</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Shipping Method</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:foreach iterator="charge" array="basket:charges">
 				<mvt:if expr="l.settings:charge:type EQ 'SHIPPING'">
 					<mvt:eval expr="glosub(l.settings:charge:descrip, 'Shipping:', '')"/><br>
 				</mvt:if>
 			</mvt:foreach>
 		</p>
-		<p class="u-font-small">
-			<a href="&mvte:urls:OSEL:secure;" title="Edit Shipping Method">Edit</a>
+		<p>
+			<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OSEL:secure;" title="Edit Shipping Method">Edit</a>
 		</p>
 	</div>
 	<div class="o-layout__item">
-		<p class="u-color-black u-text-medium">Delivery Notes</p>
-		<p class="u-font-small">
+		<p class="mm-theme-typography-subheading-extra-small">Delivery Notes</p>
+		<p class="mm-theme-typography-paragraph-extra-small">
 			<mvt:if expr="g.order_instructions">
 				&mvte:global:order_instructions;<br>
 			</mvt:if>
 		</p>
-		<p class="u-font-small">
-			<a href="&mvte:urls:OSEL:secure;" title="Edit Delivery Notes">Edit</a>
+		<p>
+			<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__small" href="&mvte:urls:OSEL:secure;" title="Edit Delivery Notes">Edit</a>
 		</p>
 	</div>
-</section>]]></Template><Mode>checkout_display_only</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CSBE"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+</section>
+]]></Template><Mode>checkout_display_only</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CSBE"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

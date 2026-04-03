@@ -416,7 +416,7 @@ class MMX_ProductCarousel extends MMX_Element {
 		if (this.#errorMessage) {
 			return this.#renderMainError();
 		}
-		else if (!this.products?.length){
+		else if (!this.products?.length) {
 			return '';
 		}
 
@@ -463,6 +463,10 @@ class MMX_ProductCarousel extends MMX_Element {
 		const image = product.imagetypes?.[imageType]?.sizes?.[this.getPropValue('image-dimensions')] ?? product?.imagetypes?.[imageType]?.sizes?.original;
 		product.imgSrc = image?.url ?? '';
 
+		const themeAvailable = this.data?.advanced?.settings?.product_name_typography?.theme_available ?? false;
+		const themeClassname = this.data?.advanced?.settings?.product_name_typography?.classname ?? '';
+		const productNameStyles = MMX.objectToInlineStyles(this.data?.advanced?.settings?.product_name_typography?.customization?.styles);
+
 		return /*html*/`
 			<mmx-hero
 				slot="hero_slide"
@@ -474,7 +478,23 @@ class MMX_ProductCarousel extends MMX_Element {
 				data-img-height="${MMX.encodeEntities(image?.height)}"
 			>
 				<div slot="content">
-					<div part="product-name" class="type-product-name">${product.name}</div>
+					<div part="product-name" class="type-product-name">
+						${themeAvailable
+							? /*html*/ `
+								<mmx-text
+									data-theme="${MMX.encodeEntities(themeAvailable)}"
+									data-theme-class="${MMX.encodeEntities(themeClassname)}"
+									data-chars-per-line="none"
+									style="${MMX.encodeEntities(productNameStyles)}"
+								>
+									${this.renderThemeStylesheetTemplate(themeAvailable)}
+									${MMX.encodeEntities(product.name)}
+								</mmx-text>
+							`
+							:
+							MMX.encodeEntities(product.name)
+						}
+					</div>
 					${this.renderPrice(product)}
 					${this.renderProductFragmentPart(product)}
 					${this.renderButton(product)}
@@ -490,26 +510,77 @@ class MMX_ProductCarousel extends MMX_Element {
 
 		// Price Display
 		product.price_display = product.formatted_sale_price;
-		if (this?.data?.advanced?.settings?.displayed_price?.value === 'base'){
+		if (this?.data?.advanced?.settings?.displayed_price?.value === 'base') {
 			product.price_display = product.formatted_base_price;
 		}
-		else if (this?.data?.advanced?.settings?.displayed_price?.value === 'retail'){
+		else if (this?.data?.advanced?.settings?.displayed_price?.value === 'retail') {
 			product.price_display = product.formatted_retail;
 		}
 
 		// Additional Price Display
 		product.additional_price_display = '';
-		if (this?.data?.advanced?.settings?.additional_price?.value === 'base'){
+		if (this?.data?.advanced?.settings?.additional_price?.value === 'base') {
 			product.additional_price_display = product.formatted_base_price;
 		}
-		else if (this?.data?.advanced?.settings?.additional_price?.value === 'retail'){
+		else if (this?.data?.advanced?.settings?.additional_price?.value === 'retail') {
 			product.additional_price_display = product.formatted_retail;
 		}
 
+		const displayedPriceThemeAvailable = this.data?.advanced?.settings?.displayed_price_typography?.theme_available ?? false;
+		const displayedPriceThemeClassname = this.data?.advanced?.settings?.displayed_price_typography?.classname ?? '';
+		const additionalPriceThemeAvailable = this.data?.advanced?.settings?.additional_price_typography?.theme_available ?? false;
+		const additionalPriceThemeClassname = this.data?.advanced?.settings?.additional_price_typography?.classname ?? '';
+		const displayedPriceStyles = MMX.objectToInlineStyles(this.data?.advanced?.settings?.displayed_price_typography?.customization?.styles);
+		const additionalPriceStyles = MMX.objectToInlineStyles(this.data?.advanced?.settings?.additional_price_typography?.customization?.styles);
+		const showAdditionalPrice = product.additional_price_display.length && product.additional_price_display !== product.price_display;
+
 		return /*html*/`
 			<div part="product-prices" class="type-product-prices">
-				<span part="product-price" class="type-product-price">${product.price_display}</span>
-				${product.additional_price_display.length && product.additional_price_display !== product.price_display ? /*html*/`<span part="product-additional-price" class="type-product-additional-price">${product.additional_price_display}</span>` : ''}
+				${displayedPriceThemeAvailable
+					? /*html*/ `
+						<mmx-text
+							part="product-price"
+							class="type-product-price"
+							data-theme="${MMX.encodeEntities(displayedPriceThemeAvailable)}"
+							data-theme-class="${MMX.encodeEntities(displayedPriceThemeClassname)}"
+							data-chars-per-line="none"
+							style="${MMX.encodeEntities(displayedPriceStyles)}"
+						>
+							${this.renderThemeStylesheetTemplate(displayedPriceThemeAvailable)}
+							${MMX.encodeEntities(product.price_display)}
+						</mmx-text>
+					`
+					: /*html*/ `
+						<span part="product-price" class="type-product-price">
+							${MMX.encodeEntities(product.price_display)}
+						</span>
+					`
+				}
+
+				${showAdditionalPrice
+					? (
+						additionalPriceThemeAvailable
+							? /*html*/ `
+								<mmx-text
+									part="product-additional-price"
+									class="type-product-additional-price"
+									data-theme="${MMX.encodeEntities(additionalPriceThemeAvailable)}"
+									data-theme-class="${MMX.encodeEntities(additionalPriceThemeClassname)}"
+									data-chars-per-line="none"
+									style="${MMX.encodeEntities(additionalPriceStyles)}"
+								>
+									${this.renderThemeStylesheetTemplate(additionalPriceThemeAvailable)}
+									${MMX.encodeEntities(product.additional_price_display)}
+								</mmx-text>
+							`
+							: /*html*/ `
+								<span part="product-additional-price" class="type-product-additional-price">
+									${MMX.encodeEntities(product.additional_price_display)}
+								</span>
+							`
+					)
+					: ''
+				}
 			</div>
 		`;
 	}
@@ -519,20 +590,20 @@ class MMX_ProductCarousel extends MMX_Element {
 			return '';
 		}
 
-		const theme_available = this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.theme_available ?? false;
+		const themeAvailable = this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.themeAvailable ?? false;
 
 		return /*html*/`
 			<mmx-button
 				href="${MMX.encodeEntities(this.buttonUrl(product))}"
 				data-style="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_style?.value ?? ''}"
 				data-size="${this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_size?.value ?? ''}"
-				data-theme="${theme_available}"
+				data-theme="${themeAvailable}"
 				data-theme-class="${MMX.encodeEntities(this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
-				data-width="${!theme_available ? 'full' : MMX.encodeEntities(this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
+				data-width="${!themeAvailable ? 'full' : MMX.encodeEntities(this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
 				part="button"
 				exportparts="button: button__inner"
 			>
-				${this.renderThemeStylesheetTemplate(theme_available)}
+				${this.renderThemeStylesheetTemplate(themeAvailable)}
 				${product?.attributes?.length ? this?.data?.advanced?.settings?.button?.prod_text?.value : this?.data?.advanced?.settings?.button?.adpr_text?.value}
 			</mmx-button>`;
 	}
@@ -541,7 +612,7 @@ class MMX_ProductCarousel extends MMX_Element {
 		const fragmentCode		= this.getFragmentCode();
 		const fragmentContent = this.renderProductFragment({product, fragmentCode});
 
-		if (MMX.valueIsEmpty(fragmentContent)){
+		if (MMX.valueIsEmpty(fragmentContent)) {
 			return '';
 		}
 

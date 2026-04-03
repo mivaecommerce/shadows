@@ -18,8 +18,8 @@
 		<section class="o-layout o-layout--wide">
 			<div class="o-layout__item">
 				<div class="t-order-complete-heading">
-					<p class="c-heading-foxtrot">Thank You, &mvte:order:ship_fname;</p>
-					<p class="c-heading--subheading--x-small u-color-gray-600">Order Confirmation #&mvt:order:id;</p>
+					<p class="mm-theme-typography-title-four">Thank You, &mvte:order:ship_fname;</p>
+					<p class="mm-theme-typography-subheading--x-small">Order Confirmation #&mvt:order:id;</p>
 				</div>
 			</div>
 		</section>

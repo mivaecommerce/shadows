@@ -1,17 +1,23 @@
-<nav class="o-layout__item c-navigation x-transfigure-navigation u-text-medium u-width-12" data-hook="transfigure-navigation">
+<nav class="o-layout__item c-navigation x-transfigure-navigation u-width-12" data-hook="transfigure-navigation">
 	<div class="x-transfigure-navigation__wrap" data-layout="&mvte:readytheme:layout;">
 		<header class="x-transfigure-navigation__header o-layout--justify-between u-flex u-hidden--l" hidden>
 			<mvt:if expr="g.Basket:cust_id EQ 0">
-				<a class="c-button c-button--as-link c-form-inline-set u-color-gray-600" href="&mvte:urls:LOGN:secure;"><span class="u-font-large u-icon-user" aria-hidden="true"></span> Sign In</a>
+				<a class="c-form-inline-set mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:urls:LOGN:secure;">
+					<span class="u-font-large u-icon-user" aria-hidden="true"></span> Sign In
+				</a>
 			<mvt:else>
-				<a class="c-button c-button--as-link c-form-inline-set u-color-gray-600" href="&mvte:urls:ACLN:secure;"><span class="u-font-large u-icon-user" aria-hidden="true"></span> My Account</a>
+				<a class="c-form-inline-set mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:urls:ACLN:secure;">
+					<span class="u-font-large u-icon-user" aria-hidden="true"></span> My Account
+				</a>
 			</mvt:if>
-			<button class="c-button u-bg-transparent u-color-gray-600 u-font-small u-icon-cross" data-hook="close-main-menu" aria-label="Close Menu"></button>
+			<button class="c-button u-bg-transparent" data-hook="close-main-menu" aria-label="Close Menu">
+				<span class="u-icon-cross mm-theme-button-primary-navigation mm-theme-button-primary-navigation__extra-small" aria-hidden="true"></span>
+			</button>
 		</header>
 		<div class="x-transfigure-navigation__content">
 			<ul class="c-navigation__row x-transfigure-navigation__row">
 				<mvt:foreach iterator="navigationitem" array="readytheme:navigationitems">
-					<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+					<mvt:if expr="miva_array_elements( l.settings:navigationitem:items )">
 						<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-drop-down has-child-menu'"/>
 						<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right u-hidden--l' $ asciichar(34) $ ' aria-hidden=' $ asciichar(34) $ 'true' $ asciichar(34) $ '></span></span>'"/>
 					<mvt:else>
@@ -20,21 +26,21 @@
 					</mvt:if>
 					<li class="c-navigation__list &mvt:has:children;">
 						<mvt:if expr="l.settings:navigationitem:link_type EQ 'N'">
-							<span class="c-navigation__text">&mvt:navigationitem:name; &mvt:show:child;</span>
+							<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem:name; &mvt:show:child;</span>
 						<mvt:else>
-							<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
+							<a class="c-navigation__link mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;"><span>&mvt:navigationitem:name;</span>&mvt:show:child;</a>
 						</mvt:if>
-						<mvt:if expr="NOT ISNULL l.settings:navigationitem:items">
+						<mvt:if expr="miva_array_elements( l.settings:navigationitem:items )">
 							<ul class="c-navigation__row is-hidden">
 								<mvt:assign name="l.settings:has:children" value="''"/>
 								<li class="c-navigation__list u-font-small u-hidden--l" data-hook="show-previous-menu">
-									<span class="c-navigation__link u-text-uppercase"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
+									<span class="c-navigation__link u-text-uppercase mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
 								</li>
 								<li class="c-navigation__list u-hidden--l">
-									<span class="c-navigation__link u-font-large u-text-bold">&mvt:navigationitem:name;</span>
+									<span class="c-navigation__link mm-theme-typography-title-four">&mvt:navigationitem:name;</span>
 								</li>
 								<mvt:foreach iterator="navigationitem_level2" array="navigationitem:items">
-									<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+									<mvt:if expr="miva_array_elements( l.settings:navigationitem_level2:items ) ">
 										<mvt:assign name="l.settings:has:children" value="'has-child-menu' $ asciichar(34) $ ' data-hook=' $ asciichar(34) $ 'has-child-menu'"/>
 										<mvt:assign name="l.settings:show:child" value="'<span class=' $ asciichar(34) $ 'c-navigation__link-carat' $ asciichar(34) $ '><span class=' $ asciichar(34) $ 'u-icon-chevron-right u-hidden--l' $ asciichar(34) $ '></span></span>'"/>
 									<mvt:else>
@@ -43,30 +49,30 @@
 									</mvt:if>
 									<li class="c-navigation__list &mvt:has:children;">
 										<mvt:if expr="l.settings:navigationitem_level2:link_type EQ 'N'">
-											<span class="c-navigation__text">&mvt:navigationitem_level2:name; &mvt:show:child;</span>
+											<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem_level2:name; &mvt:show:child;</span>
 										<mvt:else>
-											<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
+											<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;"><span>&mvt:navigationitem_level2:name;</span>&mvt:show:child;</a>
 										</mvt:if>
-										<mvt:if expr="NOT ISNULL l.settings:navigationitem_level2:items">
+										<mvt:if expr="miva_array_elements( l.settings:navigationitem_level2:items ) ">
 											<ul class="c-navigation__row is-hidden">
 												<li class="c-navigation__list u-font-small u-hidden--l" data-hook="show-previous-menu">
-													<span class="c-navigation__link u-text-uppercase"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
+													<span class="c-navigation__link u-text-uppercase mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__small"><span class="u-icon-arrow-left" aria-hidden="true">&nbsp;</span><span class="o-layout--grow">Back</span></span>
 												</li>
 												<li class="c-navigation__list u-hidden--l">
-													<span class="c-navigation__link u-font-large u-text-bold">&mvt:navigationitem_level2:name;</span>
+													<span class="c-navigation__link mm-theme-typography-title-four">&mvt:navigationitem_level2:name;</span>
 												</li>
 												<mvt:foreach iterator="navigationitem_level3" array="navigationitem_level2:items">
 													<li class="c-navigation__list">
 														<mvt:if expr="l.settings:navigationitem_level3:link_type EQ 'N'">
-															<span class="c-navigation__text">&mvt:navigationitem_level3:name;</span>
+															<span class="c-navigation__text mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvt:navigationitem_level3:name;</span>
 														<mvt:else>
-															<a class="c-navigation__link" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
+															<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level3:url;" target="&mvte:navigationitem_level3:link_targ;"><span>&mvt:navigationitem_level3:name;</span></a>
 														</mvt:if>
 													</li>
 												</mvt:foreach>
 												<mvt:if expr="l.settings:navigationitem_level2:link_type NE 'N'">
 													<li class="c-navigation__list u-hidden--l">
-														<a class="c-navigation__link" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
+														<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem_level2:url;" target="&mvte:navigationitem_level2:link_targ;">View All &mvt:navigationitem_level2:name;</a>
 													</li>
 												</mvt:if>
 											</ul>
@@ -75,7 +81,7 @@
 								</mvt:foreach>
 								<mvt:if expr="l.settings:navigationitem:link_type NE 'N'">
 									<li class="c-navigation__list u-hidden--l">
-										<a class="c-navigation__link" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
+										<a class="c-navigation__link mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium" href="&mvte:navigationitem:url;" target="&mvte:navigationitem:link_targ;">View All &mvt:navigationitem:name;</a>
 									</li>
 								</mvt:if>
 							</ul>

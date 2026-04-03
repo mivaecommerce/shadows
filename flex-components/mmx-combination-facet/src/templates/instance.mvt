@@ -40,6 +40,10 @@
 			<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:instance:controls:submit_destination:url" value="URL_Append_Parameter( l.settings:instance:controls:submit_destination:url, l.settings:facet:code, l.facet_value )" />
 		</mvt:if>
 	</mvt:foreach>
+
+	<mvt:if expr="l.settings:instance:controls:submit_destination:url EQ l.settings:urls:_self:auto_sep">
+		<mvt:assign name="l.settings:instance:controls:submit_destination:url" value="''" />
+	</mvt:if>
 </mvt:if>
 
 <mvt:if expr="NOT ISNULL l.settings:fragment:code">

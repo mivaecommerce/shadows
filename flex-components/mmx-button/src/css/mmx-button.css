@@ -20,6 +20,14 @@
 	min-height: var(--mmx-min-target-size);
 }
 
+.mmx-button,
+.mmx-theme-button {
+	&:focus-visible {
+		outline: var(--mmx-button-outline--focus);
+		outline-offset: calc(2 * var(--mmx-input-border-width));
+	}
+}
+
 /* Link vs. Button Styles
    =========================================== */
 .mmx-button__button {
@@ -56,7 +64,7 @@
 
 	.mmx-button__link:focus,
 	:host(.focus) .mmx-button__link {
-		outline: 2px solid var(--mmx-color-focus);
+		outline: var(--mmx-button-outline--focus);
 	}
 
 
@@ -102,7 +110,7 @@
 	:host(.focus) .mmx-button__dark-secondary,
 	.mmx-button__pill:focus,
 	:host(.focus) .mmx-button__pill {
-		outline: 2px solid var(--mmx-color-focus);
+		outline: var(--mmx-button-outline--focus);
 	}
 
 
@@ -167,7 +175,7 @@
    =========================================== */
 .mmx-button__close {
 	background: transparent;
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: 100%;
 	color: var(--mmx-color-input-color);
 	text-decoration: none;

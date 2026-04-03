@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "10.13.04",
+	"version": "26.01.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -707,6 +707,14 @@
 					"validation_pattern": "\\d+x\\d+"
 				},
 				{
+					"code": "product_name_typography",
+					"preview_property_selector": ":shadow [part~=\"product-name\"]",
+					"prompt": "Product Name Typography",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "typography"
+				},
+				{
 					"code": "displayed_price",
 					"options": [
 						{
@@ -732,6 +740,23 @@
 					"type": "select"
 				},
 				{
+					"code": "displayed_price_typography",
+					"preview_property_selector": ":shadow [part~=\"product-price\"]",
+					"prompt": "Displayed Price Typography",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "typography",
+					"visibility_conditions": {
+						"displayed_price": {
+							"value": [
+								"sale",
+								"retail",
+								"base"
+							]
+						}
+					}
+				},
+				{
 					"code": "additional_price",
 					"options": [
 						{
@@ -751,6 +776,23 @@
 					"prompt": "Additional Price",
 					"required": 1,
 					"type": "select",
+					"visibility_conditions": {
+						"displayed_price": {
+							"value": [
+								"sale",
+								"retail",
+								"base"
+							]
+						}
+					}
+				},
+				{
+					"code": "additional_price_typography",
+					"preview_property_selector": ":shadow [part~=\"product-additional-price\"]",
+					"prompt": "Additional Price Typography",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "typography",
 					"visibility_conditions": {
 						"displayed_price": {
 							"value": [
@@ -919,6 +961,18 @@
 				"additional_price": {
 					"value": "base"
 				},
+				"additional_price_typography": {
+					"code": "paragraph-s",
+					"customizations": {
+						"styles": {
+							"color": {
+								"value": "var(--mmx-product-additional-price-color)"
+							},
+							"overwrite_color": 1
+						}
+					},
+					"theme_mode": 1
+				},
 				"button": {
 					"adpr_text": {
 						"textsettings": {
@@ -947,6 +1001,18 @@
 				"displayed_price": {
 					"value": "sale"
 				},
+				"displayed_price_typography": {
+					"code": "paragraph-s",
+					"customizations": {
+						"styles": {
+							"color": {
+								"value": "var(--mmx-product-price-color)"
+							},
+							"overwrite_color": 1
+						}
+					},
+					"theme_mode": 1
+				},
 				"fragment_code": {
 					"value": "product_list_additional_data"
 				},
@@ -964,6 +1030,10 @@
 				},
 				"per_page": {
 					"value": "1,3,5"
+				},
+				"product_name_typography": {
+					"code": "paragraph-s",
+					"theme_mode": 1
 				}
 			}
 		},
@@ -1028,7 +1098,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ffkRAuZD3idVmvLEOoW+ATHp4J3VLIeXQgrAACMNW0M= sha384-99ZTVbdwEg3GRyUsh8Iv3hnfWnEvzpVp1MFqE9V101GdPi7urg845FN4N26y+zdv sha512-EP+yQMOPV3GnwkoMv4wJBTz07pJgj9CW3o05c0TszxH3asYU3dMwWnR6LjfuE6suuIPQTZ9URLXoGv5x97Y3SQ=="
+					"value": "sha256-UCm2kxWsvFVrJYoownnhRBxQ8gLRqpf0lY2HFxfjfsk= sha384-0WMchBOQf0GmynGWNBVDFMmYdJ/dtW2e+DdECSpXZsnhrM1/28EcyrcjsszqfBRV sha512-X7C/WHyueEfqv3dV9o1aahVNAsklvCRWqHLXRzFEd/6frgjzov+Fk8ntWh9j6z2YmlwFQKvGabC5BNy7PLxYvw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1038,11 +1108,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=10.13.04",
-		"mmx-button": "=10.13.04",
-		"mmx-hero": "=10.13.04",
-		"mmx-hero-slider": "=10.13.04",
-		"mmx-messages": "=10.13.04",
-		"mmx-text": "=10.13.04"
+		"mmx-base": "=26.01.00",
+		"mmx-button": "=26.01.00",
+		"mmx-hero": "=26.01.00",
+		"mmx-hero-slider": "=26.01.00",
+		"mmx-messages": "=26.01.00",
+		"mmx-text": "=26.01.00"
 	}
 }

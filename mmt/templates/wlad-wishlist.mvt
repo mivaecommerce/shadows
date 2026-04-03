@@ -1,4 +1,4 @@
-<h1 class="c-heading-delta">&mvt:page:name;</h1>
+<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 <hr class="c-keyline">
 <br>
 <form class="o-layout o-layout--justify-center" action="&mvte:urls:WISH:secure;" method="post">

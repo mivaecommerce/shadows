@@ -8,7 +8,7 @@
 
 :focus-visible,
 :focus:is(.mmx-quick-order__search-result) {
-	outline: 2px solid var(--mmx-color-focus);
+	outline: var(--mmx-button-outline--focus);
 }
 
 .mmx-quick-order slot[name="title"]::slotted(*) {
@@ -123,7 +123,7 @@
 .mmx-quick-order__row {
 	align-items: center;
 	border-radius: var(--mmx-spacing-xs);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	display: grid;
 	gap: 0 var(--mmx-spacing-xs);
 	grid-template-areas:
@@ -192,16 +192,21 @@ input,
 textarea {
 	appearance: none;
 	background-color: var(--mmx-color-input-background);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	border-radius: var(--mmx-spacing-xs);
 	color: var(--mmx-color-input-color);
 	display: inline-block;
 	font-family: inherit;
 	font-size: var(--mmx-form__size);
 	line-height: 1;
-	padding: calc(1.35em - 1px) calc(1.7em - 1px);
+	padding: calc(var(--mmx-quick-order-input-height) / 4);
 	width: 100%;
 	height: var(--mmx-quick-order-input-height);
+
+	&:focus-visible {
+		border: var(--mmx-input-border--focus);
+		outline: none;
+	}
 }
 
 a[target="_blank"]::after {
@@ -214,7 +219,7 @@ a[target="_blank"]::after {
 .mmx-quick-order__search-results-container {
 	background: var(--mmx-color-input-background);
 	border-radius: var(--mmx-spacing-xs);
-	border: 1px solid var(--mmx-color-input-border);
+	border: var(--mmx-input-border);
 	box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.15);
 	display: grid;
 	gap: var(--mmx-spacing-m);

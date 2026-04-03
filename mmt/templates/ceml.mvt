@@ -23,7 +23,7 @@
 
 	<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 		<div class="o-layout__item u-width-12 u-width-9--l">
-			<h1 class="c-heading-delta">&mvt:page:name;</h1>
+			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 			<br>
 			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:CEML:secure;" autocomplete="off">
@@ -78,7 +78,7 @@
 			<mvt:item name="readytheme" param="navigationset( 'account_navigation' )" />
 		</aside>
 	</section>
-	
+
 	<section class="o-layout">
 		<div class="o-layout__item">
 			<mvt:item name="hdft" param="footer" />

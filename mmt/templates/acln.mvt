@@ -15,9 +15,9 @@
 	<mvt:item name="hdft" param="global_header" />
 	<section class="o-layout">
 		<div class="o-layout__item">
-			<h1 class="c-heading-delta o-layout--justify-between o-layout--wrap u-flex">
+			<h1 class="mm-theme-typography-title-two o-layout--justify-between o-layout--wrap u-flex">
 				&mvt:page:name;
-				<a class="c-button c-button--secondary u-line-height-normal" href="&mvte:urls:SFNT:secure_sep;Action=LOGO">Log Out</a>
+				<a class="mm-theme-button-secondary mm-theme-button-secondary__small u-line-height-normal" href="&mvte:urls:SFNT:secure_sep;Action=LOGO">Log Out</a>
 			</h1>
 			<br>
 		</div>
@@ -37,9 +37,9 @@
 					<section class="o-layout t-account-landing-section">
 						<div class="o-layout__item u-width-12">
 							<div class="o-layout o-layout--align-center">
-								<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Personal Information</span>
+								<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Personal Information</span>
 								<span class="o-layout__item">
-									<a class="u-text-medium" href="&mvte:urls:ACED:auto;" title="Update Your Information">Edit</a>
+									<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:ACED:auto;" title="Update Your Information">Edit</a>
 								</span>
 							</div>
 						</div>
@@ -60,7 +60,7 @@
 								<tr>
 									<td class="c-table-simple__cell u-text-medium">Password</td>
 									<td class="c-table-simple__cell">
-										<a class="u-color-gray-600 u-text-medium" href="&mvte:urls:CPWD:secure;" title="Change Your Password">Change Password</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:CPWD:secure;" title="Change Your Password">Change Password</a>
 									</td>
 								</tr>
 							</table>
@@ -73,9 +73,9 @@
 						<section class="o-layout t-account-landing-section">
 							<div class="o-layout__item u-width-12">
 								<div class="o-layout o-layout--align-center">
-									<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Payment Options</span>
+									<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Payment Options</span>
 									<span class="o-layout__item">
-										<a class="u-text-medium" href="&mvte:urls:CPCD:auto;" title="Manage Saved Cards">View All</a>
+										<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:CPCD:auto;" title="Manage Saved Cards">View All</a>
 									</span>
 								</div>
 							</div>
@@ -94,9 +94,9 @@
 			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
-						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Order History</span>
+						<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Order History</span>
 						<span class="o-layout__item">
-							<a class="u-text-medium" href="&mvte:urls:ORDH:auto;" title="View All Orders">View All</a>
+							<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:ORDH:auto;" title="View All Orders">View All</a>
 						</span>
 					</div>
 				</div>
@@ -112,9 +112,9 @@
 			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
-						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Customer Credit</span>
+						<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Customer Credit</span>
 						<span class="o-layout__item">
-							<a class="u-text-medium" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">Manage</a>
+							<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">Manage</a>
 						</span>
 					</div>
 				</div>
@@ -134,7 +134,7 @@
 											<span class="c-form-label u-text-medium">Current Credit Amount</span><br>
 										</div>
 										<div class="c-form-list__item">
-											<a class="c-heading--subheading--large u-text-no-underline" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">&mvt:customer:formatted_credit;</a>
+											<a class="mm-theme-typography-subheading-large u-text-no-underline" href="&mvte:urls:ABAL:auto;" title="Manage Account Balance">&mvt:customer:formatted_credit;</a>
 										</div>
 									</div>
 								</div>
@@ -145,7 +145,7 @@
 										</div>
 										<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 											<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" placeholder="Enter Code Here" value="&mvte:global:GiftCertificate_Code;" required>
-											<input class="c-button" type="submit" value="Apply">
+											<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Apply">
 										</div>
 									</div>
 								</div>
@@ -158,9 +158,9 @@
 			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
-						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Address Book</span>
+						<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Address Book</span>
 						<span class="o-layout__item">
-							<a class="u-text-medium" href="&mvte:urls:CABK:auto;" title="View All Addresses">View All</a>
+							<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:CABK:auto;" title="View All Addresses">View All</a>
 						</span>
 					</div>
 				</div>
@@ -176,9 +176,9 @@
 			<section class="o-layout t-account-landing-section">
 				<div class="o-layout__item u-width-12">
 					<div class="o-layout o-layout--align-center">
-						<span class="o-layout__item o-layout--no-grow c-heading-foxtrot">Wish Lists</span>
+						<span class="o-layout__item o-layout--no-grow mm-theme-typography-title-four">Wish Lists</span>
 						<span class="o-layout__item">
-							<a class="u-text-medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">View All</a>
+							<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">View All</a>
 						</span>
 					</div>
 				</div>
@@ -198,14 +198,14 @@
 									<mvt:if expr="l.settings:wishlist_count GT 4">
 										<tr class="c-table-simple__row">
 											<td class="c-table-simple__cell c-table-simple__cell--standard" colspan="2">
-												<a class="t-input-font-size u-text-medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">more &hellip;</a>
+												<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WLST:auto;" title="View All Wish Lists">more &hellip;</a>
 											</td>
 										</tr>
 										<mvt:foreachstop />
 									</mvt:if>
 									<tr class="c-table-simple__row">
 										<td class="c-table-simple__cell c-table-simple__cell--standard">
-											<a class="t-input-font-size u-text-medium" href="&mvte:urls:WISH:rr_sep;WishList_ID=&mvta:wishlist:id;">&mvte:wishlist:title;</a>
+											<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WISH:rr_sep;WishList_ID=&mvta:wishlist:id;">&mvte:wishlist:title;</a>
 										</td>
 										<td class="c-table-simple__cell c-table-simple__cell--standard">&mvte:wishlist:notes;</td>
 									</tr>

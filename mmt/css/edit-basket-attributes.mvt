@@ -2,30 +2,6 @@
    EDIT BASKET ATTRIBUTES
    ====================== */
 
-.x-edit-basket-item {
-	background-color: transparent;
-	border: 0 none;
-	color: currentColor;
-	cursor: pointer;
-	padding: 0;
-	text-decoration: underline;
-	width: fit-content;
-}
-
-.x-edit-basket-item:focus:focus:not(:focus-visible) {
-	outline: 0 none;
-}
-
-.x-edit-basket-item:focus-visible,
-.x-edit-basket-item:hover {
-	text-decoration: none;
-}
-
-.x-edit-basket-item:focus-visible {
-	outline: max(1px, 0.1em) dotted currentColor;
-	outline-offset: max(1px, 0.1em);
-}
-
 .x-edit-basket-attributes .c-dialog__container {
 	max-width: 50rem;
 }

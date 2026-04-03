@@ -79,10 +79,10 @@
 												<p><img src="&mvte:wishlistitem:product:imagetypes:main;" alt="&mvte:wishlistitem:product:name;" loading="lazy" width="&mvte:wishlistitems:b_width;" height="&mvte:wishlistitems:b_height;"></p>
 											</div>
 											<div class="o-layout__item u-width-12 u-width-8--m u-width-9--l t-basket__product-details">
-												<a class="t-basket__product-name" href="&mvte:wishlistitem:product:link;" title="&mvte:wishlistitem:product:name;" rel="nofollow">&mvt:wishlistitem:product:name;</a>
+												<a class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:wishlistitem:product:link;" title="&mvte:wishlistitem:product:name;" rel="nofollow">&mvt:wishlistitem:product:name;</a>
 												<div class="t-basket__product-attributes">
 													<div class="t-basket__product-added">Added: &mvt:wishlistitem:formatted_dtadded_date;</div>
-													<div class="t-basket__product-attr-options">
+													<div class="t-basket__product-attr-options mm-theme-typography-paragraph-extra-small">
 														<mvt:foreach iterator="option" array="wishlistitem:product:options">
 															<span class="u-flex">
 																<mvt:if expr="l.settings:option:option_id">
@@ -126,8 +126,8 @@
 												</mvt:if>
 												<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( g.Edit_Wish EQ l.settings:wishlistitem:id )">
 													<p class="c-form-inline-set">
-														<input class="c-button c-button--small" type="submit" value="Update">
-														<a class="c-button c-button--secondary c-button--small" href="&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;&amp;Offset=&mvta:global:Offset;&amp;Sort_By=&mvte:global:Sort_By;&amp;Per_Page=&mvte:global:Per_Page;">Cancel</a>
+														<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Update">
+														<a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;&amp;Offset=&mvta:global:Offset;&amp;Sort_By=&mvte:global:Sort_By;&amp;Per_Page=&mvte:global:Per_Page;">Cancel</a>
 													</p>
 												</mvt:if>
 											</div>
@@ -143,13 +143,13 @@
 												</div>
 											</div>
 										<mvt:else>
-											<p class="u-text-center">&mvte:wishlistitem:quantity;</p>
+											<p class="u-text-center mm-theme-typography-paragraph-extra-small">&mvte:wishlistitem:quantity;</p>
 										</mvt:if>
 									</td>
 
 									<td class="c-table-responsive__cell c-table-responsive__cell--flex u-text-right" data-label="Subtotal">
 										<span>
-											<span class="u-text-bold u-block">&mvt:wishlistitem:formatted_total;</span>
+											<span class="u-text-bold u-block mm-theme-typography-price-extra-small">&mvt:wishlistitem:formatted_total;</span>
 										</span>
 									</td>
 
@@ -160,9 +160,9 @@
 												<input type="hidden" name="Wish_ID" value="&mvte:wishlistitem:id;" />
 												<input type="hidden" name="Quantity" value="&mvte:wishlistitem:quantity;" />
 												<mvt:if expr="l.settings:wishlistitem:product:inv_level NE 'out'">
-													<input class="c-button c-button--small" type="submit" value="Add To Cart">
+													<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Add To Cart">
 												</mvt:if>
-												<a class="c-button c-button--secondary c-button--small" href="&mvte:urls:_self:auto_sep;Action=RMWL&amp;WishList_ID=&mvta:global:WishList_ID;&amp;Wish_ID=&mvta:wishlistitem:id;&amp;Offset=&mvta:global:Offset;">Remove</a>
+												<a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:_self:auto_sep;Action=RMWL&amp;WishList_ID=&mvta:global:WishList_ID;&amp;Wish_ID=&mvta:wishlistitem:id;&amp;Offset=&mvta:global:Offset;">Remove</a>
 											</form>
 										</mvt:if>
 									</td>
@@ -183,13 +183,13 @@
 			<mvt:if expr="l.settings:wishlistitems:page_links:current_page NE 1">
 				<mvt:assign name="l.settings:prev_page" value="l.settings:wishlistitems:page_links:current_page - 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlistitems:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlistitems:page_links:prev_link_params;" aria-label="Go to page &mvte:prev_page;.">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-left" aria-hidden="true"></span>
 					</span>
 				</li>
@@ -210,13 +210,13 @@
 			<mvt:if expr="l.settings:wishlistitems:page_links:current_page NE l.settings:wishlistitems:page_links:last_page">
 				<mvt:assign name="l.settings:next_page" value="l.settings:wishlistitems:page_links:current_page + 1"/>
 				<li class="x-pagination__item">
-					<a class="c-button c-button--secondary x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlistitems:page_links:next_link_params;" aria-label="Go to page &mvte:next_page;.">
+					<a class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link" href="&mvte:urls:_self:auto_sep;&mvte:wishlistitems:page_links:next_link_params;" aria-label="Go to page &mvte:next_page;.">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</a>
 				</li>
 			<mvt:else>
 				<li class="x-pagination__item">
-					<span class="c-button c-button--secondary x-pagination__link">
+					<span class="mm-theme-button-secondary mm-theme-button-secondary__small x-pagination__link">
 						<span class="u-icon-chevron-right" aria-hidden="true"></span>
 					</span>
 				</li>
