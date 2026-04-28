@@ -2,7 +2,7 @@
 	"code": "mmx-text-area",
 	"name": "Text Area",
 	"type": "component",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-area",
 	"category": "text-area",
@@ -825,9 +825,9 @@
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
 	"depends": {
-		"mmx-base": "=26.01.00",
-		"mmx-button": "=26.01.00",
-		"mmx-hero": "=26.01.00",
-		"mmx-text": "=26.01.00"
+		"mmx-base": "=26.01.01",
+		"mmx-button": "=26.01.01",
+		"mmx-hero": "=26.01.01",
+		"mmx-text": "=26.01.01"
 	}
 }

@@ -86,6 +86,7 @@
 		this.element_form_request_signature.value = this.request_signature;
 
 		this.element_form.submit();
+		this.element_form.remove();
 	}
 
 	MivaPay.prototype.Submit = function (callback) {

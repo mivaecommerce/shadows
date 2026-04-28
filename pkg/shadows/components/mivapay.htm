@@ -86,6 +86,7 @@
 		this.element_form_request_signature.value = this.request_signature;
 
 		this.element_form.submit();
+		this.element_form.remove();
 	}
 
 	MivaPay.prototype.Submit = function (callback) {
@@ -138,7 +139,8 @@
 	};
 
 	var MivaPay = new MivaPay();
-</script>]]></Template><Notes>#Set_Current_Time#</Notes><Mode>checkout</Mode><CardTypePromptHidden>No</CardTypePromptHidden><CardTypePrompt>Card Type:</CardTypePrompt><StoreCardPrompt>Store This Card For Future Use</StoreCardPrompt><StoreCardPromptCheckedByDefault>No</StoreCardPromptCheckedByDefault></PaymentCardFields><PaymentCardFields_CSS><Template>{
+</script>
+]]></Template><Notes>#Set_Current_Time#</Notes><Mode>checkout</Mode><CardTypePromptHidden>No</CardTypePromptHidden><CardTypePrompt>Card Type:</CardTypePrompt><StoreCardPrompt>Store This Card For Future Use</StoreCardPrompt><StoreCardPromptCheckedByDefault>No</StoreCardPromptCheckedByDefault></PaymentCardFields><PaymentCardFields_CSS><Template>{
 	"selector": "html",
 	"properties": {
 		"box-sizing": "border-box",

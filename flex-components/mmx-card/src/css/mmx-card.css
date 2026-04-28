@@ -15,9 +15,10 @@
 		"header"
 		"main"
 		"footer";
+	height: 100%;
+	isolation: isolate;
 	position: relative;
 	text-decoration: none;
-	height: 100%;
 }
 
 .mmx-card__flag {

@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -1340,6 +1340,22 @@
 									"step": 1,
 									"text_type": "number",
 									"type": "text"
+								},
+								{
+									"code": "change_swatches_on",
+									"options": [
+										{
+											"text": "Click",
+											"value": "click"
+										},
+										{
+											"text": "Hover",
+											"value": "hover"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow [part~=\"image\"]",
+									"prompt": "Change Swatches On",
+									"type": "select"
 								},
 								{
 									"code": "size",
@@ -3160,6 +3176,9 @@
 					"enabled": 1
 				},
 				"swatches": {
+					"change_swatches_on": {
+						"value": "click"
+					},
 					"settings": {
 						"enabled": 0
 					}
@@ -3445,19 +3464,19 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.00",
-		"mmx-base": "=26.01.00",
-		"mmx-button": "=26.01.00",
-		"mmx-card": "=26.01.00",
-		"mmx-dialog": "=26.01.00",
-		"mmx-featured-product": "=26.01.00",
-		"mmx-forms": "=26.01.00",
-		"mmx-hero": "=26.01.00",
-		"mmx-hero-slider": "=26.01.00",
-		"mmx-icons": "=26.01.00",
-		"mmx-messages": "=26.01.00",
-		"mmx-rating": "=26.01.00",
-		"mmx-text": "=26.01.00",
-		"mmx-wishlist": "=26.01.00"
+		"mmx-accordion": "=26.01.01",
+		"mmx-base": "=26.01.01",
+		"mmx-button": "=26.01.01",
+		"mmx-card": "=26.01.01",
+		"mmx-dialog": "=26.01.01",
+		"mmx-featured-product": "=26.01.01",
+		"mmx-forms": "=26.01.01",
+		"mmx-hero": "=26.01.01",
+		"mmx-hero-slider": "=26.01.01",
+		"mmx-icons": "=26.01.01",
+		"mmx-messages": "=26.01.01",
+		"mmx-rating": "=26.01.01",
+		"mmx-text": "=26.01.01",
+		"mmx-wishlist": "=26.01.01"
 	}
 }

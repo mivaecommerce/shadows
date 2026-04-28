@@ -590,7 +590,7 @@ class MMX_ProductCarousel extends MMX_Element {
 			return '';
 		}
 
-		const themeAvailable = this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.themeAvailable ?? false;
+		const themeAvailable = this?.data?.advanced?.settings?.button?.adpr_text?.textsettings?.fields?.normal?.button_theme?.theme_available ?? false;
 
 		return /*html*/`
 			<mmx-button

@@ -1021,10 +1021,16 @@
 }
 
 .x-search-preview__image {
+	flex-shrink: 0;
 	height: var(--search-preview-image-y);
 	margin-bottom: 0;
 	overflow: hidden;
 	width: var(--search-preview-image-x);
+}
+
+.x-search-preview__item-name {
+	overflow-wrap: break-word;
+	word-break: break-word;
 }
 
 .x-search-preview__entry,

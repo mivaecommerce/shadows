@@ -2,7 +2,7 @@
 	"code": "mmx-card",
 	"name": "MMX Card",
 	"type": "library",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-card",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-hoagKwRbX+uwH0qvXmruKR1yCnyDYmjADT/IHNrA0zk= sha384-GgxErH2d2p4Lh6/jVXHo2i6E9WEoSEsYCItI6pEm6lE2AvbFhX7ci5HY24bIn15E sha512-5M2+mMwnOHJm03wz8aI+GJfVvuXu1TIMnYGgpDqDRI/xqoY8Xo07wmoD528knTywGSt2SiKwsE39xMiLpUe66A=="
+					"value": "sha256-A+flYxa6J2G661sbdsTY0jw9RvjbWz8Z46O2y2AJjMY= sha384-BdePNL53MgdZtfJgmzNQezyDt393HQo6Dl+XzYX6XjBSsr9qKbnZEwq8jqul+RXw sha512-bPKRER0A7SmDGSBTPu+MgPRicHR3WYv7ZjansHwW3VEgPSmk7K5/Vs6Rfr9N91U43oSbtuh/hA2lB3vYwdh9lg=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Z1P5N1x6M+CreGncn15djZiM39LMiMZMklsQu9r56DQ= sha384-6RoTHAceLJEKTdrS54H1yCf2B0v1d9J/7y2fsFTVcRIFMxxj4l7tZCHKbp11fOXa sha512-vBnpduF1IldiC8JJMN/Hth1FtY2eSkgZfzQxmAYSREI07iKJMhRWnclZO1T7YeqpmpGmw+mU+w+0GL30IfauUw=="
+					"value": "sha256-8YhwPtayEHB2fxbhYrQZwBWF3lX93aQ4cQKQw2EgZ4g= sha384-bZXqv5qC1b6WMvyoZfpXHvtBw2HVsIDwYLBqXBBZXOUgEIdrDTKNpDs7xWWKxIdc sha512-v2VHrdAiXJmyXXgtAhFpVc+ZUQ/O/5UKOSxWlDiZpGxB+1dkyk7o3Z6dUwq1EysEzsYdUroyQ0hR1dBZCsr7ew=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,16 +54,16 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.00",
-		"mmx-button": "=26.01.00",
-		"mmx-dialog": "=26.01.00",
-		"mmx-featured-product": "=26.01.00",
-		"mmx-forms": "=26.01.00",
-		"mmx-hero": "=26.01.00",
-		"mmx-hero-slider": "=26.01.00",
-		"mmx-icons": "=26.01.00",
-		"mmx-messages": "=26.01.00",
-		"mmx-text": "=26.01.00",
-		"mmx-wishlist": "=26.01.00"
+		"mmx-base": "=26.01.01",
+		"mmx-button": "=26.01.01",
+		"mmx-dialog": "=26.01.01",
+		"mmx-featured-product": "=26.01.01",
+		"mmx-forms": "=26.01.01",
+		"mmx-hero": "=26.01.01",
+		"mmx-hero-slider": "=26.01.01",
+		"mmx-icons": "=26.01.01",
+		"mmx-messages": "=26.01.01",
+		"mmx-text": "=26.01.01",
+		"mmx-wishlist": "=26.01.01"
 	}
 }

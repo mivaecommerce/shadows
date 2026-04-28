@@ -1091,6 +1091,9 @@ class TransfigureNavigation {
 
 		document.body.classList.add('has-dialog');
 		dialog.focused = document.activeElement;
+		getDialogs().forEach(el => {
+			el.setAttribute('aria-hidden', 'true');
+		});
 		dialog.el.setAttribute('aria-hidden', 'false');
 
 		// Focus the first focusable item in the dialog.

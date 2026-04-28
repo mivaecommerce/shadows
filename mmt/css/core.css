@@ -406,6 +406,8 @@ Theme Editor Navigation Buttons should layout like links
 	display: inline-block;
 	justify-content: left;
 	position: static;
+	-webkit-user-select: text;
+	        user-select: text;
 	white-space: inherit;
 }
 

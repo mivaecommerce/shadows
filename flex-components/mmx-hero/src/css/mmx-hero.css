@@ -35,12 +35,11 @@
 }
 
 .mmx-hero__image-container::after {
-	content: '';
 	background: none;
+	content: '';
+	inset: 0;
 	pointer-events: none;
 	position: absolute;
-	width: 100%;
-	height: 100%;
 }
 
 .mmx-hero:not(.mmx-hero--layout-hero) .mmx-hero__image-container::after {
@@ -251,18 +250,22 @@ slot + slot[name="button"],
 /* Size: Content
    =========================================== */
 .mmx-hero--size--content {
+	display: grid;
 	overflow: visible;
 }
 
+.mmx-hero--size--content .mmx-hero__image-container,
+.mmx-hero--size--content .mmx-hero__content-bg {
+	grid-area: 1 / 1;
+}
+
 .mmx-hero--size--content .mmx-hero__image-container {
-	height: 100%;
-    position: absolute;
-    width: 100%;
-    z-index: -1;
+	inset: 0;
+	position: absolute;
 }
 
 .mmx-hero--size--content .mmx-hero__content-bg {
-	position: static;
+	position: relative;
 }
 
 

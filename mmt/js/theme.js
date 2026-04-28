@@ -78,9 +78,9 @@ const themeFunctionality = {
 			const headerSearchToggle = header.querySelector('[data-hook="open-header-search"]');
 
 			if (headerSearch && headerSearchToggle) {
-				const headerSearchInput = headerSearch.querySelector('input');
+				const updateMenu = () => {
+					const headerSearchInput = headerSearch.querySelector('input');
 
-				headerSearchToggle.addEventListener('click', () => {
 					let isActive = header.classList.contains('search-is-active');
 
 					if (!isActive) {
@@ -91,6 +91,20 @@ const themeFunctionality = {
 						header.classList.remove('search-is-active');
 						headerSearchToggle.focus();
 					}
+				};
+
+				headerSearchToggle.addEventListener('click', updateMenu);
+
+				headerSearch.addEventListener('focusout', () => {
+					setTimeout(() => {
+						if (!headerSearch.contains(document.activeElement)) {
+							header.classList.remove('search-is-active');
+						}
+					}, 100);
+				});
+
+				window.addEventListener('blur', () => {
+					header.classList.remove('search-is-active');
 				});
 			}
 		})();

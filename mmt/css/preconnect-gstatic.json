@@ -3,7 +3,7 @@
     "type": "E",
     "filepath": "https://fonts.gstatic.com",
     "is_global": true,
-    "active": true,
+    "active": false,
     "attributes": [
         {
             "name": "rel",

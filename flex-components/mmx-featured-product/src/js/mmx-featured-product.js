@@ -944,14 +944,14 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
 			<div part="product-attribute" class="mmx-featured-product__product-attribute">
-				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}:&nbsp;<span data-hook="attribute-swatch-name"></span></label>
+				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}:&nbsp;<span data-hook="attribute-swatch-name--${MMX.encodeEntities(attribute.id)}"></span></label>
 				<div class="mmx-featured-product__product-attribute-select mmx-featured-product__product-attribute-select__swatch">
-					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select" name="Product_Attributes[${MMX.encodeEntities(index)}]:value">
+					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select--${MMX.encodeEntities(attribute.id)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value">
 						${this.#renderProductContentAttributeSelectOneOption()}
 						${attribute.options.map(option => this.renderProductContentAttributeSwatchSelectOption(attribute, index, option)).join('')}
 					</select>
 				</div>
-				<div id="swatches" class="mmx-featured-product__product-attribute-swatch__swatches" aria-labelledby="${MMX.encodeEntities(attribute_id)}" role="group"></div>
+				<div id="swatches--${MMX.encodeEntities(attribute.id)}" class="mmx-featured-product__product-attribute-swatch__swatches" aria-labelledby="${MMX.encodeEntities(attribute_id)}" role="group"></div>
 			</div>
 		`;
 	}
@@ -1256,7 +1256,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			price_element_id:				'price-value',
 			additional_price_element_id:	'price-value-additional',
 			inventory_element_id:			'inv-message',
-			swatch_element_id:				'swatches',
+			attribute_swatch_id:			'swatches--%attribute_id%',
 			discount_element_id:			'discount',
 			inv_long:						false,
 			price:							discount ? 'sale' : 'price',
@@ -1304,7 +1304,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		attributemachine.Generate_Swatch = function(product_code, attribute, option) {
 			var img, swatch, swatch_button, swatch_container;
 
-			swatch_container	= self.shadowRoot.getElementById('swatches');
+			swatch_container	= self.shadowRoot.getElementById(`swatches--${attribute.id}`);
 
 			img					= document.createElement('img');
 			img.src				= encodeURI(option.image);
@@ -1343,13 +1343,13 @@ class MMX_FeaturedProduct extends MMX_Element {
 					return;
 				}
 
-				if (!(swatch_select = self.shadowRoot.querySelector('[data-hook="attribute-swatch-select"]'))) {
+				if (!(swatch_select = self.shadowRoot.querySelector(`[data-hook="attribute-swatch-select--${attribute.id}"]`))) {
 					return;
 				}
 
 				selected_swatch_option = swatch_select.options[swatch_select.selectedIndex];
 
-				if (swatch_name_element = self.shadowRoot.querySelector('[data-hook="attribute-swatch-name"]')) {
+				if (swatch_name_element = self.shadowRoot.querySelector(`[data-hook="attribute-swatch-name--${attribute.id}"]`)) {
 					swatch_name_element.textContent = MMX.valueIsEmpty(selected_swatch_option.value) ? '' : selected_swatch_option.text;
 				}
 
@@ -1395,7 +1395,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		attributemachine.Swatch_Click = function(input, attribute, option) {
 			var i, swatch_name_element;
 
-			if (swatch_name_element = self.shadowRoot.querySelector('[data-hook="attribute-swatch-name"]')) {
+			if (swatch_name_element = self.shadowRoot.querySelector(`[data-hook="attribute-swatch-name--${attribute.id}"]`)) {
 				swatch_name_element.innerHTML = option.prompt;
 			}
 

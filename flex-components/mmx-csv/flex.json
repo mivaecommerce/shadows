@@ -2,7 +2,7 @@
 	"code": "mmx-csv",
 	"name": "MMX CSV",
 	"type": "library",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-csv",
 	"scripts": [

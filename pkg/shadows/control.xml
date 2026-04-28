@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>26.01.00</Version>
-	<MinimumMerchantVersion>26.01.00</MinimumMerchantVersion>
+	<Version>26.01.01</Version>
+	<MinimumMerchantVersion>26.01.01</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v26.01.00
+	<Description>Shadows ReadyTheme v26.01.01
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -3193,7 +3193,7 @@
 			<Code>preconnect-google-fonts</Code>
 			<Type>ExternalFile</Type>
 			<Global>Yes</Global>
-			<Active>Yes</Active>
+			<Active>No</Active>
 			<Attributes>
 				<Attribute>
 					<Name>rel</Name>
@@ -3206,11 +3206,12 @@
 			</Attributes>
 			<File_Path>https://fonts.googleapis.com</File_Path>
 		</CSSResource_Add>
+		<CSSResource_Delete code="preconnect-gstatic" />
 		<CSSResource_Add>
 			<Code>preconnect-gstatic</Code>
 			<Type>ExternalFile</Type>
 			<Global>Yes</Global>
-			<Active>Yes</Active>
+			<Active>No</Active>
 			<Attributes>
 				<Attribute>
 					<Name>rel</Name>
@@ -3228,7 +3229,7 @@
 			<Code>preconnect-google-analytics</Code>
 			<Type>ExternalFile</Type>
 			<Global>Yes</Global>
-			<Active>Yes</Active>
+			<Active>No</Active>
 			<Attributes>
 				<Attribute>
 					<Name>rel</Name>
@@ -3540,7 +3541,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '26.01.00';
+	mivaJS.ReadyThemeVersion = '26.01.01';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';

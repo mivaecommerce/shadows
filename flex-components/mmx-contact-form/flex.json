@@ -2,7 +2,7 @@
 	"code": "mmx-contact-form",
 	"name": "Contact Form",
 	"type": "component",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-contact-form",
 	"category": "contact-form",
@@ -1484,12 +1484,12 @@
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
 	"depends": {
-		"mmx-base": "=26.01.00",
-		"mmx-button": "=26.01.00",
-		"mmx-forms": "=26.01.00",
-		"mmx-hero": "=26.01.00",
-		"mmx-icons": "=26.01.00",
-		"mmx-messages": "=26.01.00",
-		"mmx-text": "=26.01.00"
+		"mmx-base": "=26.01.01",
+		"mmx-button": "=26.01.01",
+		"mmx-forms": "=26.01.01",
+		"mmx-hero": "=26.01.01",
+		"mmx-icons": "=26.01.01",
+		"mmx-messages": "=26.01.01",
+		"mmx-text": "=26.01.01"
 	}
 }

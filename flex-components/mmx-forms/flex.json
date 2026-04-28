@@ -2,7 +2,7 @@
 	"code": "mmx-forms",
 	"name": "MMX Forms",
 	"type": "library",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-forms",
 	"scripts": [
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.00"
+		"mmx-base": "=26.01.01"
 	}
 }

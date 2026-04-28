@@ -365,6 +365,22 @@ MMX.querySelectorList = (selectors = [], root = document) => {
 	return lastElement;
 };
 
+MMX.on = (events, selector, handler, { root = document, eventOptions = {} } = {}) => {
+	events = MMX.splitString(events);
+
+	events.forEach(event => {
+		root.addEventListener(event, (e) => {
+			const matched = e.target?.closest?.(selector);
+
+			if (!matched || (root !== document && !root.contains(matched))) {
+				return;
+			}
+
+			handler(e, matched);
+		}, eventOptions);
+	});
+};
+
 MMX.encodeEntities = (input) => {
 	return String(input ?? '')
 			.replace(/&reg;/g, '®')
@@ -456,6 +472,7 @@ class MMX_FetchQueue {
 	#max = 3;
 	#todo = new Map();
 	#doing = new Map();
+	#cache = new Map();
 
 	constructor({max} = {}) {
 		this.#max = MMX.coerceNumber(max, this.#max);
@@ -491,11 +508,27 @@ class MMX_FetchQueue {
 				this.#doNext();
 			});
 	}
+
+	requestCached(...params) {
+		const key = JSON.stringify(params);
+
+		if (!this.#cache.has(key)) {
+			this.#cache.set(key, this.request(...params).catch(error => {
+				this.#cache.delete(key);
+				throw error;
+			}));
+		}
+
+		return this.#cache.get(key)
+			.then(response => {
+				return response?.clone?.() ?? response;
+			});
+	}
 }
 
 MMX.fetchQueue = new MMX_FetchQueue();
 
-MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}} = {}) => {
+MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}, cached = false} = {}) => {
 	jsonUrl = jsonUrl ?? window?.json_url;
 	storeCode = storeCode ?? window?.Store_Code;
 
@@ -507,30 +540,35 @@ MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}} = {}) => {
 		});
 	}
 
-	return MMX.fetchQueue.request(jsonUrl, {
+	const fetchParams = {
 		method: 'POST',
 		headers: {
 			'Content-Type': 'application/json'
 		},
 		body: JSON.stringify(MMX.assign({Session_Type: 'runtime', Store_Code: storeCode}, params))
-	}).then(async (response) => {
-		const text = await response.text();
-		try {
-			return JSON.parse(text);
-		} catch(err) {
-			return Promise.reject({
-				success: false,
-				error_code: 'MMX-Runtime_JSON_API_Call-00002',
-				error_message: `Did not receive valid JSON from API. Received: "${text}"`
-			});
-		}
-	}).then(data => {
-		if (data?.success) {
-			return Promise.resolve(data);
-		}
+	};
 
-		return Promise.reject(data);
-	});
+	const request = cached ? MMX.fetchQueue.requestCached(jsonUrl, fetchParams) : MMX.fetchQueue.request(jsonUrl, fetchParams);
+
+	return request
+		.then(async (response) => {
+			const text = await response.text();
+			try {
+				return JSON.parse(text);
+			} catch(err) {
+				return Promise.reject({
+					success: false,
+					error_code: 'MMX-Runtime_JSON_API_Call-00002',
+					error_message: `Did not receive valid JSON from API. Received: "${text}"`
+				});
+			}
+		}).then(data => {
+			if (data?.success) {
+				return Promise.resolve(data);
+			}
+
+			return Promise.reject(data);
+		});
 };
 
 MMX.fetchForm = (form, fetchOptions = {}) => {
@@ -787,6 +825,13 @@ class MMX_Element extends HTMLElement {
 	/**
 	 * Utility / Helper Functions
 	 */
+
+	on(events, selector, handler, options = {}) {
+		return MMX.on(events, selector, handler, {
+			root: this.shadowRoot || this,
+			...options
+		});
+	}
 
 	output(name) {
 		return typeof this[name] === 'function' ? this[name]() : '';

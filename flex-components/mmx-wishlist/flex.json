@@ -2,7 +2,7 @@
 	"code": "mmx-wishlist",
 	"name": "MMX Wishlist",
 	"type": "library",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-wishlist",
 	"scripts": [
@@ -54,15 +54,15 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.00",
-		"mmx-button": "=26.01.00",
-		"mmx-dialog": "=26.01.00",
-		"mmx-featured-product": "=26.01.00",
-		"mmx-forms": "=26.01.00",
-		"mmx-hero": "=26.01.00",
-		"mmx-hero-slider": "=26.01.00",
-		"mmx-icons": "=26.01.00",
-		"mmx-messages": "=26.01.00",
-		"mmx-text": "=26.01.00"
+		"mmx-base": "=26.01.01",
+		"mmx-button": "=26.01.01",
+		"mmx-dialog": "=26.01.01",
+		"mmx-featured-product": "=26.01.01",
+		"mmx-forms": "=26.01.01",
+		"mmx-hero": "=26.01.01",
+		"mmx-hero-slider": "=26.01.01",
+		"mmx-icons": "=26.01.01",
+		"mmx-messages": "=26.01.01",
+		"mmx-text": "=26.01.01"
 	}
 }

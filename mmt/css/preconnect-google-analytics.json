@@ -3,7 +3,7 @@
     "type": "E",
     "filepath": "//www.google-analytics.com",
     "is_global": true,
-    "active": true,
+    "active": false,
     "attributes": [
         {
             "name": "rel",

@@ -176,7 +176,7 @@ class MMX_ProductCard extends MMX_Card {
 	}
 
 	#bindEvents() {
-		this.#listenForSwatchButtonClicks();
+		this.#listenForSwatchButtonInteractions();
 		this.#listenForHover();
 	}
 
@@ -185,17 +185,15 @@ class MMX_ProductCard extends MMX_Card {
 			return;
 		}
 
-		const imageContainer = this.shadowRoot.querySelector('[part~="image-container"]');
+		const imageContainer = '[part~="image-container"]';
 
-		if (!imageContainer) {
-			return;
-		}
+		this.on('mouseover, touchstart', imageContainer, () => {
+			this.#setHovered(true);
+		});
 
-		imageContainer.addEventListener('mouseenter', () => this.#setHovered(true));
-		imageContainer.addEventListener('mouseleave', () => this.#setHovered(false));
-		imageContainer.addEventListener('touchstart', () => this.#setHovered(true));
-		imageContainer.addEventListener('touchend', () => this.#setHovered(false));
-		imageContainer.addEventListener('touchcancel', () => this.#setHovered(false));
+		this.on('mouseout, touchend, touchcancel', imageContainer, () => {
+			this.#setHovered(false);
+		});
 
 		this.#maintainHoverImageOnDrag();
 	}
@@ -593,27 +591,33 @@ class MMX_ProductCard extends MMX_Card {
 		return MMX.coerceNumber(this.#card?.image?.swatches?.max_swatches?.value, 3);
 	}
 
-	#listenForSwatchButtonClicks() {
-		const swatches = this.shadowRoot.querySelector('.mmx-product-card__attribute-swatches');
-		swatches?.addEventListener?.('click', this.#onSwatchesClick.bind(this), {capture: true});
+	#listenForSwatchButtonInteractions() {
+		const eventName = this.#getSwatchChangeEventName();
+
+		this.on(eventName, '.mmx-product-card__attribute-swatch-button', (e, button) => {
+			this.#onSwatchButtonInteraction(e, button);
+		});
 	}
 
-	#onSwatchesClick(e) {
-		this.#checkForSwatchButtonClick(e);
+	#getSwatchChangeEventName() {
+		return this.#card?.image?.swatches?.change_swatches_on?.value?.toLowerCase?.() === 'hover'
+			? 'pointerover, click'
+			: 'click';
 	}
 
-	#checkForSwatchButtonClick(e) {
-		const target = e?.composedPath?.().at?.(0);
-		const button = target?.closest?.('.mmx-product-card__attribute-swatch-button');
-
-		if (button) {
-			this.#onSwatchButtonClick(e, button);
+	#onSwatchButtonInteraction(e, button) {
+		if (e.type === 'click') {
+			e.preventDefault();
+			e.stopPropagation();
 		}
-	}
+		else if (e.type === 'pointerover') {
+			const previousElement = e.relatedTarget;
 
-	#onSwatchButtonClick(e, button) {
-		e.preventDefault();
-		e.stopPropagation();
+			if (previousElement && button.contains(previousElement)) {
+				return;
+			}
+		}
+
 		this.#loadVariantFromSelectedSwatchButton(button);
 	}
 
@@ -621,6 +625,7 @@ class MMX_ProductCard extends MMX_Card {
 		const selections = this.#getSelections(button);
 
 		MMX.Runtime_JSON_API_Call({
+			cached: true,
 			params: {
 				Function: 'Runtime_AttributeList_Load_ProductVariant_Possible',
 				Product_Code: this.#product.code,
@@ -684,6 +689,7 @@ class MMX_ProductCard extends MMX_Card {
 
 	#loadVariantImages(Variant_ID) {
 		MMX.Runtime_JSON_API_Call({
+			cached: true,
 			params: {
 				Function: 'Runtime_ProductImageList_Load_Product_Variant',
 				Product_Code: this.#product.code,
@@ -702,7 +708,8 @@ class MMX_ProductCard extends MMX_Card {
 
 		const hoverType = this.#card?.image?.hover_image?.type?.value;
 		const hoverImage = this.#findImageByType(response?.data, hoverType)?.image_data?.[0];
-		if (hoverImage) {
+
+		if (hoverImage && this.#hoverImage()) {
 			this.#hoverImage().src = hoverImage;
 		}
 	}

@@ -2,7 +2,7 @@
 	"code": "mmx-accordion",
 	"name": "Accordion",
 	"type": "component",
-	"version": "26.01.00",
+	"version": "26.01.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-accordion",
 	"category": "accordion",
@@ -965,8 +965,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.00",
-		"mmx-icons": "=26.01.00",
-		"mmx-text": "=26.01.00"
+		"mmx-base": "=26.01.01",
+		"mmx-icons": "=26.01.01",
+		"mmx-text": "=26.01.01"
 	}
 }

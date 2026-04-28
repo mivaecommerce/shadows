@@ -42,7 +42,8 @@
 			<div class="c-dialog__content">
 				<p class="c-dialog__description">
 					<mvt:assign name="l.settings:address_validation:pluralized_address" value="ternary( l.settings:address_validation:group_count EQ 1, 'address', 'addresses' )" />
-					The &mvte:address_validation:pluralized_address; you entered appears to be incorrect or incomplete. Please verify your &mvte:address_validation:pluralized_address; to ensure a timely delivery.
+					<mvt:assign name="l.settings:address_validation:pluralized_verb" value="ternary( l.settings:address_validation:group_count EQ 1, 'appears', 'appear' )" />
+					The &mvte:address_validation:pluralized_address; you entered &mvte:address_validation:pluralized_verb; to be incorrect or incomplete. Please verify your &mvte:address_validation:pluralized_address; to ensure a timely delivery.
 				</p>
 				<mvt:foreach iterator="address_validation_group" array="address_validation:groups">
 					<mvt:if expr="l.settings:address_validation:group_count GT 1">
