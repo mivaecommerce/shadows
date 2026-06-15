@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -2827,6 +2827,45 @@
 	],
 	"advanced_properties": [
 		{
+			"code": "initial_display",
+			"prompt": "Initial Display",
+			"properties": [
+				{
+					"code": "initial_height",
+					"options": [
+						{
+							"text": "Auto",
+							"value": "auto"
+						},
+						{
+							"text": "Custom",
+							"value": "custom"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						}
+					],
+					"prompt": "Initial Height",
+					"type": "select"
+				},
+				{
+					"code": "initial_height_amount",
+					"placeholder": "ex. 100vh, 300px, 50%",
+					"prompt": "Initial Height Amount",
+					"type": "lengthunit",
+					"visibility_conditions": {
+						"initial_height": {
+							"value": [
+								"custom"
+							]
+						}
+					}
+				}
+			],
+			"type": "group"
+		},
+		{
 			"code": "spacing",
 			"prompt": "Spacing",
 			"properties": [
@@ -2948,6 +2987,11 @@
 			"empty_results_message": {
 				"source": "markdown",
 				"value": "There are no products to display."
+			},
+			"initial_display": {
+				"initial_height": {
+					"value": "auto"
+				}
 			},
 			"search": {
 				"origin": {
@@ -3426,7 +3470,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-vlReip6uYoV4p3RTbGtxuC30+KIrw3bQQnjdQY/Yn/s= sha384-zdmWXoamBMZyrFthLRXtb5jtW24KlmVnI7BBRsdxen7pLj9FNM3pG0AHweesoHt5 sha512-wdLi0o+hVvKaNLyg4F0Ugpv2x2z2yscI/qoZhc2+8bhXi9RmDzegZ2J/8c9Aw4JZiQISBO8pl7NhMUKO/VobOA=="
+					"value": "sha256-7Aqhfg+hnBcPU3Aqr7Av6xoWFXChK52Leb/lN2HXGyY= sha384-6djGL6UsWKgDkoMpcUVqzkXdZNXrtvfkJj8nhgMXvvH2m8eoB0Al/D3PeXjlOVsT sha512-nlpf93rq6P9QxwtfKOqNYGaADm3oBE4Hd3HSifm4+nVq3mKxMX7bVwV3ayWsMBf9FUDKsTtYK/IG1qFS4FvXYQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -3445,12 +3489,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -3464,19 +3512,19 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.01",
-		"mmx-base": "=26.01.01",
-		"mmx-button": "=26.01.01",
-		"mmx-card": "=26.01.01",
-		"mmx-dialog": "=26.01.01",
-		"mmx-featured-product": "=26.01.01",
-		"mmx-forms": "=26.01.01",
-		"mmx-hero": "=26.01.01",
-		"mmx-hero-slider": "=26.01.01",
-		"mmx-icons": "=26.01.01",
-		"mmx-messages": "=26.01.01",
-		"mmx-rating": "=26.01.01",
-		"mmx-text": "=26.01.01",
-		"mmx-wishlist": "=26.01.01"
+		"mmx-accordion": "=26.01.02",
+		"mmx-base": "=26.01.02",
+		"mmx-button": "=26.01.02",
+		"mmx-card": "=26.01.02",
+		"mmx-dialog": "=26.01.02",
+		"mmx-featured-product": "=26.01.02",
+		"mmx-forms": "=26.01.02",
+		"mmx-hero": "=26.01.02",
+		"mmx-hero-slider": "=26.01.02",
+		"mmx-icons": "=26.01.02",
+		"mmx-messages": "=26.01.02",
+		"mmx-rating": "=26.01.02",
+		"mmx-text": "=26.01.02",
+		"mmx-wishlist": "=26.01.02"
 	}
 }

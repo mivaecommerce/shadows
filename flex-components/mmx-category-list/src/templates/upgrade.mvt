@@ -1,7 +1,3 @@
-<mvt:if expr="l.settings:instance:_flex:settings_version LT '10.12.02'">
-	<mvt:assign name="l.settings:instance:advanced:form_name:value" value="'add'" />
-</mvt:if>
-
 <mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.02'">
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height:value" value="'auto'" />
 </mvt:if>

@@ -2,7 +2,7 @@
 	"code": "mmx-base",
 	"name": "MMX Base",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-base",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-u0ku1V0jjNF3yNPCo2+uNzoLrFAX0owmRCukxE7g6uU= sha384-RY6RDh240kR0wBW4VsGW7Axvp78Y+q+NY6RSU3AydKD2bxMbBdhk2lcmAMKxp6rC sha512-4Fq5xUa9iyd1dlTkJ24XHuRh9wbTuevXdpXDBxSBXLKuF5c0/BqIqagtw03VGmOOlIwFIixJ5O9kxmybWc8mLQ=="
+					"value": "sha256-QfGS31lz5TMxvtJbCsnK7kY1Q9CKokhBy+QCuPuPKtw= sha384-ik7jJ0ex8la/9BPV79O6b4d4dKPHXn2QYKv/CxDHpwTGsBtxtz3x5LNvAHoxZTCI sha512-Ko3Ua4kdeLEhKQLmakWBvDommFXThiTuplu2WY/hjBa+bIanLJTyNJhfHsYRUwUXGccuo26Vq8hQgdW2rxJDoQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,16 +35,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
-				},
-				{
 					"name": "rel",
 					"value": "stylesheet"
 				},
 				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
+				},
+				{
 					"name": "integrity",
-					"value": "sha256-86IDvUWqmSJ39A44Tlen01OHRno8wvjEx1Ajnzg1Tog= sha384-5/yo3fbTrsVLQFbsYsHfC4MccS5K0WLpAUzgUCXnwzEYKHv1p/skYdc3mZpOlJzP sha512-BeQD56xuBdR+GevkqtWWLmi5Bz6a5kZ4WohT1e8U+ZxdKdLcoDNGvxEXqFFaD6mN/bjHBeAdIzjpXPaZv1Se3w=="
+					"value": "sha256-pxECXfjp8oXDML8T9OtneoPEAGSVIAeRehZvar/lIK8= sha384-aPKK+9rg8edr56Ft2cUsUglgWJXVA+JRjUI0q+3nMgiWfrwH1JWUTiyAUmyGtO97 sha512-+kuuajtKVd8rYBRX4gr1fVt2VzcQHhHpMJoeV8RouSZRQ7T9q/UrbPQg6odlEnL/xKTHghn2O6U0hBuS5WHBKA=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,35 +54,35 @@
 		}
 	],
 	"conflicts": {
-		"mmx-accordion": "<26.01.01",
-		"mmx-button": "<26.01.01",
-		"mmx-card": "<26.01.01",
-		"mmx-category-carousel": "<26.01.01",
-		"mmx-category-list": "<26.01.01",
-		"mmx-combination-facet": "<26.01.01",
-		"mmx-contact-form": "<26.01.01",
-		"mmx-csv": "<26.01.01",
-		"mmx-dialog": "<26.01.01",
-		"mmx-featured-product": "<26.01.01",
-		"mmx-forms": "<26.01.01",
-		"mmx-hero": "<26.01.01",
-		"mmx-hero-slider": "<26.01.01",
-		"mmx-icons": "<26.01.01",
-		"mmx-image-across": "<26.01.01",
-		"mmx-image-and-text": "<26.01.01",
-		"mmx-image-gallery": "<26.01.01",
-		"mmx-messages": "<26.01.01",
-		"mmx-product-carousel": "<26.01.01",
-		"mmx-product-details": "<26.01.01",
-		"mmx-product-fitment-list": "<26.01.01",
-		"mmx-product-list": "<26.01.01",
-		"mmx-quick-order": "<26.01.01",
-		"mmx-tabs": "<26.01.01",
-		"mmx-text": "<26.01.01",
-		"mmx-text-area": "<26.01.01",
-		"mmx-text-banner": "<26.01.01",
-		"mmx-text-editor": "<26.01.01",
-		"mmx-video": "<26.01.01",
-		"mmx-wishlist": "<26.01.01"
+		"mmx-accordion": "<26.01.02",
+		"mmx-button": "<26.01.02",
+		"mmx-card": "<26.01.02",
+		"mmx-category-carousel": "<26.01.02",
+		"mmx-category-list": "<26.01.02",
+		"mmx-combination-facet": "<26.01.02",
+		"mmx-contact-form": "<26.01.02",
+		"mmx-csv": "<26.01.02",
+		"mmx-dialog": "<26.01.02",
+		"mmx-featured-product": "<26.01.02",
+		"mmx-forms": "<26.01.02",
+		"mmx-hero": "<26.01.02",
+		"mmx-hero-slider": "<26.01.02",
+		"mmx-icons": "<26.01.02",
+		"mmx-image-across": "<26.01.02",
+		"mmx-image-and-text": "<26.01.02",
+		"mmx-image-gallery": "<26.01.02",
+		"mmx-messages": "<26.01.02",
+		"mmx-product-carousel": "<26.01.02",
+		"mmx-product-details": "<26.01.02",
+		"mmx-product-fitment-list": "<26.01.02",
+		"mmx-product-list": "<26.01.02",
+		"mmx-quick-order": "<26.01.02",
+		"mmx-tabs": "<26.01.02",
+		"mmx-text": "<26.01.02",
+		"mmx-text-area": "<26.01.02",
+		"mmx-text-banner": "<26.01.02",
+		"mmx-text-editor": "<26.01.02",
+		"mmx-video": "<26.01.02",
+		"mmx-wishlist": "<26.01.02"
 	}
 }

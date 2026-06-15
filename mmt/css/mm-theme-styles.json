@@ -17,6 +17,10 @@
             "value": "stylesheet"
         },
         {
+            "name": "data-mmx-resource-type",
+            "value": "adoptable"
+        },
+        {
             "name": "integrity",
             "value": "sha256-cuuGMn/RO0zQv7DHzxjma2RjnN4szGtTlfARZ3kVaok= sha384-avy58O9ueYkMJDrKJ+YKBoZU2Da2MiT2byYWhDYHIhDdCOyBPUBFgDn9+bfKf48O sha512-reASVVJNeRBUyjufmJ27mcnCEqEzwtcKAbNrAqvtH9DpVOkAHYkZhpp1kePmLZCzGOowIuzniWo+0suaK+JF1w=="
         },

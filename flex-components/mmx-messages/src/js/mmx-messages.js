@@ -43,7 +43,7 @@ class MMX_Message extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

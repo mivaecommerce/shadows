@@ -12,7 +12,7 @@ class MMX_ImageGallery extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#bindComponentEvents();
 	}
 
@@ -324,7 +324,7 @@ class MMX_ImageGallery extends MMX_Element {
 		if (!focus) {
 			this.#closeupDialog().inert = false;
 		}
-		
+
 		this.#closeup().updateSizing();
 		this.#updateSliders();
 	}

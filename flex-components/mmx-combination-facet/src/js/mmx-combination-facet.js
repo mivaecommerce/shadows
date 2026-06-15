@@ -231,7 +231,7 @@ class MMX_CombinationFacet extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#eventOnWindowResize = (event) => { this.#repositionApplicationMenu(); };
 	}
 

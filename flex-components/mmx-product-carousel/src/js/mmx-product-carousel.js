@@ -91,10 +91,11 @@ class MMX_ProductCarousel extends MMX_Element {
 	#searchType = 'system';
 	#searchIndex = '';
 	#errorMessage;
+	lifecycleReady = false;
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 

@@ -265,6 +265,7 @@ class MMX_ProductList extends MMX_Element {
 
 	styleResourceCodes = ['mmx-base', 'mmx-text', 'mmx-accordion', 'mmx-forms', 'mmx-product-list'];
 	renderUniquely = true;
+	lifecycleReady = false;
 
 	#products = [];
 	#facets = [];
@@ -285,7 +286,7 @@ class MMX_ProductList extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#bindComponentEvents();
 	}
 
@@ -496,6 +497,8 @@ class MMX_ProductList extends MMX_Element {
 			this.#onFacetsDialogCloseClick();
 		});
 
+		this.on('click', '[part~="facets-dialog"]', this.#onFacetsDialogClick.bind(this));
+
 		this.#productCards()?.forEach((product, index) => {
 			product.addEventListener('click', () => this.#onProductClicked({
 				product: this.#products[index],
@@ -506,6 +509,19 @@ class MMX_ProductList extends MMX_Element {
 		this.#facetShowMoreButtons()?.forEach(btn => {
 			btn.addEventListener('click', (e) => this.#onFacetShowMoreButtonClick(btn, e));
 		});
+	}
+
+	#onFacetsDialogClick(e, dialog) {
+		const rect = dialog.getBoundingClientRect();
+		const clickedInsideDialog =
+			e.clientX >= rect.left &&
+			e.clientX <= rect.right &&
+			e.clientY >= rect.top &&
+			e.clientY <= rect.bottom;
+
+		if (!clickedInsideDialog) {
+			this.#closeFacetsDialog();
+		}
 	}
 
 	#facetShowMoreButtons() {

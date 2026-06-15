@@ -2,7 +2,7 @@
 	"code": "mmx-combination-facet",
 	"name": "Combination Facet",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-combination-facet",
 	"category": "combination-facet",
@@ -1954,7 +1954,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-tdLv5FGEqD86bej9s2tCZByRjsJJJqUeNkADhF57HIo= sha384-IfjN7i2U+J2sFbCvIZqRaZcQYFJKMv+FJgLJJA9E5TTs2XUOeys+Z64vtFdHjxfH sha512-DvW93s/gqTmgBPOKoRWD+zf6ASEuB8DqcnTU7fLD/3HEbSiQNyNCL3ED0WZ+Cx0woDrbKC6TOZtDNho+k8W6OQ=="
+					"value": "sha256-f0UHc9bqfjpTeYAG8Y+QLpL6sYifgnbLwWN2rBB0Z7U= sha384-hcTfXuHQH43YJnqVPRz1NMEMu+Vee5njug46y6wOvCX1AghdsBNA+wcQEsThwU3R sha512-Zh6qDQ6b37Cxm4gNH4bdnXSblwYg0TNSAVy+W89m8lBKCR/JE8nGz2b7V4VW3qMdN288inIAkdyjBSKlKwXA7Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -1973,12 +1973,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -1992,11 +1996,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-button": "=26.01.01",
-		"mmx-forms": "=26.01.01",
-		"mmx-hero": "=26.01.01",
-		"mmx-icons": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-button": "=26.01.02",
+		"mmx-forms": "=26.01.02",
+		"mmx-hero": "=26.01.02",
+		"mmx-icons": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

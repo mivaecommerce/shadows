@@ -25,6 +25,7 @@ class MMX_ProductDetails extends MMX_Element {
 
 	styleResourceCodes = ['mmx-accordion', 'mmx-base', 'mmx-text', 'mmx-forms', 'mmx-product-details', 'mmx-tabs'];
 	renderUniquely = true;
+	lifecycleReady = false;
 
 	// Product
 	#product = {};
@@ -39,7 +40,7 @@ class MMX_ProductDetails extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 

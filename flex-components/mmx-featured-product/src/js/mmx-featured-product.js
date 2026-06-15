@@ -340,10 +340,11 @@ class MMX_FeaturedProduct extends MMX_Element {
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-forms', 'mmx-hero', 'mmx-hero-slider', 'mmx-featured-product'];
 	#buttonEnabled = true;
 	renderUniquely = true;
+	lifecycleReady = false;
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	attributeChanged(name, oldValue, newValue) {

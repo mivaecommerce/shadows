@@ -2,7 +2,7 @@
 	"code": "mmx-rating",
 	"name": "MMX Rating",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-rating",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-jupf+RghTUwKdU9pB5XEtQmjBDUNtIjxUwP6egRK1xo= sha384-t7Ks36Sh2s0Pri2EtiZbOi9bHWFDDdjR+ZeXpvmrmGS6GG58SkyD2IdeTFpQRQen sha512-rybsFQDpaZtAaexoue4TWC/H4/UINYYQZ60b78sVIlR5b0k1qptRc6lgDTQgSzIYcHkfLoSH8mNMJYRKb5tUJQ=="
+					"value": "sha256-fDND5M+hXj5+JArYDpSiTjrDvRhEyi18t4h6OlEcYBs= sha384-EBn6XgI1u9JwBwFNSWNUlTHPB2i+/saWs6oPR5qKClubD4+vnnx7AVQaq9qFo49H sha512-aQU0EC0ceBnEjVXXqaprVDYP8WX3JP8vjrRcHyAi+l50AYchrtwGBA491o/a3FeKtZerRfS4MFol0zBbuophQg=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,12 +35,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -54,7 +58,7 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-icons": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-icons": "=26.01.02"
 	}
 }

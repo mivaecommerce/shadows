@@ -2,7 +2,7 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
@@ -617,6 +617,45 @@
 	],
 	"advanced_properties": [
 		{
+			"code": "initial_display",
+			"prompt": "Initial Display",
+			"properties": [
+				{
+					"code": "initial_height",
+					"options": [
+						{
+							"text": "Auto",
+							"value": "auto"
+						},
+						{
+							"text": "Custom",
+							"value": "custom"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						}
+					],
+					"prompt": "Initial Height",
+					"type": "select"
+				},
+				{
+					"code": "initial_height_amount",
+					"placeholder": "ex. 100vh, 300px, 50%",
+					"prompt": "Initial Height Amount",
+					"type": "lengthunit",
+					"visibility_conditions": {
+						"initial_height": {
+							"value": [
+								"custom"
+							]
+						}
+					}
+				}
+			],
+			"type": "group"
+		},
+		{
 			"code": "spacing",
 			"prompt": "Spacing",
 			"properties": [
@@ -714,6 +753,11 @@
 	],
 	"defaults": {
 		"advanced": {
+			"initial_display": {
+				"initial_height": {
+					"value": "auto"
+				}
+			},
 			"slide_controls": {
 				"peek": {
 					"value": 75
@@ -850,7 +894,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-+qcYsqLFSycGliabp/6q0b26BcBx/c1GBBH2ffIW4Qs= sha384-s1EgE9ArPV54ByU+I8K4NreZOx0vD1drLmC2U/NjAagM4fgesd34QhnwFNyOfyxV sha512-D5Efba9B/KETzPGZO083NS3XWoIYT37BCNOfUMt4FDo7c2tZJIn0XC/84rpPk6WPSCD6pCKkDRUBlsbralFCSA=="
+					"value": "sha256-DHoHeRxepqj9gvP5f7mAaRM7t3Bil2/GUvvqrgK8d0o= sha384-oZlA9dFKj7WVmSs/G6dG6uRMDpfSIuY/3MdcTP0DYknIiTWQllRisp7uyB9cRNSt sha512-YQjdEEtsSLqJB7FJEoxdM8WTP2imo/8chmk31bCKFyD+DesFFBxO89oIzn43/jVqycwQV2AqNRYgqFy/12xdig=="
 				},
 				{
 					"name": "crossorigin",
@@ -860,10 +904,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-button": "=26.01.01",
-		"mmx-hero": "=26.01.01",
-		"mmx-hero-slider": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-button": "=26.01.02",
+		"mmx-hero": "=26.01.02",
+		"mmx-hero-slider": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

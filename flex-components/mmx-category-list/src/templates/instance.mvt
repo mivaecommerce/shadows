@@ -25,6 +25,18 @@
 	<mvt:assign name="l.settings:instance:heading:heading_text:value" value="glosub( l.settings:instance:heading:heading_text:value, '%page_name%', l.settings:page:name )" />
 </mvt:if>
 
+<mvt:comment>Initial Display</mvt:comment>
+<mvt:if expr="l.settings:instance:advanced:initial_display:initial_height:value EQ 'auto'">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="'100vh'" />
+<mvt:elseif expr="l.settings:instance:advanced:initial_display:initial_height:value EQ 'none'">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:value" value="''" />
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:unit" value="''" />
+</mvt:if>
+
+<mvt:if expr="NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:value AND NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:unit">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="l.settings:instance:advanced:initial_display:initial_height_amount:value $ l.settings:instance:advanced:initial_display:initial_height_amount:unit" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-category-list
 	id="&mvte:component_id;"
@@ -33,7 +45,11 @@
 	data-flex-item="&mvte:instance_item:item_code;"
 	data-init="script"
 	data-fallback-image="graphics/00000001/catalog-fallback-image__200x200.jpg"
-	style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+	style="
+		margin-top: &mvte:instance:advanced:spacing:top:value;px;
+		margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;
+		--mmx-initial-height: &mvte:instance:advanced:initial_display:initial_height_amount:formatted_value;;
+	"
 	class="mmx-wrapper"
 >
 	<mvt:comment>Init Script</mvt:comment>

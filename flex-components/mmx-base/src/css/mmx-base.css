@@ -367,6 +367,7 @@
 	 * Layout
 	 */
 	--mmx-site-wrapper-width: 100rem;
+	--mmx-lifecycle-transition: opacity 100ms ease-out;
 
 	/**
 	 * Form Elements
@@ -596,6 +597,22 @@ mmx-dialog:not(:defined) {
 	visibility: hidden;
 }
 
+:state(mmx) {
+	opacity: 1;
+	pointer-events: auto;
+	transition: var(--mmx-lifecycle-transition);
+
+	&:not(:state(styled):state(ready)) {
+		opacity: 0;
+		pointer-events: none;
+		min-height: var(--mmx-initial-height);
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		transition: none;
+	}
+}
+
 /**
  * Display
  */
@@ -634,6 +651,11 @@ mmx-product-card {
 
 mmx-hero-slider mmx-hero[slot="hero_slide"] {
 	display: var(--mmx-hero__display, inline-block);
+	transition: transform 0.3s ease-in-out, var(--mmx-lifecycle-transition);
+
+	&.notransition {
+		transition: none;
+	}
 }
 
 /**

@@ -166,7 +166,7 @@ class MMX_QuickOrder extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	styles() {

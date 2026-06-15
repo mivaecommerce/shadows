@@ -42,7 +42,7 @@ class MMX_Rating extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

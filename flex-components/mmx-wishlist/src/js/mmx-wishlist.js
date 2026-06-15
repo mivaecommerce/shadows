@@ -29,7 +29,7 @@ class MMX_AtwlButton extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	// Render
@@ -121,7 +121,7 @@ class MMX_AtwlDialog extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

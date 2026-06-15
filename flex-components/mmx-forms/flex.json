@@ -2,7 +2,7 @@
 	"code": "mmx-forms",
 	"name": "MMX Forms",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-forms",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-/e+rowLPxi5NOvVJWRS1YIqjI+kabax4Cmf7ix4nnIY= sha384-ua5kNWFwS/Kpi0RoZ/KIDE9FVQTpV4trksoFdVN/+IC9fCo3TxF/B3BpzvH+e4qo sha512-8SvjvykXvg1KFxAINFVpzrs8eBtdD0zyWNyqnxI7+1aaQawQc38GOJJOpIpdDUR8ZgKkp6iyNfyhQvQyL5ywuQ=="
+					"value": "sha256-JDhlCG8FnYrOloargSqd3f+v8xC/KdgT+aWFKC4BrZs= sha384-/pg+UrwxxVIMY4NKV1n7TE4kiFXEkej8g0sT/aDjN1Mz101udkTgBaxHOcXweS81 sha512-XEn2j9rF+UPJ65dXKY9l9Eg3Bf5ib3kzCgcVGdLadfuyDOpV3GwiPBrNf2RaNFV44I0Z2gi2+z1JAL/DRy9pCw=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,12 +35,12 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
-				},
-				{
 					"name": "rel",
 					"value": "stylesheet"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01"
+		"mmx-base": "=26.01.02"
 	}
 }

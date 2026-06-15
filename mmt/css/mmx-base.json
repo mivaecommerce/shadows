@@ -9,16 +9,16 @@
             "value": "text/css"
         },
         {
-            "name": "media",
-            "value": "all"
-        },
-        {
             "name": "rel",
             "value": "stylesheet"
         },
         {
+            "name": "data-mmx-resource-type",
+            "value": "adoptable"
+        },
+        {
             "name": "integrity",
-            "value": "sha256-86IDvUWqmSJ39A44Tlen01OHRno8wvjEx1Ajnzg1Tog= sha384-5/yo3fbTrsVLQFbsYsHfC4MccS5K0WLpAUzgUCXnwzEYKHv1p/skYdc3mZpOlJzP sha512-BeQD56xuBdR+GevkqtWWLmi5Bz6a5kZ4WohT1e8U+ZxdKdLcoDNGvxEXqFFaD6mN/bjHBeAdIzjpXPaZv1Se3w=="
+            "value": "sha256-pxECXfjp8oXDML8T9OtneoPEAGSVIAeRehZvar/lIK8= sha384-aPKK+9rg8edr56Ft2cUsUglgWJXVA+JRjUI0q+3nMgiWfrwH1JWUTiyAUmyGtO97 sha512-+kuuajtKVd8rYBRX4gr1fVt2VzcQHhHpMJoeV8RouSZRQ7T9q/UrbPQg6odlEnL/xKTHghn2O6U0hBuS5WHBKA=="
         },
         {
             "name": "crossorigin",

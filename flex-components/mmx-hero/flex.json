@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -1029,7 +1029,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-20z9hCKwiEAgoXMRAWNnMtLCN0CUqPc9V4lWX+VvIpo= sha384-bYaUi9r7/c++tRFQHcCSqDQaZxAEfHl0h5eOKthIPp76n7wE/ANtE1Ki8LYVy2D7 sha512-YncjoycGxkw5GZiIogtHnz4zzsQjh6sMxUXf4dnE4o0qKTSCDWnJxE0dzvCVFUgyo8RTBZB7cb1FuyzUXN90+g=="
+					"value": "sha256-176x5f0ZfgL1SguE9MHSfK9EgYcjJE1ZaI3Hv35x76w= sha384-FegsVyrZhcrFEEwT9OxxpmWkxJKDGTGGD9rqHZ20bf1VzruEyUccPLAyuI1jVO1E sha512-OJMTBjCMAWWTucNttbztNHYiYTGHDf6ae/lrDc1KXxRi9r0vYREvh6RIfkQKL1bUc5m5wOKeejNP/vy45qy9DA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1048,12 +1048,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -1067,8 +1071,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-button": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-button": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

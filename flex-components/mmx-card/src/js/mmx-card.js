@@ -19,7 +19,7 @@ class MMX_Card extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {
@@ -373,12 +373,16 @@ class MMX_ProductCard extends MMX_Card {
 					part="image main-image"
 					src="${MMX.encodeEntitiesURI(mainImage.url)}"
 					alt=""
+					width="${MMX.encodeEntities(mainImage.width)}"
+					height="${MMX.encodeEntities(mainImage.height)}"
 				>
 				${hoverImage?.url ? /*html*/`
 					<img
 						part="image hover-image"
 						data-src="${MMX.encodeEntitiesURI(hoverImage.url)}"
 						alt=""
+						width="${MMX.encodeEntities(hoverImage.width)}"
+						height="${MMX.encodeEntities(hoverImage.height)}"
 					>
 				` : ''}
 			</div>

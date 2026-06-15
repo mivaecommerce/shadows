@@ -2,7 +2,7 @@
 	"code": "mmx-accordion",
 	"name": "Accordion",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-accordion",
 	"category": "accordion",
@@ -927,7 +927,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Wr1Yp0v+o1P/7c0TsjvaR3bhYXJduCJWVqPWfoyr/ps= sha384-eZ8jwdco1CcgPh1E8Ya4d1YZk3MKFdJXbmJ0gC6N/9JdKUlwbm1I2e57PFxMyrE1 sha512-vU5lG0YrzrE8FuVxA+5uh7w4GnTMFSS3FnCMBI61W27Xj8uXeQS1o2ognluY2htghLHTLoFLLIhZz8jcFIdGLA=="
+					"value": "sha256-mVfNjTknvLJ4kjg2goldD6xkhDlF6ZLg7KI7BkgVHHI= sha384-MLqrjX8OgkkBRvz5HnzhlwTLv+NX0Vt1M/BtBlJ7CZBSDQldY2cAb9CmrzwWHj3E sha512-A+TjMuzCFGLjrmnbXB0hl6oMQCAHYKHvVle8cKFpNndd77wRfK3oxO4zLUXYdcGrzAlvDDQnpybWkZNRHNfMrQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -946,12 +946,12 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
-				},
-				{
 					"name": "rel",
 					"value": "stylesheet"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -965,8 +965,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-icons": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-icons": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

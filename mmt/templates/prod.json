@@ -6,11 +6,19 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "form_name": {
                         "value": "add"
+                    },
+                    "initial_display": {
+                        "initial_height": {
+                            "value": "auto"
+                        },
+                        "initial_height_amount": {
+                            "visible": 0
+                        }
                     },
                     "update_url_with_variant_id": {
                         "value": 1
@@ -2794,11 +2802,19 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "empty_results_message": {
                         "visible": 0
+                    },
+                    "initial_display": {
+                        "initial_height": {
+                            "value": "auto"
+                        },
+                        "initial_height_amount": {
+                            "visible": 0
+                        }
                     },
                     "search": {
                         "index": {

@@ -2,7 +2,7 @@
 	"code": "mmx-product-fitment-list",
 	"name": "Product Fitment List",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-fitment-list",
 	"category": "product-fitment-list",
@@ -418,7 +418,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Qm1LxZDCntFmq7GXQvLz+2lI8UdlhTQoLUVORH13dI8= sha384-Kf299oMkarp4ugOIg3Ljb//AuWmRzC024EO+7erOblqcvD4WGPnIdt8z7dBfYK5W sha512-NIDPiqyzdie3/PI/PuLuoGugdJgh5vyrjBW7GBTIh8isqZ242VxNixZfAHOkXNIysCBztR/f7fg8e0gJaf9BWg=="
+					"value": "sha256-xmJ3N4w2CFwokhFINkAs8DWxK7Eafmbx6UswE2yyC00= sha384-dRzBJBCkREGEN8VSilAkHCdhCG6QXsOcc0+eN/e61pZFpj8V570rl6beCAP7mDts sha512-Xp6Iol528kSdYtPEAHqn3Dplqp16NYFiuKycIKZmCKUHkklftUdaKPBMX55NY5UABv1d37sj9whh/RwgDW/+7Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -437,12 +437,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -456,8 +460,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-messages": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-messages": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

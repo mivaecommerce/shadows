@@ -21,3 +21,7 @@
 	<mvt:assign name="l.settings:instance:text:subheading:text:textsettings:fields:normal:font:style" value="''" />
 	<mvt:assign name="l.settings:instance:text:description:font:style" value="''" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.02'">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height:value" value="'auto'" />
+</mvt:if>

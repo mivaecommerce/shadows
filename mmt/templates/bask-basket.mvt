@@ -76,7 +76,6 @@
 								</mvt:if>
 								<div class="t-basket__product-attributes mm-theme-typography-paragraph-extra-small">
 									<div class="t-basket__product-attr-options">
-										<mvt:assign name="l.settings:group:selectedAttributes" value="asciichar(123)"/>
 										<mvt:assign name="g.quote_item" value="'0'" />
 										<mvt:foreach iterator="option" array="group:options">
 											<mvt:if expr="l.settings:option:attr_code EQ 'Part of Quote'">
@@ -102,19 +101,15 @@
 												<mvt:if expr="l.settings:option:option_id">
 													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:opt_code )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:opt_prompt;</span>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:opt_code) $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data">
 													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data;</span>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data) $ asciichar(34) $ ', '" />
 												<mvt:elseif expr="NOT ISNULL l.settings:option:data_long">
 													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:data_long )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;: &mvt:option:data_long;</span>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:data_long) $ asciichar(34) $ ', '" />
 												<mvt:else>
 													<mvt:assign name="l.settings:group:restore:params" value="l.settings:group:restore:params $ '&Product_Attributes[' $ encodeattribute( l.settings:group:option_counter ) $ ']:value=' $ encodeattribute( l.settings:option:attr_prompt )" />
 													<span class="o-layout--grow">&mvt:option:attr_prompt;</span>
-													<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_code) $ asciichar(34) $ ':' $ asciichar(34) $ encodejavascriptstring(l.settings:option:attr_prompt) $ asciichar(34) $ ', '" />
 												</mvt:if>
 											</span>
 										</mvt:foreach>
@@ -178,11 +173,8 @@
 							</td>
 							<td class="t-basket__product-action-bar">
 								<span class="t-basket__product-edit-save">
-									<mvt:assign name="l.settings:group:selectedAttributes" value="l.settings:group:selectedAttributes $ asciichar(125)" />
-									<mvt:assign name="l.settings:group:selectedAttributes" value="glosub(l.settings:group:selectedAttributes, ', ' $ asciichar(125), asciichar(125))" />
-
-										<mvt:if expr="l.settings:group:product:productsubscriptionsettings:enabled OR miva_array_elements(l.settings:loaded_product_attributes) GT 0">
-											<button class="x-edit-basket-item mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-edit-basket-item data-basket-group="&mvte:group:group_id;" data-product-code="&mvte:group:code;" data-product-image="&mvte:group:imagetypes:main;" data-product-name="&mvte:group:name;" data-product-quantity="&mvte:group:quantity;" data-product-price="&mvte:group:formatted_total;" data-selected-attributes="&mvte:group:selectedAttributes;" data-selected-subscription="&mvte:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
+									<mvt:if expr="l.settings:group:product:productsubscriptionsettings:enabled OR miva_array_elements(l.settings:loaded_product_attributes) GT 0">
+											<button class="x-edit-basket-item mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" data-edit-basket-item data-basket-group="&mvte:group:group_id;" data-product-code="&mvte:group:code;" data-product-image="&mvte:group:imagetypes:main;" data-product-name="&mvte:group:name;" data-product-quantity="&mvte:group:quantity;" data-product-price="&mvte:group:formatted_total;" data-selected-attributes-params="&mvte:group:restore:params;" data-selected-subscription="&mvte:group:productsubscriptionterm:descrip;" aria-label="Edit &mvte:group:name; Options">Edit</button>
 										<template>
 											<mvt:item name="product_attributes" param="group:product_id" />
 										</template>

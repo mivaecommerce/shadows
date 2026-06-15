@@ -68,7 +68,7 @@
 			<div class="o-layout__item u-width-6 u-width-5--xl u-text-right t-site-header__secure">
 				<span class="u-text-uppercase mm-theme-typography-paragraph-extra-small">
 					<span class="u-icon-secure" aria-hidden="true"></span>
-					Secure Checkout</span>
+					Secure Checkout
 				</span>
 			</div>
 		</div>

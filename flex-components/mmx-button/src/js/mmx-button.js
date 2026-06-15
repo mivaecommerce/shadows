@@ -43,7 +43,7 @@ class MMX_Button extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

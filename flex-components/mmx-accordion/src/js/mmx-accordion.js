@@ -9,7 +9,7 @@ class MMX_Accordion extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 

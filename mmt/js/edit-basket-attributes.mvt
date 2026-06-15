@@ -25,7 +25,7 @@
 				let product_data = Object.assign({}, product_data_generic, {
 					product_code: this.getAttribute('data-product-code')
 				});
-				let selectedAttributes = JSON.parse(this.getAttribute('data-selected-attributes'));
+				let selectedAttributeParams = new URLSearchParams(this.getAttribute('data-selected-attributes-params') || '');
 				let subscriptionTerm = this.getAttribute('data-selected-subscription');
 
 				dialogContent.querySelector('input[name="Basket_Group"]').value = this.getAttribute('data-basket-group');
@@ -38,22 +38,55 @@
 				product_attribute_content.innerHTML = '';
 				product_attribute_content.appendChild(product_attribute_template.content.cloneNode(true));
 
-				for (const key in selectedAttributes) {
-					if (selectedAttributes.hasOwnProperty(key)) {
-						let attributes = product_attribute_content.querySelectorAll('[data-attribute="' + key.toLowerCase() + '"]');
+				const applyValueToFields = (fields, value) => {
+					fields.forEach(field => {
+						if (field.type === 'checkbox') {
+							field.checked = field.value === 'on' || field.value === value;
+						}
+						else if (field.type === 'radio') {
+							field.checked = field.value === value;
+						}
+						else {
+							field.value = value;
+						}
+					});
+				};
 
-						attributes.forEach(attribute => {
-							if (attribute.type !== 'checkbox' && attribute.type !== 'radio') {
-								attribute.value = selectedAttributes[key];
-							}
-							else if (attribute.type === 'checkbox' && attribute.value === 'on') {
-								attribute.checked = true;
-							}
-							else if (attribute.type === 'radio' && attribute.value === selectedAttributes[key]) {
-								attribute.checked = true;
-							}
-						});
+				const applyAttributeValueByField = (field, fieldValue, value) => {
+					if (!fieldValue) {
+						return false;
 					}
+
+					const input = product_attribute_content.querySelector(`input[type="hidden"][name$=":${field}"][value="${fieldValue}"]`);
+
+					if (!input) {
+						return false;
+					}
+
+					const valueInputName = input.name.replace(`:${field}`, ':value');
+					const valueInputs = product_attribute_content.querySelectorAll(`[name="${valueInputName}"]`);
+
+					applyValueToFields(valueInputs, value);
+
+					return true;
+				};
+
+				for (const [paramName, paramValue] of selectedAttributeParams.entries()) {
+					const match = paramName.match(/^Product_Attributes\[(\d+)\]:value$/i);
+
+					if (!match) {
+						continue;
+					}
+
+					const index = match[1];
+					const templateCode = selectedAttributeParams.get(`Product_Attributes[${index}]:template_code`);
+					const code = selectedAttributeParams.get(`Product_Attributes[${index}]:code`);
+
+					if (applyAttributeValueByField('template_code', templateCode, paramValue)) {
+						continue;
+					}
+
+					applyAttributeValueByField('code', code, paramValue);
 				}
 
 				if (subscriptionTerm !== '') {

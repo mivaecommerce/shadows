@@ -22,7 +22,7 @@ class MMX_ProductFitmentList extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	// MMX_Element Render Life Cycle
@@ -44,7 +44,7 @@ class MMX_ProductFitmentList extends MMX_Element {
 	styles() {
 		return /*css*/`
 			:host {
-				--mmx-product-fitment-list__list-column-count: ${this.#facet?.fields?.length};
+				--mmx-product-fitment-list__list-column-count: ${this.#getFitmentListFields().length};
 				--mmx-product-fitment-list__list-header-divider-color: ${MMX.valueIsEmpty(this.#tableStyles?.header_divider_color?.value) ? 'transparent' : this.#tableStyles.header_divider_color.value};
 				--mmx-product-fitment-list__list-background-color: ${MMX.valueIsEmpty(this.#tableStyles?.striped_background_color?.value) ? 'transparent' : this.#tableStyles.striped_background_color.value};
 			}
@@ -182,6 +182,10 @@ class MMX_ProductFitmentList extends MMX_Element {
 		this.forceUpdate();
 	}
 
+	#getFitmentListFields() {
+		return this.#facet?.fields?.filter(field => field.fitlist !== 'hidden') ?? [];
+	}
+
 	// Rendering Functions
 	#shouldRender() {
 		if (!MMX.valueIsEmpty(this.#errorMessage)) {
@@ -229,7 +233,7 @@ class MMX_ProductFitmentList extends MMX_Element {
 	#renderFitmentListHeader() {
 		return /*html*/`
 			<div part="list-header" class="mmx-product-fitment-list__list-header">
-				${this.#facet.fields.map(field => this.#renderFitmentListHeaderColumn(field)).join('')}
+				${this.#getFitmentListFields().map(field => this.#renderFitmentListHeaderColumn(field)).join('')}
 			</div>
 		`;
 	}
@@ -255,14 +259,20 @@ class MMX_ProductFitmentList extends MMX_Element {
 	}
 
 	#renderFitmentListContentEntry(fitment) {
+		const fields = this.#getFitmentListFields();
+
 		return /*html*/`
 			<div class="mmx-product-fitment-list__list-content">
-				${fitment.split('>').map((value, index) => this.#renderFitmentListContentEntryColumn(this.#facet.fields[index], value)).join('')}
+				${fitment.split('>').map((value, index) => this.#renderFitmentListContentEntryColumn(fields[index], value)).join('')}
 			</div>
 		`;
 	}
 
 	#renderFitmentListContentEntryColumn(field, fitment_value) {
+		if (!field) {
+			return '';
+		}
+
 		const header_theme_available = this.#tableStyles?.header_typography?.theme_available ?? false;
 		const content_theme_available = this.#tableStyles?.content_typography?.theme_available ?? false;
 

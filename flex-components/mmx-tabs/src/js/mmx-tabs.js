@@ -18,7 +18,7 @@ class MMX_Tabs extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#initialize();
 		this.#bindComponentEvents();
 	}
@@ -228,7 +228,7 @@ class MMX_Tab extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#bindComponentEvents();
 	}
 
@@ -281,7 +281,7 @@ class MMX_TabPanel extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

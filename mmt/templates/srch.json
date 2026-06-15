@@ -6,13 +6,21 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "empty_results_message": {
                         "source": "markdown",
                         "value": "There were no products that matched your search.",
                         "visible": 1
+                    },
+                    "initial_display": {
+                        "initial_height": {
+                            "value": "auto"
+                        },
+                        "initial_height_amount": {
+                            "visible": 0
+                        }
                     },
                     "search": {
                         "index": {

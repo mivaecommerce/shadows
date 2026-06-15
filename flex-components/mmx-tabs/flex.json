@@ -2,7 +2,7 @@
 	"code": "mmx-tabs",
 	"name": "MMX Tabs",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-tabs",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-CSJyGOT+Vr5HSF/ReaCr3ZNWvUbYrHMgo9WVMoK/ia4= sha384-AWxlWkIwcd8DWdgAUtW658HhFAfSEM2pWc9lfLNUYXHNi2JL4BY3yFkGg/tJ/Vrm sha512-xmGYhA6xJz6iSJchZOmWkkWsfiyAK9Zn71msqyDQcVxa0chvUhm0Upv4R5e6Y7gpJ+WTr59qkYHCe34Nhb++tA=="
+					"value": "sha256-i4cWiOkXZWwuopF3MDhal3mmwH9xTvsGUndp3fyR5Qg= sha384-s5CBTon0UNmYwG2hs4HyGIFFBNGaXfGNkzoIwga8Tx2+j7Iugg6LSqPaCJDezZOC sha512-P6+CWqiQ9tfRutfNx1hm7o1aiYNjf1r/QXslJhEBzMFFVdicOlOUcLUNFB/pA9V7CA4p99hs6vOObulMSwmuSw=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,12 +35,12 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
-				},
-				{
 					"name": "rel",
 					"value": "stylesheet"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01"
+		"mmx-base": "=26.01.02"
 	}
 }

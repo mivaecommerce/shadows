@@ -271,7 +271,6 @@ class MMX_FormInputAutoHeight {
 MMX_FormInputAutoHeight.autoInit();
 
 class MMX_FormInputRange extends MMX_Element {
-	#internals;
 	static formAssociated = true;
 
 	static get props () {
@@ -321,8 +320,7 @@ class MMX_FormInputRange extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
-		this.#internals = this.attachInternals();
+		this.makeComponent();
 		this.#setFormValue();
 		this.#bindComponentEvents();
 	}
@@ -470,41 +468,21 @@ class MMX_FormInputRange extends MMX_Element {
 		this.#setValidity();
 		const formData = new FormData();
 		formData.append(this.name, this.value);
-		this.#internals.setFormValue(formData);
+		this.setFormValue(formData);
 	}
 
 	#setValidity() {
 		if (this.#inputLow()?.validity?.valid === false) {
-			this.#internals.setValidity(this.#inputLow().validity, this.#inputLow().validationMessage);
+			this.setValidity(this.#inputLow().validity, this.#inputLow().validationMessage);
 			return;
 		}
 
 		if (this.#inputHigh()?.validity?.valid === false) {
-			this.#internals.setValidity(this.#inputHigh().validity, this.#inputHigh().validationMessage);
+			this.setValidity(this.#inputHigh().validity, this.#inputHigh().validationMessage);
 			return;
 		}
 
-		this.#internals.setValidity({}, '');
-	}
-
-	checkValidity() {
-		return this.#internals.checkValidity();
-	}
-
-	reportValidity() {
-		return this.#internals.reportValidity();
-	}
-
-	setValidity(...args) {
-		return this.#internals.setValidity(...args);
-	}
-
-	get validationMessage() {
-		return this.#internals.validationMessage;
-	}
-
-	get validity() {
-		return this.#internals.validity;
+		this.setValidity({}, '');
 	}
 
 	get name() {
@@ -656,7 +634,6 @@ if (!customElements.get('mmx-form-input-range')) {
 }
 
 class MMX_FormInputQuantity extends MMX_Element {
-	#internals;
 	static formAssociated = true;
 
 	static get props () {
@@ -693,8 +670,7 @@ class MMX_FormInputQuantity extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
-		this.#internals = this.attachInternals();
+		this.makeComponent();
 		this.#setFormValue();
 	}
 
@@ -798,36 +774,16 @@ class MMX_FormInputQuantity extends MMX_Element {
 		this.#setValidity();
 		const formData = new FormData();
 		formData.append(this.name, this.value);
-		this.#internals.setFormValue(formData);
+		this.setFormValue(formData);
 	}
 
 	#setValidity() {
 		if (this.#inputQuantity()?.validity?.valid === false) {
-			this.#internals.setValidity(this.#inputQuantity().validity, this.#inputQuantity().validationMessage);
+			this.setValidity(this.#inputQuantity().validity, this.#inputQuantity().validationMessage);
 			return;
 		}
 
-		this.#internals.setValidity({}, '');
-	}
-
-	checkValidity() {
-		return this.#internals.checkValidity();
-	}
-
-	reportValidity() {
-		return this.#internals.reportValidity();
-	}
-
-	setValidity(...args) {
-		return this.#internals.setValidity(...args);
-	}
-
-	get validationMessage() {
-		return this.#internals.validationMessage;
-	}
-
-	get validity() {
-		return this.#internals.validity;
+		this.setValidity({}, '');
 	}
 
 	get name() {
@@ -924,7 +880,6 @@ class MMX_Combobox extends MMX_Element {
 	#dispatchedValue = '';
 	#option = {};
 	#options = [];
-	#internals;
 	static formAssociated = true;
 
 	static get props () {
@@ -963,8 +918,7 @@ class MMX_Combobox extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
-		this.#internals = this.attachInternals();
+		this.makeComponent();
 		this.#bindEvents();
 		this.#setOptions();
 		this.#setValue(this.getPropValue('value'));
@@ -1481,7 +1435,7 @@ class MMX_Combobox extends MMX_Element {
 		this.#setValidity();
 		const formData = new FormData();
 		formData.append(this.name, this.value);
-		this.#internals.setFormValue(formData);
+		this.setFormValue(formData);
 	}
 
 	#setValidity() {
@@ -1492,34 +1446,14 @@ class MMX_Combobox extends MMX_Element {
 		const selectButton = this.#selectButton() ?? undefined;
 
 		if (isMissing) {
-			this.#internals.setValidity({ valueMissing: true }, 'Please select an option.', selectButton);
+			this.setValidity({ valueMissing: true }, 'Please select an option.', selectButton);
 		}
 		else if (isInvalidSelection) {
-			this.#internals.setValidity({ customError: true }, 'Please select a valid option.', selectButton);
+			this.setValidity({ customError: true }, 'Please select a valid option.', selectButton);
 		}
 		else {
-			this.#internals.setValidity({});
+			this.setValidity({});
 		}
-	}
-
-	checkValidity() {
-		return this.#internals.checkValidity();
-	}
-
-	reportValidity() {
-		return this.#internals.reportValidity();
-	}
-
-	setValidity(...args) {
-		return this.#internals.setValidity(...args);
-	}
-
-	get validationMessage() {
-		return this.#internals.validationMessage;
-	}
-
-	get validity() {
-		return this.#internals.validity;
 	}
 
 	get name() {

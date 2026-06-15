@@ -29,6 +29,18 @@
 
 <mvt:assign name="l.settings:form_name" value="ternary( ISNULL l.settings:instance:advanced:form_name:value, l.settings:component_id, l.settings:instance:advanced:form_name:value )" />
 
+<mvt:comment>Initial Display</mvt:comment>
+<mvt:if expr="l.settings:instance:advanced:initial_display:initial_height:value EQ 'auto'">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="'80vh'" />
+<mvt:elseif expr="l.settings:instance:advanced:initial_display:initial_height:value EQ 'none'">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:value" value="''" />
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:unit" value="''" />
+</mvt:if>
+
+<mvt:if expr="NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:value AND NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:unit">
+	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="l.settings:instance:advanced:initial_display:initial_height_amount:value $ l.settings:instance:advanced:initial_display:initial_height_amount:unit" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <form
 	action="&mvte:urls:BASK:auto;"
@@ -40,7 +52,11 @@
 		data-page-code="&mvte:page_code;"
 		data-flex-component="&mvte:instance_item:component_code;"
 		data-flex-item="&mvte:instance_item:item_code;"
-		style="margin-top: &mvte:instance:advanced:spacing:top:value;px; margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;"
+		style="
+			margin-top: &mvte:instance:advanced:spacing:top:value;px;
+			margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;
+			--mmx-initial-height: &mvte:instance:advanced:initial_display:initial_height_amount:formatted_value;;
+		"
 		class="mmx-wrapper"
 		data-init="script"
 		data-global-minibasket-url="&mvte:urls:BASK:auto;"

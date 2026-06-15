@@ -2,7 +2,7 @@
 	"code": "mmx-image-gallery",
 	"name": "MMX Image Gallery",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-gallery",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-8t5ghcCEqJ0/eVMxzkttU06AJ3Y6FT5++3eidt9KpqU= sha384-oURg1e8O3rKQ+I1k4U65o1dHRFGld75hcF6ptSDgr+n95SpCBvW3ZIayFD0Hmxie sha512-Pj+nAcShpnWU5b/g+aoj6w/ap5LYFSk+t/8DrcUYJ7UCMoWrpqsFLXHjlwUSACEj3IslEt0onfPsJh52DdpDiQ=="
+					"value": "sha256-LoVFJWYjAdFHnCjHveb11XYyHYbymLOzyaUfUhwy7sw= sha384-1IZPC6IFXjugYrYK7MXFNsCw0aT911Dt/ntvEtpGDZMybG2EfwEiRTlKCkZfXiAN sha512-1E6apCicILX5vGZW1wn0pouqYGvap2CFmIQchiimb4wgXk5Sjr9y3SyyM2QQ9dG0R4l4TlzGjBU4rcp88/PPZw=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,12 +35,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -54,8 +58,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-hero": "=26.01.01",
-		"mmx-hero-slider": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-hero": "=26.01.02",
+		"mmx-hero-slider": "=26.01.02"
 	}
 }

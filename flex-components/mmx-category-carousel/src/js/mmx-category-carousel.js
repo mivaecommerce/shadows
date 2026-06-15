@@ -37,7 +37,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 
@@ -100,6 +100,8 @@ class MMX_CategoryCarousel extends MMX_Element {
 			return;
 		}
 
+		this.setLifecycleReady(false);
+
 		MMX.Runtime_JSON_API_Call({
 			params: {
 				Function: 'Runtime_CategoryList_Load_Query',
@@ -158,6 +160,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 		}
 
 		this.categories = [];
+		this.setLifecycleReady(false);
 
 		MMX.Runtime_JSON_API_Call({
 			params: {

@@ -2,7 +2,7 @@
 	"code": "mmx-messages",
 	"name": "MMX Messages",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-messages",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-e6fmblNTWgRBGOtt1qU7yVNgcBMuKYRDOV6heaPJgeE= sha384-jeJaRjha7ehxwAFqUokD6kyYAiZxcyZMSjq1oSekVfDck/sdwNTil4FKVYh68c33 sha512-0weyMRCFxmFuWtWgu8ztColcJWsJ28kbKzpVwZwhbbM8Oxn9kc8PhzhXrD4Rp8AE19DTrBMCCgGuq1OYPJiApw=="
+					"value": "sha256-VbKf3l+yxoGq2HOkHABS74Dzzq7UoXA7b7A9qpjddjY= sha384-gjaOcn5KxTPDfvvExCZN6eUeLyXKHaT32nebPFtmauRwYCtAdBVIKleFpFEO+g+M sha512-xfbojfhXXeg07R+TVXpBDs4buDazxZmbKNU8TqVzXg+Itlb+tyNaa3Q/TELOeAqwthDnOcKmKbtB8vIN6MpHJg=="
 				},
 				{
 					"name": "crossorigin",
@@ -35,12 +35,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -54,6 +58,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01"
+		"mmx-base": "=26.01.02"
 	}
 }

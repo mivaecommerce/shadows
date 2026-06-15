@@ -61,11 +61,27 @@ class MMX_ImageAcross extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.#scroll_position		= 0;
 		this.#resize_observer		= new ResizeObserver(entries => this.setScrollPosition());
 		this.#intersection_observer	= new IntersectionObserver(entries => {this.calculateScrollPosition();}, { rootMargin: '100% 0%', threshold: 0 });
+		this.#bindComponentEvents();
 	}
+
+	#bindComponentEvents() {
+		const breakpoints = [
+			window.matchMedia('(min-width: 60em)'),
+			window.matchMedia('(min-width: 40em)')
+		];
+
+		breakpoints.forEach(breakpoint =>
+			breakpoint.addEventListener('change', this.#onBreakpointChange)
+		);
+	}
+
+	#onBreakpointChange = () => {
+		this.setImageHeight();
+	};
 
 	render() {
 		return /*html*/`
@@ -163,6 +179,13 @@ class MMX_ImageAcross extends MMX_Element {
 			return this.updateImageHeight(this.getPropValue('size'));
 		}
 
+		const minHeight = this.#visibleImagesMinHeight();
+
+		if (minHeight) {
+			this.updateImageHeight(`${minHeight}px`);
+			return;
+		}
+
 		this.#auto_image_height = 0;
 
 		this.imageElements().forEach(image => {
@@ -173,6 +196,40 @@ class MMX_ImageAcross extends MMX_Element {
 			}
 
 			image.addEventListener('img:load', this.#event_image_load);
+		});
+	}
+
+	#visibleImagesMinHeight() {
+		const images = this.imageElements();
+		const heights = images.map(image => this.#visibleImageHeight(image)).filter(height => height > 0);
+
+		if (heights.length !== images.length) {
+			return 0;
+		}
+
+		return Math.min(...heights);
+	}
+
+	#visibleImageHeight(image) {
+		const img = image?.slottedImage?.() ?? image?.shadowImage?.();
+
+		if (!img) {
+			return 0;
+		}
+
+		const source = this.#visiblePictureSource(img.closest('picture'));
+		const height = source?.getAttribute('height') ?? img.getAttribute('height');
+
+		return Number(height) || 0;
+	}
+
+	#visiblePictureSource(picture) {
+		if (!picture) {
+			return null;
+		}
+
+		return [...picture.querySelectorAll('source[media]')].find(source => {
+			return window.matchMedia(source.getAttribute('media')).matches;
 		});
 	}
 
@@ -243,6 +300,6 @@ class MMX_ImageAcross extends MMX_Element {
 	}
 }
 
-if (!customElements.get('mmx-image-across')){
+if (!customElements.get('mmx-image-across')) {
 	customElements.define('mmx-image-across', MMX_ImageAcross);
 }

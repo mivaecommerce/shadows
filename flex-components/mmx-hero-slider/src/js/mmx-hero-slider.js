@@ -128,7 +128,7 @@ class MMX_HeroSlider extends MMX_Element {
 			this.#intersection_observer.disconnect();
 		});
 
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 

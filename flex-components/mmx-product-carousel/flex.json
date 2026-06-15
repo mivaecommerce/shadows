@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -598,6 +598,45 @@
 	],
 	"advanced_properties": [
 		{
+			"code": "initial_display",
+			"prompt": "Initial Display",
+			"properties": [
+				{
+					"code": "initial_height",
+					"options": [
+						{
+							"text": "Auto",
+							"value": "auto"
+						},
+						{
+							"text": "Custom",
+							"value": "custom"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						}
+					],
+					"prompt": "Initial Height",
+					"type": "select"
+				},
+				{
+					"code": "initial_height_amount",
+					"placeholder": "ex. 100vh, 300px, 50%",
+					"prompt": "Initial Height Amount",
+					"type": "lengthunit",
+					"visibility_conditions": {
+						"initial_height": {
+							"value": [
+								"custom"
+							]
+						}
+					}
+				}
+			],
+			"type": "group"
+		},
+		{
 			"code": "spacing",
 			"prompt": "Spacing",
 			"properties": [
@@ -957,6 +996,11 @@
 	],
 	"defaults": {
 		"advanced": {
+			"initial_display": {
+				"initial_height": {
+					"value": "auto"
+				}
+			},
 			"settings": {
 				"additional_price": {
 					"value": "base"
@@ -1098,7 +1142,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-NNjOXILOjHmHtv2ADBvQqtbPn7iN3x2vXri0DSdX3us= sha384-3mMegtO3t06DS6KxQf+a2yTGDdlqh9qeOQvPNGT2GfRCClTuIDoRj87cslATR/0T sha512-TilVUz15IguZlFXxchpl7Pg+LGb/ZBvfhUhXiPhENNJswcGAYObsAk0FF3Rr7riR9rL6bpNtqc63aNOZCPwd2w=="
+					"value": "sha256-PcjNNuN7SM3TsBkGhVYL1DrDYGOA2on2CGhG64Z6CDU= sha384-43+rlNp4mOuwGW5v3BWJHcwVzYjYIz+ljcklKrd8tNKJy84MpLbYEp0vdWqqKBOJ sha512-HvI6gQiKtzv6gkZXXXefvRC+rhyNt7K9P24Z/ehTJJr/yYUQCgaesGH5Kv0kAsXy8KxQjbHv29oKR1wzCNQArA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1108,11 +1152,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01",
-		"mmx-button": "=26.01.01",
-		"mmx-hero": "=26.01.01",
-		"mmx-hero-slider": "=26.01.01",
-		"mmx-messages": "=26.01.01",
-		"mmx-text": "=26.01.01"
+		"mmx-base": "=26.01.02",
+		"mmx-button": "=26.01.02",
+		"mmx-hero": "=26.01.02",
+		"mmx-hero-slider": "=26.01.02",
+		"mmx-messages": "=26.01.02",
+		"mmx-text": "=26.01.02"
 	}
 }

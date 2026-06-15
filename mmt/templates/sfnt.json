@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -171,7 +171,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -331,9 +331,17 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
+                    "initial_display": {
+                        "initial_height": {
+                            "value": "auto"
+                        },
+                        "initial_height_amount": {
+                            "visible": 0
+                        }
+                    },
                     "settings": {
                         "additional_price": {
                             "value": "base",
@@ -495,7 +503,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -751,7 +759,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -869,7 +877,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -983,7 +991,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -1097,7 +1105,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {
@@ -1305,7 +1313,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.01,
-                    "settings_version": "26.01.01"
+                    "settings_version": "26.01.02"
                 },
                 "advanced": {
                     "content_theme": {

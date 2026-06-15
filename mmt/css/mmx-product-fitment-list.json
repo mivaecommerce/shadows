@@ -9,12 +9,16 @@
             "value": "text/css"
         },
         {
-            "name": "media",
-            "value": "all"
+            "name": "rel",
+            "value": "preload"
         },
         {
-            "name": "rel",
-            "value": "stylesheet"
+            "name": "as",
+            "value": "style"
+        },
+        {
+            "name": "data-mmx-resource-type",
+            "value": "adoptable"
         },
         {
             "name": "integrity",

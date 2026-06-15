@@ -21,7 +21,7 @@ class MMX_TextEditor extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	render() {

@@ -2,7 +2,7 @@
 	"code": "mmx-text-editor",
 	"name": "Rich Text Editor",
 	"type": "component",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-text-editor",
 	"category": "text-editor",
@@ -94,7 +94,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-GjamnrTRJ8f5qt8J4es9zB2XQAjQ/L5mSyLguqV6bXg= sha384-SqO2limJA/606kaEaaFX/CG2W5sdGeCN27qHryo3Jux2GuQiuJ3qvNk/vCq0eUQF sha512-ASq0g7fpIbipk34dhQuJJHmEgLYbuEtOabPqdt7XusbuVuarZoIzOuWK9B7lKmxjlQuYlA4ERWAi8h6IpgDdOA=="
+					"value": "sha256-TyIaR6RrMD66RRhkp7e9g+Gu2iNoRYtAxbF/w0xwY5s= sha384-mu4sVsE6BaApgIRQwxuiFGIyDWx4t/uciysCXm/p2z/cFnnzzdCCoIa7s28KtI4i sha512-vE9KS8FcYOcEjI+vd6kHweo0UYyY7fzcvPDWZQTLDwH5yRoBfFPOkHhozhnhTLv+gZYjAcXoLXOWuJK0Leepjw=="
 				},
 				{
 					"name": "crossorigin",
@@ -113,12 +113,16 @@
 					"value": "text/css"
 				},
 				{
-					"name": "media",
-					"value": "all"
+					"name": "rel",
+					"value": "preload"
 				},
 				{
-					"name": "rel",
-					"value": "stylesheet"
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
 				},
 				{
 					"name": "integrity",
@@ -132,6 +136,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01"
+		"mmx-base": "=26.01.02"
 	}
 }

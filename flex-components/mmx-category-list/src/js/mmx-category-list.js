@@ -15,10 +15,11 @@ class MMX_CategoryList extends MMX_Element {
 	#categories = [];
 	#card = {};
 	#errorMessage = '';
+	lifecycleReady = false;
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 		this.bindRevealElement();
 	}
 

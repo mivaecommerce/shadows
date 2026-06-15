@@ -2,7 +2,7 @@
 	"code": "mmx-icons",
 	"name": "MMX Icons",
 	"type": "library",
-	"version": "26.01.01",
+	"version": "26.01.02",
 	"managed": true,
 	"resourcegroup_code": "mmx-icons",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-Po0vCe5ro0WLb4ezuCboakPdYx1DcBdj7J1qGUk8UzM= sha384-rj412NgUt6ruB+D5BySup5I8q8PTCBjKjjdQ99HcRXB18BfwWVqvDT20haNOgHPT sha512-LCKYt/tXfumtg+BOoBwImSN6UPfmy/l5OeM8CvYIQ2yqx+L13EI8NfTgrrXpyXcnnS3gg7edyutFKnabrctfhA=="
+					"value": "sha256-F1sHd2uLNf179DXrX/YS9+njdOVjOJgWJVXk8S4XkSs= sha384-E7MaAikbvZyIUtpyGoa7C0jdIK9p+ymTtSi4L3of/ZsfcbjQ5EcvOkN6gk4ZoWoZ sha512-IbCvDkPTnSsr4xoG8vR4txKHrO2U71WxqZDfrq6LsZe1/cbpeP8F1zox9L/rKp/McLiN3VH71oZcNbLfXPWloQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -26,6 +26,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.01"
+		"mmx-base": "=26.01.02"
 	}
 }

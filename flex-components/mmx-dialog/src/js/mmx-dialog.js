@@ -17,7 +17,7 @@ class MMX_Dialog extends MMX_Element {
 
 	constructor() {
 		super();
-		this.makeShadow();
+		this.makeComponent();
 	}
 
 	// Render

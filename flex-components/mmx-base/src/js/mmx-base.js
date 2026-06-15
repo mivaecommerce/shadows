@@ -528,6 +528,157 @@ class MMX_FetchQueue {
 
 MMX.fetchQueue = new MMX_FetchQueue();
 
+class MMX_StyleManager {
+	#cache = new Map();
+
+	// Main Functions
+	adoptStyleSheets(shadowRoot, resourceCodes = []) {
+		if (!shadowRoot || !(shadowRoot instanceof ShadowRoot)) {
+			return Promise.resolve(null);
+		}
+
+		const styleSheets = this.#resolveStyleSheets(resourceCodes);
+		const linkSheets = this.#resolveLinkSheets(resourceCodes);
+
+		return Promise.all([...styleSheets, ...linkSheets])
+			.then((sheets) => {
+				shadowRoot.adoptedStyleSheets = sheets.filter(sheet => this.#isAdoptableSheet(sheet));
+			});
+	}
+
+	// Cache
+	#addCssToCache(key, css) {
+		if (!this.#cache.has(key)) {
+			this.#cache.set(key, this.#createSheet(css, key));
+		}
+
+		return this.#cache.get(key);
+	}
+
+	#createSheet(css, layer = 'mmx-adopted') {
+		css = /*css*/`
+			@layer ${layer} {
+				${css}
+			}
+		`;
+
+		const sheet = new CSSStyleSheet();
+		return sheet.replace(css);
+	}
+
+	// Links
+	#resolveLinkSheets(resourceCodes = []) {
+		return this.#getIncludedLinkElements(resourceCodes).map((link) => {
+			return this.#getStyleSheetFromLink(link);
+		});
+	}
+
+	#getIncludedLinkElements(resourceCodes) {
+		return this.#getAllLinkElements().filter(link => {
+			return this.#shouldIncludeElement(link, resourceCodes);
+		});
+	}
+
+	#getAllLinkElements() {
+		const selector = 'link[href][data-resource-code]';
+		const links = [...document.querySelectorAll(selector)];
+
+		[...document.querySelectorAll('template.mmx-resources')].forEach(template => {
+			const templateLinks = template.content.querySelectorAll(selector);
+			if (templateLinks.length) {
+				links.push(...templateLinks);
+			}
+		});
+
+		return links;
+	}
+
+	#shouldIncludeElement(element, resourceCodes = []) {
+		return this.isAdoptableResource(element) && resourceCodes.includes(this.#getStyleSheetKey(element));
+	}
+
+	// Styles
+	#resolveStyleSheets(resourceCodes = []) {
+		return this.#getIncludedStyleElements(resourceCodes).map((style) => {
+			return this.#getStyleSheetFromStyle(style);
+		});
+	}
+
+	#getIncludedStyleElements(resourceCodes = []) {
+		return this.#getAllStyleElements().filter(style => {
+			return this.#shouldIncludeElement(style, resourceCodes);
+		});
+	}
+
+	#getAllStyleElements() {
+		return [...document.querySelectorAll('style[data-resource-code]')];
+	}
+
+	// CSSStyleSheet Building and Caching
+	isAdoptableResource(element) {
+		return element instanceof Element && element.matches?.('[data-mmx-resource-type~="adoptable"]');
+	};
+
+	#isAdoptableSheet(sheet) {
+		return sheet instanceof CSSStyleSheet;
+	}
+
+	#getStyleSheetKey(element) {
+		return element.dataset.resourceCode;
+	}
+
+	#getStyleSheetFromStyle(style) {
+		const key = this.#getStyleSheetKey(style);
+
+		if (!key) {
+			return null;
+		}
+
+		return this.#addCssToCache(key, style.textContent);
+	}
+
+	#getStyleSheetFromLink(link) {
+		const key = this.#getStyleSheetKey(link);
+
+		if (!(link instanceof HTMLElement) || !key) {
+			return Promise.resolve(null);
+		}
+
+		if (!this.#cache.has(key)) {
+			this.#cache.set(key, this.#fetchCssFromLink(link)
+				.then(css => this.#createSheet(css, key))
+				.catch(error => {
+					this.#cache.delete(key);
+					throw error;
+				}));
+		}
+
+		return this.#cache.get(key);
+	}
+
+	#fetchCssFromLink(link) {
+		const options = {};
+
+		if (link.integrity) {
+			options.integrity = link.integrity;
+		}
+
+		if (link.hasAttribute('crossorigin')) {
+			options.credentials = link.crossOrigin === 'use-credentials' ? 'include' : 'same-origin';
+		}
+
+		return fetch(link.href, options)
+			.then(response => {
+				if (!response.ok) {
+					throw new Error(`Failed to fetch stylesheet: ${link.href} (${response.status})`);
+				}
+				return response.text();
+			});
+	}
+}
+
+MMX.styleManager = new MMX_StyleManager();
+
 MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}, cached = false} = {}) => {
 	jsonUrl = jsonUrl ?? window?.json_url;
 	storeCode = storeCode ?? window?.Store_Code;
@@ -633,6 +784,7 @@ class MMX_Element extends HTMLElement {
 	styleResourceCodes = ['mmx-base'];
 	hideOnEmpty = false;
 	renderUniquely = false;
+	lifecycleReady = true;
 
 	static baseProps = {
 		init: {
@@ -657,14 +809,25 @@ class MMX_Element extends HTMLElement {
 		super();
 	}
 
+	makeComponent() {
+		this.makeShadow();
+		this.makeStates();
+	}
+
 	makeShadow() {
 		this.attachShadow({
 			mode: 'open'
 		});
 	}
 
+	makeStates() {
+		this.makeInternals();
+		this.setInitialStates();
+	}
+
 	connectedCallback() {
 		// Render Immediately
+		this.#adoptStyleSheets();
 		this.renderTemplate();
 		this.connected?.();
 
@@ -723,9 +886,77 @@ class MMX_Element extends HTMLElement {
 	}
 
 	/**
-	 * Render Functions
+	 * Internals
 	 */
 
+	#internals;
+
+	makeInternals() {
+		try {
+			this.#internals = this.attachInternals();
+		}
+		catch {
+			// already attached
+		}
+	}
+
+	/**
+	 * Form
+	 */
+
+	setFormValue(...args) {
+		return this.constructor.formAssociated ? this.#internals?.setFormValue(...args) : undefined;
+	}
+
+	setValidity(...args) {
+		return this.constructor.formAssociated ? this.#internals?.setValidity(...args) : undefined;
+	}
+
+	checkValidity() {
+		return this.constructor.formAssociated ? this.#internals?.checkValidity() : undefined;
+	}
+
+	reportValidity() {
+		return this.constructor.formAssociated ? this.#internals?.reportValidity() : undefined;
+	}
+
+	get validity() {
+		return this.constructor.formAssociated ? this.#internals?.validity : undefined;
+	}
+
+	get validationMessage() {
+		return this.constructor.formAssociated ? this.#internals?.validationMessage : undefined;
+	}
+
+	/**
+	 * States
+	 */
+
+	setInitialStates() {
+		this.addStates(['mmx', 'initial']);
+	}
+
+	addState(state) {
+		this.#internals?.states?.add?.(state);
+	}
+
+	addStates(states = []) {
+		states.forEach(state => {
+			this.#internals?.states?.add?.(state);
+		});
+	}
+
+	removeState(state) {
+		this.#internals?.states?.delete?.(state);
+	}
+
+	clearStates() {
+		this.#internals?.states?.clear?.();
+	}
+
+	/**
+	 * Render Functions
+	 */
 	renderOnFrame() {
 		if (this.requestId) {
 			window.cancelAnimationFrame(this.requestId);
@@ -755,8 +986,23 @@ class MMX_Element extends HTMLElement {
 		this.beforeRender?.();
 		MMX.renderTemplate(element, template);
 		this.lastTemplate = template;
+
+		this.addState('rendered');
+
+		if (this.isLifecycleReady()) {
+			this.addState('ready');
+		}
+
 		this.afterRender?.();
 		this.debouncedDispatchContentUpdated();
+	}
+
+	isLifecycleReady() {
+		return this.lifecycleReady;
+	}
+
+	setLifecycleReady(value = true) {
+		this.lifecycleReady = Boolean(value);
 	}
 
 	debouncedDispatchContentUpdated = MMX.debounce(() => {
@@ -795,6 +1041,8 @@ class MMX_Element extends HTMLElement {
 	}
 
 	forceUpdate() {
+		this.setLifecycleReady(true);
+
 		if (!this.lastTemplate) {
 			return;
 		}
@@ -1162,6 +1410,13 @@ class MMX_Element extends HTMLElement {
 	 * Stylesheet Functions
 	 */
 
+	#adoptStyleSheets() {
+		return MMX.styleManager.adoptStyleSheets(this.shadowRoot, this.styleResourceCodes)
+			.finally(() => {
+				this.addStates(['styled', 'adopted-styles']);
+			});
+	}
+
 	renderStyles() {
 		return /*html*/`
 			${this.renderStyleElements()}
@@ -1174,10 +1429,14 @@ class MMX_Element extends HTMLElement {
 
 	renderStyleElements() {
 		const mmxStyleElements = [...document.querySelectorAll('style[data-resource-code]')].filter(style => {
-			return this.shouldIncludeStyleElement(style);
+			return this.#shouldRenderStyleElement(style);
 		});
 
 		return mmxStyleElements.map(this.renderStyleElement).join('\n');
+	}
+
+	#shouldRenderStyleElement(style) {
+		return this.shouldIncludeStyleElement(style) && !MMX.styleManager.isAdoptableResource(style);
 	}
 
 	shouldIncludeStyleElement(style) {
@@ -1198,9 +1457,13 @@ class MMX_Element extends HTMLElement {
 		});
 
 		const mmxStyleSheets = availableSheets.filter(sheet => {
-			return this.shouldIncludeSheet(sheet);
+			return this.#shouldRenderStylesheetLink(sheet);
 		});
 		return mmxStyleSheets.map(this.renderStylesheetLink).join('\n');
+	}
+
+	#shouldRenderStylesheetLink(sheet) {
+		return this.shouldIncludeSheet(sheet) && !MMX.styleManager.isAdoptableResource(sheet);
 	}
 
 	shouldIncludeSheet(sheet) {
@@ -1237,4 +1500,5 @@ class MMX_Element extends HTMLElement {
 
 window.MMX = MMX;
 window.MMX_FetchQueue = MMX_FetchQueue;
+window.MMX_StyleManager = MMX_StyleManager;
 window.MMX_Element = MMX_Element;
