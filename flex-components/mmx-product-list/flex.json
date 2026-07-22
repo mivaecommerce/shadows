@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "26.01.02",
+	"version": "26.01.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -3512,19 +3512,19 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.02",
-		"mmx-base": "=26.01.02",
-		"mmx-button": "=26.01.02",
-		"mmx-card": "=26.01.02",
-		"mmx-dialog": "=26.01.02",
-		"mmx-featured-product": "=26.01.02",
-		"mmx-forms": "=26.01.02",
-		"mmx-hero": "=26.01.02",
-		"mmx-hero-slider": "=26.01.02",
-		"mmx-icons": "=26.01.02",
-		"mmx-messages": "=26.01.02",
-		"mmx-rating": "=26.01.02",
-		"mmx-text": "=26.01.02",
-		"mmx-wishlist": "=26.01.02"
+		"mmx-accordion": "=26.01.03",
+		"mmx-base": "=26.01.03",
+		"mmx-button": "=26.01.03",
+		"mmx-card": "=26.01.03",
+		"mmx-dialog": "=26.01.03",
+		"mmx-featured-product": "=26.01.03",
+		"mmx-forms": "=26.01.03",
+		"mmx-hero": "=26.01.03",
+		"mmx-hero-slider": "=26.01.03",
+		"mmx-icons": "=26.01.03",
+		"mmx-messages": "=26.01.03",
+		"mmx-rating": "=26.01.03",
+		"mmx-text": "=26.01.03",
+		"mmx-wishlist": "=26.01.03"
 	}
 }

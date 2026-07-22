@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "26.01.02",
+	"version": "26.01.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -11036,17 +11036,17 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.02",
-		"mmx-base": "=26.01.02",
-		"mmx-button": "=26.01.02",
-		"mmx-dialog": "=26.01.02",
-		"mmx-featured-product": "=26.01.02",
-		"mmx-forms": "=26.01.02",
-		"mmx-icons": "=26.01.02",
-		"mmx-image-gallery": "=26.01.02",
-		"mmx-messages": "=26.01.02",
-		"mmx-product-fitment-list": "=26.01.02",
-		"mmx-tabs": "=26.01.02",
-		"mmx-text": "=26.01.02"
+		"mmx-accordion": "=26.01.03",
+		"mmx-base": "=26.01.03",
+		"mmx-button": "=26.01.03",
+		"mmx-dialog": "=26.01.03",
+		"mmx-featured-product": "=26.01.03",
+		"mmx-forms": "=26.01.03",
+		"mmx-icons": "=26.01.03",
+		"mmx-image-gallery": "=26.01.03",
+		"mmx-messages": "=26.01.03",
+		"mmx-product-fitment-list": "=26.01.03",
+		"mmx-tabs": "=26.01.03",
+		"mmx-text": "=26.01.03"
 	}
 }

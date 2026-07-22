@@ -2,7 +2,7 @@
 	"code": "mmx-rating",
 	"name": "MMX Rating",
 	"type": "library",
-	"version": "26.01.02",
+	"version": "26.01.03",
 	"managed": true,
 	"resourcegroup_code": "mmx-rating",
 	"scripts": [
@@ -58,7 +58,7 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.02",
-		"mmx-icons": "=26.01.02"
+		"mmx-base": "=26.01.03",
+		"mmx-icons": "=26.01.03"
 	}
 }

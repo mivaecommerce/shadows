@@ -218,9 +218,15 @@ class MMX_ImageAcross extends MMX_Element {
 		}
 
 		const source = this.#visiblePictureSource(img.closest('picture'));
-		const height = source?.getAttribute('height') ?? img.getAttribute('height');
+		const naturalWidth = Number(source?.getAttribute('width') ?? img.getAttribute('width'));
+		const naturalHeight = Number(source?.getAttribute('height') ?? img.getAttribute('height'));
+		const renderedWidth = img.getBoundingClientRect().width;
 
-		return Number(height) || 0;
+		if (!(naturalWidth > 0) || !(naturalHeight > 0) || !(renderedWidth > 0)) {
+			return 0;
+		}
+
+		return Math.round(naturalHeight * (renderedWidth / naturalWidth));
 	}
 
 	#visiblePictureSource(picture) {
