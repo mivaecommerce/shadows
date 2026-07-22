@@ -2,7 +2,7 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
@@ -358,9 +358,9 @@
 							}
 						},
 						{
-							"code": "prompt",
-							"prompt": "Merchandising Prompt",
-							"type": "merchandisingprompt",
+							"code": "showcase",
+							"prompt": "Merchandising Showcase",
+							"type": "merchandisingshowcase",
 							"visibility_conditions": {
 								"product_set": {
 									"value": [
@@ -409,6 +409,177 @@
 							"required": 1,
 							"text_type": "number",
 							"type": "text"
+						}
+					],
+					"type": "group"
+				},
+				{
+					"can_disable": 1,
+					"code": "categories",
+					"collapsed": 1,
+					"prompt": "Categories",
+					"properties": [
+						{
+							"code": "image_type",
+							"options": [
+								{
+									"text": "Category Tree",
+									"value": "cattree"
+								},
+								{
+									"text": "Category Title",
+									"value": "cattitle"
+								}
+							],
+							"prompt": "Image Type",
+							"type": "select"
+						},
+						{
+							"code": "image_size",
+							"label": "px",
+							"min": 0,
+							"placeholder": 200,
+							"prompt": "Image Height",
+							"text_type": "number",
+							"type": "text"
+						},
+						{
+							"code": "image_fit",
+							"options": [
+								{
+									"text": "Cover",
+									"value": "cover"
+								},
+								{
+									"text": "Contain",
+									"value": "contain"
+								},
+								{
+									"text": "Fill",
+									"value": "fill"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								},
+								{
+									"text": "Scale Down",
+									"value": "scale-down"
+								}
+							],
+							"prompt": "Image Fit",
+							"type": "select"
+						},
+						{
+							"code": "per_page",
+							"options": [
+								{
+									"text": 2,
+									"value": "2,2,2"
+								},
+								{
+									"text": 3,
+									"value": "2,3,3"
+								},
+								{
+									"text": 4,
+									"value": "2,3,4"
+								},
+								{
+									"text": 5,
+									"value": "2,3,5"
+								},
+								{
+									"text": 6,
+									"value": "2,3,6"
+								},
+								{
+									"text": 7,
+									"value": "2,4,7"
+								},
+								{
+									"text": 8,
+									"value": "2,4,8"
+								}
+							],
+							"prompt": "Items Per Page",
+							"type": "select"
+						},
+						{
+							"code": "per_move",
+							"options": [
+								{
+									"text": "Full Page at a Time",
+									"value": "auto"
+								},
+								{
+									"text": "One Item at a Time",
+									"value": 1
+								}
+							],
+							"prompt": "Items Per Scroll",
+							"type": "select"
+						},
+						{
+							"code": "nav_position",
+							"options": [
+								{
+									"text": "Default"
+								},
+								{
+									"text": "Under",
+									"value": "under"
+								},
+								{
+									"text": "Over",
+									"value": "over"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								}
+							],
+							"prompt": "Navigation Position",
+							"type": "select"
+						},
+						{
+							"code": "nav_button_size",
+							"max": 50,
+							"placeholder": 24,
+							"prompt": "Navigation Button Size",
+							"step": 1,
+							"text_type": "number",
+							"type": "text",
+							"visibility_conditions": {
+								"nav_position": {
+									"value": [
+										"under",
+										"over"
+									]
+								}
+							}
+						},
+						{
+							"code": "arrow_style",
+							"options": [
+								{
+									"text": "Default"
+								},
+								{
+									"text": "Caret",
+									"value": "caret"
+								},
+								{
+									"text": "Button",
+									"value": "button"
+								},
+								{
+									"text": "None",
+									"value": "none"
+								}
+							],
+							"prompt": "Arrow Style",
+							"type": "select"
 						}
 					],
 					"type": "group"
@@ -3206,7 +3377,7 @@
 			},
 			"image": {
 				"dimensions": {
-					"value": "350x350"
+					"value": "290x290"
 				},
 				"fit": {
 					"value": "contain"
@@ -3254,6 +3425,32 @@
 			}
 		},
 		"list": {
+			"categories": {
+				"arrow_style": {
+					"value": "button"
+				},
+				"image_fit": {
+					"value": "cover"
+				},
+				"image_size": {
+					"value": 200
+				},
+				"image_type": {
+					"value": "cattree"
+				},
+				"nav_position": {
+					"value": "none"
+				},
+				"per_move": {
+					"value": "auto"
+				},
+				"per_page": {
+					"value": "2,3,6"
+				},
+				"settings": {
+					"enabled": 1
+				}
+			},
 			"columns": {
 				"desktop": {
 					"value": 4
@@ -3470,7 +3667,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-7Aqhfg+hnBcPU3Aqr7Av6xoWFXChK52Leb/lN2HXGyY= sha384-6djGL6UsWKgDkoMpcUVqzkXdZNXrtvfkJj8nhgMXvvH2m8eoB0Al/D3PeXjlOVsT sha512-nlpf93rq6P9QxwtfKOqNYGaADm3oBE4Hd3HSifm4+nVq3mKxMX7bVwV3ayWsMBf9FUDKsTtYK/IG1qFS4FvXYQ=="
+					"value": "sha256-ce1zs/8vj91VjsfEqOS40JFlF56OK+wV96YrvJb5nrc= sha384-sM9/7UDrfW6i+RsX/TIMMfoQ60Lk6XpxskL+wy2XnDXXR68Nmw4C3xhrMEnNOt1L sha512-fREZuusU61mVnSkdU9tGPpu+cBFaRyYUWGQVDb8ZkuZlYIlaRmPxzboT6QlMSGw63rGTGJL4OjCqfmdprWIKeA=="
 				},
 				{
 					"name": "crossorigin",
@@ -3502,7 +3699,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-mmiIK3p9CiiTc19mk83povgGxGV9OWF8FM07AuWKh+o= sha384-g7mh5ZcRLG0g8Dwc4vq/O3og8tpDpFQmCTkaRDuX8XnG3utN3Qk1yJn8dhpIVk49 sha512-PUmqWU+1UThJZRB4z40Ns18YDSuMSJjBCzeXIwAofc+jSdxy/ZMvuydblISrys25sOAZXU7uMVFAc0FF9tACwg=="
+					"value": "sha256-hFvvlKAqX/0MlLmupVGSa9stjPiK4qIsmO74c+vQj5U= sha384-QqDkd1CzRAMheGK30zeU/nTT00MHk1LRV5mSvQL9wGMaH6Vo0kMJqTte4fAYsLUQ sha512-uKgd//vHIdnFg60vxPl56g/bbFMZGQtZBQUja9UO+11D15Lrfi8iqEjlJELnPIhzuIRYvvXrwxca8BiOloYP1Q=="
 				},
 				{
 					"name": "crossorigin",
@@ -3512,19 +3709,20 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.03",
-		"mmx-base": "=26.01.03",
-		"mmx-button": "=26.01.03",
-		"mmx-card": "=26.01.03",
-		"mmx-dialog": "=26.01.03",
-		"mmx-featured-product": "=26.01.03",
-		"mmx-forms": "=26.01.03",
-		"mmx-hero": "=26.01.03",
-		"mmx-hero-slider": "=26.01.03",
-		"mmx-icons": "=26.01.03",
-		"mmx-messages": "=26.01.03",
-		"mmx-rating": "=26.01.03",
-		"mmx-text": "=26.01.03",
-		"mmx-wishlist": "=26.01.03"
+		"mmx-accordion": "=26.02.00",
+		"mmx-base": "=26.02.00",
+		"mmx-button": "=26.02.00",
+		"mmx-card": "=26.02.00",
+		"mmx-category-carousel": "=26.02.00",
+		"mmx-dialog": "=26.02.00",
+		"mmx-featured-product": "=26.02.00",
+		"mmx-forms": "=26.02.00",
+		"mmx-hero": "=26.02.00",
+		"mmx-hero-slider": "=26.02.00",
+		"mmx-icons": "=26.02.00",
+		"mmx-messages": "=26.02.00",
+		"mmx-rating": "=26.02.00",
+		"mmx-text": "=26.02.00",
+		"mmx-wishlist": "=26.02.00"
 	}
 }

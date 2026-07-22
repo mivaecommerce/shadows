@@ -5,8 +5,8 @@
             "item_code": "search-listing",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.01,
-                    "settings_version": "26.01.03"
+                    "flex_version": 26.02,
+                    "settings_version": "26.02.00"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -392,7 +392,7 @@
                     },
                     "image": {
                         "dimensions": {
-                            "value": "350x350"
+                            "value": "290x290"
                         },
                         "fit": {
                             "value": "contain"
@@ -452,6 +452,35 @@
                     }
                 },
                 "list": {
+                    "categories": {
+                        "arrow_style": {
+                            "value": "button"
+                        },
+                        "image_fit": {
+                            "value": "cover"
+                        },
+                        "image_size": {
+                            "value": 200
+                        },
+                        "image_type": {
+                            "value": "cattree"
+                        },
+                        "nav_button_size": {
+                            "visible": 0
+                        },
+                        "nav_position": {
+                            "value": "none"
+                        },
+                        "per_move": {
+                            "value": "auto"
+                        },
+                        "per_page": {
+                            "value": "2,3,6"
+                        },
+                        "settings": {
+                            "enabled": 1
+                        }
+                    },
                     "columns": {
                         "desktop": {
                             "value": 4
@@ -631,10 +660,10 @@
                         "product_set": {
                             "value": "auto"
                         },
-                        "prompt": {
+                        "related_source": {
                             "visible": 0
                         },
-                        "related_source": {
+                        "showcase": {
                             "visible": 0
                         }
                     },

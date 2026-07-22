@@ -53,6 +53,7 @@
 <mvt:item name="head" param="js:mmx-dialog" />
 <mvt:item name="head" param="js:mmx-hero" />
 <mvt:item name="head" param="js:mmx-hero-slider" />
+<mvt:item name="head" param="js:mmx-category-carousel" />
 <mvt:item name="head" param="js:mmx-featured-product" />
 <mvt:item name="head" param="js:mmx-wishlist" />
 

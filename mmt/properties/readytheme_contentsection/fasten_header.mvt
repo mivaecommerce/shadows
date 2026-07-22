@@ -1,7 +1,7 @@
 <mvt:item name="readytheme" param="Load_Image('fasten_header_logo', l.settings:fasten_header_logo)" />
 <section class="o-layout o-layout--align-center o-layout--wide x-fasten-header" data-hook="fasten-header" aria-hidden="true">
 	<div class="o-layout__item u-width-2 u-text-left t-site-header__logo">
-		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" rel="nofollow" tabindex="-1">
+		<a href="&mvte:urls:SFNT:auto;" title="&mvte:global:store:name;" tabindex="-1">
 			<mvt:if expr="l.settings:readytheme:fasten_header_logo:active">
 				<img class="x-fasten-header__logo-image" src="&mvte:readytheme:fasten_header_logo:image;" alt="&mvte:readytheme:fasten_header_logo:image_alt;" loading="lazy" width="&mvte:readytheme:fasten_header_logo:image_wdth;" height="&mvte:readytheme:fasten_header_logo:image_hght;">
 			<mvt:else>

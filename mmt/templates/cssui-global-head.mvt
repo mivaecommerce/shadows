@@ -1,5 +1,9 @@
 <mvt:if expr="g.Screen EQ 'CTGY'">
-	<link rel="canonical" href="&mvte:category:link;">
+	<mvt:assign name="l.settings:category:canonical_link" value="l.settings:category:link" />
+	<mvt:if expr="g.Offset GT 0">
+		<mvt:do file="g.Module_Feature_URI_UT" name="l.settings:category:canonical_link" value="URL_Append_Parameter( l.settings:category:canonical_link, 'Offset', g.Offset )" />
+	</mvt:if>
+	<link rel="canonical" href="&mvte:category:canonical_link;">
 <mvt:elseif expr="g.Screen EQ 'PROD' OR l.settings:page:code EQ 'PATR'">
 	<link rel="canonical" href="&mvt:product:link;">
 <mvt:else>

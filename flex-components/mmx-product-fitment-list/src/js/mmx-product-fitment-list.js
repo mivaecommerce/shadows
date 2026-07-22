@@ -158,7 +158,8 @@ class MMX_ProductFitmentList extends MMX_Element {
 					{
 						name: 'ondemandcolumns',
 						value: [`CustomField_Values:combofacets:${this.#facetCode}_fitment_list`]
-					}
+					},
+					...this.#getCacheKeysFilters()
 				]
 			}
 		})
@@ -168,6 +169,10 @@ class MMX_ProductFitmentList extends MMX_Element {
 		.catch(response => {
 			this.#fitmentsFailedToLoad(response);
 		});
+	}
+
+	#getCacheKeysFilters() {
+		return MMX.cacheKeysFilters(this.data?.product?.product);
 	}
 
 	#fitmentsLoaded(response) {

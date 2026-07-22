@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>26.01.03</Version>
-	<MinimumMerchantVersion>26.01.03</MinimumMerchantVersion>
-	<MinimumMivaScriptVersion>5.50</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v26.01.03
+	<Version>26.02.00</Version>
+	<MinimumMerchantVersion>26.02.00</MinimumMerchantVersion>
+	<MinimumMivaScriptVersion>5.52</MinimumMivaScriptVersion>
+	<Description>Shadows ReadyTheme v26.02.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -3541,7 +3541,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '26.01.03';
+	mivaJS.ReadyThemeVersion = '26.02.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -5089,6 +5089,7 @@ new MMXPromotionTracker();
 					else {
 						Runtime_BasketGroup_Update(groupID, updateData, ({success, error_message}) => {
 							if (success === 1) {
+								sessionStorage.setItem('edited_basket_group', groupID);
 								document.location = document.location.href;
 							}
 							else {

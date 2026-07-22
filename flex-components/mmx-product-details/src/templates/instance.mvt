@@ -1,6 +1,7 @@
 <mvt:comment>Determine Product Code</mvt:comment>
 <mvt:if expr="l.settings:instance:product:source:value EQ 'auto'">
 	<mvt:assign name="l.settings:instance:product:specific:product_code" value="l.settings:product:code" />
+	<mvt:assign name="l.settings:instance:product:specific:product" value="l.settings:product" />
 </mvt:if>
 
 <mvt:comment>Pass Server Data to the Component</mvt:comment>

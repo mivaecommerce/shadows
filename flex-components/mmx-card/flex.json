@@ -2,7 +2,7 @@
 	"code": "mmx-card",
 	"name": "MMX Card",
 	"type": "library",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-card",
 	"scripts": [
@@ -58,16 +58,16 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.03",
-		"mmx-button": "=26.01.03",
-		"mmx-dialog": "=26.01.03",
-		"mmx-featured-product": "=26.01.03",
-		"mmx-forms": "=26.01.03",
-		"mmx-hero": "=26.01.03",
-		"mmx-hero-slider": "=26.01.03",
-		"mmx-icons": "=26.01.03",
-		"mmx-messages": "=26.01.03",
-		"mmx-text": "=26.01.03",
-		"mmx-wishlist": "=26.01.03"
+		"mmx-base": "=26.02.00",
+		"mmx-button": "=26.02.00",
+		"mmx-dialog": "=26.02.00",
+		"mmx-featured-product": "=26.02.00",
+		"mmx-forms": "=26.02.00",
+		"mmx-hero": "=26.02.00",
+		"mmx-hero-slider": "=26.02.00",
+		"mmx-icons": "=26.02.00",
+		"mmx-messages": "=26.02.00",
+		"mmx-text": "=26.02.00",
+		"mmx-wishlist": "=26.02.00"
 	}
 }

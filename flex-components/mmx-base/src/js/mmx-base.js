@@ -101,6 +101,24 @@ MMX.arrayIsEmpty = (arr) => {
 	return !Array.isArray(arr) || arr.length === 0;
 };
 
+MMX.cacheKeysFilters = (entities) => {
+	const values = []
+		.concat(entities ?? [])
+		.map(entity => {
+			return MMX.coerceNumber(entity?.dt_updated ?? entity);
+		})
+		.filter(value => value > 0);
+
+	if (!values.length) {
+		return [];
+	}
+
+	return [{
+		name: 'cache_keys',
+		value: values
+	}];
+};
+
 MMX.keyToCssProp = (key = '') => {
 	return MMX.snakeToKebabCase(MMX.camelToKebabCase(key));
 };

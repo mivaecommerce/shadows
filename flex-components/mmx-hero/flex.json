@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -1071,8 +1071,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.03",
-		"mmx-button": "=26.01.03",
-		"mmx-text": "=26.01.03"
+		"mmx-base": "=26.02.00",
+		"mmx-button": "=26.02.00",
+		"mmx-text": "=26.02.00"
 	}
 }

@@ -436,11 +436,14 @@ class MMX_FormInputRange extends MMX_Element {
 	}
 
 	#onPointerMoveSliderButton(e) {
+		const sliderRect = this.#slider().getBoundingClientRect();
+		const pointerX = e.touches?.[0]?.clientX ?? e.clientX;
+
 		const state = this.#getStateOfRange({
-			min: this.#slider().offsetLeft,
-			max: this.#slider().offsetLeft + this.#slider().offsetWidth,
-			low: e.touches?.[0]?.pageX ?? e.x,
-			high: e.touches?.[0]?.pageX ?? e.x
+			min: sliderRect.left,
+			max: sliderRect.left + sliderRect.width,
+			low: pointerX,
+			high: pointerX
 		});
 
 		// Move Button
@@ -1540,7 +1543,16 @@ class MMX_Combobox extends MMX_Element {
 	}
 
 	#supportsAnchorPositioning() {
-		return CSS.supports('justify-self', 'anchor-center');
+		return [
+			['anchor-name', '--mmx-combobox'],
+			['justify-self', 'anchor-center'],
+			['left', 'anchor(left)'],
+			['position-anchor', '--mmx-combobox'],
+			['top', 'anchor(top)'],
+			['width', 'anchor-size(width)']
+		].every(([property, value]) => {
+			return CSS.supports(property, value);
+		});
 	}
 
 	#updatePopoverLocation() {

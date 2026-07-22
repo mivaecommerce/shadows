@@ -22,13 +22,13 @@ class MMX_ProductList extends MMX_Element {
 			'product-code': {
 				allowAny: true
 			},
-			'merchandisingprompt-code': {
+			'merchandisingshowcase-code': {
 				allowAny: true
 			},
-			'merchandisingprompt-context-product-id': {
+			'merchandisingshowcase-context-product-id': {
 				allowAny: true
 			},
-			'merchandisingprompt-context-category-id': {
+			'merchandisingshowcase-context-category-id': {
 				allowAny: true
 			},
 			'search': {
@@ -278,7 +278,7 @@ class MMX_ProductList extends MMX_Element {
 	#searchOrigin = 'Runtime API';
 	#searchType = 'system';
 	#searchIndex = '';
-	#commonParamsToExclude = ['Screen', 'Action', 'Per_Page', 'Sort_By', 'Offset', 'Search'];
+	#commonParamsToExclude = ['Store_Code', 'Screen', 'Action', 'Per_Page', 'Sort_By', 'Offset', 'Search'];
 	#paramPrefix;
 	#desktopBreakpoint = window.matchMedia('(min-width: 60em)');
 	#errorMessage;
@@ -317,6 +317,7 @@ class MMX_ProductList extends MMX_Element {
 				<div part="title" class="mmx-product-list__title">
 					<slot name="title"></slot>
 				</div>
+				${this.#renderCategoryCarousel()}
 				${this.#renderMain()}
 				<div part="loading-overlay" class="mmx-product-list__loading-overlay"></div>
 			</div>
@@ -335,6 +336,7 @@ class MMX_ProductList extends MMX_Element {
 		const columns = this.#getColumns();
 		const facetsWidth = this.getPropValue('facets-width');
 		const productsWidth = 100 - facetsWidth;
+
 		return /*css*/`
 			:host {
 				--mmx-product-list__columns--mobile: ${columns.mobile};
@@ -359,9 +361,9 @@ class MMX_ProductList extends MMX_Element {
 			'data-product-set': this.data?.list?.products?.product_set?.value,
 			'data-category-code': this.data?.list?.products?.category?.category_code,
 			'data-product-code': this.data?.list?.products?.product?.product_code,
-			'data-merchandisingprompt-code': this.data?.list?.products?.prompt?.code,
-			'data-merchandisingprompt-context-product-id': this.data?.list?.products?.prompt?.context?.product_id,
-			'data-merchandisingprompt-context-category-id': this.data?.list?.products?.prompt?.context?.category_id,
+			'data-merchandisingshowcase-code': this.data?.list?.products?.showcase?.code ?? this.data?.list?.products?.prompt?.code,
+			'data-merchandisingshowcase-context-product-id': this.data?.list?.products?.showcase?.context?.product_id ?? this.data?.list?.products?.prompt?.context?.product_id,
+			'data-merchandisingshowcase-context-category-id': this.data?.list?.products?.showcase?.context?.category_id ?? this.data?.list?.products?.prompt?.context?.category_id,
 			'data-search': this.data?.server?.search,
 			'data-show-sort-by': this.#sortByOptions.length > 0,
 			'data-sort-by': MMX.concatenateSortBy(this.data?.list?.sort_by?.default?.value, this.data?.list?.sort_by?.default_customfield?.value),
@@ -798,7 +800,8 @@ class MMX_ProductList extends MMX_Element {
 			...this.#getSearchFilters(),
 			...this.#getFacetFilters(),
 			...this.#getAddToWishlistFilters(),
-			...this.#getAttributeSwatchFilters()
+			...this.#getAttributeSwatchFilters(),
+			...this.#getCacheKeysFilters()
 		];
 	}
 
@@ -917,7 +920,7 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	#getFacetFilters() {
-		if (!this.getPropValue('show-facets')) {
+		if (!this.getPropValue('show-facets') && !this.#isCategoryCarouselEnabled()) {
 			return [];
 		}
 
@@ -933,19 +936,24 @@ class MMX_ProductList extends MMX_Element {
 		];
 	}
 
-	#getMerchandisingParams()
-	{
+	#getMerchandisingParams() {
 		if (this.#getProductSet() !== 'merchandising') {
 			return {};
 		}
 
 		const params = {
-			MerchandisingPrompt_Code: this.getPropValue('merchandisingprompt-code'),
-			MerchandisingPrompt_Context: {
-				product_id: this.getPropValue('merchandisingprompt-context-product-id'),
-				category_id: this.getPropValue('merchandisingprompt-context-category-id')
-			}
+			MerchandisingShowcase_Code: this.getPropValue('merchandisingshowcase-code')
 		};
+
+		const productId = this.getPropValue('merchandisingshowcase-context-product-id');
+		const categoryId = this.getPropValue('merchandisingshowcase-context-category-id');
+
+		if (!MMX.valueIsEmpty(productId) || !MMX.valueIsEmpty(categoryId)) {
+			params.Merchandising_Context = {
+				product_id: productId,
+				category_id: categoryId
+			};
+		}
 
 		return params;
 	}
@@ -1011,6 +1019,104 @@ class MMX_ProductList extends MMX_Element {
 		else {
 			return [];
 		}
+	}
+
+	#getCacheKeysFilters() {
+		switch (this.#getProductSet()) {
+			case 'category':
+				return MMX.cacheKeysFilters(this.data?.list?.products?.category?.category);
+			case 'related':
+				return MMX.cacheKeysFilters(this.data?.list?.products?.product?.product);
+			case 'merchandising':
+				return MMX.cacheKeysFilters([
+					this.data?.list?.products?.showcase,
+					this.data?.list?.products?.showcase?.context?.product,
+					this.data?.list?.products?.showcase?.context?.category
+				]);
+			default:
+				return [];
+		}
+	}
+
+	// Category Carousel
+	#isCategoryCarouselEnabled() {
+		return MMX.isTruthy(this.data?.list?.categories?.settings?.enabled);
+	}
+
+	#isCategoryFacet(facet) {
+		return facet.code === 'category' && facet.module_code === 'stdfacets';
+	}
+
+	#getCategoryFacet() {
+		return this.#facets.find(facet => this.#isCategoryFacet(facet));
+	}
+
+	#getCategoryFacetIds() {
+		const facet = this.#getCategoryFacet();
+
+		if (!facet?.values?.length) {
+			return [];
+		}
+
+		return facet.values
+			.map(value => parseInt(value.value.split('-')[0], 10))
+			.filter(id => !isNaN(id) && id > 0);
+	}
+
+	#getMaxCategories() {
+		const desktopPerPage = MMX.coerceNumber(MMX.splitString(this.data?.list?.categories?.per_page?.value)?.at?.(-1));
+		return desktopPerPage * 2;
+	}
+
+	#renderCategoryCarousel() {
+		if (!this.#isCategoryCarouselEnabled()) {
+			return '';
+		}
+
+		const categoryIds = this.#getCategoryFacetIds().slice(0, this.#getMaxCategories());
+
+		if (!categoryIds.length) {
+			return '';
+		}
+
+		const categories = this.data?.list?.categories;
+		const imageType = categories?.image_type?.value ?? 'cattree';
+		const imageSize = parseInt(categories?.image_size?.value, 10);
+		const scriptData = {
+			category_group: {
+				source: { value: 'ids' },
+				categories: { ids: categoryIds },
+				category_image: {
+					image: { value: imageType },
+					settings: { enabled: !MMX.valueIsEmpty(imageType) }
+				},
+				image_size: { value: imageSize > 0 ? `${imageSize}px` : undefined },
+				image_fit: { value: categories?.image_fit?.value }
+			},
+			advanced: {
+				slide_controls: {
+					per_page: { value: categories?.per_page?.value },
+					per_move: { value: categories?.per_move?.value }
+				}
+			}
+		};
+
+		const carouselInitialHeight = (imageSize > 0 ? imageSize : 0) + 24;
+
+		return /*html*/`
+			<div part="category-carousel" class="mmx-product-list__category-carousel">
+				<mmx-category-carousel
+					data-init="script"
+					data-arrow-style="${MMX.encodeEntities(categories?.arrow_style?.value || 'button')}"
+					data-nav-position="${MMX.encodeEntities(categories?.nav_position?.value || 'none')}"
+					data-nav-button-size="${MMX.encodeEntities(categories?.nav_button_size?.value || '24')}"
+					data-fallback-image="${MMX.encodeEntities(this.getPropValue('product-fallback-image'))}"
+					style="--mmx-initial-height: ${carouselInitialHeight}px"
+				>
+					<script type="application/json">${MMX.scriptSafeJSONStringify(scriptData)}</script>
+				</mmx-category-carousel>
+			</div>
+		`;
 	}
 
 	// Main
@@ -2189,7 +2295,17 @@ class MMX_ProductList extends MMX_Element {
 
 	// Radio/Checkbox Facet
 	#renderFacetValuesControls(facet) {
-		const facetValues = facet?.values ?? [];
+		return /*html*/`
+			<fieldset
+				class="mmx-product-list__facet-values mmx-form-fieldset"
+				part="facet-values facet-values-list"
+			>
+				${this.#renderShowMoreFacetValues({ facet, facetValues: facet?.values ?? [] })}
+			</fieldset>
+		`;
+	}
+
+	#renderShowMoreFacetValues({ facet, facetValues, depth = 0 }) {
 		const displayShowMoreLinks = this.getPropValue('display-show-more-links');
 		const showMoreThreshold = MMX.coerceNumber(this.getPropValue('show-more-threshold'));
 		const facetCode = facet?.code ?? '';
@@ -2207,34 +2323,29 @@ class MMX_ProductList extends MMX_Element {
 		const hasHidden = hiddenFacetValues.length > 0;
 
 		return /*html*/`
-			<fieldset
-				class="mmx-product-list__facet-values mmx-form-fieldset"
-				part="facet-values facet-values-list"
-			>
-				${visibleFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue })).join('')}
+			${visibleFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue, depth })).join('')}
 
-				${hasHidden ? /*html*/`
-					<div
-						class="mmx-form-fieldset mmx-product-list__facet-values-hidden ${showMoreOpen ? 'is-open' : ''}"
-						part="facet-values facet-values-hidden"
-						data-facet-code="${facetCode}"
-						aria-hidden="${showMoreOpen ? 'false' : 'true'}"
-						style="height:${showMoreOpen ? 'auto' : '0px'};"
-					>
-						${hiddenFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue })).join('')}
-					</div>
+			${hasHidden ? /*html*/`
+				<div
+					class="mmx-form-fieldset mmx-product-list__facet-values-hidden ${showMoreOpen ? 'is-open' : ''}"
+					part="facet-values facet-values-hidden"
+					data-facet-code="${facetCode}"
+					aria-hidden="${showMoreOpen ? 'false' : 'true'}"
+					style="height:${showMoreOpen ? 'auto' : '0px'};"
+				>
+					${hiddenFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue, depth })).join('')}
+				</div>
 
-					<mmx-button
-						data-style="secondary-link"
-						class="mmx-product-list__facet-values-toggle"
-						part="facet-values facet-values-toggle"
-						data-facet-code="${facetCode}"
-						aria-expanded="${showMoreOpen ? 'true' : 'false'}"
-					>
-						${showMoreOpen ? MMX.encodeEntities(this.getPropValue('show-less-text')) : MMX.encodeEntities(this.getPropValue('show-more-text'))}
-					</mmx-button>
-				` : ''}
-			</fieldset>
+				<mmx-button
+					data-style="secondary-link"
+					class="mmx-product-list__facet-values-toggle"
+					part="facet-values facet-values-toggle"
+					data-facet-code="${facetCode}"
+					aria-expanded="${showMoreOpen ? 'true' : 'false'}"
+				>
+					${showMoreOpen ? MMX.encodeEntities(this.getPropValue('show-less-text')) : MMX.encodeEntities(this.getPropValue('show-more-text'))}
+				</mmx-button>
+			` : ''}
 		`;
 	}
 
@@ -2350,13 +2461,11 @@ class MMX_ProductList extends MMX_Element {
 	}
 
 	#renderFacetValuesNestedUnapplied({facet}) {
-		return facet?.values?.map(facetValue => {
-			return this.#renderFacetValueControl({
-				facet,
-				facetValue,
-				depth: facet.appliedValuesCount
-			});
-		}).join('');
+		return this.#renderShowMoreFacetValues({
+			facet,
+			facetValues: facet?.values ?? [],
+			depth: facet.appliedValuesCount
+		});
 	}
 
 	#renderFacetValueRange(facet) {

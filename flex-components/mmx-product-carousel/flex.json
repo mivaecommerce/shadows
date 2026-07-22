@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -478,9 +478,9 @@
 					}
 				},
 				{
-					"code": "prompt",
-					"prompt": "Merchandising Prompt",
-					"type": "merchandisingprompt",
+					"code": "showcase",
+					"prompt": "Merchandising Showcase",
+					"type": "merchandisingshowcase",
 					"visibility_conditions": {
 						"product_set": {
 							"value": [
@@ -669,6 +669,11 @@
 			"code": "settings",
 			"prompt": "Display Settings",
 			"properties": [
+				{
+					"code": "show_empty_results",
+					"prompt": "Display Empty Results",
+					"type": "checkbox"
+				},
 				{
 					"code": "per_page",
 					"options": [
@@ -1078,6 +1083,9 @@
 				"product_name_typography": {
 					"code": "paragraph-s",
 					"theme_mode": 1
+				},
+				"show_empty_results": {
+					"value": 1
 				}
 			}
 		},
@@ -1142,7 +1150,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-PcjNNuN7SM3TsBkGhVYL1DrDYGOA2on2CGhG64Z6CDU= sha384-43+rlNp4mOuwGW5v3BWJHcwVzYjYIz+ljcklKrd8tNKJy84MpLbYEp0vdWqqKBOJ sha512-HvI6gQiKtzv6gkZXXXefvRC+rhyNt7K9P24Z/ehTJJr/yYUQCgaesGH5Kv0kAsXy8KxQjbHv29oKR1wzCNQArA=="
+					"value": "sha256-fx49tA4bZ6rDCf9/CM+PHNugfmp31Cesh/N+HcCtMis= sha384-+8eLTX64kGMF3UDlCPcEFzDF83/xLhk1fncDHSQ14a9vp9kWCjCMAiIQaFy14cgO sha512-M6mBiK+CGgdkx3JN1dczHJQnV8k9aXKl4lg5yjYlD0Ah12xnZtc/WrJ5aMrKPsJS8Uee75d2k4fI1KCN8LG/mA=="
 				},
 				{
 					"name": "crossorigin",
@@ -1152,11 +1160,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.03",
-		"mmx-button": "=26.01.03",
-		"mmx-hero": "=26.01.03",
-		"mmx-hero-slider": "=26.01.03",
-		"mmx-messages": "=26.01.03",
-		"mmx-text": "=26.01.03"
+		"mmx-base": "=26.02.00",
+		"mmx-button": "=26.02.00",
+		"mmx-hero": "=26.02.00",
+		"mmx-hero-slider": "=26.02.00",
+		"mmx-messages": "=26.02.00",
+		"mmx-text": "=26.02.00"
 	}
 }

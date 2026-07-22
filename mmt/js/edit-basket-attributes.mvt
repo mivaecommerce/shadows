@@ -235,6 +235,7 @@
 					else {
 						Runtime_BasketGroup_Update(groupID, updateData, ({success, error_message}) => {
 							if (success === 1) {
+								sessionStorage.setItem('edited_basket_group', groupID);
 								document.location = document.location.href;
 							}
 							else {

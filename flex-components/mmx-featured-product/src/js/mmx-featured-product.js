@@ -480,8 +480,17 @@ class MMX_FeaturedProduct extends MMX_Element {
 				value: [
 					this.getPropValue('fragment-code')
 				]
-			}
+			},
+			...this.#getCacheKeysFilters()
 		];
+	}
+
+	#getProduct() {
+		return this.data?.product?.product?.product ?? this.product;
+	}
+
+	#getCacheKeysFilters() {
+		return MMX.cacheKeysFilters(this.#getProduct());
 	}
 
 	getDefaultFilterOnDemandColumnsCommon() {
@@ -1476,7 +1485,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 				function:		'Runtime_ProductImageList_Load_Product_Variant',
 				Product_Code:	this.getPropValue('product-code'),
 				Variant_ID:		variant_id,
-				Image_Sizes:	[this.getPropValue('desktop-image-size'), this.getPropValue('mobile-image-size')]
+				Image_Sizes:	[this.getPropValue('desktop-image-size'), this.getPropValue('mobile-image-size')],
+				Filter:         this.#getCacheKeysFilters()
 			}
 		})
 		.then(response => {

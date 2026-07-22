@@ -73,24 +73,82 @@ class MMX_CategoryCarousel extends MMX_Element {
 	}
 
 	displayCategories() {
-		if ( this.data?.category_group?.source?.value == 'manual' )	this.loadCategories();
-		else														this.loadChildCategories();
+		if (this.data?.category_group?.source?.value === 'manual')		this.loadCategories();
+		else if (this.data?.category_group?.source?.value === 'ids')	this.loadCategoriesByIds();
+		else															this.loadChildCategories();
 	}
 
-	getCategoryCodesToLoad() {
-		const children = this?.data?.category_group?.categories?.children;
+	loadCategoriesByIds() {
+		const categoryIds = this.data?.category_group?.categories?.ids ?? [];
 
-		if (!children?.length) {
+		if (MMX.arrayIsEmpty(categoryIds)) {
 			return;
 		}
 
-		return children.reduce((codes, child) => {
-			const code = child?.category?.category?.code;
-			if (!MMX.valueIsEmpty(code) && codes.indexOf(code) === -1 && MMX.isTruthy(child?.image?.category_image?.settings?.enabled)) {
-				codes.push(code);
+		this.categories = [];
+		this.setLifecycleReady(false);
+
+		const imageEnabled = this.data?.category_group?.category_image?.settings?.enabled;
+		const filters = [
+			{
+				name: 'search',
+				value: [
+					{
+						field: 'id',
+						operator: 'IN',
+						value: categoryIds
+					}
+				]
 			}
-			return codes;
+		];
+
+		if (imageEnabled) {
+			filters.push({
+				name: 'ondemandcolumns',
+				value: [
+					'CustomField_Values:cmp-cssui-cattitle:category_title_image',
+					'CustomField_Values:cmp-cssui-cattree:category_tree_image'
+				]
+			});
+		}
+
+		MMX.Runtime_JSON_API_Call({
+			params: {
+				Function: 'Runtime_CategoryList_Load_Query',
+				Filter: filters
+			}
+		})
+		.then(response => this.#onCategoriesLoaded(response?.data?.data, categoryIds))
+		.catch(response => {});
+	}
+
+	#getCategoriesToLoad() {
+		const children = this?.data?.category_group?.categories?.children;
+
+		if (!children?.length) {
+			return [];
+		}
+
+		return children.reduce((categories, child) => {
+			const category = child?.category?.category;
+			const code = category?.code;
+
+			if (!MMX.valueIsEmpty(code) && categories.findIndex(item => item.code === code) === -1 && MMX.isTruthy(child?.image?.category_image?.settings?.enabled)) {
+				categories.push(category);
+			}
+
+			return categories;
 		}, []);
+	}
+
+	getCategoryCodesToLoad() {
+		const categories = this.#getCategoriesToLoad();
+
+		if (!categories?.length) {
+			return undefined;
+		}
+
+		return categories.map(category => category.code);
 	}
 
 	loadCategories() {
@@ -122,7 +180,8 @@ class MMX_CategoryCarousel extends MMX_Element {
 							'CustomField_Values:cmp-cssui-cattitle:category_title_image',
 							'CustomField_Values:cmp-cssui-cattree:category_tree_image'
 						]
-					}
+					},
+					...MMX.cacheKeysFilters(this.#getCategoriesToLoad())
 				]
 			}
 		})
@@ -159,6 +218,8 @@ class MMX_CategoryCarousel extends MMX_Element {
 			];
 		}
 
+		filters.push(...MMX.cacheKeysFilters(this.data?.category));
+
 		this.categories = [];
 		this.setLifecycleReady(false);
 
@@ -169,43 +230,56 @@ class MMX_CategoryCarousel extends MMX_Element {
 				Filter: filters
 			}
 		})
-		.then(response => {
-			if(!response?.data?.data?.length) {
-				return;
-			}
-
-			response.data.data.forEach(category => {
-				this.loadedCategories[category.id] = category;
-				this.categories.push({
-					category: {
-						category: {
-							link: category.url,
-							...category,
-						},
-						category_code: category.code
-					},
-					image: {
-						category_image: {
-							image: {
-								value: this.data?.category_group?.category_image?.image?.value
-							},
-							settings: {
-								enabled: this.data?.category_group?.category_image?.settings?.enabled
-							}
-						}
-					}
-				});
-			});
-
-			this.forceUpdate();
-		})
+		.then(response => this.#onCategoriesLoaded(response?.data?.data))
 		.catch(response => {});
+	}
+
+	#onCategoriesLoaded(categories = [], orderedIds = null) {
+		if (!categories.length) {
+			return;
+		}
+
+		categories.forEach(category => {
+			this.loadedCategories[category.id] = category;
+		});
+
+		const ordered = orderedIds
+			? orderedIds.map(id => this.loadedCategories[id]).filter(Boolean)
+			: categories;
+
+		ordered.forEach(category => {
+			this.categories.push(this.#buildCategoryItem(category));
+		});
+
+		this.forceUpdate();
+	}
+
+	#buildCategoryItem(category) {
+		return {
+			category: {
+				category: {
+					link: category.url,
+					...category,
+				},
+				category_code: category.code
+			},
+			image: {
+				category_image: {
+					image: {
+						value: this.data?.category_group?.category_image?.image?.value
+					},
+					settings: {
+						enabled: this.data?.category_group?.category_image?.settings?.enabled
+					}
+				}
+			}
+		};
 	}
 
 	renderCategories() {
 		var children;
 
-		if (this.data?.category_group?.source?.value == 'auto' )
+		if (this.data?.category_group?.source?.value === 'auto' || this.data?.category_group?.source?.value === 'ids')
 		{
 			children = this.categories;
 		}
@@ -214,7 +288,7 @@ class MMX_CategoryCarousel extends MMX_Element {
 			children = MMX.copy(this?.data?.category_group?.categories?.children || []);
 		}
 
-		if (!children?.length){
+		if (!children?.length) {
 			return '';
 		}
 

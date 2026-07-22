@@ -5,8 +5,8 @@
             "item_code": "all-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.01,
-                    "settings_version": "26.01.03"
+                    "flex_version": 26.02,
+                    "settings_version": "26.02.00"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -391,7 +391,7 @@
                     },
                     "image": {
                         "dimensions": {
-                            "value": "350x350"
+                            "value": "290x290"
                         },
                         "fit": {
                             "value": "contain"
@@ -451,6 +451,11 @@
                     }
                 },
                 "list": {
+                    "categories": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
                     "columns": {
                         "desktop": {
                             "value": 4
@@ -630,10 +635,10 @@
                         "product_set": {
                             "value": "auto"
                         },
-                        "prompt": {
+                        "related_source": {
                             "visible": 0
                         },
-                        "related_source": {
+                        "showcase": {
                             "visible": 0
                         }
                     },

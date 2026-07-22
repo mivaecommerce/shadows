@@ -377,10 +377,6 @@
 	border-bottom: 0;
 }
 
-.mmx-product-list__facet-values-hidden[hidden] {
-	display: none;
-}
-
 .mmx-product-list__facet-values-toggle::part(button):focus:not(:focus-visible) {
   outline: none;
   box-shadow: none;
@@ -391,10 +387,15 @@
 	height: 0;
 	opacity: 0;
 	transition: height 220ms ease, opacity 220ms ease;
-}
 
-.mmx-product-list__facet-values-hidden.is-open {
-	opacity: 1;
+	&[hidden],
+	&[aria-hidden="true"] {
+		display: none;
+	}
+
+	&.is-open {
+		opacity: 1;
+	}
 }
 
 /* Hide Facets on Desktop */

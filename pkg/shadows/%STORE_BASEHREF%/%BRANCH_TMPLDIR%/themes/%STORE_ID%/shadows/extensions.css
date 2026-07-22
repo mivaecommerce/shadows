@@ -1605,6 +1605,10 @@
 /* ==========================================================================
    EXTENSIONS / FASTEN HEADER / FASTEN HEADER
    ========================================================================== */
+:root {
+	--x-fasten-header__scroll-margin-top: 6rem;
+}
+
 .x-fasten-header {
 	display: none;
 }

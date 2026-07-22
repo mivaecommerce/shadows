@@ -2,7 +2,7 @@
 	"code": "mmx-product-details",
 	"name": "Product Details",
 	"type": "component",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-details",
 	"category": "product-display",
@@ -10994,7 +10994,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-QMJk0Mecr2rmssvdnyNRt3CpxcH+uXQBOJaH4XA8zu8= sha384-bMbLP3hF2M7KjRspqyNDpxNn+ocOVukimwbZkKz5wWPeO8Wj+KVCEuUDpS44GUKu sha512-4HWc59HL+gtop36TdltizGJ6CRj3qG3RwLsbFqUCUml47D1MzsMi64tgj2pjYPIVM8k1OXg9ZqIiE94vPRuOng=="
+					"value": "sha256-9F7Kcr/e0pMOcdomma/ZjbVg86zjPdS7VwJSqvq7J3Y= sha384-BM7wkeMsFKtgxpXgUVuMcT0unsX6hI5SVAqQfYMOdI7wiljV4GHIv3EmXkWQK16P sha512-Sqif3I3huxtolOkcdU8gdlYmyVB7+ynNv1exJFYsEj0o0DN57Pv3sCpk4WC4DiTY+YsSe+v/rlHnRjOFTvHr8g=="
 				},
 				{
 					"name": "crossorigin",
@@ -11036,17 +11036,17 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.01.03",
-		"mmx-base": "=26.01.03",
-		"mmx-button": "=26.01.03",
-		"mmx-dialog": "=26.01.03",
-		"mmx-featured-product": "=26.01.03",
-		"mmx-forms": "=26.01.03",
-		"mmx-icons": "=26.01.03",
-		"mmx-image-gallery": "=26.01.03",
-		"mmx-messages": "=26.01.03",
-		"mmx-product-fitment-list": "=26.01.03",
-		"mmx-tabs": "=26.01.03",
-		"mmx-text": "=26.01.03"
+		"mmx-accordion": "=26.02.00",
+		"mmx-base": "=26.02.00",
+		"mmx-button": "=26.02.00",
+		"mmx-dialog": "=26.02.00",
+		"mmx-featured-product": "=26.02.00",
+		"mmx-forms": "=26.02.00",
+		"mmx-icons": "=26.02.00",
+		"mmx-image-gallery": "=26.02.00",
+		"mmx-messages": "=26.02.00",
+		"mmx-product-fitment-list": "=26.02.00",
+		"mmx-tabs": "=26.02.00",
+		"mmx-text": "=26.02.00"
 	}
 }

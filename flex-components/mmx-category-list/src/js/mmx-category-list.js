@@ -147,6 +147,10 @@ class MMX_CategoryList extends MMX_Element {
 		};
 	}
 
+	#getCacheKeysFilters() {
+		return MMX.cacheKeysFilters(this.data?.list?.parent_category?.specific?.category);
+	}
+
 	#getFilters() {
 		const details = this.#getCardDetails();
 		const filters = details.reduce((filters, detail) => {
@@ -183,6 +187,8 @@ class MMX_CategoryList extends MMX_Element {
 
 			return filters;
 		}, []);
+
+		filters.push(...this.#getCacheKeysFilters());
 
 		return filters;
 	}

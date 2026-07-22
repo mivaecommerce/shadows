@@ -2,7 +2,7 @@
 	"code": "mmx-forms",
 	"name": "MMX Forms",
 	"type": "library",
-	"version": "26.01.03",
+	"version": "26.02.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-forms",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-JDhlCG8FnYrOloargSqd3f+v8xC/KdgT+aWFKC4BrZs= sha384-/pg+UrwxxVIMY4NKV1n7TE4kiFXEkej8g0sT/aDjN1Mz101udkTgBaxHOcXweS81 sha512-XEn2j9rF+UPJ65dXKY9l9Eg3Bf5ib3kzCgcVGdLadfuyDOpV3GwiPBrNf2RaNFV44I0Z2gi2+z1JAL/DRy9pCw=="
+					"value": "sha256-zNQWS6SVaccMuRYtO0c9a/KHBRa2p7E9SDYWjV8ug74= sha384-d/x9EK7d9ZkDkMB1pm0DtBUDtB19b2pTQ8zpwdF+BnH3xEYmGRtUAkURRtxkcvhH sha512-DFYGWnlcvQtwLT2WUVhZGfXRBGpjG3lKdARN18RGZXsYqae7DDyilsLtsMJ4VmA0kNyRotqX+kxwfC1aa3t6ng=="
 				},
 				{
 					"name": "crossorigin",
@@ -44,7 +44,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-lG/W9Pn06pySk4J2P0qAlhI3/hNpMQWYmvWKJ8mKqBk= sha384-rx4+dUCJzwxy+QRvkjwgw6/blnbTx21EGYJ1ouwhwnoB68AELmIE/8qXJ8qIpoUj sha512-J5rg76DSqiZymlfn79VchoNR7Gm8OK2rf1DTedz4GW92kdYS2P/1L+cXxE1/GRrCe9KdSm0FSQ80dH+WZuE4aw=="
+					"value": "sha256-jOzc2lDZvuTKvTwDEq3H7NrGnLGpC82EjikB2qFgMBc= sha384-YJSURV8hVqZAfQlJeEhTkuzof8trgjYqDzfyqT8sKaP6MZpAx8z5Hrm5q9DrPjm5 sha512-rxHx43WtbVJnVSH9D64O2+zmIUEL1qiBymDpA7sG7g0+MXt1FJwGYM1LfedcD9FdjVqemai7fiUsnPgdyvW73g=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.01.03"
+		"mmx-base": "=26.02.00"
 	}
 }

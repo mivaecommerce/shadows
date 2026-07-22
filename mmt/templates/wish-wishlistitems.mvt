@@ -79,7 +79,7 @@
 												<p><img src="&mvte:wishlistitem:product:imagetypes:main;" alt="&mvte:wishlistitem:product:name;" loading="lazy" width="&mvte:wishlistitems:b_width;" height="&mvte:wishlistitems:b_height;"></p>
 											</div>
 											<div class="o-layout__item u-width-12 u-width-8--m u-width-9--l t-basket__product-details">
-												<a class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:wishlistitem:product:link;" title="&mvte:wishlistitem:product:name;" rel="nofollow">&mvt:wishlistitem:product:name;</a>
+												<a class="t-basket__product-name mm-theme-button-primary-navigation mm-theme-button-primary-navigation__medium" href="&mvte:wishlistitem:product:link;" title="&mvte:wishlistitem:product:name;">&mvt:wishlistitem:product:name;</a>
 												<div class="t-basket__product-attributes">
 													<div class="t-basket__product-added">Added: &mvt:wishlistitem:formatted_dtadded_date;</div>
 													<div class="t-basket__product-attr-options mm-theme-typography-paragraph-extra-small">

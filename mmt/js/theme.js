@@ -321,6 +321,42 @@ const themeFunctionality = {
 	},
 	jsBASK() {
 		/**
+		 * Scroll to the last edited basket group after BASK reloads.
+		 */
+		(() => {
+			const storageKey = 'edited_basket_group';
+			const getGroupId = value => String(value || '').replace(/^group-/, '');
+
+			const setEditedBasketGroup = groupDataset => {
+				const groupId = getGroupId(groupDataset);
+
+				if (groupId) {
+					sessionStorage.setItem(storageKey, groupId);
+				}
+			};
+
+			const editedBasketGroup = sessionStorage.getItem(storageKey);
+
+			if (editedBasketGroup) {
+				const basketGroup = document.querySelector(`[data-hook~="group-${editedBasketGroup}"]`);
+				const scrollTarget = basketGroup?.closest('.t-basket__product-information');
+
+				scrollTarget?.scrollIntoView({
+					behavior: 'smooth',
+					block: 'start'
+				});
+
+				sessionStorage.removeItem(storageKey);
+			}
+
+			document.querySelectorAll('[data-hook="group-quantity"][data-group]').forEach(input => {
+				input.addEventListener('change', () => {
+					setEditedBasketGroup(input.dataset.group);
+				});
+			});
+		})();
+
+		/**
 		 * Estimate Shipping
 		 */
 		(() => {

@@ -9,6 +9,7 @@
 <mvt:comment>Determine Automatic Category</mvt:comment>
 <mvt:if expr="l.settings:instance:category_group:source:value EQ 'auto'">
 	<mvt:assign name="l.settings:instance:category_id" value="l.settings:category:id" />
+	<mvt:assign name="l.settings:instance:category" value="l.settings:category" />
 </mvt:if>
 
 <mvt:comment>Initial Display</mvt:comment>

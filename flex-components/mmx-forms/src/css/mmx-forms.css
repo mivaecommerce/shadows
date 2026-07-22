@@ -510,6 +510,7 @@
 }
 
 .mmx-combobox__select-button {
+	anchor-name: --mmx-combobox;
 	overflow: hidden;
 	padding-right: 1.5rem;
 	text-align: left;
@@ -549,6 +550,8 @@
 	outline: var(--mmx-input-border--focus);
 	overflow-y: auto;
 	padding: 0;
+	position: absolute;
+	position-anchor: --mmx-combobox;
 	top: anchor(top);
 	width: anchor-size(width);
 

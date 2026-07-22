@@ -1,3 +1,4 @@
+<mvt:assign name="l.settings:instance:product:product" value="l.settings:product" />
 <mvt:assign name="l.settings:instance:product:product_code" value="l.settings:product:code" />
 
 <mvt:comment>Determine component id & page-code</mvt:comment>

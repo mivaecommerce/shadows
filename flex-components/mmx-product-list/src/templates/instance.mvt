@@ -13,6 +13,7 @@
 	)
 ">
 	<mvt:assign name="l.settings:instance:list:products:category:category_code" value="l.settings:category:code" />
+	<mvt:assign name="l.settings:instance:list:products:category:category" value="l.settings:category" />
 </mvt:if>
 
 <mvt:comment>Determine Automatic Product</mvt:comment>
@@ -24,6 +25,18 @@
 	)
 ">
 	<mvt:assign name="l.settings:instance:list:products:product:product_code" value="l.settings:product:code" />
+	<mvt:assign name="l.settings:instance:list:products:product:product" value="l.settings:product" />
+</mvt:if>
+
+<mvt:comment>Determine Showcase Context</mvt:comment>
+<mvt:if expr="l.settings:instance:list:products:product_set:value EQ 'merchandising'">
+	<mvt:if expr="l.settings:instance:list:products:showcase:context:product_id">
+		<mvt:assign name="l.settings:instance:list:products:showcase:context:product" value="l.settings:product" />
+	</mvt:if>
+
+	<mvt:if expr="l.settings:instance:list:products:showcase:context:category_id">
+		<mvt:assign name="l.settings:instance:list:products:showcase:context:category" value="l.settings:category" />
+	</mvt:if>
 </mvt:if>
 
 <mvt:comment>Determine component id & page-code</mvt:comment>

@@ -475,6 +475,10 @@
 	padding: 1.75rem 3rem;
 }
 
+.t-basket__product-information {
+	scroll-margin-top: var(--x-fasten-header__scroll-margin-top);
+}
+
 @media (min-width: 60em) {
 	.t-basket__alt-heading,
 	.t-basket__product-contents {

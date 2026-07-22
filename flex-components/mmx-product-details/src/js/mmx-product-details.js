@@ -170,8 +170,13 @@ class MMX_ProductDetails extends MMX_Element {
 		return [
 			...this.#getSearchFilters(),
 			...this.#getVariantIdFilters(),
-			...this.#getDetailsFilters()
+			...this.#getDetailsFilters(),
+			...this.#getCacheKeysFilters()
 		];
+	}
+
+	#getCacheKeysFilters() {
+		return MMX.cacheKeysFilters(this.data?.product?.specific?.product);
 	}
 
 	#getSearchFilters() {
@@ -1202,7 +1207,7 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#elementsThatCanBeDisabled() {
-		return [...this.#addToCartButtons(), this.#quantityInput()];
+		return [...this.#addToCartButtons(), this.#quantityInput()].filter(element => element instanceof HTMLElement);
 	}
 
 	// Add to Cart
@@ -1601,7 +1606,7 @@ class MMX_ProductDetails extends MMX_Element {
 				Module_Function: 'Runtime_Fitment_Load_Product_Variant',
 				CombinationFacet_Code: facetCode,
 				Product_Code: this.getPropValue('product-code'),
-				Variant_ID: this.#variantId,
+				Variant_ID: this.#variantId
 			}
 		})
 		.then(response => {
@@ -2036,7 +2041,7 @@ class MMX_ProductDetails extends MMX_Element {
 				Module_Code: 'discount_volume',
 				Module_Function: 'Runtime_VolumePricing_Load_Product_Variant',
 				Product_Code: this.getPropValue('product-code'),
-				Variant_ID: this.#variantId,
+				Variant_ID: this.#variantId
 			}
 		})
 		.then(response => {

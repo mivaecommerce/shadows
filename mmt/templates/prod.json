@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.01,
-                    "settings_version": "26.01.03"
+                    "flex_version": 26.02,
+                    "settings_version": "26.02.00"
                 },
                 "advanced": {
                     "form_name": {
@@ -2801,8 +2801,8 @@
             "item_code": "related-products",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.01,
-                    "settings_version": "26.01.03"
+                    "flex_version": 26.02,
+                    "settings_version": "26.02.00"
                 },
                 "advanced": {
                     "empty_results_message": {
@@ -3246,6 +3246,11 @@
                     }
                 },
                 "list": {
+                    "categories": {
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
                     "columns": {
                         "desktop": {
                             "value": 4
@@ -3308,10 +3313,10 @@
                         "product_set": {
                             "value": "auto"
                         },
-                        "prompt": {
+                        "related_source": {
                             "visible": 0
                         },
-                        "related_source": {
+                        "showcase": {
                             "visible": 0
                         }
                     },

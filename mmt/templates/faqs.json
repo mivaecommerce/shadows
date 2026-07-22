@@ -5,8 +5,8 @@
             "item_code": "accordion",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.01,
-                    "settings_version": "26.01.03"
+                    "flex_version": 26.02,
+                    "settings_version": "26.02.00"
                 },
                 "accordion": {
                     "details": {
