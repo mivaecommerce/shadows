@@ -2,7 +2,7 @@
 	"code": "mmx-combination-facet",
 	"name": "Combination Facet",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-combination-facet",
 	"category": "combination-facet",
@@ -1996,11 +1996,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-button": "=26.02.00",
-		"mmx-forms": "=26.02.00",
-		"mmx-hero": "=26.02.00",
-		"mmx-icons": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-button": "=26.02.01",
+		"mmx-forms": "=26.02.01",
+		"mmx-hero": "=26.02.01",
+		"mmx-icons": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

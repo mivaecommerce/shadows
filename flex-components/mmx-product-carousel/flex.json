@@ -2,7 +2,7 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
@@ -1160,11 +1160,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-button": "=26.02.00",
-		"mmx-hero": "=26.02.00",
-		"mmx-hero-slider": "=26.02.00",
-		"mmx-messages": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-button": "=26.02.01",
+		"mmx-hero": "=26.02.01",
+		"mmx-hero-slider": "=26.02.01",
+		"mmx-messages": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

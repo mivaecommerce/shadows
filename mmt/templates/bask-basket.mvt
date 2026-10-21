@@ -66,7 +66,7 @@
 						</mvt:if>
 						<tr class="t-basket__product-information">
 							<td class="t-basket__product-image" data-label="">
-								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
+								<img src="&mvte:group:imagetypes:main;" alt="" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 							</td>
 							<td class="t-basket__product-details" data-label="">
 								<mvt:if expr="ISNULL l.settings:group:link">

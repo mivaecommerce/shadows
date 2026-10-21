@@ -2,7 +2,7 @@
  * MMX / IMAGE ACROSS
  */
 class MMX_ImageAcross extends MMX_Element {
-	#auto_image_height;
+	#auto_image_ratio;
 	#scroll_position;
 	#resize_observer;
 	#intersection_observer;
@@ -62,6 +62,7 @@ class MMX_ImageAcross extends MMX_Element {
 	constructor() {
 		super();
 		this.makeComponent();
+		this.#auto_image_ratio		= '';
 		this.#scroll_position		= 0;
 		this.#resize_observer		= new ResizeObserver(entries => this.setScrollPosition());
 		this.#intersection_observer	= new IntersectionObserver(entries => {this.calculateScrollPosition();}, { rootMargin: '100% 0%', threshold: 0 });
@@ -168,7 +169,7 @@ class MMX_ImageAcross extends MMX_Element {
 	getSize() {
 		const size = this.getPropValue('size');
 		if (size === 'auto') {
-			return this.#auto_image_height + 'px';
+			return this.#auto_image_ratio;
 		} else {
 			return size;
 		}
@@ -176,57 +177,63 @@ class MMX_ImageAcross extends MMX_Element {
 
 	setImageHeight() {
 		if (this.getPropValue('size') !== 'auto') {
-			return this.updateImageHeight(this.getPropValue('size'));
-		}
-
-		const minHeight = this.#visibleImagesMinHeight();
-
-		if (minHeight) {
-			this.updateImageHeight(`${minHeight}px`);
+			this.updateImageHeight(this.getPropValue('size'));
 			return;
 		}
 
-		this.#auto_image_height = 0;
+		this.#bindImageLoadEvents();
+		this.#updateRenderStatus();
 
+		const ratio = this.#flattestImageRatio();
+
+		if (!ratio) {
+			return;
+		}
+
+		this.#auto_image_ratio = ratio;
+		this.updateImageHeight(ratio);
+	}
+
+	#bindImageLoadEvents() {
 		this.imageElements().forEach(image => {
-			const img = image?.slottedImage?.() ?? image?.shadowImage?.();
-
-			if (img?.complete) {
-				return this.checkLoadedImage(img);
-			}
-
 			image.addEventListener('img:load', this.#event_image_load);
 		});
 	}
 
-	#visibleImagesMinHeight() {
-		const images = this.imageElements();
-		const heights = images.map(image => this.#visibleImageHeight(image)).filter(height => height > 0);
+	#event_image_load = () => {
+		this.setImageHeight();
+	};
 
-		if (heights.length !== images.length) {
-			return 0;
+	#flattestImageRatio() {
+		const dimensions = this.imageElements().map(image => this.#naturalImageDimensions(image));
+
+		if (!dimensions.length || dimensions.some(dimension => !dimension)) {
+			return '';
 		}
 
-		return Math.min(...heights);
+		const flattest = dimensions.reduce((min, dimension) => {
+			return (dimension.height / dimension.width) < (min.height / min.width) ? dimension : min;
+		});
+
+		return `${flattest.width}/${flattest.height}`;
 	}
 
-	#visibleImageHeight(image) {
+	#naturalImageDimensions(image) {
 		const img = image?.slottedImage?.() ?? image?.shadowImage?.();
 
 		if (!img) {
-			return 0;
+			return null;
 		}
 
 		const source = this.#visiblePictureSource(img.closest('picture'));
-		const naturalWidth = Number(source?.getAttribute('width') ?? img.getAttribute('width'));
-		const naturalHeight = Number(source?.getAttribute('height') ?? img.getAttribute('height'));
-		const renderedWidth = img.getBoundingClientRect().width;
+		const width = Number(source?.getAttribute('width') ?? img.getAttribute('width')) || img.naturalWidth;
+		const height = Number(source?.getAttribute('height') ?? img.getAttribute('height')) || img.naturalHeight;
 
-		if (!(naturalWidth > 0) || !(naturalHeight > 0) || !(renderedWidth > 0)) {
-			return 0;
+		if (!(width > 0) || !(height > 0)) {
+			return null;
 		}
 
-		return Math.round(naturalHeight * (renderedWidth / naturalWidth));
+		return {width, height};
 	}
 
 	#visiblePictureSource(picture) {
@@ -237,22 +244,6 @@ class MMX_ImageAcross extends MMX_Element {
 		return [...picture.querySelectorAll('source[media]')].find(source => {
 			return window.matchMedia(source.getAttribute('media')).matches;
 		});
-	}
-
-	#event_image_load = (e) => {
-		this.checkLoadedImage(e.detail.element);
-	};
-
-	checkLoadedImage(image) {
-		const last_auto_image_height = this.#auto_image_height;
-
-		this.calculateMinImageHeight(this.getResponsiveImageHeight(image));
-
-		if (last_auto_image_height !== this.#auto_image_height) {
-			this.updateImageHeight(this.#auto_image_height + 'px');
-		}
-
-		this.#updateRenderStatus();
 	}
 
 	#updateRenderStatus() {
@@ -274,18 +265,10 @@ class MMX_ImageAcross extends MMX_Element {
 
 	updateImageHeight(size) {
 		this.imageElements().forEach(image => {
-			image.setAttribute('data-size', size);
+			if (image.getAttribute('data-size') !== size) {
+				image.setAttribute('data-size', size);
+			}
 		});
-	}
-
-	calculateMinImageHeight(height)
-	{
-		if (this.#auto_image_height === 0) {
-			this.#auto_image_height = height;
-		}
-		else if (height < this.#auto_image_height) {
-			this.#auto_image_height = height;
-		}
 	}
 
 	calculateScrollPosition()

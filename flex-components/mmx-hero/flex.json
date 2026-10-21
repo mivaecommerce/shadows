@@ -2,7 +2,7 @@
 	"code": "mmx-hero",
 	"name": "Hero",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero",
 	"category": "image",
@@ -1029,7 +1029,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-176x5f0ZfgL1SguE9MHSfK9EgYcjJE1ZaI3Hv35x76w= sha384-FegsVyrZhcrFEEwT9OxxpmWkxJKDGTGGD9rqHZ20bf1VzruEyUccPLAyuI1jVO1E sha512-OJMTBjCMAWWTucNttbztNHYiYTGHDf6ae/lrDc1KXxRi9r0vYREvh6RIfkQKL1bUc5m5wOKeejNP/vy45qy9DA=="
+					"value": "sha256-kUIpOjsIPwRCO4b1itXgP46NVzt35zTnF96J974BT5o= sha384-dV5hg1Whh0O5clMC7wprFciOJcmIq935OUu0EWYnQa+mY08HHw49L8g7/PWx+R+O sha512-+qMFJBq1+wcZNMklboNaYyU4fjYWENwiNgzA0oia6l6P2uNUmllj+x2uHNNALGzxHDAW/KiRsY0jWbgMTTj1Rw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1071,8 +1071,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-button": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-button": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

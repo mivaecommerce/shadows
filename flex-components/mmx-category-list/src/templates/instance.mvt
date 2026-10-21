@@ -98,7 +98,8 @@
 		</mvt:if>
 
 		<mvt:if expr="NOT ISNULL l.settings:instance:list:parent_category:specific:category:cattitle:image">
-			<img slot="title" src="&mvte:instance:list:parent_category:specific:category:cattitle:image;" alt="" />
+			<mvt:assign name="l.settings:instance:list:parent_category:specific:category:cattitle:alt_text" value="ternary( l.settings:instance:heading:settings:enabled, '', l.settings:instance:heading:heading_text:value )" />
+			<img slot="title" src="&mvte:instance:list:parent_category:specific:category:cattitle:image;" alt="&mvte:instance:list:parent_category:specific:category:cattitle:alt_text;" />
 		</mvt:if>
 	</mvt:if>
 

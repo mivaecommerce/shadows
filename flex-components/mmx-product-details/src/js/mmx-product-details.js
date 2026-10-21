@@ -1705,6 +1705,7 @@ class MMX_ProductDetails extends MMX_Element {
 				<script type="application/json">
 					${MMX.scriptSafeJSONStringify({
 						images: this.#product.images,
+						label: this.#product.name,
 						settings: detail.image_settings
 					})}
 				</script>

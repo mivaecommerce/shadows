@@ -38,6 +38,33 @@ class MMX_ImageGallery extends MMX_Element {
 		this.#settings = MMX.variableType(settings) === 'object' ? settings : {};
 	}
 
+	// Accessibility
+	#label() {
+		return this.data?.label ?? '';
+	}
+
+	#imageAlt(image) {
+		return image?.alt?.length ? image.alt : this.#label();
+	}
+
+	#slideButtonLabel({image, index, location} = {}) {
+		const imageAlt = this.#imageAlt(image).trim();
+
+		if (location === 'thumbnail') {
+			if (imageAlt.length) {
+				return `View image ${index + 1} of ${this.#images.length} for ${imageAlt}`;
+			}
+
+			return `View image ${index + 1} of ${this.#images.length}`;
+		}
+
+		if (imageAlt.length) {
+			return `View closeup of ${imageAlt}`;
+		}
+
+		return 'View closeup';
+	}
+
 	setImages(images) {
 		const imageType = this.#imageType;
 
@@ -122,13 +149,6 @@ class MMX_ImageGallery extends MMX_Element {
 		element?.addEventListener?.('click', (e) => {
 			callback?.(e);
 		});
-
-		element?.addEventListener?.('keydown', (e) => {
-			if ([' ', 'Enter'].includes(e.key)) {
-				e.preventDefault();
-				callback?.(e);
-			}
-		});
 	}
 
 	// Slider
@@ -141,7 +161,7 @@ class MMX_ImageGallery extends MMX_Element {
 	}
 
 	#slides(part = 'main') {
-		return this.shadowRoot.querySelectorAll(`[part~="${part}"] > mmx-hero > img`);
+		return this.shadowRoot.querySelectorAll(`[part~="${part}"] > mmx-hero [part~="slide-button"]`);
 	}
 
 	#invokeOnSliders(method, ...args) {
@@ -167,6 +187,23 @@ class MMX_ImageGallery extends MMX_Element {
 	#updateSliders() {
 		this.#saveImageType();
 		this.#updateCloseupCount();
+		this.#updateThumbnailSelection();
+	}
+
+	#updateThumbnailSelection() {
+		if (!this.#thumbnailEnabled()) {
+			return;
+		}
+
+		const position = this.#slider()?.getSliderState?.()?.position ?? 0;
+
+		this.#slides('thumbnail').forEach((slide, index) => {
+			if (index === position) {
+				slide.setAttribute('aria-current', 'true');
+			} else {
+				slide.removeAttribute('aria-current');
+			}
+		});
 	}
 
 	#renderImagesSlider({location = 'main', perPage = 1, maxWidth = 'none', arrowStyle = 'caret', navStyle = '', dimensions = '580x580'} = {}) {
@@ -189,21 +226,34 @@ class MMX_ImageGallery extends MMX_Element {
 				data-max-width="${MMX.encodeEntities(maxWidth)}"
 				data-peek="${MMX.encodeEntities(Math.floor(MMX.coerceNumber(dimensions.split('x').at(0)) / 3))}"
 			>
-				${this.#images.map(image => {
-					return this.#renderImagesSlide({image, dimensions, allowFocus});
+				${this.#images.map((image, index) => {
+					return this.#renderImagesSlide({image, index, location, dimensions, allowFocus});
 				}).join('')}
 			</mmx-hero-slider>
 		`;
 	}
 
-	#renderImagesSlide({image = {}, dimensions = '580x580', allowFocus = false} = {}) {
+	#renderImagesSlide({image = {}, index = 0, location = 'main', dimensions = '580x580', allowFocus = false} = {}) {
 		const resizedImage = image.sizes?.[dimensions] ?? image.sizes?.original;
 		const imageFit = this.#settings?.fit?.value ?? 'contain';
-		const tabIndex = allowFocus ? 'tabindex=0' : '';
 
-		return typeof resizedImage?.url !== 'string' ? '' : /*html*/`
+		const alt = allowFocus ? '' : this.#imageAlt(image);
+		const img = typeof resizedImage?.url === 'string'
+			? /*html*/`<img src="${MMX.encodeEntitiesURI(resizedImage.url)}" loading="lazy" alt="${MMX.encodeEntities(alt)}" />`
+			: '';
+
+		return /*html*/`
 			<mmx-hero slot="hero_slide" data-fit="${MMX.encodeEntities(imageFit)}" data-tag="div">
-				<img slot="image" src="${MMX.encodeEntitiesURI(resizedImage.url)}" loading="lazy" alt="" ${tabIndex} />
+				${!allowFocus ? /*html*/`<span slot="image">${img}</span>` : /*html*/`
+					<button
+						type="button"
+						slot="image"
+						part="slide-button ${MMX.encodeEntities(location)}-slide-button"
+						aria-label="${MMX.encodeEntities(this.#slideButtonLabel({image, index, location}))}"
+					>
+						${img}
+					</button>
+				`}
 			</mmx-hero>
 		`;
 	}
@@ -278,6 +328,7 @@ class MMX_ImageGallery extends MMX_Element {
 					data-shape="round"
 					data-size="xs"
 					title="Close Dialog"
+					aria-label="Close Dialog"
 				>
 					<mmx-icon part="closeup-icon closeup-close-icon">cross</mmx-icon>
 				</mmx-button>

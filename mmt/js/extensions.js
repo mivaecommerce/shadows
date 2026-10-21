@@ -767,6 +767,11 @@ class TransfigureNavigation {
 
 	constructor(settings = {}) {
 		this.#settings = Object.assign(this.#settings, settings);
+
+		if (!this.#container) {
+			return;
+		}
+
 		this.#bindEvents();
 	}
 

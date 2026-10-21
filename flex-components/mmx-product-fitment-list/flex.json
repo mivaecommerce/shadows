@@ -2,7 +2,7 @@
 	"code": "mmx-product-fitment-list",
 	"name": "Product Fitment List",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-fitment-list",
 	"category": "product-fitment-list",
@@ -460,8 +460,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-messages": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-messages": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

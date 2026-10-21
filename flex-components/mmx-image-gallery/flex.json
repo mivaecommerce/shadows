@@ -2,7 +2,7 @@
 	"code": "mmx-image-gallery",
 	"name": "MMX Image Gallery",
 	"type": "library",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-gallery",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-LoVFJWYjAdFHnCjHveb11XYyHYbymLOzyaUfUhwy7sw= sha384-1IZPC6IFXjugYrYK7MXFNsCw0aT911Dt/ntvEtpGDZMybG2EfwEiRTlKCkZfXiAN sha512-1E6apCicILX5vGZW1wn0pouqYGvap2CFmIQchiimb4wgXk5Sjr9y3SyyM2QQ9dG0R4l4TlzGjBU4rcp88/PPZw=="
+					"value": "sha256-6BrUtRsy1jkgpHw9CMdZW+/p/JWE+6wXOzJrVKAUoqg= sha384-wzgpXuTldB9Cj8wN55kbLcAbQElMa7RFBQREDbun6xd4ffldqut3HUGou+RA0X0o sha512-F8ywSG7I0+reK0Lp15Lr+LfXhimXYs2+BlyXWPF47fs6A89mXW19aeElaS+6Vj6gMTq0MmnFiWIMXxwRSUQYsg=="
 				},
 				{
 					"name": "crossorigin",
@@ -48,7 +48,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-VugstqHIwIuiryGT1DF4EHxb4srr/VVFe8vZUboUlqM= sha384-UmnQVcAtRqtDPFYh/RYXjGnqT0Uag7MdPLQskIU5Ftn+RwveHeoLkkFVZREMEFPH sha512-pZ3Fgn+m0AKYTNcHWDguDUm8NPpUVHs3ITxfMYD7C0DavOpOKeQXNfcb7MLYAblFPqMwq75HtXkHLGCHHtz6og=="
+					"value": "sha256-K0n2R8f6/Jp6FTn5lcLU6Wh9XrrlwlUyrS0mp8luYdU= sha384-uNTXvr3bS81RLLd1HtnbC/ig0nQxLyenpyQMh62+Mg23+ucaxwyKe1B9KDcdmUBI sha512-ukwM2uvyc24ElU8ibB+sPxNxWrj2nPVxoc80smUCzGVNZYvcWCHFbmapizcLjKUlqgNvRNYh3zR3WZmFdIvqTQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -58,8 +58,8 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-hero": "=26.02.00",
-		"mmx-hero-slider": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-hero": "=26.02.01",
+		"mmx-hero-slider": "=26.02.01"
 	}
 }

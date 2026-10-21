@@ -20,6 +20,11 @@
 	gap: var(--mmx-image-across__gap);
 }
 
+.mmx-image-across__images > slot[name="image"]::slotted(*) {
+	aspect-ratio: auto;
+	height: auto;
+}
+
 
 /* Overflow: Scroll
    =========================================== */

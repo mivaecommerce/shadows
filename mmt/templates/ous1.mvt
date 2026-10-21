@@ -38,7 +38,7 @@
 			<div class="o-layout o-layout--wide o-layout--justify-center">
 				<mvt:if expr="NOT ISNULL l.settings:imagedata:image">
 					<picture class="o-layout__item u-width-5--m">
-						<img class="u-block" src="&mvte:imagedata:image;" alt="&mvte:upsale:name;" loading="lazy" width="&mvte:imagedata:image:width;" height="&mvte:imagedata:image:height;">
+						<img class="u-block" src="&mvte:imagedata:image;" alt="" loading="lazy" width="&mvte:imagedata:image:width;" height="&mvte:imagedata:image:height;">
 					</picture>
 				</mvt:if>
 				<br>

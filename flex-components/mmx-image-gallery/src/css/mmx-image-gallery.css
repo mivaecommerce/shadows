@@ -72,3 +72,27 @@
 	align-self: center;
 	text-align: center;
 }
+
+/* Slide Buttons
+   =========================================== */
+[slot="image"] {
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+[slot="image"] img {
+	display: block;
+	height: 100%;
+	object-fit: inherit;
+	width: 100%;
+}
+
+[part~="slide-button"] {
+	appearance: none;
+	background: none;
+	border: 0;
+	cursor: pointer;
+	font: inherit;
+	padding: 0;
+}

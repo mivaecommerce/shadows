@@ -18,7 +18,7 @@
 						</mvt:if>
 						<div class="x-mini-basket__line">
 							<figure class="x-mini-basket__image">
-								<img src="&mvte:group:imagetypes:main;" alt="&mvte:group:name;" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
+								<img src="&mvte:group:imagetypes:main;" alt="" loading="lazy" width="&mvte:basket:b_width;" height="&mvte:basket:b_height;">
 							</figure>
 							<div class="x-mini-basket__item">
 								<mvt:if expr="ISNULL l.settings:group:link">

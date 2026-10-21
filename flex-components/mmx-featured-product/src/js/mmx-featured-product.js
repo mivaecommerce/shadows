@@ -583,7 +583,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 			</style>
 			<div part="image-slider" class="mmx-featured-product__image-slider mmx-featured-product__image-slider--standalone">
 				<a part="image-slide" href="${MMX.encodeEntities(this.product.url)}">
-					${this.renderProductImagePictureTag(image)}
+					${this.renderProductImagePictureTag(image, this.product.name)}
 				</a>
 			</div>
 		`;
@@ -612,14 +612,14 @@ class MMX_FeaturedProduct extends MMX_Element {
 				part="image-slide"
 				data-fit="${MMX.encodeEntities(this.getPropValue('image-fit'))}"
 				data-href="${MMX.encodeEntities(this.product.url)}"
-				data-title="View ${MMX.encodeEntities(this.product.name)}"
+				aria-label="View ${MMX.encodeEntities(this.product.name)}"
 			>
 				${this.renderProductImagePictureTag(image)}
 			</mmx-hero>
 		`;
 	}
 
-	renderProductImagePictureTag(image) {
+	renderProductImagePictureTag(image, alt = '') {
 		if (typeof image?.default !== 'string') {
 			return '';
 		}
@@ -627,7 +627,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		return /*html*/`
 			<picture slot="image">
 				${this.renderProductMobileImage(image)}
-				<img src="${MMX.encodeEntitiesURI(image.default)}" alt="">
+				<img src="${MMX.encodeEntitiesURI(image.default)}" alt="${MMX.encodeEntities(alt)}">
 			</picture>
 		`;
 	}

@@ -95,6 +95,10 @@ class MMX_Hero extends MMX_Element {
 				default: null,
 				allowAny: true
 			},
+			'aria-label': {
+				default: null,
+				allowAny: true
+			},
 			'overlay-bg': {
 				options: [
 					'linear-gradient',
@@ -339,6 +343,7 @@ class MMX_Hero extends MMX_Element {
 				${this.renderHref()}
 				${this.renderTarget()}
 				${this.renderTitle()}
+				${this.renderAriaLabel()}
 				class="
 					mmx-hero
 					mmx-hero--size-method--${this.getSizeMethod()}
@@ -405,6 +410,11 @@ class MMX_Hero extends MMX_Element {
 	renderTitle() {
 		const title = this.getPropValue('title');
 		return title ? `title="${MMX.encodeEntities(title)}"` : '';
+	}
+
+	renderAriaLabel() {
+		const ariaLabel = this.getPropValue('aria-label');
+		return ariaLabel ? `aria-label="${MMX.encodeEntities(ariaLabel)}"` : '';
 	}
 
 	slottedImage() {
@@ -698,8 +708,8 @@ class MMX_Hero extends MMX_Element {
 
 		if (this.data?.image) {
 			return this.renderImageAsPicture();
-
 		}
+
 		return this.renderImageFromAttributes();
 	}
 
@@ -712,7 +722,7 @@ class MMX_Hero extends MMX_Element {
 			<picture part="picture">
 				${this.data?.image?.img?.responsive_images?.mobile ? /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.mobile)}">` : ''}
 				${this.data?.image?.img?.responsive_images?.tablet ? /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.tablet)}">` : ''}
-				<img src="${MMX.encodeEntitiesURI(this.data.image.img.image)}" alt="${this.data?.image?.img?.alt || ''}" ${this.getLoadingAttributeString()}>
+				<img src="${MMX.encodeEntitiesURI(this.data.image.img.image)}" alt="${MMX.encodeEntities(this.data?.image?.img?.alt)}" ${this.getLoadingAttributeString()}>
 			</picture>
 		`;
 	}

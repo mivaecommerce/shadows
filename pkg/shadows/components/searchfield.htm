@@ -71,7 +71,7 @@ MMSearchField.prototype.onBlur = () => null;
 ]]></Template><Notes>#Set_Current_Time#</Notes></JavaScript><MenuItem><PriceDisplay>Sale</PriceDisplay><AdditionalPriceDisplay>Base</AdditionalPriceDisplay><DisplayDiscounts>No</DisplayDiscounts><PredictDiscounts>Yes</PredictDiscounts><Fields><Code/><Name/><Price/></Fields><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>32</Width><Height>32</Height></ImageDimensions><SortBy>code_asc</SortBy><Template><![CDATA[<div class="x-search-preview__item" data-search="&mvte:product:name;">
 	<figure class="x-search-preview__image" style="--search-preview-image-x: &mvte:searchfield:b_width;px; --search-preview-image-y: &mvte:searchfield:b_height;px;">
 		<mvt:if expr="NOT ISNULL l.settings:product:imagetypes:main">
-			<img src="&mvte:product:imagetypes:main;" alt="&mvte:product:name;" loading="lazy" width="&mvte:searchfield:b_width;" height="&mvte:searchfield:b_height;">
+			<img src="&mvte:product:imagetypes:main;" alt="" loading="lazy" width="&mvte:searchfield:b_width;" height="&mvte:searchfield:b_height;">
 		</mvt:if>
 	</figure>
 	<span class="x-search-preview__item-name mm-theme-button-secondary-navigation mm-theme-button-secondary-navigation__medium">&mvte:product:name;</span>

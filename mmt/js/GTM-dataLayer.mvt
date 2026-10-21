@@ -1,12 +1,33 @@
 <mvt:comment>
 Miva Data Layer for Google Analytics 4
-Version: 1.3.1
+Version: 1.4.0
 </mvt:comment>
 
 var dataLayer = dataLayer || [];
 
 var clearEcommerceDataLayer = () => {
-	dataLayer.push({ ecommerce: null });<mvt:comment>Clearing the ecommerce object will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+	dataLayer.push({ ecommerce: null, category: undefined, showcase: undefined, search_term: undefined });<mvt:comment>Clearing the ecommerce object & content params will prevent multiple ecommerce events on a page from affecting each other.</mvt:comment>
+};
+
+<mvt:comment>
+|	Event-scoped content params
+</mvt:comment>
+var elementContentParams = (element) => {
+	const dataset = element?.dataset ?? {};
+
+	if (dataset.category) {
+		return { category: dataset.category };
+	}
+
+	if (dataset.showcase) {
+		return { showcase: dataset.showcase };
+	}
+
+	if (dataset.searchTerm) {
+		return { search_term: dataset.searchTerm };
+	}
+
+	return {};
 };
 
 <mvt:assign name="l.settings:currency" value="'USD'" />
@@ -209,6 +230,7 @@ class MMXPromotionTracker {
 		clearEcommerceDataLayer();
 		dataLayer.push({
 			event,
+			...elementContentParams(item),
 			ecommerce: {
 				creative_name: item.getAttribute('data-flex-item'),
 				creative_slot: [...this.promotions].findIndex(promotion => promotion === item) + 1,
@@ -230,6 +252,7 @@ class MMXPromotionTracker {
 		clearEcommerceDataLayer();
 		dataLayer.push({
 			event: event === 'select_promotion' ? 'select_item' : 'view_item_list',
+			...elementContentParams(item),
 			ecommerce: {
 				item_list_id: item.getAttribute('id'),
 				item_list_name: item?.data?.heading?.heading_text?.value ?? item.getAttribute('id'),
@@ -282,6 +305,7 @@ class MMXPromotionTracker {
 		clearEcommerceDataLayer();
 		dataLayer.push({
 			event: 'view_item_list',
+			...elementContentParams(e.detail?.element),
 			ecommerce: {
 				item_list_id: e.detail?.item_list_id,
 				item_list_name: e.detail?.item_list_name,
@@ -294,6 +318,7 @@ class MMXPromotionTracker {
 		clearEcommerceDataLayer();
 		dataLayer.push({
 			event: 'select_item',
+			...elementContentParams(e.detail?.element),
 			ecommerce: {
 				currency: '&mvtj:currency;',
 				value: e.detail?.products?.reduce((value, product) => {
@@ -369,10 +394,12 @@ new MMXPromotionTracker();
 <mvt:if expr="NOT ISNULL l.settings:search_results:products">
 	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'search_results'" />
 	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Search Results'" />
+	<mvt:assign name="l.data_layer_item:search_term" value="g.Search" />
 	<mvt:assign name="l.settings:item_list_products" value="l.settings:search_results:products" />
 <mvt:elseif expr="NOT ISNULL l.settings:category_listing:products">
 	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'category_listing'" />
 	<mvt:assign name="l.data_layer_item:ecommerce:item_list_name" value="'Category Listing'" />
+	<mvt:assign name="l.data_layer_item:category" value="l.settings:category:code" />
 	<mvt:assign name="l.settings:item_list_products" value="l.settings:category_listing:products" />
 <mvt:elseif expr="NOT ISNULL l.settings:all_products:products">
 	<mvt:assign name="l.data_layer_item:ecommerce:item_list_id" value="'all_products'" />
@@ -552,6 +579,8 @@ new MMXPromotionTracker();
 			clearEcommerceDataLayer();
 			dataLayer.push({
 				event: 'select_item',
+				category: viewItemListEvent?.category,
+				search_term: viewItemListEvent?.search_term,
 				ecommerce: {
 					currency: '&mvtj:currency;',
 					value: selectedItem?.price,

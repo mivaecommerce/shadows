@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.02,
-                    "settings_version": "26.02.00"
+                    "settings_version": "26.02.01"
                 },
                 "advanced": {
                     "form_name": {
@@ -155,6 +155,9 @@
                                                             "settings": {
                                                                 "enabled": 1
                                                             }
+                                                        },
+                                                        "fit": {
+                                                            "value": "contain"
                                                         },
                                                         "main": {
                                                             "dimensions": {
@@ -2802,7 +2805,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.02,
-                    "settings_version": "26.02.00"
+                    "settings_version": "26.02.01"
                 },
                 "advanced": {
                     "empty_results_message": {

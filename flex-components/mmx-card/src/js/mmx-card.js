@@ -347,6 +347,14 @@ class MMX_ProductCard extends MMX_Card {
 		`;
 	}
 
+	#hasNameDetail() {
+		return Boolean(this.#details?.some?.(detail => detail?.type?.value === 'name'));
+	}
+
+	#mainImageAlt() {
+		return this.#hasNameDetail() ? '' : (this.#product?.name ?? '');
+	}
+
 	// Render: Image
 	#renderImage() {
 		if (!this.getPropValue('show-image')) {
@@ -372,7 +380,7 @@ class MMX_ProductCard extends MMX_Card {
 					slot="main"
 					part="image main-image"
 					src="${MMX.encodeEntitiesURI(mainImage.url)}"
-					alt=""
+					alt="${MMX.encodeEntities(this.#mainImageAlt())}"
 					width="${MMX.encodeEntities(mainImage.width)}"
 					height="${MMX.encodeEntities(mainImage.height)}"
 				>
@@ -567,6 +575,7 @@ class MMX_ProductCard extends MMX_Card {
 				class="mmx-product-card__attribute-swatch-button"
 				data-option-code="${MMX.encodeEntities(option.code)}"
 				title="${MMX.encodeEntities(option.prompt)}"
+				aria-label="Select ${MMX.encodeEntities(option.prompt)}"
 			>
 				<img
 					part="attribute-swatch-image"
@@ -1185,10 +1194,21 @@ class MMX_CategoryCard extends MMX_Card {
 		`;
 	}
 
+	#hasNameDetail() {
+		return Boolean(this.#details?.some?.(detail => detail?.type?.value === 'name'));
+	}
+
+	#imageAlt() {
+		return this.#hasNameDetail() ? '' : (this.#category?.name ?? '');
+	}
+
 	// Render: Image
 	#renderImage(detail) {
 		const imageType = detail?.image_settings?.type?.value ?? 'cattree';
 		const imageFit = detail?.image_settings?.fit?.value ?? 'cover';
+		const dimensions = detail?.image_settings?.dimensions?.value;
+		const [width, height] = dimensions?.split?.('x') ?? [];
+		const hasDimensions = MMX.coerceNumber(width) && MMX.coerceNumber(height);
 
 		let image = '';
 
@@ -1207,9 +1227,11 @@ class MMX_CategoryCard extends MMX_Card {
 				slot="main"
 				part="detail ${MMX.encodeEntities(detail?.type?.value)}"
 				src="${MMX.encodeEntitiesURI(image)}"
-				alt=""
+				alt="${MMX.encodeEntities(this.#imageAlt())}"
+				${hasDimensions ? `width="${MMX.encodeEntities(width)}" height="${MMX.encodeEntities(height)}"` : ''}
 				style="
 					object-fit: ${MMX.encodeEntities(imageFit)};
+					${hasDimensions ? `aspect-ratio: ${MMX.encodeEntities(width)} / ${MMX.encodeEntities(height)}; width: 100%; height: auto;` : ''}
 				"
 			>
 		`;

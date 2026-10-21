@@ -2,7 +2,7 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
@@ -1301,7 +1301,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-HlcnfgxWiPz8/vkWOCOA2xCvnCwsCxBzlOxqtl7rDLY= sha384-xtCQc1hezS0V17zElOkTnat423LywJTSqifwhKBrLdkpSsDL5tuBpip6t+WB+xWg sha512-XT6pWoUyKQR+TQkaXW4XilmIxv47nYk5qW8HJsU1S+hPOPn+xg1eP1Qe70NwOJiEhWIXRo00inorIAQvVv6/3w=="
+					"value": "sha256-kfg1x4XpexT7Ryg2qj6GzuSFxlJRknF0UjuiUXxxSVc= sha384-VJNHxKA9vUtpf0zZIjSyR3a//ApvVV1dVBUBVR33Lf27iUr997/UGDWL1mjy2TLT sha512-S87taJA3paHzj/9zkKSI/Oo5FnbuuuYSrLRHInCZgCMnkcbME9nfUozZauVjOfBdgHTx17eojmifM65vGmhRlQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1333,7 +1333,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-dTczy53i5hh+g+vpZit4BW5YFvdfDNoJQDNLB3hJkWQ= sha384-bPVz6Bc9OHVJ/ed10RFn5jDyQvacf89XS7QzJ7vqpUUnf6CgzesMsO0Oo3d3z3i+ sha512-KuHP7j6E/CXFajtT0PudpwmK9b/2ubgcSzSuyDlQWo1bgqCNrUdRyJ7aBorGe5ip8Yrf29G5mt1Rk7s13El+xg=="
+					"value": "sha256-ueUMWZu4RNGXLkM/PxyZub27vwR15hXUx1NH+kZ6kZQ= sha384-4XaqHOgI6XiVtdZr6wOrzgpjqU9oeqvJ1/qhk8CELoTq2ukKDy9WoKhWYmWAxjYq sha512-zijBtEpLxEcJca99XLkm3S06jxLsBKvYn41ia0SWFxPHuehd1+UQfxdq9t+I70YAshXsTr6f+hGRXAtvhn91yg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1343,9 +1343,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-button": "=26.02.00",
-		"mmx-hero": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-button": "=26.02.01",
+		"mmx-hero": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

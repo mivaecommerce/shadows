@@ -2,7 +2,7 @@
 	"code": "mmx-category-list",
 	"name": "Category List",
 	"type": "component",
-	"version": "26.02.00",
+	"version": "26.02.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-list",
 	"category": "product-list",
@@ -300,6 +300,16 @@
 									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
 									"prompt": "Image Type",
 									"type": "select"
+								},
+								{
+									"code": "dimensions",
+									"placeholder": "300x300",
+									"preview_property_selector": "mmx-category-card :shadow :nth-child(%index% of [part~=\"detail\"])",
+									"prompt": "Image Dimensions",
+									"required": 0,
+									"type": "text",
+									"validation_message": "Enter the pixel dimensions the image should display at (ex. 1200x300)",
+									"validation_pattern": "\\d+x\\d+"
 								},
 								{
 									"code": "fit",
@@ -778,10 +788,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.00",
-		"mmx-button": "=26.02.00",
-		"mmx-card": "=26.02.00",
-		"mmx-messages": "=26.02.00",
-		"mmx-text": "=26.02.00"
+		"mmx-base": "=26.02.01",
+		"mmx-button": "=26.02.01",
+		"mmx-card": "=26.02.01",
+		"mmx-messages": "=26.02.01",
+		"mmx-text": "=26.02.01"
 	}
 }

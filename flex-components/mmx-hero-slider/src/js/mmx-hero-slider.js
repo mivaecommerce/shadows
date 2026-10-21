@@ -174,8 +174,8 @@ class MMX_HeroSlider extends MMX_Element {
 					${this.renderSlides()}
 					<slot name="hero_slide"></slot>
 				</div>
-				<button part="arrow-${arrowStyle} arrow-left" class="mmx-hero-slider__arrow-left" title="Move to previous slider page">${this.renderSliderArrowSVG()}</button>
-				<button part="arrow-${arrowStyle} arrow-right" class="mmx-hero-slider__arrow-right" title="Move to next slider page">${this.renderSliderArrowSVG()}</button>
+				<button part="arrow-${arrowStyle} arrow-left" class="mmx-hero-slider__arrow-left" title="Move to previous slider page" aria-label="Move to previous slider page">${this.renderSliderArrowSVG()}</button>
+				<button part="arrow-${arrowStyle} arrow-right" class="mmx-hero-slider__arrow-right" title="Move to next slider page" aria-label="Move to next slider page">${this.renderSliderArrowSVG()}</button>
 				<div part="slider-navigation" class="mmx-hero-slider__slider-navigation mmx-hero-slider__slider-navigation--position-${this.getPropValue('nav-position')} mmx-hero-slider__slider-navigation--style-${this.getPropValue('nav-style')}"></div>
 			</div>
 		`;
@@ -551,9 +551,11 @@ class MMX_HeroSlider extends MMX_Element {
 				if (isFocusingNavigation) {
 					navItem.focus();
 				}
+				navItem.setAttribute('aria-current', 'true');
 				return navItem.classList.add('selected');
 			}
 
+			navItem.removeAttribute('aria-current');
 			return navItem.classList.remove('selected');
 		});
 
@@ -755,6 +757,7 @@ class MMX_HeroSlider extends MMX_Element {
 				type: 'button',
 				attributes: {
 					title: `Move slider to page #${i + 1}`,
+					'aria-label': `Move slider to page #${i + 1}`,
 					part: 'slider-navigation-button'
 				}
 			}).outerHTML;
