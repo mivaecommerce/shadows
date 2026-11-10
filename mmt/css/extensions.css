@@ -2019,3 +2019,91 @@ input[type=password]:invalid + .x-toggle-password {
 	align-items: baseline;
 	gap: 2rem;
 }
+
+/* ==========================================================================
+   EXTENSIONS / LOADING / LOADING
+   ========================================================================== */
+/**
+ * This extension provides loading states for asynchronous and time-delayed
+ * interactions: single form submits, skeleton loading screens, and loading
+ * buttons.
+ */
+/**
+ * Single Form Submits
+ *
+ * Applied by the `SingleSubmit` class to forms with the
+ * `data-hook="single-submit"` attribute while they are being submitted.
+ */
+.x-loading__area {
+	position: relative;
+}
+.x-loading__area::after {
+	background-color: rgba(255, 255, 255, 0.5);
+	bottom: 0;
+	content: "";
+	cursor: wait;
+	display: block;
+	left: 0;
+	position: absolute;
+	pointer-events: initial;
+	right: 0;
+	top: 0;
+}
+
+/**
+ * Skeleton Loading Screens
+ *
+ * Light-grey shimmering placeholders that occupy the same space as the
+ * loaded UI elements; primarily form labels, fields, and images. Combine
+ * with `.o-layout` and the `.u-grids-*` utilities for simple grid-layouts.
+ */
+.x-loading__fields {
+	width: 100%;
+}
+
+.x-loading__label,
+.x-loading__field {
+	animation: x-loading-shine 1s infinite linear;
+	background: linear-gradient(90deg, #EEEEEE 25%, #F8F8F8 50%, #EEEEEE 75%);
+	background-size: 200% 100%;
+	border-radius: 0.25rem;
+	margin: 0.5rem;
+}
+
+.x-loading__label {
+	height: 1rem;
+	max-width: 35%;
+}
+
+.x-loading__field {
+	height: 3rem;
+	max-width: 100%;
+}
+
+@keyframes x-loading-shine {
+	0% {
+		background-position: 200% 0;
+	}
+	100% {
+		background-position: -20% 0;
+	}
+}
+/**
+ * Loading Buttons
+ *
+ * Applied by the `LoadingButton` class to buttons with the
+ * `data-hook="loading-button"` attribute while their form is being submitted.
+ */
+.x-loading__button {
+	animation: x-loading-button-pulse 1.2s ease-in-out infinite;
+	cursor: wait;
+}
+
+@keyframes x-loading-button-pulse {
+	0%, 100% {
+		opacity: 0.625;
+	}
+	50% {
+		opacity: 0.4;
+	}
+}

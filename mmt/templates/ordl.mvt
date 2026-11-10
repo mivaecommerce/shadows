@@ -36,7 +36,7 @@
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-input-font-size t-logn-block">
 			<p class="mm-theme-typography-title-four">Sign In or Register</p>
 			<div id="sign-in-form" class="t-ordl-form-wrapper" aria-labelledby="register-action" role="region">
-				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
+				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off" data-hook="single-submit">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<input type="hidden" name="Action" value="LOGN" />
@@ -54,7 +54,7 @@
 									<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
 								</p>
 								<p>
-									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Sign In and Checkout">
+									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Sign In and Checkout" data-hook="loading-button">
 								</p>
 							</div>
 						</div>
@@ -62,7 +62,7 @@
 				</form>
 			</div>
 			<div id="register-form" class="t-ordl-form-wrapper u-hidden" aria-labelledby="sign-in-action" role="region">
-				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off">
+				<form class="t-ordl-form" method="post" action="&mvte:urls:OCST:secure;" autocomplete="off" data-hook="single-submit">
 					<p>We will save the rest of your account information during checkout.</p>
 					<fieldset>
 						<legend>Create Customer Account</legend>
@@ -79,7 +79,7 @@
 							</div>
 							<div class="c-form-list__item c-form-list__item--full">
 								<p>
-									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Register and Checkout">
+									<input class="c-button--full mm-theme-button-secondary mm-theme-button-secondary__small" type="submit" value="Register and Checkout" data-hook="loading-button">
 								</p>
 							</div>
 						</div>

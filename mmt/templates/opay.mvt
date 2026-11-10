@@ -117,7 +117,7 @@
 					</div>
 				</mvt:capture>
 
-				<form class="t-opay-form" data-hook="opay-form" method="post" action="&mvte:url;">
+				<form class="t-opay-form" data-hook="opay-form single-submit" method="post" action="&mvte:url;">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<mvt:if expr="ISNULL l.settings:payment:payment_url">
@@ -162,7 +162,7 @@
 										<mvt:foreach array="payment:fields" iterator="field">
 											<mvt:item name="payment" param="field:code" />
 										</mvt:foreach>
-										<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
+										<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order" data-hook="loading-button">
 									</div>
 								</div>
 							</div>
@@ -419,26 +419,26 @@
 											        MivaPay.Submit(() => {
 											            let form;
 
-											            form = document.querySelector('[data-hook="opay-form"]');
+											            form = document.querySelector('[data-hook~="opay-form"]');
 											            form.submit();
 											        });
 											    }
 											};
 										</script>
 										<span onclick="onclick_submit(); return false;">
-											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order" data-hook="loading-button">
 										</span>
 									<mvt:elseif expr="'square' CIN g.PaymentMethod">
 										<mvt:comment>No button here. Button displays above</mvt:comment>
 									<mvt:elseif expr="'amazonpayv2:' CIN g.PaymentMethod">
 										<mvt:item name="readytheme" param="contentsection( 'amazonpay_configuration' )" />
 									<mvt:elseif expr="'brain' CIN g.PaymentMethod">
-										<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
+										<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order" data-hook="loading-button">
 									<mvt:else>
 										<mvt:if expr="g.cc_payment EQ 1">
-											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" data-hook="submit-form" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" data-hook="submit-form loading-button" type="submit" value="Place Order">
 										<mvt:else>
-											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Place Order" data-hook="loading-button">
 										</mvt:if>
 									</mvt:if>
 								</div>

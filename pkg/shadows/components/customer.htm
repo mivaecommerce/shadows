@@ -37,7 +37,7 @@
 					<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 				</header>
 				<div class="c-dialog__content">
-					<form method="post" action="&mvte:urls:OINF:secure;" autocomplete="off">
+					<form method="post" action="&mvte:urls:OINF:secure;" autocomplete="off" data-hook="single-submit">
 						<fieldset>
 							<legend>Sign Into Your Account</legend>
 							<input type="hidden" name="Action" value="LOGN" />
@@ -53,7 +53,7 @@
 								</div>
 								<div class="c-form-list__item">
 									<p><a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
-									<p><input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Checkout"></p>
+									<p><input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Checkout" data-hook="loading-button"></p>
 								</div>
 							</div>
 						</fieldset>
@@ -64,7 +64,7 @@
 	</div>
 </mvt:if>
 
-<form data-validate-address method="post" action="&mvte:url;">
+<form data-validate-address method="post" action="&mvte:url;" data-hook="single-submit">
 	<fieldset>
 		<legend>&mvt:page:name;</legend>
 		<input type="hidden" name="Action" value="&mvte:action;" />
@@ -397,7 +397,7 @@
 
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--m">
-				<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue to Shipping">
+				<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue to Shipping" data-hook="loading-button">
 			</div>
 		</div>
 	</fieldset>
@@ -424,7 +424,7 @@
 		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
-		<form method="post" action="&mvte:url;" data-validate-address>
+		<form method="post" action="&mvte:url;" data-validate-address data-hook="single-submit">
 			<input type="hidden" name="Action" value="ICST" />
 			<input type="hidden" name="Order" value="&mvte:global:Order;" />
 			<input type="hidden" name="NewAccount" value="1" />
@@ -672,7 +672,7 @@
 
 			<div class="c-form-list">
 				<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
+					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save" data-hook="loading-button">
 				</div>
 			</div>
 		</form>
@@ -688,7 +688,7 @@
 <h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 <hr class="c-keyline">
 <br>
-<form method="post" action="&mvte:urls:ACED:secure;" data-validate-address>
+<form method="post" action="&mvte:urls:ACED:secure;" data-validate-address data-hook="single-submit">
 	<fieldset>
 		<input type="hidden" name="Action" value="UCST" />
 		<input type="hidden" name="updated" value="1" />
@@ -963,7 +963,7 @@
 
 		<div class="c-form-list">
 			<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-				<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
+				<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save" data-hook="loading-button">
 			</div>
 		</div>
 	</fieldset>
@@ -1063,4 +1063,4 @@
 		</p>
 	</div>
 </section>
-]]></Template><Mode>checkout_display_only</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CSBE"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>
+]]></Template><Mode>checkout_display_only</Mode><PreventAutomaticTemplateUpdates>Yes</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CSBE"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="ACLN"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CPCA"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update><Page_Update code="CPCE"><Item code="customer"><Template/><Mode>tokens_only_nodisplay</Mode><PreventAutomaticTemplateUpdates>No</PreventAutomaticTemplateUpdates><Notes>#Set_Current_Time#</Notes></Item></Page_Update>

@@ -39,6 +39,23 @@
 	</mvt:if>
 </mvt:if>
 
+<mvt:comment>Determine Content Params</mvt:comment>
+<mvt:assign name="l.settings:content_params" value="''" />
+<mvt:if expr="l.settings:instance:list:products:product_set:value EQ 'merchandising'">
+	<mvt:assign name="l.settings:content_params:showcase" value="l.settings:instance:list:products:showcase:code" />
+<mvt:elseif expr="
+	l.settings:instance:list:products:product_set:value EQ 'category' OR
+	(
+		l.settings:instance:list:products:product_set:value EQ 'auto' AND
+		ISNULL l.settings:instance:list:products:product:product_code AND
+		NOT ISNULL l.settings:instance:list:products:category:category_code
+	)
+">
+	<mvt:assign name="l.settings:content_params:category" value="l.settings:instance:list:products:category:category_code" />
+<mvt:else>
+	<mvt:assign name="l.settings:content_params:search_term" value="g.Search" />
+</mvt:if>
+
 <mvt:comment>Determine component id & page-code</mvt:comment>
 <mvt:if expr="NOT ISNULL l.settings:fragment:code">
 	<mvt:assign name="l.settings:page_code"		value="l.settings:fragment:code" />
@@ -65,12 +82,31 @@
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="l.settings:instance:advanced:initial_display:initial_height_amount:value $ l.settings:instance:advanced:initial_display:initial_height_amount:unit" />
 </mvt:if>
 
+<mvt:comment>Structured Data</mvt:comment>
+<mvt:assign name="l.structured_data_json" value="''" />
+<mvt:if expr="l.settings:instance:advanced:structured_data:mode:value EQ 'fragment' AND NOT ISNULL l.settings:instance:advanced:structured_data:fragment:value">
+	<mvt:assign name="l.settings:structured_data:context" value="'product_list'" />
+
+	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
+		<mvt:assign name="l.settings:structured_data:list_name" value="miva_html_strip( l.settings:instance:heading:heading_text:value, '' )" />
+	<mvt:elseif expr="l.settings:instance:list:products:product_set:value EQ 'category' OR
+					  ( l.settings:instance:list:products:product_set:value EQ 'auto' AND ISNULL l.settings:instance:list:products:product:product_code )">
+		<mvt:assign name="l.settings:structured_data:list_name" value="l.settings:instance:list:products:category:category:name" />
+	</mvt:if>
+
+	<mvt:capture variable="l.structured_data_json"><mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Fragment_Render( l.settings, l.settings:instance:advanced:structured_data:fragment:value, l.null )" /></mvt:capture>
+	<mvt:assign name="l.null" value="miva_member_delete( l.settings, 'structured_data' )" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-product-list
 	id="&mvte:component_id;"
 	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
+	data-category="&mvte:content_params:category;"
+	data-showcase="&mvte:content_params:showcase;"
+	data-search-term="&mvte:content_params:search_term;"
 	data-init="script"
 	style="
 		margin-top: &mvte:instance:advanced:spacing:top:value;px;
@@ -85,6 +121,13 @@
 	<script type="application/json">
 		<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
 	</script>
+
+	<mvt:comment>Structured Data</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.structured_data_json">
+		<script type="application/ld+json" class="mmx-skip-mutation">
+			<mvt:eval expr="l.structured_data_json" />
+		</script>
+	</mvt:if>
 
 	<mvt:comment>Render Section Heading</mvt:comment>
 	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
@@ -123,8 +166,20 @@
 	</mvt:if>
 
 	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
-		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
-		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet">						<mvt:eval expr="l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet" />						</mvt:if>
+		<mvt:comment> Theme Badges </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:error_badge:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:message_badges:error_badge:stylesheet" />
+		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:empty_results_message:textsettings:fields:normal:badge_theme:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:empty_results_message:textsettings:fields:normal:badge_theme:stylesheet" />
+		</mvt:if>
+
+		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet">
+			<mvt:eval expr="l.settings:instance:list:facets:title:textsettings:fields:normal:typography_theme:stylesheet" />
+		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet">
+			<mvt:eval expr="l.settings:instance:list:facets:facet_styles:typography_theme:stylesheet" />
+		</mvt:if>
 
 		<mvt:foreach iterator="detail" array="instance:card:details:children">
 			<mvt:if expr="l.settings:detail:type:value EQ 'button__view-product'	OR
@@ -134,8 +189,12 @@
 					<mvt:eval expr="l.settings:detail:button:text:textsettings:fields:normal:button_theme:stylesheet" />
 				</mvt:if>
 			<mvt:elseif expr="l.settings:detail:type:value EQ 'price'">
-				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet">	<mvt:eval expr="l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet" />	</mvt:if>
-				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:additional:typography_theme:stylesheet">	<mvt:eval expr="l.settings:detail:price_text_styles:additional:typography_theme:stylesheet" />	</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet">
+					<mvt:eval expr="l.settings:detail:price_text_styles:displayed:typography_theme:stylesheet" />
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:detail:price_text_styles:additional:typography_theme:stylesheet">
+					<mvt:eval expr="l.settings:detail:price_text_styles:additional:typography_theme:stylesheet" />
+				</mvt:if>
 			<mvt:elseif expr="l.settings:detail:type:value EQ 'name'			OR
 							  l.settings:detail:type:value EQ 'code'			OR
 							  l.settings:detail:type:value EQ 'sku'				OR
@@ -153,6 +212,24 @@
 				</mvt:if>
 			</mvt:if>
 		</mvt:foreach>
+
+		<mvt:if expr="l.settings:instance:card:flags:settings:enabled">
+			<mvt:foreach iterator="flag" array="instance:card:flags:list:children">
+				<mvt:if expr="l.settings:flag:type:value EQ 'inv_short'">
+					<mvt:if expr="NOT ISNULL l.settings:flag:badge_in:stylesheet">
+						<mvt:eval expr="l.settings:flag:badge_in:stylesheet" />
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:flag:badge_low:stylesheet">
+						<mvt:eval expr="l.settings:flag:badge_low:stylesheet" />
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:flag:badge_out:stylesheet">
+						<mvt:eval expr="l.settings:flag:badge_out:stylesheet" />
+					</mvt:if>
+				<mvt:elseif expr="NOT ISNULL l.settings:flag:badge:stylesheet">
+					<mvt:eval expr="l.settings:flag:badge:stylesheet" />
+				</mvt:if>
+			</mvt:foreach>
+		</mvt:if>
 	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
 
 	<mvt:if expr="NOT ISNULL l.theme_stylesheet">

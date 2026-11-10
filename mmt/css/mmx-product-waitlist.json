@@ -1,0 +1,33 @@
+{
+    "code": "mmx-product-waitlist",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/css"
+        },
+        {
+            "name": "rel",
+            "value": "preload"
+        },
+        {
+            "name": "as",
+            "value": "style"
+        },
+        {
+            "name": "data-mmx-resource-type",
+            "value": "adoptable"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-oq6G3HVnUrpRh7enY6gaHZYXWYnGzntt5deNcBfaiM0= sha384-HiZDn5tqyuY3/flyspbA+l/XsoIROpHRChhEQ9p3ZPeLUY5NQvyR/uegIFR9Deta sha512-e7AVrS0sZfHrqwN5rsHxnGOX04WWZxTJaUCACbA2YBuK8tJtKzCK/E8WqfNSc3cMxkn2mBoNM9Ta9Dqd5TrbiA=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

@@ -171,6 +171,7 @@ const miniBasket = (document => {
 
 	let publicMethods = {};
 	let openTrigger;
+	let closeTimeout;
 
 	/**
 	 * Merge two or more objects. Returns a new object.
@@ -220,18 +221,28 @@ const miniBasket = (document => {
 		if (mivaJS.miniBasket.use) {
 			event?.preventDefault?.();
 			event?.stopPropagation?.();
-			if (display === 'open') {
+
+			const isOpen = mbElement.classList.contains('x-mini-basket--open');
+			const shouldOpen = display === 'open' ? true : display === 'close' ? false : !isOpen;
+
+			if (shouldOpen === isOpen) {
+				return;
+			}
+
+			clearTimeout(closeTimeout);
+
+			if (shouldOpen) {
 				mbElement.parentElement.hidden = false;
 			}
 
 			setTimeout(() => {
-				document.documentElement.classList.toggle('u-overflow-hidden');
-				mbElement.classList.toggle('x-mini-basket--open');
+				document.documentElement.classList.toggle('u-overflow-hidden', shouldOpen);
+				mbElement.classList.toggle('x-mini-basket--open', shouldOpen);
 				a11yHelper();
 			}, 50);
 
-			if (display === 'close') {
-				setTimeout(() => {
+			if (!shouldOpen) {
+				closeTimeout = setTimeout(() => {
 					mbElement.parentElement.hidden = true;
 				}, 300);
 			}
@@ -1517,3 +1528,214 @@ class TransfigureNavigation {
 	window && (window.a11yToggleDestroy = destroyA11yToggle);
 	window && (window.a11yToggleClose = closeA11yToggle);
 })();
+/**
+ * EXTENSIONS / LOADING / LOADING
+ *
+ * This extension provides loading states for asynchronous and time-delayed
+ * interactions: single form submits, skeleton loading screens, and loading
+ * buttons.
+ */
+
+class SingleSubmit {
+	// Settings
+	#defaults = {
+		selector: '[data-hook~="single-submit"]',
+		loadingClass: 'x-loading__area'
+	};
+
+	#options = {};
+
+	// Initialization
+	constructor(options = {}) {
+		this.#options = {...this.#defaults, ...options};
+		this.#init();
+	}
+
+	#init() {
+		this.#bindForms();
+		this.#bindNavigateError();
+		this.#bindPageShow();
+		this.#bindEscape();
+	}
+
+	// Elements
+	#getForms() {
+		return document.querySelectorAll(this.#options.selector);
+	}
+
+	// Events
+	#bindNavigateError() {
+		window.navigation?.addEventListener('navigateerror', () => {
+			this.removeAllLoading();
+		});
+	}
+
+	#bindPageShow() {
+		window.addEventListener('pageshow', (e) => {
+			if (e.persisted) {
+				this.removeAllLoading();
+			}
+		});
+	}
+
+	#bindEscape() {
+		window.addEventListener('keyup', (e) => {
+			if (e.key === 'Escape') {
+				this.removeAllLoading();
+			}
+		});
+	}
+
+	// Forms
+	#bindForms() {
+		this.#getForms().forEach(form => {
+			form.addEventListener('submit', (e) => {
+				this.#onFormSubmit(form, e);
+			});
+
+			form.addEventListener('set-loading', () => {
+				this.setFormLoading(form);
+			});
+
+			form.addEventListener('remove-loading', () => {
+				this.removeFormLoading(form);
+			});
+		});
+	}
+
+	#onFormSubmit(form, e) {
+		if (e.defaultPrevented) {
+			return;
+		}
+
+		this.setFormLoading(form);
+	}
+
+	// Public API
+	setFormLoading(form) {
+		form.classList.add(this.#options.loadingClass);
+		form.inert = true;
+	}
+
+	removeFormLoading(form) {
+		form.classList.remove(this.#options.loadingClass);
+		form.inert = false;
+	}
+
+	removeAllLoading() {
+		this.#getForms().forEach(form => {
+			this.removeFormLoading(form);
+		});
+	}
+}
+
+class LoadingButton {
+	// Settings
+	#defaults = {
+		selector: '[data-hook~="loading-button"]',
+		loadingClass: 'x-loading__button',
+		loadingText: 'Loading...'
+	};
+
+	#options = {};
+	#originalContent = new WeakMap();
+
+	// Initialization
+	constructor(options = {}) {
+		this.#options = {...this.#defaults, ...options};
+		this.#init();
+	}
+
+	#init() {
+		this.#bindButtons();
+		this.#bindNavigateError();
+		this.#bindPageShow();
+		this.#bindEscape();
+	}
+
+	// Elements
+	#getButtons() {
+		return document.querySelectorAll(this.#options.selector);
+	}
+
+	// Cancellation Events
+	#bindNavigateError() {
+		window.navigation?.addEventListener('navigateerror', () => {
+			this.removeAllLoading();
+		});
+	}
+
+	#bindPageShow() {
+		window.addEventListener('pageshow', (e) => {
+			if (e.persisted) {
+				this.removeAllLoading();
+			}
+		});
+	}
+
+	#bindEscape() {
+		window.addEventListener('keyup', (e) => {
+			if (e.key === 'Escape') {
+				this.removeAllLoading();
+			}
+		});
+	}
+
+	// Buttons
+	#bindButtons() {
+		this.#getButtons().forEach(button => {
+			if (button.form) {
+				button.form.addEventListener('submit', (e) => {
+					this.#onFormSubmit(button, e);
+				});
+			}
+
+			button.addEventListener('set-loading', () => {
+				this.setButtonLoading(button);
+			});
+
+			button.addEventListener('remove-loading', () => {
+				this.removeButtonLoading(button);
+			});
+		});
+	}
+
+	#onFormSubmit(button, e) {
+		if (e.defaultPrevented) {
+			return;
+		}
+
+		this.setButtonLoading(button);
+	}
+
+	// Public API
+	setButtonLoading(button) {
+		const isInput = button.tagName === 'INPUT';
+
+		if (!this.#originalContent.has(button)) {
+			this.#originalContent.set(button, isInput ? button.value : button.innerHTML);
+		}
+
+		button.classList.add(this.#options.loadingClass);
+		button[isInput ? 'value' : 'innerHTML'] = button.dataset.loadingButtonText ?? this.#options.loadingText;
+		button.inert = true;
+	}
+
+	removeButtonLoading(button) {
+		if (this.#originalContent.has(button)) {
+			const isInput = button.tagName === 'INPUT';
+
+			button[isInput ? 'value' : 'innerHTML'] = this.#originalContent.get(button);
+			this.#originalContent.delete(button);
+		}
+
+		button.classList.remove(this.#options.loadingClass);
+		button.inert = false;
+	}
+
+	removeAllLoading() {
+		this.#getButtons().forEach(button => {
+			this.removeButtonLoading(button);
+		});
+	}
+}

@@ -123,7 +123,7 @@
 					<hr class="c-keyline c-keyline--small">
 				</div>
 				<div class="o-layout__item u-width-12 t-account-landing-section__content">
-					<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+					<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" data-hook="single-submit">
 						<fieldset>
 							<legend>&mvt:page:name;</legend>
 							<input type="hidden" name="Action" value="RDGC" />
@@ -145,7 +145,7 @@
 										</div>
 										<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 											<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" placeholder="Enter Code Here" value="&mvte:global:GiftCertificate_Code;" required>
-											<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Apply">
+											<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Apply" data-hook="loading-button">
 										</div>
 									</div>
 								</div>

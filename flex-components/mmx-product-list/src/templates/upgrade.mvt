@@ -127,3 +127,16 @@
 	<mvt:comment> Disable categories in search results </mvt:comment>
 	<mvt:assign name="l.settings:instance:list:categories:settings:enabled" value="0" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:comment> Structured Data: replaces the emit_json_ld checkbox. It defaulted to on, so only an explicit "off" becomes None </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:structured_data:mode:value" value="ternary( ISNULL l.settings:instance:advanced:emit_json_ld:value OR l.settings:instance:advanced:emit_json_ld:value, 'auto', 'none' )" />
+	<mvt:assign name="l.settings:instance:advanced:structured_data:fragment:value" value="'json_ld'" />
+	<mvt:eval expr="miva_member_delete( l.settings:instance:advanced, 'emit_json_ld' )" />
+
+	<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:message_badges:error_badge:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:empty_results_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:card:add_to_wishlist:dialog:error_badge_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:card:add_to_wishlist:empty_wishlists:message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+</mvt:if>

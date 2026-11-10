@@ -75,6 +75,28 @@ MMX.scriptSafeJSONStringify = (data) => {
 	return JSON.stringify(data).replace(/\//gi, '\\/');
 };
 
+MMX.upsertJsonLd = ({data = {}, parent = document, attributes = {type: 'application/ld+json'}} = {}) => {
+	 const script = parent?.querySelector?.(':scope > script[type="application/ld+json"]') || MMX.createElement({
+		type: 'script',
+		attributes,
+		parent
+	});
+
+	if (MMX.valueIsEmpty(data)) {
+		script.remove();
+
+		return null;
+	}
+	else {
+		script.textContent = MMX.scriptSafeJSONStringify({
+			'@context': 'https://schema.org',
+			...data
+		});
+	}
+
+	return script;
+};
+
 MMX.getCustomFieldValueFromRecord = (customField = '', record = {}) => {
 	const customFieldParts = customField?.split?.(':');
 
@@ -87,6 +109,13 @@ MMX.getCustomFieldValueFromRecord = (customField = '', record = {}) => {
 	return record?.CustomField_Values?.[moduleCode]?.[fieldCode];
 };
 
+MMX.getParam = (params = {}, name = '') => {
+	const lowerName = name.toLowerCase();
+	const key = Object.keys(params ?? {}).find(key => key.toLowerCase() === lowerName);
+
+	return key === undefined ? undefined : params[key];
+};
+
 MMX.valueIsEmpty = (value) => {
 	if (value === null)											return true;
 	else if (typeof value === 'object')							return Object.keys(value).length === 0 && value.constructor === Object;
@@ -97,6 +126,22 @@ MMX.valueIsEmpty = (value) => {
 	return false;
 };
 
+MMX.isPlainObject = (value) => {
+	return value !== null && typeof value === 'object' && !Array.isArray(value);
+};
+
+MMX.deepMerge = (target, source) => {
+	for (const [key, value] of Object.entries(source)) {
+		if (key === '__proto__' || key === 'constructor' || key === 'prototype') {
+			continue;
+		}
+
+		target[key] = MMX.isPlainObject(value) && MMX.isPlainObject(target[key]) ? MMX.deepMerge(target[key], value) : value;
+	}
+
+	return target;
+};
+
 MMX.arrayIsEmpty = (arr) => {
 	return !Array.isArray(arr) || arr.length === 0;
 };
@@ -105,7 +150,7 @@ MMX.cacheKeysFilters = (entities) => {
 	const values = []
 		.concat(entities ?? [])
 		.map(entity => {
-			return MMX.coerceNumber(entity?.dt_updated ?? entity);
+			return MMX.coerceNumber(entity?.dt_updated?.time_t ?? entity?.dt_updated ?? entity);
 		})
 		.filter(value => value > 0);
 
@@ -181,7 +226,7 @@ MMX.objectToInlineStyles = (styles = {}) => {
 		const isValidValue = (typeof value === 'string' && value.length) || typeof value === 'number';
 
 		if (isValidValue) {
-			const prop = MMX.keyToCssProp(key);
+			const prop = String(key).startsWith('--') ? key : MMX.keyToCssProp(key);
 			inlineStyles.push(`${prop}: ${value}`);
 		}
 
@@ -263,8 +308,8 @@ MMX.proxyHandler = (callback) => {
 };
 
 MMX.createElement = ({type, content, attributes, data, parent} = {}) => {
-	if (typeof type === 'undefined'){
-		return;
+	if (typeof type === 'undefined') {
+		return undefined;
 	}
 	let element = document.createElement(type);
 
@@ -298,8 +343,7 @@ MMX.createElement = ({type, content, attributes, data, parent} = {}) => {
 };
 
 MMX.setElementAttributes = (element, attributes) => {
-
-	if (!attributes){
+	if (!attributes) {
 		return element;
 	}
 
@@ -315,9 +359,9 @@ MMX.setElementAttributes = (element, attributes) => {
 			continue;
 		}
 
-		if (attribute === 'name'){
+		if (attribute === 'name') {
 			element.name = value;
-		}  else if (attribute === 'class'){
+		} else if (attribute === 'class') {
 			element.className = value;
 		} else {
 			element.setAttribute(attribute, value);
@@ -419,6 +463,31 @@ MMX.encodeEntitiesURI = (input) => {
 
 MMX.encodeSrcset = (input) => {
 	return encodeURI(input);
+};
+
+MMX.getResponsiveImageData = (device, image) => {
+	const responsiveImageData = image?.responsive_image_data?.[device];
+	const responsiveImage = image?.responsive_images?.[device];
+
+	if (!MMX.valueIsEmpty(responsiveImageData?.srcset) || !MMX.valueIsEmpty(responsiveImageData?.image)) {
+		const isSrcset = !MMX.valueIsEmpty(responsiveImageData?.srcset);
+
+		return {
+			image: isSrcset ? responsiveImageData.srcset : responsiveImageData.image,
+			width: responsiveImageData.width,
+			height: responsiveImageData.height,
+			isSrcset
+		};
+	}
+
+	if (!MMX.valueIsEmpty(responsiveImage)) {
+		return {
+			image: responsiveImage,
+			isSrcset: false
+		};
+	}
+
+	return undefined;
 };
 
 MMX.isEqual = (a, b) => {
@@ -697,6 +766,26 @@ class MMX_StyleManager {
 
 MMX.styleManager = new MMX_StyleManager();
 
+MMX.Runtime_CAPTCHA_Prepare = (body) => {
+	if (typeof window.AJAX_Runtime_CAPTCHA_Prepare !== 'function') {
+		return Promise.resolve(body);
+	}
+
+	const endpoint = {Function: MMX.getParam(body, 'Function')};
+
+	if (endpoint.Function === 'Module') {
+		endpoint.Module_Code = MMX.getParam(body, 'Module_Code');
+		endpoint.Module_Function = MMX.getParam(body, 'Module_Function');
+	}
+
+	return window.AJAX_Runtime_CAPTCHA_Prepare(endpoint, body)
+		.catch(error => Promise.reject({
+			success: false,
+			error_code: 'MMX-Runtime_CAPTCHA_Prepare-00001',
+			error_message: `Runtime_CAPTCHA_Prepare errored. Verification failed for ${Object.values(endpoint).join(' / ')}. Error: ${error?.message ?? error}`
+		}));
+};
+
 MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}, cached = false} = {}) => {
 	jsonUrl = jsonUrl ?? window?.json_url;
 	storeCode = storeCode ?? window?.Store_Code;
@@ -709,17 +798,20 @@ MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}, cached = false} =
 		});
 	}
 
-	const fetchParams = {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify(MMX.assign({Session_Type: 'runtime', Store_Code: storeCode}, params))
-	};
+	const body = MMX.assign({Session_Type: 'runtime', Store_Code: storeCode}, params);
 
-	const request = cached ? MMX.fetchQueue.requestCached(jsonUrl, fetchParams) : MMX.fetchQueue.request(jsonUrl, fetchParams);
+	return MMX.Runtime_CAPTCHA_Prepare(body)
+		.then(preparedBody => {
+			const fetchParams = {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json'
+				},
+				body: JSON.stringify(preparedBody)
+			};
 
-	return request
+			return cached ? MMX.fetchQueue.requestCached(jsonUrl, fetchParams) : MMX.fetchQueue.request(jsonUrl, fetchParams);
+		})
 		.then(async (response) => {
 			const text = await response.text();
 			try {
@@ -731,7 +823,8 @@ MMX.Runtime_JSON_API_Call = ({jsonUrl, storeCode, params = {}, cached = false} =
 					error_message: `Did not receive valid JSON from API. Received: "${text}"`
 				});
 			}
-		}).then(data => {
+		})
+		.then(data => {
 			if (data?.success) {
 				return Promise.resolve(data);
 			}
@@ -759,7 +852,7 @@ MMX.longMerchantUrl = (searchParams = {}, {merchantUrl, storeCode = window.Store
 		if (typeof window.json_url === 'string') {
 			merchantUrl = window.json_url.replace('json.mvc', 'merchant.mvc');
 		} else {
-			return;
+			return undefined;
 		}
 	}
 
@@ -1188,16 +1281,21 @@ class MMX_Element extends HTMLElement {
 		const data = this.getPropValue(propKey);
 
 		if (!data) {
-			return;
+			return undefined;
 		}
 
-		if (data === 'innerHTML' ){
+		if (data === 'innerHTML' ) {
 			return this.parseData(this.innerHTML);
 		}
 
-		if (data === 'script'){
-			let script = this.querySelector('script');
-			return script ? this.parseData(script.innerHTML) : {};
+		if (data === 'script') {
+			// Merge every JSON island owned by this component, in document order
+			const scripts = Array.from(this.querySelectorAll(':scope > script[type$="/json"]'));
+
+			return scripts.reduce((merged, script) => {
+				const jsonData = this.parseData(script.innerHTML);
+				return MMX.isPlainObject(jsonData) ? MMX.deepMerge(merged, jsonData) : merged;
+			}, {});
 		}
 
 		return this.parseData(data);
@@ -1243,6 +1341,14 @@ class MMX_Element extends HTMLElement {
 	/**
 	 * Rendering Helpers
 	 */
+	typographyThemeClass(property) {
+		if (!property?.theme_available || MMX.valueIsEmpty(property?.classname)) {
+			return '';
+		}
+
+		return ` ${MMX.encodeEntities(property.classname)}`;
+	}
+
 	renderTextProperty(property = {}, {className = '', prefix = '', field = 'normal', defaultStyle = 'paragraph-s', defaultTag = 'div'}) {
 		if (MMX.valueIsEmpty(property?.value)) {
 			return '';
@@ -1291,6 +1397,26 @@ class MMX_Element extends HTMLElement {
 		});
 
 		return button.outerHTML;
+	}
+
+	renderBadgeMessage({badgeTheme = {}, style = '', content = '', attributes = {}} = {}) {
+		const theme_available = MMX.isTruthy(badgeTheme?.theme_available);
+
+		const message = MMX.createElement({
+			type: 'mmx-message',
+			attributes: {
+				...attributes,
+				'data-style': style,
+				'data-theme': theme_available,
+				'data-theme-class': theme_available ? (badgeTheme?.classname ?? '') : ''
+			},
+			content: `
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${content}
+			`
+		});
+
+		return message.outerHTML;
 	}
 
 	renderThemeStylesheetTemplate(theme_available) {

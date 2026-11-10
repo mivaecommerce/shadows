@@ -1,0 +1,69 @@
+{
+	"code": "mmx-product-waitlist",
+	"name": "MMX Product Waitlist",
+	"type": "library",
+	"version": "26.03.00",
+	"managed": true,
+	"resourcegroup_code": "mmx-product-waitlist",
+	"scripts": [
+		{
+			"filepath": "src/js/mmx-product-waitlist.js",
+			"resource_code": "mmx-product-waitlist",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/javascript"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-51nfAoMe3BGtdv0Kc6WYeXITUCQKixbemvdLOEt+Iu4= sha384-EutmLtQEUC5g0fSi56AicyvobWOHfPrdIW/JJMAP4YRBmTG6jM384O3PkW3RZts5 sha512-6ZppA8uo7cnoajjFkUGrVOK48VXplzihR1BqGOKC2+nC99vbajkIyirMIdvipT8hBhAwFZGZGmrR8JsZ5+q/VQ=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"styles": [
+		{
+			"filepath": "src/css/mmx-product-waitlist.css",
+			"resource_code": "mmx-product-waitlist",
+			"attributes": [
+				{
+					"name": "type",
+					"value": "text/css"
+				},
+				{
+					"name": "rel",
+					"value": "preload"
+				},
+				{
+					"name": "as",
+					"value": "style"
+				},
+				{
+					"name": "data-mmx-resource-type",
+					"value": "adoptable"
+				},
+				{
+					"name": "integrity",
+					"value": "sha256-oq6G3HVnUrpRh7enY6gaHZYXWYnGzntt5deNcBfaiM0= sha384-HiZDn5tqyuY3/flyspbA+l/XsoIROpHRChhEQ9p3ZPeLUY5NQvyR/uegIFR9Deta sha512-e7AVrS0sZfHrqwN5rsHxnGOX04WWZxTJaUCACbA2YBuK8tJtKzCK/E8WqfNSc3cMxkn2mBoNM9Ta9Dqd5TrbiA=="
+				},
+				{
+					"name": "crossorigin",
+					"value": "anonymous"
+				}
+			]
+		}
+	],
+	"depends": {
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-dialog": "=26.03.00",
+		"mmx-forms": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-text": "=26.03.00"
+	}
+}

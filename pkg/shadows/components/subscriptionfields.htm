@@ -1,4 +1,4 @@
-<Page_Update code="CSBE"><Item code="subscriptionfields"><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>360</Width><Height>360</Height></ImageDimensions><Template><![CDATA[<form id="csbe_form" method="post" action="&mvte:urls:CSUB:secure;">
+<Page_Update code="CSBE"><Item code="subscriptionfields"><DisplayShipping>Yes</DisplayShipping><DisplayHandling>Yes</DisplayHandling><DisplaySalesTax>Yes</DisplaySalesTax><DisplayDiscounts>Yes</DisplayDiscounts><Fields/><ImageTypes><ImageType>main</ImageType></ImageTypes><ImageDimensions constrain="Yes"><Width>360</Width><Height>360</Height></ImageDimensions><Template><![CDATA[<form id="csbe_form" method="post" action="&mvte:urls:CSUB:secure;" data-hook="single-submit">
 	<fieldset>
 		<legend>&mvt:page:name;</legend>
 		<input type="hidden" name="Action" value="UCSB" />
@@ -302,12 +302,12 @@
 					<div>
 						<mvt:if expr="l.settings:subscriptionfields:status NE 'C' AND ((l.settings:subscriptionfields:productsubscriptionsettings:qty_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:qty_min))">
 							<p>
-								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Save Changes">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Save Changes" data-hook="loading-button">
 							</p>
 						</mvt:if>
 						<mvt:if expr="(l.settings:subscriptionfields:status NE 'C') AND l.settings:subscriptionfields:productsubscriptionsettings:can_cancel AND ((l.settings:subscriptionfields:productsubscriptionsettings:cncl_min EQ 0) OR (l.settings:subscriptionfields:termproc GE l.settings:subscriptionfields:productsubscriptionsettings:cncl_min))">
 							<p onclick="if ( !confirm( 'Are you sure you want to cancel your subscription? This action cannot be undone.\x0A\x0AContinue?' ) ) { return false; } else { document.forms.csbe_form.elements.Action.value = 'DCSB'; }">
-								<input class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" type="submit" value="Cancel Subscription">
+								<input class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" type="submit" value="Cancel Subscription" data-hook="loading-button">
 							</p>
 						</mvt:if>
 					</div>

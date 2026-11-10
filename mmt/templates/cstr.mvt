@@ -24,7 +24,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<form method="post" action="&mvte:urls:CSTR:secure;" autocomplete="off">
+			<form method="post" action="&mvte:urls:CSTR:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="CSTR" />
@@ -59,7 +59,7 @@
 							<input id="Customer_PasswordResetVerifyNewPasswordd" class="c-form-input" type="password" name="Customer_PasswordResetVerifyNewPassword" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
-							<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Update" title="Click Here to Change Your Password">
+							<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Update" title="Click Here to Change Your Password" data-hook="loading-button">
 						</div>
 					</div>
 				</fieldset>

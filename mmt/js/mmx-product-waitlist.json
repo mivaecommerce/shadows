@@ -1,0 +1,21 @@
+{
+    "code": "mmx-product-waitlist",
+    "type": "Z",
+    "is_global": false,
+    "active": true,
+    "attributes": [
+        {
+            "name": "type",
+            "value": "text/javascript"
+        },
+        {
+            "name": "integrity",
+            "value": "sha256-51nfAoMe3BGtdv0Kc6WYeXITUCQKixbemvdLOEt+Iu4= sha384-EutmLtQEUC5g0fSi56AicyvobWOHfPrdIW/JJMAP4YRBmTG6jM384O3PkW3RZts5 sha512-6ZppA8uo7cnoajjFkUGrVOK48VXplzihR1BqGOKC2+nC99vbajkIyirMIdvipT8hBhAwFZGZGmrR8JsZ5+q/VQ=="
+        },
+        {
+            "name": "crossorigin",
+            "value": "anonymous"
+        }
+    ],
+    "linked_pages": []
+}

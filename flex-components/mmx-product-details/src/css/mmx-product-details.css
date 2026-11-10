@@ -185,3 +185,20 @@
 [part~="product-charges__amount"] {
 	text-align: right;
 }
+
+/* Rating Summary
+   =========================================== */
+[part~="rating-summary"] mmx-rating,
+[part~="rating-summary-count"] {
+	vertical-align: middle;
+}
+
+[part~="rating-summary-count"] {
+	color: inherit;
+	font: inherit;
+	margin-left: 0.75rem;
+}
+
+[part~="rating-summary-write-review"] {
+	margin-left: 0.75rem;
+}

@@ -37,12 +37,28 @@
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="l.settings:instance:advanced:initial_display:initial_height_amount:value $ l.settings:instance:advanced:initial_display:initial_height_amount:unit" />
 </mvt:if>
 
+<mvt:comment>Structured Data</mvt:comment>
+<mvt:assign name="l.structured_data_json" value="''" />
+<mvt:if expr="l.settings:instance:advanced:structured_data:mode:value EQ 'fragment' AND NOT ISNULL l.settings:instance:advanced:structured_data:fragment:value">
+	<mvt:assign name="l.settings:structured_data:context" value="'category_list'" />
+
+	<mvt:if expr="l.settings:instance:heading:settings:enabled AND NOT ISNULL l.settings:instance:heading:heading_text:value">
+		<mvt:assign name="l.settings:structured_data:list_name" value="miva_html_strip( l.settings:instance:heading:heading_text:value, '' )" />
+	<mvt:else>
+		<mvt:assign name="l.settings:structured_data:list_name" value="l.settings:instance:list:parent_category:specific:category:name" />
+	</mvt:if>
+
+	<mvt:capture variable="l.structured_data_json"><mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Fragment_Render( l.settings, l.settings:instance:advanced:structured_data:fragment:value, l.null )" /></mvt:capture>
+	<mvt:assign name="l.null" value="miva_member_delete( l.settings, 'structured_data' )" />
+</mvt:if>
+
 <mvt:comment>Render Component</mvt:comment>
 <mmx-category-list
 	id="&mvte:component_id;"
 	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
+	data-category="&mvte:instance:list:parent_category:specific:category_code;"
 	data-init="script"
 	data-fallback-image="graphics/00000001/catalog-fallback-image__200x200.jpg"
 	style="
@@ -56,6 +72,13 @@
 	<script type="application/json">
 		<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
 	</script>
+
+	<mvt:comment>Structured Data</mvt:comment>
+	<mvt:if expr="NOT ISNULL l.structured_data_json">
+		<script type="application/ld+json" class="mmx-skip-mutation">
+			<mvt:eval expr="l.structured_data_json" />
+		</script>
+	</mvt:if>
 
 	<mvt:comment>Render Section Heading</mvt:comment>
 	<mvt:if expr="l.settings:instance:heading:settings:enabled">
@@ -105,6 +128,11 @@
 
 	<mvt:comment>Theme Stylesheet</mvt:comment>
 	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:comment> Theme Badges </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:error_badge:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:message_badges:error_badge:stylesheet" />
+		</mvt:if>
+
 		<mvt:foreach iterator="detail" array="instance:card:details:children">
 			<mvt:if expr="l.settings:detail:type:value EQ 'button__view-category'">
 				<mvt:if expr="NOT ISNULL l.settings:detail:button:text:textsettings:fields:normal:button_theme:stylesheet">

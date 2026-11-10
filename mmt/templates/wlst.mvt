@@ -25,7 +25,7 @@
 		<section class="o-layout o-layout--column-reverse o-layout--row-reverse--l">
 			<div class="o-layout__item u-width-12 u-width-9--l">
 				<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
-				<form method="post" action="&mvte:urls:WLST:rr;">
+				<form method="post" action="&mvte:urls:WLST:rr;" data-hook="single-submit">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
 						<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
@@ -46,7 +46,7 @@
 							</div>
 							<div class="c-form-list__item c-form-inline-set">
 								<input id="WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-								<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit">
+								<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" data-hook="loading-button">
 									<span class="u-icon-search" aria-hidden="true"></span>
 									<span class="u-hide-visually">Search</span>
 								</button>
@@ -72,7 +72,7 @@
 		<section class="o-layout o-layout--justify-center">
 			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 				<p class="mm-theme-typography-title-four">Please sign in to create or access your wish list.</p>
-				<form method="post" action="&mvte:urls:WLST:secure;">
+				<form method="post" action="&mvte:urls:WLST:secure;" data-hook="single-submit">
 					<fieldset>
 						<legend>&mvt:page:name;</legend>
 						<input type="hidden" name="Action" value="LOGN" />
@@ -100,7 +100,7 @@
 			</div>
 			<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 				<p class="mm-theme-typography-title-four">Find a Wish List</p>
-				<form class="t-wish-list-search" method="post" action="&mvte:urls:WLST:rr;">
+				<form class="t-wish-list-search" method="post" action="&mvte:urls:WLST:rr;" data-hook="single-submit">
 					<fieldset>
 						<legend>Search Wish Lists</legend>
 						<input type="hidden" name="Sort_By" value="&mvte:global:Sort_By;" />
@@ -110,7 +110,7 @@
 								<label class="c-form-label u-text-medium is-required" for="l-WishListSearch">Search all public wish lists</label>
 								<div class="c-form-inline-set">
 									<input id="l-WishListSearch" class="c-form-input" type="search" name="WishListSearch" value="&mvte:global:WishListSearch;" required aria-required="true">
-									<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit">
+									<button class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" data-hook="loading-button">
 										<span class="u-icon-search" aria-hidden="true"></span>
 										<span class="u-hide-visually">Search</span>
 									</button>

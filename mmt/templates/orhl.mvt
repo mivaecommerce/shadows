@@ -25,7 +25,7 @@
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 			<p class="mm-theme-typography-title-four">Sign in to view your order history.</p>
-			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off">
+			<form method="post" action="&mvte:urls:ORDH:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name; Account Log In</legend>
 					<input type="hidden" name="Action" value="LOGN" />
@@ -57,7 +57,7 @@
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 			<p class="mm-theme-typography-title-four">Find your order</p>
-			<form method="post" action="&mvte:urls:ORDS:secure;" autocomplete="off">
+			<form method="post" action="&mvte:urls:ORDS:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<div class="c-form-list">
@@ -70,7 +70,7 @@
 							<input id="l-Order_BillEmail" class="c-form-input" type="email" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" autocomplete="email" required>
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Find Order">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Find Order" data-hook="loading-button">
 						</div>
 					</div>
 				</fieldset>

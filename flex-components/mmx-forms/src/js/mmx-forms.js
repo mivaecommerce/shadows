@@ -8,6 +8,7 @@ class MMX_FormValidator {
 	#fieldDescriptionClass = 'mmx-form-field-description';
 	#fieldErrorMessageClass = 'mmx-form-field-error-message';
 	#validityStates = ['valueMissing', 'badInput', 'typeMismatch', 'tooShort', 'tooLong', 'rangeUnderflow', 'rangeOverflow', 'stepMismatch', 'patternMismatch', 'customError', 'valid'];
+	#root = document;
 
 	// Instance Methods
 	static autoInit() {
@@ -23,12 +24,13 @@ class MMX_FormValidator {
 		this.#validClass = typeof options?.validClass === 'string' ? options.validClass : this.#validClass;
 		this.#fieldDescriptionClass = typeof options?.fieldDescriptionClass === 'string' ? options.fieldDescriptionClass : this.#fieldDescriptionClass;
 		this.#validityStates = Array.isArray(options?.validityStates) ? options.validityStates : this.#validityStates;
+		this.#root = options?.root ?? this.#root;
 
 		this.#init();
 	}
 
 	#init() {
-		this.#forms = document.querySelectorAll(this.#formSelector);
+		this.#forms = this.#root.querySelectorAll(this.#formSelector);
 
 		this.#forms?.forEach(form => {
 			this.#bindEvents(form);
@@ -84,7 +86,8 @@ class MMX_FormValidator {
 	}
 
 	#getFormElements(form) {
-		return form.querySelectorAll('input, select, textarea');
+		// form.elements includes form-associated custom elements
+		return form.elements;
 	}
 
 	#displayInitialErrors(form) {
@@ -329,8 +332,8 @@ class MMX_FormInputRange extends MMX_Element {
 	renderUniquely = true;
 
 	render() {
-		const min = this.getPropValue('min');
-		const max = this.getPropValue('max');
+		const min = this.min;
+		const max = this.max;
 		const step = this.getPropValue('step');
 		const low = this.getPropValue('low') || min;
 		const high = this.getPropValue('high') || max;
@@ -412,6 +415,9 @@ class MMX_FormInputRange extends MMX_Element {
 			this.#onInput(e);
 		});
 
+		this.#inputLow().addEventListener('change', () => this.#onChangeInput());
+		this.#inputHigh().addEventListener('change', () => this.#onChangeInput());
+
 		this.#sliderLow().addEventListener('pointerdown', (e) => this.#onPointerDownSliderButton(e));
 		this.#sliderHigh().addEventListener('pointerdown', (e) => this.#onPointerDownSliderButton(e));
 	}
@@ -446,11 +452,9 @@ class MMX_FormInputRange extends MMX_Element {
 			high: pointerX
 		});
 
-		// Move Button
 		const button = this.#activeSlider;
-		button.style.left = this.#createPercent(state.relativeLow, state.range);
 
-		// Determine Value
+		// Determine Value: #updateSlider positions the button from the clamped value
 		const value = parseInt(((state.relativeLow / state.range) * (this.max - this.min) + this.min));
 
 		if (button.id === 'slider-low') {
@@ -464,6 +468,16 @@ class MMX_FormInputRange extends MMX_Element {
 	#onInput() {
 		this.#setFormValue();
 		this.#updateSlider();
+	}
+
+	#onChangeInput() {
+		const low = this.low;
+		const high = this.high;
+
+		if (low > high) {
+			this.low = high;
+			this.high = low;
+		}
 	}
 
 	// Public Values
@@ -501,37 +515,37 @@ class MMX_FormInputRange extends MMX_Element {
 
 	get low() {
 		const value = this.#inputLow()?.valueAsNumber;
-		return isNaN(value) ? this.getPropValue('min') : value;
+		return isNaN(value) ? this.min : value;
 	}
 
 	set low(value) {
-		this.#setInputValue(this.#inputLow(), value);
+		this.#setInputValue(this.#inputLow(), Math.min(value, this.high));
 	}
 
 	get high() {
 		const value = this.#inputHigh()?.valueAsNumber;
-		return isNaN(value) ? this.getPropValue('max') : value;
+		return isNaN(value) ? this.max : value;
 	}
 
 	set high(value) {
-		this.#setInputValue(this.#inputHigh(), value);
+		this.#setInputValue(this.#inputHigh(), Math.max(value, this.low));
 	}
 
 	get max() {
-		return this.getPropValue('max');
+		return Math.max(this.getPropValue('min'), this.getPropValue('max'));
 	}
 
 	get min() {
-		return this.getPropValue('min');
+		return Math.min(this.getPropValue('min'), this.getPropValue('max'));
 	}
 
 	#setInputValue(input, value) {
 		input.value = value;
 
-		if (input.validity.rangeOverflow || input.validity.stepMismatch){
+		if (input.validity.rangeOverflow || input.validity.stepMismatch) {
 			input.stepDown();
 		}
-		else if (input.validity.rangeUnderflow){
+		else if (input.validity.rangeUnderflow) {
 			input.stepUp();
 		}
 
@@ -809,8 +823,6 @@ class MMX_FormInputQuantity extends MMX_Element {
 
 		this.#updateButtons();
 		this.#inputQuantity().disabled = disabled;
-
-		return disabled;
 	}
 
 	get required() {
@@ -838,10 +850,10 @@ class MMX_FormInputQuantity extends MMX_Element {
 
 		inputQuantity.value = value;
 
-		if (isNaN(inputQuantity.valueAsNumber) || inputQuantity.validity.quantityOverflow || inputQuantity.validity.stepMismatch){
+		if (isNaN(inputQuantity.valueAsNumber) || inputQuantity.validity.quantityOverflow || inputQuantity.validity.stepMismatch) {
 			inputQuantity.stepDown();
 		}
-		else if (inputQuantity.validity.quantityUnderflow){
+		else if (inputQuantity.validity.quantityUnderflow) {
 			inputQuantity.stepUp();
 		}
 

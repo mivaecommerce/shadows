@@ -2,10 +2,11 @@
 	"code": "mmx-image-across",
 	"name": "Image Across",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-image-across",
 	"category": "image-across",
+	"output_minimal_json": false,
 	"description": "## Image Across\nA versatile component that can be used to display a single large image or multiple images in a structured grid layout. Perfect for showcasing collections, promotions, or informational content such as featured blog posts.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -321,6 +322,52 @@
 									"prompt": "Tablet Image"
 								}
 							],
+							"sizes": [
+								{
+									"height": 2560,
+									"width": 2560
+								},
+								{
+									"height": 1920,
+									"width": 1920
+								},
+								{
+									"height": 1440,
+									"width": 1440
+								},
+								{
+									"height": 1290,
+									"width": 1290
+								},
+								{
+									"height": 1100,
+									"width": 1100
+								},
+								{
+									"height": 828,
+									"width": 828
+								},
+								{
+									"height": 640,
+									"width": 640
+								},
+								{
+									"height": 480,
+									"width": 480
+								},
+								{
+									"height": 320,
+									"width": 320
+								},
+								{
+									"height": 240,
+									"width": 240
+								}
+							],
+							"tooltip": {
+								"content": "Upload an image at least as wide as your site (ex 1440px or wider). Optimized sizes from 240px to 2560px are generated automatically and never upscaled for shoppers.",
+								"title": "Image"
+							},
 							"type": "image"
 						},
 						{
@@ -1286,10 +1333,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-image-across.js",
@@ -1301,7 +1348,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-kfg1x4XpexT7Ryg2qj6GzuSFxlJRknF0UjuiUXxxSVc= sha384-VJNHxKA9vUtpf0zZIjSyR3a//ApvVV1dVBUBVR33Lf27iUr997/UGDWL1mjy2TLT sha512-S87taJA3paHzj/9zkKSI/Oo5FnbuuuYSrLRHInCZgCMnkcbME9nfUozZauVjOfBdgHTx17eojmifM65vGmhRlQ=="
+					"value": "sha256-kkAl4y6u3SAnEFRMem71wYsuCdxOGe3snq4LAmouf4g= sha384-WxMewN0UEm2sZV0SMNdlAnl0luYSXtIwjNbM++6WDnRRWlg4fU6ku8Z8JhULQJwz sha512-SN49MIizFELewq87OBWqxhKLJbmpAi0xydBMcJaYglLlTUvdw16SiK3LmkSHaozXSI1encDiE/snSx1uHs/GVg=="
 				},
 				{
 					"name": "crossorigin",
@@ -1343,9 +1390,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

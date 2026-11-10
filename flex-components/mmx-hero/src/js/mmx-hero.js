@@ -393,6 +393,7 @@ class MMX_Hero extends MMX_Element {
 				--mmx-hero__text-align: ${this.getPropValue('align')};
 			}
 
+			${this.renderResponsiveAspectRatioStyles()}
 			${this.renderIframeObjectFitStyles()}
 		`;
 	}
@@ -575,12 +576,38 @@ class MMX_Hero extends MMX_Element {
 			const dimensions = this.getSizeDimensions();
 			return dimensions.width + '/' + dimensions.height;
 		}
-
-		if (sizeMethod === 'ratio') {
+		else if (sizeMethod === 'ratio') {
 			return size;
+		}
+		else if (sizeMethod === 'auto') {
+			return this.getImageAspectRatio();
 		}
 
 		return 'auto';
+	}
+
+	getImageAspectRatio(image = this.data?.image?.img ?? this.slottedImageDimensions()) {
+		const width = MMX.coerceNumber(image?.width);
+		const height = MMX.coerceNumber(image?.height);
+
+		if (width > 0 && height > 0) {
+			return `${width} / ${height}`;
+		}
+
+		return 'auto';
+	}
+
+	slottedImageDimensions() {
+		const img = this.slottedImage();
+
+		if (!img) {
+			return null;
+		}
+
+		return {
+			width: img.getAttribute('width'),
+			height: img.getAttribute('height')
+		};
 	}
 
 	getOverlayBg() {
@@ -617,6 +644,39 @@ class MMX_Hero extends MMX_Element {
 		l: '1440 / 740'
 	};
 
+	renderResponsiveAspectRatioStyles() {
+		if (this.getSizeMethod() !== 'auto') {
+			return '';
+		}
+
+		return /*css*/`
+			${this.renderResponsiveAspectRatioBreakpoint('tablet', '59.999em')}
+			${this.renderResponsiveAspectRatioBreakpoint('mobile', '39.999em')}
+		`;
+	}
+
+	renderResponsiveAspectRatioBreakpoint(device, maxWidth) {
+		const image = MMX.getResponsiveImageData(device, this.data?.image?.img);
+
+		if (!image) {
+			return '';
+		}
+
+		const aspectRatio = this.getImageAspectRatio(image);
+
+		if (aspectRatio === 'auto') {
+			return '';
+		}
+
+		return /*css*/`
+			@media (max-width: ${maxWidth}) {
+				:host {
+					--mmx-hero__aspect-ratio: ${aspectRatio};
+				}
+			}
+		`;
+	}
+
 	renderIframeObjectFitStyles() {
 		const sizeMethod = this.getSizeMethod();
 		const size = this.getPropValue('size');
@@ -633,7 +693,6 @@ class MMX_Hero extends MMX_Element {
 		}
 
 		return '';
-
 	}
 
 	getIframeObjectFitStylesSizeIsPreset(width, height) {
@@ -718,13 +777,42 @@ class MMX_Hero extends MMX_Element {
 			return '';
 		}
 
+		const sizes = this.getImageSizesAttribute();
+		const mobileImage = MMX.getResponsiveImageData('mobile', this.data?.image?.img);
+		const tabletImage = MMX.getResponsiveImageData('tablet', this.data?.image?.img);
+		const mainSrcset = this.data?.image?.img?.srcset;
+		const mainWidth = this.data?.image?.img?.width;
+		const mainHeight = this.data?.image?.img?.height;
+
 		return /*html*/`
 			<picture part="picture">
-				${this.data?.image?.img?.responsive_images?.mobile ? /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.mobile)}">` : ''}
-				${this.data?.image?.img?.responsive_images?.tablet ? /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${MMX.encodeEntitiesURI(this.data.image.img.responsive_images.tablet)}">` : ''}
-				<img src="${MMX.encodeEntitiesURI(this.data.image.img.image)}" alt="${MMX.encodeEntities(this.data?.image?.img?.alt)}" ${this.getLoadingAttributeString()}>
+				${mobileImage ? /*html*/`<source class="source__mobile" media="(max-width: 39.999em)" srcset="${mobileImage.isSrcset ? MMX.encodeEntities(mobileImage.image) : MMX.encodeEntitiesURI(mobileImage.image)}" sizes="${sizes}" width="${MMX.encodeEntities(mobileImage.width)}" height="${MMX.encodeEntities(mobileImage.height)}">` : ''}
+				${tabletImage ? /*html*/`<source class="source__tablet" media="(max-width: 59.999em)" srcset="${tabletImage.isSrcset ? MMX.encodeEntities(tabletImage.image) : MMX.encodeEntitiesURI(tabletImage.image)}" sizes="${sizes}" width="${MMX.encodeEntities(tabletImage.width)}" height="${MMX.encodeEntities(tabletImage.height)}">` : ''}
+				<img
+					src="${MMX.encodeEntitiesURI(this.data.image.img.image)}"
+					${mainSrcset ? /*html*/`srcset="${MMX.encodeEntities(mainSrcset)}" sizes="${sizes}"` : ''}
+					alt="${MMX.encodeEntities(this.data?.image?.img?.alt)}"
+					${mainWidth ? /*html*/`width="${MMX.encodeEntities(mainWidth)}"` : ''}
+					${mainHeight ? /*html*/`height="${MMX.encodeEntities(mainHeight)}"` : ''}
+					${this.getLoadingAttributeString()}
+				>
 			</picture>
 		`;
+	}
+
+	getImageSizesAttribute() {
+		// sizes=auto puts the image under size containment and requires width/height dimensions to size it; without dimensions, omit auto and let the image size naturally
+		if (this.getImageAspectRatio() === 'auto') {
+			return '100vw';
+		}
+
+		const dimensions = this.getSizeDimensions();
+
+		if (dimensions?.width > 0) {
+			return `auto, min(100vw, ${dimensions.width}px)`;
+		}
+
+		return 'auto, 100vw';
 	}
 
 	renderImageFromAttributes() {

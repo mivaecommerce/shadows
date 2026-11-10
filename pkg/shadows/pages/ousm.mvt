@@ -37,7 +37,7 @@
 			<mvt:else>
 				<p>You may select up to <strong>&mvte:global:Upsell_Options:prod_sell;</strong> of the following:</p>
 			</mvt:if>
-			<form method="post" action="&mvte:urls:OSEL:secure;">
+			<form method="post" action="&mvte:urls:OSEL:secure;" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="AUPM">

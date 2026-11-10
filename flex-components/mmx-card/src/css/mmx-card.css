@@ -21,15 +21,36 @@
 	text-decoration: none;
 }
 
-.mmx-card__flag {
+/* Both flag slots share one row so top-right flags wrap beside, never over, top-left content (ex. wishlist button) */
+.mmx-card__flags {
 	align-items: flex-start;
 	display: flex;
 	gap: var(--mmx-card__gap);
-	margin: var(--mmx-card__gap);
-	text-align: left;
-	z-index: 1;
 	grid-area: main;
-	place-self: start left;
+	justify-content: space-between;
+	margin: var(--mmx-card__gap);
+	place-self: start stretch;
+	z-index: 1;
+}
+
+.mmx-card__flag {
+	align-items: flex-start;
+	display: flex;
+	flex: 0 0 auto;
+	flex-wrap: wrap;
+	gap: var(--mmx-card__gap);
+	min-width: 0;
+	text-align: left;
+
+	&[part~="flag--top-right"] {
+		flex: 1 1 0;
+		justify-content: flex-end;
+		text-align: right;
+	}
+}
+
+.mmx-card__flag::slotted(*) {
+	max-width: 100%;
 }
 
 .mmx-card__header {

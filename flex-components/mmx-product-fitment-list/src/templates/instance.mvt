@@ -55,6 +55,14 @@
 	</mvt:if>
 
 	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:comment> Theme Badges </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:error_badge:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:message_badges:error_badge:stylesheet" />
+		</mvt:if>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:empty_badge:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:message_badges:empty_badge:stylesheet" />
+		</mvt:if>
+
 		<mvt:if expr="NOT ISNULL l.settings:instance:table_styles:header_typography:stylesheet">	<mvt:eval expr="l.settings:instance:table_styles:header_typography:stylesheet" />	</mvt:if>
 		<mvt:if expr="NOT ISNULL l.settings:instance:table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:instance:table_styles:content_typography:stylesheet" />	</mvt:if>
 	<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>

@@ -31,7 +31,10 @@ class MMX_Card extends MMX_Element {
 				${this.#renderTarget()}
 				${this.inheritAttrs()}
 			>
-				<slot name="flag" part="flag" class="mmx-card__flag"></slot>
+				<div part="flags" class="mmx-card__flags">
+					<slot name="flag" part="flag" class="mmx-card__flag"></slot>
+					<slot name="flag--top-right" part="flag--top-right" class="mmx-card__flag"></slot>
+				</div>
 				<slot name="header" part="header" class="mmx-card__header"></slot>
 				<slot name="main" part="main" class="mmx-card__main"></slot>
 				<slot name="footer" part="footer" class="mmx-card__footer"></slot>
@@ -145,6 +148,13 @@ class MMX_ProductCard extends MMX_Card {
 
 	#swatchAttribute = {};
 
+	// Legacy message style per stock level, used when an inventory flag's theme badge is unavailable
+	#inventoryFlagStyles = {
+		in: 'success',
+		low: 'warning',
+		out: 'error'
+	};
+
 	onDataChange() {
 		this.#product = this.data?.product ?? this.#product;
 		this.#card = this.data?.card ?? this.#card;
@@ -160,13 +170,14 @@ class MMX_ProductCard extends MMX_Card {
 		return /*html*/`
 			<mmx-card
 				part="wrapper"
-				exportparts="wrapper:card-wrapper, flag:card-flag, header:card-header, main:card-main, footer:card-footer"
+				exportparts="wrapper:card-wrapper, flags:card-flags, flag:card-flag, flag--top-right:card-flag--top-right, header:card-header, main:card-main, footer:card-footer"
 				data-href="${MMX.encodeEntities(this.getPropValue('href') ?? this.#product?.url)}"
 				data-target="${MMX.encodeEntities(this.getPropValue('target'))}"
 			>
 				${this.#renderImage()}
 				${this.#details?.map?.(detail => this.#renderProductDetail(detail)).join('')}
 				${this.#renderAddToWishlist()}
+				${this.#renderFlags()}
 			</mmx-card>
 		`;
 	}
@@ -515,7 +526,35 @@ class MMX_ProductCard extends MMX_Card {
 			return undefined;
 		}
 
-		return this.#getFlatAttributes().find(attribute => this.#isSwatchAttribute(attribute));
+		const swatchAttribute = this.#getFlatAttributes().find(attribute => this.#isSwatchAttribute(attribute));
+
+		return this.#reduceToAvailableOptions(swatchAttribute);
+	}
+
+	#reduceToAvailableOptions(attribute) {
+		if (!attribute) {
+			return undefined;
+		}
+
+		const availableOptionIds = this.#getPreloadedAvailableOptionIds(attribute);
+
+		if (!availableOptionIds) {
+			return attribute;
+		}
+
+		return {
+			...attribute,
+			options: attribute.options.filter(option => availableOptionIds.includes(option.id))
+		};
+	}
+
+	#getPreloadedAvailableOptionIds(attribute) {
+		const preloadedAttribute = this.#product?.productvariant_possible?.data?.attributes
+			?.find(preloaded => attribute.templateAttributeId
+				? preloaded.attmpat_id === attribute.templateAttributeId
+				: preloaded.id === attribute.id);
+
+		return preloadedAttribute?.options;
 	}
 
 	#getFlatAttributes() {
@@ -988,6 +1027,139 @@ class MMX_ProductCard extends MMX_Card {
 		return this.#renderTextDetail({
 			value: this.#product?.formatted_weight,
 			detail
+		});
+	}
+
+	// Render: Flags
+	#renderFlags() {
+		const flags = this.#card?.flags?.list?.children;
+
+		if (!MMX.isTruthy(this.#card?.flags?.settings?.enabled) || !Array.isArray(flags)) {
+			return '';
+		}
+
+		// List order is priority: only the first flags that apply to this product are shown
+		const maxFlags = MMX.coerceNumber(this.#card?.flags?.max_flags?.value, 2);
+		const rendered = [];
+
+		for (const [index, flag] of flags.entries()) {
+			if (rendered.length >= maxFlags) {
+				break;
+			}
+
+			const html = this.#renderFlag(flag, index);
+
+			if (html.trim().length) {
+				rendered.push(html);
+			}
+		}
+
+		return rendered.join('');
+	}
+
+	#renderFlag(flag = {}, index = 0) {
+		switch (flag?.type?.value) {
+			case 'customfield':
+				return this.#renderCustomFieldFlag(flag, index);
+			case 'inv_short':
+				return this.#renderInventoryMessageFlag(flag, index);
+			case 'new':
+				return this.#renderNewFlag(flag, index);
+			case 'sale':
+				return this.#renderSaleFlag(flag, index);
+			default:
+				return '';
+		}
+	}
+
+	#renderCustomFieldFlag(flag = {}, index = 0) {
+		return this.#renderFlagMessage({
+			flag,
+			index,
+			content: this.getCustomFieldValueFromRecord(flag?.customfield?.value, this.#product)
+		});
+	}
+
+	#renderInventoryMessageFlag(flag = {}, index = 0) {
+		const level = this.#product?.inv_level;
+		const invLevelExists = MMX.isTruthy(this.#product?.inv_active) && Object.hasOwn(this.#inventoryFlagStyles, level);
+		const invLevelFlagEnabled = MMX.isTruthy(flag?.[`inv_short_${level}`]?.value);
+
+		if (!invLevelExists || !invLevelFlagEnabled) {
+			return '';
+		}
+
+		return this.#renderFlagMessage({
+			flag,
+			index,
+			content: this.#product?.inv_short,
+			badge: flag?.[`badge_${level}`],
+			fallbackStyle: this.#inventoryFlagStyles[level]
+		});
+	}
+
+	#renderNewFlag(flag = {}, index = 0) {
+		const dateCreated = MMX.coerceNumber(this.#product?.dt_created?.time_t, 0);
+
+		if (dateCreated < this.#getNewFlagCutoff(flag)) {
+			return '';
+		}
+
+		return this.#renderFlagMessage({
+			flag,
+			index,
+			content: MMX.coerceString(flag?.name?.value, {fallback: 'New'})
+		});
+	}
+
+	#getNewFlagCutoff(flag = {}) {
+		if (flag?.new_threshold?.value === 'absolute') {
+			return MMX.coerceNumber(flag?.new_date_threshold?.value, 0);
+		}
+
+		const days = MMX.coerceNumber(flag?.new_days_threshold?.value, 30);
+		const nowInSeconds = Math.floor(Date.now() / 1000);
+		const secondsInADay = 86400;
+
+		return nowInSeconds - (days * secondsInADay);
+	}
+
+	#renderSaleFlag(flag = {}, index = 0) {
+		const basePrice = MMX.coerceNumber(this.#product?.base_price, 0);
+		const salePrice = MMX.coerceNumber(this.#product?.sale_price, basePrice);
+		const discountPercent = basePrice > 0 ? Math.round(((basePrice - salePrice) / basePrice) * 100) : 0;
+		const discountThreshold = MMX.coerceNumber(flag?.discount_percent_threshold?.value, 0);
+
+		if (discountPercent <= discountThreshold) {
+			return '';
+		}
+
+		const message = MMX.coerceString(flag?.discount_message?.value, {fallback: '{discount}% Off!'});
+
+		return this.#renderFlagMessage({
+			flag,
+			index,
+			content: message.replaceAll('{discount}', discountPercent)
+		});
+	}
+
+	// A missing theme badge renders the legacy flag message so the flag keeps a visible style
+	#renderFlagMessage({flag = {}, index = 0, content = '', badge = flag?.badge, fallbackStyle = ''} = {}) {
+		if (MMX.valueIsEmpty(content)) {
+			return '';
+		}
+
+		return this.renderBadgeMessage({
+			badgeTheme: badge,
+			style: fallbackStyle,
+			content: MMX.encodeEntities(content),
+			attributes: {
+				id: `flag-${index + 1}`,
+				slot: 'flag--top-right',
+				part: `flag flag--top-right flag--${flag?.type?.value ?? ''}`,
+				'data-variant': 'flag',
+				'data-size': 's'
+			}
 		});
 	}
 }

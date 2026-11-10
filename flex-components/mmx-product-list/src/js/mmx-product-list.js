@@ -34,6 +34,17 @@ class MMX_ProductList extends MMX_Element {
 			'search': {
 				allowAny: true
 			},
+			'structured-data-mode': {
+				options: [
+					'auto',
+					'fragment',
+					'none'
+				],
+				default: 'auto'
+			},
+			'structured-data-fragment': {
+				allowAny: true
+			},
 			'per-page': {
 				allowAny: true,
 				isNumeric: true,
@@ -131,6 +142,27 @@ class MMX_ProductList extends MMX_Element {
 			'show-facet-value-counts': {
 				isBoolean: true,
 				default: true
+			},
+			'show-rating-facets': {
+				isBoolean: true,
+				default: false
+			},
+			'rating-facet-suffix': {
+				allowAny: true,
+				default: ''
+			},
+			'rating-facet-icon-set': {
+				options: [
+					'star',
+					'heart'
+				],
+				default: 'star'
+			},
+			'rating-facet-active-color': {
+				allowAny: true
+			},
+			'rating-facet-inactive-color': {
+				allowAny: true
 			},
 			'facets-title': {
 				allowAny: true,
@@ -372,6 +404,11 @@ class MMX_ProductList extends MMX_Element {
 			'data-submit-method': this.data?.advanced?.submit_method?.value,
 			'data-show-facets': this.data?.list?.facets?.settings?.enabled ?? false,
 			'data-show-facet-value-counts': this.data?.list?.facets?.show_value_counts?.value,
+			'data-show-rating-facets': this.data?.list?.facets?.rating_facets?.settings?.enabled ?? false,
+			'data-rating-facet-suffix': this.data?.list?.facets?.rating_facets?.suffix?.value,
+			'data-rating-facet-icon-set': this.data?.list?.facets?.rating_facets?.icon?.value,
+			'data-rating-facet-active-color': this.data?.list?.facets?.rating_facets?.active_color?.value,
+			'data-rating-facet-inactive-color': this.data?.list?.facets?.rating_facets?.inactive_color?.value,
 			'data-show-pagination': this.data?.list?.pagination?.settings?.enabled ?? false,
 			'data-pagination-page-numbers': this.data?.list?.pagination?.page_numbers?.value,
 			'data-pagination-page-link-count': this.data?.list?.pagination?.page_link_count?.value,
@@ -393,6 +430,8 @@ class MMX_ProductList extends MMX_Element {
 				MMX.coerceNumber(this.data?.list?.columns?.tablet?.value, 3),
 				MMX.coerceNumber(this.data?.list?.columns?.desktop?.value, 4)
 			].join(','),
+			'data-structured-data-mode': this.data?.advanced?.structured_data?.mode?.value,
+			'data-structured-data-fragment': this.data?.advanced?.structured_data?.fragment?.value,
 			'data-expanded-facets': this.data?.list?.facets?.expanded_facets?.value,
 			'data-expanded-facet-count': this.data?.list?.facets?.expanded_facet_count?.value,
 			'data-show-details': this.data?.list?.details?.settings?.enabled ?? false,
@@ -709,6 +748,7 @@ class MMX_ProductList extends MMX_Element {
 		this.#initializeFacets(response.data.facets);
 		this.#setPagination(response);
 		this.forceUpdate();
+		this.#renderJsonLd();
 		this.#notifyProductsLoaded();
 	}
 
@@ -801,12 +841,14 @@ class MMX_ProductList extends MMX_Element {
 			...this.#getFacetFilters(),
 			...this.#getAddToWishlistFilters(),
 			...this.#getAttributeSwatchFilters(),
+			...this.#getFlagsFilters(),
 			...this.#getCacheKeysFilters()
 		];
 	}
 
 	#getDetailsFilters() {
 		const details = this.#getDataCardDetails();
+		const fragmentCodes = new Set();
 		const filters = details.reduce((filters, detail) => {
 			const type = detail?.type?.value;
 
@@ -848,10 +890,7 @@ class MMX_ProductList extends MMX_Element {
 			}
 
 			if (type === 'fragment' && !MMX.valueIsEmpty(detail?.fragment?.value)) {
-				filters.push({
-					name: 'fragments',
-					value: [detail.fragment.value]
-				});
+				fragmentCodes.add(detail.fragment.value);
 			}
 
 			if (type === 'discounts') {
@@ -877,6 +916,21 @@ class MMX_ProductList extends MMX_Element {
 
 			return filters;
 		}, []);
+
+		if (this.getPropValue('structured-data-mode') === 'fragment') {
+			const structuredDataFragment = this.getPropValue('structured-data-fragment');
+
+			if (!MMX.valueIsEmpty(structuredDataFragment)) {
+				fragmentCodes.add(structuredDataFragment);
+			}
+		}
+
+		if (fragmentCodes.size) {
+			filters.push({
+				name: 'fragments',
+				value: [...fragmentCodes]
+			});
+		}
 
 		return filters;
 	}
@@ -1013,12 +1067,53 @@ class MMX_ProductList extends MMX_Element {
 				{
 					name: 'ondemandcolumns',
 					value: ['attributes']
+				},
+				{
+					name: 'productvariant_possible',
+					value: {
+						select_one: false,
+						dependency_resolution: 'first'
+					}
 				}
 			];
 		}
 		else {
 			return [];
 		}
+	}
+
+	// Flags
+	#getFlagsFilters() {
+		if (!MMX.isTruthy(this.#card?.flags?.settings?.enabled)) {
+			return [];
+		}
+
+		const flags = Array.isArray(this.#card?.flags?.list?.children) ? this.#card.flags.list.children : [];
+
+		return flags.reduce((filters, flag) => {
+			const type = flag?.type?.value;
+
+			if (type === 'customfield' && !MMX.valueIsEmpty(flag?.customfield?.value)) {
+				filters.push({
+					name: 'ondemandcolumns',
+					value: [`CustomField_Values:${flag.customfield.value}`]
+				});
+			}
+			else if (type === 'inv_short') {
+				filters.push({
+					name: 'ondemandcolumns',
+					value: ['inventory']
+				});
+			}
+			else if (type === 'sale') {
+				filters.push({
+					name: 'ondemandcolumns',
+					value: ['sale_price']
+				});
+			}
+
+			return filters;
+		}, []);
 	}
 
 	#getCacheKeysFilters() {
@@ -1045,6 +1140,10 @@ class MMX_ProductList extends MMX_Element {
 
 	#isCategoryFacet(facet) {
 		return facet.code === 'category' && facet.module_code === 'stdfacets';
+	}
+
+	#isRatingFacet(facet) {
+		return facet.code === 'tgr_rating' && facet.module_code === 'tgreviews';
 	}
 
 	#getCategoryFacet() {
@@ -1152,7 +1251,11 @@ class MMX_ProductList extends MMX_Element {
 	#renderMainError() {
 		return /*html*/`
 			<div part="error" class="mmx-product-list__error">
-				<mmx-message data-style="warning">We're unable to display the products: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the products')}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.error_badge,
+					style: 'warning',
+					content: `We're unable to display the products: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the products')}`
+				})}
 			</div>
 		`;
 	}
@@ -1167,7 +1270,11 @@ class MMX_ProductList extends MMX_Element {
 
 		return /*html*/`
 			<div part="empty" class="mmx-product-list__empty">
-				<mmx-message data-style="info">${source === 'markdown' ? message : MMX.encodeEntities(message)}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.empty_results_message?.textsettings?.fields?.normal?.badge_theme,
+					style: 'info',
+					content: source === 'markdown' ? message : MMX.encodeEntities(message)
+				})}
 			</div>
 		`;
 	}
@@ -1678,20 +1785,51 @@ class MMX_ProductList extends MMX_Element {
 			link.isCurrentPage = pagination.offsets.current === link.offset;
 
 			link.url = this.#buildUrlToSelf();
+
 			if (link.offset === 0) {
 				link.url.searchParams.delete(this.#scopeParam('Offset'));
-			} else {
+			}
+			else {
 				link.url.searchParams.set(this.#scopeParam('Offset'), link.offset);
 			}
-
-			link.suffix = link.isFirst && displayMin > 2 ? '...' : '';
-			link.prefix = link.isLast && displayMax < (pagination.pages.last - 1) ? '...' : '';
-			link.text = link.prefix + link.page + link.suffix;
 
 			links.push(link);
 		}
 
+		this.#markPaginationGaps(links.filter(link => link.shouldDisplay));
+
 		return links;
+	}
+
+	#markPaginationGaps(displayedLinks) {
+		displayedLinks.forEach((link, index) => {
+			const previous = displayedLinks[index - 1];
+			const next = displayedLinks[index + 1];
+
+			link.isCurrentPageNeighbor = Boolean(previous?.isCurrentPage || next?.isCurrentPage);
+		});
+
+		displayedLinks.forEach((link, index) => {
+			const next = displayedLinks[index + 1];
+
+			if (!next) {
+				return;
+			}
+
+			link.hasGap = (next.page - link.page) > 1;
+
+			if (link.hasGap) {
+				return;
+			}
+
+			const isRevealedOnMobile = link.isFirst || link.isLast || link.isCurrentPage;
+			const isNextRevealedOnMobile = next.isFirst || next.isLast || next.isCurrentPage;
+			const isRevealedOnTablet = isRevealedOnMobile || link.isCurrentPageNeighbor;
+			const isNextRevealedOnTablet = isNextRevealedOnMobile || next.isCurrentPageNeighbor;
+
+			link.hasGapOnMobile = isRevealedOnMobile && !isNextRevealedOnMobile;
+			link.hasGapOnTablet = isRevealedOnTablet && !isNextRevealedOnTablet;
+		});
 	}
 
 	#paginationSupported() {
@@ -1788,8 +1926,12 @@ class MMX_ProductList extends MMX_Element {
 					href="${MMX.encodeEntities(link.url)}"
 					class="mmx-product-list__pagination-page ${link.isCurrentPage ? 'hover' : ''}"
 					part="pagination-page ${link.isCurrentPage ? 'pagination-page-current' : ''}"
+					${link.isCurrentPage ? '' : 'hidden'}
+					${link.hasGap ? 'data-gap' : ''}
+					${link.hasGapOnMobile ? 'data-gap-mobile' : ''}
+					${link.hasGapOnTablet ? 'data-gap-tablet' : ''}
 				>
-					${link.text}
+					${link.page}
 				</mmx-button>
 			`;
 		}).join('');
@@ -2290,6 +2432,10 @@ class MMX_ProductList extends MMX_Element {
 			return this.#renderFacetValueRange(facet);
 		}
 
+		if (this.#isRatingFacet(facet) && this.getPropValue('show-rating-facets')) {
+			return this.#renderFacetValuesRating(facet);
+		}
+
 		return this.#renderFacetValuesControls(facet);
 	}
 
@@ -2305,7 +2451,7 @@ class MMX_ProductList extends MMX_Element {
 		`;
 	}
 
-	#renderShowMoreFacetValues({ facet, facetValues, depth = 0 }) {
+	#renderShowMoreFacetValues({ facet, facetValues, depth = 0, renderFacetValue = (options) => this.#renderFacetValueControl(options) }) {
 		const displayShowMoreLinks = this.getPropValue('display-show-more-links');
 		const showMoreThreshold = MMX.coerceNumber(this.getPropValue('show-more-threshold'));
 		const facetCode = facet?.code ?? '';
@@ -2323,7 +2469,7 @@ class MMX_ProductList extends MMX_Element {
 		const hasHidden = hiddenFacetValues.length > 0;
 
 		return /*html*/`
-			${visibleFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue, depth })).join('')}
+			${visibleFacetValues.map(facetValue => renderFacetValue({ facet, facetValue, depth })).join('')}
 
 			${hasHidden ? /*html*/`
 				<div
@@ -2333,7 +2479,7 @@ class MMX_ProductList extends MMX_Element {
 					aria-hidden="${showMoreOpen ? 'false' : 'true'}"
 					style="height:${showMoreOpen ? 'auto' : '0px'};"
 				>
-					${hiddenFacetValues.map(facetValue => this.#renderFacetValueControl({ facet, facetValue, depth })).join('')}
+					${hiddenFacetValues.map(facetValue => renderFacetValue({ facet, facetValue, depth })).join('')}
 				</div>
 
 				<mmx-button
@@ -2356,8 +2502,8 @@ class MMX_ProductList extends MMX_Element {
 
 	#openShowMoreFacets = new Set();
 
-	#renderFacetValueControl({facet, facetValue, depth = 0} = {}) {
-		const controlType = facet.type === 'radio' ? 'radio' : 'checkbox';
+	#renderFacetValueControl({facet, facetValue, depth = 0, ariaLabel = '', caption = ''} = {}) {
+		const controlType = this.#getFacetValueControlType(facet);
 		const checked = facetValue.selected ? 'checked' : '';
 		depth = MMX.coerceNumber(depth);
 
@@ -2373,21 +2519,113 @@ class MMX_ProductList extends MMX_Element {
 					class="mmx-form-${controlType}__input"
 					name="${MMX.encodeEntities(facet.code)}"
 					value="${MMX.encodeEntities(facetValue.value)}"
+					${ariaLabel ? `aria-label="${MMX.encodeEntities(ariaLabel)}"` : ''}
 					${checked}
 				>
-				<span class="mmx-form-caption mmx-form-${controlType}__caption">${facetValue.prompt}</span>
-				${this.#renderFacetValueCount(facetValue)}
+				${caption || /*html*/`
+					<span class="mmx-form-caption mmx-form-${controlType}__caption">${facetValue.prompt}</span>
+					${this.#renderFacetValueCount(facetValue)}
+				`}
 			</label>
 		`;
 	}
 
-	#renderFacetValueCount(facetValue) {
-		if (!this.getPropValue('show-facet-value-counts') || isNaN(facetValue?.count)) {
+	#getFacetValueControlType(facet) {
+		return facet.type === 'radio' ? 'radio' : 'checkbox';
+	}
+
+	#renderFacetValueCount(facetValue, {ariaHidden = false} = {}) {
+		if (!this.#shouldShowFacetValueCount(facetValue)) {
 			return '';
 		}
 
 		return /*html*/`
-			<span part="facet-value-count" class="mmx-product-list__facet-value-count">(${facetValue.count})</span>
+			<span
+				part="facet-value-count"
+				class="mmx-product-list__facet-value-count"
+				${ariaHidden ? 'aria-hidden="true"' : ''}
+			>(${facetValue.count})</span>
+		`;
+	}
+
+	#shouldShowFacetValueCount(facetValue) {
+		return this.getPropValue('show-facet-value-counts') && !isNaN(facetValue?.count);
+	}
+
+	// Rating Facet
+	#renderFacetValuesRating(facet) {
+		return /*html*/`
+			<fieldset
+				class="mmx-product-list__facet-values mmx-form-fieldset"
+				part="facet-values facet-values-list facet-values-rating"
+			>
+				${this.#renderShowMoreFacetValues({
+					facet,
+					facetValues: facet?.values ?? [],
+					renderFacetValue: (options) => this.#renderRatingFacetValueControl(options)
+				})}
+			</fieldset>
+		`;
+	}
+
+	// The visible label is iconography, so the input carries a plain language name (ex. "4 stars & Up, 294 products")
+	#renderRatingFacetValueControl({facet, facetValue, depth = 0} = {}) {
+		const rating = MMX.coerceNumber(facetValue?.value);
+
+		if (rating <= 0) {
+			return this.#renderFacetValueControl({facet, facetValue, depth});
+		}
+
+		const controlType = this.#getFacetValueControlType(facet);
+
+		return this.#renderFacetValueControl({
+			facet,
+			facetValue,
+			depth,
+			ariaLabel: this.#getRatingFacetValueLabel({rating, facetValue}),
+			caption: /*html*/`
+				${this.#renderRatingFacetValueCaption({controlType, rating})}
+				${this.#renderFacetValueCount(facetValue, {ariaHidden: true})}
+			`
+		});
+	}
+
+	#getRatingFacetValueLabel({rating, facetValue} = {}) {
+		const iconSet = this.getPropValue('rating-facet-icon-set');
+		const suffix = this.getPropValue('rating-facet-suffix');
+		const label = [rating, MMX.pluralize(iconSet, rating), suffix].filter(part => !MMX.valueIsEmpty(part)).join(' ');
+
+		if (!this.#shouldShowFacetValueCount(facetValue)) {
+			return label;
+		}
+
+		const count = MMX.coerceNumber(facetValue.count);
+
+		return `${label}, ${count} ${MMX.pluralize('product', count)}`;
+	}
+
+	#renderRatingFacetValueCaption({controlType, rating} = {}) {
+		const suffix = this.getPropValue('rating-facet-suffix');
+
+		return /*html*/`
+			<span
+				class="mmx-form-caption mmx-form-${controlType}__caption mmx-product-list__facet-value-rating"
+				part="facet-value-rating"
+				aria-hidden="true"
+			>
+				<mmx-rating
+					data-rating="${MMX.encodeEntities(rating)}"
+					data-icon-set="${MMX.encodeEntities(this.getPropValue('rating-facet-icon-set'))}"
+					data-active-color="${MMX.encodeEntities(this.getPropValue('rating-facet-active-color'))}"
+					data-inactive-color="${MMX.encodeEntities(this.getPropValue('rating-facet-inactive-color'))}"
+				></mmx-rating>
+				${MMX.valueIsEmpty(suffix) ? '' : /*html*/`
+					<span
+						class="mmx-product-list__facet-value-rating-suffix"
+						part="facet-value-rating-suffix"
+					>${MMX.encodeEntities(suffix)}</span>
+				`}
+			</span>
 		`;
 	}
 
@@ -2500,6 +2738,74 @@ class MMX_ProductList extends MMX_Element {
 		return /*html*/`
 			<slot part="category-tree" name="category-tree"></slot>
 		`;
+	}
+
+	// Schema Data
+	#renderJsonLd() {
+		const data = this.#getJsonLdData();
+
+		// Fragment: keep the server-rendered output when the JSON API returns no usable fragment output
+		if (this.getPropValue('structured-data-mode') === 'fragment' && MMX.valueIsEmpty(data)) {
+			return;
+		}
+
+		MMX.upsertJsonLd({parent: this, data});
+	}
+
+	#getJsonLdData() {
+		const mode = this.getPropValue('structured-data-mode');
+
+		if (mode === 'none' || !this.#products.length) {
+			return null;
+		}
+
+		const listItems = this.#products
+			.map((product) => (mode === 'fragment' ? this.#getFragmentListItem(product) : this.#getAutoListItem(product)))
+			.filter((listItem) => !MMX.valueIsEmpty(listItem));
+
+		if (!listItems.length) {
+			return null;
+		}
+
+		const itemListElements = listItems.map((listItem, index) => {
+			return {
+				'@type': 'ListItem',
+				position: index + 1,
+				...listItem
+			};
+		});
+
+		return {
+			'@context': 'https://schema.org',
+			'@type': 'ItemList',
+			itemListElement: itemListElements,
+			numberOfItems: itemListElements.length
+		};
+	}
+
+	#getAutoListItem(product = {}) {
+		return {
+			name: product.name,
+			url: product.url
+		};
+	}
+
+	#getFragmentListItem(product = {}) {
+		try {
+			const productSchema = JSON.parse(product?.fragments?.[this.getPropValue('structured-data-fragment')]);
+
+			if (productSchema?.constructor !== Object || MMX.valueIsEmpty(productSchema)) {
+				return {};
+			}
+
+			return {
+				name: productSchema.name,
+				url: productSchema.url ?? productSchema.offers?.url
+			};
+		}
+		catch {
+			return {};
+		}
 	}
 }
 

@@ -5,3 +5,311 @@
 <mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.02'">
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height:value" value="'auto'" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:comment> Structured Data: existing instances keep the JS-generated schema </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:structured_data:mode:value" value="'auto'" />
+	<mvt:assign name="l.settings:instance:advanced:structured_data:fragment:value" value="'json_ld'" />
+
+	<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:message_badges:error_badge:theme_mode" value="0" />
+
+	<mvt:comment> Attributes: move the legacy swatch settings into a swatch-select Attribute Style, using the previous CSS defaults for any group left empty </mvt:comment>
+	<mvt:capture variable="l.default_style_rule_json">
+		{
+			"attribute_codes":	{ "value": "" },
+			"attribute_types":	{ "value": "swatch-select" },
+			"display_style":	{ "value": "" },
+			"size":				{ "value": 40, "unit": "px" },
+			"border_radius": {
+				"border_top_left_radius":		{ "value": 50, "unit": "%" },
+				"border_top_right_radius":		{ "value": 50, "unit": "%" },
+				"border_bottom_right_radius":	{ "value": 50, "unit": "%" },
+				"border_bottom_left_radius":	{ "value": 50, "unit": "%" }
+			},
+			"border_width": {
+				"border_top_width":		{ "value": 1, "unit": "px" },
+				"border_right_width":	{ "value": 1, "unit": "px" },
+				"border_bottom_width":	{ "value": 1, "unit": "px" },
+				"border_left_width":	{ "value": 1, "unit": "px" }
+			},
+			"border_color":		{ "value": "" }
+		}
+	</mvt:capture>
+	<mvt:assign name="l.null" value="miva_json_decode( l.default_style_rule_json, l.default_style_rule )" />
+
+	<mvt:foreach iterator="detail_1" array="instance:details:children">
+		<mvt:if expr="l.settings:detail_1:type:value EQ 'attributes'">
+			<mvt:assign name="l.swatches" value="l.settings:detail_1:attribute_settings:swatches" />
+			<mvt:assign name="l.new_style_rule" value="l.default_style_rule" />
+
+			<mvt:if expr="NOT ISNULL l.swatches:size:value">
+				<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+				<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+			</mvt:if>
+			<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+				<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+			</mvt:if>
+			<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+			<mvt:assign name="l.settings:detail_1:attribute_settings:styles:children" value="''" />
+			<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:detail_1:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+		</mvt:if>
+
+		<mvt:if expr="l.settings:detail_1:type:value EQ 'inv_short' OR l.settings:detail_1:type:value EQ 'inv_long'">
+			<mvt:assign name="l.settings:detail_1:messages_to_display:in:value" value="1" />
+			<mvt:assign name="l.settings:detail_1:messages_to_display:low:value" value="1" />
+			<mvt:assign name="l.settings:detail_1:messages_to_display:out:value" value="1" />
+			<mvt:assign name="l.settings:detail_1:messages_to_display:invalid:value" value="1" />
+
+			<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+			<mvt:assign name="l.settings:detail_1:message_styles:badge_theme_in:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:message_styles:badge_theme_low:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:message_styles:badge_theme_out:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:message_styles:badge_theme_invalid:theme_mode" value="0" />
+		</mvt:if>
+		<mvt:if expr="l.settings:detail_1:type:value EQ 'fitment'">
+			<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+			<mvt:assign name="l.settings:detail_1:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+		</mvt:if>
+		<mvt:if expr="l.settings:detail_1:type:value EQ 'fitment-list'">
+			<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+			<mvt:assign name="l.settings:detail_1:fitment_list_settings:message_badges:error_badge:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:fitment_list_settings:message_badges:empty_badge:theme_mode" value="0" />
+		</mvt:if>
+		<mvt:if expr="l.settings:detail_1:type:value EQ 'add-to-cart-button'">
+			<mvt:assign name="l.settings:detail_1:waitlist_settings:settings:enabled" value="0" />
+
+			<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+			<mvt:assign name="l.settings:detail_1:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			<mvt:assign name="l.settings:detail_1:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+		</mvt:if>
+
+		<mvt:foreach iterator="detail_2" array="detail_1:details:children">
+			<mvt:if expr="l.settings:detail_2:type:value EQ 'attributes'">
+				<mvt:assign name="l.swatches" value="l.settings:detail_2:attribute_settings:swatches" />
+				<mvt:assign name="l.new_style_rule" value="l.default_style_rule" />
+
+				<mvt:if expr="NOT ISNULL l.swatches:size:value">
+					<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+					<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+					<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+				</mvt:if>
+				<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+				<mvt:assign name="l.settings:detail_2:attribute_settings:styles:children" value="''" />
+				<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:detail_2:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+			</mvt:if>
+
+			<mvt:if expr="l.settings:detail_2:type:value EQ 'inv_short' OR l.settings:detail_2:type:value EQ 'inv_long'">
+				<mvt:assign name="l.settings:detail_2:messages_to_display:in:value" value="1" />
+				<mvt:assign name="l.settings:detail_2:messages_to_display:low:value" value="1" />
+				<mvt:assign name="l.settings:detail_2:messages_to_display:out:value" value="1" />
+				<mvt:assign name="l.settings:detail_2:messages_to_display:invalid:value" value="1" />
+
+				<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+				<mvt:assign name="l.settings:detail_2:message_styles:badge_theme_in:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:message_styles:badge_theme_low:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:message_styles:badge_theme_out:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:message_styles:badge_theme_invalid:theme_mode" value="0" />
+			</mvt:if>
+			<mvt:if expr="l.settings:detail_2:type:value EQ 'fitment'">
+				<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+				<mvt:assign name="l.settings:detail_2:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			</mvt:if>
+			<mvt:if expr="l.settings:detail_2:type:value EQ 'fitment-list'">
+				<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+				<mvt:assign name="l.settings:detail_2:fitment_list_settings:message_badges:error_badge:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:fitment_list_settings:message_badges:empty_badge:theme_mode" value="0" />
+			</mvt:if>
+			<mvt:if expr="l.settings:detail_2:type:value EQ 'add-to-cart-button'">
+				<mvt:assign name="l.settings:detail_2:waitlist_settings:settings:enabled" value="0" />
+
+				<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+				<mvt:assign name="l.settings:detail_2:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				<mvt:assign name="l.settings:detail_2:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+			</mvt:if>
+
+			<mvt:foreach iterator="detail_3" array="detail_2:details:children">
+				<mvt:if expr="l.settings:detail_3:type:value EQ 'attributes'">
+					<mvt:assign name="l.swatches" value="l.settings:detail_3:attribute_settings:swatches" />
+					<mvt:assign name="l.new_style_rule" value="l.default_style_rule" />
+
+					<mvt:if expr="NOT ISNULL l.swatches:size:value">
+						<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+						<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+						<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+					</mvt:if>
+					<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+					<mvt:assign name="l.settings:detail_3:attribute_settings:styles:children" value="''" />
+					<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:detail_3:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+				</mvt:if>
+
+				<mvt:if expr="l.settings:detail_3:type:value EQ 'inv_short' OR l.settings:detail_3:type:value EQ 'inv_long'">
+					<mvt:assign name="l.settings:detail_3:messages_to_display:in:value" value="1" />
+					<mvt:assign name="l.settings:detail_3:messages_to_display:low:value" value="1" />
+					<mvt:assign name="l.settings:detail_3:messages_to_display:out:value" value="1" />
+					<mvt:assign name="l.settings:detail_3:messages_to_display:invalid:value" value="1" />
+
+					<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+					<mvt:assign name="l.settings:detail_3:message_styles:badge_theme_in:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:message_styles:badge_theme_low:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:message_styles:badge_theme_out:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:message_styles:badge_theme_invalid:theme_mode" value="0" />
+				</mvt:if>
+				<mvt:if expr="l.settings:detail_3:type:value EQ 'fitment'">
+					<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+					<mvt:assign name="l.settings:detail_3:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				</mvt:if>
+				<mvt:if expr="l.settings:detail_3:type:value EQ 'fitment-list'">
+					<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+					<mvt:assign name="l.settings:detail_3:fitment_list_settings:message_badges:error_badge:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:fitment_list_settings:message_badges:empty_badge:theme_mode" value="0" />
+				</mvt:if>
+				<mvt:if expr="l.settings:detail_3:type:value EQ 'add-to-cart-button'">
+					<mvt:assign name="l.settings:detail_3:waitlist_settings:settings:enabled" value="0" />
+
+					<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+					<mvt:assign name="l.settings:detail_3:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					<mvt:assign name="l.settings:detail_3:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+				</mvt:if>
+
+				<mvt:foreach iterator="detail_4" array="detail_3:details:children">
+					<mvt:if expr="l.settings:detail_4:type:value EQ 'attributes'">
+						<mvt:assign name="l.swatches" value="l.settings:detail_4:attribute_settings:swatches" />
+						<mvt:assign name="l.new_style_rule" value="l.default_style_rule" />
+
+						<mvt:if expr="NOT ISNULL l.swatches:size:value">
+							<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+							<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+							<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+						</mvt:if>
+						<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+						<mvt:assign name="l.settings:detail_4:attribute_settings:styles:children" value="''" />
+						<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:detail_4:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+					</mvt:if>
+
+					<mvt:if expr="l.settings:detail_4:type:value EQ 'inv_short' OR l.settings:detail_4:type:value EQ 'inv_long'">
+						<mvt:assign name="l.settings:detail_4:messages_to_display:in:value" value="1" />
+						<mvt:assign name="l.settings:detail_4:messages_to_display:low:value" value="1" />
+						<mvt:assign name="l.settings:detail_4:messages_to_display:out:value" value="1" />
+						<mvt:assign name="l.settings:detail_4:messages_to_display:invalid:value" value="1" />
+
+						<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+						<mvt:assign name="l.settings:detail_4:message_styles:badge_theme_in:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:message_styles:badge_theme_low:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:message_styles:badge_theme_out:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:message_styles:badge_theme_invalid:theme_mode" value="0" />
+					</mvt:if>
+					<mvt:if expr="l.settings:detail_4:type:value EQ 'fitment'">
+						<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+						<mvt:assign name="l.settings:detail_4:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					</mvt:if>
+					<mvt:if expr="l.settings:detail_4:type:value EQ 'fitment-list'">
+						<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+						<mvt:assign name="l.settings:detail_4:fitment_list_settings:message_badges:error_badge:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:fitment_list_settings:message_badges:empty_badge:theme_mode" value="0" />
+					</mvt:if>
+					<mvt:if expr="l.settings:detail_4:type:value EQ 'add-to-cart-button'">
+						<mvt:assign name="l.settings:detail_4:waitlist_settings:settings:enabled" value="0" />
+
+						<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+						<mvt:assign name="l.settings:detail_4:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						<mvt:assign name="l.settings:detail_4:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+					</mvt:if>
+
+					<mvt:foreach iterator="detail_5" array="detail_4:details:children">
+						<mvt:if expr="l.settings:detail_5:type:value EQ 'attributes'">
+							<mvt:assign name="l.swatches" value="l.settings:detail_5:attribute_settings:swatches" />
+							<mvt:assign name="l.new_style_rule" value="l.default_style_rule" />
+
+							<mvt:if expr="NOT ISNULL l.swatches:size:value">
+								<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+							</mvt:if>
+							<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+								<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+							</mvt:if>
+							<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+								<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+							</mvt:if>
+							<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+							<mvt:assign name="l.settings:detail_5:attribute_settings:styles:children" value="''" />
+							<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:detail_5:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+						</mvt:if>
+
+						<mvt:if expr="l.settings:detail_5:type:value EQ 'inv_short' OR l.settings:detail_5:type:value EQ 'inv_long'">
+							<mvt:assign name="l.settings:detail_5:messages_to_display:in:value" value="1" />
+							<mvt:assign name="l.settings:detail_5:messages_to_display:low:value" value="1" />
+							<mvt:assign name="l.settings:detail_5:messages_to_display:out:value" value="1" />
+							<mvt:assign name="l.settings:detail_5:messages_to_display:invalid:value" value="1" />
+
+							<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+							<mvt:assign name="l.settings:detail_5:message_styles:badge_theme_in:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:message_styles:badge_theme_low:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:message_styles:badge_theme_out:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:message_styles:badge_theme_invalid:theme_mode" value="0" />
+						</mvt:if>
+						<mvt:if expr="l.settings:detail_5:type:value EQ 'fitment'">
+							<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+							<mvt:assign name="l.settings:detail_5:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						</mvt:if>
+						<mvt:if expr="l.settings:detail_5:type:value EQ 'fitment-list'">
+							<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+							<mvt:assign name="l.settings:detail_5:fitment_list_settings:message_badges:error_badge:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:fitment_list_settings:message_badges:empty_badge:theme_mode" value="0" />
+						</mvt:if>
+						<mvt:if expr="l.settings:detail_5:type:value EQ 'add-to-cart-button'">
+							<mvt:assign name="l.settings:detail_5:waitlist_settings:settings:enabled" value="0" />
+
+							<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+							<mvt:assign name="l.settings:detail_5:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+							<mvt:assign name="l.settings:detail_5:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+						</mvt:if>
+					</mvt:foreach>
+				</mvt:foreach>
+			</mvt:foreach>
+		</mvt:foreach>
+	</mvt:foreach>
+</mvt:if>

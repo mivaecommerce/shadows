@@ -196,6 +196,18 @@ class MMX_Tabs extends MMX_Element {
 		});
 	}
 
+	revealElement(element) {
+		const panel = MMX.closestElement('mmx-tab-panel', element);
+		const index = panel ? Array.from(this.#tabPanels()).indexOf(panel) : -1;
+		const tab = index > -1 ? Array.from(this.#tabs()).at(index) : null;
+
+		if (!tab) {
+			return;
+		}
+
+		this.#setSelectedTab(tab);
+	}
+
 	// Elements
 	#tabs() {
 		return this.querySelectorAll(':scope > mmx-tab');
@@ -210,7 +222,7 @@ class MMX_Tabs extends MMX_Element {
 	}
 }
 
-if (!customElements.get('mmx-tabs')){
+if (!customElements.get('mmx-tabs')) {
 	customElements.define('mmx-tabs', MMX_Tabs);
 }
 
@@ -263,7 +275,7 @@ class MMX_Tab extends MMX_Element {
 	}
 }
 
-if (!customElements.get('mmx-tab')){
+if (!customElements.get('mmx-tab')) {
 	customElements.define('mmx-tab', MMX_Tab);
 }
 
@@ -293,6 +305,6 @@ class MMX_TabPanel extends MMX_Element {
 	}
 }
 
-if (!customElements.get('mmx-tab-panel')){
+if (!customElements.get('mmx-tab-panel')) {
 	customElements.define('mmx-tab-panel', MMX_TabPanel);
 }

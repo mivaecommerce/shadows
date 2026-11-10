@@ -2,10 +2,11 @@
 	"code": "mmx-quick-order",
 	"name": "Quick Order",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-quick-order",
 	"category": "quick-order",
+	"output_minimal_json": false,
 	"description": "## Quick Order\nA streamlined ordering tool that allows customers to quickly add multiple products to their cart without navigating through individual product pages. Ideal for B2B buyers or frequent shoppers looking for efficiency.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -2222,10 +2223,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-quick-order.js",
@@ -2279,11 +2280,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-csv": "=26.02.01",
-		"mmx-featured-product": "=26.02.01",
-		"mmx-icons": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-csv": "=26.03.00",
+		"mmx-featured-product": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

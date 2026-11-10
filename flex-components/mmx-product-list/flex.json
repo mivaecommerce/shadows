@@ -2,10 +2,11 @@
 	"code": "mmx-product-list",
 	"name": "Product List",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-list",
 	"category": "product-list",
+	"output_minimal_json": false,
 	"description": "## Product List\nA customizable grid based layout that displays multiple products along with filtering and sorting options. Ideal for creating custom product listings or category pages.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
@@ -879,6 +880,51 @@
 							}
 						},
 						{
+							"can_disable": 1,
+							"code": "rating_facets",
+							"collapsed": 1,
+							"prompt": "Rating Facets",
+							"properties": [
+								{
+									"code": "suffix",
+									"preview_property_selector": ":shadow [part~=\"facet-value-rating-suffix\"]",
+									"prompt": "Suffix",
+									"type": "text"
+								},
+								{
+									"code": "icon",
+									"options": [
+										{
+											"text": "Star",
+											"value": "star"
+										},
+										{
+											"text": "Heart",
+											"value": "heart"
+										}
+									],
+									"preview_property_selector": ":shadow [part~=\"facet-value-rating\"]",
+									"prompt": "Icon",
+									"type": "select"
+								},
+								{
+									"code": "inactive_color",
+									"placeholder": "#575A5D",
+									"preview_property_selector": ":shadow [part~=\"facet-value-rating\"]",
+									"prompt": "Inactive Color",
+									"type": "color"
+								},
+								{
+									"code": "active_color",
+									"placeholder": "#DDDDDD",
+									"preview_property_selector": ":shadow [part~=\"facet-value-rating\"]",
+									"prompt": "Active Color",
+									"type": "color"
+								}
+							],
+							"type": "group"
+						},
+						{
 							"code": "facet_styles",
 							"collapsed": 1,
 							"prompt": "Facet Styles",
@@ -1024,11 +1070,11 @@
 							"code": "default",
 							"options": [
 								{
-									"text": "Relevance",
+									"text": "Relevance (Supports Boosts)",
 									"value": "relevance"
 								},
 								{
-									"text": "Display Order",
+									"text": "Display Order (Supports Boosts)",
 									"value": "disp_order"
 								},
 								{
@@ -1089,6 +1135,32 @@
 							"type": "select"
 						},
 						{
+							"code": "boostrule_warning",
+							"content": "Boosting rules from Merchandising won’t apply with this sort.",
+							"icon": "tooltip",
+							"message_type": "info",
+							"type": "advisorymessage",
+							"visibility_conditions": {
+								"default": {
+									"value": [
+										"disp_order_desc",
+										"newest",
+										"oldest",
+										"updated",
+										"code_asc",
+										"code_desc",
+										"name_asc",
+										"name_desc",
+										"price_asc",
+										"price_desc",
+										"bestsellers",
+										"customfield",
+										"customfield_desc"
+									]
+								}
+							}
+						},
+						{
 							"code": "default_customfield",
 							"preview_property_selector": ":shadow [part~=\"sort-by\"]",
 							"prompt": "Default Sort Custom Field",
@@ -1113,11 +1185,11 @@
 									"code": "code",
 									"options": [
 										{
-											"text": "Relevance",
+											"text": "Relevance (Supports Boosts)",
 											"value": "relevance"
 										},
 										{
-											"text": "Display Order",
+											"text": "Display Order (Supports Boosts)",
 											"value": "disp_order"
 										},
 										{
@@ -1176,6 +1248,32 @@
 									"preview_property_selector": ":shadow [part~=\"sort-by\"]",
 									"prompt": "Sorting Method",
 									"type": "select"
+								},
+								{
+									"code": "boostrule_warning",
+									"content": "Boosting rules from Merchandising won’t apply with this sort.",
+									"icon": "tooltip",
+									"message_type": "info",
+									"type": "advisorymessage",
+									"visibility_conditions": {
+										"code": {
+											"value": [
+												"disp_order_desc",
+												"newest",
+												"oldest",
+												"updated",
+												"code_asc",
+												"code_desc",
+												"name_asc",
+												"name_desc",
+												"price_asc",
+												"price_desc",
+												"bestsellers",
+												"customfield",
+												"customfield_desc"
+											]
+										}
+									}
 								},
 								{
 									"code": "code_customfield",
@@ -1743,6 +1841,20 @@
 									"code": "message",
 									"placeholder": "You don't have any wishlists yet.",
 									"prompt": "Message Text",
+									"textsettings": {
+										"fields": [
+											{
+												"code": "badge_theme",
+												"prompt": "Badge Theme",
+												"pseudoclasses": [
+													"normal"
+												],
+												"supports_customization": 0,
+												"supports_legacy": 1,
+												"type": "badge"
+											}
+										]
+									},
 									"type": "text"
 								},
 								{
@@ -1847,6 +1959,13 @@
 									"code": "tertiary_button_theme",
 									"prompt": "Tertiary Button",
 									"type": "button"
+								},
+								{
+									"code": "error_badge_theme",
+									"prompt": "Error Message Badge",
+									"supports_customization": 0,
+									"supports_legacy": 1,
+									"type": "badge"
 								}
 							],
 							"type": "group"
@@ -2991,6 +3110,351 @@
 						}
 					},
 					"type": "list"
+				},
+				{
+					"can_disable": 1,
+					"code": "flags",
+					"collapsed": 1,
+					"prompt": "Flags",
+					"properties": [
+						{
+							"code": "max_flags",
+							"min": 1,
+							"placeholder": 2,
+							"preview_property_selector": "mmx-product-card :shadow [part~=\"flag--top-right\"]",
+							"prompt": "Maximum Flags to Show",
+							"step": 1,
+							"text_type": "number",
+							"tooltip": {
+								"content": "Only the first flags that apply to a product, in list order, are shown on its card.",
+								"title": "Note"
+							},
+							"type": "text"
+						},
+						{
+							"code": "list",
+							"group_prompt": "Flag",
+							"item_prompt_property": "name:value",
+							"list_type": "group",
+							"prompt": "Flags",
+							"properties": [
+								{
+									"code": "name",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Flag Name",
+									"required": 1,
+									"type": "text"
+								},
+								{
+									"code": "type",
+									"options": [
+										{
+											"text": "Custom Field",
+											"value": "customfield"
+										},
+										{
+											"text": "Inventory Message (Short)",
+											"value": "inv_short"
+										},
+										{
+											"text": "New",
+											"value": "new"
+										},
+										{
+											"text": "Sale",
+											"value": "sale"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Flag Type",
+									"required": 1,
+									"type": "select"
+								},
+								{
+									"code": "customfield",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Custom Field",
+									"type": "productcustomfieldlookup",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"customfield"
+											]
+										}
+									}
+								},
+								{
+									"code": "inv_short_in",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Show \"In Stock\" Message",
+									"type": "checkbox",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "badge_in",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "In Stock Badge",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "badge",
+									"visibility_conditions": {
+										"inv_short_in": {
+											"value": [
+												1
+											]
+										},
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "inv_short_low",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Show \"Low Stock\" Message",
+									"type": "checkbox",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "badge_low",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Low Stock Badge",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "badge",
+									"visibility_conditions": {
+										"inv_short_low": {
+											"value": [
+												1
+											]
+										},
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "inv_short_out",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Show \"Out of Stock\" Message",
+									"type": "checkbox",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "badge_out",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Out of Stock Badge",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "badge",
+									"visibility_conditions": {
+										"inv_short_out": {
+											"value": [
+												1
+											]
+										},
+										"type": {
+											"value": [
+												"inv_short"
+											]
+										}
+									}
+								},
+								{
+									"code": "new_threshold",
+									"options": [
+										{
+											"text": "Within Days",
+											"value": "relative"
+										},
+										{
+											"text": "After Date",
+											"value": "absolute"
+										}
+									],
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "\"New\" Product Cutoff",
+									"tooltip": {
+										"content": "You can make the \"New\" flag show for products that were created within a certain number of days, or if they were created after a specific date.",
+										"title": "Note"
+									},
+									"type": "selector",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"new"
+											]
+										}
+									}
+								},
+								{
+									"code": "new_days_threshold",
+									"min": 1,
+									"placeholder": 30,
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "\"New\" Product Days",
+									"text_type": "number",
+									"tooltip": {
+										"content": "Products will show the \"New\" flag if they were created within this number of days.",
+										"title": "Note"
+									},
+									"type": "text",
+									"visibility_conditions": {
+										"new_threshold": {
+											"value": [
+												"relative"
+											]
+										},
+										"type": {
+											"value": [
+												"new"
+											]
+										}
+									}
+								},
+								{
+									"code": "new_date_threshold",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "\"New\" Product Date",
+									"required": 1,
+									"tooltip": {
+										"content": "Products will show the \"New\" flag if they were created after this date.",
+										"title": "Note"
+									},
+									"type": "datetime",
+									"visibility_conditions": {
+										"new_threshold": {
+											"value": [
+												"absolute"
+											]
+										},
+										"type": {
+											"value": [
+												"new"
+											]
+										}
+									}
+								},
+								{
+									"code": "discount_message",
+									"placeholder": "{discount}% Off!",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Discount Message",
+									"tooltip": {
+										"content": "You can use the {discount} token to display the percentage discount amount in the flag. For example, \"{discount}% off!\" would display \"10% off!\"",
+										"title": "Available Tokens"
+									},
+									"type": "text",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"sale"
+											]
+										}
+									}
+								},
+								{
+									"code": "discount_percent_threshold",
+									"label": "%",
+									"min": 0,
+									"placeholder": 0,
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Discount Percent Threshold",
+									"text_type": "number",
+									"tooltip": {
+										"content": "Products will only show the \"Sale\" flag if their discount percent is over this value.",
+										"title": "Note"
+									},
+									"type": "text",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"sale"
+											]
+										}
+									}
+								},
+								{
+									"code": "badge",
+									"preview_property_selector": "mmx-product-card :shadow #flag-%index%",
+									"prompt": "Badge",
+									"supports_customization": 1,
+									"supports_legacy": 0,
+									"type": "badge",
+									"visibility_conditions": {
+										"type": {
+											"value": [
+												"customfield",
+												"new",
+												"sale"
+											]
+										}
+									}
+								}
+							],
+							"template": {
+								"badge": {
+									"code": "flag-default",
+									"size": "s",
+									"theme_mode": 1
+								},
+								"badge_in": {
+									"code": "flag-success",
+									"size": "s",
+									"theme_mode": 1
+								},
+								"badge_low": {
+									"code": "flag-warning",
+									"size": "s",
+									"theme_mode": 1
+								},
+								"badge_out": {
+									"code": "flag-error",
+									"size": "s",
+									"theme_mode": 1
+								},
+								"inv_short_in": {
+									"value": 1
+								},
+								"inv_short_low": {
+									"value": 1
+								},
+								"inv_short_out": {
+									"value": 1
+								},
+								"name": {
+									"value": "Flag Name Here"
+								},
+								"new_threshold": {
+									"value": "relative"
+								}
+							},
+							"type": "list"
+						}
+					],
+					"type": "group"
 				}
 			],
 			"type": "group"
@@ -3066,6 +3530,65 @@
 			"type": "group"
 		},
 		{
+			"code": "structured_data",
+			"prompt": "Structured Data",
+			"properties": [
+				{
+					"code": "mode",
+					"options": [
+						{
+							"text": "Auto",
+							"value": "auto"
+						},
+						{
+							"text": "Fragment",
+							"value": "fragment"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						}
+					],
+					"prompt": "Mode",
+					"tooltip": {
+						"content": "\"Auto\": Client-side only. JavaScript builds an ItemList (name and URL) from the loaded products, so it is not in the page source. \"Fragment\": Server-side + client-side. The selected fragment renders into the page source, then is replaced client-side with an ItemList whose names and URLs come from the fragment's Product output for each loaded product. \"None\": No structured data is output.",
+						"title": "Structured Data"
+					},
+					"type": "select"
+				},
+				{
+					"code": "fragment",
+					"placeholder": "json_ld",
+					"prompt": "Fragment",
+					"type": "fragment",
+					"visibility_conditions": {
+						"mode": {
+							"value": [
+								"fragment"
+							]
+						}
+					}
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "message_badges",
+			"collapsed": 0,
+			"prompt": "Messages",
+			"properties": [
+				{
+					"code": "error_badge",
+					"preview_property_selector": ":shadow [part~=\"error\"]",
+					"prompt": "Error Badge",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "badge"
+				}
+			],
+			"type": "group"
+		},
+		{
 			"code": "show_empty_results",
 			"prompt": "Display Empty Results",
 			"type": "checkbox"
@@ -3076,6 +3599,20 @@
 			"placeholder": "There are no products to display.",
 			"preview_property_selector": ":shadow [part~=\"empty\"]",
 			"prompt": "Empty Results Message",
+			"textsettings": {
+				"fields": [
+					{
+						"code": "badge_theme",
+						"prompt": "Badge Theme",
+						"pseudoclasses": [
+							"normal"
+						],
+						"supports_customization": 1,
+						"supports_legacy": 1,
+						"type": "badge"
+					}
+				]
+			},
 			"type": "textarea",
 			"visibility_conditions": {
 				"show_empty_results": {
@@ -3157,11 +3694,29 @@
 		"advanced": {
 			"empty_results_message": {
 				"source": "markdown",
+				"textsettings": {
+					"fields": {
+						"normal": {
+							"badge_theme": {
+								"code": "standard-info",
+								"size": "m",
+								"theme_mode": 1
+							}
+						}
+					}
+				},
 				"value": "There are no products to display."
 			},
 			"initial_display": {
 				"initial_height": {
 					"value": "auto"
+				}
+			},
+			"message_badges": {
+				"error_badge": {
+					"code": "standard-warning",
+					"size": "m",
+					"theme_mode": 1
 				}
 			},
 			"search": {
@@ -3174,6 +3729,14 @@
 			},
 			"show_empty_results": {
 				"value": 1
+			},
+			"structured_data": {
+				"fragment": {
+					"value": "json_ld"
+				},
+				"mode": {
+					"value": "auto"
+				}
 			}
 		},
 		"card": {
@@ -3187,6 +3750,11 @@
 					}
 				},
 				"dialog": {
+					"error_badge_theme": {
+						"code": "standard-error",
+						"size": "m",
+						"theme_mode": 1
+					},
 					"heading_typography_theme": {
 						"code": "title-4",
 						"theme_mode": 1
@@ -3219,6 +3787,17 @@
 						"value": "Start Your Wishlist"
 					},
 					"message": {
+						"textsettings": {
+							"fields": {
+								"normal": {
+									"badge_theme": {
+										"code": "standard-info",
+										"size": "m",
+										"theme_mode": 1
+									}
+								}
+							}
+						},
 						"value": "You don't have any wishlists yet."
 					}
 				},
@@ -3375,6 +3954,14 @@
 					}
 				]
 			},
+			"flags": {
+				"max_flags": {
+					"value": 2
+				},
+				"settings": {
+					"enabled": 0
+				}
+			},
 			"image": {
 				"dimensions": {
 					"value": "290x290"
@@ -3497,6 +4084,17 @@
 				},
 				"hide_facets_prefix": {
 					"value": "Hide"
+				},
+				"rating_facets": {
+					"icon": {
+						"value": "star"
+					},
+					"settings": {
+						"enabled": 1
+					},
+					"suffix": {
+						"value": "& Up"
+					}
 				},
 				"settings": {
 					"enabled": 1
@@ -3652,10 +4250,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-product-list.js",
@@ -3667,7 +4265,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-ce1zs/8vj91VjsfEqOS40JFlF56OK+wV96YrvJb5nrc= sha384-sM9/7UDrfW6i+RsX/TIMMfoQ60Lk6XpxskL+wy2XnDXXR68Nmw4C3xhrMEnNOt1L sha512-fREZuusU61mVnSkdU9tGPpu+cBFaRyYUWGQVDb8ZkuZlYIlaRmPxzboT6QlMSGw63rGTGJL4OjCqfmdprWIKeA=="
+					"value": "sha256-lS1WkWCdM6r/3X0wE6w+yBDQoaSpDpkwsBDZi5MFTh4= sha384-IAFyClA2BPclxiHT/dmvRg4kTio8KcIGUPGRFdB6qb7+3umuqaAr58iP4bGWWQxg sha512-qLqGHcr8GhbSnGOUp1sXf65VO8tKFllnVtz+aRvXoGj8RyGSmT2wrd8Q1HriAkoWt1vWTKMof/m1Zv/FqmHbBg=="
 				},
 				{
 					"name": "crossorigin",
@@ -3699,7 +4297,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-hFvvlKAqX/0MlLmupVGSa9stjPiK4qIsmO74c+vQj5U= sha384-QqDkd1CzRAMheGK30zeU/nTT00MHk1LRV5mSvQL9wGMaH6Vo0kMJqTte4fAYsLUQ sha512-uKgd//vHIdnFg60vxPl56g/bbFMZGQtZBQUja9UO+11D15Lrfi8iqEjlJELnPIhzuIRYvvXrwxca8BiOloYP1Q=="
+					"value": "sha256-qmfRaDYgLRmLdnyZix6WBXB4qnfawW3vDveG/3JjZGw= sha384-RyrKBoRYP/0Iup5CmRtVYBpROf+LPJ9O5k2dn6ij6VHdo4OFzV1LNSxjy+5F+0G8 sha512-9lZLyDNCE8kEe0WTlByX7p4QrlkT0x0Zpua1chvi2vJt2SypANCT6O/OkhJurQzr0xAb+1NGzsPQKSSjDPi6rw=="
 				},
 				{
 					"name": "crossorigin",
@@ -3709,20 +4307,20 @@
 		}
 	],
 	"depends": {
-		"mmx-accordion": "=26.02.01",
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-card": "=26.02.01",
-		"mmx-category-carousel": "=26.02.01",
-		"mmx-dialog": "=26.02.01",
-		"mmx-featured-product": "=26.02.01",
-		"mmx-forms": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-hero-slider": "=26.02.01",
-		"mmx-icons": "=26.02.01",
-		"mmx-messages": "=26.02.01",
-		"mmx-rating": "=26.02.01",
-		"mmx-text": "=26.02.01",
-		"mmx-wishlist": "=26.02.01"
+		"mmx-accordion": "=26.03.00",
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-card": "=26.03.00",
+		"mmx-category-carousel": "=26.03.00",
+		"mmx-dialog": "=26.03.00",
+		"mmx-featured-product": "=26.03.00",
+		"mmx-forms": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-hero-slider": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-rating": "=26.03.00",
+		"mmx-text": "=26.03.00",
+		"mmx-wishlist": "=26.03.00"
 	}
 }

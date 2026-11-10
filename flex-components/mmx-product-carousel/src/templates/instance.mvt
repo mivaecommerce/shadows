@@ -47,6 +47,29 @@
 	</mvt:if>
 </mvt:if>
 
+<mvt:comment>Determine Content Params</mvt:comment>
+<mvt:assign name="l.settings:content_params" value="''" />
+<mvt:if expr="l.settings:instance:products:product_set:value EQ 'merchandising'">
+	<mvt:assign name="l.settings:content_params:showcase" value="l.settings:instance:products:showcase:code" />
+<mvt:elseif expr="
+	l.settings:instance:products:product_set:value EQ 'category' OR
+	(
+		l.settings:instance:products:product_set:value EQ 'auto' AND
+		ISNULL l.settings:instance:products:product:product_code AND
+		NOT ISNULL l.settings:instance:products:category:category_code
+	)
+">
+	<mvt:assign name="l.settings:content_params:category" value="l.settings:instance:products:category:category_code" />
+<mvt:elseif expr="
+	l.settings:instance:products:product_set:value EQ 'search' OR
+	(
+		l.settings:instance:products:product_set:value EQ 'auto' AND
+		ISNULL l.settings:instance:products:product:product_code
+	)
+">
+	<mvt:assign name="l.settings:content_params:search_term" value="g.Search" />
+</mvt:if>
+
 <mvt:comment>Initial Display</mvt:comment>
 <mvt:if expr="l.settings:instance:advanced:initial_display:initial_height:value EQ 'auto'">
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="'50vh'" />
@@ -65,6 +88,9 @@
 	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
+	data-category="&mvte:content_params:category;"
+	data-showcase="&mvte:content_params:showcase;"
+	data-search-term="&mvte:content_params:search_term;"
 	style="
 		margin-top: &mvte:instance:advanced:spacing:top:value;px;
 		margin-bottom: &mvte:instance:advanced:spacing:bottom:value;px;
@@ -114,6 +140,11 @@
 	</mvt:if>
 
 	<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+		<mvt:comment> Theme Badges </mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:error_badge:stylesheet">
+			<mvt:eval expr="l.settings:instance:advanced:message_badges:error_badge:stylesheet" />
+		</mvt:if>
+
 		<mvt:comment> Theme Buttons </mvt:comment>
 		<mvt:if expr="NOT ISNULL l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet">
 			<mvt:eval expr="l.settings:instance:advanced:settings:button:adpr_text:textsettings:fields:normal:button_theme:stylesheet" />

@@ -2,10 +2,11 @@
 	"code": "mmx-hero-slider",
 	"name": "Hero Slider",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-hero-slider",
 	"category": "image-slider",
+	"output_minimal_json": false,
 	"description": "## Hero Slider\nA dynamic rotating banner that allows multiple images and messages to be displayed in a slideshow format. Perfect for highlighting a variety of promotions, seasonal offers, or new arrivals in an engaging way.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -66,25 +67,65 @@
 							"properties": [
 								{
 									"code": "img",
-									"height": 580,
 									"preview_property_selector": "[slot=\"hero_slide\"]%nth-child% > [slot=\"image\"]",
 									"prompt": "Hero Image",
 									"responsive_images": [
 										{
 											"code": "mobile",
-											"height": 595,
-											"prompt": "Mobile Image",
-											"width": 640
+											"prompt": "Mobile Image"
 										},
 										{
 											"code": "tablet",
-											"height": 425,
-											"prompt": "Tablet Image",
-											"width": 960
+											"prompt": "Tablet Image"
 										}
 									],
-									"type": "image",
-									"width": 1440
+									"sizes": [
+										{
+											"height": 2560,
+											"width": 2560
+										},
+										{
+											"height": 1920,
+											"width": 1920
+										},
+										{
+											"height": 1440,
+											"width": 1440
+										},
+										{
+											"height": 1290,
+											"width": 1290
+										},
+										{
+											"height": 1100,
+											"width": 1100
+										},
+										{
+											"height": 828,
+											"width": 828
+										},
+										{
+											"height": 640,
+											"width": 640
+										},
+										{
+											"height": 480,
+											"width": 480
+										},
+										{
+											"height": 320,
+											"width": 320
+										},
+										{
+											"height": 240,
+											"width": 240
+										}
+									],
+									"tooltip": {
+										"content": "Upload an image at least as wide as your site (ex 1440px or wider). Optimized sizes from 240px to 2560px are generated automatically and never upscaled for shoppers.",
+										"title": "Hero Image"
+									},
+									"type": "image"
 								}
 							],
 							"type": "group"
@@ -1333,10 +1374,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-hero-slider.js",
@@ -1390,9 +1431,9 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

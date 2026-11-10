@@ -115,7 +115,7 @@
 		<mvt:foreach iterator="coupon" array="basket:coupons">
 			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
-					<form method="post" action="&mvte:urls:BASK:auto;">
+					<form method="post" action="&mvte:urls:BASK:auto;" data-hook="single-submit">
 						<fieldset>
 							<legend>Remove Promo Code &mvte:coupon:code;</legend>
 							<div class="c-form-list">
@@ -137,7 +137,7 @@
 		<mvt:if expr="l.settings:basket:applycoupons">
 			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell">
-					<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
+					<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 						<fieldset>
 							<legend>Add Promo Code</legend>
 							<input type="hidden" name="Action" value="ACPN" />
@@ -145,7 +145,7 @@
 								<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 								<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 									<input id="Coupon_Code" class="c-form-input" type="text" name="Coupon_Code" required>
-									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
+									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply" data-hook="loading-button">
 								</div>
 							</div>
 						</fieldset>
@@ -170,7 +170,7 @@
 										<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 									</header>
 									<div class="c-dialog__content c-dialog__container--fit">
-										<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+										<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" data-hook="single-submit">
 											<fieldset>
 												<legend>Sign Into Your Account</legend>
 												<input type="hidden" name="Action" value="LOGN" />
@@ -187,22 +187,22 @@
 													<div class="c-form-list__item">
 														<p>
 															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
-															<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 														</p>
 														<p>
-															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem">
+															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem" data-hook="loading-button">
 														</p>
 														<a class="c-button--full mm-theme-button-display-link mm-theme-button-display-link__medium" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
 													</div>
 												</div>
 											</fieldset>
 										</form>
+										<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 									</div>
 								</div>
 							</div>
 						</div>
 					<mvt:else>
-						<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
+						<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 							<fieldset>
 								<legend>Redeem Gift Certificate</legend>
 								<input type="hidden" name="Action" value="RDGC" />
@@ -210,7 +210,7 @@
 									<label class="c-form-label" for="GiftCertificate_Code">Gift Certificate</label>
 									<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 										<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" required>
-										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
+										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply" data-hook="loading-button">
 									</div>
 								</div>
 							</fieldset>

@@ -23,7 +23,7 @@
 
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m">
-			<form method="post" action="&mvte:urls:AFCL:secure;">
+			<form method="post" action="&mvte:urls:AFCL:secure;" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Affiliate_Temporary_Password" value="&mvte:global:Customer_Temporary_Password;" autocomplete="off">
@@ -33,7 +33,7 @@
 						<span>Your password has been reset.<br><br>Your temporary password is &mvte:global:Affiliate_Temporary_Password;</span>
 					</p>
 					<p>
-						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Click Here to Log In">
+						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Click Here to Log In" data-hook="loading-button">
 					</p>
 				</fieldset>
 			</form>

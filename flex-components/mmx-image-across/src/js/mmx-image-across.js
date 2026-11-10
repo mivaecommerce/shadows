@@ -226,14 +226,26 @@ class MMX_ImageAcross extends MMX_Element {
 		}
 
 		const source = this.#visiblePictureSource(img.closest('picture'));
-		const width = Number(source?.getAttribute('width') ?? img.getAttribute('width')) || img.naturalWidth;
-		const height = Number(source?.getAttribute('height') ?? img.getAttribute('height')) || img.naturalHeight;
+		const width = this.#firstPositiveNumber(source?.getAttribute('width'), img.getAttribute('width'), img.naturalWidth);
+		const height = this.#firstPositiveNumber(source?.getAttribute('height'), img.getAttribute('height'), img.naturalHeight);
 
 		if (!(width > 0) || !(height > 0)) {
 			return null;
 		}
 
 		return {width, height};
+	}
+
+	#firstPositiveNumber(...values) {
+		for (const value of values) {
+			const number = Number(value);
+
+			if (number > 0) {
+				return number;
+			}
+		}
+
+		return 0;
 	}
 
 	#visiblePictureSource(picture) {

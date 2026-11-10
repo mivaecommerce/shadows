@@ -2,10 +2,11 @@
 	"code": "mmx-video",
 	"name": "Video",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-video",
 	"category": "video",
+	"output_minimal_json": false,
 	"description": "## Video\nAn embedded video component that is ideal for product demonstrations, brand stories, customer testimonials, or tutorials in an engaging format. This component can also be used as a hero banner, allowing for text and a call-to-action button over a video background.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -1033,10 +1034,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-video.js",
@@ -1058,10 +1059,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-icons": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

@@ -1,6 +1,6 @@
 <mvt:if expr="g.Basket:cust_id EQ 0">
 	<div id="global-account" class="u-over-everything x-collapsible-content__item t-global-account">
-		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off">
+		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off" data-hook="single-submit">
 			<fieldset>
 				<legend>Global Account Log In</legend>
 				<input type="hidden" name="Action" value="LOGN" />
@@ -18,7 +18,7 @@
 					</div>
 					<div class="c-form-list__item c-form-list__item--full">
 						<p><a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
-						<p><input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Sign In"></p>
+						<p><input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Sign In" data-hook="loading-button"></p>
 						<a class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" href="&mvte:urls:LOGN:secure;">Register</a>
 					</div>
 				</div>

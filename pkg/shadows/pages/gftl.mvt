@@ -27,7 +27,7 @@
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 			<p class="mm-theme-typography-title-four">Sign In</p>
-			<form method="post" action="&mvte:urls:RGFT:secure;" autocomplete="off">
+			<form method="post" action="&mvte:urls:RGFT:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="LOGN" />
@@ -54,7 +54,7 @@
 		</div>
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 			<p class="mm-theme-typography-title-four">New Customers</p>
-			<form class="o-layout" method="post" action="&mvte:urls:RGFT:secure;">
+			<form class="o-layout" method="post" action="&mvte:urls:RGFT:secure;" data-hook="single-submit">
 				<fieldset class="o-layout__item">
 					<legend>Customer Log In</legend>
 					<input type="hidden" name="Action" value="ICSQ" />
@@ -78,7 +78,7 @@
 							<input id="register_password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full u-text-right">
-							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account" data-hook="loading-button">
 						</div>
 					</div>
 				</fieldset>

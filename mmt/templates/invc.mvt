@@ -28,7 +28,7 @@
 					<p class="mm-theme-typography-subheading-small">Order Confirmation #&mvt:order:id;</p>
 					<p class="mm-theme-typography-paragraph-extra-small">Email confirmation will be sent shortly.</p>
 					<mvt:if expr="g.Basket:cust_id EQ 0">
-						<form class="t-account-at-checkout" method="post" action="&mvte:urls:ACLN:secure;">
+						<form class="t-account-at-checkout" method="post" action="&mvte:urls:ACLN:secure;" data-hook="single-submit">
 							<p class="mm-theme-typography-subheading-extra-small">Finish creating your account to check out faster next time!</p>
 							<fieldset>
 								<legend>Create An Account</legend>
@@ -59,7 +59,7 @@
 												<label class="c-form-label is-required" for="Customer_Password">Password</label>
 												<input id="Customer_Password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required>
 											</span>
-											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Create Account">
+											<input class="c-button--full-small mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Create Account" data-hook="loading-button">
 										</div>
 									</div>
 								</div>

@@ -26,7 +26,7 @@
 			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 			<br>
-			<form data-hook="cpce-form" method="post" action="&mvte:urls:CPCD:auto;">
+			<form data-hook="cpce-form single-submit" method="post" action="&mvte:urls:CPCD:auto;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="UCPC" />
@@ -41,7 +41,7 @@
 								const onclick_submit = event => {
 								    if (MivaPay && (typeof MivaPay.Submit === 'function')) {
 								        MivaPay.Submit(() => {
-											document.querySelector('[data-hook="cpce-form"]').submit();
+											document.querySelector('[data-hook~="cpce-form"]').submit();
 								        });
 								    }
 								};

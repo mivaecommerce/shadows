@@ -25,7 +25,7 @@
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l t-logn-block">
 			<p class="mm-theme-typography-title-four">Welcome Back</p>
-			<form data-hook="afcl-form" method="post" action="&mvte:urls:AFED:secure;">
+			<form data-hook="afcl-form single-submit" method="post" action="&mvte:urls:AFED:secure;">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="ALGI" />

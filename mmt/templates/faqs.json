@@ -5,8 +5,8 @@
             "item_code": "accordion",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "accordion": {
                     "details": {
@@ -79,6 +79,22 @@
                     }
                 },
                 "heading": {
+                    "heading_align": {
+                        "value": "center"
+                    },
+                    "heading_text": {
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "typography_theme": {
+                                        "code": "title-1",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
+                        "value": "Section Heading Goes Here"
+                    },
                     "settings": {
                         "enabled": 0
                     }

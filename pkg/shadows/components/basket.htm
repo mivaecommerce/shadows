@@ -196,6 +196,8 @@
 				<a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:WISH:secure_sep;Action=MAWL">Save for Later</a>
 			</div>
 
+			<mvt:item name="readytheme" param="contentsection( 'upsinsureshield_configuration' )" />
+
 			<mvt:item name="footer_sequence" />
 		</div>
 	</div>
@@ -245,7 +247,7 @@
 					<mvt:foreach iterator="coupon" array="basket:coupons">
 						<tr class="c-table-simple__row ">
 							<td class="c-table-simple__cell u-flex o-layout--justify-between">
-								<form method="post" action="&mvte:urls:BASK:auto;">
+								<form method="post" action="&mvte:urls:BASK:auto;" data-hook="single-submit">
 									<fieldset>
 										<legend>Remove Promo Code &mvt:coupon:code;</legend>
 										<div class="c-form-list">
@@ -266,7 +268,7 @@
 
 					<tr class="c-table-simple__row">
 						<td class="c-table-simple__cell">
-							<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
+							<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 								<mvt:if expr="g.Action EQ 'ACPN' AND NOT ISNULL l.settings:messages:error_message_count">
 									<mvt:assign name="l.settings:has:error" value="'has-error'"/>
 									<script>
@@ -285,7 +287,7 @@
 										<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 										<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 											<input id="Coupon_Code" class="c-form-input &mvte:has:error;" type="text" name="Coupon_Code" required>
-											<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
+											<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply" data-hook="loading-button">
 										</div>
 										<mvt:if expr="g.Action EQ 'ACPN' AND NOT ISNULL l.settings:messages:error_message_count">
 											<mvt:foreach iterator="error" array="messages:error_messages">

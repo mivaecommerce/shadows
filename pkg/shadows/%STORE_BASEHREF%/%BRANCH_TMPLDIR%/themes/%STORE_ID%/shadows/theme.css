@@ -598,6 +598,10 @@
 	gap: 1.5rem;
 }
 
+.t-basket__additional-product-actions:has(~ .mm-insure-shield) {
+	margin-bottom: 1rem;
+}
+
 .t-basket_coupon-form {
 	margin-bottom: calc(var(--default-spacing-unit) / 2);
 }

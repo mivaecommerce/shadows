@@ -1,23 +1,37 @@
 <mvt:comment>Determine Product Code</mvt:comment>
 <mvt:if expr="l.settings:instance:product:source:value EQ 'auto'">
-	<mvt:assign name="l.settings:instance:product:specific:product_code" value="l.settings:product:code" />
-	<mvt:assign name="l.settings:instance:product:specific:product" value="l.settings:product" />
+	<mvt:assign name="l.instance_data:product:specific:product_code" value="l.settings:product:code" />
+	<mvt:assign name="l.instance_data:product:specific:product" value="l.settings:product" />
+<mvt:else>
+	<mvt:comment>&mvt:instance:json; omits fields (ex. dt_updated) the client needs for cache_keys, so pass the full product record</mvt:comment>
+	<mvt:assign name="l.instance_data:product:specific:product_code" value="l.settings:instance:product:specific:product_code" />
+	<mvt:assign name="l.instance_data:product:specific:product" value="l.settings:instance:product:specific:product" />
 </mvt:if>
 
 <mvt:comment>Pass Server Data to the Component</mvt:comment>
 <mvt:if expr="s.request_method EQ 'POST'">
-	<mvt:assign name="l.settings:instance:server:Quantity" value="g.Quantity" />
-	<mvt:assign name="l.settings:instance:server:Product_Subscription_Term_ID" value="g.Product_Subscription_Term_ID" />
-	<mvt:assign name="l.settings:instance:server:Product_Attributes" value="g.Product_Attributes" />
-	<mvt:assign name="l.settings:instance:server:Variant_ID" value="g.Variant_ID" />
+	<mvt:assign name="l.instance_data:server:Quantity" value="g.Quantity" />
+	<mvt:assign name="l.instance_data:server:Product_Subscription_Term_ID" value="g.Product_Subscription_Term_ID" />
+	<mvt:assign name="l.instance_data:server:Product_Attributes" value="g.Product_Attributes" />
+	<mvt:assign name="l.instance_data:server:Variant_ID" value="g.Variant_ID" />
 </mvt:if>
+
+<mvt:comment>Wait List</mvt:comment>
+<mvt:assign name="l.instance_data:server:enable_waitlist" value="l.settings:waitlist:enabled" />
 
 <mvt:comment>Product Charges</mvt:comment>
 <mvt:assign name="l.settings:productcharges:totals:charges" value="0" />
 <mvt:foreach iterator="charge" array="productcharges:chargetypes">
 		<mvt:assign name="l.settings:productcharges:totals:charges" value="l.settings:productcharges:totals:charges + l.settings:charge:price" />
 </mvt:foreach>
-<mvt:assign name="l.settings:instance:server:productcharges" value="l.settings:productcharges" />
+<mvt:assign name="l.instance_data:server:productcharges" value="l.settings:productcharges" />
+
+<mvt:comment>Product Reviews</mvt:comment>
+<mvt:if expr="l.settings:tgr:enabled">
+	<mvt:assign name="l.instance_data:server:tgreviews" value="l.settings:tgr" />
+	<mvt:assign name="l.instance_data:server:tgreviews:order_id" value="int( g.TGR_Order_ID )" />
+	<mvt:capture variable="l.settings:tgreviews_form_fragment"><mvt:fragment code="product_details_tgreviews" /></mvt:capture>
+</mvt:if>
 
 <mvt:comment>Determine component id & page-code</mvt:comment>
 <mvt:if expr="NOT ISNULL l.settings:fragment:code">
@@ -40,6 +54,19 @@
 
 <mvt:if expr="NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:value AND NOT ISNULL l.settings:instance:advanced:initial_display:initial_height_amount:unit">
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height_amount:formatted_value" value="l.settings:instance:advanced:initial_display:initial_height_amount:value $ l.settings:instance:advanced:initial_display:initial_height_amount:unit" />
+</mvt:if>
+
+<mvt:comment>Structured Data</mvt:comment>
+<mvt:assign name="l.structured_data_json" value="''" />
+<mvt:if expr="l.settings:instance:advanced:structured_data:mode:value EQ 'fragment' AND NOT ISNULL l.settings:instance:advanced:structured_data:fragment:value">
+	<mvt:assign name="l.page_product" value="l.settings:product" />
+	<mvt:assign name="l.settings:product" value="l.instance_data:product:specific:product" />
+
+	<mvt:assign name="l.settings:structured_data:context" value="'product_details'" />
+	<mvt:capture variable="l.structured_data_json"><mvt:do file="g.Module_Feature_TUI_MGR" name="l.null" value="TemplateManager_Fragment_Render( l.settings, l.settings:instance:advanced:structured_data:fragment:value, l.null )" /></mvt:capture>
+	<mvt:assign name="l.null" value="miva_member_delete( l.settings, 'structured_data' )" />
+
+	<mvt:assign name="l.settings:product" value="l.page_product" />
 </mvt:if>
 
 <mvt:comment>Render Component</mvt:comment>
@@ -66,15 +93,64 @@
 	>
 		<mvt:comment>Init Script</mvt:comment>
 		<script type="application/json">
-			<mvt:eval expr="miva_json_encode( l.settings:instance, '' )" />
+			&mvt:instance:json;
 		</script>
 
+		<mvt:comment>Server Data (merged over the instance payload client-side)</mvt:comment>
+		<script type="application/json">
+			<mvt:eval expr="miva_json_encode( l.instance_data, '' )" />
+		</script>
+
+		<mvt:comment>Structured Data</mvt:comment>
+		<mvt:if expr="NOT ISNULL l.structured_data_json">
+			<script type="application/ld+json" class="mmx-skip-mutation">
+				<mvt:eval expr="l.structured_data_json" />
+			</script>
+		</mvt:if>
+
+		<mvt:comment>Product Reviews Fragment</mvt:comment>
+		<mvt:if expr="NOT ISNULL l.settings:tgreviews_form_fragment">
+			<div slot="review-form-fragment" class="mmx-skip-mutation">
+				<mvt:eval expr="l.settings:tgreviews_form_fragment" />
+			</div>
+		</mvt:if>
+
 		<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+			<mvt:if expr="NOT ISNULL l.settings:instance:advanced:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:instance:advanced:message_badges:error_badge:stylesheet" />	</mvt:if>
+
 			<mvt:foreach iterator="level_1_detail" array="instance:details:children">
 				<mvt:if expr="l.settings:level_1_detail:type:value EQ 'add-to-cart-button'">
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
 						<mvt:eval expr="l.settings:level_1_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
 					</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="l.settings:level_1_detail:waitlist_settings:settings:enabled">
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />				</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'review-summary'">
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:rating_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:rating_settings:link_button_theme:stylesheet" /></mvt:if>
+					<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'reviews'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:review_text_typography:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:review_text_typography:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:review_title_typography:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:review_title_typography:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:link_button_theme:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:verified_badge:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:verified_badge:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:message_badges:error_badge:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:message_badges:error_badge:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_list_settings:message_badges:empty_badge:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_list_settings:message_badges:empty_badge:stylesheet" /></mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'review-form'">
+						<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:form_text_typography:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_form_settings:form_text_typography:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:level_1_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_1_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />							</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_1_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'add-to-wishlist-button'">
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
 						<mvt:eval expr="l.settings:level_1_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
@@ -94,7 +170,19 @@
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'volume-pricing-table'">
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'inv_long' OR l.settings:level_1_detail:type:value EQ 'inv_short'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:message_styles:badge_theme_in:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:message_styles:badge_theme_in:stylesheet" />		</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:message_styles:badge_theme_low:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:message_styles:badge_theme_low:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:message_styles:badge_theme_out:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:message_styles:badge_theme_out:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:message_styles:badge_theme_invalid:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:message_styles:badge_theme_invalid:stylesheet" />	</mvt:if>
+				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'fitment'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'fitment-list'">
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_settings:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_list_settings:message_badges:error_badge:stylesheet" />	</mvt:if>
+					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_settings:message_badges:empty_badge:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_list_settings:message_badges:empty_badge:stylesheet" />	</mvt:if>
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_1_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
 					<mvt:if expr="NOT ISNULL l.settings:level_1_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_1_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 				<mvt:elseif expr="l.settings:level_1_detail:type:value EQ 'code'				OR
@@ -121,6 +209,34 @@
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
 							<mvt:eval expr="l.settings:level_2_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
 						</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="l.settings:level_2_detail:waitlist_settings:settings:enabled">
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />				</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />						</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'review-summary'">
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:rating_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:rating_settings:link_button_theme:stylesheet" /></mvt:if>
+						<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'reviews'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:review_text_typography:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:review_text_typography:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:review_title_typography:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:review_title_typography:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:link_button_theme:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:verified_badge:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:verified_badge:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:message_badges:error_badge:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:message_badges:error_badge:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_list_settings:message_badges:empty_badge:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_list_settings:message_badges:empty_badge:stylesheet" /></mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'review-form'">
+							<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:form_text_typography:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_form_settings:form_text_typography:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:level_2_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_2_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />							</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_2_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'add-to-wishlist-button'">
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
 							<mvt:eval expr="l.settings:level_2_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
@@ -140,7 +256,19 @@
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'volume-pricing-table'">
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'inv_long' OR l.settings:level_2_detail:type:value EQ 'inv_short'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:message_styles:badge_theme_in:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:message_styles:badge_theme_in:stylesheet" />		</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:message_styles:badge_theme_low:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:message_styles:badge_theme_low:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:message_styles:badge_theme_out:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:message_styles:badge_theme_out:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:message_styles:badge_theme_invalid:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:message_styles:badge_theme_invalid:stylesheet" />	</mvt:if>
+					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'fitment'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'fitment-list'">
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_settings:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_list_settings:message_badges:error_badge:stylesheet" />	</mvt:if>
+						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_settings:message_badges:empty_badge:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_list_settings:message_badges:empty_badge:stylesheet" />	</mvt:if>
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_2_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
 						<mvt:if expr="NOT ISNULL l.settings:level_2_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_2_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 					<mvt:elseif expr="l.settings:level_2_detail:type:value EQ 'code'				OR
@@ -167,6 +295,34 @@
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
 								<mvt:eval expr="l.settings:level_3_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
 							</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="l.settings:level_3_detail:waitlist_settings:settings:enabled">
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />				</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />						</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'review-summary'">
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:rating_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:rating_settings:link_button_theme:stylesheet" /></mvt:if>
+							<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'reviews'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:review_text_typography:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:review_text_typography:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:review_title_typography:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:review_title_typography:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:link_button_theme:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:verified_badge:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:verified_badge:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:message_badges:error_badge:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:message_badges:error_badge:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_list_settings:message_badges:empty_badge:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_list_settings:message_badges:empty_badge:stylesheet" /></mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'review-form'">
+								<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:form_text_typography:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_form_settings:form_text_typography:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:level_3_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_3_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />							</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_3_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'add-to-wishlist-button'">
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
 								<mvt:eval expr="l.settings:level_3_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
@@ -186,7 +342,19 @@
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'volume-pricing-table'">
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'inv_long' OR l.settings:level_3_detail:type:value EQ 'inv_short'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:message_styles:badge_theme_in:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:message_styles:badge_theme_in:stylesheet" />		</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:message_styles:badge_theme_low:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:message_styles:badge_theme_low:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:message_styles:badge_theme_out:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:message_styles:badge_theme_out:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:message_styles:badge_theme_invalid:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:message_styles:badge_theme_invalid:stylesheet" />	</mvt:if>
+						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'fitment'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'fitment-list'">
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_settings:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_list_settings:message_badges:error_badge:stylesheet" />	</mvt:if>
+							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_settings:message_badges:empty_badge:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_list_settings:message_badges:empty_badge:stylesheet" />	</mvt:if>
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_3_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
 							<mvt:if expr="NOT ISNULL l.settings:level_3_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_3_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 						<mvt:elseif expr="l.settings:level_3_detail:type:value EQ 'code'				OR
@@ -213,6 +381,34 @@
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
 									<mvt:eval expr="l.settings:level_4_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
 								</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="l.settings:level_4_detail:waitlist_settings:settings:enabled">
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />				</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />						</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'review-summary'">
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:rating_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:rating_settings:link_button_theme:stylesheet" /></mvt:if>
+								<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'reviews'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:review_text_typography:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:review_text_typography:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:review_title_typography:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:review_title_typography:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:link_button_theme:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:verified_badge:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:verified_badge:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:message_badges:error_badge:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:message_badges:error_badge:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_list_settings:message_badges:empty_badge:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_list_settings:message_badges:empty_badge:stylesheet" /></mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'review-form'">
+									<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:form_text_typography:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_form_settings:form_text_typography:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:level_4_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_4_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />							</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_4_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'add-to-wishlist-button'">
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
 									<mvt:eval expr="l.settings:level_4_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
@@ -232,7 +428,19 @@
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'volume-pricing-table'">
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'inv_long' OR l.settings:level_4_detail:type:value EQ 'inv_short'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:message_styles:badge_theme_in:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:message_styles:badge_theme_in:stylesheet" />		</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:message_styles:badge_theme_low:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:message_styles:badge_theme_low:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:message_styles:badge_theme_out:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:message_styles:badge_theme_out:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:message_styles:badge_theme_invalid:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:message_styles:badge_theme_invalid:stylesheet" />	</mvt:if>
+							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'fitment'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'fitment-list'">
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_settings:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_list_settings:message_badges:error_badge:stylesheet" />	</mvt:if>
+								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_settings:message_badges:empty_badge:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_list_settings:message_badges:empty_badge:stylesheet" />	</mvt:if>
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_4_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
 								<mvt:if expr="NOT ISNULL l.settings:level_4_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_4_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 							<mvt:elseif expr="l.settings:level_4_detail:type:value EQ 'code'				OR
@@ -259,6 +467,34 @@
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet">
 										<mvt:eval expr="l.settings:level_5_detail:add_to_cart_button:textsettings:fields:normal:button_theme:stylesheet" />
 									</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:add_to_cart_messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:add_to_cart_messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="l.settings:level_5_detail:waitlist_settings:settings:enabled">
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">				<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />				</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">			<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />			</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />						</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:waitlist_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'review-summary'">
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:rating_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:rating_settings:link_button_theme:stylesheet" /></mvt:if>
+									<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'reviews'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:review_text_typography:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:review_text_typography:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:review_title_typography:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:review_title_typography:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:load_more_button:textsettings:fields:normal:button_theme:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:link_button_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:link_button_theme:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:verified_badge:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:verified_badge:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:message_badges:error_badge:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:message_badges:error_badge:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_list_settings:message_badges:empty_badge:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_list_settings:message_badges:empty_badge:stylesheet" /></mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'review-form'">
+										<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:form_text_typography:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_form_settings:form_text_typography:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet">			<mvt:eval expr="l.settings:level_5_detail:review_form_settings:cta_settings:cta_button:textsettings:fields:normal:button_theme:stylesheet" />			</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:review_form_settings:dialog_heading_settings:heading:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet">							<mvt:eval expr="l.settings:level_5_detail:review_form_settings:submit_button:textsettings:fields:normal:button_theme:stylesheet" />							</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_form_settings:messages:success_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet"><mvt:eval expr="l.settings:level_5_detail:review_form_settings:messages:error_message:textsettings:fields:normal:badge_theme:stylesheet" /></mvt:if>
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'add-to-wishlist-button'">
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet">
 										<mvt:eval expr="l.settings:level_5_detail:add_to_wishlist_button:textsettings:fields:normal:button_theme:stylesheet" />
@@ -278,7 +514,19 @@
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'volume-pricing-table'">
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:quantity:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:volume_pricing_table_settings:price:textsettings:fields:normal:typography_theme:stylesheet" />	</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'inv_long' OR l.settings:level_5_detail:type:value EQ 'inv_short'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:message_styles:badge_theme_in:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:message_styles:badge_theme_in:stylesheet" />		</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:message_styles:badge_theme_low:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:message_styles:badge_theme_low:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:message_styles:badge_theme_out:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:message_styles:badge_theme_out:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:message_styles:badge_theme_invalid:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:message_styles:badge_theme_invalid:stylesheet" />	</mvt:if>
+								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'fitment'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_settings:messages:universal_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_settings:messages:exact_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_settings:messages:partial_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_settings:messages:none_message:textsettings:fields:normal:badge_theme:stylesheet" />	</mvt:if>
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'fitment-list'">
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_settings:message_badges:error_badge:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_list_settings:message_badges:error_badge:stylesheet" />	</mvt:if>
+									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_settings:message_badges:empty_badge:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_list_settings:message_badges:empty_badge:stylesheet" />	</mvt:if>
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_table_styles:header_typography:stylesheet">		<mvt:eval expr="l.settings:level_5_detail:fitment_list_table_styles:header_typography:stylesheet" />	</mvt:if>
 									<mvt:if expr="NOT ISNULL l.settings:level_5_detail:fitment_list_table_styles:content_typography:stylesheet">	<mvt:eval expr="l.settings:level_5_detail:fitment_list_table_styles:content_typography:stylesheet" />	</mvt:if>
 								<mvt:elseif expr="l.settings:level_5_detail:type:value EQ 'code'				OR

@@ -77,7 +77,7 @@
 				<mvt:else>
 					<p class="t-input-font-size u-text-constrain">Enter your email address, and we will send you an email to get you started on resetting your password.</p>
 				</mvt:if>
-				<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+				<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" data-hook="single-submit">
 					<fieldset>
 						<legend>Password Lookup</legend>
 						<div class="c-form-list">
@@ -95,7 +95,7 @@
 								</div>
 							</mvt:if>
 							<div class="c-form-list__item c-form-list__item--full">
-								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Submit" title="Submit">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Submit" title="Submit" data-hook="loading-button">
 							</div>
 						</div>
 					</fieldset>
@@ -263,7 +263,7 @@
 		<mvt:foreach iterator="coupon" array="basket:coupons">
 			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell u-flex o-layout--justify-between">
-					<form method="post" action="&mvte:urls:BASK:auto;">
+					<form method="post" action="&mvte:urls:BASK:auto;" data-hook="single-submit">
 						<fieldset>
 							<legend>Remove Promo Code &mvte:coupon:code;</legend>
 							<div class="c-form-list">
@@ -285,7 +285,7 @@
 		<mvt:if expr="l.settings:basket:applycoupons">
 			<tr class="c-table-simple__row">
 				<td class="c-table-simple__cell">
-					<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
+					<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 						<fieldset>
 							<legend>Add Promo Code</legend>
 							<input type="hidden" name="Action" value="ACPN" />
@@ -293,7 +293,7 @@
 								<label class="c-form-label" for="Coupon_Code">Promo Code</label>
 								<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 									<input id="Coupon_Code" class="c-form-input" type="text" name="Coupon_Code" required>
-									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
+									<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply" data-hook="loading-button">
 								</div>
 							</div>
 						</fieldset>
@@ -318,7 +318,7 @@
 										<button class="c-dialog__close" aria-label="Close Dialog" data-dialog-close></button>
 									</header>
 									<div class="c-dialog__content c-dialog__container--fit">
-										<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off">
+										<form method="post" action="&mvte:urls:_self:secure;" autocomplete="off" data-hook="single-submit">
 											<fieldset>
 												<legend>Sign Into Your Account</legend>
 												<input type="hidden" name="Action" value="LOGN" />
@@ -335,22 +335,22 @@
 													<div class="c-form-list__item">
 														<p>
 															<a data-dialog-trigger="forgot-password" href="&mvte:urls:FPWD:secure;" class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium">Forgot Password?</a>
-															<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 														</p>
 														<p>
-															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem">
+															<input class="c-button--full mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Sign In and Redeem" data-hook="loading-button">
 														</p>
 														<a class="c-button--full mm-theme-button-display-link mm-theme-button-display-link__medium" href="&mvte:urls:ACAD:secure_sep;Order=1">Register Now</a>
 													</div>
 												</div>
 											</fieldset>
 										</form>
+										<mvt:item name="readytheme" param="contentsection( 'forgot-password' )" />
 									</div>
 								</div>
 							</div>
 						</div>
 					<mvt:else>
-						<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;">
+						<form class="t-basket_coupon-form" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 							<fieldset>
 								<legend>Redeem Gift Certificate</legend>
 								<input type="hidden" name="Action" value="RDGC" />
@@ -358,7 +358,7 @@
 									<label class="c-form-label" for="GiftCertificate_Code">Gift Certificate</label>
 									<div class="c-form-list__item c-form-list__item--full c-form-inline-set">
 										<input id="GiftCertificate_Code" class="c-form-input" type="text" name="GiftCertificate_Code" required>
-										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply">
+										<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Apply" data-hook="loading-button">
 									</div>
 								</div>
 							</fieldset>
@@ -708,7 +708,7 @@
 </section>
 ]]></Template><Notes>#Set_Current_Time#</Notes><CSS_ID/><CSS_Class/></ContentSection_Add><ContentSection_Delete code="global_account"/><ContentSection_Add><Active>true</Active><Code>global_account</Code><Name>Global Site Account Log In</Name><Description/><Template><![CDATA[<mvt:if expr="g.Basket:cust_id EQ 0">
 	<div id="global-account" class="u-over-everything x-collapsible-content__item t-global-account">
-		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off">
+		<form class="t-global-account__form" method="post" action="&mvte:urls:_self:secure_noparams;" autocomplete="off" data-hook="single-submit">
 			<fieldset>
 				<legend>Global Account Log In</legend>
 				<input type="hidden" name="Action" value="LOGN" />
@@ -726,7 +726,7 @@
 					</div>
 					<div class="c-form-list__item c-form-list__item--full">
 						<p><a class="mm-theme-button-secondary-link mm-theme-button-secondary-link__medium" href="&mvte:urls:FPWD:secure;">Forgot Password?</a></p>
-						<p><input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Sign In"></p>
+						<p><input class="mm-theme-button-primary mm-theme-button-primary__small c-button--full" type="submit" value="Sign In" data-hook="loading-button"></p>
 						<a class="mm-theme-button-display-link mm-theme-button-display-link__medium c-button--full" href="&mvte:urls:LOGN:secure;">Register</a>
 					</div>
 				</div>

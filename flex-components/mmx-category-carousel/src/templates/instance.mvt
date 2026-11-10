@@ -30,6 +30,7 @@
 	data-page-code="&mvte:page_code;"
 	data-flex-component="&mvte:instance_item:component_code;"
 	data-flex-item="&mvte:instance_item:item_code;"
+	data-category="&mvte:instance:category:code;"
 	data-init="script"
 	data-fallback-image="graphics/00000001/catalog-fallback-image__200x200.jpg"
 	style="

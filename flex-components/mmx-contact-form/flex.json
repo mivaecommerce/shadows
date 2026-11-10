@@ -2,10 +2,11 @@
 	"code": "mmx-contact-form",
 	"name": "Contact Form",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-contact-form",
 	"category": "contact-form",
+	"output_minimal_json": false,
 	"description": "## Contact Form\nA customizable form where customers can submit inquiries, feedback, or requests. Typically includes fields for name, email, message, and additional options for customization based on the page’s needs.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -1071,6 +1072,52 @@
 									"prompt": "Tablet Image"
 								}
 							],
+							"sizes": [
+								{
+									"height": 2560,
+									"width": 2560
+								},
+								{
+									"height": 1920,
+									"width": 1920
+								},
+								{
+									"height": 1440,
+									"width": 1440
+								},
+								{
+									"height": 1290,
+									"width": 1290
+								},
+								{
+									"height": 1100,
+									"width": 1100
+								},
+								{
+									"height": 828,
+									"width": 828
+								},
+								{
+									"height": 640,
+									"width": 640
+								},
+								{
+									"height": 480,
+									"width": 480
+								},
+								{
+									"height": 320,
+									"width": 320
+								},
+								{
+									"height": 240,
+									"width": 240
+								}
+							],
+							"tooltip": {
+								"content": "Upload an image at least as wide as your site (ex 1440px or wider). Optimized sizes from 240px to 2560px are generated automatically and never upscaled for shoppers.",
+								"title": "Background Image"
+							},
 							"type": "image"
 						},
 						{
@@ -1102,18 +1149,405 @@
 							"code": "send_email_success",
 							"markdown": 1,
 							"prompt": "Successfully Sent Email",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "badge_theme",
+										"prompt": "Badge Theme",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "badge"
+									},
+									{
+										"code": "badge_style",
+										"options": [
+											{
+												"text": "Auto",
+												"value": "auto"
+											},
+											{
+												"text": "Info",
+												"value": "info"
+											},
+											{
+												"text": "Success",
+												"value": "success"
+											},
+											{
+												"text": "Warning",
+												"value": "warning"
+											},
+											{
+												"text": "Error",
+												"value": "error"
+											},
+											{
+												"text": "Default",
+												"value": "default"
+											},
+											{
+												"text": "None",
+												"value": "none"
+											}
+										],
+										"prompt": "Badge Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_variant",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Minimal",
+												"value": "minimal"
+											},
+											{
+												"text": "Pill",
+												"value": "pill"
+											},
+											{
+												"text": "Flag",
+												"value": "flag"
+											}
+										],
+										"prompt": "Badge Variant",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_size",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Small",
+												"value": "s"
+											},
+											{
+												"text": "Medium",
+												"value": "m"
+											},
+											{
+												"text": "Large",
+												"value": "l"
+											}
+										],
+										"prompt": "Badge Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									}
+								]
+							},
 							"type": "textarea"
 						},
 						{
 							"code": "send_email_failure",
 							"markdown": 1,
 							"prompt": "Failure Sending Email",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "badge_theme",
+										"prompt": "Badge Theme",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "badge"
+									},
+									{
+										"code": "badge_style",
+										"options": [
+											{
+												"text": "Auto",
+												"value": "auto"
+											},
+											{
+												"text": "Info",
+												"value": "info"
+											},
+											{
+												"text": "Success",
+												"value": "success"
+											},
+											{
+												"text": "Warning",
+												"value": "warning"
+											},
+											{
+												"text": "Error",
+												"value": "error"
+											},
+											{
+												"text": "Default",
+												"value": "default"
+											},
+											{
+												"text": "None",
+												"value": "none"
+											}
+										],
+										"prompt": "Badge Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_variant",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Minimal",
+												"value": "minimal"
+											},
+											{
+												"text": "Pill",
+												"value": "pill"
+											},
+											{
+												"text": "Flag",
+												"value": "flag"
+											}
+										],
+										"prompt": "Badge Variant",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_size",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Small",
+												"value": "s"
+											},
+											{
+												"text": "Medium",
+												"value": "m"
+											},
+											{
+												"text": "Large",
+												"value": "l"
+											}
+										],
+										"prompt": "Badge Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									}
+								]
+							},
 							"type": "textarea"
 						},
 						{
 							"code": "missing_required_fields",
 							"markdown": 1,
 							"prompt": "Missing Required Fields",
+							"textsettings": {
+								"fields": [
+									{
+										"code": "badge_theme",
+										"prompt": "Badge Theme",
+										"pseudoclasses": [
+											"normal"
+										],
+										"supports_customization": 1,
+										"supports_legacy": 1,
+										"type": "badge"
+									},
+									{
+										"code": "badge_style",
+										"options": [
+											{
+												"text": "Auto",
+												"value": "auto"
+											},
+											{
+												"text": "Info",
+												"value": "info"
+											},
+											{
+												"text": "Success",
+												"value": "success"
+											},
+											{
+												"text": "Warning",
+												"value": "warning"
+											},
+											{
+												"text": "Error",
+												"value": "error"
+											},
+											{
+												"text": "Default",
+												"value": "default"
+											},
+											{
+												"text": "None",
+												"value": "none"
+											}
+										],
+										"prompt": "Badge Style",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_variant",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Minimal",
+												"value": "minimal"
+											},
+											{
+												"text": "Pill",
+												"value": "pill"
+											},
+											{
+												"text": "Flag",
+												"value": "flag"
+											}
+										],
+										"prompt": "Badge Variant",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									},
+									{
+										"code": "badge_size",
+										"options": [
+											{
+												"text": "Default"
+											},
+											{
+												"text": "Small",
+												"value": "s"
+											},
+											{
+												"text": "Medium",
+												"value": "m"
+											},
+											{
+												"text": "Large",
+												"value": "l"
+											}
+										],
+										"prompt": "Badge Size",
+										"pseudoclasses": [
+											"normal"
+										],
+										"type": "select",
+										"visibility_conditions": {
+											"normal": {
+												"badge_theme": {
+													"theme_mode": [
+														0
+													]
+												}
+											}
+										}
+									}
+								]
+							},
 							"type": "textarea"
 						}
 					],
@@ -1446,14 +1880,47 @@
 			"messages": {
 				"missing_required_fields": {
 					"source": "markdown",
+					"textsettings": {
+						"fields": {
+							"normal": {
+								"badge_theme": {
+									"code": "standard-error",
+									"size": "m",
+									"theme_mode": 1
+								}
+							}
+						}
+					},
 					"value": "We noticed some missing information. Please fill out the following required fields:"
 				},
 				"send_email_failure": {
 					"source": "markdown",
+					"textsettings": {
+						"fields": {
+							"normal": {
+								"badge_theme": {
+									"code": "standard-error",
+									"size": "m",
+									"theme_mode": 1
+								}
+							}
+						}
+					},
 					"value": "There was problem submitting your information. Please use another method to attempt to contact us."
 				},
 				"send_email_success": {
 					"source": "markdown",
+					"textsettings": {
+						"fields": {
+							"normal": {
+								"badge_theme": {
+									"code": "standard-success",
+									"size": "m",
+									"theme_mode": 1
+								}
+							}
+						}
+					},
 					"value": "Thank you for your form submission! We've received your information and will be in touch shortly."
 				}
 			},
@@ -1479,17 +1946,17 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-forms": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-icons": "=26.02.01",
-		"mmx-messages": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-forms": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

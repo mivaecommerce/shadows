@@ -1,4 +1,10 @@
 {
+    "customer": {
+        "editable": 0,
+        "mode": "tokens_only_nodisplay",
+        "prevent_template_auto_update": 0,
+        "template_filename": "cpca-customer.mvc"
+    },
     "hdft": {
         "footer": {
             "template_filename": "cpca-footer.mvc"

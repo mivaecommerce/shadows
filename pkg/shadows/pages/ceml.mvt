@@ -26,7 +26,7 @@
 			<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 			<hr class="c-keyline">
 			<br>
-			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:CEML:secure;" autocomplete="off">
+			<form class="o-layout o-layout--justify-center" method="post" action="&mvte:urls:CEML:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset class="o-layout__item u-width-12 u-width-6--m">
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="CEML" />

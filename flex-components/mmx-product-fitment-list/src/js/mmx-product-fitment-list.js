@@ -84,7 +84,7 @@ class MMX_ProductFitmentList extends MMX_Element {
 		this.#facetCode = this.data?.settings?.facet_code?.value;
 		this.#fitmentData = this.data?.fitment_data;
 		this.#fitmentDataLoaded = typeof this.#fitmentData !== 'undefined';
-		this.#displayEmpty = this.data?.advanced?.show_empty_results?.value ?? true;
+		this.#displayEmpty = MMX.isTruthy(this.data?.advanced?.show_empty_results?.value);
 		this.#breakpoint = this.data?.settings?.breakpoint;
 		this.#tableStyles = this.data?.table_styles;
 
@@ -222,7 +222,11 @@ class MMX_ProductFitmentList extends MMX_Element {
 	#renderMainError() {
 		return /*html*/`
 			<div part="error" class="mmx-product-fitment-list__error">
-				<mmx-message data-style="warning">We're unable to display fitment data: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading fitment data')}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.error_badge,
+					style: 'warning',
+					content: `We're unable to display fitment data: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading fitment data')}`
+				})}
 			</div>
 		`;
 	}
@@ -230,7 +234,11 @@ class MMX_ProductFitmentList extends MMX_Element {
 	#renderEmpty() {
 		return /*html*/`
 			<div class="mmx-product-fitment-list__empty">
-				<mmx-message data-style="info">No Fitment Data Available</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.empty_badge,
+					style: 'info',
+					content: 'No Fitment Data Available'
+				})}
 			</div>
 		`;
 	}

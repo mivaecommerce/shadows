@@ -2,7 +2,7 @@
 	"code": "mmx-wishlist",
 	"name": "MMX Wishlist",
 	"type": "library",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-wishlist",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-xmzm23ewSM/BJuWKVs23UKMxqN3RJYa4HHkdrF7B52U= sha384-GwYNQkDqsOQ4JJ+St0mngpRDXdJhAbIidXVCgTYjInuJ1VmRzVBDRg2yCKMR+nBD sha512-H9pveRvr5Hc6e+T6nMMzHTwIs5qwCUTOO1ebXD74DcCVwsoaqrZR5qFHYGM2gYMirL2oQdNpmXOnlub6ifN2dQ=="
+					"value": "sha256-0oEJp4iwR3iSc+FYq9KA3Kk0FRp7NyiPOOyIQmMq7+Q= sha384-Z8kg+hu/WTJ/65EzPdwXjfS+8St9qUCoiBukES/+26BBm3fD83ic/A0EClSXM4Mn sha512-xO1p8cWZ3+V54hyaTZ8xq/XJPjMBMqNuhwotNJYzY+JlFTxoI7iwmtP40V5vTbuZJZGBC9LycqRqM5EOncyTRA=="
 				},
 				{
 					"name": "crossorigin",
@@ -58,15 +58,15 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-dialog": "=26.02.01",
-		"mmx-featured-product": "=26.02.01",
-		"mmx-forms": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-hero-slider": "=26.02.01",
-		"mmx-icons": "=26.02.01",
-		"mmx-messages": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-dialog": "=26.03.00",
+		"mmx-featured-product": "=26.03.00",
+		"mmx-forms": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-hero-slider": "=26.03.00",
+		"mmx-icons": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

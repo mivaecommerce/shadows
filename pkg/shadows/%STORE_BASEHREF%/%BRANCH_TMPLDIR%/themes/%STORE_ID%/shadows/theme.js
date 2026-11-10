@@ -146,19 +146,13 @@ const themeFunctionality = {
 		}
 
 		/**
-		 * Initialize Quantify extension
+		 * Initialize extensions
 		 */
 		quantify.init(document);
-
-		/**
-		 * Initialize the Mini-Basket extension
-		 */
 		miniBasket?.init?.();
-
-		/**
-		 * Initialize the Transfigure Navigation extension
-		 */
 		new TransfigureNavigation();
+		window.singleSubmit = new SingleSubmit();
+		window.loadingButton = new LoadingButton();
 	},
 	stateDatalist() {
 		/**

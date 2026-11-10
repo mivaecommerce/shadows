@@ -2,10 +2,11 @@
 	"code": "mmx-featured-product",
 	"name": "Featured Product",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-featured-product",
 	"category": "featured-product",
+	"output_minimal_json": false,
 	"description": "## Featured Product\nA dedicated section that highlights a specific product with an image, description, and a call-to-action button. Ideal for promoting best sellers, new arrivals, or limited-time offers.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": "",
@@ -857,38 +858,86 @@
 					}
 				},
 				{
-					"code": "swatches",
-					"collapsed": 1,
-					"prompt": "Attribute Swatches",
+					"code": "styles",
+					"group_prompt": "Attribute Style",
+					"item_prompt_property": "attribute_codes:value",
+					"list_type": "group",
+					"prompt": "Attribute Styles",
 					"properties": [
+						{
+							"code": "attribute_codes",
+							"placeholder": "color, pattern, style, etc.",
+							"prompt": "Attribute Codes",
+							"tooltip": {
+								"content": "Comma-separated attribute codes this style applies to. Leave blank to apply to all codes.",
+								"title": "Note"
+							},
+							"type": "textarea"
+						},
+						{
+							"code": "attribute_types",
+							"placeholder": "radio, select, swatch-select",
+							"prompt": "Attribute Types",
+							"tooltip": {
+								"content": "Comma-separated attribute types this style applies to. Options: radio, select, swatch-select. Leave blank to apply to all types.",
+								"title": "Note"
+							},
+							"type": "textarea"
+						},
+						{
+							"code": "display_style",
+							"options": [
+								{
+									"text": "Default"
+								},
+								{
+									"text": "Buttons",
+									"value": "buttons"
+								},
+								{
+									"text": "Swatches",
+									"value": "swatches"
+								},
+								{
+									"text": "Card",
+									"value": "card"
+								}
+							],
+							"prompt": "Display Style",
+							"tooltip": {
+								"content": "Controls how radio, select, and swatch-select attribute options render. \"Default\" keeps the standard radio inputs, dropdown, or swatches. \"Buttons\" display horizontally as text-based buttons. \"Swatches\" display horizontally as image-based swatches. \"Card\" displays horizontally as images above their option prompts. Buttons, Swatches & Card allow size, corner radius, and border styling capabilities.",
+								"title": "Display Style"
+							},
+							"type": "select"
+						},
 						{
 							"code": "size",
 							"placeholder": "40px",
-							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"preview_property_selector": ":shadow [part=\"product-attribute\"]",
 							"prompt": "Image Size",
 							"type": "lengthunit"
 						},
 						{
 							"code": "border_radius",
-							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"preview_property_selector": ":shadow [part=\"product-attribute\"]",
 							"prompt": "Corner Radius",
 							"type": "cornerradius"
 						},
 						{
 							"code": "border_width",
-							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"preview_property_selector": ":shadow [part=\"product-attribute\"]",
 							"prompt": "Border Thickness",
 							"type": "borderthickness"
 						},
 						{
 							"code": "border_color",
 							"placeholder": "#000000, rgba(0,0,0,0), hsl(0,0,0)",
-							"preview_property_selector": ":shadow .mmx-featured-product__product-attribute-swatch__swatches img",
+							"preview_property_selector": ":shadow [part=\"product-attribute\"]",
 							"prompt": "Border Color",
 							"type": "color"
 						}
 					],
-					"type": "group"
+					"type": "list"
 				}
 			],
 			"type": "group"
@@ -951,6 +1000,58 @@
 				},
 				"select_one_text": {
 					"value": "<Select One>"
+				},
+				"styles": {
+					"children": [
+						{
+							"attribute_types": {
+								"value": "swatch-select"
+							},
+							"border_color": {
+								"value": "var(--mmx-color-primary-text)"
+							},
+							"border_radius": {
+								"border_bottom_left_radius": {
+									"unit": "%",
+									"value": 50
+								},
+								"border_bottom_right_radius": {
+									"unit": "%",
+									"value": 50
+								},
+								"border_top_left_radius": {
+									"unit": "%",
+									"value": 50
+								},
+								"border_top_right_radius": {
+									"unit": "%",
+									"value": 50
+								}
+							},
+							"border_width": {
+								"border_bottom_width": {
+									"unit": "px",
+									"value": 1
+								},
+								"border_left_width": {
+									"unit": "px",
+									"value": 1
+								},
+								"border_right_width": {
+									"unit": "px",
+									"value": 1
+								},
+								"border_top_width": {
+									"unit": "px",
+									"value": 1
+								}
+							},
+							"size": {
+								"unit": "px",
+								"value": 40
+							}
+						}
+					]
 				}
 			},
 			"initial_display": {
@@ -1044,10 +1145,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-featured-product.js",
@@ -1059,7 +1160,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-IPwySEgUuYZ1/f08B/Dk8ZNxucrhd/e6IO1ik0mP7is= sha384-pdZO44HvDSEutuRdRn0je0M+HRTO2tc5WzoUvj7pq9sI7dwWlFERdX4Ygz/3Sbmn sha512-k4MhlZRqL6i/T4ojs72okzKl1K0PYOUI6EwipeSAdYJl5s/Lcf4gRXphEWfX8k5CiM4cUmOTSDk+rKPkBZRKZA=="
+					"value": "sha256-xffjrxU796qVEXchkoSNn0GIvcqydCglQ/dBiIPUfio= sha384-fHXzNVMZQP43CP0ZFHYs7KN8zFPnMCl1wusESdAoaMcK+iE1psTLOwFrt79hLaFD sha512-96XeqzbDfvEcMma/pgYgo9L8knRqUFnGzkeYngpoW6tw+vOtK+4R0u9dhaGFwLWehlPi58DdUfxJxEEEvOqeFQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -1091,7 +1192,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-0HuFcVdjUNH2WEUne+e73gSeS95yHf/FFxCDqDI5JI4= sha384-3LgRu7gKjfukzks9gro3aEwyq5PwWRFoWxulx2NZivGZ6cPOVNZtCi0wZXVZ3xT6 sha512-ykKsvJgeZepl97dSDYkz9XsKImyBgATDA4nyuC8prAfa38OGjGUy2nML49srehYsKuoUepgYfhCeVRBiLmTENQ=="
+					"value": "sha256-NtDtYfNdr28K6Lu539GSSiMCwNUBG5Nk6nW+cCOi7ck= sha384-t8941lBehPjlUrKzthT4RopD+ChCJQUAEeTW+Y1lxNdSjWo176uivz2jtIB9kQNK sha512-tEqwLSYW99FkM7tX1cKiWF3rekmrquC6tVFR2ScMqJiWmW+V3W3NB4xhCgfWLm3suuj1+ZGWL1dKVlYYRhOk/g=="
 				},
 				{
 					"name": "crossorigin",
@@ -1101,11 +1202,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-forms": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-hero-slider": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-forms": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-hero-slider": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

@@ -13,6 +13,8 @@
 	<mvt:item name="head" param="css:mmx-hero-slider" />
 	<mvt:item name="head" param="css:mmx-featured-product" />
 	<mvt:item name="head" param="css:mmx-product-fitment-list" />
+	<mvt:item name="head" param="css:mmx-product-waitlist" />
+	<mvt:item name="head" param="css:mmx-rating" />
 	<mvt:item name="head" param="css:mmx-product-details" />
 </template>
 
@@ -49,6 +51,8 @@
 <mvt:item name="head" param="js:mmx-hero-slider" />
 <mvt:item name="head" param="js:mmx-featured-product" />
 <mvt:item name="head" param="js:mmx-product-fitment-list" />
+<mvt:item name="head" param="js:mmx-product-waitlist" />
+<mvt:item name="head" param="js:mmx-rating" />
 <mvt:item name="head" param="js:mmx-product-details" />
 <mvt:item name="head" param="css:mmx-accordion" />
 <mvt:item name="head" param="js:mmx-accordion" />

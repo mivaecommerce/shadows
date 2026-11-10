@@ -25,3 +25,47 @@
 <mvt:if expr="l.settings:instance:_flex:settings_version LT '26.01.02'">
 	<mvt:assign name="l.settings:instance:advanced:initial_display:initial_height:value" value="'auto'" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:capture variable="l.new_style_rule_json">
+		{
+			"attribute_codes":	{ "value": "" },
+			"attribute_types":	{ "value": "swatch-select" },
+			"display_style":	{ "value": "" },
+			"size":				{ "value": 40, "unit": "px" },
+			"border_radius": {
+				"border_top_left_radius":		{ "value": 50, "unit": "%" },
+				"border_top_right_radius":		{ "value": 50, "unit": "%" },
+				"border_bottom_right_radius":	{ "value": 50, "unit": "%" },
+				"border_bottom_left_radius":	{ "value": 50, "unit": "%" }
+			},
+			"border_width": {
+				"border_top_width":		{ "value": 1, "unit": "px" },
+				"border_right_width":	{ "value": 1, "unit": "px" },
+				"border_bottom_width":	{ "value": 1, "unit": "px" },
+				"border_left_width":	{ "value": 1, "unit": "px" }
+			},
+			"border_color":	{ "value": "" }
+		}
+	</mvt:capture>
+	<mvt:assign name="l.null" value="miva_json_decode( l.new_style_rule_json, l.new_style_rule )" />
+
+	<mvt:assign name="l.swatches" value="l.settings:instance:advanced:attribute_settings:swatches" />
+
+	<mvt:if expr="NOT ISNULL l.swatches:size:value">
+		<mvt:assign name="l.new_style_rule:size" value="l.swatches:size" />
+	</mvt:if>
+
+	<mvt:if expr="NOT ISNULL l.swatches:border_radius:border_top_left_radius:value OR NOT ISNULL l.swatches:border_radius:border_top_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_right_radius:value OR NOT ISNULL l.swatches:border_radius:border_bottom_left_radius:value">
+		<mvt:assign name="l.new_style_rule:border_radius" value="l.swatches:border_radius" />
+	</mvt:if>
+
+	<mvt:if expr="NOT ISNULL l.swatches:border_width:border_top_width:value OR NOT ISNULL l.swatches:border_width:border_right_width:value OR NOT ISNULL l.swatches:border_width:border_bottom_width:value OR NOT ISNULL l.swatches:border_width:border_left_width:value">
+		<mvt:assign name="l.new_style_rule:border_width" value="l.swatches:border_width" />
+	</mvt:if>
+
+	<mvt:assign name="l.new_style_rule:border_color:value" value="l.swatches:border_color:value" />
+
+	<mvt:assign name="l.settings:instance:advanced:attribute_settings:styles:children" value="''" />
+	<mvt:assign name="l.null" value="miva_array_insert_var( l.settings:instance:advanced:attribute_settings:styles:children, l.new_style_rule, -1 )" />
+</mvt:if>

@@ -41,7 +41,7 @@ class MMX_CategoryList extends MMX_Element {
 
 	onDataChange() {
 		MMX.setElementAttributes(this, {
-			'data-category-fallback-image': this.data?.fallback_category_image,
+			'data-category-fallback-image': this.data?.fallback_category_image
 		});
 
 		this.#card = this.data.card;
@@ -60,7 +60,11 @@ class MMX_CategoryList extends MMX_Element {
 	#renderMainError() {
 		return /*html*/`
 			<div part="error" class="mmx-category-list__error">
-				<mmx-message data-style="warning">We're unable to display the categories: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the categories')}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.error_badge,
+					style: 'warning',
+					content: `We're unable to display the categories: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the categories')}`
+				})}
 			</div>
 		`;
 	}
@@ -130,6 +134,7 @@ class MMX_CategoryList extends MMX_Element {
 	#categoriesLoaded(response) {
 		this.#categories = response.data.data;
 		this.forceUpdate();
+		this.#renderJsonLd();
 	}
 
 	#categoriesFailedToLoad(response) {
@@ -153,6 +158,7 @@ class MMX_CategoryList extends MMX_Element {
 
 	#getFilters() {
 		const details = this.#getCardDetails();
+		const fragmentCodes = new Set();
 		const filters = details.reduce((filters, detail) => {
 			const type = detail?.type?.value;
 
@@ -163,10 +169,7 @@ class MMX_CategoryList extends MMX_Element {
 				});
 			}
 			else if (type === 'fragment' && !MMX.valueIsEmpty(detail?.fragment?.value)) {
-				filters.push({
-					name: 'fragments',
-					value: [detail.fragment.value]
-				});
+				fragmentCodes.add(detail.fragment.value);
 			}
 			else if (type === 'image') {
 				const imageType = detail?.image_settings?.type?.value;
@@ -187,6 +190,21 @@ class MMX_CategoryList extends MMX_Element {
 
 			return filters;
 		}, []);
+
+		if (this.data?.advanced?.structured_data?.mode?.value === 'fragment') {
+			const structuredDataFragment = this.data?.advanced?.structured_data?.fragment?.value;
+
+			if (!MMX.valueIsEmpty(structuredDataFragment)) {
+				fragmentCodes.add(structuredDataFragment);
+			}
+		}
+
+		if (fragmentCodes.size) {
+			filters.push({
+				name: 'fragments',
+				value: [...fragmentCodes]
+			});
+		}
 
 		filters.push(...this.#getCacheKeysFilters());
 
@@ -247,6 +265,66 @@ class MMX_CategoryList extends MMX_Element {
 	#getCardDetails() {
 		const details = this.#card?.details?.children;
 		return Array.isArray(details) ? details : [];
+	}
+
+	// Schema Data
+	#renderJsonLd() {
+		const data = this.#getJsonLdData();
+
+		if (this.data?.advanced?.structured_data?.mode?.value === 'fragment' && MMX.valueIsEmpty(data)) {
+			return;
+		}
+
+		MMX.upsertJsonLd({parent: this, data});
+	}
+
+	#getJsonLdData() {
+		const mode = this.data?.advanced?.structured_data?.mode?.value;
+
+		if (mode === 'none' || MMX.arrayIsEmpty(this.#categories)) {
+			return null;
+		}
+
+		const listItems = this.#categories
+			.map((category) => (mode === 'fragment' ? this.#getFragmentListItem(category) : this.#getAutoListItem(category)))
+			.filter((listItem) => !MMX.valueIsEmpty(listItem));
+
+		if (!listItems.length) {
+			return null;
+		}
+
+		const itemListElements = listItems.map((listItem, index) => {
+			return {
+				'@type': 'ListItem',
+				position: index + 1,
+				...listItem
+			};
+		});
+
+		return {
+			'@context': 'https://schema.org',
+			'@type': 'ItemList',
+			itemListElement: itemListElements,
+			numberOfItems: itemListElements.length
+		};
+	}
+
+	#getAutoListItem(category = {}) {
+		return {
+			name: category.name,
+			url: category.url
+		};
+	}
+
+	#getFragmentListItem(category = {}) {
+		try {
+			const listItem = JSON.parse(category?.fragments?.[this.data?.advanced?.structured_data?.fragment?.value]);
+
+			return listItem?.constructor === Object ? listItem : {};
+		}
+		catch {
+			return {};
+		}
 	}
 }
 

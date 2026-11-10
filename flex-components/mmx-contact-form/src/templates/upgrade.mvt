@@ -41,3 +41,10 @@
 		<mvt:assign name="l.settings:field:options:children" value="l.new_children" />
 	</mvt:foreach>
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:form:messages:send_email_success:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:form:messages:send_email_failure:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:form:messages:missing_required_fields:textsettings:fields:normal:badge_theme:theme_mode" value="0" />
+</mvt:if>

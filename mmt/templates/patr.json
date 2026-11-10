@@ -5,8 +5,8 @@
             "item_code": "product-details",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "initial_display": {
@@ -15,6 +15,21 @@
                         },
                         "initial_height_amount": {
                             "visible": 0
+                        }
+                    },
+                    "message_badges": {
+                        "error_badge": {
+                            "code": "standard-warning",
+                            "size": "m",
+                            "theme_mode": 1
+                        }
+                    },
+                    "structured_data": {
+                        "fragment": {
+                            "visible": 0
+                        },
+                        "mode": {
+                            "value": "auto"
                         }
                     },
                     "update_url_with_variant_id": {
@@ -118,6 +133,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Name"
                                         },
@@ -132,6 +150,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -158,6 +185,9 @@
                                             "visible": 0
                                         },
                                         "volume_pricing_table_settings": {
+                                            "visible": 0
+                                        },
+                                        "waitlist_settings": {
                                             "visible": 0
                                         }
                                     },
@@ -256,6 +286,9 @@
                                                     "message_styles": {
                                                         "visible": 0
                                                     },
+                                                    "messages_to_display": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Sale Price"
                                                     },
@@ -270,6 +303,15 @@
                                                         "visible": 0
                                                     },
                                                     "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "rating_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_form_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_list_settings": {
                                                         "visible": 0
                                                     },
                                                     "suffix": {
@@ -291,7 +333,8 @@
                                                                     },
                                                                     "overwrite_color": 1
                                                                 }
-                                                            }
+                                                            },
+                                                            "theme_mode": 1
                                                         },
                                                         "visible": 1
                                                     },
@@ -302,6 +345,9 @@
                                                         "visible": 0
                                                     },
                                                     "volume_pricing_table_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "waitlist_settings": {
                                                         "visible": 0
                                                     }
                                                 },
@@ -365,6 +411,9 @@
                                                     "message_styles": {
                                                         "visible": 0
                                                     },
+                                                    "messages_to_display": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Additional Price"
                                                     },
@@ -379,6 +428,15 @@
                                                         "visible": 0
                                                     },
                                                     "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "rating_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_form_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_list_settings": {
                                                         "visible": 0
                                                     },
                                                     "suffix": {
@@ -400,7 +458,8 @@
                                                                     },
                                                                     "overwrite_color": 1
                                                                 }
-                                                            }
+                                                            },
+                                                            "theme_mode": 1
                                                         },
                                                         "visible": 1
                                                     },
@@ -411,6 +470,9 @@
                                                         "visible": 0
                                                     },
                                                     "volume_pricing_table_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "waitlist_settings": {
                                                         "visible": 0
                                                     }
                                                 }
@@ -441,6 +503,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Prices"
                                         },
@@ -454,6 +519,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -473,6 +547,9 @@
                                         },
                                         "volume_pricing_table_settings": {
                                             "visible": 0
+                                        },
+                                        "waitlist_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
@@ -535,6 +612,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Product Charges"
                                         },
@@ -548,6 +628,15 @@
                                             "visible": 1
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -567,6 +656,9 @@
                                         },
                                         "volume_pricing_table_settings": {
                                             "visible": 0
+                                        },
+                                        "waitlist_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
@@ -629,6 +721,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Volume Pricing Table"
                                         },
@@ -642,6 +737,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -665,7 +769,8 @@
                                                     "fields": {
                                                         "normal": {
                                                             "typography_theme": {
-                                                                "code": "subheading-s"
+                                                                "code": "subheading-s",
+                                                                "theme_mode": 1
                                                             }
                                                         }
                                                     }
@@ -676,13 +781,17 @@
                                                     "fields": {
                                                         "normal": {
                                                             "typography_theme": {
-                                                                "code": "subheading-s"
+                                                                "code": "subheading-s",
+                                                                "theme_mode": 1
                                                             }
                                                         }
                                                     }
                                                 }
                                             },
                                             "visible": 1
+                                        },
+                                        "waitlist_settings": {
+                                            "visible": 0
                                         }
                                     },
                                     {
@@ -743,15 +852,41 @@
                                             "visible": 0
                                         },
                                         "message_styles": {
+                                            "badge_theme_in": {
+                                                "code": "minimal-success",
+                                                "size": "m",
+                                                "theme_mode": 1
+                                            },
+                                            "badge_theme_invalid": {
+                                                "code": "minimal-info",
+                                                "size": "m",
+                                                "theme_mode": 1
+                                            },
+                                            "badge_theme_low": {
+                                                "code": "minimal-warning",
+                                                "size": "m",
+                                                "theme_mode": 1
+                                            },
+                                            "badge_theme_out": {
+                                                "code": "minimal-error",
+                                                "size": "m",
+                                                "theme_mode": 1
+                                            },
                                             "display": {
                                                 "value": "inline-block"
                                             },
+                                            "size": {
+                                                "visible": 0
+                                            },
                                             "style": {
-                                                "value": "auto"
+                                                "visible": 0
                                             },
                                             "variant": {
-                                                "value": "minimal"
+                                                "visible": 0
                                             },
+                                            "visible": 1
+                                        },
+                                        "messages_to_display": {
                                             "visible": 1
                                         },
                                         "name": {
@@ -767,6 +902,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -785,6 +929,9 @@
                                             "visible": 0
                                         },
                                         "volume_pricing_table_settings": {
+                                            "visible": 0
+                                        },
+                                        "waitlist_settings": {
                                             "visible": 0
                                         }
                                     },
@@ -824,7 +971,60 @@
                                                 "value": 1
                                             },
                                             "select_one_text": {
-                                                "value": "<Select One>"
+                                                "value": "<Select One>",
+                                                "visible": 1
+                                            },
+                                            "styles": {
+                                                "children": [
+                                                    {
+                                                        "attribute_types": {
+                                                            "value": "swatch-select"
+                                                        },
+                                                        "border_color": {
+                                                            "value": "var(--mmx-color-primary-text)"
+                                                        },
+                                                        "border_radius": {
+                                                            "border_bottom_left_radius": {
+                                                                "unit": "%",
+                                                                "value": 50
+                                                            },
+                                                            "border_bottom_right_radius": {
+                                                                "unit": "%",
+                                                                "value": 50
+                                                            },
+                                                            "border_top_left_radius": {
+                                                                "unit": "%",
+                                                                "value": 50
+                                                            },
+                                                            "border_top_right_radius": {
+                                                                "unit": "%",
+                                                                "value": 50
+                                                            }
+                                                        },
+                                                        "border_width": {
+                                                            "border_bottom_width": {
+                                                                "unit": "px",
+                                                                "value": 1
+                                                            },
+                                                            "border_left_width": {
+                                                                "unit": "px",
+                                                                "value": 1
+                                                            },
+                                                            "border_right_width": {
+                                                                "unit": "px",
+                                                                "value": 1
+                                                            },
+                                                            "border_top_width": {
+                                                                "unit": "px",
+                                                                "value": 1
+                                                            }
+                                                        },
+                                                        "size": {
+                                                            "unit": "px",
+                                                            "value": 40
+                                                        }
+                                                    }
+                                                ]
                                             },
                                             "visible": 1
                                         },
@@ -869,6 +1069,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Attributes"
                                         },
@@ -882,6 +1085,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -900,6 +1112,9 @@
                                             "visible": 0
                                         },
                                         "volume_pricing_table_settings": {
+                                            "visible": 0
+                                        },
+                                        "waitlist_settings": {
                                             "visible": 0
                                         }
                                     },
@@ -1001,6 +1216,9 @@
                                                     "message_styles": {
                                                         "visible": 0
                                                     },
+                                                    "messages_to_display": {
+                                                        "visible": 0
+                                                    },
                                                     "name": {
                                                         "value": "Quantity Input"
                                                     },
@@ -1015,6 +1233,15 @@
                                                     },
                                                     "quantity_input_size": {
                                                         "visible": 1
+                                                    },
+                                                    "rating_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_form_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_list_settings": {
+                                                        "visible": 0
                                                     },
                                                     "suffix": {
                                                         "visible": 0
@@ -1032,6 +1259,9 @@
                                                         "visible": 0
                                                     },
                                                     "volume_pricing_table_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "waitlist_settings": {
                                                         "visible": 0
                                                     }
                                                 },
@@ -1093,6 +1323,32 @@
                                                                     "visible": 1
                                                                 },
                                                                 "add_to_cart_messages": {
+                                                                    "error_message": {
+                                                                        "textsettings": {
+                                                                            "fields": {
+                                                                                "normal": {
+                                                                                    "badge_theme": {
+                                                                                        "code": "standard-warning",
+                                                                                        "size": "m",
+                                                                                        "theme_mode": 1
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
+                                                                    "success_message": {
+                                                                        "textsettings": {
+                                                                            "fields": {
+                                                                                "normal": {
+                                                                                    "badge_theme": {
+                                                                                        "code": "standard-success",
+                                                                                        "size": "m",
+                                                                                        "theme_mode": 1
+                                                                                    }
+                                                                                }
+                                                                            }
+                                                                        }
+                                                                    },
                                                                     "visible": 1
                                                                 },
                                                                 "add_to_wishlist_button": {
@@ -1147,6 +1403,9 @@
                                                                 "message_styles": {
                                                                     "visible": 0
                                                                 },
+                                                                "messages_to_display": {
+                                                                    "visible": 0
+                                                                },
                                                                 "name": {
                                                                     "value": "Add To Cart Button"
                                                                 },
@@ -1160,6 +1419,15 @@
                                                                     "visible": 0
                                                                 },
                                                                 "quantity_input_size": {
+                                                                    "visible": 0
+                                                                },
+                                                                "rating_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "review_form_settings": {
+                                                                    "visible": 0
+                                                                },
+                                                                "review_list_settings": {
                                                                     "visible": 0
                                                                 },
                                                                 "suffix": {
@@ -1179,6 +1447,12 @@
                                                                 },
                                                                 "volume_pricing_table_settings": {
                                                                     "visible": 0
+                                                                },
+                                                                "waitlist_settings": {
+                                                                    "settings": {
+                                                                        "enabled": 0
+                                                                    },
+                                                                    "visible": 1
                                                                 }
                                                             }
                                                         ],
@@ -1203,12 +1477,28 @@
                                                         "visible": 0
                                                     },
                                                     "max_height_settings": {
+                                                        "read_more": {
+                                                            "textsettings": {
+                                                                "fields": {
+                                                                    "normal": {
+                                                                        "button_theme": {
+                                                                            "code": "display-link",
+                                                                            "size": "m",
+                                                                            "theme_mode": 1
+                                                                        }
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
                                                         "settings": {
                                                             "enabled": 0
                                                         },
                                                         "visible": 1
                                                     },
                                                     "message_styles": {
+                                                        "visible": 0
+                                                    },
+                                                    "messages_to_display": {
                                                         "visible": 0
                                                     },
                                                     "name": {
@@ -1224,6 +1514,15 @@
                                                         "visible": 0
                                                     },
                                                     "quantity_input_size": {
+                                                        "visible": 0
+                                                    },
+                                                    "rating_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_form_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "review_list_settings": {
                                                         "visible": 0
                                                     },
                                                     "suffix": {
@@ -1242,6 +1541,9 @@
                                                         "visible": 0
                                                     },
                                                     "volume_pricing_table_settings": {
+                                                        "visible": 0
+                                                    },
+                                                    "waitlist_settings": {
                                                         "visible": 0
                                                     }
                                                 }
@@ -1272,6 +1574,9 @@
                                         "message_styles": {
                                             "visible": 0
                                         },
+                                        "messages_to_display": {
+                                            "visible": 0
+                                        },
                                         "name": {
                                             "value": "Quantity & CTAs"
                                         },
@@ -1285,6 +1590,15 @@
                                             "visible": 0
                                         },
                                         "quantity_input_size": {
+                                            "visible": 0
+                                        },
+                                        "rating_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_form_settings": {
+                                            "visible": 0
+                                        },
+                                        "review_list_settings": {
                                             "visible": 0
                                         },
                                         "suffix": {
@@ -1303,6 +1617,9 @@
                                             "visible": 1
                                         },
                                         "volume_pricing_table_settings": {
+                                            "visible": 0
+                                        },
+                                        "waitlist_settings": {
                                             "visible": 0
                                         }
                                     }
@@ -1328,12 +1645,28 @@
                                 "visible": 0
                             },
                             "max_height_settings": {
+                                "read_more": {
+                                    "textsettings": {
+                                        "fields": {
+                                            "normal": {
+                                                "button_theme": {
+                                                    "code": "display-link",
+                                                    "size": "m",
+                                                    "theme_mode": 1
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
                                 "settings": {
                                     "enabled": 0
                                 },
                                 "visible": 1
                             },
                             "message_styles": {
+                                "visible": 0
+                            },
+                            "messages_to_display": {
                                 "visible": 0
                             },
                             "name": {
@@ -1349,6 +1682,15 @@
                                 "visible": 0
                             },
                             "quantity_input_size": {
+                                "visible": 0
+                            },
+                            "rating_settings": {
+                                "visible": 0
+                            },
+                            "review_form_settings": {
+                                "visible": 0
+                            },
+                            "review_list_settings": {
                                 "visible": 0
                             },
                             "suffix": {
@@ -1367,6 +1709,9 @@
                                 "visible": 0
                             },
                             "volume_pricing_table_settings": {
+                                "visible": 0
+                            },
+                            "waitlist_settings": {
                                 "visible": 0
                             }
                         }

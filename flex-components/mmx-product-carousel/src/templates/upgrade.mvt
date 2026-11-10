@@ -68,3 +68,8 @@
 	<mvt:assign name="l.settings:instance:products:showcase" value="l.settings:instance:products:prompt" />
 	<mvt:eval expr="miva_member_delete( l.settings:instance:products, 'prompt' )" />
 </mvt:if>
+
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:message_badges:error_badge:theme_mode" value="0" />
+</mvt:if>

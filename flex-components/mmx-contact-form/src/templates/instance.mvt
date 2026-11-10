@@ -230,23 +230,29 @@
 >
 	<mvt:comment>Background Image</mvt:comment>
 	<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:image">
+		<mvt:comment>sizes=auto requires width & height attributes</mvt:comment>
+		<mvt:if expr="(l.settings:instance:form:background:img:width GT 0) AND (l.settings:instance:form:background:img:height GT 0)">
+			<mvt:assign name="l.settings:instance:form:background:img:sizes_prefix" value="'auto, '" />
+		<mvt:else>
+			<mvt:assign name="l.settings:instance:form:background:img:sizes_prefix" value="''" />
+		</mvt:if>
 		<picture slot="image">
-			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:mobile:image">
-				<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:responsive_image_data:mobile:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:responsive_image_data:mobile:image )" />
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:mobile:srcset">
 				<source
 					class="source__mobile"
 					media="(max-width: 39.999em)"
-					srcset="&mvte:instance:form:background:img:responsive_image_data:mobile:uri_encoded_image;"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:mobile:srcset;"
+					sizes="&mvte:instance:form:background:img:sizes_prefix;100vw"
 					width="&mvte:instance:form:background:img:responsive_image_data:mobile:width;"
 					height="&mvte:instance:form:background:img:responsive_image_data:mobile:height;"
 				>
 			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:tablet:image">
-				<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:responsive_image_data:tablet:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:responsive_image_data:tablet:image )" />
+			<mvt:if expr="NOT ISNULL l.settings:instance:form:background:img:responsive_image_data:tablet:srcset">
 				<source
 					class="source__tablet"
 					media="(max-width: 59.999em)"
-					srcset="&mvte:instance:form:background:img:responsive_image_data:tablet:uri_encoded_image;"
+					srcset="&mvte:instance:form:background:img:responsive_image_data:tablet:srcset;"
+					sizes="&mvte:instance:form:background:img:sizes_prefix;100vw"
 					width="&mvte:instance:form:background:img:responsive_image_data:tablet:width;"
 					height="&mvte:instance:form:background:img:responsive_image_data:tablet:height;"
 				>
@@ -254,6 +260,8 @@
 			<mvt:do file="g.Module_Library_Utilities" name="l.settings:instance:form:background:img:uri_encoded_image" value="encodeURI( l.settings:instance:form:background:img:image )" />
 			<img
 				src="&mvte:instance:form:background:img:uri_encoded_image;"
+				srcset="&mvte:instance:form:background:img:srcset;"
+				sizes="&mvte:instance:form:background:img:sizes_prefix;100vw"
 				alt="&mvte:instance:form:background:img:alt;"
 				width="&mvte:instance:form:background:img:width;"
 				height="&mvte:instance:form:background:img:height;"
@@ -366,29 +374,44 @@
 
 		<mvt:comment>Form Submission Message</mvt:comment>
 		<mvt:if expr="NOT ISNULL l.settings:instance:submission:status">
-			<mvt:if expr="l.settings:instance:submission:status EQ 'send_email_success'">
-				<mmx-message data-style="success">
-					<mvt:if expr="l.settings:instance:form:messages:send_email_success:source EQ 'markdown'">
-						&mvt:instance:form:messages:send_email_success:value;
-					<mvt:else>
-						&mvte:instance:form:messages:send_email_success:value;
+			<mvt:assign name="l.settings:submission_message"		value="miva_variable_value( 'l.settings:instance:form:messages:' $ l.settings:instance:submission:status )" />
+			<mvt:assign name="l.settings:submission_message:badge"	value="l.settings:submission_message:textsettings:fields:normal" />
+			<mvt:assign name="l.settings:submission_message:align"	value="ternary( l.settings:instance:submission:status EQ 'missing_required_fields', 'left', '' )" />
+
+			<mvt:if expr="ISNULL l.settings:submission_message:badge:badge_style:value OR l.settings:submission_message:badge:badge_style:value EQ 'auto'">
+				<mvt:assign name="l.settings:submission_message:badge:badge_style:value" value="ternary( l.settings:instance:submission:status EQ 'send_email_success', 'success', 'error' )" />
+			</mvt:if>
+
+			<mmx-message
+				data-style="&mvte:submission_message:badge:badge_style:value;"
+				data-variant="&mvte:submission_message:badge:badge_variant:value;"
+				data-size="&mvte:submission_message:badge:badge_size:value;"
+				data-align="&mvte:submission_message:align;"
+				data-theme="&mvte:submission_message:badge:badge_theme:theme_available;"
+				data-theme-class="&mvte:submission_message:badge:badge_theme:classname;"
+			>
+				<mvt:capture variable="l.theme_stylesheet"><mvt:miva output="off" />
+					<mvt:if expr="l.settings:instance:submission:status EQ 'send_email_success'">
+						&mvt:instance:form:messages:send_email_success:textsettings:fields:normal:badge_theme:stylesheet;
+					<mvt:elseif expr="l.settings:instance:submission:status EQ 'send_email_failure'">
+						&mvt:instance:form:messages:send_email_failure:textsettings:fields:normal:badge_theme:stylesheet;
+					<mvt:elseif expr="l.settings:instance:submission:status EQ 'missing_required_fields'">
+						&mvt:instance:form:messages:missing_required_fields:textsettings:fields:normal:badge_theme:stylesheet;
 					</mvt:if>
-				</mmx-message>
-			<mvt:elseif expr="l.settings:instance:submission:status EQ 'send_email_failure'">
-				<mmx-message data-style="error">
-					<mvt:if expr="l.settings:instance:form:messages:send_email_failure:source EQ 'markdown'">
-						&mvt:instance:form:messages:send_email_failure:value;
-					<mvt:else>
-						&mvte:instance:form:messages:send_email_failure:value;
-					</mvt:if>
-				</mmx-message>
-			<mvt:elseif expr="l.settings:instance:submission:status EQ 'missing_required_fields'">
-				<mmx-message data-style="error" data-align="left">
+				<mvt:miva output="on" compresswhitespace="on" /></mvt:capture>
+
+				<mvt:if expr="l.settings:submission_message:badge:badge_theme:theme_available AND NOT ISNULL l.theme_stylesheet">
+					<template data-theme-stylesheet>
+						<mvt:eval expr="l.theme_stylesheet" />
+					</template>
+				</mvt:if>
+
+				<mvt:if expr="l.settings:instance:submission:status EQ 'missing_required_fields'">
 					<p>
-						<mvt:if expr="l.settings:instance:form:messages:missing_required_fields:source EQ 'markdown'">
-							&mvt:instance:form:messages:missing_required_fields:value;
+						<mvt:if expr="l.settings:submission_message:source EQ 'markdown'">
+							&mvt:submission_message:value;
 						<mvt:else>
-							&mvte:instance:form:messages:missing_required_fields:value;
+							&mvte:submission_message:value;
 						</mvt:if>
 					</p>
 					<ul>
@@ -396,8 +419,12 @@
 							<li><label for="&mvte:missing_required_field:html:attr:id;">&mvte:missing_required_field:label:value;</label></li>
 						</mvt:foreach>
 					</ul>
-				</mmx-message>
-			</mvt:if>
+				<mvt:elseif expr="l.settings:submission_message:source EQ 'markdown'">
+					&mvt:submission_message:value;
+				<mvt:else>
+					&mvte:submission_message:value;
+				</mvt:if>
+			</mmx-message>
 		</mvt:if>
 
 		<div class="mmx-form-fields" style="--mmx-form-fields__column-count: &mvte:instance:form:layout:columns:value;">

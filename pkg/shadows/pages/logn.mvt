@@ -34,7 +34,7 @@
 			<mvt:else>
 				<mvt:assign name="l.settings:url" value="l.settings:urls:ACLN:secure" />
 			</mvt:if>
-			<form method="post" action="&mvte:url;">
+			<form method="post" action="&mvte:url;" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="LOGN" />
@@ -77,7 +77,7 @@
 			<mvt:else>
 				<mvt:assign name="l.settings:return_url" value="l.settings:urls:ACLN:secure" />
 			</mvt:if>
-			<form class="o-layout" method="post" action="&mvte:return_url;">
+			<form class="o-layout" method="post" action="&mvte:return_url;" data-hook="single-submit">
 				<fieldset class="o-layout__item">
 					<legend>Customer Log In</legend>
 					<input type="hidden" name="Action" value="ICSQ" />
@@ -107,7 +107,7 @@
 							<input id="register_password" class="c-form-input" type="password" name="Customer_Password" autocomplete="new-password" required aria-required="true">
 						</div>
 						<div class="c-form-list__item c-form-list__item--full">
-							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account">
+							<input class="mm-theme-button-secondary mm-theme-button-secondary__small c-button--full" type="submit" value="Create My Account" data-hook="loading-button">
 						</div>
 					</div>
 				</fieldset>

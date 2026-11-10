@@ -5,23 +5,19 @@
 	--mmx-message__size: 1rem;
 }
 
-.mmx-message {
-	border: 1px solid currentColor;
-	border-radius: 0.25em;
-	font-size: calc(var(--mmx-message__size) * 0.9);
+.mmx-message,
+.mmx-message-theme {
 	margin-bottom: var(--mmx-message__margin-bottom, 1em);
-	padding: 0.6em;
 	position: relative;
 	text-align: center;
-}
 
-/* Elements */
-.mmx-message *:first-child {
-	margin-top: 0;
-}
+	& :nth-child(1 of :not(link, meta, script, style, template)) {
+		margin-top: 0;
+	}
 
-.mmx-message *:last-child {
-	margin-bottom: 0;
+	& :nth-last-child(1 of :not(link, meta, script, style, template)) {
+		margin-bottom: 0;
+	}
 }
 
 /* Align */
@@ -36,11 +32,32 @@
 /* Display */
 .mmx-message--display-inline {
 	display: inline;
-	padding: 0.4em;
 }
 
 .mmx-message--display-inline-block {
 	display: inline-block;
+}
+
+/* Theme Skin (layout overrides are in MMX_Message.styles()) */
+.mmx-message-theme {
+	--mmx-heading-color: currentColor;
+	--mmx-subheading-color: currentColor;
+	--mmx-paragraph-color: currentColor;
+}
+
+/* Legacy Skin */
+.mmx-message {
+	border: 1px solid currentColor;
+	border-radius: 0.25em;
+	font-size: calc(var(--mmx-message__size) * 0.9);
+	padding: 0.6em;
+}
+
+.mmx-message.mmx-message--display-inline {
+	padding: 0.4em;
+}
+
+.mmx-message.mmx-message--display-inline-block {
 	padding: 0.2em 0.7em;
 }
 
@@ -118,4 +135,13 @@
 
 .mmx-message--variant-pill.mmx-message--display-inline-block {
 	padding: 0.3em 1.25em;
+}
+
+[part~="close"] {
+	background: none;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	float: right;
+	padding: 0;
 }

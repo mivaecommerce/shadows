@@ -5,8 +5,8 @@
             "item_code": "top-level-categories",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "initial_display": {
@@ -15,6 +15,21 @@
                         },
                         "initial_height_amount": {
                             "visible": 0
+                        }
+                    },
+                    "message_badges": {
+                        "error_badge": {
+                            "code": "standard-warning",
+                            "size": "m",
+                            "theme_mode": 1
+                        }
+                    },
+                    "structured_data": {
+                        "fragment": {
+                            "visible": 0
+                        },
+                        "mode": {
+                            "value": "auto"
                         }
                     }
                 },

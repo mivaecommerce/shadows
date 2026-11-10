@@ -48,7 +48,7 @@
 </mvt:if>
 
 <mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( NOT ISNULL g.Edit_Wish )">
-	<form name="edit_wish" method="post" action="&mvte:urls:_self:secure;">
+	<form name="edit_wish" method="post" action="&mvte:urls:_self:secure;" data-hook="single-submit">
 		<fieldset>
 			<legend>Edit A Wish List Item</legend>
 			<input type="hidden" name="Action" value="UPWL" />
@@ -126,7 +126,7 @@
 												</mvt:if>
 												<mvt:if expr="( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id ) AND ( g.Edit_Wish EQ l.settings:wishlistitem:id )">
 													<p class="c-form-inline-set">
-														<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Update">
+														<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Update" data-hook="loading-button">
 														<a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:_self:auto_sep;WishList_ID=&mvta:global:WishList_ID;&amp;Offset=&mvta:global:Offset;&amp;Sort_By=&mvte:global:Sort_By;&amp;Per_Page=&mvte:global:Per_Page;">Cancel</a>
 													</p>
 												</mvt:if>
@@ -155,12 +155,12 @@
 
 									<td class="c-table-responsive__cell">
 										<mvt:if expr="( ISNULL g.Edit_Wish ) AND ( l.settings:wishlistitems:wishlist:cust_id EQ g.Basket:cust_id )">
-											<form class="o-layout--justify-end c-form-inline-set" method="post" action="&mvte:urls:BASK:secure;">
+											<form class="o-layout--justify-end c-form-inline-set" method="post" action="&mvte:urls:BASK:secure;" data-hook="single-submit">
 												<input type="hidden" name="Action" value="AFWL" />
 												<input type="hidden" name="Wish_ID" value="&mvte:wishlistitem:id;" />
 												<input type="hidden" name="Quantity" value="&mvte:wishlistitem:quantity;" />
 												<mvt:if expr="l.settings:wishlistitem:product:inv_level NE 'out'">
-													<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Add To Cart">
+													<input class="mm-theme-button-primary mm-theme-button-primary__extra-small" type="submit" value="Add To Cart" data-hook="loading-button">
 												</mvt:if>
 												<a class="mm-theme-button-secondary mm-theme-button-secondary__extra-small" href="&mvte:urls:_self:auto_sep;Action=RMWL&amp;WishList_ID=&mvta:global:WishList_ID;&amp;Wish_ID=&mvta:wishlistitem:id;&amp;Offset=&mvta:global:Offset;">Remove</a>
 											</form>

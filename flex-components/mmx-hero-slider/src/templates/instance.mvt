@@ -1,10 +1,8 @@
 <mvt:comment>Determine Lazy Loading & Fetch Priority</mvt:comment>
 <mvt:if expr="l.settings:instance:advanced:loading:value EQ 'eager' OR (ISNULL l.settings:instance:advanced:loading:value AND l.settings:total_sequence_item_pos EQ 1)">
-	<mvt:assign name="l.settings:instance:fetchpriority" value="'high'" />
-	<mvt:assign name="l.settings:instance:loading" value="'eager'" />
+	<mvt:assign name="l.settings:instance:first_slide_eager" value="1" />
 <mvt:else>
-	<mvt:assign name="l.settings:instance:fetchpriority" value="'low'" />
-	<mvt:assign name="l.settings:instance:loading" value="'lazy'" />
+	<mvt:assign name="l.settings:instance:first_slide_eager" value="0" />
 </mvt:if>
 
 <mvt:if expr="NOT ISNULL l.settings:fragment:code">
@@ -30,6 +28,15 @@
 	data-nav-button-size="&mvte:instance:advanced:controls:nav_button_size:value;"
 >
 	<mvt:foreach iterator="hero_image" array="instance:slides:hero_images:children">
+		<mvt:comment>Apply Lazy Loading & Fetch Priority</mvt:comment>
+		<mvt:if expr="l.pos1 EQ 1 AND l.settings:instance:first_slide_eager">
+			<mvt:assign name="l.settings:hero_image:fetchpriority" value="'high'" />
+			<mvt:assign name="l.settings:hero_image:loading" value="'eager'" />
+		<mvt:else>
+			<mvt:assign name="l.settings:hero_image:fetchpriority" value="'low'" />
+			<mvt:assign name="l.settings:hero_image:loading" value="'lazy'" />
+		</mvt:if>
+
 		<mvt:comment>Generate optional Hero attribute</mvt:comment>
 		<mvt:assign name="l.settings:instance_optional_attributes_encoded" value="''" />
 
@@ -57,37 +64,47 @@
 			&mvt:instance_optional_attributes_encoded;
 		>
 		<mvt:comment>Slotted Image</mvt:comment>
-		<picture slot="image">
-			<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:mobile:image">
-				<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:responsive_image_data:mobile:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:responsive_image_data:mobile:image )" />
-				<source
-					class="source__mobile"
-					media="(max-width: 39.999em)"
-					srcset="&mvte:hero_image:image:img:responsive_image_data:mobile:uri_encoded_image;"
-					width="&mvte:hero_image:image:img:responsive_image_data:mobile:width;"
-					height="&mvte:hero_image:image:img:responsive_image_data:mobile:height;"
-				>
+		<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:image">
+			<mvt:comment>sizes=auto requires width & height attributes</mvt:comment>
+			<mvt:if expr="(l.settings:hero_image:image:img:width GT 0) AND (l.settings:hero_image:image:img:height GT 0)">
+				<mvt:assign name="l.settings:hero_image:image:img:sizes_prefix" value="'auto, '" />
+			<mvt:else>
+				<mvt:assign name="l.settings:hero_image:image:img:sizes_prefix" value="''" />
 			</mvt:if>
-			<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:tablet:image">
-				<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:responsive_image_data:tablet:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:responsive_image_data:tablet:image )" />
-				<source
-					class="source__tablet"
-					media="(max-width: 59.999em)"
-					srcset="&mvte:hero_image:image:img:responsive_image_data:tablet:uri_encoded_image;"
-					width="&mvte:hero_image:image:img:responsive_image_data:tablet:width;"
-					height="&mvte:hero_image:image:img:responsive_image_data:tablet:height;"
+			<picture slot="image">
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:mobile:srcset">
+					<source
+						class="source__mobile"
+						media="(max-width: 39.999em)"
+						srcset="&mvte:hero_image:image:img:responsive_image_data:mobile:srcset;"
+						sizes="&mvte:hero_image:image:img:sizes_prefix;100vw"
+						width="&mvte:hero_image:image:img:responsive_image_data:mobile:width;"
+						height="&mvte:hero_image:image:img:responsive_image_data:mobile:height;"
+					>
+				</mvt:if>
+				<mvt:if expr="NOT ISNULL l.settings:hero_image:image:img:responsive_image_data:tablet:srcset">
+					<source
+						class="source__tablet"
+						media="(max-width: 59.999em)"
+						srcset="&mvte:hero_image:image:img:responsive_image_data:tablet:srcset;"
+						sizes="&mvte:hero_image:image:img:sizes_prefix;100vw"
+						width="&mvte:hero_image:image:img:responsive_image_data:tablet:width;"
+						height="&mvte:hero_image:image:img:responsive_image_data:tablet:height;"
+					>
+				</mvt:if>
+				<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:image )" />
+				<img
+					src="&mvte:hero_image:image:img:uri_encoded_image;"
+					srcset="&mvte:hero_image:image:img:srcset;"
+					sizes="&mvte:hero_image:image:img:sizes_prefix;100vw"
+					alt="&mvte:hero_image:image:img:alt;"
+					width="&mvte:hero_image:image:img:width;"
+					height="&mvte:hero_image:image:img:height;"
+					loading="&mvte:hero_image:loading;"
+					fetchpriority="&mvte:hero_image:fetchpriority;"
 				>
-			</mvt:if>
-			<mvt:do file="g.Module_Library_Utilities" name="l.settings:hero_image:image:img:uri_encoded_image" value="encodeURI( l.settings:hero_image:image:img:image )" />
-			<img
-				src="&mvte:hero_image:image:img:uri_encoded_image;"
-				alt="&mvte:hero_image:image:img:alt;"
-				width="&mvte:hero_image:image:img:width;"
-				height="&mvte:hero_image:image:img:height;"
-				loading="&mvte:instance:loading;"
-				fetchpriority="&mvte:instance:fetchpriority;"
-			>
-		</picture>
+			</picture>
+		</mvt:if>
 
 			<mvt:comment>Slotted Content</mvt:comment>
 			<mvt:if expr="l.settings:hero_image:content:settings:enabled">

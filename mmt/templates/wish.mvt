@@ -51,7 +51,7 @@
 			<mvt:item name="wishlistitems" />
 
 			<mvt:if expr="l.settings:wishlistitems:item_count AND ISNULL g.Edit_Wish">
-				<form method="post" action="&mvte:urls:BASK:secure;">
+				<form method="post" action="&mvte:urls:BASK:secure;" data-hook="single-submit">
 					<fieldset>
 						<legend>Add All &mvte:wishlist:title; Items to Cart</legend>
 						<input type="hidden" name="Action" value="AFWA">

@@ -3,10 +3,10 @@
 	<UIModuleCode>cssui</UIModuleCode>
 	<RegisterStoreFramework />
 	<Title>Shadows ReadyTheme</Title>
-	<Version>26.02.01</Version>
-	<MinimumMerchantVersion>26.02.01</MinimumMerchantVersion>
+	<Version>26.03.00</Version>
+	<MinimumMerchantVersion>26.03.00</MinimumMerchantVersion>
 	<MinimumMivaScriptVersion>5.52</MinimumMivaScriptVersion>
-	<Description>Shadows ReadyTheme v26.02.01
+	<Description>Shadows ReadyTheme v26.03.00
 </Description>
 	<Preview_URL />
 	<Preview_Image>shadows-logo.png</Preview_Image>
@@ -2350,6 +2350,16 @@
 			<Public>Yes</Public>
 		</Page>
 		<Page>
+			<Code>json_ld</Code>
+			<Name>Structured Data (JSON-LD)</Name>
+			<Fragment>Yes</Fragment>
+			<Source>json_ld.mvt</Source>
+			<Public>Yes</Public>
+			<ItemList>
+				<Item>customfields</Item>
+			</ItemList>
+		</Page>
+		<Page>
 			<Code>group_productcharges</Code>
 			<Name>Basket/Order Group Product Charges</Name>
 			<Fragment>Yes</Fragment>
@@ -3541,7 +3551,7 @@ mmx-featured-product::part(button__inner) {
 
 (mivaJS => {
 	mivaJS.ReadyTheme = theme_path.split('/').reverse()[1];
-	mivaJS.ReadyThemeVersion = '26.02.01';
+	mivaJS.ReadyThemeVersion = '26.03.00';
 	mivaJS.Store_Code = '&mvtj:global:store:code;';
 	mivaJS.Product_Code = '&mvtj:product:code;';
 	mivaJS.Category_Code = '&mvtj:category:code;';
@@ -3591,21 +3601,6 @@ mmx-featured-product::part(button__inner) {
 			<Active>Yes</Active>
 			<Attributes />
 			<File_Path>%BRANCH_TMPLDIR%/themes/%STORE_ID%/shadows/theme.js</File_Path>
-		</JavaScriptResource_Add>
-		<JavaScriptResource_Delete code="GTM-head-tag" />
-		<JavaScriptResource_Add>
-			<Code>GTM-head-tag</Code>
-			<Type>InlineScript</Type>
-			<Global>Yes</Global>
-			<Active>No</Active>
-			<Attributes />
-			<Template><![CDATA[(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PDJXBSD4');
-]]></Template>
-			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="GTM-dataLayer" />
 		<JavaScriptResource_Add>
@@ -4779,6 +4774,21 @@ new MMXPromotionTracker();
 ]]></Template>
 			<Notes>#Set_Current_Time#</Notes>
 		</JavaScriptResource_Add>
+		<JavaScriptResource_Delete code="GTM-head-tag" />
+		<JavaScriptResource_Add>
+			<Code>GTM-head-tag</Code>
+			<Type>InlineScript</Type>
+			<Global>Yes</Global>
+			<Active>No</Active>
+			<Attributes />
+			<Template><![CDATA[(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-XXXXXX');
+]]></Template>
+			<Notes>#Set_Current_Time#</Notes>
+		</JavaScriptResource_Add>
 		<JavaScriptResource_Delete code="scripts" />
 		<JavaScriptResource_Add>
 			<Code>scripts</Code>
@@ -5138,8 +5148,8 @@ new MMXPromotionTracker();
 		<JavaScriptCombinedResourceXResource_Assign combined_code="scripts"
 			resource_code="extensions" />
 		<JavaScriptCombinedResourceXResource_Assign combined_code="scripts" resource_code="theme" />
-		<JavaScriptResourceXGroup_Assign code="GTM-head-tag" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="GTM-dataLayer" group_code="head_tag" />
+		<JavaScriptResourceXGroup_Assign code="GTM-head-tag" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="runtimecombofacets" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="mailchimp" group_code="head_tag" />
 		<JavaScriptResourceXGroup_Assign code="settings" group_code="footer_js" />
@@ -7280,6 +7290,1027 @@ new MMXPromotionTracker();
 				</Size>
 			</Sizes>
 		</ThemeButton_Add>
+		<ThemeBadge_Delete code="standard-default" />
+		<ThemeBadge_Add>
+			<Code>standard-default</Code>
+			<Name>Standard: Default</Name>
+			<Styles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<Border>
+					<BorderColor>currentColor</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="standard-info" />
+		<ThemeBadge_Add>
+			<Code>standard-info</Code>
+			<Name>Standard: Info</Name>
+			<Styles>
+				<Color>#0C5298</Color>
+				<BackgroundColor>#F3F9FE</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<Border>
+					<BorderColor>#8FBBE6</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="standard-warning" />
+		<ThemeBadge_Add>
+			<Code>standard-warning</Code>
+			<Name>Standard: Warning</Name>
+			<Styles>
+				<Color>#65602E</Color>
+				<BackgroundColor>#F8F8E1</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<Border>
+					<BorderColor>#E6E086</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="standard-error" />
+		<ThemeBadge_Add>
+			<Code>standard-error</Code>
+			<Name>Standard: Error</Name>
+			<Styles>
+				<Color>#B13138</Color>
+				<BackgroundColor>#FBE3E3</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<Border>
+					<BorderColor>#F9C4C7</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="standard-success" />
+		<ThemeBadge_Add>
+			<Code>standard-success</Code>
+			<Name>Standard: Success</Name>
+			<Styles>
+				<Color>#0A7448</Color>
+				<BackgroundColor>#DAF5EB</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<Border>
+					<BorderColor>#BBE1D3</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.6</PaddingTop>
+						<PaddingRight unit="em">0.6</PaddingRight>
+						<PaddingBottom unit="em">0.6</PaddingBottom>
+						<PaddingLeft unit="em">0.6</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="flag-default" />
+		<ThemeBadge_Add>
+			<Code>flag-default</Code>
+			<Name>Flag: Default</Name>
+			<Styles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<Border>
+					<BorderColor>currentColor</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="flag-info" />
+		<ThemeBadge_Add>
+			<Code>flag-info</Code>
+			<Name>Flag: Info</Name>
+			<Styles>
+				<Color>#0C5298</Color>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<Border>
+					<BorderColor>#0C5298</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="flag-warning" />
+		<ThemeBadge_Add>
+			<Code>flag-warning</Code>
+			<Name>Flag: Warning</Name>
+			<Styles>
+				<Color>#65602E</Color>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<Border>
+					<BorderColor>#65602E</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="flag-error" />
+		<ThemeBadge_Add>
+			<Code>flag-error</Code>
+			<Name>Flag: Error</Name>
+			<Styles>
+				<Color>#B13138</Color>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<Border>
+					<BorderColor>#B13138</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="flag-success" />
+		<ThemeBadge_Add>
+			<Code>flag-success</Code>
+			<Name>Flag: Success</Name>
+			<Styles>
+				<Color>#0A7448</Color>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<Border>
+					<BorderColor>#0A7448</BorderColor>
+					<BorderStyle>Solid</BorderStyle>
+					<BorderWidth unit="px">1</BorderWidth>
+				</Border>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="minimal-default" />
+		<ThemeBadge_Add>
+			<Code>minimal-default</Code>
+			<Name>Minimal: Default</Name>
+			<Styles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="minimal-info" />
+		<ThemeBadge_Add>
+			<Code>minimal-info</Code>
+			<Name>Minimal: Info</Name>
+			<Styles>
+				<Color>#0C5298</Color>
+				<BackgroundColor>#F3F9FE</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="minimal-warning" />
+		<ThemeBadge_Add>
+			<Code>minimal-warning</Code>
+			<Name>Minimal: Warning</Name>
+			<Styles>
+				<Color>#65602E</Color>
+				<BackgroundColor>#F8F8E1</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="minimal-error" />
+		<ThemeBadge_Add>
+			<Code>minimal-error</Code>
+			<Name>Minimal: Error</Name>
+			<Styles>
+				<Color>#B13138</Color>
+				<BackgroundColor>#FBE3E3</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="minimal-success" />
+		<ThemeBadge_Add>
+			<Code>minimal-success</Code>
+			<Name>Minimal: Success</Name>
+			<Styles>
+				<Color>#0A7448</Color>
+				<BackgroundColor>#DAF5EB</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Uppercase</TextTransform>
+				<BorderRadius unit="em">0.25</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">15</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">11</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">9</FontSize>
+						<PaddingTop unit="em">0.2</PaddingTop>
+						<PaddingRight unit="em">0.7</PaddingRight>
+						<PaddingBottom unit="em">0.2</PaddingBottom>
+						<PaddingLeft unit="em">0.7</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="pill-default" />
+		<ThemeBadge_Add>
+			<Code>pill-default</Code>
+			<Name>Pill: Default</Name>
+			<Styles>
+				<BackgroundColor>transparent</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Capitalize</TextTransform>
+				<BorderRadius unit="em">2</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="pill-info" />
+		<ThemeBadge_Add>
+			<Code>pill-info</Code>
+			<Name>Pill: Info</Name>
+			<Styles>
+				<Color>#0C5298</Color>
+				<BackgroundColor>#F3F9FE</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Capitalize</TextTransform>
+				<BorderRadius unit="em">2</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="pill-warning" />
+		<ThemeBadge_Add>
+			<Code>pill-warning</Code>
+			<Name>Pill: Warning</Name>
+			<Styles>
+				<Color>#65602E</Color>
+				<BackgroundColor>#F8F8E1</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Capitalize</TextTransform>
+				<BorderRadius unit="em">2</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="pill-error" />
+		<ThemeBadge_Add>
+			<Code>pill-error</Code>
+			<Name>Pill: Error</Name>
+			<Styles>
+				<Color>#B13138</Color>
+				<BackgroundColor>#FBE3E3</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Capitalize</TextTransform>
+				<BorderRadius unit="em">2</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
+		<ThemeBadge_Delete code="pill-success" />
+		<ThemeBadge_Add>
+			<Code>pill-success</Code>
+			<Name>Pill: Success</Name>
+			<Styles>
+				<Color>#0A7448</Color>
+				<BackgroundColor>#DAF5EB</BackgroundColor>
+				<Font weight="400" style="normal">inter</Font>
+				<TextTransform>Capitalize</TextTransform>
+				<BorderRadius unit="em">2</BorderRadius>
+				<WhiteSpace>Normal</WhiteSpace>
+			</Styles>
+			<Sizes>
+				<Size>
+					<Code>l</Code>
+					<Name>Large</Name>
+					<Styles>
+						<FontSize unit="px">20</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>m</Code>
+					<Name>Medium</Name>
+					<Default>Yes</Default>
+					<Styles>
+						<FontSize unit="px">14</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+				<Size>
+					<Code>s</Code>
+					<Name>Small</Name>
+					<Styles>
+						<FontSize unit="px">12</FontSize>
+						<PaddingTop unit="em">0.3</PaddingTop>
+						<PaddingRight unit="em">1.25</PaddingRight>
+						<PaddingBottom unit="em">0.3</PaddingBottom>
+						<PaddingLeft unit="em">1.25</PaddingLeft>
+					</Styles>
+				</Size>
+			</Sizes>
+		</ThemeBadge_Add>
 	</Theme>
 	<ExternalFiles>
 		<File>

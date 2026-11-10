@@ -5,12 +5,23 @@
             "item_code": "search-listing",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "empty_results_message": {
                         "source": "markdown",
+                        "textsettings": {
+                            "fields": {
+                                "normal": {
+                                    "badge_theme": {
+                                        "code": "standard-info",
+                                        "size": "m",
+                                        "theme_mode": 1
+                                    }
+                                }
+                            }
+                        },
                         "value": "There were no products that matched your search.",
                         "visible": 1
                     },
@@ -20,6 +31,13 @@
                         },
                         "initial_height_amount": {
                             "visible": 0
+                        }
+                    },
+                    "message_badges": {
+                        "error_badge": {
+                            "code": "standard-warning",
+                            "size": "m",
+                            "theme_mode": 1
                         }
                     },
                     "search": {
@@ -35,6 +53,14 @@
                     },
                     "show_empty_results": {
                         "value": 1
+                    },
+                    "structured_data": {
+                        "fragment": {
+                            "visible": 0
+                        },
+                        "mode": {
+                            "value": "auto"
+                        }
                     }
                 },
                 "card": {
@@ -48,6 +74,11 @@
                             }
                         },
                         "dialog": {
+                            "error_badge_theme": {
+                                "code": "standard-error",
+                                "size": "m",
+                                "theme_mode": 1
+                            },
                             "heading_typography_theme": {
                                 "code": "title-4",
                                 "theme_mode": 1
@@ -80,6 +111,17 @@
                                 "value": "Start Your Wishlist"
                             },
                             "message": {
+                                "textsettings": {
+                                    "fields": {
+                                        "normal": {
+                                            "badge_theme": {
+                                                "code": "standard-info",
+                                                "size": "m",
+                                                "theme_mode": 1
+                                            }
+                                        }
+                                    }
+                                },
                                 "value": "You don't have any wishlists yet."
                             }
                         },
@@ -390,6 +432,14 @@
                             }
                         ]
                     },
+                    "flags": {
+                        "max_flags": {
+                            "value": 2
+                        },
+                        "settings": {
+                            "enabled": 0
+                        }
+                    },
                     "image": {
                         "dimensions": {
                             "value": "290x290"
@@ -406,6 +456,9 @@
                             "enabled": 1
                         },
                         "swatches": {
+                            "change_swatches_on": {
+                                "value": "click"
+                            },
                             "settings": {
                                 "enabled": 0
                             }
@@ -534,8 +587,22 @@
                                 "theme_mode": 1
                             }
                         },
+                        "hide_facets_on_desktop": {
+                            "value": 0
+                        },
                         "hide_facets_prefix": {
                             "visible": 0
+                        },
+                        "rating_facets": {
+                            "icon": {
+                                "value": "star"
+                            },
+                            "settings": {
+                                "enabled": 1
+                            },
+                            "suffix": {
+                                "value": "& Up"
+                            }
                         },
                         "settings": {
                             "enabled": 1

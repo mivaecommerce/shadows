@@ -348,40 +348,49 @@ class MMX_CategoryCarousel extends MMX_Element {
 	renderCategoryImage(child) {
 		let mobileSource = '';
 		let tabletSource = '';
+		let mainSrcset = '';
 
 		child.image.url = this.getPropValue('fallback-image');
+
+		const sizes = this.getSlideImageSizesAttribute();
 
 		// Custom Images
 		if (MMX.isTruthy(child?.image?.custom_image?.settings?.enabled) && child?.image?.custom_image?.image?.image?.length ) {
 			child.image.url = child.image.custom_image.image.image;
 
-			const mobileImage = this.#getResponsiveImageData('mobile', child?.image?.custom_image?.image);
+			const mobileImage = MMX.getResponsiveImageData('mobile', child?.image?.custom_image?.image);
 
 			if (mobileImage) {
 				mobileSource = /*html*/`<source
 					class="source__mobile"
 					media="(max-width: 39.999em)"
-					srcset="${MMX.encodeEntitiesURI(mobileImage.image)}"
+					srcset="${mobileImage.isSrcset ? MMX.encodeEntities(mobileImage.image) : MMX.encodeEntitiesURI(mobileImage.image)}"
+					sizes="${sizes}"
 					width="${MMX.encodeEntities(mobileImage.width)}"
 					height="${MMX.encodeEntities(mobileImage.height)}"
 				>`;
 			}
 
-			const tabletImage = this.#getResponsiveImageData('tablet', child?.image?.custom_image?.image);
+			const tabletImage = MMX.getResponsiveImageData('tablet', child?.image?.custom_image?.image);
 
 			if (tabletImage) {
 				tabletSource = /*html*/`<source
 					class="source__tablet"
 					media="(max-width: 59.999em)"
-					srcset="${MMX.encodeEntitiesURI(tabletImage.image)}"
+					srcset="${tabletImage.isSrcset ? MMX.encodeEntities(tabletImage.image) : MMX.encodeEntitiesURI(tabletImage.image)}"
+					sizes="${sizes}"
 					width="${MMX.encodeEntities(tabletImage.width)}"
 					height="${MMX.encodeEntities(tabletImage.height)}"
 				>`;
 			}
+
+			if (!MMX.valueIsEmpty(child?.image?.custom_image?.image?.srcset)) {
+				mainSrcset = /*html*/`srcset="${MMX.encodeEntities(child.image.custom_image.image.srcset)}" sizes="${sizes}"`;
+			}
 		}
-		// Category Image (tree or title)
 		else if (MMX.isTruthy(child?.image?.category_image?.settings?.enabled)) {
 			const loadedCategory = this.loadedCategories[child.category.category.id];
+
 			if (child?.image?.category_image?.image?.value === 'cattitle' && loadedCategory?.CustomField_Values?.['cmp-cssui-cattitle']?.category_title_image?.length) {
 				child.image.url = loadedCategory.CustomField_Values['cmp-cssui-cattitle'].category_title_image;
 			}
@@ -394,6 +403,9 @@ class MMX_CategoryCarousel extends MMX_Element {
 			return '';
 		}
 
+		const mainWidth = child.image.custom_image?.image?.width;
+		const mainHeight = child.image.custom_image?.image?.height;
+
 		return /*html*/`
 			<picture
 				slot="image"
@@ -403,30 +415,21 @@ class MMX_CategoryCarousel extends MMX_Element {
 				${tabletSource}
 				<img
 					src="${MMX.encodeEntitiesURI(child.image.url)}"
+					${mainSrcset}
 					alt="${MMX.encodeEntities(child.image.custom_image?.image?.alt)}"
-					width="${MMX.encodeEntities(child.image.custom_image?.image?.width)}"
-					height="${MMX.encodeEntities(child.image.custom_image?.image?.height)}"
+					${mainWidth ? /*html*/`width="${MMX.encodeEntities(mainWidth)}"` : ''}
+					${mainHeight ? /*html*/`height="${MMX.encodeEntities(mainHeight)}"` : ''}
 					${this.getLoadingAttributeString()}
 				>
 			</picture>
 		`;
 	}
 
-	#getResponsiveImageData(device, image) {
-		const responsiveImageData = image?.responsive_image_data?.[device];
-		const responsiveImage = image?.responsive_images?.[device];
+	getSlideImageSizesAttribute() {
+		const [mobile, tablet, desktop] = MMX.splitString(this.getPropValue('per-page'), { separator: ',', trim: true })
+			.map(perPage => MMX.coerceNumber(perPage, 1) || 1);
 
-		if (!MMX.valueIsEmpty(responsiveImageData?.image)) {
-			return responsiveImageData;
-		}
-		else if (!MMX.valueIsEmpty(responsiveImage)) {
-			return {
-				image: responsiveImage
-			};
-		}
-		else {
-			return undefined;
-		}
+		return `auto, (max-width: 39.999em) calc(100vw / ${mobile}), (max-width: 59.999em) calc(100vw / ${tablet ?? mobile}), calc(100vw / ${desktop ?? tablet ?? mobile})`;
 	}
 
 	slider() {

@@ -1,0 +1,5 @@
+<mvt:if expr="l.settings:instance:_flex:settings_version LT '26.03.00'">
+	<mvt:comment> Badges: Disable Theme Mode on Upgrade </mvt:comment>
+	<mvt:assign name="l.settings:instance:advanced:message_badges:error_badge:theme_mode" value="0" />
+	<mvt:assign name="l.settings:instance:advanced:message_badges:empty_badge:theme_mode" value="0" />
+</mvt:if>

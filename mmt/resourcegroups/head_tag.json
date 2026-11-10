@@ -1,8 +1,8 @@
 {
     "code": "head_tag",
     "linked_js_resources": [
-        "GTM-head-tag",
-        "GTM-dataLayer"
+        "GTM-dataLayer",
+        "GTM-head-tag"
     ],
     "linked_css_resources": [
         "square-payment",

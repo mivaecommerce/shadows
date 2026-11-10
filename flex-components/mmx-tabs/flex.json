@@ -2,7 +2,7 @@
 	"code": "mmx-tabs",
 	"name": "MMX Tabs",
 	"type": "library",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-tabs",
 	"scripts": [
@@ -16,7 +16,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-i4cWiOkXZWwuopF3MDhal3mmwH9xTvsGUndp3fyR5Qg= sha384-s5CBTon0UNmYwG2hs4HyGIFFBNGaXfGNkzoIwga8Tx2+j7Iugg6LSqPaCJDezZOC sha512-P6+CWqiQ9tfRutfNx1hm7o1aiYNjf1r/QXslJhEBzMFFVdicOlOUcLUNFB/pA9V7CA4p99hs6vOObulMSwmuSw=="
+					"value": "sha256-nP2icuEf3pqczSI6H7VuL8OwoZeXA3u6zuQMyAdfqAA= sha384-Ay+siGCR4ThDb6JOyiMFWN64DKrYzFTy1AQnTx9nJOnEzOJXxkkfr7NTOkspVcgW sha512-Uz+GteL1zM4bSKqCxojg6DsAJFzWPU2IQpCpHJyMNIcTitkyhwLdik58kCLjg0Bx8YohrotnJXLFeB+MWrQSEw=="
 				},
 				{
 					"name": "crossorigin",
@@ -54,6 +54,6 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01"
+		"mmx-base": "=26.03.00"
 	}
 }

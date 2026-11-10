@@ -5,8 +5,8 @@
             "item_code": "contact-form",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "spacing": {
@@ -151,8 +151,51 @@
                         ]
                     },
                     "header": {
+                        "align": {
+                            "value": "center"
+                        },
+                        "body": {
+                            "source": "markdown",
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "typography_theme": {
+                                            "code": "paragraph-s",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+                        },
+                        "heading": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "typography_theme": {
+                                            "code": "display-3",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Heading Goes Here"
+                        },
                         "settings": {
                             "enabled": 0
+                        },
+                        "subheading": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "typography_theme": {
+                                            "code": "subheading-s",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Subheading Goes Here"
                         }
                     },
                     "layout": {
@@ -172,14 +215,74 @@
                     "messages": {
                         "missing_required_fields": {
                             "source": "markdown",
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "badge_size": {
+                                            "visible": 0
+                                        },
+                                        "badge_style": {
+                                            "visible": 0
+                                        },
+                                        "badge_theme": {
+                                            "code": "standard-error",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        },
+                                        "badge_variant": {
+                                            "visible": 0
+                                        }
+                                    }
+                                }
+                            },
                             "value": "We noticed some missing information. Please fill out the following required fields:"
                         },
                         "send_email_failure": {
                             "source": "markdown",
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "badge_size": {
+                                            "visible": 0
+                                        },
+                                        "badge_style": {
+                                            "visible": 0
+                                        },
+                                        "badge_theme": {
+                                            "code": "standard-error",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        },
+                                        "badge_variant": {
+                                            "visible": 0
+                                        }
+                                    }
+                                }
+                            },
                             "value": "There was problem submitting your information. Please use another method to attempt to contact us."
                         },
                         "send_email_success": {
                             "source": "markdown",
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "badge_size": {
+                                            "visible": 0
+                                        },
+                                        "badge_style": {
+                                            "visible": 0
+                                        },
+                                        "badge_theme": {
+                                            "code": "standard-success",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        },
+                                        "badge_variant": {
+                                            "visible": 0
+                                        }
+                                    }
+                                }
+                            },
                             "value": "Thank you for your form submission! We've received your information and will be in touch shortly."
                         }
                     },
@@ -216,10 +319,15 @@
             "item_code": "text-editor",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
+                    "desktop": {
+                        "width": {
+                            "value": 100
+                        }
+                    },
                     "spacing": {
                         "bottom": {
                             "value": 0

@@ -24,7 +24,7 @@
 	<section class="o-layout o-layout--justify-center">
 		<div class="o-layout__item u-width-12 u-width-6--m u-width-4--l">
 			<mvt:assign name="l.settings:url" value="miva_variable_value( 'l.settings:urls:' $ g.Old_Screen $ ':rr' )" />
-			<form method="post" action="&mvte:url;">
+			<form method="post" action="&mvte:url;" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name; for &mvt:product:name;</legend>
 					<input type="hidden" name="Search" value="&mvte:global:Old_Search;" />

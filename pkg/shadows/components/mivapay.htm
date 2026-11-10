@@ -1,6 +1,68 @@
 <Page_Update code="OPAY"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
 <input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
 
+<div id="mivapay_loading_fields" class="x-loading__fields" aria-hidden="true">
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>First Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Last Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Card Number</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<div class="o-layout__item">
+			<div class="o-layout">
+				<mvt:comment>Expiration Month</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+				<mvt:comment>Expiration Year</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:assign name="l.show_paymentcardtype_cvv" value="l.settings:mivapay:paymentcardtype:cvv AND l.settings:paymentsettings:mivapay:cvv_co_pct NE 'hidden'" />
+	<mvt:assign name="l.show_paymentcard_cvv" value="l.settings:mivapay:paymentcard:cvv AND l.settings:paymentsettings:mivapay:cvv_co_pc NE 'hidden'" />
+	<mvt:if expr="l.show_paymentcardtype_cvv OR l.show_paymentcard_cvv">
+		<div class="o-layout u-grids-5">
+			<mvt:comment>CVV</mvt:comment>
+			<div class="o-layout__item">
+				<div class="x-loading__label"></div>
+				<div class="x-loading__field"></div>
+			</div>
+		</div>
+	</mvt:if>
+	<mvt:if expr="g.Customer:id AND NOT l.settings:mivapay:paymentcard:id">
+		<mvt:comment>Store This Card For Future Use</mvt:comment>
+		<div class="x-loading__label"></div>
+	<mvt:elseif expr="l.settings:customer:address_count">
+		<div class="o-layout u-grids-3">
+			<div class="o-layout__item">
+				<mvt:comment>Billing Address</mvt:comment>
+				<div class="x-loading__label"></div>
+				<mvt:comment>Saved Address</mvt:comment>
+				<div class="x-loading__label"></div>
+				<div class="x-loading__field">
+				</div>
+			</div>
+		</div>
+	</mvt:if>
+</div>
+
 <iframe id="mivapay_frame" name="MivaPay_Frame" src="" title="Payment Details" style="width: 100%; height: 0; border: 0 none; visibility: hidden;"></iframe>
 
 <script>
@@ -94,6 +156,7 @@
 
 		if (this.element_frame && !this.submitting) {
 			this.submitting = true;
+			this.SetFormDisabled(true);
 			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
 		}
 	};
@@ -109,7 +172,10 @@
 		}
 
 		if (event && (typeof event.data === 'string')) {
-			if (event.data.indexOf('dimensions:') === 0) {
+			if (event.data === 'document_loaded') {
+				document.getElementById('mivapay_loading_fields')?.remove?.();
+			}
+			else if (event.data.indexOf('dimensions:') === 0) {
 				if (this.element_frame) {
 					this.element_frame.style.width = '100%';
 					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
@@ -135,8 +201,25 @@
 					this.submit_callback();
 				}
 			}
+			else {
+				this.SetFormDisabled(false);
+			}
 		}
 	};
+
+	MivaPay.prototype.SetFormDisabled = function (disabled = true) {
+		const form = document.querySelector('[data-hook~="opay-form"]');
+		const button = form?.querySelector?.('[data-hook~="loading-button"]');
+
+		if (disabled) {
+			window?.singleSubmit?.setFormLoading?.(form);
+			window?.loadingButton?.setButtonLoading?.(button);
+		}
+		else {
+			window?.singleSubmit?.removeFormLoading?.(form);
+			window?.loadingButton?.removeButtonLoading?.(button);
+		}
+	}
 
 	var MivaPay = new MivaPay();
 </script>
@@ -404,6 +487,103 @@
 </Template><Notes>#Set_Current_Time#</Notes></PaymentCardFields_CSS></Item></Page_Update><Page_Update code="CPCA"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
 <input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
 
+<div id="mivapay_loading_fields" class="x-loading__fields" aria-hidden="true">
+	<div class="o-layout u-grids-1 u-grids-3--m">
+		<mvt:comment>Card Type</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>First Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Last Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Card Number</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<div class="o-layout__item">
+			<div class="o-layout">
+				<mvt:comment>Expiration Month</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+				<mvt:comment>Expiration Year</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:comment>Billing Address</mvt:comment>
+	<div class="x-loading__label"></div>
+	<mvt:if expr="l.settings:customer:address_count">
+		<mvt:comment>Saved Address</mvt:comment>
+		<div class="o-layout u-grids-1 u-grids-3--m">
+			<div class="o-layout__item">
+				<div class="x-loading__label"></div>
+				<div class="x-loading__field"></div>
+			</div>
+		</div>
+	</mvt:if>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Street Address</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Street Address 2</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1">
+		<mvt:comment>City</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-3--m">
+		<mvt:comment>State/Province</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Other State/Province</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Zip/Postal Code</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Country</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+</div>
+
 <iframe id="mivapay_frame" name="MivaPay_Frame" src="" style="width: 100%; height: 0; border: 0 none; visibility: hidden;" title="Payment Card Details"></iframe>
 
 <script>
@@ -496,6 +676,7 @@
 
 		if (this.element_frame && !this.submitting) {
 			this.submitting = true;
+			this.SetFormDisabled(true);
 			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
 		}
 	}
@@ -511,7 +692,10 @@
 		}
 
 		if (event && (typeof event.data === 'string')) {
-			if (event.data.indexOf('dimensions:') === 0) {
+			if (event.data === 'document_loaded') {
+				document.getElementById('mivapay_loading_fields')?.remove?.();
+			}
+			else if (event.data.indexOf('dimensions:') === 0) {
 				if (this.element_frame) {
 					this.element_frame.style.width = '100%';
 					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
@@ -529,6 +713,23 @@
 					this.submit_callback();
 				}
 			}
+			else {
+				this.SetFormDisabled(false);
+			}
+		}
+	}
+
+	MivaPay.prototype.SetFormDisabled = function (disabled = true) {
+		const form = document.querySelector('[data-hook~="cpca-form"]');
+		const button = form?.querySelector?.('[data-hook~="loading-button"]');
+
+		if (disabled) {
+			window?.singleSubmit?.setFormLoading?.(form);
+			window?.loadingButton?.setButtonLoading?.(button);
+		}
+		else {
+			window?.singleSubmit?.removeFormLoading?.(form);
+			window?.loadingButton?.removeButtonLoading?.(button);
 		}
 	}
 
@@ -805,6 +1006,103 @@
 </Template><Notes>#Set_Current_Time#</Notes></PaymentCardFields_CSS></Item></Page_Update><Page_Update code="CPCE"><Item code="mivapay"><PaymentCardFields><Template><![CDATA[<input id="mivapay_response_xml" name="ResponseXML" type="hidden" value=""/>
 <input id="mivapay_response_signature" name="ResponseSignature" type="hidden" value=""/>
 
+<div id="mivapay_loading_fields" class="x-loading__fields" aria-hidden="true">
+	<div class="o-layout u-grids-1 u-grids-3--m">
+		<mvt:comment>Card Type</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>First Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Last Name</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Card Number</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<div class="o-layout__item">
+			<div class="o-layout">
+				<mvt:comment>Expiration Month</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+				<mvt:comment>Expiration Year</mvt:comment>
+				<div class="o-layout__item">
+					<div class="x-loading__label"></div>
+					<div class="x-loading__field"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<mvt:comment>Billing Address</mvt:comment>
+	<div class="x-loading__label"></div>
+	<mvt:if expr="l.settings:customer:address_count">
+		<mvt:comment>Saved Address</mvt:comment>
+		<div class="o-layout u-grids-1 u-grids-3--m">
+			<div class="o-layout__item">
+				<div class="x-loading__label"></div>
+				<div class="x-loading__field"></div>
+			</div>
+		</div>
+	</mvt:if>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Street Address</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Street Address 2</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1">
+		<mvt:comment>City</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-3--m">
+		<mvt:comment>State/Province</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Other State/Province</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+		<mvt:comment>Zip/Postal Code</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+	<div class="o-layout u-grids-1 u-grids-2--m">
+		<mvt:comment>Country</mvt:comment>
+		<div class="o-layout__item">
+			<div class="x-loading__label"></div>
+			<div class="x-loading__field"></div>
+		</div>
+	</div>
+</div>
+
 <iframe id="mivapay_frame" name="MivaPay_Frame" src="" style="width: 100%; height: 0; border: 0 none; visibility: hidden;" title="Payment Card Details"></iframe>
 
 <script>
@@ -897,6 +1195,7 @@
 
 		if (this.element_frame && !this.submitting) {
 			this.submitting = true;
+			this.SetFormDisabled(true);
 			this.element_frame.contentWindow.postMessage('submit', '&mvtj:paymentsettings:mivapay:base_url;');
 		}
 	}
@@ -912,7 +1211,10 @@
 		}
 
 		if (event && (typeof event.data === 'string')) {
-			if (event.data.indexOf('dimensions:') === 0) {
+			if (event.data === 'document_loaded') {
+				document.getElementById('mivapay_loading_fields')?.remove?.();
+			}
+			else if (event.data.indexOf('dimensions:') === 0) {
 				if (this.element_frame) {
 					this.element_frame.style.width = '100%';
 					this.element_frame.style.height = stoi_def_nonneg(event.data.split(':')[2], 0) + 'px';
@@ -930,6 +1232,23 @@
 					this.submit_callback();
 				}
 			}
+			else {
+				this.SetFormDisabled(false);
+			}
+		}
+	}
+
+	MivaPay.prototype.SetFormDisabled = function (disabled = true) {
+		const form = document.querySelector('[data-hook~="cpce-form"]');
+		const button = form?.querySelector?.('[data-hook~="loading-button"]');
+
+		if (disabled) {
+			window?.singleSubmit?.setFormLoading?.(form);
+			window?.loadingButton?.setButtonLoading?.(button);
+		}
+		else {
+			window?.singleSubmit?.removeFormLoading?.(form);
+			window?.loadingButton?.removeButtonLoading?.(button);
 		}
 	}
 

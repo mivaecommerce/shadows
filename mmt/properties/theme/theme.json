@@ -1,4 +1,2770 @@
 {
+    "badge_count": 20,
+    "badges": [
+        {
+            "classname": "mm-theme-badge-standard-default",
+            "code": "standard-default",
+            "name": "Standard: Default",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-standard-default__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-default__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-default__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "currentColor"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-standard-info",
+            "code": "standard-info",
+            "name": "Standard: Info",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-standard-info__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-info__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-info__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F3F9FE"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#8FBBE6"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#0C5298"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-standard-warning",
+            "code": "standard-warning",
+            "name": "Standard: Warning",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-standard-warning__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-warning__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-warning__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F8F8E1"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#E6E086"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#65602E"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-standard-error",
+            "code": "standard-error",
+            "name": "Standard: Error",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-standard-error__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-error__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-error__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#FBE3E3"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#F9C4C7"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#B13138"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-standard-success",
+            "code": "standard-success",
+            "name": "Standard: Success",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-standard-success__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-success__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-standard-success__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.6
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.6
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#DAF5EB"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#BBE1D3"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#0A7448"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-flag-default",
+            "code": "flag-default",
+            "name": "Flag: Default",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-flag-default__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-default__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-default__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "currentColor"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-flag-info",
+            "code": "flag-info",
+            "name": "Flag: Info",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-flag-info__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-info__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-info__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#0C5298"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#0C5298"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-flag-warning",
+            "code": "flag-warning",
+            "name": "Flag: Warning",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-flag-warning__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-warning__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-warning__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#65602E"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#65602E"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-flag-error",
+            "code": "flag-error",
+            "name": "Flag: Error",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-flag-error__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-error__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-error__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#B13138"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#B13138"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-flag-success",
+            "code": "flag-success",
+            "name": "Flag: Success",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-flag-success__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-success__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-flag-success__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_color": {
+                    "value": "#0A7448"
+                },
+                "border_enabled": {
+                    "value": 1
+                },
+                "border_left_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_right_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "border_style": {
+                    "value": "solid"
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_width": {
+                    "unit": "px",
+                    "value": 1
+                },
+                "color": {
+                    "value": "#0A7448"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-minimal-default",
+            "code": "minimal-default",
+            "name": "Minimal: Default",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-minimal-default__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-default__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-default__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-minimal-info",
+            "code": "minimal-info",
+            "name": "Minimal: Info",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-minimal-info__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-info__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-info__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F3F9FE"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "color": {
+                    "value": "#0C5298"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-minimal-warning",
+            "code": "minimal-warning",
+            "name": "Minimal: Warning",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-minimal-warning__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-warning__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-warning__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F8F8E1"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "color": {
+                    "value": "#65602E"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-minimal-error",
+            "code": "minimal-error",
+            "name": "Minimal: Error",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-minimal-error__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-error__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-error__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#FBE3E3"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "color": {
+                    "value": "#B13138"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-minimal-success",
+            "code": "minimal-success",
+            "name": "Minimal: Success",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-minimal-success__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 15
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-success__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 11
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-minimal-success__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 9
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.2
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 0.7
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.2
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#DAF5EB"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 0.25
+                },
+                "color": {
+                    "value": "#0A7448"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "uppercase"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-pill-default",
+            "code": "pill-default",
+            "name": "Pill: Default",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-pill-default__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-default__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-default__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "transparent"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "capitalize"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-pill-info",
+            "code": "pill-info",
+            "name": "Pill: Info",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-pill-info__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-info__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-info__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F3F9FE"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "color": {
+                    "value": "#0C5298"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "capitalize"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-pill-warning",
+            "code": "pill-warning",
+            "name": "Pill: Warning",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-pill-warning__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-warning__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-warning__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#F8F8E1"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "color": {
+                    "value": "#65602E"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "capitalize"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-pill-error",
+            "code": "pill-error",
+            "name": "Pill: Error",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-pill-error__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-error__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-error__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#FBE3E3"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "color": {
+                    "value": "#B13138"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "capitalize"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        },
+        {
+            "classname": "mm-theme-badge-pill-success",
+            "code": "pill-success",
+            "name": "Pill: Success",
+            "size_count": 3,
+            "sizes": [
+                {
+                    "classname": "mm-theme-badge-pill-success__large",
+                    "code": "l",
+                    "default": 0,
+                    "name": "Large",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 20
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-success__medium",
+                    "code": "m",
+                    "default": 1,
+                    "name": "Medium",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 14
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                },
+                {
+                    "classname": "mm-theme-badge-pill-success__small",
+                    "code": "s",
+                    "default": 0,
+                    "name": "Small",
+                    "styles": {
+                        "font_size": {
+                            "unit": "px",
+                            "value": 12
+                        },
+                        "padding_bottom": {
+                            "unit": "em",
+                            "value": 0.3
+                        },
+                        "padding_left": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_right": {
+                            "unit": "em",
+                            "value": 1.25
+                        },
+                        "padding_top": {
+                            "unit": "em",
+                            "value": 0.3
+                        }
+                    }
+                }
+            ],
+            "styles": {
+                "background_color": {
+                    "value": "#DAF5EB"
+                },
+                "border_bottom_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_bottom_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_left_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "border_top_right_radius": {
+                    "unit": "em",
+                    "value": 2
+                },
+                "color": {
+                    "value": "#0A7448"
+                },
+                "font": {
+                    "code": "inter",
+                    "style": "normal",
+                    "weight": 400
+                },
+                "text_transform": {
+                    "value": "capitalize"
+                },
+                "white_space": {
+                    "value": "normal"
+                }
+            }
+        }
+    ],
     "button_count": 7,
     "buttons": [
         {

@@ -339,6 +339,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	styleResourceCodes = ['mmx-base', 'mmx-button', 'mmx-forms', 'mmx-hero', 'mmx-hero-slider', 'mmx-featured-product'];
 	#buttonEnabled = true;
+	#styleRules = [];
 	renderUniquely = true;
 	lifecycleReady = false;
 
@@ -830,6 +831,57 @@ class MMX_FeaturedProduct extends MMX_Element {
 		}
 	}
 
+	//
+	// Attribute Style Rules
+	//
+
+	#getMatchingStyleRule(attribute) {
+		return this.#styleRules.find(rule => this.#doesStyleRuleMatchAttribute(rule, attribute));
+	}
+
+	#doesStyleRuleMatchAttribute(rule, attribute) {
+		if (!MMX.valueIsEmpty(rule?.attribute_codes?.value)) {
+			const includedAttributeCodes = MMX.splitString(rule.attribute_codes.value);
+
+			if (!includedAttributeCodes.includes(attribute.code)) {
+				return false;
+			}
+		}
+
+		if (!MMX.valueIsEmpty(rule?.attribute_types?.value)) {
+			const includedAttributeTypes = MMX.splitString(rule.attribute_types.value);
+
+			if (!includedAttributeTypes.includes(attribute.type)) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	#getDisplayStyle(attribute) {
+		return this.#getMatchingStyleRule(attribute)?.display_style?.value || '';
+	}
+
+	#buildSwatchStyleVars(rule) {
+		if (!rule) {
+			return {};
+		}
+
+		return {
+			'--mmx-featured-product__swatch-size': MMX.composeUnitValue(rule.size),
+			'--mmx-featured-product__swatch-border-radius': MMX.objectToCssShorthand(rule.border_radius, {key: 'border_%corner%_radius'}) ?? '0',
+			'--mmx-featured-product__swatch-border-width': MMX.objectToCssShorthand(rule.border_width, {key: 'border_%side%_width'}) ?? '0',
+			'--mmx-featured-product__swatch-border-color': rule.border_color?.value
+		};
+	}
+
+	#buildAttributeStyleAttr(attribute) {
+		const styles = MMX.objectToInlineStyles(this.#buildSwatchStyleVars(this.#getMatchingStyleRule(attribute)));
+
+		return styles.length ? ` style="${MMX.encodeEntities(styles)}"` : '';
+	}
+
 	renderProductContentAttributeCommon(attribute, index, template) {
 		if (!template) {
 			return `<input type="hidden" name="Product_Attributes[${MMX.encodeEntities(index)}]:code" value="${MMX.encodeEntities(attribute.code)}">`;
@@ -869,10 +921,12 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 	renderProductContentAttributeRadio(attribute, index, template) {
 		const required = attribute.required ? 'required' : '';
+		const displayStyle = this.#getDisplayStyle(attribute);
+		const displayModifierClass = displayStyle ? ` mmx-featured-product__product-attribute--${MMX.encodeEntities(displayStyle)}` : '';
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div part="product-attribute" class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute${displayModifierClass}"${this.#buildAttributeStyleAttr(attribute)}>
 				<span class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</span>
 				<fieldset class="mmx-form-fieldset">
 					${attribute.options.map(option => this.renderProductContentAttributeRadioOption(attribute, index, option)).join('')}
@@ -891,29 +945,47 @@ class MMX_FeaturedProduct extends MMX_Element {
 	}
 
 	renderProductContentAttributeRadioOption(attribute, index, option) {
-		var encoded_image_template;
-
-		const required	= attribute.required ? 'required' : '';
-		const checked	= this.shouldSelectAttributeOption(attribute, option) ? 'checked' : '';
-
-		if (option.image?.length)	encoded_image_template = `<img src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
-		else						encoded_image_template = `${MMX.encodeEntities(option.prompt)} ${this.#renderProductAttributePrice(option)}`;
+		const required		= attribute.required ? 'required' : '';
+		const checked		= this.shouldSelectAttributeOption(attribute, option) ? 'checked' : '';
+		const displayStyle	= this.#getDisplayStyle(attribute);
+		const labelClass	= displayStyle ? ` mmx-featured-product__product-attribute-checkbox--${MMX.encodeEntities(displayStyle)}` : '';
+		const optionClass	= displayStyle ? ` ${this.#buildAttributeOptionClass(displayStyle)}` : '';
 
 		return /*html*/`
-			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio mmx-form-radio" title="${MMX.encodeEntities(option.prompt)}">
+			<label class="mmx-featured-product__product-attribute-checkbox mmx-featured-product__product-attribute-checkbox__radio mmx-form-radio${labelClass}" title="${MMX.encodeEntities(option.prompt)}">
 				<input class="mmx-featured-product__product-attribute-checkbox__input mmx-form-radio__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(option.price)}" data-regular-price="" type="radio" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" value="${MMX.encodeEntities(option.code)}" ${checked} ${required}>
-				<span class="mmx-featured-product__product-attribute-checkbox__caption mmx-form-radio__caption">${encoded_image_template}</span>
+				<span class="mmx-featured-product__product-attribute-checkbox__caption mmx-form-radio__caption${optionClass}">${this.#renderAttributeOptionContent(option, displayStyle)}</span>
 			</label>
 		`;
 	}
 
+	#buildAttributeOptionClass(displayStyle) {
+		return `mmx-featured-product__product-attribute-option mmx-featured-product__product-attribute-option--${MMX.encodeEntities(displayStyle)}`;
+	}
+
+	#renderAttributeOptionContent(option, displayStyle) {
+		const text = `<span class="mmx-featured-product__product-attribute-option__text">${MMX.encodeEntities(option.prompt)} ${this.#renderProductAttributePrice(option)}</span>`;
+
+		if (displayStyle === 'buttons' || !option.image?.length) {
+			return text;
+		}
+
+		const image = `<img class="mmx-featured-product__product-attribute-option__image" src="${MMX.encodeEntitiesURI(option.image)}" alt="${MMX.encodeEntities(option.prompt)}" loading="lazy" />`;
+
+		return displayStyle === 'card' ? `${image}${text}` : image;
+	}
+
 	renderProductContentAttributeSelect(attribute, index, template) {
+		if (this.#getDisplayStyle(attribute)) {
+			return this.renderProductContentAttributeSwatchSelect(attribute, index, template);
+		}
+
 		const attribute_id	= this.buildAttributeID(attribute);
 		const required		= attribute.required ? 'required' : '';
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div part="product-attribute" class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute"${this.#buildAttributeStyleAttr(attribute)}>
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}</label>
 				<div class="mmx-featured-product__product-attribute-select mmx-form-select">
 					<select id="${MMX.encodeEntities(attribute_id)}" class="mmx-featured-product__product-attribute-select__dropdown mmx-form-select__dropdown" data-attribute="${MMX.encodeEntities(attribute.code)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required}>
@@ -953,7 +1025,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div part="product-attribute" class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute"${this.#buildAttributeStyleAttr(attribute)}>
 				<label class="mmx-featured-product__product-attribute-label ${MMX.encodeEntities(required)}" for="${MMX.encodeEntities(attribute_id)}" title="${MMX.encodeEntities(attribute.prompt)}">${attribute.prompt}:&nbsp;<span data-hook="attribute-swatch-name--${MMX.encodeEntities(attribute.id)}"></span></label>
 				<div class="mmx-featured-product__product-attribute-select mmx-featured-product__product-attribute-select__swatch">
 					<select class="mmx-featured-product__product-attribute-select__dropdown" aria-labelledby="${MMX.encodeEntities(attribute_id)}" data-attribute="${MMX.encodeEntities(attribute.code)}" data-hook="attribute-swatch-select--${MMX.encodeEntities(attribute.id)}" name="Product_Attributes[${MMX.encodeEntities(index)}]:value">
@@ -986,7 +1058,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 
 		return /*html*/`
 			${this.renderProductContentAttributeCommon(attribute, index, template)}
-			<div part="product-attribute" class="mmx-featured-product__product-attribute">
+			<div part="product-attribute" class="mmx-featured-product__product-attribute"${this.#buildAttributeStyleAttr(attribute)}>
 				<label class="mmx-featured-product__product-attribute-checkbox mmx-form-checkbox" title="${MMX.encodeEntities(attribute.prompt)}">
 					<input class="mmx-featured-product__product-attribute-checkbox__input mmx-form-checkbox__input" data-attribute="${MMX.encodeEntities(attribute.code)}" data-option-price="${MMX.encodeEntities(attribute.price)}" data-regular-price="" type="checkbox" name="Product_Attributes[${MMX.encodeEntities(index)}]:value" ${required} ${checked}>
 					<span class="mmx-featured-product__product-attribute-checkbox__caption mmx-form-checkbox__caption">${encoded_image_template}</span>
@@ -1285,6 +1357,7 @@ class MMX_FeaturedProduct extends MMX_Element {
 		attributemachine = new AttributeMachine(product_data);
 
 		this.initializeAttributeMachine_OverwriteGenerateDiscount(attributemachine);
+		this.initializeAttributeMachine_OverwriteInitializeSwatches(attributemachine);
 		this.initializeAttributeMachine_OverwriteGenerateSwatch(attributemachine);
 		this.initializeAttributeMachine_OverwriteSwatchClick(attributemachine);
 		this.initializeAttributeMachine_OverwriteEnableDisablePurchaseButtons(attributemachine);
@@ -1308,43 +1381,67 @@ class MMX_FeaturedProduct extends MMX_Element {
 		};
 	}
 
+	initializeAttributeMachine_OverwriteInitializeSwatches(attributemachine) {
+		const self = this;
+
+		attributemachine.oninitializeswatches = function(attributes, possible) {
+			this.Initialize_Swatches(self.#withStyledSelectsAsSwatchSelects(attributes), possible);
+		};
+	}
+
+	#withStyledSelectsAsSwatchSelects(attributes) {
+		return attributes.map(attribute => {
+			if (attribute.type === 'template') {
+				return {...attribute, attributes: attribute.attributes.map(templateAttribute => this.#asSwatchSelect(templateAttribute))};
+			}
+
+			return this.#asSwatchSelect(attribute);
+		});
+	}
+
+	#asSwatchSelect(attribute) {
+		if (attribute.type !== 'select' || !this.#getDisplayStyle(attribute)) {
+			return attribute;
+		}
+
+		return {...attribute, type: 'swatch-select', source_attribute: attribute};
+	}
+
 	initializeAttributeMachine_OverwriteGenerateSwatch(attributemachine) {
 		const self = this;
 
 		attributemachine.Generate_Swatch = function(product_code, attribute, option) {
-			var img, swatch, swatch_button, swatch_container;
+			var swatch, swatch_button, swatch_container;
+
+			const sourceAttribute	= attribute.source_attribute ?? attribute;
+			const displayStyle		= self.#getDisplayStyle(sourceAttribute) || 'swatches';
 
 			swatch_container	= self.shadowRoot.getElementById(`swatches--${attribute.id}`);
 
-			img					= document.createElement('img');
-			img.src				= encodeURI(option.image);
-			img.setAttribute('alt', option.prompt);
+			if (swatch_container) {
+				const vars = self.#buildSwatchStyleVars(self.#getMatchingStyleRule(sourceAttribute));
+
+				Object.entries(vars).forEach(([property, value]) => {
+					if (MMX.valueIsEmpty(value)) {
+						swatch_container.style.removeProperty(property);
+					}
+					else {
+						swatch_container.style.setProperty(property, value);
+					}
+				});
+			}
 
 			swatch_button		= document.createElement('button');
 			swatch_button.setAttribute('type', 'button');
 			swatch_button.setAttribute('aria-label', option.prompt);
-			swatch_button.appendChild(img);
+			swatch_button.className = self.#buildAttributeOptionClass(displayStyle);
+			swatch_button.innerHTML = self.#renderAttributeOptionContent(option, displayStyle);
 
 			swatch				= document.createElement('li');
 			swatch.classList.add('o-list-inline__item');
 			swatch.setAttribute('data-code', option.code);
 			swatch.setAttribute('data-color', option.prompt);
 			swatch.appendChild(swatch_button);
-
-			img.onload			= function() {
-				if (window.matchMedia('(pointer: fine)').matches) {
-					img.height	= this.height / 2;
-					img.width	= this.width / 2;
-				}
-				else {
-					img.height	= this.height;
-					img.width	= this.width;
-				}
-
-				if (swatch_container) {
-					swatch_container.style.minHeight = `${this.height * 1.25}px`;
-				}
-			};
 
 			setTimeout(function() {
 				var swatch_select, swatch_list_element, swatch_name_element, selected_swatch_option;
@@ -1570,6 +1667,8 @@ class MMX_FeaturedProduct extends MMX_Element {
 		if (this.data?.product?.product?._isPreloaded) {
 			this.setProduct(this.data?.product?.product?.product);
 		}
+
+		this.#styleRules = Array.from(this.data?.advanced?.attribute_settings?.styles?.children ?? []);
 
 		MMX.setElementAttributes(this, {
 			'data-image-position': this.data?.layout?.image_position?.value,

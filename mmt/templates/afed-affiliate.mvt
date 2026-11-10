@@ -6,7 +6,7 @@
 		</div>
 		<hr class="c-keyline">
 		<br>
-		<form method="post" action="&mvte:urls:AFAE:secure;">
+		<form method="post" action="&mvte:urls:AFAE:secure;" data-hook="single-submit">
 			<fieldset>
 				<legend>&mvt:page:name;</legend>
 				<input type="hidden" name="Action" value="UAFL" />
@@ -193,7 +193,7 @@
 
 				<div class="c-form-list">
 					<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
+						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save" data-hook="loading-button">
 					</div>
 				</div>
 			</fieldset>

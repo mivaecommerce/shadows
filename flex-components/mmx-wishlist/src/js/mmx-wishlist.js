@@ -212,11 +212,20 @@ class MMX_AtwlDialog extends MMX_Element {
 	#showDialogError({heading = 'Error', content = ''} = {}) {
 		this.#showDialog({
 			heading,
-			content: /*html*/`
-				<mmx-message data-style="error">
-					${MMX.encodeEntities(content)}
-				</mmx-message>
-			`
+			content: this.#renderMessage({
+				style: 'error',
+				content: MMX.encodeEntities(content)
+			})
+		});
+	}
+
+	// Only error messages have a badge; other styles render legacy
+	#renderMessage({style = 'info', content = '', badgeTheme, attributes = {}} = {}) {
+		return this.renderBadgeMessage({
+			badgeTheme: badgeTheme ?? (style === 'error' ? this.#settings?.dialog?.error_badge_theme : {}),
+			style,
+			content,
+			attributes
 		});
 	}
 
@@ -342,9 +351,12 @@ class MMX_AtwlDialog extends MMX_Element {
 		const buttonText = MMX.coerceString(this.#settings?.empty_wishlists?.button?.value, {fallback: 'Add Wishlist'});
 
 		return /*html*/`
-			<mmx-message data-style="info" class="mmx-atwl-dialog__empty-message">
-				${MMX.encodeEntities(message)}
-			</mmx-message>
+			${this.#renderMessage({
+				badgeTheme: this.#settings?.empty_wishlists?.message?.textsettings?.fields?.normal?.badge_theme,
+				style: 'info',
+				content: MMX.encodeEntities(message),
+				attributes: {class: 'mmx-atwl-dialog__empty-message'}
+			})}
 			${this.#renderShowAddWishlistButton({
 				text: buttonText,
 				theme: 'primary'
@@ -608,11 +620,10 @@ class MMX_AtwlDialog extends MMX_Element {
 			return;
 		}
 
-		this.#loginFormMessage().innerHTML = /*html*/`
-			<mmx-message data-style="${MMX.encodeEntities(style)}">
-				${MMX.encodeEntities(message)}
-			</mmx-message>
-		`;
+		this.#loginFormMessage().innerHTML = this.#renderMessage({
+			style,
+			content: MMX.encodeEntities(message)
+		});
 	}
 
 	#handleCustomerLoginError(response) {
@@ -695,11 +706,10 @@ class MMX_AtwlDialog extends MMX_Element {
 			return;
 		}
 
-		this.#addWishlistFormMessage().innerHTML = /*html*/`
-			<mmx-message data-style="${MMX.encodeEntities(style)}">
-				${MMX.encodeEntities(message)}
-			</mmx-message>
-		`;
+		this.#addWishlistFormMessage().innerHTML = this.#renderMessage({
+			style,
+			content: MMX.encodeEntities(message)
+		});
 	}
 
 	#onAddWishlistFormSubmit(e) {

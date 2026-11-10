@@ -2,10 +2,11 @@
 	"code": "mmx-product-carousel",
 	"name": "Product Carousel",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-product-carousel",
 	"category": "product-carousel",
+	"output_minimal_json": false,
 	"description": "## Product Carousel\nA rotating display of products that allows users to scroll through featured, trending, or recommended items. This component is great for increasing visibility to popular, relevant, or related products within a limited space.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
@@ -516,11 +517,11 @@
 					"code": "sort",
 					"options": [
 						{
-							"text": "Relevance",
+							"text": "Relevance (Supports Boosts)",
 							"value": "relevance"
 						},
 						{
-							"text": "Display Order",
+							"text": "Display Order (Supports Boosts)",
 							"value": "disp_order"
 						},
 						{
@@ -578,6 +579,32 @@
 					],
 					"prompt": "Sort Order",
 					"type": "select"
+				},
+				{
+					"code": "boostrule_warning",
+					"content": "Boosting rules from Merchandising won’t apply with this sort.",
+					"icon": "tooltip",
+					"message_type": "info",
+					"type": "advisorymessage",
+					"visibility_conditions": {
+						"sort": {
+							"value": [
+								"disp_order_desc",
+								"newest",
+								"oldest",
+								"updated",
+								"code_asc",
+								"code_desc",
+								"name_asc",
+								"name_desc",
+								"price_asc",
+								"price_desc",
+								"bestsellers",
+								"customfield",
+								"customfield_desc"
+							]
+						}
+					}
 				},
 				{
 					"code": "sort_customfield",
@@ -661,6 +688,22 @@
 					"step": 1,
 					"text_type": "number",
 					"type": "text"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "message_badges",
+			"collapsed": 0,
+			"prompt": "Messages",
+			"properties": [
+				{
+					"code": "error_badge",
+					"preview_property_selector": ":shadow [part~=\"error\"]",
+					"prompt": "Error Badge",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "badge"
 				}
 			],
 			"type": "group"
@@ -1006,6 +1049,13 @@
 					"value": "auto"
 				}
 			},
+			"message_badges": {
+				"error_badge": {
+					"code": "standard-warning",
+					"size": "m",
+					"theme_mode": 1
+				}
+			},
 			"settings": {
 				"additional_price": {
 					"value": "base"
@@ -1135,10 +1185,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-product-carousel.js",
@@ -1150,7 +1200,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-fx49tA4bZ6rDCf9/CM+PHNugfmp31Cesh/N+HcCtMis= sha384-+8eLTX64kGMF3UDlCPcEFzDF83/xLhk1fncDHSQ14a9vp9kWCjCMAiIQaFy14cgO sha512-M6mBiK+CGgdkx3JN1dczHJQnV8k9aXKl4lg5yjYlD0Ah12xnZtc/WrJ5aMrKPsJS8Uee75d2k4fI1KCN8LG/mA=="
+					"value": "sha256-Woj05Sfi3Y5HvOlrY5P7fMzgQ5wDqDlDsB5UvPTFeDg= sha384-RTDR8eLqR8nsN23FW77gYpFGtQ67INpYzBrtNlHK89Xpvejf7OQpe02gmJs4UnZL sha512-CtQb+qa6v2xnCPO9Q52r/+qX4kkpfnyF0hIUli3MB128RDMIZ5iQJbSrSbWRNuwx/0ig+NxPIygdcocu97V/Pw=="
 				},
 				{
 					"name": "crossorigin",
@@ -1160,11 +1210,11 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-hero-slider": "=26.02.01",
-		"mmx-messages": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-hero-slider": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

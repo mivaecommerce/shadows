@@ -2,10 +2,11 @@
 	"code": "mmx-category-list",
 	"name": "Category List",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-list",
 	"category": "product-list",
+	"output_minimal_json": false,
 	"description": "## Category List\nA responsive grid that displays categories and subcategories to help customers visually navigate your catalog. Ideal for building top-level category pages, it supports optional headings, category images, custom fields, call-to-action buttons, and breakpoint-based column layouts for flexible merchandising.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
@@ -628,12 +629,86 @@
 				}
 			],
 			"type": "group"
+		},
+		{
+			"code": "message_badges",
+			"collapsed": 0,
+			"prompt": "Messages",
+			"properties": [
+				{
+					"code": "error_badge",
+					"preview_property_selector": ":shadow [part~=\"error\"]",
+					"prompt": "Error Badge",
+					"supports_customization": 1,
+					"supports_legacy": 1,
+					"type": "badge"
+				}
+			],
+			"type": "group"
+		},
+		{
+			"code": "structured_data",
+			"prompt": "Structured Data",
+			"properties": [
+				{
+					"code": "mode",
+					"options": [
+						{
+							"text": "Auto",
+							"value": "auto"
+						},
+						{
+							"text": "Fragment",
+							"value": "fragment"
+						},
+						{
+							"text": "None",
+							"value": "none"
+						}
+					],
+					"prompt": "Mode",
+					"tooltip": {
+						"content": "\"Auto\": Client-side only. JavaScript builds an ItemList (name and URL) from the loaded categories, so it is not in the page source. \"Fragment\": Server-side + client-side. The selected fragment renders into the page source, then is replaced client-side with the fragment's output for each loaded category. \"None\": No structured data is output.",
+						"title": "Structured Data"
+					},
+					"type": "select"
+				},
+				{
+					"code": "fragment",
+					"placeholder": "json_ld",
+					"prompt": "Fragment",
+					"type": "fragment",
+					"visibility_conditions": {
+						"mode": {
+							"value": [
+								"fragment"
+							]
+						}
+					}
+				}
+			],
+			"type": "group"
 		}
 	],
 	"defaults": {
 		"advanced": {
 			"initial_display": {
 				"initial_height": {
+					"value": "auto"
+				}
+			},
+			"message_badges": {
+				"error_badge": {
+					"code": "standard-warning",
+					"size": "m",
+					"theme_mode": 1
+				}
+			},
+			"structured_data": {
+				"fragment": {
+					"value": "json_ld"
+				},
+				"mode": {
 					"value": "auto"
 				}
 			}
@@ -731,10 +806,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-category-list.js",
@@ -746,7 +821,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-tY0aGKggALFLHZUfFoJUeQGJ64+x5NE/GqbBM9k5Lks= sha384-QWEDZ3OHRThN2cB3FDn5jR5WjDf3SeBkCebAMJcCcJVHk3c3QQlMftJcYVlBxTfm sha512-E718GxFkNhMbON7oudHuGf0ndPE9XkVZ4EQOpVanZb2shJ+Joz3z9JtMJO1KF8mTxKW+BaZfX/8usl07ffibCQ=="
+					"value": "sha256-qpBSZ3fYbvF65Vvr6KNF/MVooCGO04TexVRjHcXWsT0= sha384-vEVxRTzBYgvlU2L2wzX+h+NepkMFgWKYI/b6CifX9ElkTUMvw5Lrc40X0rQie9o/ sha512-0yESzzOyfyAE5l0nQPXZ7ByycsFHmdh/Xdfj/EYVH4UYRrk531xFRMAcn0T0lmykaDeSNZhEQx3FrrZ7gk3LvQ=="
 				},
 				{
 					"name": "crossorigin",
@@ -788,10 +863,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-card": "=26.02.01",
-		"mmx-messages": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-card": "=26.03.00",
+		"mmx-messages": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }

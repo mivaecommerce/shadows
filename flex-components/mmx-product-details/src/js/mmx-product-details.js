@@ -33,6 +33,7 @@ class MMX_ProductDetails extends MMX_Element {
 	#images = [];
 	#volumePricing = [];
 	#errorMessage;
+	#advancedData = {};
 
 	// Details
 	#details = [];
@@ -94,7 +95,18 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#listenForAddToWishlist();
 		this.#listenForAttributeMachine();
 		this.#listenForQuantityInput();
+		this.#listenForRatingSummaryReveal();
+		this.#listenForReviewAdded();
+		this.#listenForNestedContentUpdated();
 		this.#initializeReadMore();
+	}
+
+	#listenForNestedContentUpdated() {
+		this.shadowRoot.querySelectorAll('mmx-product-fitment-list, mmx-rating-reviews').forEach((element) => {
+			element.addEventListener('contentUpdated', () => {
+				this.debouncedDispatchContentUpdated();
+			});
+		});
 	}
 
 	// Notifications
@@ -188,9 +200,7 @@ class MMX_ProductDetails extends MMX_Element {
 		];
 	}
 
-	#getVariantIdFilters() {
-		const variantId = this.#getRequestParam('Variant_ID');
-
+	#getVariantIdFilters(variantId = this.#getRequestParam('Variant_ID')) {
 		if (MMX.valueIsEmpty(variantId)) {
 			return [];
 		}
@@ -243,6 +253,7 @@ class MMX_ProductDetails extends MMX_Element {
 
 		this.#setProductAttributeValues();
 		this.#setSubscriptionTerm();
+		this.#setAdvancedData(product);
 	}
 
 	get product() {
@@ -258,6 +269,10 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 	get volumePricing() {
 		return this.#volumePricing;
+	}
+
+	get advancedData() {
+		return structuredClone(this.#advancedData);
 	}
 
 	#setProductAttributeValues() {
@@ -339,8 +354,8 @@ class MMX_ProductDetails extends MMX_Element {
 
 	// Details
 	#setDetails() {
-		this.#flatDetails = this.#flattenProductDetails(this.data.details.children);
-		this.#details = this.data.details;
+		this.#flatDetails = this.#flattenProductDetails(this.data?.details?.children ?? []);
+		this.#details = this.data?.details ?? {};
 	}
 
 	#getDetailsByType(type = '') {
@@ -405,7 +420,22 @@ class MMX_ProductDetails extends MMX_Element {
 			else if (type === 'product-charges') {
 				filtersMap.ondemandcolumns.add('discounts');
 			}
+			else if (type === 'review-summary') {
+				[detail?.rating_settings?.rating_custom_field?.value, detail?.rating_settings?.count_custom_field?.value].forEach(customField => {
+					if (!MMX.valueIsEmpty(customField)) {
+						filtersMap.ondemandcolumns.add(`CustomField_Values:${customField}`);
+					}
+				});
+			}
 		});
+
+		if (this.#structuredDataMode() === 'fragment' && !MMX.valueIsEmpty(this.#structuredDataFragmentCode())) {
+			filtersMap.fragments.add(this.#structuredDataFragmentCode());
+		}
+
+		if (this.#hasAdvancedDataFragment()) {
+			filtersMap.fragments.add(this.#advancedDataFragmentCode());
+		}
 
 		return filtersMap;
 	}
@@ -440,7 +470,11 @@ class MMX_ProductDetails extends MMX_Element {
 	#renderMainError() {
 		return /*html*/`
 			<div part="error" class="mmx-product-display__error">
-				<mmx-message data-style="warning">We're unable to display the product: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the product')}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.error_badge,
+					style: 'warning',
+					content: `We're unable to display the product: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the product')}`
+				})}
 			</div>
 		`;
 	}
@@ -497,6 +531,12 @@ class MMX_ProductDetails extends MMX_Element {
 				return this.#willRenderQuantityInBasket(detail);
 			case 'quantity-input':
 				return this.#willRenderQuantityInput(detail);
+			case 'review-form':
+				return this.#willRenderRatingForm(detail);
+			case 'review-summary':
+				return this.#willRenderRatingSummary(detail);
+			case 'reviews':
+				return this.#willRenderRatingReviews(detail);
 			case 'side-by-side-group':
 				return this.#willRenderSideBySideGroup(detail);
 			case 'tab-group':
@@ -627,6 +667,23 @@ class MMX_ProductDetails extends MMX_Element {
 		return !this.#renderedQuantity;
 	}
 
+	// instance.mvt only outputs the tgreviews data when the module is installed and the item is assigned to the page
+	#hasReviewsModule() {
+		return MMX.isTruthy(this.data?.server?.tgreviews?.enabled);
+	}
+
+	#willRenderRatingForm(detail = {}) {
+		return this.#hasReviewsModule();
+	}
+
+	#willRenderRatingSummary(detail = {}) {
+		return this.#hasReviewsModule();
+	}
+
+	#willRenderRatingReviews(detail = {}) {
+		return this.#hasReviewsModule();
+	}
+
 	#willRenderWeight(detail = {}) {
 		return !MMX.valueIsEmpty(this.#product?.formatted_weight);
 	}
@@ -704,6 +761,15 @@ class MMX_ProductDetails extends MMX_Element {
 				break;
 			case 'quantity-input':
 				content = this.#renderQuantityInput(detail);
+				break;
+			case 'review-form':
+				content = this.#renderRatingForm(detail);
+				break;
+			case 'review-summary':
+				content = this.#renderRatingSummary(detail);
+				break;
+			case 'reviews':
+				content = this.#renderRatingReviews(detail);
 				break;
 			case 'side-by-side-group':
 				content = this.#renderSideBySideGroup(detail);
@@ -890,6 +956,7 @@ class MMX_ProductDetails extends MMX_Element {
 
 			styles.maxHeight = `${MMX.coerceNumber(detail?.max_height_settings?.amount?.value, 10)}vh`;
 
+			detail.max_height_settings.read_more ??= {};
 			detail.max_height_settings.read_more.value = MMX.valueIsEmpty(detail.max_height_settings.read_more.value) ? 'Read More' : detail.max_height_settings.read_more.value;
 			readMore = this.renderButtonProperty(detail.max_height_settings.read_more, {
 				defaultStyle: 'display-link',
@@ -1153,6 +1220,8 @@ class MMX_ProductDetails extends MMX_Element {
 		let actionUrl = '';
 		let successMessage = '';
 		let errorMessage = '';
+		let successBadgeClass = '';
+		let errorBadgeClass = '';
 
 		if (type === 'add-to-cart-button') {
 			prop = detail.add_to_cart_button;
@@ -1160,6 +1229,8 @@ class MMX_ProductDetails extends MMX_Element {
 			actionUrl = detail?.global_minibasket_url?.url ?? '';
 			successMessage = detail?.add_to_cart_messages?.success_message?.value;
 			errorMessage = detail?.add_to_cart_messages?.error_message?.value;
+			successBadgeClass = this.#getBadgeThemeClass(detail?.add_to_cart_messages?.success_message);
+			errorBadgeClass = this.#getBadgeThemeClass(detail?.add_to_cart_messages?.error_message);
 			if (this.#productIsOutOfStock()) {
 				disabled = 'disabled';
 			}
@@ -1171,27 +1242,54 @@ class MMX_ProductDetails extends MMX_Element {
 
 		const theme_available = prop?.textsettings?.fields?.normal?.button_theme?.theme_available || false;
 
+		const waitlistHtml = (type === 'add-to-cart-button' && MMX.isTruthy(this.data?.server?.enable_waitlist) && detail?.waitlist_settings?.settings?.enabled)
+			? /*html*/`
+				<mmx-product-waitlist data-init="script">
+					<script type="application/json">
+						${MMX.scriptSafeJSONStringify({
+							product: { code: this.#product.code, variant_id: this.#variantId },
+							out_of_stock: this.#productIsOutOfStock(),
+							settings: detail?.waitlist_settings
+						})}
+					</script>
+					${this.renderThemeStylesheetTemplate(true)}
+				</mmx-product-waitlist>`
+			: '';
+
+		const waitlistActive = waitlistHtml !== '';
+		const buttonHidden = waitlistActive && this.#productIsOutOfStock() ? 'hidden' : '';
+
+		if (waitlistActive) {
+			disabled = '';
+		}
+
 		return /*html*/`
-			<mmx-button
-				part="button"
-				exportparts="button: button-wrapper"
-				data-theme="${theme_available}"
-				data-theme-class="${MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
-				data-width="${!theme_available ? 'full' : MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
-				data-action-url="${MMX.encodeEntities(actionUrl)}"
-				data-success-message="${MMX.encodeEntities(successMessage)}"
-				data-error-message="${MMX.encodeEntities(errorMessage)}"
-				${disabled}
-			>
-				${this.renderThemeStylesheetTemplate(theme_available)}
-				${MMX.encodeEntities(text)}
-			</mmx-button>`;
+			<div part="button-wrapper" ${buttonHidden}>
+				<mmx-button
+					part="button"
+					exportparts="button: button-wrapper"
+					data-theme="${theme_available}"
+					data-theme-class="${MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_theme?.classname ?? '')}"
+					data-width="${!theme_available ? 'full' : MMX.encodeEntities(prop?.textsettings?.fields?.normal?.button_width?.value ?? 'full')}"
+					data-action-url="${MMX.encodeEntities(actionUrl)}"
+					data-success-message="${MMX.encodeEntities(successMessage)}"
+					data-error-message="${MMX.encodeEntities(errorMessage)}"
+					data-success-badge-class="${MMX.encodeEntities(successBadgeClass)}"
+					data-error-badge-class="${MMX.encodeEntities(errorBadgeClass)}"
+					${disabled}
+				>
+					${this.renderThemeStylesheetTemplate(theme_available)}
+					${MMX.encodeEntities(text)}
+				</mmx-button>
+			</div>${waitlistHtml}`;
 	}
 
 	#onEnablePurchaseButtons() {
 		this.#elementsThatCanBeDisabled().forEach(element => {
 			element.disabled = false;
 		});
+
+		this.#syncWaitlist();
 	}
 
 	#onDisablePurchaseButtons() {
@@ -1199,10 +1297,31 @@ class MMX_ProductDetails extends MMX_Element {
 			element.disabled = true;
 		});
 
+		this.#syncWaitlist();
+
 		// Update inventory message details
 		requestAnimationFrame(() => {
 			this.#updateDetailsOfType('inv_short');
 			this.#updateDetailsOfType('inv_long');
+		});
+	}
+
+	#syncWaitlist({outOfStock = this.#productIsOutOfStock(), variantId = this.#variantId} = {}) {
+		this.shadowRoot.querySelectorAll('[part~="add-to-cart-button"]').forEach(detailEl => {
+			const waitlist = detailEl.querySelector('mmx-product-waitlist');
+
+			if (!waitlist) {
+				return;
+			}
+
+			waitlist.setOutOfStock?.(outOfStock);
+			waitlist.setVariantId?.(variantId);
+
+			const buttonWrapper = detailEl.querySelector('[part~="button-wrapper"]');
+
+			if (buttonWrapper) {
+				buttonWrapper.hidden = outOfStock;
+			}
 		});
 	}
 
@@ -1220,7 +1339,7 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#addToCartButtons() {
-		return this.shadowRoot.querySelectorAll('[part~="add-to-cart-button"] > [part~="button"]');
+		return this.shadowRoot.querySelectorAll('[part~="add-to-cart-button"] [part~="button"]');
 	}
 
 	#onAddToCartButtonClick(button) {
@@ -1257,19 +1376,31 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#showRuntimeBasketItemInsertMessage({
 			button,
 			style: 'warning',
+			badgeClass: button?.dataset?.errorBadgeClass,
 			text: response?.error_message ?? (button?.dataset?.errorMessage || 'There was a problem adding the product to the basket.')
 		});
 	}
 
-	#showRuntimeBasketItemInsertMessage({button, style = 'info', text = ''} = {}) {
+	#showRuntimeBasketItemInsertMessage({button, style = 'info', text = '', badgeClass = ''} = {}) {
 		this.#removeRuntimeBasketItemInsertMessage(button);
 
 		button.insertAdjacentHTML('afterend', this.#renderMessage({
 			autoRemove: 5000,
 			part: 'add-to-cart-message',
 			style,
-			text
+			text,
+			badgeTheme: {
+				theme_available: !MMX.valueIsEmpty(badgeClass),
+				classname: badgeClass
+			}
 		}));
+	}
+
+	// Theme badge class of a text property's badge field, or empty when the theme badge isn't in use
+	#getBadgeThemeClass(property = {}) {
+		const badgeTheme = property?.textsettings?.fields?.normal?.badge_theme;
+
+		return MMX.isTruthy(badgeTheme?.theme_available) ? (badgeTheme?.classname ?? '') : '';
 	}
 
 	#removeRuntimeBasketItemInsertMessage(button) {
@@ -1282,6 +1413,7 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#showRuntimeBasketItemInsertMessage({
 			button,
 			style: 'success',
+			badgeClass: button?.dataset?.successBadgeClass,
 			text: button?.dataset?.successMessage || 'Product added to basket!'
 		});
 		this.#loadMiniBasket(button);
@@ -1325,7 +1457,7 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#addToWishlistButtons() {
-		return this.shadowRoot.querySelectorAll('[part~="add-to-wishlist-button"] > [part~="button"]');
+		return this.shadowRoot.querySelectorAll('[part~="add-to-wishlist-button"] [part~="button"]');
 	}
 
 	#onAddToWishlistButtonClick({button} = {}) {
@@ -1392,8 +1524,10 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#variantId = variantId;
 		this.#loadImages();
 		this.#loadVolumePricingTable();
+		this.#loadAdvancedData();
 		this.#loadFitments();
 		this.#updateUrl();
+		this.#syncWaitlist();
 		this.#dispatchVariantChanged(e);
 	}
 
@@ -1415,6 +1549,7 @@ class MMX_ProductDetails extends MMX_Element {
 		this.#updateDetailsOfType('inv_short');
 		this.#updateDetailsOfType('inv_long');
 		this.#updateDetailsOfType('product-charges');
+		this.#syncWaitlist();
 		this.#updateJsonLd();
 		this.#updateFormInputs();
 		this.#debouncedDispatchGtmViewItemOnce();
@@ -1518,12 +1653,18 @@ class MMX_ProductDetails extends MMX_Element {
 							facet_code: {
 								value: facetCode
 							},
-							breakpoint: detail?.fitment_list_settings?.breakpoint,
-							show_empty_results: true
+							breakpoint: detail?.fitment_list_settings?.breakpoint
+						},
+						advanced: {
+							message_badges: detail?.fitment_list_settings?.message_badges,
+							show_empty_results: {
+								value: true
+							}
 						},
 						table_styles: detail?.fitment_list_table_styles
 					})}
 				</script>
+				${this.renderThemeStylesheetTemplate(true)}
 			</mmx-product-fitment-list>
 		`;
 	}
@@ -1568,7 +1709,8 @@ class MMX_ProductDetails extends MMX_Element {
 			variant: detail.fitment_settings?.message_styles?.variant?.value,
 			size: detail.fitment_settings?.message_styles?.size?.value,
 			display: detail.fitment_settings?.message_styles?.display?.value,
-			part: `${facetCode} ${fitment}`
+			part: `${facetCode} ${fitment}`,
+			badgeTheme: detail.fitment_settings?.messages?.[`${fitment}_message`]?.textsettings?.fields?.normal?.badge_theme
 		});
 	}
 
@@ -1727,57 +1869,75 @@ class MMX_ProductDetails extends MMX_Element {
 
 	// Render: Inventory Message
 	#renderInventoryMessage(detail = {}) {
-		let style = detail?.message_styles?.style?.value || 'auto';
+		const text = this.#getInventoryMessageText(detail);
+		const style = this.#getInventoryMessageStyle(detail);
 		const variant = detail?.message_styles?.variant?.value;
 		const size = detail?.message_styles?.size?.value;
 		const display = detail?.message_styles?.display?.value;
+		const part = this.#product?.inv_active ? `inventory-message ${this.#product.inv_level}` : 'inventory-message';
 
-		if (this.#product?.inv_active) {
-			if (style === 'auto') {
-				if (this.#product.inv_level === 'in') {
-					style = 'success';
-				}
-				else if (this.#product.inv_level === 'low') {
-					style = 'warning';
-				}
-				else if (this.#product.inv_level === 'out') {
-					style = 'error';
-				}
-			}
-
-			return this.#renderMessage({
-				part: `inventory-message ${this.#product.inv_level}`,
-				style,
-				variant,
-				size,
-				display,
-				text: this.#product?.[detail?.type?.value] || this.#attributesProductMachine()?.inventoryMessageHtml
-			});
+		if (MMX.valueIsEmpty(text)) {
+			return '';
 		}
 
-		// Fallback to attribute machine inventory message when product inventory is not active
-		const attributeMachineMessage = this.#attributesProductMachine()?.inventoryMessageHtml;
-		if (attributeMachineMessage) {
-			if (style === 'auto') {
+		return this.#renderMessage({
+			part,
+			style,
+			variant,
+			size,
+			display,
+			text,
+			badgeTheme: detail?.message_styles?.[`badge_theme_${this.#getInventoryMessageLevel(detail)}`]
+		});
+	}
+
+	#getInventoryMessageLevel(detail = {}) {
+		if (MMX.valueIsEmpty(this.#product?.[detail?.type?.value])) {
+			return 'invalid';
+		}
+
+		return this.#product?.inv_level;
+	}
+
+	#getInventoryMessageStyle(detail = {}) {
+		let style = detail?.message_styles?.style?.value || 'auto';
+
+		if (style === 'auto') {
+			if (this.#product.inv_level === 'in') {
+				style = 'success';
+			}
+			else if (this.#product.inv_level === 'low') {
+				style = 'warning';
+			}
+			else if (this.#product.inv_level === 'out') {
+				style = 'error';
+			} else {
 				style = 'info';
 			}
+		}
 
-			return this.#renderMessage({
-				part: 'inventory-message',
-				style,
-				variant,
-				size,
-				display,
-				text: attributeMachineMessage
-			});
+		return style;
+	}
+
+	#getInventoryMessageText(detail = {}) {
+		const inventoryMessage = this.#product?.[detail?.type?.value];
+		const attributeMachineMessage = this.#attributesProductMachine()?.inventoryMessageHtml ?? '';
+
+		if (MMX.valueIsEmpty(inventoryMessage)) {
+			return MMX.isTruthy(detail?.messages_to_display?.invalid?.value) ? attributeMachineMessage : '';
+		}
+
+		if (this.#product?.inv_active) {
+			return MMX.isTruthy(detail?.messages_to_display?.[this.#product?.inv_level]?.value) ? inventoryMessage : '';
 		}
 
 		return '';
 	}
 
 	// Render: Message
-	#renderMessage({part, style, variant, size, display, text, autoRemove} = {}) {
+	#renderMessage({part, style, variant, size, display, text, autoRemove, badgeTheme = {}} = {}) {
 		const tag = style === 'none' ? 'div': 'mmx-message';
+		const theme_available = MMX.isTruthy(badgeTheme?.theme_available);
 
 		return /*html*/`
 			<${tag}
@@ -1787,7 +1947,10 @@ class MMX_ProductDetails extends MMX_Element {
 				data-size="${MMX.encodeEntities(size)}"
 				data-display="${MMX.encodeEntities(display)}"
 				data-auto-remove="${MMX.encodeEntities(autoRemove)}"
+				data-theme="${MMX.encodeEntities(theme_available)}"
+				data-theme-class="${MMX.encodeEntities(badgeTheme?.classname ?? '')}"
 			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
 				${text}
 			</${tag}>
 		`;
@@ -1966,7 +2129,7 @@ class MMX_ProductDetails extends MMX_Element {
 	#renderedQuantity = false;
 	#renderQuantityInput(detail = {}) {
 		const disabled = this.#productIsOutOfStock() ? 'disabled' : '';
-		const quantity = MMX.coerceNumber(this.#getRequestParam('Quantity'), 1);
+		const quantity = this.#defaultQuantity();
 
 		if (!this.#willRenderQuantityInput(detail)) {
 			return '';
@@ -1980,6 +2143,8 @@ class MMX_ProductDetails extends MMX_Element {
 				data-name="Quantity"
 				data-size="${MMX.encodeEntities(detail?.quantity_input_size?.value)}"
 				data-value="${MMX.encodeEntities(quantity)}"
+				data-min="${MMX.encodeEntities(this.#minQuantity())}"
+				data-max="${MMX.encodeEntities(this.#maxQuantity())}"
 				${disabled}
 			>
 			</mmx-form-input-quantity>
@@ -1991,7 +2156,11 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#getQuantity() {
-		return MMX.coerceNumber(this.#quantityInput()?.valueAsNumber, 1);
+		return this.#clampQuantity(MMX.coerceNumber(this.#quantityInput()?.valueAsNumber, this.#defaultQuantity()));
+	}
+
+	#defaultQuantity() {
+		return this.#clampQuantity(MMX.coerceNumber(this.#getRequestParam('Quantity'), this.#minQuantity()));
 	}
 
 	#listenForQuantityInput() {
@@ -2002,6 +2171,194 @@ class MMX_ProductDetails extends MMX_Element {
 
 	#onQuantityChange() {
 		this.#updateFormInputs();
+	}
+
+	// Render: Rating Form
+	#renderRatingForm(detail = {}) {
+		if (!this.#willRenderRatingForm(detail)) {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-rating-form data-init="script">
+				<script type="application/json">
+					${MMX.scriptSafeJSONStringify({
+						product: {
+							code: this.#product?.code
+						},
+						moduleSettings: this.data?.server?.tgreviews,
+						flexSettings: detail?.review_form_settings
+					})}
+				</script>
+				${this.renderThemeStylesheetTemplate(true)}
+				<slot name="recaptcha" slot="recaptcha"></slot>
+				<slot name="review-form-fragment" slot="review-form-fragment"></slot>
+			</mmx-rating-form>
+		`;
+	}
+
+	#listenForReviewAdded() {
+		this.shadowRoot.querySelectorAll('mmx-rating-form').forEach((form) => {
+			form.addEventListener('review:added', () => this.#onReviewAdded());
+		});
+	}
+
+	#onReviewAdded() {
+		this.shadowRoot.querySelector('mmx-rating-reviews')?.reload?.();
+	}
+
+	// Render: Rating Reviews
+	#renderRatingReviews(detail = {}) {
+		if (!this.#willRenderRatingReviews(detail)) {
+			return '';
+		}
+
+		return /*html*/`
+			<mmx-rating-reviews data-init="script">
+				<script type="application/json">
+					${MMX.scriptSafeJSONStringify({
+						product: this.#product,
+						moduleSettings: this.data?.server?.tgreviews,
+						flexSettings: detail?.review_list_settings
+					})}
+				</script>
+				${this.renderThemeStylesheetTemplate(true)}
+			</mmx-rating-reviews>
+		`;
+	}
+
+	// Render: Rating Summary
+	#renderRatingSummary(detail = {}) {
+		if (!this.#willRenderRatingSummary(detail)) {
+			return '';
+		}
+
+		const settings = detail?.rating_settings;
+		const rating = MMX.getCustomFieldValueFromRecord(settings?.rating_custom_field?.value, this.#product);
+		const count = MMX.coerceNumber(MMX.getCustomFieldValueFromRecord(settings?.count_custom_field?.value, this.#product));
+		const textAlign = settings?.align?.value;
+
+		return /*html*/`
+			<div
+				part="rating-summary"
+				${textAlign ? `style="text-align: ${MMX.encodeEntities(textAlign)};"` : ''}
+			>
+				<mmx-rating
+					data-rating="${MMX.encodeEntities(rating)}"
+					data-max-rating="${MMX.encodeEntities(settings?.max_rating?.value ?? 5)}"
+					data-icon-set="${MMX.encodeEntities(settings?.icon?.value ?? 'star')}"
+					data-active-color="${MMX.encodeEntities(settings?.active_color?.value ?? '')}"
+					data-inactive-color="${MMX.encodeEntities(settings?.inactive_color?.value ?? '')}"
+				></mmx-rating>
+				${this.#renderRatingSummaryCount(count, settings)}
+				${this.#renderRatingSummaryWriteReview(settings)}
+			</div>
+		`;
+	}
+
+	#renderRatingSummaryCount(count, settings) {
+		if (count <= 0) {
+			return '';
+		}
+
+		const countText = `${count} ${MMX.pluralize('Review', count)}`;
+
+		if (!this.#hasReviewsDetail()) {
+			return /*html*/`<span part="rating-summary-count">${MMX.encodeEntities(countText)}</span>`;
+		}
+
+		return this.#renderRatingSummaryLinkButton(settings, {
+			part: 'rating-summary-count rating-summary-count-button',
+			content: MMX.encodeEntities(countText)
+		});
+	}
+
+	#renderRatingSummaryLinkButton(settings, {part = '', content = ''} = {}) {
+		const buttonTheme = settings?.link_button_theme;
+		const theme_available = buttonTheme?.theme_available ?? false;
+
+		return /*html*/`
+			<mmx-button
+				part="${part}"
+				data-type="button"
+				data-theme="${theme_available}"
+				data-theme-class="${MMX.encodeEntities(buttonTheme?.classname ?? '')}"
+				data-style="${theme_available ? '' : 'secondary-link'}"
+				data-size="${theme_available ? '' : 's'}"
+			>
+				${this.renderThemeStylesheetTemplate(theme_available)}
+				${content}
+			</mmx-button>
+		`;
+	}
+
+	#hasReviewsDetail() {
+		return !MMX.arrayIsEmpty(this.#getDetailsByType('reviews'));
+	}
+
+	#renderRatingSummaryWriteReview(settings) {
+		if (!this.#hasReviewFormDetail()) {
+			return '';
+		}
+
+		return this.#renderRatingSummaryLinkButton(settings, {
+			part: 'rating-summary-write-review',
+			content: 'Write a Review'
+		});
+	}
+
+	#hasReviewFormDetail() {
+		return !MMX.arrayIsEmpty(this.#getDetailsByType('review-form'));
+	}
+
+	#listenForRatingSummaryReveal() {
+		this.shadowRoot.querySelectorAll('[part~="rating-summary-count-button"]').forEach(button => {
+			button.addEventListener('click', () => {
+				this.revealDetail('reviews');
+			});
+		});
+
+		this.shadowRoot.querySelectorAll('[part~="rating-summary-write-review"]').forEach(button => {
+			button.addEventListener('click', () => {
+				this.#openReviewForm();
+			});
+		});
+	}
+
+	#openReviewForm() {
+		this.revealDetail('review-form');
+
+		requestAnimationFrame(() => {
+			this.shadowRoot.querySelector('mmx-rating-form')?.openDialog?.();
+		});
+	}
+
+	// Reveal Detail
+	revealDetail(detailType) {
+		const detail = this.#getDetailsByType(detailType).at(0);
+		const element = detail ? this.shadowRoot.querySelector(`#${detail._detailSelector}`) : null;
+
+		if (!element) {
+			return;
+		}
+
+		this.#revealDetailContainers(element);
+
+		requestAnimationFrame(() => {
+			element.scrollIntoView({behavior: 'smooth', block: 'start'});
+			element.setAttribute('tabindex', '-1');
+			element.focus({preventScroll: true});
+		});
+	}
+
+	#revealDetailContainers(element) {
+		let container = MMX.closestElement('mmx-accordion, mmx-tabs', element);
+
+		while (container) {
+			container.revealElement?.(element);
+			element = container;
+			container = MMX.closestElement('mmx-accordion, mmx-tabs', container.parentElement);
+		}
 	}
 
 	// Render: Weight
@@ -2053,15 +2410,21 @@ class MMX_ProductDetails extends MMX_Element {
 	}
 
 	#renderVolumePricingTable(detail = {}) {
-		if (MMX.arrayIsEmpty(this.#volumePricing)) {
+		const volumePricing = this.#getVolumePricingWithinQuantityLimits();
+
+		if (MMX.arrayIsEmpty(volumePricing)) {
 			return '';
 		}
 
-		if (MMX.valueIsEmpty(detail?.volume_pricing_table_settings?.quantity?.value)) {
+		detail.volume_pricing_table_settings ??= {};
+		detail.volume_pricing_table_settings.quantity ??= {};
+		detail.volume_pricing_table_settings.price ??= {};
+
+		if (MMX.valueIsEmpty(detail.volume_pricing_table_settings.quantity.value)) {
 			detail.volume_pricing_table_settings.quantity.value = 'Quantity';
 		}
 
-		if (MMX.valueIsEmpty(detail?.volume_pricing_table_settings?.price?.value)) {
+		if (MMX.valueIsEmpty(detail.volume_pricing_table_settings.price.value)) {
 			detail.volume_pricing_table_settings.price.value = 'Price';
 		}
 
@@ -2084,12 +2447,41 @@ class MMX_ProductDetails extends MMX_Element {
 					</tr>
 				</thead>
 				<tbody part="volume-pricing-table-tbody">
-					${this.#volumePricing.map(pricing => {
+					${volumePricing.map(pricing => {
 						return this.#renderVolumePricingRow({pricing, detail});
 					}).join('')}
 				</tbody>
 			</table>
 		`;
+	}
+
+	#getVolumePricingWithinQuantityLimits() {
+		if (MMX.arrayIsEmpty(this.#volumePricing)) {
+			return [];
+		}
+
+		const minQuantity = this.#minQuantity();
+		const maxQuantity = this.#maxQuantity();
+		const maxLimit = maxQuantity ?? Infinity;
+
+		return this.#volumePricing.flatMap(pricing => {
+			const low = MMX.coerceNumber(pricing?.low);
+			const high = MMX.coerceNumber(pricing?.high);
+			const isOpenEnded = high === 0; // e.g. "50+"
+
+			const isBelowMin = !isOpenEnded && high < minQuantity;
+			const isAboveMax = low > maxLimit;
+
+			if (isBelowMin || isAboveMax) {
+				return [];
+			}
+
+			return {
+				...pricing,
+				low: Math.max(low, minQuantity),
+				high: isOpenEnded ? (maxQuantity ?? 0) : Math.min(high, maxLimit)
+			};
+		});
 	}
 
 	#renderVolumePricingRow({pricing = {}, detail = {}} = {}) {
@@ -2117,13 +2509,145 @@ class MMX_ProductDetails extends MMX_Element {
 		`;
 	}
 
+	// Advanced Data
+	#advancedDataFragmentCode() {
+		return this.data?.advanced?.data_fragment?.value;
+	}
+
+	#hasAdvancedDataFragment() {
+		return !MMX.valueIsEmpty(this.#advancedDataFragmentCode());
+	}
+
+	#setAdvancedData(product = {}) {
+		this.#advancedData = {};
+
+		if (!this.#hasAdvancedDataFragment() || MMX.valueIsEmpty(product?.code)) {
+			return;
+		}
+
+		const fragmentCode = this.#advancedDataFragmentCode();
+		const data = this.#parseAdvancedData(product?.fragments?.[fragmentCode]);
+
+		if (data === undefined) {
+			// Surface a misconfigured store fragment without breaking the render
+			// eslint-disable-next-line no-console
+			console.warn(`mmx-product-details: Advanced Data Fragment "${fragmentCode}" did not output a JSON object. It has been ignored.`);
+			return;
+		}
+
+		this.#advancedData = data;
+	}
+
+	#parseAdvancedData(content = '') {
+		try {
+			const data = JSON.parse(content);
+
+			return MMX.variableType(data) === 'object' ? data : undefined;
+		}
+		catch {
+			return undefined;
+		}
+	}
+
+	#loadAdvancedData() {
+		if (!this.#hasAdvancedDataFragment()) {
+			return;
+		}
+
+		MMX.Runtime_JSON_API_Call({
+			params: {
+				Function: 'Runtime_ProductList_Load_Query',
+				Filter: [
+					...this.#getSearchFilters(),
+					...this.#getVariantIdFilters(this.#variantId || ''),
+					{
+						name: 'fragments',
+						value: [this.#advancedDataFragmentCode()]
+					},
+					...this.#getCacheKeysFilters()
+				],
+				Count: 1,
+				Variant_ID: this.#variantId
+			}
+		})
+		.then(response => {
+			this.#setAdvancedData(response.data?.data?.at?.(0));
+			this.#applyQuantityLimits();
+		})
+		.catch(response => {});
+	}
+
+	// Advanced Data: Quantity Limits
+	#quantityLimits() {
+		return this.#advancedData?.quantity_limits ?? {};
+	}
+
+	#minQuantity() {
+		return Math.max(1, MMX.coerceNumber(this.#quantityLimits().min, 1));
+	}
+
+	#maxQuantity() {
+		const maxQuantity = MMX.coerceNumber(this.#quantityLimits().max);
+
+		return maxQuantity >= this.#minQuantity() ? maxQuantity : undefined;
+	}
+
+	#clampQuantity(quantity = 1) {
+		const maxQuantity = this.#maxQuantity();
+		const atLeastMin = Math.max(this.#minQuantity(), quantity);
+
+		return maxQuantity === undefined ? atLeastMin : Math.min(maxQuantity, atLeastMin);
+	}
+
+	#applyQuantityLimits() {
+		const quantityInput = this.#quantityInput();
+
+		if (quantityInput) {
+			MMX.setElementAttributes(quantityInput, {
+				'data-min': this.#minQuantity(),
+				'data-max': this.#maxQuantity(),
+				'data-value': this.#getQuantity()
+			});
+		}
+
+		this.#updateDetailsOfType('volume-pricing-table');
+		this.#updateFormInputs();
+	}
+
 	// JSON+LD
+	#structuredDataMode() {
+		return this.data?.advanced?.structured_data?.mode?.value ?? 'auto';
+	}
+
+	#structuredDataFragmentCode() {
+		return this.data?.advanced?.structured_data?.fragment?.value;
+	}
+
 	#updateJsonLd() {
-		this.#jsonLd().innerHTML = MMX.scriptSafeJSONStringify(this.#getJsonLdData());
+		switch (this.#structuredDataMode()) {
+			case 'none':
+				return;
+			case 'fragment':
+				this.#updateJsonLdFromFragment();
+				return;
+			default:
+				this.#jsonLd().textContent = MMX.scriptSafeJSONStringify(this.#getJsonLdData());
+		}
+	}
+
+	#updateJsonLdFromFragment() {
+		const fragmentContent = this.#product?.fragments?.[this.#structuredDataFragmentCode()]?.trim?.();
+
+		// Keep the server-rendered schema until the JSON API returns the fragment
+		if (MMX.valueIsEmpty(fragmentContent)) {
+			return;
+		}
+
+		this.#jsonLd().textContent = fragmentContent;
 	}
 
 	#jsonLd() {
-		return this.querySelector('script[type="application/ld+json"]') ?? this.#createJsonLd();
+		return this.querySelector(':scope > script[type="application/ld+json"]') ?? this.#createJsonLd();
 	}
 
 	#createJsonLd() {
@@ -2253,6 +2777,8 @@ class MMX_ProductDetails extends MMX_Element {
 				return value;
 			}
 		}
+
+		return undefined;
 	}
 
 	#updateUrl() {

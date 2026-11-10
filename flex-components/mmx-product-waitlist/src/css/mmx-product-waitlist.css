@@ -1,0 +1,103 @@
+/* ==========================================================================
+   MMX / PRODUCT WAITLIST
+   ========================================================================== */
+
+:host {
+	--mmx-product-waitlist__size: 1rem;
+
+	display: block;
+}
+
+[part~="wrapper"] {
+	display: flex;
+	flex-direction: column;
+	gap: var(--mmx-product-waitlist__size);
+}
+
+[part~="wrapper"][hidden] {
+	display: none;
+}
+
+[part~="confirmation"] {
+	--mmx-message__margin-bottom: 0;
+	--mmx-theme-message__align-items: center;
+	--mmx-theme-message__display: flex;
+	--mmx-theme-message__gap: 0.5rem;
+}
+
+[part~="confirmation"]::part(wrapper) {
+	align-items: center;
+	display: flex;
+	gap: 0.5rem;
+}
+
+[part~="confirmation"]::part(close) {
+	margin-left: auto;
+}
+
+[part~="cta"] mmx-button {
+	width: 100%;
+}
+
+[part~="input--email"] {
+	appearance: none;
+	background-color: var(--mmx-color-input-background);
+	border: var(--mmx-input-border);
+	border-radius: calc(var(--mmx-form__size, 1rem) * 0.25);
+	box-shadow: 0 0 0 0 rgba(var(--mmx-color-black), 0.2);
+	color: var(--mmx-color-input-color);
+	cursor: pointer;
+	font-family: var(--mmx-font-family-1);
+	font-size: var(--mmx-form__size, 1rem);
+	padding: calc(var(--mmx-form__size, 1rem) * 0.8);
+	transition: box-shadow 0.25s ease, border-color 0.25s ease;
+	width: 100%;
+}
+
+[part~="input--email"]:disabled {
+	background-color: var(--mmx-color-input-background--disabled);
+	cursor: not-allowed;
+	opacity: 1;
+}
+
+[part~="input--email"]:focus:not(:focus-visible) {
+	outline: none;
+}
+
+[part~="input--email"]:focus-visible {
+	border: var(--mmx-input-border--focus);
+	outline: none;
+}
+
+[part~="form"] {
+	display: flex;
+	flex-direction: column;
+	gap: var(--mmx-product-waitlist__size);
+}
+
+[part~="input-group"] {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+[part~="input-label"] {
+	font-weight: var(--mmx-font-weight-medium);
+}
+
+[part~="message"] mmx-message {
+	--mmx-message__margin-bottom: 0;
+}
+
+[part~="message"]:empty {
+	display: none;
+}
+
+[part~="submit"] {
+	margin-top: unset;
+	width: 100%;
+}
+
+[part~="dialog"]::part(trigger) {
+	display: none;
+}

@@ -30,7 +30,7 @@
 				<span>Enter the email address associated with your account.<br>If you no longer use the email address associated with your account, please contact customer support.</span>
 			</p>
 			<br>
-			<form method="post" action="&mvte:urls:ACLN:secure;" autocomplete="off">
+			<form method="post" action="&mvte:urls:ACLN:secure;" autocomplete="off" data-hook="single-submit">
 				<fieldset>
 					<legend>&mvt:page:name;</legend>
 					<input type="hidden" name="Action" value="EMPW">
@@ -39,7 +39,7 @@
 							<label class="c-form-label is-required &mvte:global:invalid_credentials;" for="l-Customer_LoginEmail">Email Address</label>
 							<div class="c-form-inline-set">
 								<input id="l-Customer_LoginEmail" class="c-form-input" type="email" name="Customer_LoginEmail" value="&mvte:global:Customer_LoginEmail;" autocomplete="email" required>
-								<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue" title="Click Here to Log In and Change Your Password">
+								<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Continue" title="Click Here to Log In and Change Your Password" data-hook="loading-button">
 							</div>
 						</div>
 					</div>

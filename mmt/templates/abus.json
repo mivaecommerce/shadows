@@ -5,8 +5,8 @@
             "item_code": "image-and-text",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -49,6 +49,20 @@
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
                         "settings": {
                             "enabled": 0
                         }
@@ -125,6 +139,9 @@
                     "image_position": {
                         "value": "right"
                     }
+                },
+                "link": {
+                    "type": "url"
                 }
             }
         },
@@ -133,8 +150,8 @@
             "item_code": "image-and-text-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -177,6 +194,20 @@
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
                         "settings": {
                             "enabled": 0
                         }
@@ -253,6 +284,9 @@
                     "image_position": {
                         "value": "left"
                     }
+                },
+                "link": {
+                    "type": "url"
                 }
             }
         },
@@ -261,8 +295,8 @@
             "item_code": "one-across",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "content_theme": {
@@ -270,6 +304,9 @@
                     },
                     "desktop": {
                         "background_color": {
+                            "color": {
+                                "value": "#FFFFFF"
+                            },
                             "settings": {
                                 "enabled": 0
                             }
@@ -283,6 +320,9 @@
                     },
                     "mobile": {
                         "background_color": {
+                            "color": {
+                                "value": "#FFFFFF"
+                            },
                             "settings": {
                                 "enabled": 0
                             }
@@ -368,6 +408,9 @@
                     }
                 },
                 "heading": {
+                    "heading_align": {
+                        "value": "center"
+                    },
                     "heading_text": {
                         "textsettings": {
                             "fields": {
@@ -385,6 +428,9 @@
                     }
                 },
                 "images_group": {
+                    "image_fit": {
+                        "value": "cover"
+                    },
                     "image_size": {
                         "value": "s"
                     },
@@ -393,6 +439,9 @@
                             {
                                 "img": {
                                     "image": "graphics/00000001/placeholder__1144x240.png"
+                                },
+                                "link": {
+                                    "type": "url"
                                 },
                                 "text": {
                                     "body": {
@@ -407,7 +456,10 @@
                                     }
                                 }
                             }
-                        ]
+                        ],
+                        "settings": {
+                            "count": 3
+                        }
                     }
                 }
             }
@@ -417,8 +469,8 @@
             "item_code": "text-area",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "desktop": {
@@ -458,6 +510,24 @@
                         "value": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
+                        "button_link": {
+                            "type": "page",
+                            "value": "SFNT"
+                        },
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
                         "settings": {
                             "enabled": 0
                         }
@@ -522,8 +592,8 @@
             "item_code": "text-area-2",
             "settings": {
                 "_flex": {
-                    "flex_version": 26.02,
-                    "settings_version": "26.02.01"
+                    "flex_version": 26.03,
+                    "settings_version": "26.03.00"
                 },
                 "advanced": {
                     "desktop": {
@@ -563,6 +633,24 @@
                         "value": "Etiam pharetra nunc at sapien dictum, a accumsan mauris viverra. Nam finibus, erat et fringilla fermentum, sem elit porttitor nunc, sed congue urna urna id nibh. Integer nec dignissim quam. Cras vestibulum enim eu tempus commodo. Nullam quis facilisis augue, eget elementum ante. Integer vel maximus justo. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam condimentum ex et nunc interdum, eu porttitor ipsum facilisis. Proin pellentesque sapien a ultricies ultricies."
                     },
                     "button": {
+                        "button_link": {
+                            "type": "page",
+                            "value": "SFNT"
+                        },
+                        "button_text": {
+                            "textsettings": {
+                                "fields": {
+                                    "normal": {
+                                        "button_theme": {
+                                            "code": "primary",
+                                            "size": "m",
+                                            "theme_mode": 1
+                                        }
+                                    }
+                                }
+                            },
+                            "value": "Shop Now"
+                        },
                         "settings": {
                             "enabled": 0
                         }

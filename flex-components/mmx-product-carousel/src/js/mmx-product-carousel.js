@@ -208,15 +208,15 @@ class MMX_ProductCarousel extends MMX_Element {
 	#canLoadData() {
 		const productSet = this.#getProductSet();
 
-		if (productSet == 'category' && !this?.data?.products?.category?.category_code?.length) {
+		if (productSet == 'category' && MMX.valueIsEmpty(this?.data?.products?.category?.category_code)) {
 			return false;
 		}
 
-		if (productSet == 'related' && !this?.data?.products?.product?.product_code?.length) {
+		if (productSet == 'related' && MMX.valueIsEmpty(this?.data?.products?.product?.product_code)) {
 			return false;
 		}
 
-		if (productSet == 'merchandising' && !this.getPropValue('merchandisingshowcase-code')?.length) {
+		if (productSet == 'merchandising' && MMX.valueIsEmpty(this.getPropValue('merchandisingshowcase-code'))) {
 			return false;
 		}
 
@@ -510,7 +510,11 @@ class MMX_ProductCarousel extends MMX_Element {
 	#renderMainError() {
 		return /*html*/`
 			<div part="error" class="mmx-product-carousel__error">
-				<mmx-message data-style="warning">We're unable to display the products: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the products')}</mmx-message>
+				${this.renderBadgeMessage({
+					badgeTheme: this.data?.advanced?.message_badges?.error_badge,
+					style: 'warning',
+					content: `We're unable to display the products: ${MMX.encodeEntities(this.#errorMessage ?? 'There was a problem loading the products')}`
+				})}
 			</div>
 		`;
 	}

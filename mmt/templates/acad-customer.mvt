@@ -18,7 +18,7 @@
 		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
-		<form method="post" action="&mvte:url;" data-validate-address>
+		<form method="post" action="&mvte:url;" data-validate-address data-hook="single-submit">
 			<input type="hidden" name="Action" value="ICST" />
 			<input type="hidden" name="Order" value="&mvte:global:Order;" />
 			<input type="hidden" name="NewAccount" value="1" />
@@ -266,7 +266,7 @@
 
 			<div class="c-form-list">
 				<div class="c-form-list__item c-form-list__item--full u-text-center u-text-right--l">
-					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save">
+					<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Save" data-hook="loading-button">
 				</div>
 			</div>
 		</form>

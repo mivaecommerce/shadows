@@ -1,0 +1,122 @@
+<mvt:comment>
+|
+| Structured Data (JSON-LD)
+|
+| Use by the "Fragment" Structured Data mode of mmx-product-details, mmx-product-list, and mmx-category-list
+|
+| Output a single JSON object without the <script> tag, or nothing to omit its output.
+|
+| l.settings:structured_data:context says what is being rendered.
+|
+| json_api_category_iterator
+|     Format: https://schema.org/ListItem (name and url)
+|     mmx-category-list: one ListItem per loaded category.
+|
+| product_details & json_api_product_iterator
+|     Format: https://schema.org/Product
+|     mmx-product-details: outputs it as-is, server-side and again once the product loads.
+|     mmx-product-list: keeps each product's name and url for its client-side ListItem output.
+|
+| product_list
+|     Format: https://schema.org/ItemList (name only)
+|     mmx-product-list: server-side, named after the heading or the list's category. Replaced by the full list once the products load.
+|
+| category_list
+|     Format: https://schema.org/ItemList (name only)
+|     mmx-category-list: server-side, named after the heading or the parent category. Replaced by the full list once the categories load.
+|
+| Follows Google's Product snippet / merchant listing and carousel (summary page) guidance:
+| https://developers.google.com/search/docs/appearance/structured-data/product-snippet
+| https://developers.google.com/search/docs/appearance/structured-data/merchant-listing
+| https://developers.google.com/search/docs/appearance/structured-data/carousel
+|
+</mvt:comment>
+
+<mvt:assign name="l.is_json_api" value="'json.mvc' IN s.script_name" />
+
+<mvt:if expr="l.is_json_api">
+	<mvt:if expr="NOT ISNULL l.settings:product:id">
+		<mvt:assign name="l.settings:structured_data:context" value="'json_api_product_iterator'" />
+	<mvt:elseif expr="NOT ISNULL l.settings:category:id">
+		<mvt:assign name="l.settings:structured_data:context" value="'json_api_category_iterator'" />
+	</mvt:if>
+</mvt:if>
+
+<mvt:if expr="l.settings:structured_data:context EQ 'json_api_category_iterator'">
+{
+	"name": "&mvtj:category:name;",
+	"url": "&mvtj:category:url;"
+}
+<mvt:elseif expr="l.settings:structured_data:context EQ 'product_list' OR l.settings:structured_data:context EQ 'category_list'">
+	<mvt:if expr="NOT ISNULL l.settings:structured_data:list_name">
+{
+	"@context": "https://schema.org",
+	"@type": "ItemList",
+	"name": "&mvtj:structured_data:list_name;"
+}
+	</mvt:if>
+<mvt:elseif expr="( l.settings:structured_data:context EQ 'json_api_product_iterator' OR l.settings:structured_data:context EQ 'product_details' ) AND NOT ISNULL l.settings:product:id">
+	<mvt:comment>Core Fields</mvt:comment>
+	<mvt:assign name="l.settings:json_ld:product" value="l.settings:product" />
+	<mvt:assign name="l.settings:json_ld:product:description" value="miva_html_strip( l.settings:json_ld:product:descrip, '' )" />
+	<mvt:assign name="l.settings:json_ld:product:sku" value="ternary( ISNULL l.settings:json_ld:product:sku, l.settings:json_ld:product:code, l.settings:json_ld:product:sku )" />
+	<mvt:assign name="l.settings:json_ld:product:url" value="ternary( ISNULL l.settings:json_ld:product:link, l.settings:json_ld:product:url, l.settings:json_ld:product:link )" />
+	<mvt:assign name="l.settings:json_ld:product:price" value="rnd( ternary( ISNULL l.settings:json_ld:product:sale_price, l.settings:json_ld:product:price, l.settings:json_ld:product:sale_price ), 2 )" />
+
+	<mvt:comment>Load "main" Image</mvt:comment>
+	<mvt:do file="g.Module_Library_DB" name="l.loaded_image_type" value="ImageType_Load_Code( 'main', l.image_type )" />
+	<mvt:if expr="l.loaded_image_type">
+		<mvt:do file="g.Module_Library_DB" name="l.loaded_product_image" value="ProductImage_Load_Type( l.settings:json_ld:product:id, l.image_type:id, l.product_image )" />
+		<mvt:if expr="l.loaded_product_image">
+			<mvt:do file="g.Module_Library_DB" name="l.null" value="Image_Load_ID( l.product_image:image_id, l.image )" />
+			<mvt:assign name="l.settings:json_ld:product:image" value="g.baseurl $ l.image:image" />
+		</mvt:if>
+	</mvt:if>
+
+	<mvt:comment>Brand</mvt:comment>
+	<mvt:item name="customfields" param="Read_Product_ID( l.settings:json_ld:product:id, 'brand', l.settings:json_ld:product:customfield_values:customfields:brand )" />
+	<mvt:if expr="ISNULL l.settings:json_ld:product:customfield_values:customfields:brand">
+		<mvt:assign name="l.settings:json_ld:product:customfield_values:customfields:brand" value="g.Store:name" />
+	</mvt:if>
+
+	<mvt:comment>Availability</mvt:comment>
+	<mvt:if expr="l.settings:json_ld:product:inv_level EQ 'low'">
+		<mvt:assign name="l.settings:json_ld:product:availability" value="'https://schema.org/LimitedAvailability'" />
+	<mvt:elseif expr="l.settings:json_ld:product:inv_level EQ 'out'">
+		<mvt:assign name="l.settings:json_ld:product:availability" value="'https://schema.org/OutOfStock'" />
+	<mvt:else>
+		<mvt:assign name="l.settings:json_ld:product:availability" value="'https://schema.org/InStock'" />
+	</mvt:if>
+
+{
+	"@context": "https://schema.org",
+	"@type": "Product",
+	"name": "&mvtj:json_ld:product:name;",
+	"description": "&mvtj:json_ld:product:description;",
+	"sku": "&mvtj:json_ld:product:sku;",
+	<mvt:if expr="NOT ISNULL l.settings:json_ld:product:image">
+		"image": [ "&mvtj:json_ld:product:image;" ],
+	</mvt:if>
+	<mvt:if expr="NOT ISNULL l.settings:category:name">
+		"category": "&mvtj:category:name;",
+	</mvt:if>
+	"brand": {
+		"@type": "Brand",
+		"name": "&mvtj:json_ld:product:customfield_values:customfields:brand;"
+	},
+	"offers": {
+		"@type": "Offer",
+		<mvt:if expr="NOT ISNULL l.settings:json_ld:product:url">
+			"url": "&mvtj:json_ld:product:url;",
+		</mvt:if>
+		"price": "&mvtj:json_ld:product:price;",
+		"priceCurrency": "USD",
+		"availability": "&mvtj:json_ld:product:availability;",
+		"itemCondition": "https://schema.org/NewCondition",
+		"seller": {
+			"@type": "Organization",
+			"name": "&mvtj:global:Store:name;"
+		}
+	}
+}
+</mvt:if>

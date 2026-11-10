@@ -15,7 +15,7 @@
 		<h1 class="mm-theme-typography-title-two">&mvt:page:name;</h1>
 		<hr class="c-keyline">
 		<br>
-		<form method="post" action="&mvte:urls:ORDS:auto;">
+		<form method="post" action="&mvte:urls:ORDS:auto;" data-hook="single-submit">
 			<fieldset>
 				<legend>Search Orders</legend>
 				<div class="c-form-list">
@@ -24,7 +24,7 @@
 					</div>
 					<div class="c-form-list__item c-form-inline-set">
 						<input id="Order_ID" class="c-form-input" type="text" inputmode="decimal" name="Order_ID" placeholder="Order #" required>
-						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Find">
+						<input class="mm-theme-button-primary mm-theme-button-primary__small" type="submit" value="Find" data-hook="loading-button">
 					</div>
 				</div>
 			</fieldset>
@@ -138,7 +138,7 @@
 		<mvt:if expr="g.Offset EQ 0">
 			<div class="o-layout__item">&nbsp;</div>
 		<mvt:else>
-			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;">
+			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 				<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
 				<input type="hidden" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" />
 				<input type="hidden" name="Order_BillZip" value="&mvte:global:Order_BillZip;" />
@@ -149,7 +149,7 @@
 		<mvt:if expr="g.NextOffset EQ 0">
 			<div class="o-layout__item">&nbsp;</div>
 		<mvt:else>
-			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;">
+			<form class="o-layout__item" method="post" action="&mvte:urls:_self:auto;" data-hook="single-submit">
 				<input type="hidden" name="SortBy" value="&mvte:global:SortBy;" />
 				<input type="hidden" name="Order_BillEmail" value="&mvte:global:Order_BillEmail;" />
 				<input type="hidden" name="Order_BillZip" value="&mvte:global:Order_BillZip;" />

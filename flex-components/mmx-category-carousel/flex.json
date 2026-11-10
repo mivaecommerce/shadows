@@ -2,10 +2,11 @@
 	"code": "mmx-category-carousel",
 	"name": "Category Carousel",
 	"type": "component",
-	"version": "26.02.01",
+	"version": "26.03.00",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-carousel",
 	"category": "category-carousel",
+	"output_minimal_json": false,
 	"description": "## Category Carousel\nA horizontally scrollable section that displays product categories. This component encourages customers to visually browse and explore different product categories without navigating away from the page.",
 	"preview_component_selector": "[data-page-code=\"%page_code%\"][data-flex-component=\"%component_code%\"][data-flex-item=\"%element_code%\"]",
 	"sample_data_types": [
@@ -413,6 +414,52 @@
 													"prompt": "Tablet Image"
 												}
 											],
+											"sizes": [
+												{
+													"height": 2560,
+													"width": 2560
+												},
+												{
+													"height": 1920,
+													"width": 1920
+												},
+												{
+													"height": 1440,
+													"width": 1440
+												},
+												{
+													"height": 1290,
+													"width": 1290
+												},
+												{
+													"height": 1100,
+													"width": 1100
+												},
+												{
+													"height": 828,
+													"width": 828
+												},
+												{
+													"height": 640,
+													"width": 640
+												},
+												{
+													"height": 480,
+													"width": 480
+												},
+												{
+													"height": 320,
+													"width": 320
+												},
+												{
+													"height": 240,
+													"width": 240
+												}
+											],
+											"tooltip": {
+												"content": "Upload an image at least as wide as your site (ex 1440px or wider). Optimized sizes from 240px to 2560px are generated automatically and never upscaled for shoppers.",
+												"title": "Image"
+											},
 											"type": "image"
 										}
 									],
@@ -879,10 +926,10 @@
 		}
 	},
 	"upgrade_template": "src/templates/upgrade.mvt",
-	"initialization_template": "src/templates/init.mvt",
 	"instance_template": "src/templates/instance.mvt",
 	"preview": "src/images/preview.svg",
 	"detailed_preview": "src/images/detailed_preview.svg",
+	"initialization_template": "src/templates/init.mvt",
 	"scripts": [
 		{
 			"filepath": "src/js/mmx-category-carousel.js",
@@ -894,7 +941,7 @@
 				},
 				{
 					"name": "integrity",
-					"value": "sha256-gRN9tI/KAqSdeKoCmLttk9VWpMOHGSfc1GltBHUJjWA= sha384-mOIR+6DEJSqE76v4Q2UJxl9ltxnGsvwdRc8XrU+2YJFCDPr0MNwGBc565/sY/0+N sha512-0bVeW+sxlf6EXWfFlhUffMFvsQi5U+75pkRxoq7+lizdpiwoX7zwqmQrGS1UgYamLO94IM+NlELequSHZk9HCg=="
+					"value": "sha256-EwnE+9y12NKqxRM2YoL0FuPKMhrOZiI2x7z4YVLPDzQ= sha384-Xszr9gI8QlD7+Vakh/kmYtjv7WUdFrgraYjqzPlgeaUXgqQ/xH2zdRVBI0xp85sU sha512-DgOqvAQWfz6x4pRqVvtePQoZXvz70pIv0bHQ4UoMrjvkMPFx2uNtvrq/jAfjzOUEbbZGC6u1aGKDEl1PxndTrA=="
 				},
 				{
 					"name": "crossorigin",
@@ -904,10 +951,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.02.01",
-		"mmx-button": "=26.02.01",
-		"mmx-hero": "=26.02.01",
-		"mmx-hero-slider": "=26.02.01",
-		"mmx-text": "=26.02.01"
+		"mmx-base": "=26.03.00",
+		"mmx-button": "=26.03.00",
+		"mmx-hero": "=26.03.00",
+		"mmx-hero-slider": "=26.03.00",
+		"mmx-text": "=26.03.00"
 	}
 }
