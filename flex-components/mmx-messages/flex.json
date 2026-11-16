@@ -2,7 +2,7 @@
 	"code": "mmx-messages",
 	"name": "MMX Messages",
 	"type": "library",
-	"version": "26.03.00",
+	"version": "26.03.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-messages",
 	"scripts": [
@@ -58,7 +58,7 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.03.00",
-		"mmx-icons": "=26.03.00"
+		"mmx-base": "=26.03.01",
+		"mmx-icons": "=26.03.01"
 	}
 }

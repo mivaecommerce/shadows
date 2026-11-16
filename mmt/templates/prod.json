@@ -6,7 +6,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.03,
-                    "settings_version": "26.03.00"
+                    "settings_version": "26.03.01"
                 },
                 "advanced": {
                     "form_name": {
@@ -3916,7 +3916,7 @@
             "settings": {
                 "_flex": {
                     "flex_version": 26.03,
-                    "settings_version": "26.03.00"
+                    "settings_version": "26.03.01"
                 },
                 "advanced": {
                     "empty_results_message": {

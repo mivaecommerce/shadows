@@ -2,7 +2,7 @@
 	"code": "mmx-rating",
 	"name": "MMX Rating",
 	"type": "library",
-	"version": "26.03.00",
+	"version": "26.03.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-rating",
 	"scripts": [
@@ -58,12 +58,12 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.03.00",
-		"mmx-button": "=26.03.00",
-		"mmx-dialog": "=26.03.00",
-		"mmx-forms": "=26.03.00",
-		"mmx-icons": "=26.03.00",
-		"mmx-messages": "=26.03.00",
-		"mmx-text": "=26.03.00"
+		"mmx-base": "=26.03.01",
+		"mmx-button": "=26.03.01",
+		"mmx-dialog": "=26.03.01",
+		"mmx-forms": "=26.03.01",
+		"mmx-icons": "=26.03.01",
+		"mmx-messages": "=26.03.01",
+		"mmx-text": "=26.03.01"
 	}
 }

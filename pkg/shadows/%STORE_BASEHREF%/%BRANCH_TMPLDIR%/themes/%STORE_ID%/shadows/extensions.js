@@ -1588,11 +1588,9 @@ class SingleSubmit {
 
 	// Forms
 	#bindForms() {
-		this.#getForms().forEach(form => {
-			form.addEventListener('submit', (e) => {
-				this.#onFormSubmit(form, e);
-			});
+		this.#bindDelegatedSubmit();
 
+		this.#getForms().forEach(form => {
 			form.addEventListener('set-loading', () => {
 				this.setFormLoading(form);
 			});
@@ -1600,6 +1598,14 @@ class SingleSubmit {
 			form.addEventListener('remove-loading', () => {
 				this.removeFormLoading(form);
 			});
+		});
+	}
+
+	#bindDelegatedSubmit() {
+		document.addEventListener('submit', (e) => {
+			if (e.target?.matches?.(this.#options.selector)) {
+				this.#onFormSubmit(e.target, e);
+			}
 		});
 	}
 
@@ -1683,19 +1689,25 @@ class LoadingButton {
 
 	// Buttons
 	#bindButtons() {
-		this.#getButtons().forEach(button => {
-			if (button.form) {
-				button.form.addEventListener('submit', (e) => {
-					this.#onFormSubmit(button, e);
-				});
-			}
+		this.#bindDelegatedSubmit();
 
+		this.#getButtons().forEach(button => {
 			button.addEventListener('set-loading', () => {
 				this.setButtonLoading(button);
 			});
 
 			button.addEventListener('remove-loading', () => {
 				this.removeButtonLoading(button);
+			});
+		});
+	}
+
+	#bindDelegatedSubmit() {
+		document.addEventListener('submit', (e) => {
+			this.#getButtons().forEach(button => {
+				if (button.form === e.target) {
+					this.#onFormSubmit(button, e);
+				}
 			});
 		});
 	}

@@ -320,6 +320,30 @@
 							</div>
 						</mvt:if>
 
+						<mvt:if expr="g.PaymentMethod EQ 'epmivapay:cc' OR g.PaymentMethod EQ 'paypalcp:cc'">
+							<script>
+								['epmivapay_instance_ready', 'paypalcp_instance_ready'].forEach(eventName => {
+									window.addEventListener(eventName, ({detail: instance}) => {
+										const form = document.querySelector('[data-hook~="opay-form"]');
+										const button = form?.querySelector?.('[data-hook~="loading-button"]');
+										const submit = instance.submit.bind(instance);
+
+										instance.submit = (...args) => {
+											window?.singleSubmit?.setFormLoading?.(form);
+											window?.loadingButton?.setButtonLoading?.(button);
+
+											return submit(...args).catch(error => {
+												window?.singleSubmit?.removeFormLoading?.(form);
+												window?.loadingButton?.removeButtonLoading?.(button);
+
+												throw error;
+											});
+										};
+									});
+								});
+							</script>
+						</mvt:if>
+
 						<mvt:if expr="l.settings:payment:capabilities:split">
 							<br>
 							<div class="c-form-list">

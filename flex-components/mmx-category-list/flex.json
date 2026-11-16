@@ -2,7 +2,7 @@
 	"code": "mmx-category-list",
 	"name": "Category List",
 	"type": "component",
-	"version": "26.03.00",
+	"version": "26.03.01",
 	"managed": true,
 	"resourcegroup_code": "mmx-category-list",
 	"category": "product-list",
@@ -863,10 +863,10 @@
 		}
 	],
 	"depends": {
-		"mmx-base": "=26.03.00",
-		"mmx-button": "=26.03.00",
-		"mmx-card": "=26.03.00",
-		"mmx-messages": "=26.03.00",
-		"mmx-text": "=26.03.00"
+		"mmx-base": "=26.03.01",
+		"mmx-button": "=26.03.01",
+		"mmx-card": "=26.03.01",
+		"mmx-messages": "=26.03.01",
+		"mmx-text": "=26.03.01"
 	}
 }
